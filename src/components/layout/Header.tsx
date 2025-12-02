@@ -40,7 +40,9 @@ export default function Header() {
         </section>
 
         {isMobile ? (
-          <button type="button">=</button>
+          <button type="button" className="menu-toggle" aria-label="메뉴 열기">
+            ☰
+          </button>
         ) : (
           <nav className="menu">
             <a href="#home">HOME</a>
