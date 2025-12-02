@@ -1,7 +1,5 @@
 "use client";
 
-import "@/styles/sections/hero.css";
-
 export default function ProjectsSection() {
   return (
     <section className="hero-page">

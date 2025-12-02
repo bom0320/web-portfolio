@@ -3,6 +3,7 @@
 @import "abstracts/mixins";
 
 // base
+@import "base/globals";
 @import "base/reset";
 @import "base/typography";
 
@@ -10,7 +11,7 @@
 @import "layout/header";
 @import "layout/main";
 @import "layout/footer";
-@import "/layout/mobile";
+@import "layout/mobile";
 
 // sections
 @import "sections/hero";
@@ -19,6 +20,7 @@
 @import "sections/projects";
 @import "sections/contact";
 
-// components
-@import "components/buttons";
-@import "components/cards";
+body {
+  background-color: #000;
+  color: #fff;
+}
