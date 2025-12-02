@@ -1,0 +1,24 @@
+// abstracts
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+// base
+@import "base/reset";
+@import "base/typography";
+
+// layout
+@import "layout/header";
+@import "layout/main";
+@import "layout/footer";
+@import "/layout/mobile";
+
+// sections
+@import "sections/hero";
+@import "sections/about";
+@import "sections/skills";
+@import "sections/projects";
+@import "sections/contact";
+
+// components
+@import "components/buttons";
+@import "components/cards";
