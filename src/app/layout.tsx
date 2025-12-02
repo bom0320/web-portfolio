@@ -5,8 +5,11 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-  title: "김봄 포트폴리오",
+  title: "2026 | 김봄 포트폴리오",
   description: "Frontend Developer Portfolio",
+  icons: {
+    icon: "/images/logo/portfolio_logo.png",
+  },
 };
 
 export default function RootLayout({

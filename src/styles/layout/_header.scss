@@ -21,14 +21,22 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(255, 255, 255, 30%);
+    border-bottom: 1px solid rgba(255, 255, 255, 25%);
   }
 
-  .logo a {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    color: #ffffff;
+  .logo {
+    > a {
+      display: flex;
+      align-items: center;
+
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+    }
+    > img {
+      display: black;
+    }
   }
 
   .menu {
@@ -45,13 +53,7 @@
       transition: color 0.25s;
 
       &:hover {
-        mask-image: linear-gradient(
-          to bottom,
-          rgb(0 0 0) 0%,
-          rgb(0, 0, 0) 12.5%,
-          rgb(0, 0, 0) 57.5%,
-          rgba(0, 0, 0, 0) 100%
-        );
+        color: rgba(255, 255, 255, 50%);
       }
     }
   }

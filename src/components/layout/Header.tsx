@@ -28,17 +28,17 @@ export default function Header() {
       <div className="header-inner">
         <section className="logo">
           <a href="#hero">
+            <h3>프론트-엔드</h3>
             <Image
-              src="/images/logo/portfolio-logo.png"
-              alt="김봄 포트폴리오 로고"
+              src="/images/logo/portfolio_logo.png"
+              alt="/"
               width={32}
               height={32}
             />
-            <h3>프론트-엔드</h3>
+            <h3 className="target">김봄</h3>
           </a>
         </section>
 
-        {/* 메뉴 */}
         {isMobile ? (
           <button type="button">=</button>
         ) : (
