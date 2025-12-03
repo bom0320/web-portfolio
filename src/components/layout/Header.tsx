@@ -5,8 +5,16 @@ import Image from "next/image";
 import MarqueeComponents from "../common/MarqueeComponents";
 import Animation from "../utils/animation";
 
+const NAV_ITEMS = [
+  { href: "#home", label: "HOME" },
+  { href: "#about", label: "ABOUT" },
+  { href: "#projects", label: "PROJECTS" },
+  { href: "#contact", label: "CONTACT" },
+];
+
 export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     Animation.layout.header();
@@ -15,13 +23,20 @@ export default function Header() {
   useEffect(() => {
     const checkMobile = () => {
       if (typeof window === "undefined") return;
-      setIsMobile(window.innerWidth < 768);
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (!mobile) {
+        setIsMenuOpen(false);
+      }
     };
-
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
 
   return (
     <header id="header">
@@ -40,18 +55,42 @@ export default function Header() {
         </section>
 
         {isMobile ? (
-          <button type="button" className="menu-toggle" aria-label="메뉴 열기">
-            ☰
+          <button
+            type="button"
+            className="menu-toggle"
+            onClick={toggleMenu}
+            aria-expanded={isMenuOpen}
+            aria-label="Mobile Menu Open"
+          >
+            <span />
+            <span />
+            <span />
           </button>
         ) : (
           <nav className="menu">
-            <a href="#home">HOME</a>
-            <a href="#about">ABOUT</a>
-            <a href="#projects">PROJECTS</a>
-            <a href="#contact">CONTACT</a>
+            {NAV_ITEMS.map((item) => (
+              <a key={item.href} href={item.href}>
+                {item.label}
+              </a>
+            ))}
           </nav>
         )}
       </div>
+
+      {/* 모바일 드롭다운 메뉴 */}
+      {isMobile && isMenuOpen && (
+        <nav className="menu-mobile">
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      )}
 
       <MarqueeComponents
         title={"THIS PAGE MADE BY REACT, NEXT.JS FRONTEND PORTFOLIO"}
