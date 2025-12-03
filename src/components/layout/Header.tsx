@@ -6,7 +6,7 @@ import MarqueeComponents from "../common/MarqueeComponents";
 import Animation from "../utils/animation";
 
 const NAV_ITEMS = [
-  { href: "#home", label: "HOME" },
+  { href: "#hero", label: "HERO" },
   { href: "#about", label: "ABOUT" },
   { href: "#projects", label: "PROJECTS" },
   { href: "#contact", label: "CONTACT" },
