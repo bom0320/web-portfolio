@@ -2,7 +2,7 @@
 
 import gsap from "gsap";
 
-const Animation = {
+const HeaderAnimation = {
   layout: {
     header() {
       const sections = gsap.utils.toArray<HTMLElement>(".marquee .content");
@@ -22,4 +22,4 @@ const Animation = {
   },
 };
 
-export default Animation;
+export default HeaderAnimation;

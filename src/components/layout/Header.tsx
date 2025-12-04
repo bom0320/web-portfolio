@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import MarqueeComponents from "../common/MarqueeComponents";
-import Animation from "../utils/animation";
-
+import HeaderAnimation from "../animations/header";
 const NAV_ITEMS = [
   { href: "#hero", label: "HERO" },
   { href: "#about", label: "ABOUT" },
@@ -17,7 +16,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    Animation.layout.header();
+    HeaderAnimation.layout.header();
   }, []);
 
   useEffect(() => {
