@@ -1,5 +1,5 @@
 .hero {
-  padding: 140px var(--between-space, 4rem) 90px;
+  padding: 60px var(--between-space, 4rem) 90px;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -8,12 +8,10 @@
 .hero__inner {
   max-width: 1200px;
   margin: 0 auto;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 4rem;
-
   width: 100%;
 }
 
@@ -24,7 +22,7 @@
 .hero__title-wrap {
   position: relative;
   display: inline-block;
-  margin-bottom: 32px;
+  margin-bottom: 12px;
 }
 
 /* PORTFOLIO */
@@ -34,9 +32,10 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   line-height: 1;
+  font-style: italic;
   white-space: nowrap;
 
-  background: linear-gradient(20deg, #ffffff 0%, #f6f6f6 30%, #232323 100%);
+  background: linear-gradient(10deg, #ffffff 0%, #f6f6f6 30%, #363636 100%);
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -47,12 +46,12 @@
   right: 0.35em;
   bottom: 0.3em;
   font-size: clamp(2.4rem, 5vw, 5.2rem);
+  font-style: italic;
   font-weight: 900;
   text-transform: uppercase;
   line-height: 1;
-
   color: #ffffff;
-  -webkit-text-stroke: 30px #000000;
+  -webkit-text-stroke: 26px #000000;
   paint-order: stroke fill;
 }
 

@@ -1,0 +1,76 @@
+.life-motion {
+  padding: 80px var(--between-space, 4rem) 100px;
+  background-color: #050509; // 전체 배경과 자연스럽게
+
+  &__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* 섹션 위쪽 제목 (Life in Motion) */
+  &__section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    color: #ffffff;
+  }
+
+  /* 가로로 흐르는 트랙 */
+  &__track {
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-behavior: smooth;
+  }
+
+  /* 스크롤바 살짝만 보이게 */
+  &__track::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &__track::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+  }
+
+  &__item {
+    flex: 0 0 260px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__image-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 130%; // 비율 유지
+    border-radius: 18px;
+    overflow: hidden;
+    background: #111;
+  }
+
+  &__meta {
+    color: #ffffff;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &__caption {
+    font-size: 13px;
+    line-height: 1.8;
+    opacity: 0.85;
+  }
+
+  @media (max-width: 900px) {
+    padding: 60px 1.8rem 80px;
+
+    &__item {
+      flex: 0 0 220px;
+    }
+  }
+}
