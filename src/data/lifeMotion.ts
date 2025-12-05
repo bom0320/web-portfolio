@@ -38,7 +38,7 @@ export const LIFE_MOTION_ITEMS: LifeMotionItem[] = [
     src: "/images/life/drawing.jpg",
     title: "5. 그림 그리기",
     caption:
-      "자기 개성을 자유롭게 표현하는 å과제로 그린 스케치입니다. 좋아하는 분위기, 색감, 성격 요소들을 직접 정리하며 만든 작업입니다.",
+      "자기 개성을 자유롭게 표현하는 과제로 그린 스케치입니다. 좋아하는 분위기, 색감, 성격 요소들을 직접 정리하며 만든 작업입니다.",
   },
   {
     id: 6,
