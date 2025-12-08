@@ -10,14 +10,15 @@ export const LIFE_MOTION_ITEMS: LifeMotionItem[] = [
     id: 1,
     src: "/images/life/hobby_01.jpg",
     title: "1. 나의 취미",
-    caption: "운동과 취미를 겸해 발레를 배우며, 자세 교정과 자기관리를 합니다.",
+    caption:
+      "운동과 취미를 겸해 발레를 배우며, 자세 교정과 자기 관리를 합니다.",
   },
   {
     id: 2,
     src: "/images/life/vacation.jpg",
     title: "2. 방학 공부 루틴",
     caption:
-      "방학마다 스터디카페에서 책으로 개념을 보완하며, 부족했던 부분을 하나씩 채워갔습니다.",
+      "방학마다 스터디 카페에서 책으로 개념을 보완하며, 부족했던 부분을 하나씩 채워갔습니다.",
   },
   {
     id: 3,
@@ -38,7 +39,7 @@ export const LIFE_MOTION_ITEMS: LifeMotionItem[] = [
     src: "/images/life/drawing.jpg",
     title: "5. 그림 그리기",
     caption:
-      "자기 개성을 자유롭게 표현하는 과제로 그린 스케치입니다. 좋아하는 분위기, 색감, 성격 요소들을 직접 정리하며 만든 작업입니다.",
+      "자기 개성을 자유롭게 표현하는 과제로 그린 스케치입니다. 좋아하는 분위기, 색감, 성격 요소들을 직접 정리하며 그린 스케치입니다.",
   },
   {
     id: 6,
