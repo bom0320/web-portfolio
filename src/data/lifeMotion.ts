@@ -65,7 +65,7 @@ export const LIFE_MOTION_ITEMS: LifeMotionItem[] = [
   {
     id: 9,
     src: "/images/life/lecture.jpg",
-    title: "9. 배우기 위해 먼저 움직였습니다",
+    title: "9. 교내 다양한 특강 참여",
     caption:
       "교내에서 진행되는 외부 강사 특강이나 멘토링 중, 제 성장에 도움이 될 것이라 판단되면 적극적으로 참여하며 배움을 넓혀왔습니다.",
   },

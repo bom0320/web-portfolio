@@ -1,76 +1,84 @@
 .life-motion {
-  padding: 80px var(--between-space, 4rem) 100px;
-  background-color: #050509; // 전체 배경과 자연스럽게
+  width: 100%;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 0;
+}
 
-  &__inner {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+.life-motion__inner {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
 
-  /* 섹션 위쪽 제목 (Life in Motion) */
-  &__section-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 32px;
-    color: #ffffff;
-  }
+.life-motion__section-title {
+  margin-bottom: 32px;
+}
 
-  /* 가로로 흐르는 트랙 */
-  &__track {
-    display: flex;
-    gap: 32px;
-    overflow-x: auto;
-    padding-bottom: 12px;
-    scroll-behavior: smooth;
-  }
+.life-motion__viewport {
+  overflow: hidden;
+  width: 100%;
+}
 
-  /* 스크롤바 살짝만 보이게 */
-  &__track::-webkit-scrollbar {
-    height: 6px;
-  }
+.life-motion__track {
+  display: flex;
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+}
 
-  &__track::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.25);
-    border-radius: 999px;
-  }
+.life-motion__item {
+  flex: 0 0 auto;
+  width: 220px;
+  opacity: 0.65;
+  cursor: pointer;
+  transform: scale(0.95);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  margin: 0px;
+  transform-origin: top center;
+}
 
-  &__item {
-    flex: 0 0 260px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+.life-motion__item:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
 
-  &__image-wrap {
-    position: relative;
-    width: 100%;
-    padding-top: 130%; // 비율 유지
-    border-radius: 18px;
-    overflow: hidden;
-    background: #111;
-  }
+.life-motion__image-wrap {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #111;
+}
 
-  &__meta {
-    color: #ffffff;
-  }
+.life-motion__image {
+  object-fit: cover;
+}
 
-  &__title {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
+.life-motion__meta {
+  height: 0;
+  position: relative;
+}
 
-  &__caption {
-    font-size: 13px;
-    line-height: 1.8;
-    opacity: 0.85;
-  }
+.life-motion__title {
+  font-size: 14px;
+  font-weight: 600;
+}
 
-  @media (max-width: 900px) {
-    padding: 60px 1.8rem 80px;
+.life-motion__caption {
+  position: absolute;
+  left: 0;
+  bottom: -32px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
 
-    &__item {
-      flex: 0 0 220px;
-    }
-  }
+.life-motion__item:hover .life-motion__caption {
+  opacity: 1;
+  transform: translateY(0);
 }
