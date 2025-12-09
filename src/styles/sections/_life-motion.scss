@@ -1,7 +1,5 @@
 .life-motion {
   width: 100%;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
   padding: 0;
 }
 
@@ -11,20 +9,14 @@
   padding: 0;
 }
 
-.life-motion__section-title {
-  margin-bottom: 32px;
-}
-
 .life-motion__viewport {
-  overflow: hidden;
-  width: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .life-motion__track {
   display: flex;
-  gap: 12px;
-  padding: 0;
-  margin: 0;
+  gap: 18px;
 }
 
 .life-motion__item {
@@ -56,8 +48,9 @@
 }
 
 .life-motion__meta {
-  height: 0;
-  position: relative;
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 12px;
 }
 
 .life-motion__title {
@@ -66,9 +59,9 @@
 }
 
 .life-motion__caption {
-  position: absolute;
+  position: static;
   left: 0;
-  bottom: -32px;
+  bottom: auto;
   margin: 0;
   font-size: 14px;
   line-height: 1.6;
