@@ -31,10 +31,9 @@ export default function BomWaveTitle() {
       <defs>
         <clipPath id="bom-text-clip">
           <text
-            x="50%"
-            y="50%"
-            textAnchor="middle"
-            dominantBaseline="middle"
+            x="0" // ⬅ 왼쪽 0에서 시작
+            y="110" // ⬅ 세로 위치
+            textAnchor="start"
             fontFamily="'Poppins', system-ui, sans-serif"
             fontWeight="800"
             fontSize="110"
@@ -44,12 +43,11 @@ export default function BomWaveTitle() {
         </clipPath>
       </defs>
 
-      {/* 흰색 아웃라인 */}
+      {/* 아웃라인 텍스트도 똑같이 */}
       <text
-        x="50%"
-        y="50%"
-        textAnchor="middle"
-        dominantBaseline="middle"
+        x="0"
+        y="110"
+        textAnchor="start"
         fontFamily="'Poppins', system-ui, sans-serif"
         fontWeight="800"
         fontSize="110"

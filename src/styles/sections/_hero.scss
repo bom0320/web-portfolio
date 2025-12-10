@@ -40,7 +40,7 @@
 
   .hero-title__svg {
     display: block;
-    width: clamp(260px, 34vw, 420px); // BOM's 크기
+    width: clamp(260px, 34vw, 420px);
     height: auto;
   }
 
@@ -51,13 +51,11 @@
     color: #eaeaea;
     line-height: 1;
     z-index: 2;
-
-    /* 🔹 BOM's에 살짝 붙이기 + 왼쪽 정렬 맞추기 */
-    margin: -8px 0 0 4px; // 위로 조금, 왼쪽 4px 정도 (숫자만 조금씩 조절해도 됨)
+    margin: -20px 0 0 4px;
   }
 
   .hero__subtitle {
-    margin-top: 28px; // PORTFOLIO 아래 간격
+    margin-top: 28px;
     font-size: 14px;
     letter-spacing: 0.6em;
     color: #e5e5e5;
@@ -66,7 +64,7 @@
 
   .hero__description {
     max-width: 520px;
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 14px;
     line-height: 1.7;
     color: #bfbfbf;
