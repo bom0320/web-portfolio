@@ -14,7 +14,6 @@
     gap: 80px;
   }
 
-  /* 왼쪽 텍스트 영역 */
   .hero__content {
     flex: 1;
     position: relative;
@@ -28,6 +27,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 0;
     z-index: 2;
   }
@@ -40,19 +40,10 @@
     line-height: 1.05;
     margin: 0;
   }
-
-  .hero-title__outline {
-    position: absolute;
-    inset: 0;
-    color: transparent;
-    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff;
-  }
-
-  .hero-title__fill {
-    position: relative;
-    display: inline-block;
-    color: #fff;
-    clip-path: inset(100% 0 0 0);
+  .hero-title__svg {
+    display: block;
+    width: clamp(260px, 36vw, 60px);
+    height: auto;
   }
 
   /* PORTFOLIO */
@@ -64,10 +55,11 @@
     margin: 0;
     line-height: 1;
     z-index: 2;
+    margin: -10px 0 0 30px;
   }
 
   .hero__subtitle {
-    margin-top: 12px;
+    margin-top: 24px;
     font-size: 14px;
     letter-spacing: 0.6em;
     color: #e5e5e5;
@@ -77,6 +69,7 @@
   .hero__description {
     max-width: 520px;
     font-size: 14px;
+    margin-top: 40px;
     line-height: 1.7;
     color: #bfbfbf;
   }
