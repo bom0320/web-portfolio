@@ -10,16 +10,16 @@ export default function BomWaveTitle() {
     const el = waveRef.current;
     if (!el) return;
 
-    // 파도 그룹 좌우로 흐르게
-    gsap.to(el, {
-      x: -260,
+    const tween = gsap.to(el, {
+      x: "-=260",
       repeat: -1,
       duration: 6,
-      ease: "linear",
-      modifiers: {
-        x: (x) => `${Number(x) % 260}`,
-      },
+      ease: "none",
     });
+
+    return () => {
+      tween.kill();
+    };
   }, []);
 
   return (
@@ -31,8 +31,8 @@ export default function BomWaveTitle() {
       <defs>
         <clipPath id="bom-text-clip">
           <text
-            x="0" // ⬅ 왼쪽 0에서 시작
-            y="110" // ⬅ 세로 위치
+            x="0"
+            y="110"
             textAnchor="start"
             fontFamily="'Poppins', system-ui, sans-serif"
             fontWeight="800"
@@ -43,7 +43,7 @@ export default function BomWaveTitle() {
         </clipPath>
       </defs>
 
-      {/* 아웃라인 텍스트도 똑같이 */}
+      {/* 아웃라인 텍스트 */}
       <text
         x="0"
         y="110"
@@ -58,12 +58,8 @@ export default function BomWaveTitle() {
         BOM&apos;s
       </text>
 
-      {/* 글자 안: 물 + 파도 */}
       <g clipPath="url(#bom-text-clip)">
-        {/* 어두운 바탕 */}
         <rect x="0" y="0" width="500" height="160" fill="#020617" />
-
-        {/* 물 (절반 정도 채우기) */}
         <rect
           x="0"
           y="60"
@@ -73,7 +69,6 @@ export default function BomWaveTitle() {
           fillOpacity="0.8"
         />
 
-        {/* 파도 라인 */}
         <g ref={waveRef}>
           <path
             d="
