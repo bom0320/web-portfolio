@@ -5,28 +5,26 @@ import gsap from "gsap";
 const HeroAnimation = {
   play() {
     const tl = gsap.timeline();
+    tl.fromTo(
+      ".hero-title__fill",
+      { clipPath: "inset(100% 0 0 0)" },
+      { clipPath: "inset(0% 0 0 0)", duration: 1.5, ease: "power2.out" },
+      0
+    );
 
-    // PORTFOLIO 글자
-    tl.from(".js-hero-title", {
-      y: 40,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    // 2026 글자
+    // 2) PORTFOLIO 텍스트
     tl.from(
-      ".js-hero-year",
+      ".js-hero-title",
       {
         y: 40,
         opacity: 0,
-        duration: 0.8,
+        duration: 1,
         ease: "power3.out",
       },
-      "-=0.7" // 앞이랑 약간 겹쳐서 나오게
+      "-=0.6" // BOM's 채워지는 도중에 같이 올라오게
     );
 
-    // 설명문
+    // 3) 설명문
     tl.from(
       ".js-hero-desc",
       {
@@ -38,13 +36,13 @@ const HeroAnimation = {
       "-=0.4"
     );
 
-    // 캐릭터 이미지
+    // 4) 캐릭터 이미지
     tl.from(
       ".js-hero-character",
       {
         y: 40,
         opacity: 0,
-        duration: 1.0,
+        duration: 1,
         ease: "power3.out",
       },
       "-=0.6"
