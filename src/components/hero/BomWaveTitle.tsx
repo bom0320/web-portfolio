@@ -10,19 +10,22 @@ export default function BomWaveTitle() {
     const el = waveRef.current;
     if (!el) return;
 
+    // 파도 그룹 좌우로 흐르게
     gsap.to(el, {
-      x: -220,
+      x: -260,
       repeat: -1,
-      duration: 5,
+      duration: 6,
       ease: "linear",
+      modifiers: {
+        x: (x) => `${Number(x) % 260}`,
+      },
     });
   }, []);
 
   return (
     <svg
       className="hero-title__svg js-hero-bom"
-      viewBox="0 0 600 160"
-      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 500 160"
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
@@ -43,8 +46,8 @@ export default function BomWaveTitle() {
 
       {/* 흰색 아웃라인 */}
       <text
-        x="0"
-        y="110"
+        x="50%"
+        y="50%"
         textAnchor="middle"
         dominantBaseline="middle"
         fontFamily="'Poppins', system-ui, sans-serif"
@@ -52,21 +55,27 @@ export default function BomWaveTitle() {
         fontSize="110"
         fill="none"
         stroke="#ffffff"
-        strokeWidth="4.5"
+        strokeWidth="3"
       >
         BOM&apos;s
       </text>
 
+      {/* 글자 안: 물 + 파도 */}
       <g clipPath="url(#bom-text-clip)">
+        {/* 어두운 바탕 */}
         <rect x="0" y="0" width="500" height="160" fill="#020617" />
+
+        {/* 물 (절반 정도 채우기) */}
         <rect
           x="0"
-          y="85" // 숫자 줄이면 위까지 더 차오름
+          y="60"
           width="500"
           height="160"
           fill="#a4a4a4"
           fillOpacity="0.8"
         />
+
+        {/* 파도 라인 */}
         <g ref={waveRef}>
           <path
             d="
@@ -87,7 +96,6 @@ export default function BomWaveTitle() {
             fill="#d8d8d8"
           />
         </g>
-        ㅋㅂ
       </g>
     </svg>
   );

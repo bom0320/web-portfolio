@@ -12,7 +12,6 @@ export default function HeroSection() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
 
-      // 1) BOM's 타이틀 등장
       tl.from(".js-hero-bom", {
         y: 40,
         opacity: 0,
@@ -20,7 +19,6 @@ export default function HeroSection() {
         ease: "power3.out",
       });
 
-      // 2) PORTFOLIO
       tl.from(
         ".js-hero-title",
         {
@@ -32,7 +30,6 @@ export default function HeroSection() {
         "-=0.6"
       );
 
-      // 3) 설명문
       tl.from(
         ".js-hero-desc",
         {
@@ -44,7 +41,6 @@ export default function HeroSection() {
         "-=0.4"
       );
 
-      // 4) 캐릭터
       tl.from(
         ".js-hero-character",
         {
@@ -63,7 +59,6 @@ export default function HeroSection() {
   return (
     <section className="hero" id="home" ref={sectionRef}>
       <div className="hero__inner">
-        {/* 왼쪽 텍스트 영역 */}
         <div className="hero__content">
           <div className="hero__title-group">
             <div className="hero-title">
