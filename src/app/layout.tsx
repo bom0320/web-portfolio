@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "2026 | 김봄 포트폴리오",
   description: "Frontend Developer Portfolio",
   icons: {
-    icon: "/images/logo/portfolio_logo.png",
+    icon: "/images/logo/meta_logo.png",
   },
 };
 
