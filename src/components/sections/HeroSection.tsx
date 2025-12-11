@@ -67,11 +67,15 @@ export default function HeroSection() {
             <h1 className="hero__title-line2 js-hero-title">PORTFOLIO</h1>
           </div>
 
-          <p className="hero__subtitle js-hero-sub">構 造 ———— 設 計 者</p>
+          <div className="hero__subtitle js-hero-sub">
+            <span className="text">構 造</span>
+            <span className="line"></span>
+            <span className="text">設 計 者</span>
+          </div>
 
           <p className="hero__description js-hero-desc">
-            안녕하세요. 사용자의 불편을 구조적으로 이해하고, 디테일한 경험을
-            구현하는 프론트엔드 개발자 김봄입니다.
+            안녕하세요. 사용자의 불편을 구조적으로 이해하고, <br />
+            디테일한 경험을 구현하는 프론트엔드 개발자 김봄입니다.
           </p>
         </div>
 
