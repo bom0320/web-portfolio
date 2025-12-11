@@ -46,8 +46,8 @@ export default function Header() {
             <Image
               src="/images/logo/portfolio_logo.png"
               alt="/"
-              width={32}
-              height={32}
+              width={22}
+              height={22}
             />
             <h3 className="target">김봄</h3>
           </a>
