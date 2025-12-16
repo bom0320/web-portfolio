@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/index.scss";
-
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import BottomBar from "@/components/layout/BottomBar";
 
 export const metadata: Metadata = {
   title: "2026 | 김봄 포트폴리오",
@@ -22,7 +21,7 @@ export default function RootLayout({
       <body>
         <Header />
         <main>{children}</main>
-        <Footer />
+        <BottomBar />
       </body>
     </html>
   );

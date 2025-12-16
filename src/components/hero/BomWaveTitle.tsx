@@ -29,6 +29,7 @@ export default function BomWaveTitle() {
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
+        {/*틀 텍스트*/}
         <clipPath id="bom-text-clip">
           <text
             x="0"
