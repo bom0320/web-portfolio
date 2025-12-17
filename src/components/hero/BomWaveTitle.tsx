@@ -13,7 +13,7 @@ export default function BomWaveTitle() {
     const tween = gsap.to(el, {
       x: "-=260",
       repeat: -1,
-      duration: 6,
+      duration: 8,
       ease: "none",
     });
 
@@ -74,7 +74,7 @@ export default function BomWaveTitle() {
           <path
             d="
               M -250 60
-              Q -200 40 -150 60
+              Q -200 30 -150 60
               T -50 60
               T 50 60
               T 150 60
