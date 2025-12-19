@@ -1,25 +1,20 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useId, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import HeroAnimation from "@/components/animations/hero";
 
 export default function BomWaveTitle() {
   const waveRef = useRef<SVGGElement | null>(null);
+  const clipId = useId();
 
   useLayoutEffect(() => {
-    const el = waveRef.current;
-    if (!el) return;
-
-    const tween = gsap.to(el, {
-      x: "-=260",
-      repeat: -1,
-      duration: 8,
-      ease: "none",
+    const ctx = gsap.context(() => {
+      if (!waveRef.current) return;
+      HeroAnimation.bomWave(waveRef.current!);
     });
 
-    return () => {
-      tween.kill();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -29,12 +24,10 @@ export default function BomWaveTitle() {
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        {/*틀 텍스트*/}
-        <clipPath id="bom-text-clip">
+        <clipPath id={clipId}>
           <text
             x="0"
             y="110"
-            textAnchor="start"
             fontFamily="'Poppins', system-ui, sans-serif"
             fontWeight="800"
             fontSize="110"
@@ -44,11 +37,9 @@ export default function BomWaveTitle() {
         </clipPath>
       </defs>
 
-      {/* 아웃라인 텍스트 */}
       <text
         x="0"
         y="110"
-        textAnchor="start"
         fontFamily="'Poppins', system-ui, sans-serif"
         fontWeight="800"
         fontSize="110"
@@ -59,7 +50,7 @@ export default function BomWaveTitle() {
         BOM&apos;s
       </text>
 
-      <g clipPath="url(#bom-text-clip)">
+      <g clipPath={`url(#${clipId})`}>
         <rect x="0" y="0" width="500" height="160" fill="#020617" />
         <rect
           x="0"

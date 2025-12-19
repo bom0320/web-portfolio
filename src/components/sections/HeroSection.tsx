@@ -4,53 +4,14 @@ import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import BomWaveTitle from "../hero/BomWaveTitle";
+import HeroAnimation from "../animations/hero";
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
-
-      tl.from(".js-hero-bom", {
-        y: 40,
-        opacity: 0,
-        duration: 1.2,
-        ease: "power3.out",
-      });
-
-      tl.from(
-        ".js-hero-title",
-        {
-          y: 40,
-          opacity: 0,
-          duration: 1,
-          ease: "power3.out",
-        },
-        "-=0.6"
-      );
-
-      tl.from(
-        ".js-hero-desc",
-        {
-          y: 20,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-        },
-        "-=0.4"
-      );
-
-      tl.from(
-        ".js-hero-character",
-        {
-          y: 40,
-          opacity: 0,
-          duration: 1,
-          ease: "power3.out",
-        },
-        "-=0.6"
-      );
+      HeroAnimation.intro();
     }, sectionRef);
 
     return () => ctx.revert();
