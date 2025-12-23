@@ -1,17 +1,20 @@
+"use client";
+
 import gsap from "gsap";
 
 const HeroAnimation = {
-  intro() {
+  intro(root: Element) {
+    const q = gsap.utils.selector(root);
     const tl = gsap.timeline();
 
-    tl.from(".js-hero-bom", {
+    tl.from(q(".js-hero-bom"), {
       y: 40,
       opacity: 0,
       duration: 1.2,
       ease: "power3.out",
     })
       .from(
-        ".js-hero-title",
+        q(".js-hero-title"),
         {
           y: 40,
           opacity: 0,
@@ -21,7 +24,7 @@ const HeroAnimation = {
         "-=0.6"
       )
       .from(
-        ".js-hero-desc",
+        q(".js-hero-desc"),
         {
           y: 20,
           opacity: 0,
@@ -31,7 +34,7 @@ const HeroAnimation = {
         "-=0.4"
       )
       .from(
-        ".js-hero-character",
+        q(".js-hero-character"),
         {
           y: 40,
           opacity: 0,

@@ -9,9 +9,13 @@ export default function BomWaveTitle() {
   const clipId = useId();
 
   useLayoutEffect(() => {
+    const waveEl = waveRef.current;
+    if (!waveEl) return;
+
     const ctx = gsap.context(() => {
-      if (!waveRef.current) return;
-      HeroAnimation.bomWave(waveRef.current!);
+      // waveEl: 실제로 움직일 애니메이션 대상 요소 (scope 아님)
+      // 이 컴포넌트 안에서만 제어되는 단일 타겟
+      HeroAnimation.bomWave(waveEl);
     });
 
     return () => ctx.revert();
