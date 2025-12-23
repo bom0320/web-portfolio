@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Image from "next/image";
 import MarqueeComponents from "../common/MarqueeComponents";
 import HeaderAnimation from "../animations/header";
@@ -13,16 +13,13 @@ const NAV_ITEMS = [
 ];
 
 export default function Header() {
-  const headerRef = useRef<HTMLElement | null>(null);
-
   const [isMobile, setIsMobile] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      HeaderAnimation.layout.header();
-    }, headerRef);
-
+      HeaderAnimation.marqueeLoop();
+    });
     return () => ctx.revert();
   }, []);
 
@@ -45,7 +42,7 @@ export default function Header() {
   };
 
   return (
-    <header id="header" ref={headerRef}>
+    <header id="header">
       <div className="header-inner">
         <section className="logo">
           <a href="#hero">

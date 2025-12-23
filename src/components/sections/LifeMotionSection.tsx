@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { LIFE_MOTION_ITEMS } from "@/data/lifeMotion";
+import { createLifeMotionTween } from "@/components/animations/lifeMotion";
 
 export default function LifeMotionSection() {
   const trackRef = useRef<HTMLDivElement | null>(null);
@@ -15,18 +16,11 @@ export default function LifeMotionSection() {
     const el = trackRef.current;
     if (!el) return;
 
-    tweenRef.current = gsap.to(el, {
-      xPercent: -100,
-      repeat: -1,
-      duration: 70,
-      ease: "linear",
-      modifiers: {
-        xPercent: gsap.utils.wrap(-100, 0),
-      },
-    });
+    tweenRef.current = createLifeMotionTween(el);
 
     return () => {
       tweenRef.current?.kill();
+      tweenRef.current = null;
     };
   }, []);
 
