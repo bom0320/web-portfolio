@@ -1,74 +1,67 @@
 .life-motion {
   width: 100%;
   padding: 0;
-}
 
-.life-motion__inner {
-  max-width: none;
-  margin: 0;
-  padding: 0;
-}
+  &__viewport {
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
 
-.life-motion__viewport {
-  overflow-x: hidden;
-  overflow-y: visible;
-}
+  &__track {
+    display: flex;
+    gap: 18px;
+  }
 
-.life-motion__track {
-  display: flex;
-  gap: 18px;
-}
+  &__item {
+    flex: 0 0 auto;
+    width: 220px;
+    opacity: 0.65;
+    cursor: pointer;
+    transform: scale(0.95);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    margin: 0px;
+    transform-origin: top center;
+  }
 
-.life-motion__item {
-  flex: 0 0 auto;
-  width: 220px;
-  opacity: 0.65;
-  cursor: pointer;
-  transform: scale(0.95);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-  margin: 0px;
-  transform-origin: top center;
-}
+  &__item:hover {
+    opacity: 1;
+    transform: scale(1.05);
+  }
 
-.life-motion__item:hover {
-  opacity: 1;
-  transform: scale(1.05);
-}
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+  }
 
-.life-motion__image-wrap {
-  position: relative;
-  aspect-ratio: 3 / 4;
-  border-radius: 24px;
-  overflow: hidden;
-  background: #111;
-}
+  &__image-wrap {
+    position: relative;
+    aspect-ratio: 3 / 4;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #111;
+  }
+  &__image {
+    object-fit: cover;
+  }
 
-.life-motion__image {
-  object-fit: cover;
-}
+  &__meta {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 12px;
+  }
 
-.life-motion__meta {
-  position: absolute;
-  inset: auto 0 0 0;
-  padding: 12px;
-}
-
-.life-motion__title {
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.life-motion__caption {
-  position: static;
-  left: 0;
-  bottom: auto;
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-  pointer-events: none;
+  &__caption {
+    position: static;
+    left: 0;
+    bottom: auto;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+  }
 }
 
 .life-motion__item:hover .life-motion__caption {

@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
 import { LIFE_MOTION_ITEMS } from "@/data/lifeMotion";
 import { createLifeMotionTween } from "@/components/animations/lifeMotion";
 
