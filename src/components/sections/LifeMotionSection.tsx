@@ -7,7 +7,9 @@ import { createLifeMotionTween } from "@/components/animations/lifeMotion";
 
 export default function LifeMotionSection() {
   const trackRef = useRef<HTMLDivElement | null>(null);
-  const tweenRef = useRef<gsap.core.Tween | null>(null);
+  const tweenRef = useRef<ReturnType<typeof createLifeMotionTween> | null>(
+    null
+  );
 
   const items = [...LIFE_MOTION_ITEMS, ...LIFE_MOTION_ITEMS];
 
@@ -37,6 +39,8 @@ export default function LifeMotionSection() {
               onMouseEnter={pause}
               onMouseLeave={resume}
             >
+              <p className="life-motion__title">{item.title}</p>
+
               <div className="life-motion__image-wrap">
                 <Image
                   src={item.src}
@@ -48,8 +52,6 @@ export default function LifeMotionSection() {
               </div>
 
               <figcaption className="life-motion__meta">
-                <p className="life-motion__title">{item.title}</p>
-
                 {item.caption && (
                   <p className="life-motion__caption">
                     {item.caption.split("\n").map((line) => (

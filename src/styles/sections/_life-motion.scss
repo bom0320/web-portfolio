@@ -1,6 +1,5 @@
 .life-motion {
   width: 100%;
-  padding: 0;
 
   &__viewport {
     overflow-x: hidden;
@@ -9,38 +8,29 @@
 
   &__track {
     display: flex;
-    gap: 26px;
+    gap: 12px;
     align-items: flex-start;
     will-change: transform;
   }
 
   &__item {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
     flex: 0 0 auto;
     width: 200px;
 
     margin: 0;
-    opacity: 0.62;
-    // transform: translateY(0);
-    transform-origin: top center;
-
+    opacity: 0.52;
     transition: width 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
     cursor: pointer;
   }
 
   &__item:hover {
-    width: 250px;
     opacity: 1;
-    transform: scale(1);
   }
 
   &__title {
-    margin: 0 0 10px 0;
-    font-size: 14px;
+    margin: 0 0 8px;
+    font-size: 13px;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.92);
 
@@ -55,7 +45,7 @@
     position: relative;
     width: 100%;
     aspect-ratio: 3 / 4;
-    border-radius: 10px;
+    border-radius: 8px;
     overflow: hidden;
     background: #111;
     transform: translateZ(0);
@@ -63,28 +53,17 @@
 
   &__image {
     object-fit: cover;
-    transition: transform 0.45s ease;
-  }
-
-  &__item:hover &__image {
-    transform: scale(1.03);
   }
 
   &__meta {
-    width: 100%;
     margin-top: 12px;
-
-    max-height: 0;
-    overflow: hidden;
     opacity: 0;
-    transform: translateY(-6px);
-
-    transition: max-height 0.45s ease, opacity 0.35s ease, transform 0.35s ease;
+    transform: translateY(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
     pointer-events: none;
   }
 
   &__item:hover &__meta {
-    max-height: 120px;
     opacity: 1;
     transform: translateY(0);
   }
