@@ -1,17 +1,18 @@
 .hero {
-  position: relative;
-  padding: 120px 0 200px;
-  background: #000;
-  min-height: calc(100vh - 80px);
+  height: 100vh;
+  padding: 0;
+  display: flex;
+  align-items: center;
 
   .hero__inner {
     max-width: var(--container);
     margin: 0 auto;
     padding: 0 var(--between-space);
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 80px;
+    gap: 10px;
   }
 
   .hero__content {
@@ -19,7 +20,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    transform: translateY(-70px);
   }
 
   .hero__title-group {
@@ -27,7 +28,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0;
     z-index: 2;
   }
 
@@ -91,6 +91,7 @@
     flex-direction: column;
     gap: 20px;
     align-items: center;
+    transform: translateY(30px);
   }
 
   .hero__character {

@@ -25,4 +25,9 @@ a {
 :root {
   --container: 1320px;
   --between-space: clamp(16px, 3vw, 32px);
+  --header-h: 40px;
+}
+
+.app {
+  padding-top: var(--header-h);
 }

@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <Header />
-        <main>{children}</main>
+        <main className="app">{children}</main>
         <BottomBar />
       </body>
     </html>
