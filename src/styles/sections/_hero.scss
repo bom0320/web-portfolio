@@ -5,9 +5,9 @@
   min-height: calc(100vh - 80px);
 
   .hero__inner {
-    max-width: 1280px;
+    max-width: var(--container);
     margin: 0 auto;
-    padding: 0 60px;
+    padding: 0 var(--between-space);
     display: flex;
     align-items: center;
     justify-content: space-between;
