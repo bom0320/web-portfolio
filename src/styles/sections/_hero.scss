@@ -113,3 +113,42 @@
     border-radius: 50%;
   }
 }
+
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    padding: 96px 0 64px;
+    display: block;
+
+    .hero__inner {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      gap: 40px;
+    }
+
+    .hero__content {
+      transform: translateY(0);
+      align-items: center;
+    }
+
+    .hero__title-line2 {
+      font-size: clamp(42px, 10vw, 80px);
+      margin: -16px 0 0 0;
+    }
+
+    .hero__subtitle .text {
+      font-size: 18px;
+    }
+
+    .hero__visual {
+      flex: 0 0 auto;
+      transform: translateY(0);
+    }
+
+    .hero__character {
+      width: 300px;
+      height: 340px;
+    }
+  }
+}
