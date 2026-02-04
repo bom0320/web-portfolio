@@ -1,12 +1,14 @@
 "use client";
 
+import { useRef } from "react";
 import AboutTitle from "./AboutTitle";
 
 export default function AboutHero() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   return (
-    <div className="about-hero">
+    <section ref={sectionRef} className="about-hero">
       <div className="about-hero__inner">
-        <AboutTitle />
+        <AboutTitle sectionRef={sectionRef} />
 
         <p className="about-hero__desc">
           FrontEnd 개발자 김봄입니다. 사용자가 즐길 수 있는 직관적이고 의미 있는
@@ -36,6 +38,6 @@ export default function AboutHero() {
           </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

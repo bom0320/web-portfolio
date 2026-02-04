@@ -6,31 +6,28 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutAnimation = {
-  titleFill({
+  aboutTitleFill({
     root,
-    maskRect,
-    fillGroup,
+    fillRect,
   }: {
     root: Element;
-    maskRect: SVGRectElement;
-    fillGroup: SVGGElement;
+    fillRect: SVGRectElement;
   }) {
-    gsap.set(fillGroup, { opacity: 0 });
-
-    const st = {
-      trigger: root,
-      start: "top 75%",
-      end: "top 40%",
-      scrub: true,
-    } as const;
-
-    gsap.to(fillGroup, { opacity: 1, ease: "none", scrollTrigger: st });
-
-    gsap.to(maskRect, {
-      attr: { y: 0 },
-      ease: "none",
-      scrollTrigger: st,
-    });
+    gsap.fromTo(
+      fillRect,
+      { attr: { y: 220 }, opacity: 0 },
+      {
+        attr: { y: 0 },
+        opacity: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: root,
+          start: "top 75%",
+          end: "top 45%",
+          scrub: true,
+        },
+      }
+    );
   },
 };
 
