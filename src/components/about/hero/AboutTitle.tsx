@@ -1,27 +1,18 @@
 "use client";
 
-import { useId, useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import AboutAnimation from "@/components/animations/about";
+import { useId } from "react";
 import {
   ABOUT_TITLE_FILL_PATHS,
   ABOUT_TITLE_OUTLINE_PATHS,
 } from "@/assets/svg/ aboutTitlePath";
-export default function AboutTitle() {
+
+type AboutTitleProps = {
+  fillRectRef: React.RefObject<SVGRectElement | null>;
+};
+
+export default function AboutTitle({ fillRectRef }: AboutTitleProps) {
   const clipId = useId();
   const shapeId = useId();
-  const fillRectRef = useRef<SVGRectElement | null>(null);
-
-  useLayoutEffect(() => {
-    const fillRect = fillRectRef.current;
-    if (!fillRect) return;
-
-    const ctx = gsap.context(() => {
-      AboutAnimation.aboutTitleFill(fillRect);
-    });
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <svg
