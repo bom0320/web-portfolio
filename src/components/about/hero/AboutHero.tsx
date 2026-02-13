@@ -2,7 +2,7 @@
 
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/src/ScrollTrigger";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import AboutTitle from "./AboutTitle";
 import AboutAnimation from "@/components/animations/about";
 
@@ -10,23 +10,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutHero() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const fillRectRef = useRef<SVGRectElement | null>(null);
+  const fillGroupRef = useRef<SVGGElement | null>(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
-    const fillRect = fillRectRef.current;
-    if (!section || !fillRect) return;
+    const fillGroup = fillGroupRef.current;
+    if (!section || !fillGroup) return;
 
     const ctx = gsap.context(() => {
-      const tween = AboutAnimation.aboutTitleFill(fillRect);
-
+      // 이제 opacity 애니메이션 트윈이 나옴
+      const tween = AboutAnimation.aboutTitleFill(fillGroup);
+      // fillGroup을 어떻게 움직일지(애니메이션 계획)를 만들고, 그 계획(tween)을 저장해둔다.
       ScrollTrigger.create({
         trigger: section,
+        // section
         start: "top 70%",
         end: "bottom top",
         onEnter: () => tween.play(),
         onLeaveBack: () => tween.pause(0),
-        // markers: true,
+        markers: true,
       });
     }, section);
 
@@ -36,7 +38,7 @@ export default function AboutHero() {
   return (
     <section ref={sectionRef} className="about-hero">
       <div className="about-hero__inner">
-        <AboutTitle fillRectRef={fillRectRef} />
+        <AboutTitle fillGroupRef={fillGroupRef} />
 
         <p className="about-hero__desc">
           FrontEnd 개발자 김봄입니다. 사용자가 즐길 수 있는 직관적이고 의미 있는

@@ -1,12 +1,15 @@
 import gsap from "gsap";
 
 const AboutAnimation = {
-  aboutTitleFill(fillRect: SVGRectElement) {
-    return gsap.to(fillRect, {
-      y: 0,
-      duration: 1.1,
+  aboutTitleFill(fillGroup: SVGGElement) {
+    // 시작 상태 확실히
+    gsap.set(fillGroup, { opacity: 0 });
+
+    return gsap.to(fillGroup, {
+      opacity: 1,
+      duration: 5,
       ease: "power3.out",
-      paused: true, // 트리거에서 재생하려면 paused가 편함
+      paused: true,
     });
   },
 };
