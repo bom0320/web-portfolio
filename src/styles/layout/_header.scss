@@ -6,7 +6,7 @@
   width: 100%;
   z-index: 10000000;
   backdrop-filter: blur(20px);
-  padding: 1.2rem var(--between-space);
+  padding: 0 var(--between-space);
   -webkit-backdrop-filter: blur(20px);
   mask-image: linear-gradient(
     to bottom,
