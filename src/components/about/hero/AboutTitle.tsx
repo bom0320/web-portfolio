@@ -20,9 +20,8 @@ export default function AboutTitle({ fillGroupRef }: AboutTitleProps) {
             key={i}
             d={d}
             fill="none"
-            stroke="rgba(255,255,255,0.6)"
-            strokeWidth={5}
-            strokeLinejoin="round"
+            stroke="rgb(255, 255, 255)"
+            strokeWidth={2}
           />
         ))}
       </g>
