@@ -5,6 +5,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import AboutTitle from "./AboutTitle";
 import AboutAnimation from "@/components/animations/about";
+import CtaButton from "./CtaButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,25 +48,8 @@ export default function AboutHero() {
         </p>
 
         <div className="about-hero__cta">
-          <a
-            className="about-hero__btn about-hero__btn--primary"
-            href="https://..."
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span>Go Resume</span>
-            <span className="about-hero__icon">→</span>
-          </a>
-
-          <a
-            className="about-hero__btn"
-            href="https://github.com/..."
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span>Go Github</span>
-            <span className="about-hero__icon">→</span>
-          </a>
+          <CtaButton href="https://..." label="Go Resume" variant="primary" />
+          <CtaButton href="https://github.com/..." label="Go Github" />
         </div>
       </div>
     </section>
