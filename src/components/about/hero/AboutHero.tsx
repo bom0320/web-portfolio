@@ -20,22 +20,20 @@ export default function AboutHero() {
     if (!section || !fillGroup) return;
 
     const ctx = gsap.context(() => {
-      const titleTween = AboutAnimation.aboutTitleFill(fillGroup);
-      const DecorTween = AboutAnimation.aboutDecorEnter();
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top 70%",
-        end: "bottom top",
-        onEnter: () => {
-          titleTween.play();
-          DecorTween.play();
+      const titleTween = AboutAnimation.createTitleFill(fillGroup);
+      const DecorTween = AboutAnimation.createDecorEnter(section);
+
+      const master = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 70%",
+          end: "top 35%",
+          scrub: true,
+          // markers: true,
         },
-        onLeaveBack: () => {
-          titleTween.pause(0);
-          DecorTween.pause(0);
-        },
-        // markers: true,
       });
+
+      master.add(DecorTween, 0).add(titleTween, 0.15);
     }, section);
 
     return () => ctx.revert();
