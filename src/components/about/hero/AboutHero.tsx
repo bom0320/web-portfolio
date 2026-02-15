@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
@@ -19,17 +20,21 @@ export default function AboutHero() {
     if (!section || !fillGroup) return;
 
     const ctx = gsap.context(() => {
-      // 이제 opacity 애니메이션 트윈이 나옴
-      const tween = AboutAnimation.aboutTitleFill(fillGroup);
-      // fillGroup을 어떻게 움직일지(애니메이션 계획)를 만들고, 그 계획(tween)을 저장해둔다.
+      const titleTween = AboutAnimation.aboutTitleFill(fillGroup);
+      const DecorTween = AboutAnimation.aboutDecorEnter();
       ScrollTrigger.create({
         trigger: section,
-        // section
         start: "top 70%",
         end: "bottom top",
-        onEnter: () => tween.play(),
-        onLeaveBack: () => tween.pause(0),
-        markers: true,
+        onEnter: () => {
+          titleTween.play();
+          DecorTween.play();
+        },
+        onLeaveBack: () => {
+          titleTween.pause(0);
+          DecorTween.pause(0);
+        },
+        // markers: true,
       });
     }, section);
 
@@ -38,6 +43,29 @@ export default function AboutHero() {
 
   return (
     <section ref={sectionRef} className="about-hero">
+      <div className="about-hero__decor">
+        <img className="decor decor--sun" src="/images/about/sun.png" alt="" />
+
+        <img
+          className="decor decor--stars"
+          src="/images/about/stars.png"
+          alt=""
+        />
+
+        {/* ⭐ 왼쪽 하단용 stars 추가 */}
+        <img
+          className="decor decor--stars2"
+          src="/images/about/stars.png"
+          alt=""
+        />
+
+        <img
+          className="decor decor--heart"
+          src="/images/about/heart.png"
+          alt=""
+        />
+      </div>
+
       <div className="about-hero__inner">
         <AboutTitle fillGroupRef={fillGroupRef} />
 

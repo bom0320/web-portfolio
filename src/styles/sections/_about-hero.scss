@@ -93,3 +93,47 @@
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.3);
 }
+
+/* =========================================================
+   DECOR IMAGES
+========================================================= */
+.about-hero__decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.decor {
+  position: absolute;
+  width: clamp(110px, 12vw, 190px);
+  height: auto;
+  opacity: 1;
+}
+
+/* ☀️ 좌상단 */
+.decor--sun {
+  top: 14%;
+  left: 6%;
+}
+
+/* ⭐ 우상단 */
+.decor--stars {
+  top: 18%;
+  right: 8%;
+  width: clamp(100px, 10vw, 160px);
+}
+
+/* ⭐ 좌하단 (추가된 것) */
+.decor--stars2 {
+  bottom: 18%;
+  left: 8%;
+  width: clamp(120px, 13vw, 200px);
+}
+
+/* ❤️ 우하단 */
+.decor--heart {
+  bottom: 14%;
+  right: 8%;
+  width: clamp(120px, 12vw, 180px);
+}
