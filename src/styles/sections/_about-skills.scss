@@ -1,0 +1,74 @@
+.skill-card {
+  display: grid;
+  place-items: center;
+  gap: 18px;
+
+  &__gauge {
+    width: 170px;
+    height: 110px;
+    position: relative;
+
+    --thick: 24px;
+
+    border-radius: 999px;
+
+    -webkit-mask: radial-gradient(
+      circle at 50% 100%,
+      transparent calc(50% - var(--thick)),
+      #000 calc(50% - var(--thick) + 1px)
+    );
+    mask: radial-gradient(
+      circle at 50% 100%,
+      transparent calc(50% - var(--thick)),
+      #000 calc(50% - var(--thick) + 1px)
+    );
+
+    overflow: hidden;
+  }
+
+  &__gauge::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #000;
+    transform: translateY(-52%);
+  }
+
+  &__icon-wrap {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    width: 64px;
+    height: 64px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.35);
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(8px);
+  }
+
+  &__icon {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+  }
+
+  &__meta {
+    line-height: 1.2;
+  }
+
+  &__name {
+    margin: 0;
+    font-weight: 700;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  &__sub {
+    margin: 6px 0 0;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+  }
+}
