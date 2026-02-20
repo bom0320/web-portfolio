@@ -1,52 +1,139 @@
+// ============================================
+// ABOUT — MY SKILLS SECTION
+// file: src/styles/sections/_about-skills.scss
+// ============================================
+
+@use "sass:math";
+
+// ── Tokens (너 variables에 맞게 바꿔도 됨) ─────────────────────────
+$bg: #000;
+$card-bg: rgba(#fff, 0.14);
+$ring-bg: rgba(#fff, 0.12);
+$text: rgba(#fff, 0.92);
+$text-muted: rgba(#fff, 0.42);
+$stroke: rgba(#fff, 0.7);
+
+$gap: 36px;
+
+// 사이즈(너 현재 UI에 맞춘 값)
+$pac-size: 170px; // 원 지름(스샷 느낌)
+$icon-size: 64px; // 아이콘 원
+$icon-border: rgba(#fff, 0.65);
+
+// ── Mixins ───────────────────────────────────────────────
+/// Pac-Man clip-path (mouth opens to the right)
+/// @param $top - mouth top percent (0~100%)
+/// @param $bottom - mouth bottom percent (0~100%)
+@mixin pacman-shape($top: 18%, $bottom: 82%) {
+  clip-path: polygon(
+    50% 50%,
+    100% #{$top},
+    100% 0%,
+    0% 0%,
+    0% 100%,
+    100% 100%,
+    100% #{$bottom}
+  );
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ── Section ───────────────────────────────────────────────
+.about-skills {
+  padding: 120px 0 140px;
+  background: radial-gradient(
+      1200px 520px at 50% 10%,
+      rgba(255, 255, 255, 0.06),
+      transparent 60%
+    ),
+    $bg;
+
+  &__inner {
+    width: min(1100px, calc(100% - 64px));
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  // 타이틀: 레퍼런스처럼 아웃라인 느낌
+  &__title {
+    margin: 0 0 60px;
+    font-size: clamp(44px, 6vw, 76px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+
+    color: transparent;
+    -webkit-text-stroke: 2px $stroke;
+    text-shadow: 0 0 18px rgba(255, 255, 255, 0.06);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: $gap;
+    justify-items: center;
+    align-items: start;
+  }
+}
+
+// ── Skill Card ───────────────────────────────────────────────
 .skill-card {
   display: grid;
   place-items: center;
   gap: 18px;
 
-  &__gauge {
-    width: 170px;
-    height: 110px;
+  // pacman 본체
+  &__pacman {
     position: relative;
+    width: $pac-size;
+    height: $pac-size;
+    border-radius: 50%;
+    background: $ring-bg;
 
-    --thick: 24px;
+    // “C” 모양
+    @include pacman-shape(18%, 82%);
+    @include flex-center;
 
-    border-radius: 999px;
-
-    -webkit-mask: radial-gradient(
-      circle at 50% 100%,
-      transparent calc(50% - var(--thick)),
-      #000 calc(50% - var(--thick) + 1px)
-    );
-    mask: radial-gradient(
-      circle at 50% 100%,
-      transparent calc(50% - var(--thick)),
-      #000 calc(50% - var(--thick) + 1px)
-    );
-
-    overflow: hidden;
+    // 살짝 깊이감
+    filter: drop-shadow(0 18px 26px rgba(0, 0, 0, 0.35));
+    transition: transform 0.25s ease, filter 0.25s ease;
   }
 
-  &__gauge::before {
-    content: "";
+  // hover 살짝만 (너 포폴 톤 맞춰서 과하지 않게)
+  &:hover &__pacman {
+    transform: translateY(-2px) scale(1.02);
+    filter: drop-shadow(0 22px 32px rgba(0, 0, 0, 0.45));
+  }
+
+  // 게이지(진행) 오버레이를 pacman 위에 얹는 레이어
+  // -> SkillCard에서 inline style로 conic-gradient 주면 여기에 적용됨
+  &__gauge {
     position: absolute;
     inset: 0;
-    background: #000;
-    transform: translateY(-52%);
+    border-radius: 50%;
+    @include pacman-shape(18%, 82%);
   }
 
+  // 내부 아이콘 원
   &__icon-wrap {
-    position: absolute;
-    left: 50%;
-    bottom: 18px;
-    transform: translateX(-50%);
-    width: 64px;
-    height: 64px;
+    position: relative;
+    width: $icon-size;
+    height: $icon-size;
     border-radius: 999px;
-    display: grid;
-    place-items: center;
+    @include flex-center;
+
     background: rgba(0, 0, 0, 0.35);
-    border: 2px solid rgba(255, 255, 255, 0.75);
+    border: 2px solid $icon-border;
     backdrop-filter: blur(8px);
+
+    // pacman 입 벌어진 방향 때문에 시각상 중앙이 약간 오른쪽으로 밀려 보임
+    // 그래서 살짝 왼쪽으로 당겨서 균형 맞추기
+    transform: translateX(-8px);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
   }
 
   &__icon {
@@ -62,13 +149,53 @@
   &__name {
     margin: 0;
     font-weight: 700;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.92);
+    font-size: 15px;
+    color: $text;
+    letter-spacing: -0.01em;
   }
 
   &__sub {
-    margin: 6px 0 0;
+    margin: 8px 0 0;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.45);
+    color: $text-muted;
+    letter-spacing: 0.02em;
+  }
+}
+
+// ── Responsive ───────────────────────────────────────────────
+@media (max-width: 1024px) {
+  .about-skills {
+    &__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .about-skills {
+    &__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+  }
+
+  .skill-card {
+    gap: 14px;
+
+    &__pacman {
+      width: 150px;
+      height: 150px;
+    }
+
+    &__icon-wrap {
+      width: 60px;
+      height: 60px;
+    }
+
+    &__icon {
+      width: 32px;
+      height: 32px;
+    }
   }
 }
