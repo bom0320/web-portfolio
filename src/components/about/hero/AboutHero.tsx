@@ -49,8 +49,6 @@ export default function AboutHero() {
           src="/images/about/stars.png"
           alt=""
         />
-
-        {/* ⭐ 왼쪽 하단용 stars 추가 */}
         <img
           className="decor decor--stars2"
           src="/images/about/stars.png"
