@@ -10,8 +10,8 @@ const AboutAnimation = {
 
     gsap.set(".decor--sun", { x: -200, y: -120, rotate: -8 });
     gsap.set(".decor--stars", { x: 200, y: -120, rotate: 8 });
-    gsap.set(".decor--stars2", { x: -180, y: 120, rotate: -6 });
-    gsap.set(".decor--heart", { x: 180, y: 140, rotate: 6 });
+    gsap.set(".decor--stars2", { x: -180, y: 120, rotate: -170 });
+    gsap.set(".decor--heart", { x: 180, y: 140, rotate: 10 });
 
     const tl = gsap.timeline();
     tl.to(
@@ -19,7 +19,6 @@ const AboutAnimation = {
       {
         x: 0,
         y: 0,
-        rotate: 0,
         scale: 1,
         ease: "none", // scrub용
         stagger: 0.08,

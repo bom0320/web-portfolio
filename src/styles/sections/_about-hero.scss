@@ -121,21 +121,21 @@
 
 /* 우상단 */
 .decor--stars {
-  top: -4%;
+  top: 6%;
   right: 8%;
-  width: clamp(200px, 30vw, 800px);
+  width: clamp(200px, 30vw, 300px);
 }
 
-/*  좌하단 (추가된 것) */
+/*  좌하단 */
 .decor--stars2 {
-  bottom: 18%;
-  left: 8%;
-  width: clamp(120px, 13vw, 200px);
+  bottom: 10%;
+  left: 7%;
+  width: clamp(200px, 30vw, 240px);
 }
 
 /* ❤️ 우하단 */
 .decor--heart {
-  bottom: 14%;
-  right: 8%;
-  width: clamp(120px, 12vw, 180px);
+  bottom: 2%;
+  right: 6%;
+  width: clamp(200px, 26vw, 290px);
 }
