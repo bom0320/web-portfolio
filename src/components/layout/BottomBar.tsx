@@ -14,3 +14,5 @@ export default function BottomBar() {
     </div>
   );
 }
+
+// 이거 걍 하단에 footer에 고정하겠음 수정

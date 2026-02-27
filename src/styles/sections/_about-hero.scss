@@ -2,13 +2,15 @@
    ABOUT HERO (Section Layout)
 ========================================================= */
 .about-hero {
-  height: calc(100vh - var(--header-h));
+  min-height: 100vh;
   margin-top: var(--header-h);
   display: grid;
+  padding-bottom: 140px;
   place-items: center;
   overflow: hidden;
   position: relative;
   width: 100vw;
+  z-index: 1;
   margin-left: calc(50% - 50vw);
 }
 
