@@ -31,17 +31,18 @@
     z-index: 2;
   }
 
-  .hero-title {
-    position: relative;
-    display: inline-block;
-    margin: 0;
+  .hero__reveal {
+    overflow: hidden;
+    display: block;
     line-height: 1;
   }
 
-  .hero-title__svg {
-    display: block;
-    width: clamp(260px, 34vw, 420px);
-    height: auto;
+  .hero-title {
+    position: relative;
+    display: inline-block;
+    will-change: transform;
+    margin: 0;
+    line-height: 1;
   }
 
   .hero__title-line2 {
@@ -52,6 +53,14 @@
     line-height: 1;
     z-index: 2;
     margin: -20px 0 0 4px;
+    display: inline-block;
+    will-change: transform;
+  }
+
+  .hero-title__svg {
+    display: block;
+    width: clamp(260px, 34vw, 420px);
+    height: auto;
   }
 
   .hero__subtitle {
@@ -134,7 +143,7 @@
 
     .hero__title-line2 {
       font-size: clamp(42px, 10vw, 80px);
-      margin: -16px 0 0 0;
+      margin: 0;
     }
 
     .hero__subtitle .text {

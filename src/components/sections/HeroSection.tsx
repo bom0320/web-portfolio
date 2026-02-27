@@ -27,12 +27,16 @@ export default function HeroSection() {
           {/* TITLE */}
           <div className="hero__title-group">
             {/* BOM's */}
-            <div className="hero-title js-hero-title1">
-              <BomWaveTitle />
+            <div className="hero__reveal js-reveal-bom">
+              <div className="hero-title js-hero-title1">
+                <BomWaveTitle />
+              </div>
             </div>
 
-            {/* PORTFOLIO */}
-            <h1 className="hero__title-line2 js-hero-title2">PORTFOLIO</h1>
+            {/* PORTFOLIO Reveal */}
+            <div className="hero__reveal js-reveal-portfolio">
+              <h1 className="hero__title-line2 js-hero-title2">PORTFOLIO</h1>
+            </div>
           </div>
 
           {/* ROLE (typing illusion + caret) */}
