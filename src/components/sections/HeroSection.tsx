@@ -24,25 +24,38 @@ export default function HeroSection() {
     <section className="hero" id="home" ref={sectionRef}>
       <div className="hero__inner">
         <div className="hero__content">
+          {/* TITLE */}
           <div className="hero__title-group">
-            <div className="hero-title">
+            {/* BOM's */}
+            <div className="hero-title js-hero-title1">
               <BomWaveTitle />
             </div>
-            <h1 className="hero__title-line2 js-hero-title">PORTFOLIO</h1>
+
+            {/* PORTFOLIO */}
+            <h1 className="hero__title-line2 js-hero-title2">PORTFOLIO</h1>
           </div>
 
-          <div className="hero__subtitle js-hero-sub">
-            <span className="text">構 造</span>
-            <span className="line"></span>
-            <span className="text">設 計 者</span>
-          </div>
+          {/* ROLE (typing illusion + caret) */}
+          <h2 className="hero__role js-hero-role">
+            <span className="hero__role-text js-hero-role-text">
+              Frontend Developer
+            </span>
+            <span className="hero__caret js-hero-caret" aria-hidden="true">
+              |
+            </span>
+          </h2>
 
+          {/* DESC (라인 스태거용) */}
           <p className="hero__description js-hero-desc">
-            안녕하세요. 사용자의 불편을 구조적으로 이해하고, <br />
-            디테일한 경험을 구현하는 프론트엔드 개발자 김봄입니다.
+            <span className="js-hero-desc-line">
+              FrontEnd 개발자 김봄입니다. FrontEnd 개발자 김봄입니다. FrontEnd
+              ntEnd 개발자 김봄입니다. rontEnd 개발자 김봄입니다. FrontEnd ntEnd
+              개발자 김봄입니다 FrontEnd 개발자 김봄입니다. FrontEnd
+            </span>
           </p>
         </div>
 
+        {/* VISUAL */}
         <div className="hero__visual">
           <div className="hero__character js-hero-character">
             <Image
@@ -52,7 +65,7 @@ export default function HeroSection() {
               priority
             />
           </div>
-          <div className="hero__shadow" />
+          <div className="hero__shadow js-hero-shadow" />
         </div>
       </div>
     </section>
