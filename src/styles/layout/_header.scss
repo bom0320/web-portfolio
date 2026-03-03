@@ -1,4 +1,4 @@
-#header {
+.header {
   position: fixed;
   top: 0;
   left: 0;
@@ -6,12 +6,13 @@
   width: 100%;
   z-index: 10000000;
   backdrop-filter: blur(20px);
-  padding: 0 var(--between-space);
   -webkit-backdrop-filter: blur(20px);
+  padding: 0 var(--between-space);
+
   mask-image: linear-gradient(
     to bottom,
     rgb(0 0 0) 0%,
-    rgb(0, 0, 0) 65%,
+    rgb(0 0 0) 65%,
     rgba(0, 0, 0, 0) 100%
   );
 
@@ -32,14 +33,12 @@
       font-size: 18px;
       font-weight: 700;
       letter-spacing: 0.02em;
-      color: #ffffff;
-    }
-    > img {
-      display: block;
+      color: #fff;
+      white-space: nowrap;
     }
   }
 
-  .menu {
+  .menu--desktop {
     display: flex;
     gap: 32px;
 
@@ -62,12 +61,16 @@
     }
   }
 
+  .menu-toggle {
+    display: none;
+  }
+
   .marquee {
     mask-image: linear-gradient(
       to right,
       rgba(0, 0, 0, 0) 0%,
-      rgb(0, 0, 0) 12.5%,
-      rgb(0, 0, 0) 87.5%,
+      rgb(0 0 0) 12.5%,
+      rgb(0 0 0) 87.5%,
       rgba(0, 0, 0, 0) 100%
     );
     max-width: var(--container);
@@ -78,11 +81,86 @@
       gap: 30px;
       text-wrap: nowrap;
       padding: 1px 0;
+
       > h5 {
         font-size: 11px;
         font-weight: 400;
         letter-spacing: 0.16em;
-        color: white;
+        color: #fff;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 2em;
+
+    .header-inner {
+      max-width: 100%;
+    }
+
+    .menu--desktop {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: inline-flex;
+      position: relative;
+      width: 22px;
+      height: 24px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+
+      span {
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #fff;
+        transition: transform 0.2s ease, top 0.2s ease, opacity 0.2s ease;
+      }
+
+      span:first-child {
+        top: 6px;
+      }
+      span:nth-child(2) {
+        top: 12px;
+      }
+      span:last-child {
+        top: 18px;
+      }
+
+      &.menu-toggle--open {
+        span:first-child {
+          top: 11px;
+          transform: rotate(45deg);
+        }
+        span:nth-child(2) {
+          opacity: 0;
+        }
+        span:last-child {
+          top: 11px;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    .menu-mobile {
+      margin-top: 0.75rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      > a {
+        padding: 0.9rem 1.4rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.2s ease, color 0.2s ease;
       }
     }
   }

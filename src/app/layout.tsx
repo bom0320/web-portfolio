@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/index.scss";
 import Header from "@/components/layout/Header";
-import BottomBar from "@/components/layout/BottomBar";
 
 export const metadata: Metadata = {
   title: "2026 | 김봄 포트폴리오",
@@ -21,7 +20,6 @@ export default function RootLayout({
       <body>
         <Header />
         <main className="app">{children}</main>
-        <BottomBar />
       </body>
     </html>
   );
