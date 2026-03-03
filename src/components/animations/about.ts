@@ -21,12 +21,23 @@ const AboutAnimation = {
         y: 0,
         scale: 1,
         ease: "none", // scrub용
-        stagger: 0.08,
+        stagger: 0.05,
       },
       0
     );
 
     return tl;
+  },
+
+  createDescDiagonalReveal(descEl: HTMLElement) {
+    gsap.set(descEl, {
+      clipPath: "polygon(0 0, 30% 0, 0 100%, 0 100%)",
+    });
+
+    return gsap.to(descEl, {
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+      ease: "none",
+    });
   },
 };
 

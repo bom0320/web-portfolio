@@ -13,27 +13,31 @@ gsap.registerPlugin(ScrollTrigger);
 export default function AboutHero() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const fillGroupRef = useRef<SVGGElement | null>(null);
+  const descRef = useRef<HTMLParagraphElement | null>(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
     const fillGroup = fillGroupRef.current;
-    if (!section || !fillGroup) return;
+    const desc = descRef.current;
+
+    if (!section || !fillGroup || !desc) return;
 
     const ctx = gsap.context(() => {
       const titleTween = AboutAnimation.createTitleFill(fillGroup);
       const DecorTween = AboutAnimation.createDecorEnter(section);
+      const decsTween = AboutAnimation.createDescDiagonalReveal(desc);
 
       const master = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: "top 70%",
           end: "top 35%",
-          scrub: true,
+          scrub: 1.2,
           // markers: true,
         },
       });
 
-      master.add(DecorTween, 0).add(titleTween, 0.15);
+      master.add(DecorTween, 0.1).add(titleTween, 0.18).add(decsTween, ">");
     }, section);
 
     return () => ctx.revert();
@@ -65,10 +69,12 @@ export default function AboutHero() {
       <div className="about-hero__inner">
         <AboutTitle fillGroupRef={fillGroupRef} />
 
-        <p className="about-hero__desc">
+        <p ref={descRef} className="about-hero__desc">
           FrontEnd 개발자 김봄입니다. 사용자가 즐길 수 있는 직관적이고 의미 있는
           경험을 만드는 것을 목표로 합니다. FrontEnd 개발자 김봄입니다. 사용자가
-          즐길 수 있는 직관적이고 의미 있는
+          즐길 수 있는 직관적이고 의미 있는 FrontEnd 개발자 김봄입니다. 사용자가
+          즐길 수 있는 직관적이고 의미 있는 경험을 만드는 것을 목표로 합니다.
+          FrontEnd 개발자 김봄입니다.
         </p>
 
         <div className="about-hero__cta">
