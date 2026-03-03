@@ -14,7 +14,6 @@ const HeroAnimation = {
 
     if (!title1.length && !title2.length) return gsap.timeline();
 
-    // 커서 깜빡임(무한)
     const caretTween = gsap.to(caret, {
       autoAlpha: 0,
       duration: 0.55,
@@ -24,23 +23,19 @@ const HeroAnimation = {
       paused: true,
     });
 
-    // ✅ 1) 타이틀 reveal: 아래에 숨겨놓기 (wrapper 밖으로)
-    // autoAlpha를 0으로 숨기는 게 아니라, "가려져서 안 보이게" 해야 함
     gsap.set([title1, title2], { yPercent: 120, autoAlpha: 1 });
 
-    // ✅ 2) role typing illusion
     gsap.set(roleText, { clipPath: "inset(0 100% 0 0)" });
     gsap.set(caret, { autoAlpha: 0 });
 
-    // desc/visual 초기값
     gsap.set(descLines, { autoAlpha: 0, y: 14 });
     gsap.set(character, { autoAlpha: 0, y: 30, x: 18, rotate: 2 });
     gsap.set(shadow, { autoAlpha: 0, scale: 0.92, transformOrigin: "50% 50%" });
 
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    tl.to(title1, { yPercent: 0, duration: 0.9 }) // ✅ reveal open
-      .to(title2, { yPercent: 0, duration: 0.85 }, "-=0.55") // ✅ reveal open
+    tl.to(title1, { yPercent: 0, duration: 0.9 })
+      .to(title2, { yPercent: 0, duration: 0.85 }, "-=0.55")
 
       // role + caret
       .to(caret, { autoAlpha: 1, duration: 0.01 }, "-=0.2")

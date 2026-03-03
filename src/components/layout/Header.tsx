@@ -44,7 +44,6 @@ export default function Header() {
           </a>
         </section>
 
-        {/* 데스크탑 메뉴 (CSS에서 모바일이면 숨김) */}
         <nav className="menu menu--desktop" aria-label="Desktop navigation">
           {NAV_ITEMS.map((item) => (
             <a key={item.href} href={item.href}>
@@ -53,7 +52,6 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* 모바일 햄버거 (CSS에서 데스크탑이면 숨김) */}
         <button
           type="button"
           className={`menu-toggle ${isMenuOpen ? "menu-toggle--open" : ""}`}
@@ -68,7 +66,6 @@ export default function Header() {
         </button>
       </div>
 
-      {/* 모바일 드롭다운 메뉴 */}
       {isMenuOpen && (
         <nav
           id="mobile-menu"

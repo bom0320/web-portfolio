@@ -24,22 +24,17 @@ export default function HeroSection() {
     <section className="hero" id="home" ref={sectionRef}>
       <div className="hero__inner">
         <div className="hero__content">
-          {/* TITLE */}
           <div className="hero__title-group">
-            {/* BOM's */}
             <div className="hero__reveal js-reveal-bom">
               <div className="hero-title js-hero-title1">
                 <BomWaveTitle />
               </div>
             </div>
 
-            {/* PORTFOLIO Reveal */}
             <div className="hero__reveal js-reveal-portfolio">
               <h1 className="hero__title-line2 js-hero-title2">PORTFOLIO</h1>
             </div>
           </div>
-
-          {/* ROLE (typing illusion + caret) */}
           <h2 className="hero__role js-hero-role">
             <span className="hero__role-text js-hero-role-text">
               Frontend Developer
@@ -49,12 +44,19 @@ export default function HeroSection() {
             </span>
           </h2>
 
-          {/* DESC (라인 스태거용) */}
           <p className="hero__description js-hero-desc">
-            <span className="js-hero-desc-line">
-              FrontEnd 개발자 김봄입니다. FrontEnd 개발자 김봄입니다. FrontEnd
-              ntEnd 개발자 김봄입니다. rontEnd 개발자 김봄입니다. FrontEnd ntEnd
-              개발자 김봄입니다 FrontEnd 개발자 김봄입니다. FrontEnd
+            <span className="js-hero-desc-line hero__desc--desktop">
+              FrontEnd 개발자 김봄입니다.FrontEnd 개발자 김봄입니다.FrontEnd
+              개발자 김봄입니다.FrontEnd 개발자 김봄입니다.FrontEnd 개발자
+              김봄입니다.
+            </span>
+
+            <span
+              className="js-hero-desc-line hero__desc--mobile"
+              aria-hidden="true"
+            >
+              FrontEnd 개발자 김봄입니다. FrontEnd 개발자 김봄입니다.
+              FrontEndFrontEnd 개발자 김봄입니다. 개발자 김봄입니다.
             </span>
           </p>
         </div>
