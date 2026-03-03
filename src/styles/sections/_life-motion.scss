@@ -20,14 +20,7 @@
     position: relative;
     flex: 0 0 auto;
     width: 240px;
-
     margin: 0;
-    opacity: 0.52;
-    transition: width 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
-    cursor: pointer;
-  }
-
-  &__item:hover {
     opacity: 1;
   }
 
@@ -40,7 +33,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
     width: 100%;
   }
 
@@ -60,15 +52,8 @@
 
   &__meta {
     margin-top: 12px;
-    opacity: 0;
-    transform: translateY(-4px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-    pointer-events: none;
-  }
-
-  &__item:hover &__meta {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 
   &__caption {
