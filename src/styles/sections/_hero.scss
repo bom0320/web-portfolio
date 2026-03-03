@@ -126,38 +126,88 @@
 @media (max-width: 768px) {
   .hero {
     height: auto;
-    padding: 96px 0 64px;
+    padding: 50px 0 56px;
     display: block;
+
+    .hero-title {
+      width: min(200px, 60vw);
+      margin-bottom: -4px;
+    }
+    .hero-title svg {
+      width: 100%;
+      display: block;
+    }
 
     .hero__inner {
       flex-direction: column;
       justify-content: center;
-      text-align: center;
-      gap: 40px;
-    }
-
-    .hero__content {
-      transform: translateY(0);
       align-items: center;
     }
 
-    .hero__title-line2 {
-      font-size: clamp(42px, 10vw, 80px);
-      margin: 0;
-    }
-
-    .hero__subtitle .text {
-      font-size: 18px;
-    }
-
     .hero__visual {
-      flex: 0 0 auto;
-      transform: translateY(0);
+      transform: none;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 6px;
     }
 
     .hero__character {
-      width: 300px;
-      height: 340px;
+      width: min(280px, 75vw);
+      height: auto;
+      aspect-ratio: 400 / 460;
+    }
+
+    .hero__content {
+      order: 2;
+      transform: none;
+      width: min(520px, calc(100% - 52px));
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .hero__title-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hero__reveal {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .hero__title-line2 {
+      font-size: clamp(44px, 11vw, 80px);
+      margin: 0;
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    .hero__role {
+      width: 100%;
+      font-size: 17px;
+      font-weight: 500;
+      margin-top: 6px;
+    }
+
+    .hero__description {
+      width: 100%;
+      max-width: 34ch;
+      margin-top: 8px;
+      text-align: left;
+      line-height: 1.8;
+      font-size: 13px;
+      opacity: 0.9;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   }
 }
