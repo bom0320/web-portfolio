@@ -19,9 +19,6 @@ export default function CtaButton({
       rel="noreferrer"
     >
       <span>{label}</span>
-      <span className="about-hero__icon" aria-hidden>
-        →
-      </span>
     </a>
   );
 }
