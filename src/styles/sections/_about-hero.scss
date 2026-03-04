@@ -70,8 +70,12 @@
   position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 14px;
-  padding: 26px 62px;
+
+  height: 72px;
+  padding: 20px 32px;
+  min-width: 220px;
   border-radius: 100px;
 
   color: rgba(255, 255, 255, 0.9);
@@ -86,6 +90,27 @@
 .about-hero__btn:hover {
   transform: translateY(-2px);
   background: rgba(255, 255, 255, 0.09);
+}
+
+.cta-btn__iconWrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+}
+
+.cta-btn__iconImg {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.cta-btn__label {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1;
 }
 
 /* =========================================================
@@ -133,76 +158,166 @@
 }
 
 @media (max-width: 768px) {
-  .about-hero__cta--swap {
-    width: min(380px, 86vw);
+  .about-hero {
+    min-height: auto;
+    margin-top: var(--header-h);
+    padding: 80px 0 200px;
+    place-items: center;
+  }
+  .about-hero__inner {
+    width: min(520px, calc(100% - 44px));
     margin: 0 auto;
-
-    display: grid;
-    align-items: center;
-    gap: 12px;
-
-    /* 기본 상태: Resume 크게 / Github 작게 */
-    grid-template-columns: 1fr 56px;
-
-    transition: grid-template-columns 240ms ease;
+    text-align: center;
   }
 
+  .about-title__svg {
+    width: min(240px, 66vw);
+    margin: 0 auto 50px;
+  }
+
+  .about-hero__desc {
+    font-size: 14px;
+    line-height: 1.75;
+    font-weight: 500;
+    max-width: 38ch;
+    margin: 0 auto 24px;
+    text-align: center;
+    transform: translateZ(0);
+  }
+
+  /* =========================================================
+   CTA BUTTONS
+========================================================= */
+  .about-hero__cta--swap {
+    width: min(260px, 86vw);
+    margin: 0 auto;
+
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  /* 버튼 공통 */
   .about-hero__cta--swap .about-hero__btn {
-    width: 100%;
-    height: 56px; /* 작은 버튼 기준 높이 */
+    height: 56px;
+    min-width: 0;
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
 
-    transition: border-radius 240ms ease, transform 240ms ease;
+    overflow: hidden;
+
+    transition: flex-grow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      border-radius 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.25s ease;
   }
 
-  /* pill 기본 */
-  .about-hero__cta--swap .about-hero__btn--resume {
+  /* 아이콘 원형 래퍼 */
+  .cta-btn__iconWrap {
+    width: 36px;
+    height: 36px;
     border-radius: 999px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
   }
 
-  /* icon 기본 */
-  .about-hero__cta--swap .about-hero__btn--github {
-    border-radius: 16px;
+  .cta-btn__iconImg {
+    width: 26px;
+    height: 26px;
+    display: block;
   }
 
-  /* hover 가능한 디바이스에서만 스왑 인터랙션 */
-  @media (hover: hover) and (pointer: fine) {
-    /* ✅ Resume에 hover/focus 하면: Resume(큰) + Github(작은) */
-    .about-hero__cta--swap:has(.about-hero__btn--resume:hover),
-    .about-hero__cta--swap:has(.about-hero__btn--resume:focus-visible) {
-      grid-template-columns: 1fr 56px;
-    }
-    .about-hero__cta--swap:has(.about-hero__btn--resume:hover)
-      .about-hero__btn--resume,
-    .about-hero__cta--swap:has(.about-hero__btn--resume:focus-visible)
-      .about-hero__btn--resume {
-      border-radius: 999px;
-    }
-    .about-hero__cta--swap:has(.about-hero__btn--resume:hover)
-      .about-hero__btn--github,
-    .about-hero__cta--swap:has(.about-hero__btn--resume:focus-visible)
-      .about-hero__btn--github {
-      border-radius: 16px;
-    }
+  /* ==========================
+   상태: resume 활성
+   ========================== */
+  .about-hero__cta--swap[data-active="resume"] .about-hero__btn--resume {
+    flex: 1 1 auto;
+    width: auto;
+    padding: 0 18px;
+    border-radius: 26px;
+  }
 
-    /* ✅ Github에 hover/focus 하면: Github(큰) + Resume(작은) */
-    .about-hero__cta--swap:has(.about-hero__btn--github:hover),
-    .about-hero__cta--swap:has(.about-hero__btn--github:focus-visible) {
-      grid-template-columns: 56px 1fr;
-    }
-    .about-hero__cta--swap:has(.about-hero__btn--github:hover)
-      .about-hero__btn--github,
-    .about-hero__cta--swap:has(.about-hero__btn--github:focus-visible)
-      .about-hero__btn--github {
-      border-radius: 999px; /* 큰 상태는 pill */
-    }
-    .about-hero__cta--swap:has(.about-hero__btn--github:hover)
-      .about-hero__btn--resume,
-    .about-hero__cta--swap:has(.about-hero__btn--github:focus-visible)
-      .about-hero__btn--resume {
-      border-radius: 16px; /* 작은 상태는 icon 느낌 */
-    }
+  .about-hero__cta--swap[data-active="resume"] .about-hero__btn--github {
+    flex: 0 0 auto;
+    width: 56px;
+    padding: 0;
+    border-radius: 26px;
+    gap: 0;
+  }
+
+  .about-hero__cta--swap[data-active="resume"]
+    .about-hero__btn--github
+    .cta-btn__label {
+    display: none;
+  }
+
+  /* ==========================
+   상태: github 활성
+   ========================== */
+  .about-hero__cta--swap[data-active="github"] .about-hero__btn--github {
+    flex: 1 1 auto;
+    width: auto;
+    padding: 0 18px;
+    border-radius: 26px;
+  }
+
+  .about-hero__cta--swap[data-active="github"] .about-hero__btn--resume {
+    flex: 0 0 auto;
+    width: 56px;
+    padding: 0;
+    border-radius: 26px;
+    gap: 0;
+  }
+
+  .about-hero__cta--swap[data-active="github"]
+    .about-hero__btn--resume
+    .cta-btn__label {
+    display: none;
+  }
+
+  /* =========================================================
+   DECOR IMAGES
+========================================================= */
+  .about-hero__decor {
+    opacity: 0.9;
+  }
+
+  .decor {
+    opacity: 0.95;
+    filter: blur(0.2px);
+  }
+
+  /* 좌상 */
+  .decor--sun {
+    top: -3%;
+    left: 2%;
+    width: 110px;
+  }
+
+  /* 우상 */
+  .decor--stars {
+    top: -1%;
+    right: 2%;
+    width: 110px;
+  }
+
+  /* 좌하 */
+  .decor--stars2 {
+    bottom: 18%;
+    left: 1%;
+    width: 120px;
+    opacity: 0.9;
+  }
+
+  /* 우하 */
+  .decor--heart {
+    bottom: 18%;
+    right: 0%;
+    width: 100px;
+    opacity: 0.85;
   }
 }

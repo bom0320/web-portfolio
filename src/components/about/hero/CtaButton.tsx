@@ -8,14 +8,18 @@ type CtaButtonProps = {
   variant: "primary" | "secondary";
   className?: string;
   ariaLabel?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  children?: React.ReactNode;
 };
 
 export default function CtaButton({
   href,
   label,
-  variant = "secondary",
+  variant,
   className = "",
   ariaLabel,
+  onClick,
+  children,
 }: CtaButtonProps) {
   const classes = ["cta-btn", `cta-btn--${variant}`, className]
     .filter(Boolean)
@@ -30,8 +34,10 @@ export default function CtaButton({
       aria-label={ariaLabel ?? label}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noreferrer" : undefined}
+      onClick={onClick}
     >
-      {label}
+      <span className="cta-btn__iconWrap">{children}</span>
+      <span className="cta-btn__label">{label}</span>
     </Link>
   );
 }

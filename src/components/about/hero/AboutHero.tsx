@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import AboutTitle from "./AboutTitle";
@@ -15,6 +15,8 @@ export default function AboutHero() {
   const fillGroupRef = useRef<SVGGElement | null>(null);
   const descRef = useRef<HTMLParagraphElement | null>(null);
 
+  const [active, setActive] = useState<"resume" | "github">("resume");
+
   useLayoutEffect(() => {
     const section = sectionRef.current;
     const fillGroup = fillGroupRef.current;
@@ -24,8 +26,8 @@ export default function AboutHero() {
 
     const ctx = gsap.context(() => {
       const titleTween = AboutAnimation.createTitleFill(fillGroup);
-      const DecorTween = AboutAnimation.createDecorEnter(section);
-      const decsTween = AboutAnimation.createDescDiagonalReveal(desc);
+      const decorTween = AboutAnimation.createDecorEnter(section);
+      const descTween = AboutAnimation.createDescDiagonalReveal(desc);
 
       const master = gsap.timeline({
         scrollTrigger: {
@@ -33,21 +35,32 @@ export default function AboutHero() {
           start: "top 70%",
           end: "top 35%",
           scrub: 1.2,
-          // markers: true,
         },
       });
 
-      master.add(DecorTween, 0.1).add(decsTween, 0.18).add(titleTween, ">");
+      master.add(decorTween, 0.1).add(descTween, 0.18).add(titleTween, ">");
     }, section);
 
     return () => ctx.revert();
   }, []);
 
+  const handleMobileSwapClick =
+    (key: "resume" | "github") => (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (typeof window === "undefined") return;
+
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      if (!isMobile) return;
+
+      if (active !== key) {
+        e.preventDefault();
+        setActive(key);
+      }
+    };
+
   return (
     <section ref={sectionRef} className="about-hero">
       <div className="about-hero__decor">
         <img className="decor decor--sun" src="/images/about/sun.png" alt="" />
-
         <img
           className="decor decor--stars"
           src="/images/about/stars.png"
@@ -58,7 +71,6 @@ export default function AboutHero() {
           src="/images/about/stars.png"
           alt=""
         />
-
         <img
           className="decor decor--heart"
           src="/images/about/heart.png"
@@ -72,24 +84,34 @@ export default function AboutHero() {
         <p ref={descRef} className="about-hero__desc">
           FrontEnd 개발자 김봄입니다. 사용자가 즐길 수 있는 직관적이고 의미 있는
           경험을 만드는 것을 목표로 합니다. FrontEnd 개발자 김봄입니다. 사용자가
-          즐길 수 있는 직관적이고 의미 있는 FrontEnd 개발자 김봄입니다. 사용자가
           즐길 수 있는 직관적이고 의미 있는 경험을 만드는 것을 목표로 합니다.
-          FrontEnd 개발자 김봄입니다.
         </p>
 
-        <div className="about-hero__cta about-hero__cta--swap">
+        <div
+          className="about-hero__cta about-hero__cta--swap"
+          data-active={active}
+        >
           <CtaButton
             href="https://..."
             label="Go Resume"
             variant="primary"
             className="about-hero__btn about-hero__btn--resume"
-          />
+            ariaLabel="Go Resume"
+            onClick={handleMobileSwapClick("resume")}
+          >
+            <img src="/icons/User.svg" alt="" className="cta-btn__iconImg" />
+          </CtaButton>
+
           <CtaButton
             href="https://github.com/..."
             label="Go Github"
             variant="secondary"
             className="about-hero__btn about-hero__btn--github"
-          />
+            ariaLabel="Go Github"
+            onClick={handleMobileSwapClick("github")}
+          >
+            <img src="/icons/GitHub.svg" alt="" className="cta-btn__iconImg" />
+          </CtaButton>
         </div>
       </div>
     </section>
