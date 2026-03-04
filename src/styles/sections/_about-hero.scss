@@ -76,20 +76,45 @@
   height: 72px;
   padding: 20px 32px;
   min-width: 220px;
-  border-radius: 100px;
+  border-radius: 30px;
 
-  color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(10px);
+  color: #e9f3f4;
 
-  box-shadow: 0 8px 24px rgba(61, 61, 61, 0.35);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.191) 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.45),
+    inset 0 2px 4px rgba(255, 255, 255, 0.202),
+    inset 0 -6px 12px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.glass-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0.08) 35%,
+    transparent 60%
+  );
+
+  pointer-events: none;
 }
 
 .about-hero__btn:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .cta-btn__iconWrap {
@@ -107,8 +132,8 @@
 }
 
 .cta-btn__label {
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 17px;
+  font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1;
 }
