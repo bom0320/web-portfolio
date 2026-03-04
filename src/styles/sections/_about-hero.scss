@@ -133,79 +133,76 @@
 }
 
 @media (max-width: 768px) {
-  .about-hero {
-    min-height: auto;
-    padding: 92px 0 122px;
-  }
-
-  .about-hero__inner {
-    width: min(560px, calc(100% - 70px));
+  .about-hero__cta--swap {
+    width: min(380px, 86vw);
     margin: 0 auto;
-    text-align: center;
-  }
 
-  // 타이틀 SVG 크기 축소 + 가운데
-  .about-title__svg {
-    width: min(240px, 56vw);
-    height: auto;
-    margin: 0 auto 18px;
-    display: block;
-  }
-
-  .about-hero__desc {
-    font-size: 14px;
-    line-height: 1.7;
-    margin: 0 auto 22px;
-    width: 100%;
-    // 너무 길면 가독성 떨어져서 약간만 정리
-    max-width: 42ch;
-  }
-
-  // CTA 버튼: 모바일에서 누르기 편하게 (세로 스택)
-  .about-hero__cta {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    width: 100%;
-    margin-top: 20px;
+    align-items: center;
+    gap: 12px;
+
+    /* 기본 상태: Resume 크게 / Github 작게 */
+    grid-template-columns: 1fr 56px;
+
+    transition: grid-template-columns 240ms ease;
   }
 
-  // 만약 CtaButton이 a/button에 공통 class를 준다면 여기서 풀폭
-  .about-hero__cta a,
-  .about-hero__cta button {
+  .about-hero__cta--swap .about-hero__btn {
     width: 100%;
+    height: 56px; /* 작은 버튼 기준 높이 */
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
+
+    transition: border-radius 240ms ease, transform 240ms ease;
   }
 
-  // 데코: 모바일에서 과하면 산만해져서 "뒤로" 보내고, 사이즈 줄이기
-  .about-hero__decor {
-    pointer-events: none;
-    opacity: 0.75;
+  /* pill 기본 */
+  .about-hero__cta--swap .about-hero__btn--resume {
+    border-radius: 999px;
   }
 
-  .about-hero__decor .decor {
-    transform: scale(0.75);
-    filter: blur(0.2px);
+  /* icon 기본 */
+  .about-hero__cta--swap .about-hero__btn--github {
+    border-radius: 16px;
   }
 
-  // 데코 위치를 모바일용으로 재배치(너 CSS 구조에 맞게 class로)
-  .about-hero__decor .decor--sun {
-    left: -18px;
-    top: -26px;
-  }
+  /* hover 가능한 디바이스에서만 스왑 인터랙션 */
+  @media (hover: hover) and (pointer: fine) {
+    /* ✅ Resume에 hover/focus 하면: Resume(큰) + Github(작은) */
+    .about-hero__cta--swap:has(.about-hero__btn--resume:hover),
+    .about-hero__cta--swap:has(.about-hero__btn--resume:focus-visible) {
+      grid-template-columns: 1fr 56px;
+    }
+    .about-hero__cta--swap:has(.about-hero__btn--resume:hover)
+      .about-hero__btn--resume,
+    .about-hero__cta--swap:has(.about-hero__btn--resume:focus-visible)
+      .about-hero__btn--resume {
+      border-radius: 999px;
+    }
+    .about-hero__cta--swap:has(.about-hero__btn--resume:hover)
+      .about-hero__btn--github,
+    .about-hero__cta--swap:has(.about-hero__btn--resume:focus-visible)
+      .about-hero__btn--github {
+      border-radius: 16px;
+    }
 
-  .about-hero__decor .decor--stars {
-    right: -18px;
-    top: -18px;
-  }
-
-  .about-hero__decor .decor--stars2 {
-    left: -22px;
-    bottom: -10px;
-  }
-
-  .about-hero__decor .decor--heart {
-    right: -16px;
-    bottom: -14px;
+    /* ✅ Github에 hover/focus 하면: Github(큰) + Resume(작은) */
+    .about-hero__cta--swap:has(.about-hero__btn--github:hover),
+    .about-hero__cta--swap:has(.about-hero__btn--github:focus-visible) {
+      grid-template-columns: 56px 1fr;
+    }
+    .about-hero__cta--swap:has(.about-hero__btn--github:hover)
+      .about-hero__btn--github,
+    .about-hero__cta--swap:has(.about-hero__btn--github:focus-visible)
+      .about-hero__btn--github {
+      border-radius: 999px; /* 큰 상태는 pill */
+    }
+    .about-hero__cta--swap:has(.about-hero__btn--github:hover)
+      .about-hero__btn--resume,
+    .about-hero__cta--swap:has(.about-hero__btn--github:focus-visible)
+      .about-hero__btn--resume {
+      border-radius: 16px; /* 작은 상태는 icon 느낌 */
+    }
   }
 }

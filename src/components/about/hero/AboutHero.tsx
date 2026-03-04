@@ -37,7 +37,7 @@ export default function AboutHero() {
         },
       });
 
-      master.add(DecorTween, 0.1).add(titleTween, 0.18).add(decsTween, ">");
+      master.add(DecorTween, 0.1).add(decsTween, 0.18).add(titleTween, ">");
     }, section);
 
     return () => ctx.revert();
@@ -77,9 +77,19 @@ export default function AboutHero() {
           FrontEnd 개발자 김봄입니다.
         </p>
 
-        <div className="about-hero__cta">
-          <CtaButton href="https://..." label="Go Resume" variant="primary" />
-          <CtaButton href="https://github.com/..." label="Go Github" />
+        <div className="about-hero__cta about-hero__cta--swap">
+          <CtaButton
+            href="https://..."
+            label="Go Resume"
+            variant="primary"
+            className="about-hero__btn about-hero__btn--resume"
+          />
+          <CtaButton
+            href="https://github.com/..."
+            label="Go Github"
+            variant="secondary"
+            className="about-hero__btn about-hero__btn--github"
+          />
         </div>
       </div>
     </section>

@@ -1,24 +1,37 @@
+"use client";
+
+import Link from "next/link";
+
 type CtaButtonProps = {
   href: string;
   label: string;
-  variant?: "primary" | "ghost";
+  variant: "primary" | "secondary";
+  className?: string;
+  ariaLabel?: string;
 };
 
 export default function CtaButton({
   href,
   label,
-  variant = "ghost",
+  variant = "secondary",
+  className = "",
+  ariaLabel,
 }: CtaButtonProps) {
+  const classes = ["cta-btn", `cta-btn--${variant}`, className]
+    .filter(Boolean)
+    .join(" ");
+
+  const isExternal = href.startsWith("http");
+
   return (
-    <a
-      className={`about-hero__btn ${
-        variant === "primary" ? "about-hero__btn--primary" : ""
-      }`}
+    <Link
       href={href}
-      target="_blank"
-      rel="noreferrer"
+      className={classes}
+      aria-label={ariaLabel ?? label}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noreferrer" : undefined}
     >
-      <span>{label}</span>
-    </a>
+      {label}
+    </Link>
   );
 }
