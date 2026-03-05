@@ -1,34 +1,47 @@
+import Image from "next/image";
+
 type Props = {
   name: string;
   icon: string;
-  value: number;
+  value: number; // 0~100
   sub?: string;
 };
 
+const clamp = (n: number, min: number, max: number) =>
+  Math.min(Math.max(n, min), max);
+
 export default function SkillCard({ name, icon, value, sub }: Props) {
-  const deg = Math.max(0, Math.min(180, (value / 100) * 180));
+  const v = clamp(value, 0, 100);
+  const deg = (v / 100) * 360;
+
+  const gaugeVars = {
+    ["--deg"]: `${deg}deg`,
+  } as React.CSSProperties;
 
   return (
-    <article className="skill-card">
+    <article className="skill-card" aria-label={`${name} skill ${v}%`}>
       <div className="skill-card__pacman">
         <div
           className="skill-card__gauge"
-          style={{
-            background: `conic-gradient(
-                from 180deg,
-                rgba(255,255,255,0.75) 0deg ${deg}deg,
-                rgba(255,255,255,0.10) ${deg}deg 180deg
-              )`,
-          }}
+          style={gaugeVars}
+          aria-hidden="true"
         />
+
         <div className="skill-card__icon-wrap">
-          <img className="skill-card__icon" src={icon} alt={name} />
+          <Image
+            className="skill-card__icon"
+            src={icon}
+            alt={name}
+            width={34}
+            height={34}
+            priority={false}
+          />
         </div>
       </div>
 
       <div className="skill-card__meta">
         <p className="skill-card__name">{name}</p>
-        {sub && <p className="skill-card__sub">{sub}</p>}
+        {sub ? <p className="skill-card__sub">{sub}</p> : null}
       </div>
     </article>
   );
