@@ -10,12 +10,12 @@ export default function HeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
 
   useLayoutEffect(() => {
-    const root = sectionRef.current;
-    if (!root) return;
+    const section = sectionRef.current;
+    if (!section) return;
 
     const ctx = gsap.context(() => {
-      HeroAnimation.intro(root);
-    }, root);
+      HeroAnimation.intro(section);
+    }, section);
 
     return () => ctx.revert();
   }, []);

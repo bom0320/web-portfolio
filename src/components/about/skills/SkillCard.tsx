@@ -25,6 +25,7 @@ export default function SkillCard({ name, icon, value, sub, bg }: Props) {
         <div
           className="skill-card__gauge"
           style={gaugeVars}
+          data-deg={deg}
           aria-hidden="true"
         />
 
