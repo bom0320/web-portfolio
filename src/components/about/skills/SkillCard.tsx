@@ -21,7 +21,7 @@ export default function SkillCard({ name, icon, value, sub, bg }: Props) {
 
   return (
     <article className="skill-card" aria-label={`${name} skill ${v}%`}>
-      <div className="skill-card__pacman">
+      <div className="skill-card__circle">
         <div
           className="skill-card__gauge"
           style={gaugeVars}

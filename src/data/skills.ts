@@ -12,7 +12,7 @@ export const SKILLS: Skill[] = [
     icon: "/icons/next.svg",
     value: 80,
     sub: "20080320",
-    bg: "#fffff",
+    bg: "#000000",
   },
   {
     name: "React",
