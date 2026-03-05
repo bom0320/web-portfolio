@@ -5,7 +5,6 @@ import gsap from "gsap";
 import SkillTitle from "./SkillTitle";
 import SkillCard from "./SkillCard";
 import { SKILLS } from "@/data/skills";
-
 export default function AboutSkills() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const fillGroupRef = useRef<SVGGElement | null>(null);
@@ -39,6 +38,7 @@ export default function AboutSkills() {
               icon={s.icon}
               value={s.value}
               sub={s.sub}
+              bg={s.bg}
             />
           ))}
         </div>

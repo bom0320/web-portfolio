@@ -3,37 +3,43 @@ export type Skill = {
   icon: string;
   value: number;
   sub?: string;
+  bg: string;
 };
 
 export const SKILLS: Skill[] = [
   {
     name: "Next.js",
-    icon: "/images/logo/next.svg",
+    icon: "/icons/next.svg",
     value: 80,
     sub: "20080320",
+    bg: "#fffff",
   },
   {
     name: "React",
-    icon: "/images/logo/react.svg",
+    icon: "/icons/react.svg",
     value: 75,
     sub: "20080320",
+    bg: "#222222",
   },
   {
-    name: "JavaScript",
-    icon: "/images/logo/js.svg",
+    name: "React Query",
+    icon: "/icons/reactquery.svg",
     value: 85,
     sub: "20080320",
+    bg: "#ffffff",
   },
   {
     name: "Zustand",
-    icon: "/images/logo/zustand.svg",
+    icon: "/icons/zustand.svg",
     value: 70,
     sub: "20080320",
+    bg: "#ECB63F",
   },
   {
     name: "TypeScript",
-    icon: "/images/logo/ts.svg",
+    icon: "/icons/ts.svg",
     value: 78,
     sub: "20080320",
+    bg: "#3178C6",
   },
 ];

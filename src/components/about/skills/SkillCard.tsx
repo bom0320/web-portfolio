@@ -5,12 +5,13 @@ type Props = {
   icon: string;
   value: number; // 0~100
   sub?: string;
+  bg: string;
 };
 
 const clamp = (n: number, min: number, max: number) =>
   Math.min(Math.max(n, min), max);
 
-export default function SkillCard({ name, icon, value, sub }: Props) {
+export default function SkillCard({ name, icon, value, sub, bg }: Props) {
   const v = clamp(value, 0, 100);
   const deg = (v / 100) * 360;
 
@@ -27,7 +28,7 @@ export default function SkillCard({ name, icon, value, sub }: Props) {
           aria-hidden="true"
         />
 
-        <div className="skill-card__icon-wrap">
+        <div className="skill-card__icon-wrap" style={{ backgroundColor: bg }}>
           <Image
             className="skill-card__icon"
             src={icon}
