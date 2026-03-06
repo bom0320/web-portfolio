@@ -8,7 +8,7 @@
   margin-left: calc(50% - 50vw);
   position: relative;
   z-index: 3;
-  margin-top: 250px;
+  margin-top: 160px;
 }
 
 .about-skills__inner {
@@ -17,9 +17,8 @@
   text-align: center;
 }
 
-/* SVG title */
 .skills-title__svg {
-  width: min(380px, 42vw);
+  width: min(380px, 50vw);
   margin: 0 auto 80px;
   display: block;
 }
@@ -98,29 +97,53 @@
   font-size: 12px;
   color: rgba(255, 255, 255, 0.42);
 }
-
-/* ============================================
-   Responsive
-============================================ */
-
+/* ========================================
+   ABOUT SKILLS — MOBILE
+======================================== */
 @media (max-width: 768px) {
-  .about-skills__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
+  .about-skills {
+    height: 100vh;
   }
 
-  .skill-card__pacman {
-    width: 150px;
-    height: 150px;
+  .skills-title__svg {
+    margin: 0 auto 26px;
+  }
+  .about-skills__inner {
+    width: min(520px, calc(100% - 40px));
+  }
+
+  .about-skills__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .skill-card__circle {
+    width: 130px;
+    height: 130px;
   }
 
   .skill-card__icon-wrap {
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
+    border-width: 2px;
   }
 
   .skill-card__icon {
-    width: 32px;
-    height: 32px;
+    width: 26px !important;
+    height: 26px !important;
+  }
+
+  .skill-card__meta {
+    gap: 4px;
+  }
+
+  .skill-card__name {
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .skill-card__sub {
+    font-size: 11px;
+    opacity: 0.6;
   }
 }
