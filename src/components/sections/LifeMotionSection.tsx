@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useLayoutEffect, useMemo, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { LIFE_MOTION_ITEMS } from "@/data/lifeMotion";
 import { createLifeMotionTween } from "@/components/animations/lifeMotion";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -10,7 +10,7 @@ export default function LifeMotionSection() {
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
 
-  const items = useMemo(() => [...LIFE_MOTION_ITEMS, ...LIFE_MOTION_ITEMS], []);
+  const items = [...LIFE_MOTION_ITEMS, ...LIFE_MOTION_ITEMS];
 
   const spanPattern = [6, 7, 8, 6, 7];
   const ratioPattern = [0.9, 1.15, 1.0, 1.35, 1.2];
@@ -51,8 +51,9 @@ export default function LifeMotionSection() {
                 className="life-motion__item"
                 style={
                   {
-                    ["--span" as const]: span,
-                    ["--ratio" as const]: ratio,
+                    "--span": span,
+                    "--mobile-span": Math.max(5, span - 2),
+                    "--ratio": ratio,
                   } as React.CSSProperties
                 }
               >
