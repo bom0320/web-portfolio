@@ -7,6 +7,9 @@
   &__viewport {
     overflow-x: hidden;
     overflow-y: visible;
+    padding-inline: 24px;
+
+    box-sizing: border-box;
   }
 
   &__track {
@@ -29,10 +32,13 @@
   }
 
   &__title {
-    margin: 0 0 2px;
+    display: block;
+    flex-shrink: 0;
+    margin: 0 0 4px;
     font-size: 12px;
+    line-height: 1.3;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 255, 255, 0.677);
 
     white-space: nowrap;
     overflow: hidden;
@@ -52,11 +58,5 @@
 
   &__image {
     object-fit: cover;
-  }
-
-  &__meta {
-    margin-top: 12px;
-    opacity: 1;
-    transform: none;
   }
 }
