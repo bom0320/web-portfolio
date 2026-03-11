@@ -5,32 +5,35 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { INTERVIEWS } from "@/data/interviews";
 import InterviewAnimation from "@/components/animations/interview";
+import InterviewTitle from "./InterviewTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutInterview() {
   const sectionRef = useRef<HTMLElement | null>(null);
+  const titleRef = useRef<HTMLDivElement | null>(null);
+  const fillGroupRef = useRef<SVGGElement | null>(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
-    if (!section) return;
+    const title = titleRef.current;
+    const fillGroup = fillGroupRef.current;
+
+    if (!section || !title || !fillGroup) return;
 
     const ctx = gsap.context(() => {
-      const title = section.querySelector<HTMLElement>(
-        ".about-interview__title"
-      );
+      const titleTween = InterviewAnimation.createTitleFill(fillGroup);
       const rows = gsap.utils.toArray<HTMLElement>(".interview-row", section);
 
-      if (title) {
-        const titleTween = InterviewAnimation.title(title);
+      const master = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          end: "top 35%",
+        },
+      });
 
-        ScrollTrigger.create({
-          trigger: title,
-          start: "top 85%",
-          once: true,
-          animation: titleTween,
-        });
-      }
+      master.add(titleTween, 0);
 
       rows.forEach((row) => {
         const q = row.querySelector<HTMLElement>(".interview-row__q");
@@ -43,7 +46,6 @@ export default function AboutInterview() {
         ScrollTrigger.create({
           trigger: row,
           start: "top 85%",
-          once: true,
           animation: rowTimeline,
         });
       });
@@ -59,7 +61,9 @@ export default function AboutInterview() {
       aria-label="Interview Section"
     >
       <div className="about-interview__inner">
-        <h2 className="about-interview__title">INTERVIEWS</h2>
+        <div ref={titleRef} className="about-interview__title">
+          <InterviewTitle fillGroupRef={fillGroupRef} />
+        </div>
 
         <div className="about-interview__list">
           {INTERVIEWS.map((item) => (
