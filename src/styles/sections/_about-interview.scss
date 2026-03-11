@@ -10,28 +10,25 @@
   background: #ffffff;
   border-radius: 36px 36px 0 0;
   padding: 120px 0 140px;
-
-  /* 선택: 카드 떠있는 느낌 조금 주고 싶으면 */
-  box-shadow: 0 -30px 60px rgba(0, 0, 0, 0.25);
 }
 
-/* 내부 정렬 */
 .about-interview__inner {
   width: min(1080px, calc(100% - 80px));
-  margin: 0 auto;
+  margin: 50px auto;
 }
 
-/* 상단 타이틀 */
 .about-interview__title {
-  text-align: center;
-  font-size: clamp(56px, 6vw, 100px);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  color: #111;
+  display: flex;
+  justify-content: center;
   margin-bottom: 80px;
 }
 
-/* 각 인터뷰 행 */
+.about-interview__title-svg {
+  display: block;
+  width: clamp(260px, 42vw, 720px);
+  height: auto;
+}
+
 .interview-row {
   display: grid;
   grid-template-columns: 160px 1fr;
@@ -53,7 +50,6 @@
   color: #111;
 }
 
-/* 질문 */
 .interview-row__question {
   font-size: 22px;
   font-weight: 800;
@@ -61,7 +57,6 @@
   color: #111;
 }
 
-/* 답변 */
 .interview-row__answer {
   margin: 0;
   font-size: 16px;

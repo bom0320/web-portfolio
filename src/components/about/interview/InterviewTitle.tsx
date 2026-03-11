@@ -10,12 +10,12 @@ export default function InterviewTitle({ fillGroupRef }: InterviewTitleProps) {
   return (
     <svg
       className="about-interview__title-svg"
-      viewBox="0 0 739 94"
+      viewBox="0 0 407 48"
       xmlns="http://www.w3.org/2000/svg"
       aria-label="INTERVIEWS"
       role="img"
     >
-      <g className="about-interview__title-outline" opacity={0.35}>
+      <g className="about-interview__title-outline" opacity={0.75}>
         {INTERVIEW_TITLE_PATHS.map((d, i) => (
           <path
             key={`outline-${i}`}
