@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
 import { LIFE_MOTION_ITEMS } from "@/data/lifeMotion";
-import { createLifeMotionTween } from "@/components/animations/lifeMotion";
+import LifeMotionAnimation from "../animations/lifeMotion";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 export default function LifeMotionSection() {
@@ -20,7 +20,7 @@ export default function LifeMotionSection() {
     const track = trackRef.current;
     if (!viewport || !track) return;
 
-    const controller = createLifeMotionTween(track, viewport);
+    const controller = LifeMotionAnimation.track(track, viewport);
     const st = ScrollTrigger.create({
       trigger: viewport,
       start: "top bottom",
