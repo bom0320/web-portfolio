@@ -7,46 +7,41 @@ const InterviewAnimation = {
       { opacity: 0 },
       {
         opacity: 1,
+        duration: 0.6,
         ease: "none",
+        paused: true,
       }
     );
   },
 
-  row(q: HTMLElement | null, content: HTMLElement | null) {
+  row(reveal: HTMLElement | null, overlay: HTMLElement | null) {
     const tl = gsap.timeline({ paused: true });
 
-    if (q) {
-      tl.fromTo(
-        q,
-        {
-          autoAlpha: 0,
-          x: -20,
-        },
-        {
-          autoAlpha: 1,
-          x: 0,
-          duration: 0.6,
-          ease: "power2.out",
-        }
-      );
-    }
+    if (!reveal || !overlay) return tl;
 
-    if (content) {
-      tl.fromTo(
-        content,
-        {
-          autoAlpha: 0,
-          y: 20,
-        },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.7,
-          ease: "power2.out",
-        },
-        q ? "-=0.35" : 0
-      );
-    }
+    gsap.set(reveal, {
+      autoAlpha: 1,
+      y: 0,
+      clipPath: "inset(66% 0 0 0)",
+    });
+
+    gsap.set(overlay, {
+      yPercent: 0,
+    });
+
+    tl.to(reveal, {
+      clipPath: "inset(0% 0 0 0)",
+      duration: 0.8,
+      ease: "power3.out",
+    }).to(
+      overlay,
+      {
+        yPercent: -100,
+        duration: 0.8,
+        ease: "power3.inOut",
+      },
+      0
+    );
 
     return tl;
   },

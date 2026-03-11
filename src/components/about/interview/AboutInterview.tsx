@@ -23,29 +23,28 @@ export default function AboutInterview() {
 
     const ctx = gsap.context(() => {
       const titleTween = InterviewAnimation.createTitleFill(fillGroup);
-      const rows = gsap.utils.toArray<HTMLElement>(".interview-row", section);
 
-      const master = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          end: "top 35%",
-        },
+      ScrollTrigger.create({
+        trigger: title,
+        start: "top 80%",
+        once: true,
+        animation: titleTween,
       });
 
-      master.add(titleTween, 0);
+      const rows = gsap.utils.toArray<HTMLElement>(".interview-row", section);
 
       rows.forEach((row) => {
-        const q = row.querySelector<HTMLElement>(".interview-row__q");
-        const content = row.querySelector<HTMLElement>(
-          ".interview-row__content"
+        const reveal = row.querySelector<HTMLElement>(".interview-row__reveal");
+        const overlay = row.querySelector<HTMLElement>(
+          ".interview-row__overlay"
         );
 
-        const rowTimeline = InterviewAnimation.row(q, content);
+        const rowTimeline = InterviewAnimation.row(reveal, overlay);
 
         ScrollTrigger.create({
           trigger: row,
           start: "top 85%",
+          once: true,
           animation: rowTimeline,
         });
       });
@@ -68,11 +67,15 @@ export default function AboutInterview() {
         <div className="about-interview__list">
           {INTERVIEWS.map((item) => (
             <article key={item.id} className="interview-row">
-              <div className="interview-row__q">{item.id}</div>
+              <div className="interview-row__reveal">
+                <div className="interview-row__overlay" />
 
-              <div className="interview-row__content">
-                <h3 className="interview-row__question">{item.question}</h3>
-                <p className="interview-row__answer">{item.answer}</p>
+                <div className="interview-row__q">{item.id}</div>
+
+                <div className="interview-row__content">
+                  <h3 className="interview-row__question">{item.question}</h3>
+                  <p className="interview-row__answer">{item.answer}</p>
+                </div>
               </div>
             </article>
           ))}
