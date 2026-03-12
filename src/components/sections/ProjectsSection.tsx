@@ -1,10 +1,13 @@
 "use client";
 
+import { useState } from "react";
 import ProjectShowcase from "@/components/project/ProjectShowcase";
 import { PROJECTS } from "@/data/projects";
 
 export default function ProjectsSection() {
-  const activeProject = PROJECTS[0];
+  const [activeIndex] = useState(0);
+
+  const activeProject = PROJECTS[activeIndex];
 
   if (!activeProject) return null;
 

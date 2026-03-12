@@ -2,17 +2,13 @@ export interface ProjectItem {
   id: string;
   category: string;
   title: string;
-
   period: string;
   contribution: string;
   stack: string[];
-
   keywords: string[];
   overview: string;
-
   heroImage: string;
   thumbnails: string[];
-
   themeColor: string;
   background: "dark" | "light";
 }
@@ -22,107 +18,80 @@ export const PROJECTS: ProjectItem[] = [
     id: "mealdo",
     category: "website",
     title: "MEALDO",
-
-    period: "2023.09 - 2023.12",
-    contribution: "1인 개발 100%",
-    stack: ["React", "Next.js", "TypeScript"],
-
-    keywords: ["공공", "신뢰", "디지털"],
-
+    period: "2018.09 - 2018.12",
+    contribution: "1인 100%",
+    stack: ["React", "Next.js"],
+    keywords: ["공공", "선물", "디저트"],
     overview:
-      "공공 데이터를 기반으로 식단 정보를 제공하는 웹 서비스입니다. 사용자에게 직관적인 UI를 제공하기 위해 디자인 시스템을 구축하고 React 기반 컴포넌트 구조로 개발했습니다.",
-
-    heroImage: "/images/projects/mealdo/mockup.png",
-
+      "스틸라강의 Colors에 맞춰 C4D로 제작한 짧은 애니메이션으로 어느 장면에서 정지하더라도 하나의 엽서 일러스트처럼 보이도록 기획 및 디자인하였습니다. 디저트가 레일을 타고 우리에게 배달되는 과정을 표현하였으며, 파스텔 톤 컬러와 아기자기한 소품들을 사용하여 사랑스러움과 달콤함을 강조하였습니다.",
+    heroImage: "/images/projects/mealdo/screen.png",
     thumbnails: [
-      "/images/projects/mealdo/01.png",
-      "/images/projects/mealdo/02.png",
-      "/images/projects/mealdo/03.png",
-      "/images/projects/mealdo/04.png",
+      "/images/projects/mealdo/thumb-01.png",
+      "/images/projects/mealdo/thumb-02.png",
+      "/images/projects/mealdo/thumb-03.png",
+      "/images/projects/mealdo/thumb-04.png",
     ],
-
-    themeColor: "#7c3aed",
+    themeColor: "#7a4cff",
     background: "dark",
   },
-
   {
-    id: "studylog",
-    category: "web app",
-    title: "STUDY LOG",
-
-    period: "2024.01 - 2024.03",
-    contribution: "개인 프로젝트",
-    stack: ["Next.js", "Tailwind", "Supabase"],
-
-    keywords: ["생산성", "기록", "관리"],
-
+    id: "tving",
+    category: "website",
+    title: "TVING",
+    period: "2018.09 - 2018.12",
+    contribution: "1인 100%",
+    stack: ["React", "Next.js"],
+    keywords: ["영상", "선택", "그래픽"],
     overview:
-      "개발 학습 기록을 관리하기 위한 웹 애플리케이션입니다. 학습 내용을 기록하고 통계로 시각화하여 학습 흐름을 파악할 수 있도록 설계했습니다.",
-
-    heroImage: "/images/projects/studylog/mockup.png",
-
+      "콘텐츠 탐색 경험을 중심으로 메인 비주얼과 정보 구조를 설계한 프로젝트입니다. 강한 컬러와 대비를 통해 브랜드 인상을 강조하고, 시선 흐름이 자연스럽게 이어지도록 레이아웃을 구성했습니다.",
+    heroImage: "/images/projects/tving/screen.png",
     thumbnails: [
-      "/images/projects/studylog/01.png",
-      "/images/projects/studylog/02.png",
-      "/images/projects/studylog/03.png",
-      "/images/projects/studylog/04.png",
+      "/images/projects/tving/thumb-01.png",
+      "/images/projects/tving/thumb-02.png",
+      "/images/projects/tving/thumb-03.png",
+      "/images/projects/tving/thumb-04.png",
     ],
-
-    themeColor: "#10b981",
+    themeColor: "#ffffff",
+    background: "dark",
+  },
+  {
+    id: "mint",
+    category: "website",
+    title: "MEALDO",
+    period: "2018.09 - 2018.12",
+    contribution: "1인 100%",
+    stack: ["React", "Next.js"],
+    keywords: ["공공", "선물", "디저트"],
+    overview:
+      "밝은 톤의 비주얼과 친근한 그래픽 요소를 기반으로 서비스 경험을 표현한 프로젝트입니다. 컬러와 컴포넌트 리듬을 활용해 산뜻하고 가벼운 인상을 주도록 구성했습니다.",
+    heroImage: "/images/projects/mint/screen.png",
+    thumbnails: [
+      "/images/projects/mint/thumb-01.png",
+      "/images/projects/mint/thumb-02.png",
+      "/images/projects/mint/thumb-03.png",
+      "/images/projects/mint/thumb-04.png",
+    ],
+    themeColor: "#06c58b",
     background: "light",
   },
-
   {
-    id: "portfolio",
-    category: "website",
-    title: "PORTFOLIO",
-
-    period: "2024.03 - 2024.04",
-    contribution: "개인 프로젝트",
-    stack: ["Next.js", "GSAP", "SCSS"],
-
-    keywords: ["포트폴리오", "인터랙션", "애니메이션"],
-
-    overview:
-      "프론트엔드 개발자로서의 작업과 프로젝트를 정리한 포트폴리오 사이트입니다. GSAP 기반 스크롤 인터랙션을 중심으로 사용자 경험을 설계했습니다.",
-
-    heroImage: "/images/projects/portfolio/mockup.png",
-
-    thumbnails: [
-      "/images/projects/portfolio/01.png",
-      "/images/projects/portfolio/02.png",
-      "/images/projects/portfolio/03.png",
-      "/images/projects/portfolio/04.png",
-    ],
-
-    themeColor: "#2563eb",
-    background: "dark",
-  },
-
-  {
-    id: "designsystem",
+    id: "uikit",
     category: "design system",
     title: "UI KIT",
-
-    period: "2024.04 - 2024.05",
+    period: "2024.03 - 2024.04",
     contribution: "개인 프로젝트",
     stack: ["React", "Storybook", "TypeScript"],
-
-    keywords: ["컴포넌트", "디자인 시스템", "재사용"],
-
+    keywords: ["컴포넌트", "일관성", "재사용"],
     overview:
-      "프로젝트에서 반복적으로 사용하는 UI 요소들을 컴포넌트화하여 디자인 시스템 형태로 구축했습니다. Storybook을 활용해 컴포넌트 문서를 관리했습니다.",
-
-    heroImage: "/images/projects/uikit/mockup.png",
-
+      "반복되는 UI를 체계적으로 관리하기 위해 컴포넌트 규칙과 스타일 토큰을 정리한 프로젝트입니다. 구조적 일관성과 재사용성을 높이는 데 집중했습니다.",
+    heroImage: "/images/projects/uikit/screen.png",
     thumbnails: [
-      "/images/projects/uikit/01.png",
-      "/images/projects/uikit/02.png",
-      "/images/projects/uikit/03.png",
-      "/images/projects/uikit/04.png",
+      "/images/projects/uikit/thumb-01.png",
+      "/images/projects/uikit/thumb-02.png",
+      "/images/projects/uikit/thumb-03.png",
+      "/images/projects/uikit/thumb-04.png",
     ],
-
-    themeColor: "#f59e0b",
+    themeColor: "#f2b21b",
     background: "light",
   },
 ];
