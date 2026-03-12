@@ -3,10 +3,14 @@
 import { INTERVIEW_TITLE_PATHS } from "@/assets/svg/interviewTitlePath";
 
 type InterviewTitleProps = {
+  outlineGroupRef: React.RefObject<SVGGElement | null>;
   fillGroupRef: React.RefObject<SVGGElement | null>;
 };
 
-export default function InterviewTitle({ fillGroupRef }: InterviewTitleProps) {
+export default function InterviewTitle({
+  outlineGroupRef,
+  fillGroupRef,
+}: InterviewTitleProps) {
   return (
     <svg
       className="about-interview__title-svg"
@@ -15,21 +19,21 @@ export default function InterviewTitle({ fillGroupRef }: InterviewTitleProps) {
       aria-label="INTERVIEWS"
       role="img"
     >
-      <g className="about-interview__title-outline" opacity={0.75}>
+      <g ref={outlineGroupRef} className="about-interview__title-outline">
         {INTERVIEW_TITLE_PATHS.map((d, i) => (
           <path
             key={`outline-${i}`}
             d={d}
             fill="none"
             stroke="black"
-            strokeWidth={2}
+            strokeWidth={1.6}
             strokeLinejoin="round"
             strokeLinecap="round"
           />
         ))}
       </g>
 
-      <g ref={fillGroupRef} className="about-interview__title-fill" opacity={0}>
+      <g ref={fillGroupRef} className="about-interview__title-fill">
         {INTERVIEW_TITLE_PATHS.map((d, i) => (
           <path key={`fill-${i}`} d={d} fill="black" />
         ))}

@@ -12,22 +12,28 @@ gsap.registerPlugin(ScrollTrigger);
 export default function AboutInterview() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
+  const outlineGroupRef = useRef<SVGGElement | null>(null);
   const fillGroupRef = useRef<SVGGElement | null>(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
+    const outlineGroup = outlineGroupRef.current;
     const title = titleRef.current;
     const fillGroup = fillGroupRef.current;
 
-    if (!section || !title || !fillGroup) return;
+    if (!section || !title || !outlineGroup || !fillGroup) return;
 
     const ctx = gsap.context(() => {
-      const titleTween = InterviewAnimation.createTitleFill(fillGroup);
+      const titleTween = InterviewAnimation.createTitleFill(
+        outlineGroup,
+        fillGroup
+      );
 
       ScrollTrigger.create({
         trigger: title,
         start: "top 80%",
-        once: true,
+        end: "top 45%",
+        scrub: true,
         animation: titleTween,
       });
 
@@ -44,7 +50,8 @@ export default function AboutInterview() {
         ScrollTrigger.create({
           trigger: row,
           start: "top 85%",
-          once: true,
+          end: "top 65%",
+          scrub: true,
           animation: rowTimeline,
         });
       });
@@ -61,7 +68,10 @@ export default function AboutInterview() {
     >
       <div className="about-interview__inner">
         <div ref={titleRef} className="about-interview__title">
-          <InterviewTitle fillGroupRef={fillGroupRef} />
+          <InterviewTitle
+            outlineGroupRef={outlineGroupRef}
+            fillGroupRef={fillGroupRef}
+          />
         </div>
 
         <div className="about-interview__list">

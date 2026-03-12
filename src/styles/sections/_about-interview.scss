@@ -29,6 +29,13 @@
   height: auto;
 }
 
+.about-interview__title-outline {
+  opacity: 0.28;
+}
+
+.about-interview__title-fill {
+  opacity: 0;
+}
 .interview-row {
   position: relative;
   gap: 32px;

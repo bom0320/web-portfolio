@@ -1,17 +1,38 @@
 import gsap from "gsap";
 
 const InterviewAnimation = {
-  createTitleFill(fillGroup: SVGGElement) {
-    return gsap.fromTo(
+  createTitleFill(outlineGroup: SVGGElement, fillGroup: SVGGElement) {
+    const tl = gsap.timeline({ paused: true });
+
+    gsap.set(outlineGroup, {
+      opacity: 0.28,
+      filter: "blur(0.6px)",
+    });
+
+    gsap.set(fillGroup, {
+      opacity: 0,
+    });
+
+    tl.to(
       fillGroup,
-      { opacity: 0 },
       {
         opacity: 1,
-        duration: 0.6,
+        duration: 1,
         ease: "none",
-        paused: true,
-      }
+      },
+      0
+    ).to(
+      outlineGroup,
+      {
+        opacity: 0.12,
+        filter: "blur(0px)",
+        duration: 1,
+        ease: "none",
+      },
+      0
     );
+
+    return tl;
   },
 
   row(reveal: HTMLElement | null, overlay: HTMLElement | null) {
@@ -21,24 +42,27 @@ const InterviewAnimation = {
 
     gsap.set(reveal, {
       autoAlpha: 1,
-      y: 0,
-      clipPath: "inset(66% 0 0 0)",
+      clipPath: "inset(50% 0 0 0)",
     });
 
     gsap.set(overlay, {
       yPercent: 0,
     });
 
-    tl.to(reveal, {
-      clipPath: "inset(0% 0 0 0)",
-      duration: 0.8,
-      ease: "power3.out",
-    }).to(
+    tl.to(
+      reveal,
+      {
+        clipPath: "inset(0% 0 0 0)",
+        duration: 1,
+        ease: "none",
+      },
+      0
+    ).to(
       overlay,
       {
         yPercent: -100,
-        duration: 0.8,
-        ease: "power3.inOut",
+        duration: 1,
+        ease: "none",
       },
       0
     );
