@@ -1,44 +1,38 @@
 import { ProjectItem } from "@/data/projects";
-import ProjectShowcaseText from "./ProjectShowcaseText";
-import ProjectShowcaseVisual from "./ProjectShowcaseVisual";
-import ProjectShowcaseThumbs from "./ProjectShowcaseThumbs";
 
-interface ProjectShowcaseProps {
+interface ProjectShowcaseTextProps {
   project: ProjectItem;
 }
 
-export default function ProjectShowcase({ project }: ProjectShowcaseProps) {
+export default function ProjectShowcaseText({
+  project,
+}: ProjectShowcaseTextProps) {
   return (
-    <section
-      className={`project-showcase project-showcase--${project.background}`}
-      style={{ "--project-accent": project.themeColor } as React.CSSProperties}
-    >
-      <div className="project-showcase__hero">
-        <ProjectShowcaseText project={project} />
-        <ProjectShowcaseVisual project={project} />
-      </div>
+    <div className="project-showcase__info">
+      <p className="project-showcase__category">{project.category}</p>
 
-      <div className="project-showcase__detail">
-        <div className="project-showcase__detail-left">
-          <div className="project-showcase__text-block">
-            <h3 className="project-showcase__detail-title">KEYWORD</h3>
-            <p className="project-showcase__detail-text">
-              {project.keywords.join(", ")}
-            </p>
-          </div>
+      <h2 className="project-showcase__title">{project.title}</h2>
 
-          <div className="project-showcase__text-block">
-            <h3 className="project-showcase__detail-title">OVERVIEW</h3>
-            <p className="project-showcase__detail-text">{project.overview}</p>
-          </div>
+      <dl className="project-showcase__meta">
+        <div className="project-showcase__meta-row">
+          <dt>작업기간</dt>
+          <dd>{project.period}</dd>
         </div>
 
-        <ProjectShowcaseThumbs
-          id={project.id}
-          title={project.title}
-          thumbnails={project.thumbnails}
-        />
-      </div>
-    </section>
+        <div className="project-showcase__meta-row">
+          <dt>기여도</dt>
+          <dd>{project.contribution}</dd>
+        </div>
+
+        <div className="project-showcase__meta-row">
+          <dt>프레임워크</dt>
+          <dd>{project.stack.join(", ")}</dd>
+        </div>
+      </dl>
+
+      <button type="button" className="project-showcase__button">
+        View More
+      </button>
+    </div>
   );
 }

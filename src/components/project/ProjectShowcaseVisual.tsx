@@ -22,7 +22,7 @@ export default function ProjectShowcaseVisual({
         </div>
 
         <Image
-          src="/images/projects/common/monitor-frame.png"
+          src="/images/projects/monitor-frame.png"
           alt=""
           fill
           className="project-showcase__monitor-frame"
