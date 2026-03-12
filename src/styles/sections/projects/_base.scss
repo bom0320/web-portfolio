@@ -1,0 +1,19 @@
+.projects-section {
+  position: relative;
+  width: 100%;
+}
+
+.project-showcase {
+  --project-accent: #7a4cff;
+  width: 100%;
+}
+
+.project-showcase--dark {
+  background: #232323;
+  color: #ffffff;
+}
+
+.project-showcase--light {
+  background: #ececec;
+  color: #111111;
+}
