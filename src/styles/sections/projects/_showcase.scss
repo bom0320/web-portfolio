@@ -1,49 +1,51 @@
 .project-showcase__hero {
   display: grid;
-  grid-template-columns: 320px minmax(0, 1fr);
+  grid-template-columns: 1fr 1.08fr;
   align-items: center;
-  min-height: 72vh;
-  padding: 80px 70px 0;
+  flex: 1;
+  padding: 64px 88px 24px;
+  column-gap: 56px;
 }
 
 .project-showcase__info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  max-width: 380px;
 }
 
 .project-showcase__category {
-  margin-bottom: 10px;
-  font-size: 1.6rem;
+  margin-bottom: 14px;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--project-accent);
 }
 
 .project-showcase__title {
-  margin-bottom: 24px;
-  font-size: clamp(4.8rem, 5vw, 7.2rem);
+  margin-bottom: 30px;
+  font-size: clamp(5.8rem, 6vw, 8.4rem);
   font-weight: 800;
-  line-height: 1;
+  line-height: 0.94;
+  letter-spacing: -0.03em;
 }
-
 .project-showcase__meta {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   margin: 0;
 }
 
 .project-showcase__meta-row {
   display: grid;
-  grid-template-columns: 78px 1fr;
-  gap: 10px;
+  grid-template-columns: 84px 1fr;
+  gap: 12px;
 }
 
 .project-showcase__meta-row dt,
 .project-showcase__meta-row dd {
   margin: 0;
-  font-size: 1.5rem;
-  line-height: 1.5;
+  font-size: 1.55rem;
+  line-height: 1.55;
 }
 
 .project-showcase__meta-row dt {
@@ -71,16 +73,16 @@
   border-color: rgba(17, 17, 17, 0.14);
   background: rgba(17, 17, 17, 0.04);
 }
-
 .project-showcase__visual {
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: end;
+  min-width: 0;
 }
 
 .project-showcase__monitor {
   position: relative;
-  width: min(690px, 100%);
+  width: min(760px, 100%);
   aspect-ratio: 689 / 529;
 }
 

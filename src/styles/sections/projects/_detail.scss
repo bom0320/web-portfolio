@@ -1,11 +1,12 @@
 .project-showcase__detail {
   display: grid;
-  grid-template-columns: 360px minmax(0, 1fr);
-  gap: 56px;
-  padding: 24px 70px 34px;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 40px;
+  padding: 24px 88px 28px;
   background: #ececec;
   color: #111111;
   border-top: 1px solid rgba(17, 17, 17, 0.08);
+  flex-shrink: 0;
 }
 
 .project-showcase__detail-left {

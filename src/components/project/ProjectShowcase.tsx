@@ -9,7 +9,7 @@ interface ProjectShowcaseProps {
 
 export default function ProjectShowcase({ project }: ProjectShowcaseProps) {
   return (
-    <section
+    <div
       className={`project-showcase project-showcase--${project.background}`}
       style={{ "--project-accent": project.themeColor } as React.CSSProperties}
     >
@@ -19,6 +19,6 @@ export default function ProjectShowcase({ project }: ProjectShowcaseProps) {
       </div>
 
       <ProjectShowcaseDetail project={project} />
-    </section>
+    </div>
   );
 }
