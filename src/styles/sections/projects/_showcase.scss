@@ -1,8 +1,10 @@
 /* =========================
-   Hero
+   Hero Area
 ========================= */
 
-.project-showcase__hero {
+.project-frame__hero {
+  --project-accent: #7a4cff;
+
   flex: 1;
   min-height: 0;
   overflow: hidden;
@@ -16,7 +18,21 @@
     clamp(10px, 1.6vw, 16px);
 }
 
-.project-showcase__info {
+.project-frame__hero--dark {
+  background: #232323;
+  color: #ffffff;
+}
+
+.project-frame__hero--light {
+  background: #ececec;
+  color: #111111;
+}
+
+/* =========================
+   Text
+========================= */
+
+.project-frame__info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -25,14 +41,14 @@
   max-width: 340px;
 }
 
-.project-showcase__category {
+.project-frame__category {
   margin-bottom: 10px;
   font-size: clamp(1.6rem, 1.8vw, 2rem);
   font-weight: 700;
   color: var(--project-accent);
 }
 
-.project-showcase__title {
+.project-frame__title {
   margin-bottom: 20px;
   font-size: clamp(4.2rem, 5vw, 6.8rem);
   font-weight: 800;
@@ -40,35 +56,35 @@
   letter-spacing: -0.03em;
 }
 
-.project-showcase__meta {
+.project-frame__meta {
   display: flex;
   flex-direction: column;
   gap: 6px;
   margin: 0;
 }
 
-.project-showcase__meta-row {
+.project-frame__meta-row {
   display: grid;
   grid-template-columns: 76px 1fr;
   gap: 10px;
 }
 
-.project-showcase__meta-row dt,
-.project-showcase__meta-row dd {
+.project-frame__meta-row dt,
+.project-frame__meta-row dd {
   margin: 0;
   font-size: clamp(1.25rem, 1.25vw, 1.45rem);
   line-height: 1.45;
 }
 
-.project-showcase__meta-row dt {
+.project-frame__meta-row dt {
   font-weight: 700;
 }
 
-.project-showcase__meta-row dd {
+.project-frame__meta-row dd {
   opacity: 0.82;
 }
 
-.project-showcase__button {
+.project-frame__button {
   min-width: 120px;
   height: 40px;
   margin-top: 32px;
@@ -81,7 +97,7 @@
   cursor: pointer;
 }
 
-.project-showcase--light .project-showcase__button {
+.project-frame__hero--light .project-frame__button {
   border-color: rgba(17, 17, 17, 0.14);
   background: rgba(17, 17, 17, 0.04);
 }
@@ -90,7 +106,7 @@
    Visual
 ========================= */
 
-.project-showcase__visual {
+.project-frame__visual {
   display: flex;
   justify-content: center;
   align-items: end;
@@ -99,14 +115,14 @@
   overflow: hidden;
 }
 
-.project-showcase__monitor {
+.project-frame__monitor {
   position: relative;
   width: min(620px, 100%);
   max-height: 100%;
   aspect-ratio: 689 / 529;
 }
 
-.project-showcase__screen {
+.project-frame__screen {
   position: absolute;
   top: 3%;
   left: 2.3%;
@@ -117,11 +133,11 @@
   background: #d8d8d8;
 }
 
-.project-showcase__screen-image {
+.project-frame__screen-image {
   object-fit: cover;
 }
 
-.project-showcase__monitor-frame {
+.project-frame__monitor-frame {
   object-fit: contain;
   pointer-events: none;
 }

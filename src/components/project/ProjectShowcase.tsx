@@ -1,7 +1,7 @@
 import { ProjectItem } from "@/data/projects";
-import ProjectShowcaseText from "./ProjectShowcaseText";
-import ProjectShowcaseVisual from "./ProjectShowcaseVisual";
-import ProjectShowcaseDetail from "./ProjectShowcaseDetail";
+import ProjectShowcaseText from "./ProjectFrameText";
+import ProjectShowcaseVisual from "./ProjectFrameVisual";
+import ProjectShowcaseDetail from "./ProjectFrameDetail";
 
 interface ProjectShowcaseProps {
   project: ProjectItem;

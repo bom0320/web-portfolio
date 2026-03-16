@@ -1,8 +1,8 @@
 /* =========================
-   Detail Bar
+   Fixed Detail Bar
 ========================= */
 
-.project-showcase__detail {
+.project-frame__detail {
   flex: 0 0 230px;
   min-height: 0;
   overflow: hidden;
@@ -18,7 +18,7 @@
   align-items: start;
 }
 
-.project-showcase__detail-left {
+.project-frame__detail-left {
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -26,32 +26,27 @@
   overflow: hidden;
 }
 
-.project-showcase__text-block {
+.project-frame__text-block {
   display: flex;
   flex-direction: column;
   gap: 8px;
   min-width: 0;
 }
 
-.project-showcase__detail-title {
+.project-frame__detail-title {
   font-size: 1.35rem;
   font-weight: 800;
   line-height: 1.2;
 }
 
-.project-showcase__detail-text {
+.project-frame__detail-text {
   font-size: 1.2rem;
   line-height: 1.5;
   word-break: keep-all;
   overflow: hidden;
 }
 
-.project-showcase__text-block:first-child .project-showcase__detail-text {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.project-showcase__text-block:last-child .project-showcase__detail-text {
+.project-frame__detail-text--overview {
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
@@ -61,7 +56,7 @@
    Thumbnails
 ========================= */
 
-.project-showcase__thumbs {
+.project-frame__thumbs {
   min-width: 0;
   min-height: 0;
 
@@ -72,7 +67,7 @@
   align-content: end;
 }
 
-.project-showcase__thumb {
+.project-frame__thumb {
   position: relative;
   width: 100%;
   aspect-ratio: 1.58 / 1;
@@ -81,6 +76,6 @@
   border-radius: 8px;
 }
 
-.project-showcase__thumb-image {
+.project-frame__thumb-image {
   object-fit: cover;
 }

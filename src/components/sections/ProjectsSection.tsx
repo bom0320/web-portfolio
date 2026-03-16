@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import ProjectShowcase from "@/components/project/ProjectShowcase";
+import ProjectFrame from "../project/ProojectFrame";
 import { PROJECTS } from "@/data/projects";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -40,9 +40,7 @@ export default function ProjectsSection() {
       });
     }, section);
 
-    return () => {
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -52,7 +50,7 @@ export default function ProjectsSection() {
         style={{ "--project-count": PROJECTS.length } as React.CSSProperties}
       >
         <div className="projects-section__stage">
-          <ProjectShowcase project={PROJECTS[currentIndex]} />
+          <ProjectFrame project={PROJECTS[currentIndex]} />
         </div>
       </div>
     </section>
