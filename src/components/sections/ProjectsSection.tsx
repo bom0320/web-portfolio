@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import ProjectFrame from "../project/ProojectFrame";
+import ProjectFrame from "../project/ProjectFrame";
 import { PROJECTS } from "@/data/projects";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -27,6 +27,7 @@ export default function ProjectsSection() {
         trigger: section,
         start: "top top",
         end: () => `+=${window.innerHeight * (PROJECTS.length - 1)}`,
+        pin: true,
         scrub: true,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
@@ -45,14 +46,7 @@ export default function ProjectsSection() {
 
   return (
     <section ref={sectionRef} id="projects" className="projects-section">
-      <div
-        className="projects-section__scroll-space"
-        style={{ "--project-count": PROJECTS.length } as React.CSSProperties}
-      >
-        <div className="projects-section__stage">
-          <ProjectFrame project={PROJECTS[currentIndex]} />
-        </div>
-      </div>
+      <ProjectFrame project={PROJECTS[currentIndex]} />
     </section>
   );
 }
