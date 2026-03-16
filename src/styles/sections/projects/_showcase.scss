@@ -1,51 +1,63 @@
+/* =========================
+   Hero
+========================= */
+
 .project-showcase__hero {
-  display: grid;
-  grid-template-columns: 1fr 1.08fr;
-  align-items: center;
   flex: 1;
-  padding: 64px 88px 24px;
-  column-gap: 56px;
+  min-height: 0;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  column-gap: clamp(24px, 3vw, 40px);
+
+  padding: clamp(24px, 3vw, 36px) clamp(32px, 5vw, 72px)
+    clamp(10px, 1.6vw, 16px);
 }
 
 .project-showcase__info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 380px;
+  justify-content: center;
+  min-width: 0;
+  max-width: 340px;
 }
 
 .project-showcase__category {
-  margin-bottom: 14px;
-  font-size: 2rem;
+  margin-bottom: 10px;
+  font-size: clamp(1.6rem, 1.8vw, 2rem);
   font-weight: 700;
   color: var(--project-accent);
 }
 
 .project-showcase__title {
-  margin-bottom: 30px;
-  font-size: clamp(5.8rem, 6vw, 8.4rem);
+  margin-bottom: 20px;
+  font-size: clamp(4.2rem, 5vw, 6.8rem);
   font-weight: 800;
-  line-height: 0.94;
+  line-height: 0.95;
   letter-spacing: -0.03em;
 }
+
 .project-showcase__meta {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   margin: 0;
 }
 
 .project-showcase__meta-row {
   display: grid;
-  grid-template-columns: 84px 1fr;
-  gap: 12px;
+  grid-template-columns: 76px 1fr;
+  gap: 10px;
 }
 
 .project-showcase__meta-row dt,
 .project-showcase__meta-row dd {
   margin: 0;
-  font-size: 1.55rem;
-  line-height: 1.55;
+  font-size: clamp(1.25rem, 1.25vw, 1.45rem);
+  line-height: 1.45;
 }
 
 .project-showcase__meta-row dt {
@@ -57,15 +69,15 @@
 }
 
 .project-showcase__button {
-  min-width: 126px;
-  height: 42px;
-  margin-top: 46px;
-  padding: 0 20px;
+  min-width: 120px;
+  height: 40px;
+  margin-top: 32px;
+  padding: 0 18px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   color: inherit;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   cursor: pointer;
 }
 
@@ -73,16 +85,24 @@
   border-color: rgba(17, 17, 17, 0.14);
   background: rgba(17, 17, 17, 0.04);
 }
+
+/* =========================
+   Visual
+========================= */
+
 .project-showcase__visual {
   display: flex;
   justify-content: center;
   align-items: end;
   min-width: 0;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .project-showcase__monitor {
   position: relative;
-  width: min(760px, 100%);
+  width: min(620px, 100%);
+  max-height: 100%;
   aspect-ratio: 689 / 529;
 }
 
