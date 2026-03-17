@@ -15,6 +15,7 @@
 
   padding: clamp(24px, 3vw, 36px) clamp(32px, 5vw, 72px)
     clamp(10px, 1.6vw, 16px);
+  overflow: visible;
 }
 
 .project-frame__hero--dark {
@@ -107,17 +108,18 @@
 .project-frame__visual {
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: flex-end;
   min-width: 0;
   min-height: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .project-frame__monitor {
   position: relative;
   width: min(620px, 100%);
-  max-height: 100%;
   aspect-ratio: 689 / 529;
+  max-height: none;
+  transform: translateY(80px);
 }
 
 .project-frame__screen {

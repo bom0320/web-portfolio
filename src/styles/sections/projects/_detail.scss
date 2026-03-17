@@ -8,8 +8,8 @@
   overflow: visible;
   display: grid;
   grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
-  gap: 28px;
-  padding: 20px 66px;
+  gap: 48px;
+  padding: 20px 56px;
   background: #f2f2f2;
   color: #111111;
   margin-top: -2px;
@@ -32,13 +32,14 @@
 }
 
 .project-frame__detail-title {
-  font-size: 0.98rem;
+  font-size: 1rem;
   font-weight: 800;
   line-height: 1.2;
+  margin-bottom: 10px;
 }
 
 .project-frame__detail-text {
-  font-size: 0.9rem;
+  font-size: 0.98rem;
   line-height: 1.5;
   margin-top: 0;
 }
@@ -46,7 +47,9 @@
 .project-frame__detail-text--overview {
   display: -webkit-box;
   -webkit-line-clamp: 4;
+  line-clamp: 4;
   -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* =========================
