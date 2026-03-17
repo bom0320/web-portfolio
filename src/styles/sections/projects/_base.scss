@@ -3,20 +3,6 @@
   width: 100vw;
   height: 100vh;
   margin-left: calc(50% - 50vw);
-  overflow: hidden;
-}
-
-.projects-section__scroll-space {
-  position: relative;
-  width: 100%;
-  height: calc(var(--project-count) * 100vh);
-}
-
-.projects-section__stage {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
 }
 
 /* =========================
@@ -26,14 +12,11 @@
 .project-frame {
   width: 100%;
   height: 100%;
-  background: #0f0f0f;
 }
 
 .project-frame__surface {
   width: 100%;
   height: 100%;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }

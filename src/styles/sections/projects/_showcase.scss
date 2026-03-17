@@ -4,11 +4,10 @@
 
 .project-frame__hero {
   --project-accent: #7a4cff;
-
   flex: 1;
   min-height: 0;
   overflow: hidden;
-
+  border-bottom: 5px solid rgba(105, 105, 105, 0.08);
   display: grid;
   grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
   align-items: center;
@@ -24,7 +23,7 @@
 }
 
 .project-frame__hero--light {
-  background: #ececec;
+  background: #ffffff;
   color: #111111;
 }
 
@@ -42,15 +41,15 @@
 }
 
 .project-frame__category {
-  margin-bottom: 10px;
-  font-size: clamp(1.6rem, 1.8vw, 2rem);
+  font-size: clamp(1.6rem, 1.8vw, 1.2rem);
   font-weight: 700;
+  margin: 0;
   color: var(--project-accent);
 }
 
 .project-frame__title {
-  margin-bottom: 20px;
-  font-size: clamp(4.2rem, 5vw, 6.8rem);
+  margin: 16px 0px;
+  font-size: clamp(2.6rem, 4vw, 3.8rem);
   font-weight: 800;
   line-height: 0.95;
   letter-spacing: -0.03em;
@@ -65,14 +64,14 @@
 
 .project-frame__meta-row {
   display: grid;
-  grid-template-columns: 76px 1fr;
+  grid-template-columns: 80px 1fr;
   gap: 10px;
 }
 
 .project-frame__meta-row dt,
 .project-frame__meta-row dd {
   margin: 0;
-  font-size: clamp(1.25rem, 1.25vw, 1.45rem);
+  font-size: clamp(1.12rem, 1.1vw, 1.25rem);
   line-height: 1.45;
 }
 
@@ -86,14 +85,13 @@
 
 .project-frame__button {
   min-width: 120px;
-  height: 40px;
-  margin-top: 32px;
-  padding: 0 18px;
+  margin-top: 50px;
+  padding: 12px 30px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   color: inherit;
-  font-size: 1.35rem;
+  font-size: 1rem;
   cursor: pointer;
 }
 
