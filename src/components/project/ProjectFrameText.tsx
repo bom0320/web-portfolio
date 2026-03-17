@@ -1,28 +1,32 @@
 import { ProjectItem } from "@/data/projects";
 
 interface ProjectFrameTextProps {
-  project: ProjectItem;
+  currentProject: ProjectItem;
+  nextProject: ProjectItem | null;
+  isTransitioning: boolean;
 }
 
-export default function ProjectFrameText({ project }: ProjectFrameTextProps) {
+export default function ProjectFrameText({
+  currentProject,
+}: ProjectFrameTextProps) {
   return (
     <div className="project-frame__info">
-      <p className="project-frame__category">{project.category}</p>
+      <p className="project-frame__category">{currentProject.category}</p>
 
-      <h2 className="project-frame__title">{project.title}</h2>
+      <h2 className="project-frame__title">{currentProject.title}</h2>
 
       <dl className="project-frame__meta">
         <div className="project-frame__meta-row">
           <dt>작업기간</dt>
-          <dd>{project.period}</dd>
+          <dd>{currentProject.period}</dd>
         </div>
         <div className="project-frame__meta-row">
           <dt>기여도</dt>
-          <dd>{project.contribution}</dd>
+          <dd>{currentProject.contribution}</dd>
         </div>
         <div className="project-frame__meta-row">
           <dt>프레임워크</dt>
-          <dd>{project.stack.join(", ")}</dd>
+          <dd>{currentProject.stack.join(", ")}</dd>
         </div>
       </dl>
 

@@ -14,7 +14,10 @@ function getProjectIndex(progress: number, total: number) {
 
 export default function ProjectsSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [displayIndex, setDisplayIndex] = useState(0); // 지금 화면에서 확장되서 보이는 프젝
+  const [incomingIndex, setIncomingIndex] = useState<number | null>(0); // 다음으로 들ㄹ어올 프젝
+  const [isTransitioning, setIsTransitioning] = useState(false); // 지금 전환중인지
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -35,18 +38,35 @@ export default function ProjectsSection() {
 
           if (nextIndex !== lastIndex) {
             lastIndex = nextIndex;
-            setCurrentIndex(nextIndex);
+
+            if (nextIndex === displayIndex || isTransitioning) return;
+
+            setIncomingIndex(nextIndex);
+            setIsTransitioning(true);
           }
         },
       });
     }, section);
 
     return () => ctx.revert();
-  }, []);
+  }, [displayIndex, isTransitioning]);
+
+  const handleTransitionComplete = () => {
+    if (incomingIndex === null) return;
+
+    setDisplayIndex(incomingIndex);
+    setIncomingIndex(null);
+    setIsTransitioning(false);
+  };
 
   return (
     <section ref={sectionRef} id="projects" className="projects-section">
-      <ProjectFrame project={PROJECTS[currentIndex]} />
+      <ProjectFrame
+        currentProject={PROJECTS[displayIndex]}
+        nextProject={incomingIndex !== null ? PROJECTS[incomingIndex] : null}
+        isTransitioning={isTransitioning}
+        onTransitionComplete={handleTransitionComplete}
+      />
     </section>
   );
 }
