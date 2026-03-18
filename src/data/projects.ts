@@ -10,7 +10,8 @@ export interface ProjectItem {
   heroImage: string;
   thumbnails: string[];
   themeColor: string;
-  background: "dark" | "light";
+  background: string;
+  tone: "dark" | "light";
 }
 
 export const PROJECTS: ProjectItem[] = [
@@ -32,7 +33,8 @@ export const PROJECTS: ProjectItem[] = [
       "/images/projects/mealdo/thumb-04.png",
     ],
     themeColor: "#7a4cff",
-    background: "dark",
+    background: "#232323",
+    tone: "dark",
   },
   {
     id: "tving",
@@ -52,7 +54,8 @@ export const PROJECTS: ProjectItem[] = [
       "/images/projects/tving/thumb-04.png",
     ],
     themeColor: "#ffffff",
-    background: "dark",
+    background: "#1a1a1a",
+    tone: "dark",
   },
   {
     id: "mint",
@@ -72,7 +75,8 @@ export const PROJECTS: ProjectItem[] = [
       "/images/projects/mint/thumb-04.png",
     ],
     themeColor: "#06c58b",
-    background: "light",
+    background: "#f3f3f3",
+    tone: "light",
   },
   {
     id: "uikit",
@@ -92,6 +96,7 @@ export const PROJECTS: ProjectItem[] = [
       "/images/projects/uikit/thumb-04.png",
     ],
     themeColor: "#f2b21b",
-    background: "light",
+    background: "#ffffff",
+    tone: "light",
   },
 ];

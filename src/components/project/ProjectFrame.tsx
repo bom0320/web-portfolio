@@ -20,10 +20,11 @@ export default function ProjectFrame({
     <div className="project-frame">
       <div className="project-frame__surface">
         <div
-          className={`project-frame__hero project-frame__hero--${currentProject.background}`}
+          className={`project-frame__hero project-frame__hero--${currentProject.tone}`}
           style={
             {
               "--project-accent": currentProject.themeColor,
+              "--project-bg": currentProject.background,
             } as React.CSSProperties
           }
         >
