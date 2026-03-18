@@ -142,3 +142,26 @@
   object-fit: contain;
   pointer-events: none;
 }
+
+.project-frame__info-stack {
+  position: relative;
+  min-width: 0;
+}
+
+.project-frame__info--next {
+  position: absolute;
+  inset: 0;
+}
+
+.project-frame__screen-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.project-frame__screen-layer--next {
+  z-index: 2;
+}
+
+.project-frame__screen-layer--current {
+  z-index: 1;
+}

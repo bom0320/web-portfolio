@@ -5,7 +5,7 @@
 .project-frame__detail {
   flex: 0 0 300px;
   min-height: 0;
-  overflow: visible;
+  overflow: hidden;
   display: grid;
   grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
   gap: 48px;
@@ -18,20 +18,10 @@
   align-items: start;
 }
 
-.project-frame__detail-content {
-  position: relative;
-  min-width: 0;
-}
-
-.project-frame__thumbs-shell {
-  min-width: 0;
-  min-height: 0;
-  position: relative;
-}
-
 .project-frame__detail-left {
   display: flex;
   flex-direction: column;
+  gap: 24px;
   min-width: 0;
   overflow: hidden;
 }
@@ -49,6 +39,20 @@
   margin-bottom: 10px;
 }
 
+.project-frame__detail-content-stack {
+  position: relative;
+  min-width: 0;
+}
+
+.project-frame__detail-content {
+  min-width: 0;
+}
+
+.project-frame__detail-content--next {
+  position: absolute;
+  inset: 0;
+}
+
 .project-frame__detail-text {
   font-size: 0.98rem;
   line-height: 1.5;
@@ -63,6 +67,29 @@
   overflow: hidden;
 }
 
+.project-frame__thumbs-shell {
+  min-width: 0;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-frame__thumbs-stack {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+}
+
+.project-frame__thumbs-layer {
+  min-width: 0;
+  min-height: 0;
+}
+
+.project-frame__thumbs-layer--next {
+  position: absolute;
+  inset: 0;
+}
+
 /* =========================
    Thumbnails
 ========================= */
@@ -70,16 +97,23 @@
 .project-frame__thumbs {
   min-width: 0;
   min-height: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: hidden;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.project-frame__thumb-track {
+  display: flex;
+  align-items: center;
   gap: 12px;
-  align-self: stretch;
-  align-content: end;
+  width: max-content;
 }
 
 .project-frame__thumb {
   position: relative;
-  width: 100%;
+  flex: 0 0 220px;
   aspect-ratio: 1.58 / 1;
   overflow: hidden;
   background: #dddddd;
