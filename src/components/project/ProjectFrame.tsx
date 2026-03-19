@@ -4,6 +4,7 @@ import { ProjectItem } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import ProjectAnimation from "../animations/project";
 interface ProjectFrameProps {
   currentProject: ProjectItem;
   nextProject: ProjectItem | null;
@@ -24,17 +25,10 @@ export default function ProjectFrame({
 
     if (!isTransitioning || !nextProject || !nextLayer) return;
 
-    gsap.set(nextLayer, { opacity: 0 });
-
-    const tl = gsap.timeline({
-      defaults: {
-        duration: 0.5,
-        ease: "power2.out",
-      },
+    const tl = ProjectAnimation.createProjectLayerTransition({
+      nextLayer,
       onComplete: onTransitionComplete,
     });
-
-    tl.to(nextLayer, { opacity: 1 }, 0);
 
     return () => {
       tl.kill();
@@ -47,7 +41,7 @@ export default function ProjectFrame({
         <div className="project-layer project-layer--current">
           <ProjectCard project={currentProject} />
         </div>
-
+        s
         {isTransitioning && nextProject && (
           <div ref={nextLayerRef} className="project-layer project-layer--next">
             <ProjectCard project={nextProject} />
