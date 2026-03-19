@@ -8,14 +8,12 @@ interface ProjectFrameDetailProps {
   currentProject: ProjectItem;
   nextProject: ProjectItem | null;
   isTransitioning: boolean;
-  onTransitionComplete: () => void;
 }
 
 export default function ProjectFrameDetail({
   currentProject,
   nextProject,
   isTransitioning,
-  onTransitionComplete,
 }: ProjectFrameDetailProps) {
   const currentKeywordRef = useRef<HTMLDivElement | null>(null);
   const nextKeywordRef = useRef<HTMLDivElement | null>(null);
@@ -54,13 +52,12 @@ export default function ProjectFrameDetail({
       nextOverview,
       currentThumbs,
       nextThumbs,
-      onComplete: onTransitionComplete,
     });
 
     return () => {
       tl.kill();
     };
-  }, [isTransitioning, nextProject, onTransitionComplete]);
+  }, [isTransitioning, nextProject]);
 
   return (
     <div className="project-frame__detail">

@@ -8,12 +8,14 @@ interface ProjectFrameVisualProps {
   currentProject: ProjectItem;
   nextProject: ProjectItem | null;
   isTransitioning: boolean;
+  onTransitionComplete: () => void;
 }
 
 export default function ProjectFrameVisual({
   currentProject,
   nextProject,
   isTransitioning,
+  onTransitionComplete,
 }: ProjectFrameVisualProps) {
   const currentImageRef = useRef<HTMLDivElement | null>(null);
   const nextImageRef = useRef<HTMLDivElement | null>(null);
@@ -29,12 +31,13 @@ export default function ProjectFrameVisual({
     const tl = ProjectAnimation.createProjectHeroVisualTransition({
       currentImage,
       nextImage,
+      onComplete: onTransitionComplete,
     });
 
     return () => {
       tl.kill();
     };
-  }, [isTransitioning, nextProject]);
+  }, [isTransitioning, nextProject, onTransitionComplete]);
 
   return (
     <div className="project-frame__visual">

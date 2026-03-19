@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import ProjectFrame from "../project/ProjectFrame";
@@ -15,55 +15,73 @@ function getProjectIndex(progress: number, total: number) {
 export default function ProjectsSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  const [displayIndex, setDisplayIndex] = useState(0); // 지금 화면에서 확장되서 보이는 프젝
-  const [incomingIndex, setIncomingIndex] = useState<number | null>(0); // 다음으로 들ㄹ어올 프젝
-  const [isTransitioning, setIsTransitioning] = useState(false); // 지금 전환중인지
+  const [displayIndex, setDisplayIndex] = useState(0);
+  const [incomingIndex, setIncomingIndex] = useState<number | null>(null);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const displayIndexRef = useRef(displayIndex);
+  const isTransitioningRef = useRef(isTransitioning);
+  const incomingIndexRef = useRef<number | null>(incomingIndex);
+
+  useEffect(() => {
+    displayIndexRef.current = displayIndex;
+  }, [displayIndex]);
+
+  useEffect(() => {
+    isTransitioningRef.current = isTransitioning;
+  }, [isTransitioning]);
+
+  useEffect(() => {
+    incomingIndexRef.current = incomingIndex;
+  }, [incomingIndex]);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
-    const ctx = gsap.context(() => {
-      let lastIndex = 0;
+    let lastIndex = 0;
 
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: () => `+=${window.innerHeight * (PROJECTS.length - 1)}`,
-        pin: true,
-        scrub: true,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          const nextIndex = getProjectIndex(self.progress, PROJECTS.length);
+    const trigger = ScrollTrigger.create({
+      trigger: section,
+      start: "top top",
+      end: () => `+=${window.innerHeight * (PROJECTS.length - 1)}`,
+      pin: true,
+      scrub: true,
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        const nextIndex = getProjectIndex(self.progress, PROJECTS.length);
 
-          if (nextIndex !== lastIndex) {
-            lastIndex = nextIndex;
+        if (nextIndex === lastIndex) return;
+        lastIndex = nextIndex;
 
-            if (nextIndex === displayIndex || isTransitioning) return;
+        if (isTransitioningRef.current) return;
+        if (nextIndex === displayIndexRef.current) return;
 
-            setIncomingIndex(nextIndex);
-            setIsTransitioning(true);
-          }
-        },
-      });
-    }, section);
+        setIncomingIndex(nextIndex);
+        setIsTransitioning(true);
+      },
+    });
 
-    return () => ctx.revert();
-  }, [displayIndex, isTransitioning]);
+    return () => {
+      trigger.kill();
+    };
+  }, []);
 
   const handleTransitionComplete = () => {
-    if (incomingIndex === null) return;
+    if (incomingIndexRef.current === null) return;
 
-    setDisplayIndex(incomingIndex);
+    setDisplayIndex(incomingIndexRef.current);
     setIncomingIndex(null);
     setIsTransitioning(false);
   };
+
+  const nextProject = incomingIndex !== null ? PROJECTS[incomingIndex] : null;
 
   return (
     <section ref={sectionRef} id="projects" className="projects-section">
       <ProjectFrame
         currentProject={PROJECTS[displayIndex]}
-        nextProject={incomingIndex !== null ? PROJECTS[incomingIndex] : null}
+        nextProject={nextProject}
         isTransitioning={isTransitioning}
         onTransitionComplete={handleTransitionComplete}
       />

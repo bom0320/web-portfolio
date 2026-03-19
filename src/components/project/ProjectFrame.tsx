@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import { ProjectItem } from "@/data/projects";
 import ProjectFrameText from "./ProjectFrameText";
 import ProjectFrameVisual from "./ProjectFrameVisual";
@@ -16,15 +20,55 @@ export default function ProjectFrame({
   isTransitioning,
   onTransitionComplete,
 }: ProjectFrameProps) {
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const [displayTone, setDisplayTone] = useState<"dark" | "light">(
+    currentProject.tone
+  );
+
+  useEffect(() => {
+    if (isTransitioning) return;
+    setDisplayTone(currentProject.tone);
+  }, [currentProject.tone, isTransitioning]);
+
+  useLayoutEffect(() => {
+    const hero = heroRef.current;
+    if (!hero) return;
+
+    if (!isTransitioning || !nextProject) {
+      gsap.set(hero, {
+        backgroundColor: currentProject.background,
+      });
+      return;
+    }
+
+    const tl = gsap.timeline({
+      defaults: {
+        ease: "power2.out",
+      },
+      onComplete: () => {
+        setDisplayTone(nextProject.tone);
+      },
+    });
+
+    tl.to(hero, {
+      backgroundColor: nextProject.background,
+      duration: 0.45,
+    });
+
+    return () => {
+      tl.kill();
+    };
+  }, [currentProject.background, nextProject, isTransitioning]);
+
   return (
     <div className="project-frame">
       <div className="project-frame__surface">
         <div
-          className={`project-frame__hero project-frame__hero--${currentProject.tone}`}
+          ref={heroRef}
+          className={`project-frame__hero project-frame__hero--${displayTone}`}
           style={
             {
               "--project-accent": currentProject.themeColor,
-              "--project-bg": currentProject.background,
             } as React.CSSProperties
           }
         >
@@ -38,6 +82,7 @@ export default function ProjectFrame({
             currentProject={currentProject}
             nextProject={nextProject}
             isTransitioning={isTransitioning}
+            onTransitionComplete={onTransitionComplete}
           />
         </div>
 
@@ -45,7 +90,6 @@ export default function ProjectFrame({
           currentProject={currentProject}
           nextProject={nextProject}
           isTransitioning={isTransitioning}
-          onTransitionComplete={onTransitionComplete}
         />
       </div>
     </div>

@@ -4,7 +4,6 @@
 
 .project-frame__hero {
   --project-accent: #7a4cff;
-  --project-bg: #232323;
 
   flex: 1;
   min-height: 0;
@@ -16,9 +15,6 @@
   padding: clamp(24px, 3vw, 36px) clamp(32px, 5vw, 72px)
     clamp(10px, 1.6vw, 16px);
   overflow: visible;
-
-  background: var(--project-bg);
-  transition: background-color 0.35s ease;
 }
 
 .project-frame__hero--dark {
@@ -28,6 +24,7 @@
 .project-frame__hero--light {
   color: #111111;
 }
+
 /* =========================
    Text
 ========================= */
@@ -94,8 +91,6 @@
   color: inherit;
   font-size: 1rem;
   cursor: pointer;
-  transition: border-color 0.35s ease, background-color 0.35s ease,
-    color 0.35s ease;
 }
 
 .project-frame__hero--light .project-frame__button {
