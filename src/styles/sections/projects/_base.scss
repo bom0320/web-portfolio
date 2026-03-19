@@ -10,6 +10,7 @@
 ========================= */
 
 .project-frame {
+  position: relative;
   width: 100%;
   height: 100%;
 }
@@ -17,6 +18,18 @@
 .project-frame__surface {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+}
+
+.project-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.project-layer--current {
+  z-index: 1;
+}
+
+.project-layer--next {
+  z-index: 2;
 }

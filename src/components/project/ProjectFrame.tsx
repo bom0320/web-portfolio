@@ -1,12 +1,9 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import gsap from "gsap";
 import { ProjectItem } from "@/data/projects";
-import ProjectFrameText from "./ProjectFrameText";
-import ProjectFrameVisual from "./ProjectFrameVisual";
-import ProjectFrameDetail from "./ProjectFrameDetail";
-
+import ProjectCard from "./ProjectCard";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
 interface ProjectFrameProps {
   currentProject: ProjectItem;
   nextProject: ProjectItem | null;
@@ -20,77 +17,42 @@ export default function ProjectFrame({
   isTransitioning,
   onTransitionComplete,
 }: ProjectFrameProps) {
-  const heroRef = useRef<HTMLDivElement | null>(null);
-  const [displayTone, setDisplayTone] = useState<"dark" | "light">(
-    currentProject.tone
-  );
-
-  useEffect(() => {
-    if (isTransitioning) return;
-    setDisplayTone(currentProject.tone);
-  }, [currentProject.tone, isTransitioning]);
+  const nextLayerRef = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
-    const hero = heroRef.current;
-    if (!hero) return;
+    const nextLayer = nextLayerRef.current;
 
-    if (!isTransitioning || !nextProject) {
-      gsap.set(hero, {
-        backgroundColor: currentProject.background,
-      });
-      return;
-    }
+    if (!isTransitioning || !nextProject || !nextLayer) return;
+
+    gsap.set(nextLayer, { opacity: 0 });
 
     const tl = gsap.timeline({
       defaults: {
+        duration: 0.5,
         ease: "power2.out",
       },
-      onComplete: () => {
-        setDisplayTone(nextProject.tone);
-      },
+      onComplete: onTransitionComplete,
     });
 
-    tl.to(hero, {
-      backgroundColor: nextProject.background,
-      duration: 0.45,
-    });
+    tl.to(nextLayer, { opacity: 1 }, 0);
 
     return () => {
       tl.kill();
     };
-  }, [currentProject.background, nextProject, isTransitioning]);
+  }, [isTransitioning, nextProject, onTransitionComplete]);
 
   return (
     <div className="project-frame">
       <div className="project-frame__surface">
-        <div
-          ref={heroRef}
-          className={`project-frame__hero project-frame__hero--${displayTone}`}
-          style={
-            {
-              "--project-accent": currentProject.themeColor,
-            } as React.CSSProperties
-          }
-        >
-          <ProjectFrameText
-            currentProject={currentProject}
-            nextProject={nextProject}
-            isTransitioning={isTransitioning}
-          />
-
-          <ProjectFrameVisual
-            currentProject={currentProject}
-            nextProject={nextProject}
-            isTransitioning={isTransitioning}
-            onTransitionComplete={onTransitionComplete}
-          />
+        <div className="project-layer project-layer--current">
+          <ProjectCard project={currentProject} />
         </div>
 
-        <ProjectFrameDetail
-          currentProject={currentProject}
-          nextProject={nextProject}
-          isTransitioning={isTransitioning}
-        />
+        {isTransitioning && nextProject && (
+          <div ref={nextLayerRef} className="project-layer project-layer--next">
+            <ProjectCard project={nextProject} />
+          </div>
+        )}
       </div>
     </div>
   );

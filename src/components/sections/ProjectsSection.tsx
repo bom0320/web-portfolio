@@ -20,20 +20,20 @@ export default function ProjectsSection() {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const displayIndexRef = useRef(displayIndex);
-  const isTransitioningRef = useRef(isTransitioning);
   const incomingIndexRef = useRef<number | null>(incomingIndex);
+  const isTransitioningRef = useRef(isTransitioning);
 
   useEffect(() => {
     displayIndexRef.current = displayIndex;
   }, [displayIndex]);
 
   useEffect(() => {
-    isTransitioningRef.current = isTransitioning;
-  }, [isTransitioning]);
-
-  useEffect(() => {
     incomingIndexRef.current = incomingIndex;
   }, [incomingIndex]);
+
+  useEffect(() => {
+    isTransitioningRef.current = isTransitioning;
+  }, [isTransitioning]);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;

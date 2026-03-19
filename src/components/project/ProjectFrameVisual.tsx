@@ -1,79 +1,27 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import { ProjectItem } from "@/data/projects";
-import ProjectAnimation from "../animations/project";
+
 interface ProjectFrameVisualProps {
-  currentProject: ProjectItem;
-  nextProject: ProjectItem | null;
-  isTransitioning: boolean;
-  onTransitionComplete: () => void;
+  project: ProjectItem;
 }
 
 export default function ProjectFrameVisual({
-  currentProject,
-  nextProject,
-  isTransitioning,
-  onTransitionComplete,
+  project,
 }: ProjectFrameVisualProps) {
-  const currentImageRef = useRef<HTMLDivElement | null>(null);
-  const nextImageRef = useRef<HTMLDivElement | null>(null);
-
-  useLayoutEffect(() => {
-    if (!isTransitioning || !nextProject) return;
-
-    const currentImage = currentImageRef.current;
-    const nextImage = nextImageRef.current;
-
-    if (!currentImage || !nextImage) return;
-
-    const tl = ProjectAnimation.createProjectHeroVisualTransition({
-      currentImage,
-      nextImage,
-      onComplete: onTransitionComplete,
-    });
-
-    return () => {
-      tl.kill();
-    };
-  }, [isTransitioning, nextProject, onTransitionComplete]);
-
   return (
     <div className="project-frame__visual">
       <div className="project-frame__monitor">
         <div className="project-frame__screen">
-          <div
-            key={`current-${currentProject.id}`}
-            ref={currentImageRef}
-            className="project-frame__screen-layer project-frame__screen-layer--current"
-          >
-            <Image
-              src={currentProject.heroImage}
-              alt={`${currentProject.title} hero image`}
-              fill
-              className="project-frame__screen-image"
-              sizes="(max-width: 1024px) 60vw, 620px"
-              priority
-            />
-          </div>
-
-          {isTransitioning && nextProject && (
-            <div
-              key={`next-${nextProject.id}`}
-              ref={nextImageRef}
-              className="project-frame__screen-layer project-frame__screen-layer--next"
-            >
-              <Image
-                src={nextProject.heroImage}
-                alt={`${nextProject.title} hero image`}
-                fill
-                className="project-frame__screen-image"
-                sizes="(max-width: 1024px) 60vw, 620px"
-                priority
-              />
-            </div>
-          )}
+          <Image
+            src={project.heroImage}
+            alt={`${project.title} hero image`}
+            fill
+            className="project-frame__screen-image"
+            sizes="(max-width: 1024px) 60vw, 620px"
+            priority
+          />
         </div>
 
         <Image
