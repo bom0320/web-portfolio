@@ -9,7 +9,9 @@ import { PROJECTS } from "@/data/projects";
 gsap.registerPlugin(ScrollTrigger);
 
 function getProjectIndex(progress: number, total: number) {
-  return Math.min(total - 1, Math.floor(progress * total));
+  const maxIndex = total - 1;
+  const scaled = progress * maxIndex;
+  return Math.round(scaled);
 }
 
 export default function ProjectsSection() {
@@ -40,11 +42,12 @@ export default function ProjectsSection() {
     if (!section) return;
 
     let lastIndex = 0;
-
+    const STEP_MULTIPLIER = 2;
     const trigger = ScrollTrigger.create({
       trigger: section,
       start: "top top",
-      end: () => `+=${window.innerHeight * (PROJECTS.length - 1)}`,
+      end: () =>
+        `+=${window.innerHeight * (PROJECTS.length - 1) * STEP_MULTIPLIER}`,
       pin: true,
       scrub: true,
       invalidateOnRefresh: true,
