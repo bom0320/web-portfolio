@@ -114,19 +114,18 @@
 .project-frame__monitor {
   position: relative;
   width: min(620px, 100%);
-  aspect-ratio: 689 / 529;
+  aspect-ratio: 680 / 520;
   max-height: none;
-  transform: translateY(80px);
+  transform: translateY(90px);
 }
 
 .project-frame__screen {
   position: absolute;
-  top: 3%;
-  left: 2.3%;
-  width: 95%;
+  top: 4.2%;
+  left: 3%;
+  width: 100%;
   height: 64%;
   overflow: hidden;
-  border-radius: 8%;
   background: #d8d8d8;
   z-index: 1;
 }
@@ -141,25 +140,16 @@
   pointer-events: none;
 }
 
-.project-frame__info-stack {
-  position: relative;
-  min-width: 0;
+.project-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 
-.project-frame__info--next {
+.project-layer {
   position: absolute;
   inset: 0;
-}
-
-.project-frame__screen-layer {
-  position: absolute;
-  inset: 0;
-}
-
-.project-frame__screen-layer--next {
-  z-index: 2;
-}
-
-.project-frame__screen-layer--current {
-  z-index: 1;
+  width: 100%;
+  height: 100%;
 }

@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
   gap: 48px;
-  padding: 20px 56px;
+  padding: 20px 40px;
   background: #f2f2f2;
   color: #111111;
   margin-top: -2px;
@@ -21,7 +21,7 @@
 .project-frame__detail-left {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 10px;
   min-width: 0;
   overflow: hidden;
 }
@@ -36,21 +36,11 @@
   font-size: 1rem;
   font-weight: 800;
   line-height: 1.2;
-  margin-bottom: 10px;
-}
-
-.project-frame__detail-content-stack {
-  position: relative;
-  min-width: 0;
+  margin-top: 8px;
 }
 
 .project-frame__detail-content {
   min-width: 0;
-}
-
-.project-frame__detail-content--next {
-  position: absolute;
-  inset: 0;
 }
 
 .project-frame__detail-text {
@@ -67,47 +57,22 @@
   overflow: hidden;
 }
 
-.project-frame__thumbs-shell {
-  min-width: 0;
-  min-height: 0;
-  position: relative;
-  overflow: hidden;
-}
-
-.project-frame__thumbs-stack {
-  position: relative;
-  min-width: 0;
-  min-height: 0;
-}
-
-.project-frame__thumbs-layer {
-  min-width: 0;
-  min-height: 0;
-}
-
-.project-frame__thumbs-layer--next {
-  position: absolute;
-  inset: 0;
-}
-
 /* =========================
    Thumbnails
 ========================= */
 
 .project-frame__thumbs {
-  min-width: 0;
-  min-height: 0;
-  overflow: hidden;
-
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-end;
+  padding-top: 50px;
+  margin-top: 50px;
+  gap: 16px;
 }
 
 .project-frame__thumb-track {
   display: flex;
   align-items: center;
-  gap: 12px;
   width: max-content;
 }
 

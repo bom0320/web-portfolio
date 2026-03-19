@@ -3,7 +3,6 @@
 import { ProjectItem } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
 import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
 import ProjectAnimation from "../animations/project";
 interface ProjectFrameProps {
   currentProject: ProjectItem;

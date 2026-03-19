@@ -27,8 +27,8 @@ export default function ProjectFrameVisual({
         <Image
           src="/images/projects/monitor-frame.png"
           alt=""
-          width={689}
-          height={529}
+          width={660}
+          height={524}
           className="project-frame__monitor-frame"
           priority
         />
