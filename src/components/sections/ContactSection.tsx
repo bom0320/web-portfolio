@@ -1,43 +1,52 @@
 import Link from "next/link";
-import { FaBehance } from "react-icons/fa";
-import { FiInstagram, FiFacebook } from "react-icons/fi";
+import ContactTitle from "@/components/contact/ContactTitle";
+import {
+  CONTACT_FOOTER,
+  CONTACT_FORM,
+  CONTACT_HERO,
+  CONTACT_SOCIAL_LINKS,
+} from "@/data/contact";
 
 export default function ContactSection() {
   return (
     <section className="contact-section">
+      {/* HERO */}
       <div className="contact-section__hero">
         <div className="contact-section__inner">
-          <h2 className="contact-section__title">CONTACT ME</h2>
+          <ContactTitle className="contact-section__title-svg" />
 
           <div className="contact-section__content">
             <aside className="contact-section__info">
               <a
-                href="mailto:email@example.com"
+                href={`mailto:${CONTACT_HERO.email}`}
                 className="contact-section__info-link"
               >
-                email@example.com
+                {CONTACT_HERO.email}
               </a>
 
-              <a href="tel:5555555555" className="contact-section__info-link">
-                (555) 555-5555
+              <a
+                href={CONTACT_HERO.phoneHref}
+                className="contact-section__info-link"
+              >
+                {CONTACT_HERO.phone}
               </a>
 
               <address className="contact-section__address">
-                123 Demo Street
-                <br />
-                New York, NY 12345
+                {CONTACT_HERO.address.map((line) => (
+                  <span key={line}>{line}</span>
+                ))}
               </address>
             </aside>
 
             <form className="contact-form">
               <div className="contact-form__row">
                 <div className="contact-form__field">
-                  <label htmlFor="firstName">Name (required)</label>
+                  <label htmlFor="firstName">{CONTACT_FORM.nameLabel}</label>
                   <input
                     id="firstName"
                     name="firstName"
                     type="text"
-                    placeholder="First Name"
+                    placeholder={CONTACT_FORM.firstNamePlaceholder}
                   />
                 </div>
 
@@ -46,85 +55,89 @@ export default function ContactSection() {
                     htmlFor="lastName"
                     className="contact-form__label contact-form__label--hidden"
                   >
-                    Last Name
+                    {CONTACT_FORM.nameLabel}
                   </label>
                   <input
                     id="lastName"
                     name="lastName"
                     type="text"
-                    placeholder="Last Name"
+                    placeholder={CONTACT_FORM.lastNamePlaceholder}
                   />
                 </div>
               </div>
 
               <div className="contact-form__row contact-form__row--single">
                 <div className="contact-form__field">
-                  <label htmlFor="email">Email (required)</label>
-                  <input id="email" name="email" type="email" placeholder="" />
+                  <label htmlFor="email">{CONTACT_FORM.emailLabel}</label>
+                  <input id="email" name="email" type="email" />
                 </div>
               </div>
 
               <div className="contact-form__row contact-form__row--single">
                 <div className="contact-form__field">
-                  <label htmlFor="message">Message (required)</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    placeholder=""
-                  />
+                  <label htmlFor="message">{CONTACT_FORM.messageLabel}</label>
+                  <textarea id="message" name="message" rows={4} />
                 </div>
               </div>
 
               <button type="submit" className="contact-form__submit">
-                SUBMIT
+                {CONTACT_FORM.submitLabel}
               </button>
             </form>
           </div>
         </div>
       </div>
 
+      {/* FOOTER CARD */}
       <div className="contact-footer">
         <div className="contact-footer__top">
-          <a href="mailto:contact@studio.com" className="contact-footer__email">
-            contact@studio.com
+          <a
+            href={`mailto:${CONTACT_FOOTER.email}`}
+            className="contact-footer__email"
+          >
+            {CONTACT_FOOTER.email}
           </a>
         </div>
 
         <div className="contact-footer__bottom">
           <div className="contact-footer__meta">
             <div className="contact-footer__location">
-              <p>Manhattan, New York</p>
-              <p>2023</p>
+              <p>{CONTACT_FOOTER.location}</p>
+              <p>{CONTACT_FOOTER.year}</p>
             </div>
 
             <p className="contact-footer__copyright">
-              © 2023 Template by <Link href="/">Produlis Studio</Link> | Photos
-              from pexels.com
+              {CONTACT_FOOTER.copyrightPrefix}{" "}
+              <Link href="/">{CONTACT_FOOTER.copyrightLinkLabel}</Link>{" "}
+              {CONTACT_FOOTER.copyrightSuffix}
             </p>
           </div>
 
           <div className="contact-footer__hours">
-            <p className="contact-footer__label">Office hours</p>
-            <p>Monday - Friday 11 AM - 2 PM</p>
+            <p className="contact-footer__label">
+              {CONTACT_FOOTER.officeHoursLabel}
+            </p>
+            <p>{CONTACT_FOOTER.officeHours}</p>
           </div>
 
           <div className="contact-footer__links">
-            <Link href="/">Say hello</Link>
-            <Link href="/">Work with us</Link>
+            {CONTACT_FOOTER.links.map((link) => (
+              <Link key={link.label} href={link.href}>
+                {link.label}
+              </Link>
+            ))}
           </div>
 
           <div className="contact-footer__social">
-            <Link href="/" aria-label="Behance">
-              <FaBehance />
-            </Link>
-            <Link href="/" aria-label="Instagram">
-              <FiInstagram />
-            </Link>
-            <Link href="/" aria-label="Facebook">
-              <FiFacebook />
-            </Link>
-            <Link href="/">Privacy Policy</Link>
+            {CONTACT_SOCIAL_LINKS.map((link) => {
+              const Icon = link.icon;
+
+              return (
+                <Link key={link.label} href={link.href} aria-label={link.label}>
+                  {Icon ? <Icon /> : link.label}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </div>
