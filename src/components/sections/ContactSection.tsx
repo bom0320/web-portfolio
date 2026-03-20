@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import ContactTitle from "@/components/contact/ContactTitle";
 import {
@@ -6,14 +8,17 @@ import {
   CONTACT_HERO,
   CONTACT_SOCIAL_LINKS,
 } from "@/data/contact";
+import { useRef } from "react";
 
 export default function ContactSection() {
+  const fillGroupRef = useRef<SVGGElement | null>(null);
+
   return (
     <section className="contact-section">
       {/* HERO */}
       <div className="contact-section__hero">
         <div className="contact-section__inner">
-          <ContactTitle className="contact-section__title-svg" />
+          <ContactTitle fillGroupRef={fillGroupRef} />
 
           <div className="contact-section__content">
             <aside className="contact-section__info">

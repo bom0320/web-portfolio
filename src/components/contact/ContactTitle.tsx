@@ -1,28 +1,35 @@
-interface ContactTitleProps {
-  className?: string;
-}
+"use client";
 
-export default function ContactTitle({ className }: ContactTitleProps) {
+import { CONTACT_TITLE_FILL_PATHS } from "@/assets/svg/contactTitlePath";
+
+type ContactTitleProps = {
+  fillGroupRef: React.RefObject<SVGGElement | null>;
+};
+
+export default function ContactTitle({ fillGroupRef }: ContactTitleProps) {
   return (
     <svg
-      className={className}
-      viewBox="0 0 1200 180"
+      className="contact-title__svg"
+      viewBox="0 0 678 83"
       xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label="CONTACT ME"
     >
-      <text
-        x="50%"
-        y="50%"
-        dominantBaseline="middle"
-        textAnchor="middle"
-        fill="currentColor"
-        fontSize="120"
-        fontWeight="900"
-        letterSpacing="-0.05em"
-      >
-        CONTACT ME
-      </text>
+      <g opacity={0.45}>
+        {CONTACT_TITLE_FILL_PATHS.map((d, i) => (
+          <path
+            key={i}
+            d={d}
+            fill="none"
+            stroke="rgb(255, 255, 255)"
+            strokeWidth={2}
+          />
+        ))}
+      </g>
+
+      <g ref={fillGroupRef} opacity={0}>
+        {CONTACT_TITLE_FILL_PATHS.map((d, i) => (
+          <path key={i} d={d} fill="rgb(255, 255, 255)" />
+        ))}
+      </g>
     </svg>
   );
 }
