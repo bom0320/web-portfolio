@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
-import { LIFE_MOTION_ITEMS } from "@/data/lifeMotion";
+import { LIFE_MOTION_ITEMS } from "@/data/lifeMotions";
 import LifeMotionAnimation from "../animations/lifeMotion";
 import ScrollTrigger from "gsap/ScrollTrigger";
 

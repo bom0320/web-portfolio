@@ -1,21 +1,46 @@
 "use client";
 
+import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import ContactTitle from "@/components/contact/ContactTitle";
+import { createContactTitleAnimation } from "@/components/animations/contact";
 import {
   CONTACT_FOOTER,
   CONTACT_FORM,
   CONTACT_HERO,
   CONTACT_SOCIAL_LINKS,
-} from "@/data/contact";
-import { useRef } from "react";
+} from "@/data/contacts";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ContactSection() {
+  const sectionRef = useRef<HTMLElement | null>(null);
   const fillGroupRef = useRef<SVGGElement | null>(null);
 
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    const fillGroup = fillGroupRef.current;
+
+    if (!section || !fillGroup) return;
+
+    const ctx = gsap.context(() => {
+      const tl = createContactTitleAnimation({ fillGroup });
+
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top 70%",
+        end: "top 30%",
+        scrub: true,
+        animation: tl,
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
   return (
-    <section className="contact-section">
-      {/* HERO */}
+    <section ref={sectionRef} className="contact-section">
       <div className="contact-section__hero">
         <div className="contact-section__inner">
           <ContactTitle fillGroupRef={fillGroupRef} />
@@ -43,7 +68,7 @@ export default function ContactSection() {
               </address>
             </aside>
 
-            <form className="contact-form">
+            <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
               <div className="contact-form__row">
                 <div className="contact-form__field">
                   <label htmlFor="firstName">{CONTACT_FORM.nameLabel}</label>
@@ -93,7 +118,6 @@ export default function ContactSection() {
         </div>
       </div>
 
-      {/* FOOTER CARD */}
       <div className="contact-footer">
         <div className="contact-footer__top">
           <a
