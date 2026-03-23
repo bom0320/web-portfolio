@@ -33,3 +33,26 @@
 .project-layer--next {
   z-index: 2;
 }
+@media (max-width: 768px) {
+  .projects-section {
+    height: auto;
+    min-height: auto;
+  }
+
+  .project-frame {
+    height: auto;
+    min-height: auto;
+  }
+
+  .project-frame__surface {
+    height: auto;
+    min-height: auto;
+  }
+
+  .project-layer {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: auto;
+  }
+}

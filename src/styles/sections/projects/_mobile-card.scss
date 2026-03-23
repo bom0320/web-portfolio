@@ -1,6 +1,6 @@
 .project-mobile-card {
   width: 100%;
-  min-height: 100%;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   padding-top: calc(var(--header-height) + 12px);
@@ -20,8 +20,7 @@
 
 .project-mobile-card__hero {
   position: relative;
-  padding: 34px 38px 0;
-  overflow: hidden;
+  padding: 12px 40px 0;
 }
 
 .project-mobile-card__hero .project-frame__info {
@@ -33,13 +32,13 @@
 
 .project-mobile-card__hero .project-frame__category {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
 .project-mobile-card__hero .project-frame__title {
-  margin: 10px 0 16px;
-  font-size: clamp(3rem, 9vw, 4.2rem);
+  margin: 8px 0 10px;
+  font-size: clamp(1.8rem, 5vw, 2rem);
   font-weight: 800;
   line-height: 0.94;
   letter-spacing: -0.03em;
@@ -56,21 +55,31 @@
 
 .project-mobile-card__hero .project-frame__meta-row dt,
 .project-mobile-card__hero .project-frame__meta-row dd {
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   line-height: 1.35;
 }
 
 .project-mobile-card__hero .project-frame__visual {
-  margin-top: 34px;
+  margin-top: 40px;
   justify-content: center;
   align-items: flex-end;
   overflow: visible;
+  position: relative;
+  z-index: 3;
 }
 
 .project-mobile-card__hero .project-frame__monitor {
-  width: min(500px, 100%);
+  width: min(360px, 100%);
   margin: 0 auto;
-  transform: translateY(0);
+  transform: translateY(-10px);
+}
+
+.project-mobile-card__hero .project-frame__screen {
+  top: 5%;
+  left: 3%;
+  right: 3%;
+  width: auto;
+  height: 64%;
 }
 
 .project-mobile-card__hero .project-frame__screen {
@@ -90,10 +99,10 @@
 .project-mobile-card__body {
   position: relative;
   z-index: 2;
-  margin-top: -6px;
+  margin-top: -40px;
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 22px;
   padding: 18px 28px 30px;
   border-radius: 0;
   background: #f2f2f2;
@@ -104,12 +113,12 @@
 .project-mobile-card__section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
 }
 
 .project-mobile-card__section-title {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.74rem;
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: 0;
@@ -118,7 +127,7 @@
 .project-mobile-card__section-text {
   margin: 0;
   color: #222222;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   line-height: 1.7;
   word-break: keep-all;
 }
@@ -141,15 +150,13 @@
   min-width: 0;
 }
 
-.project-mobile-card .project-frame__thumbs {
-  display: block;
-  min-width: 0;
-  padding-top: 0;
-  margin-top: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+.project-mobile-card .project-frame__thumb {
+  position: relative;
+
+  width: 150px;
+  aspect-ratio: 1.58 / 1;
+  overflow: hidden;
+  background: #dddddd;
 }
 
 .project-mobile-card .project-frame__thumbs::-webkit-scrollbar {
@@ -159,7 +166,7 @@
 .project-mobile-card .project-frame__thumb-track {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   width: max-content;
 }
 
@@ -197,90 +204,4 @@
 .project-mobile-card__button:active {
   transform: scale(0.985);
   background: #e1e1e1;
-}
-
-/* =========================
-     <= 640px
-  ========================= */
-
-@media (max-width: 640px) {
-  .project-mobile-card__hero {
-    padding: 28px 20px 0;
-  }
-
-  .project-mobile-card__hero .project-frame__info {
-    max-width: none;
-  }
-
-  .project-mobile-card__hero .project-frame__title {
-    margin: 8px 0 14px;
-    font-size: clamp(2.5rem, 10vw, 3.5rem);
-  }
-
-  .project-mobile-card__hero .project-frame__meta-row {
-    grid-template-columns: 70px 1fr;
-    gap: 8px;
-  }
-
-  .project-mobile-card__hero .project-frame__meta-row dt,
-  .project-mobile-card__hero .project-frame__meta-row dd {
-    font-size: 0.9rem;
-  }
-
-  .project-mobile-card__hero .project-frame__visual {
-    margin-top: 28px;
-  }
-
-  .project-mobile-card__hero .project-frame__monitor {
-    width: min(420px, 100%);
-  }
-
-  .project-mobile-card__body {
-    gap: 22px;
-    padding: 18px 20px 24px;
-  }
-
-  .project-mobile-card__section-title {
-    font-size: 0.92rem;
-  }
-
-  .project-mobile-card__section-text {
-    font-size: 0.88rem;
-    line-height: 1.65;
-  }
-
-  .project-mobile-card .project-frame__thumb {
-    flex-basis: 138px;
-  }
-
-  .project-mobile-card__button {
-    padding: 16px 18px;
-    font-size: 1rem;
-  }
-}
-
-/* =========================
-     <= 420px
-  ========================= */
-
-@media (max-width: 420px) {
-  .project-mobile-card__hero {
-    padding: 24px 16px 0;
-  }
-
-  .project-mobile-card__hero .project-frame__title {
-    font-size: clamp(2.25rem, 11vw, 3.1rem);
-  }
-
-  .project-mobile-card__hero .project-frame__monitor {
-    width: 100%;
-  }
-
-  .project-mobile-card__body {
-    padding: 16px 16px 22px;
-  }
-
-  .project-mobile-card .project-frame__thumb {
-    flex-basis: 132px;
-  }
 }

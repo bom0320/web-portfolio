@@ -103,6 +103,7 @@
 ========================= */
 
 .project-frame__visual {
+  margin-top: 120px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -116,7 +117,7 @@
   width: min(620px, 100%);
   aspect-ratio: 680 / 520;
   max-height: none;
-  transform: translateY(48px);
+  transform: translateY(42px);
 
   @media (max-width: 1200px) {
     transform: translateY(24px);
