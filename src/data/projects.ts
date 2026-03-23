@@ -42,7 +42,8 @@ export const PROJECTS: ProjectItem[] = [
     contribution: "2번 프로젝트",
     stack: ["Vue", "TypeScript"],
     keywords: ["two", "beta", "red"],
-    overview: "두 번째 테스트 프로젝트입니다.",
+    overview:
+      "두 번째 테스트 프로젝트입니다.두 번째 테스트 프로젝트입니다.두 번째 테스트 프로젝트입니다.두 번째 테스트 프로젝트입니다.",
     heroImage: "/images/projects/tving/screen.png",
     thumbnails: [
       "/images/projects/tving/thumb-01.png",

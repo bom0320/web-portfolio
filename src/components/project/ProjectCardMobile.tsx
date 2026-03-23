@@ -3,7 +3,6 @@
 import { ProjectItem } from "@/data/projects";
 import ProjectFrameText from "./ProjectFrameText";
 import ProjectFrameVisual from "./ProjectFrameVisual";
-import ProjectFrameThumbs from "./ProjectFrameThumbs";
 
 interface ProjectCardMobileProps {
   project: ProjectItem;
@@ -44,14 +43,6 @@ export default function ProjectCardMobile({
           <p className="project-mobile-card__section-text project-mobile-card__section-text--overview">
             {project.overview}
           </p>
-        </div>
-
-        <div className="project-mobile-card__thumbs">
-          <ProjectFrameThumbs
-            id={project.id}
-            title={project.title}
-            thumbnails={project.thumbnails}
-          />
         </div>
 
         <button className="project-mobile-card__button">View More</button>

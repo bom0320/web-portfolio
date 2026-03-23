@@ -1,6 +1,6 @@
 .project-mobile-card {
   width: 100%;
-  min-height: auto;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding-top: calc(var(--header-height) + 12px);
@@ -99,11 +99,12 @@
 .project-mobile-card__body {
   position: relative;
   z-index: 2;
-  margin-top: -40px;
+  margin-top: -28px;
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 22px;
-  padding: 18px 28px 30px;
+  padding: 30px 28px 30px;
   border-radius: 0;
   background: #f2f2f2;
   color: #111111;
@@ -141,48 +142,6 @@
 }
 
 /* =========================
-     Mobile Thumbs Override
-     - _detail.scss 공용 thumbs 유지
-     - mobile-card 안에서만 override
-  ========================= */
-
-.project-mobile-card .project-frame__thumbs-shell {
-  min-width: 0;
-}
-
-.project-mobile-card .project-frame__thumb {
-  position: relative;
-
-  width: 150px;
-  aspect-ratio: 1.58 / 1;
-  overflow: hidden;
-  background: #dddddd;
-}
-
-.project-mobile-card .project-frame__thumbs::-webkit-scrollbar {
-  display: none;
-}
-
-.project-mobile-card .project-frame__thumb-track {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  width: max-content;
-}
-
-.project-mobile-card .project-frame__thumb {
-  position: relative;
-  flex: 0 0 150px;
-  aspect-ratio: 1.58 / 1;
-  overflow: hidden;
-  background: #dddddd;
-}
-
-.project-mobile-card .project-frame__thumb-image {
-  object-fit: cover;
-}
-
-/* =========================
      Mobile Button
   ========================= */
 
@@ -199,6 +158,7 @@
   cursor: pointer;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
   transition: transform 0.15s ease, background-color 0.2s ease;
+  margin-top: auto;
 }
 
 .project-mobile-card__button:active {
