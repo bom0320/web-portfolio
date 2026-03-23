@@ -4,9 +4,13 @@ import { ProjectItem } from "@/data/projects";
 
 interface ProjectFrameTextProps {
   project: ProjectItem;
+  showButton?: boolean;
 }
 
-export default function ProjectFrameText({ project }: ProjectFrameTextProps) {
+export default function ProjectFrameText({
+  project,
+  showButton = true,
+}: ProjectFrameTextProps) {
   return (
     <div className="project-frame__info">
       <p className="project-frame__category">{project.category}</p>
@@ -27,7 +31,9 @@ export default function ProjectFrameText({ project }: ProjectFrameTextProps) {
         </div>
       </dl>
 
-      <button className="project-frame__button">View More</button>
+      {showButton && (
+        <button className="project-frame__button">View More</button>
+      )}
     </div>
   );
 }

@@ -3,7 +3,7 @@
 ========================================================= */
 .about-hero {
   min-height: 100vh;
-  margin-top: var(--header-h);
+  margin-top: var(--header-height);
   display: grid;
   padding-bottom: 10px;
   place-items: center;
@@ -185,7 +185,7 @@
 @media (max-width: 768px) {
   .about-hero {
     min-height: auto;
-    margin-top: var(--header-h);
+    margin-top: var(--header-height);
     padding: 80px 0 200px;
     place-items: center;
   }
