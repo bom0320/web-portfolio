@@ -118,23 +118,6 @@
   aspect-ratio: 680 / 520;
   max-height: none;
   transform: translateY(42px);
-
-  @media (max-width: 1200px) {
-    transform: translateY(24px);
-  }
-
-  @media (max-width: 1024px) {
-    width: min(560px, 100%);
-    transform: translateY(0);
-  }
-
-  @media (max-width: 768px) {
-    width: min(380px, 92%);
-  }
-
-  @media (max-width: 480px) {
-    width: min(320px, 100%);
-  }
 }
 
 .project-frame__screen {
@@ -172,55 +155,39 @@
   height: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
   .project-frame__hero {
-    padding: 20px 20px 12px;
-    row-gap: 16px;
+    grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.1fr);
+    column-gap: 20px;
+    padding: 24px 24px 12px;
   }
 
   .project-frame__info {
-    max-width: none;
-  }
-
-  .project-frame__category {
-    font-size: 0.95rem;
+    max-width: 280px;
   }
 
   .project-frame__title {
-    margin: 10px 0 14px;
-    font-size: clamp(2.2rem, 9vw, 3.2rem);
-    line-height: 0.92;
-  }
-
-  .project-frame__meta {
-    gap: 4px;
+    font-size: clamp(2.8rem, 5vw, 4rem);
   }
 
   .project-frame__meta-row {
-    grid-template-columns: 72px 1fr;
+    grid-template-columns: 74px 1fr;
     gap: 8px;
   }
 
   .project-frame__meta-row dt,
   .project-frame__meta-row dd {
-    font-size: 0.95rem;
-    line-height: 1.35;
+    font-size: 1rem;
   }
 
-  .project-frame__button {
-    min-width: 0;
-    margin-top: 20px;
-    padding: 10px 22px;
-    font-size: 0.95rem;
+  .project-frame__visual {
+    margin-top: 0;
+    justify-content: center;
+    align-items: center;
   }
 
   .project-frame__monitor {
-    width: min(380px, 92%);
-  }
-}
-
-@media (max-width: 480px) {
-  .project-frame__monitor {
-    width: min(320px, 100%);
+    width: min(500px, 100%);
+    transform: translateY(0);
   }
 }

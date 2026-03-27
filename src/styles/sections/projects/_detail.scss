@@ -93,3 +93,37 @@
 .project-frame__thumb-image {
   object-fit: cover;
 }
+
+@media (max-width: 1200px) {
+  .project-frame__detail {
+    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+    gap: 24px;
+    padding: 16px 24px 20px;
+  }
+
+  .project-frame__detail-title {
+    font-size: 0.92rem;
+  }
+
+  .project-frame__detail-text {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .project-frame__thumbs-shell {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    min-width: 0;
+  }
+
+  .project-frame__thumbs {
+    padding-top: 0;
+    margin-top: 0;
+    gap: 12px;
+  }
+
+  .project-frame__thumb {
+    flex: 0 0 160px;
+  }
+}
