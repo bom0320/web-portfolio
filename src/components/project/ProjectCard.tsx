@@ -7,12 +7,11 @@ import ProjectFrameDetail from "./ProjectFrameDetail";
 
 interface ProjectCardProps {
   project: ProjectItem;
-  className?: string;
 }
 
-export default function ProjectCard({ project, className }: ProjectCardProps) {
+export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className={`project-card ${className ?? ""}`}>
+    <div className={`project-card`}>
       <div
         className={`project-frame__hero project-frame__hero--${project.tone}`}
         style={

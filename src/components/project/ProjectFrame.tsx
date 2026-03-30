@@ -23,6 +23,7 @@ export default function ProjectFrame({
   const nextLayerRef = useRef<HTMLDivElement | null>(null);
 
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const CardComponent = isMobile ? ProjectCardMobile : ProjectCard;
 
   useLayoutEffect(() => {
     const nextLayer = nextLayerRef.current;
@@ -39,19 +40,16 @@ export default function ProjectFrame({
     };
   }, [isTransitioning, nextProject, onTransitionComplete]);
 
-  const CurrentCard = isMobile ? ProjectCardMobile : ProjectCard;
-  const NextCard = isMobile ? ProjectCardMobile : ProjectCard;
-
   return (
     <div className="project-frame">
       <div className="project-frame__surface">
         <div className="project-layer project-layer--current">
-          <CurrentCard project={currentProject} />
+          <CardComponent project={currentProject} />
         </div>
 
         {isTransitioning && nextProject && (
           <div ref={nextLayerRef} className="project-layer project-layer--next">
-            <NextCard project={nextProject} />
+            <CardComponent project={nextProject} />
           </div>
         )}
       </div>
