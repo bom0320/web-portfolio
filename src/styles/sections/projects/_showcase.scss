@@ -11,7 +11,6 @@
 
 .project-frame__hero {
   --project-accent: #7a4cff;
-
   flex: 1;
   min-height: 0;
   border-bottom: 5px solid rgba(105, 105, 105, 0.08);
@@ -19,8 +18,7 @@
   grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
   align-items: center;
   column-gap: clamp(24px, 3vw, 40px);
-  padding: clamp(24px, 3vw, 36px) clamp(32px, 5vw, 72px)
-    clamp(10px, 1.6vw, 16px);
+  padding: clamp(44px, 5vw, 72px) clamp(24px, 4vw, 60px) 0;
   overflow: visible;
 }
 
@@ -110,7 +108,7 @@
 ========================= */
 
 .project-frame__visual {
-  margin-top: 120px;
+  padding-top: 16px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -121,17 +119,17 @@
 
 .project-frame__monitor {
   position: relative;
-  width: min(620px, 100%);
+  width: clamp(420px, 38vw, 620px);
   aspect-ratio: 680 / 520;
   max-height: none;
-  transform: translateY(42px);
+  transform: translateY(62px);
 }
 
 .project-frame__screen {
   position: absolute;
-  top: 4.2%;
+  top: 5%;
   left: 3%;
-  width: 100%;
+  width: 94%;
   height: 64%;
   overflow: hidden;
   background: #d8d8d8;
@@ -144,6 +142,9 @@
 }
 
 .project-frame__monitor-frame {
+  display: block;
+  width: 100%;
+  height: auto;
   object-fit: contain;
   pointer-events: none;
 }
@@ -157,17 +158,18 @@
 
 @media (max-width: 1200px) {
   .project-frame__hero {
-    grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.1fr);
-    column-gap: 20px;
-    padding: 24px 24px 12px;
+    grid-template-columns: minmax(260px, 1fr) minmax(340px, 1.1fr);
+    column-gap: 24px;
+    padding: 24px 50px 2px;
+    align-items: center;
   }
 
   .project-frame__info {
-    max-width: 280px;
+    max-width: 360px;
   }
 
   .project-frame__title {
-    font-size: clamp(2.8rem, 5vw, 4rem);
+    font-size: clamp(2rem, 3.8vw, 2.8rem);
   }
 
   .project-frame__meta-row {
@@ -177,17 +179,28 @@
 
   .project-frame__meta-row dt,
   .project-frame__meta-row dd {
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .project-frame__button {
+    margin-top: 32px;
+    padding: 10px 24px;
+    font-size: 0.95rem;
   }
 
   .project-frame__visual {
-    margin-top: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 40px;
   }
 
   .project-frame__monitor {
-    width: min(500px, 100%);
-    transform: translateY(0);
+    width: min(480px, 100%);
+    transform: translateY(62px);
+  }
+
+  .project-frame__detail {
+    flex: 0 0 220px;
   }
 }

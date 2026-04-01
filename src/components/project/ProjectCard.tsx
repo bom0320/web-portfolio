@@ -11,7 +11,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className={`project-card`}>
+    <div className="project-card">
       <div
         className={`project-frame__hero project-frame__hero--${project.tone}`}
         style={

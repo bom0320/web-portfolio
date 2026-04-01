@@ -34,7 +34,7 @@
   z-index: 2;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) and (orientation: portrait) {
   .projects-section {
     height: auto;
     min-height: auto;

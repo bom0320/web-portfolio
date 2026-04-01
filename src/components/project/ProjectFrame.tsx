@@ -23,7 +23,12 @@ export default function ProjectFrame({
   const nextLayerRef = useRef<HTMLDivElement | null>(null);
 
   const isMobile = useMediaQuery("(max-width: 768px)");
-  const CardComponent = isMobile ? ProjectCardMobile : ProjectCard;
+  const isTabletPortrait = useMediaQuery(
+    "(max-width: 1024px) and (orientation: portrait)"
+  );
+
+  const shouldUseMobileCard = isMobile || isTabletPortrait;
+  const CardComponent = shouldUseMobileCard ? ProjectCardMobile : ProjectCard;
 
   useLayoutEffect(() => {
     const nextLayer = nextLayerRef.current;
