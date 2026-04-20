@@ -1,8 +1,7 @@
 .hero {
   height: 100vh;
-  padding: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 
   .hero__inner {
     max-width: var(--container);
@@ -10,17 +9,10 @@
     padding: 0 var(--between-space);
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 140px;
     justify-content: space-between;
     gap: 10px;
-  }
-
-  .hero__content {
-    flex: 1;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    transform: translateY(-70px);
   }
 
   .hero__title-group {
@@ -73,7 +65,7 @@
   .hero__subtitle .text {
     font-size: 22px;
     font-weight: 600;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.4em;
     color: #d0d0d0;
     opacity: 0.85;
     white-space: nowrap;
@@ -90,7 +82,7 @@
     max-width: 520px;
     margin-top: 12px;
     font-size: 14px;
-    line-height: 1.7;
+    line-height: 2;
     color: #bfbfbf;
   }
 
@@ -100,7 +92,6 @@
     flex-direction: column;
     gap: 20px;
     align-items: center;
-    transform: translateY(30px);
   }
 
   .hero__character {
@@ -120,6 +111,32 @@
     );
     filter: blur(6px);
     border-radius: 50%;
+  }
+  .hero__role {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 20px;
+    min-height: clamp(40px, 4vw, 44px);
+    line-height: 1;
+  }
+
+  .hero__role-text {
+    display: inline-block;
+    font-size: clamp(26px, 3vw, 46px);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: #cccccc;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .hero__caret {
+    display: inline-block;
+    margin-left: 3px;
+    font-size: clamp(28px, 3.2vw, 48px);
+    font-weight: 300;
+    color: #f3f3f3;
+    line-height: 1;
   }
 }
 

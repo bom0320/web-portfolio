@@ -25,43 +25,35 @@ export default function HeroSection() {
       <div className="hero__inner">
         <div className="hero__content">
           <div className="hero__title-group">
-            <div className="hero__reveal js-reveal-bom">
-              <div className="hero-title js-hero-title1">
-                <BomWaveTitle />
-              </div>
+            <div className="hero-title">
+              <BomWaveTitle />
             </div>
 
-            <div className="hero__reveal js-reveal-portfolio">
-              <h1 className="hero__title-line2 js-hero-title2">PORTFOLIO</h1>
-            </div>
+            <h1 className="hero__title-line2">PORTFOLIO</h1>
           </div>
-          <h2 className="hero__role js-hero-role">
-            <span className="hero__role-text js-hero-role-text">
-              Frontend Developer
-            </span>
-            <span className="hero__caret js-hero-caret" aria-hidden="true">
-              |
+          <h2 className="hero__role" aria-label="Frontend Developer">
+            <span className="hero__role-track">
+              <span className="hero__role-text js-hero-role-text" />
+              <span className="hero__caret js-hero-caret" aria-hidden="true">
+                |
+              </span>
             </span>
           </h2>
 
-          <p className="hero__description js-hero-desc">
-            <span className="js-hero-desc-line hero__desc--desktop">
-              FrontEnd 개발자 김봄입니다.FrontEnd 개발자 김봄입니다.FrontEnd
-              개발자 김봄입니다.FrontEnd 개발자 김봄입니다.FrontEnd 개발자
+          <p className="hero__description">
+            <span className="hero__desc--desktop">
+              FrontEnd 개발자 김봄입니다. FrontEnd 개발자 김봄입니다. FrontEnd
+              개발자 김봄입니다. FrontEnd 개발자 김봄입니다. FrontEnd 개발자
               김봄입니다.
             </span>
 
-            <span
-              className="js-hero-desc-line hero__desc--mobile"
-              aria-hidden="true"
-            >
-              FrontEnd 개발자 김봄입니다. FrontEnd 개발자 김봄입니다.
-              FrontEndFrontEnd 개발자 김봄입니다. 개발자 김봄입니다.
+            <span className="hero__desc--mobile" aria-hidden="true">
+              FrontEnd 개발자 김봄입니다. FrontEnd 개발자 김봄입니다. FrontEnd
+              개발자 김봄입니다. 개발자 김봄입니다.
             </span>
           </p>
         </div>
 
-        {/* VISUAL */}
         <div className="hero__visual">
           <div className="hero__character js-hero-character">
             <Image
