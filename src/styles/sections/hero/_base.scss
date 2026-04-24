@@ -1,0 +1,33 @@
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+
+  &__inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 140px var(--between-space) 0;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__description {
+    max-width: 520px;
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 2;
+    color: #bfbfbf;
+  }
+
+  &__desc--mobile {
+    display: none;
+  }
+}

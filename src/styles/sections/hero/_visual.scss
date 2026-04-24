@@ -1,0 +1,28 @@
+.hero {
+  &__visual {
+    flex: 0 0 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  &__character {
+    position: relative;
+    width: 400px;
+    height: 460px;
+    overflow: hidden;
+  }
+
+  &__shadow {
+    width: 160px;
+    height: 28px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0.55),
+      transparent
+    );
+    filter: blur(6px);
+    border-radius: 50%;
+  }
+}

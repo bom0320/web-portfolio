@@ -1,0 +1,41 @@
+.hero {
+  &__title-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 2;
+  }
+
+  &__reveal {
+    overflow: hidden;
+    display: block;
+    line-height: 1;
+  }
+
+  &-title {
+    position: relative;
+    display: inline-block;
+    will-change: transform;
+    margin: 0;
+    line-height: 1;
+
+    &__svg {
+      display: block;
+      width: clamp(260px, 34vw, 420px);
+      height: auto;
+    }
+  }
+
+  &__title-line2 {
+    font-size: clamp(52px, 8vw, 110px);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #eaeaea;
+    line-height: 1;
+    z-index: 2;
+    margin: -20px 0 0 4px;
+    display: inline-block;
+    will-change: transform;
+  }
+}
