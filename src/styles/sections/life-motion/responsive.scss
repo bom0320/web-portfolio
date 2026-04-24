@@ -1,13 +1,9 @@
 @media (max-width: 768px) {
   .life-motion {
-    &__viewport {
-      padding-inline: 16px;
-    }
-
-    &__track {
-      grid-template-rows: repeat(2, 168px);
-      grid-auto-columns: 22px;
-      gap: 10px;
+    &__row {
+      grid-auto-columns: 28px;
+      gap: 8px;
+      height: clamp(180px, 46vw, 220px);
     }
 
     &__item {
@@ -15,14 +11,13 @@
     }
 
     &__title {
-      font-size: 12px;
-      margin-bottom: 6px;
+      font-size: 11px;
+      margin-bottom: 3px;
     }
 
     &__image-wrap {
-      height: 140px;
-      aspect-ratio: auto;
-      border-radius: 8px;
+      height: calc(100% - 17px);
+      border-radius: 6px;
     }
   }
 }

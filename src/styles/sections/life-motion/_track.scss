@@ -1,10 +1,17 @@
 .life-motion {
   &__track {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__row {
     display: grid;
-    grid-template-rows: repeat(2, clamp(180px, 22vw, 260px));
     grid-auto-flow: column;
     grid-auto-columns: 36px;
     gap: 12px;
+    width: max-content;
+    height: clamp(180px, 28vw, 260px);
     will-change: transform;
   }
 
@@ -35,7 +42,8 @@
   &__image-wrap {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / var(--ratio);
+    height: calc(100% - 20px);
+    aspect-ratio: auto;
     border-radius: 8px;
     overflow: hidden;
     background: #111;
