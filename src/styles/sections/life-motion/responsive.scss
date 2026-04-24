@@ -1,0 +1,26 @@
+@media (max-width: 768px) {
+  .life-motion {
+    &__viewport {
+      padding-inline: 16px;
+    }
+
+    &__track {
+      grid-template-rows: repeat(2, clamp(110px, 28vw, 150px));
+      grid-auto-columns: 28px;
+      gap: 8px;
+    }
+
+    &__item {
+      grid-column: span var(--mobile-span);
+    }
+
+    &__title {
+      font-size: 11px;
+      margin-bottom: 3px;
+    }
+
+    &__image-wrap {
+      border-radius: 6px;
+    }
+  }
+}
