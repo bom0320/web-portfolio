@@ -5,9 +5,9 @@
     }
 
     &__track {
-      grid-template-rows: repeat(2, clamp(110px, 28vw, 150px));
-      grid-auto-columns: 28px;
-      gap: 8px;
+      grid-template-rows: repeat(2, 168px);
+      grid-auto-columns: 22px;
+      gap: 10px;
     }
 
     &__item {
@@ -15,12 +15,14 @@
     }
 
     &__title {
-      font-size: 11px;
-      margin-bottom: 3px;
+      font-size: 12px;
+      margin-bottom: 6px;
     }
 
     &__image-wrap {
-      border-radius: 6px;
+      height: 140px;
+      aspect-ratio: auto;
+      border-radius: 8px;
     }
   }
 }
