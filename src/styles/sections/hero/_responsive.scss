@@ -1,10 +1,13 @@
 @media (max-width: 768px) {
   .hero {
     height: auto;
-    padding: 70px 0 56px;
-    display: block;
+    padding: 50px 0 56px;
+    display: flex;
+    align-items: center;
 
     &__inner {
+      height: 100%;
+      width: 100%;
       flex-direction: column;
       justify-content: center;
       align-items: center;
