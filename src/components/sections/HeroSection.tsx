@@ -63,7 +63,6 @@ export default function HeroSection() {
               priority
             />
           </div>
-          <div className="hero__shadow js-hero-shadow" />
         </div>
       </div>
     </section>
