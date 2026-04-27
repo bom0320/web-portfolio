@@ -13,7 +13,7 @@
   }
 
   .about-title__svg {
-    width: min(240px, 66vw);
+    width: min(280px, 70vw);
     margin: 0 auto 50px;
   }
 
@@ -21,7 +21,7 @@
     font-size: 14px;
     line-height: 1.75;
     font-weight: 500;
-    max-width: 38ch;
+    max-width: 50ch;
     margin: 0 auto 24px;
     text-align: center;
     transform: translateZ(0);
@@ -117,26 +117,26 @@
   .decor--sun {
     top: -3%;
     left: 2%;
-    width: 110px;
+    width: clamp(120px, 22vw, 180px);
   }
 
   .decor--stars {
     top: -1%;
     right: 2%;
-    width: 110px;
+    width: clamp(120px, 22vw, 180px);
   }
 
   .decor--stars2 {
     bottom: 18%;
     left: 1%;
-    width: 120px;
+    width: clamp(130px, 24vw, 200px);
     opacity: 0.9;
   }
 
   .decor--heart {
     bottom: 18%;
     right: 0%;
-    width: 100px;
+    width: clamp(110px, 20vw, 170px);
     opacity: 0.85;
   }
 }
