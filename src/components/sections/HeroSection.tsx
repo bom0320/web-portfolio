@@ -44,7 +44,8 @@ export default function HeroSection() {
             <span className="hero__desc--desktop">
               FrontEnd 개발자 김봄입니다. FrontEnd 개발자 김봄입니다. FrontEnd
               개발자 김봄입니다. FrontEnd 개발자 김봄입니다. FrontEnd 개발자
-              김봄입니다.
+              김봄입니다.FrontEnd 개발자 김봄입니다. FrontEnd 개발자 김봄입니다.
+              개발자 김봄입니다.
             </span>
 
             <span className="hero__desc--mobile" aria-hidden="true">

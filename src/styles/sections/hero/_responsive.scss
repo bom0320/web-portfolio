@@ -1,0 +1,130 @@
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    padding: 50px 0 56px;
+    display: flex;
+    align-items: center;
+
+    &__inner {
+      height: 100%;
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 0;
+    }
+
+    &__visual {
+      transform: none;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 6px;
+    }
+
+    &__character {
+      width: min(320px, 75vw);
+      height: auto;
+      aspect-ratio: 400 / 460;
+    }
+
+    &__content {
+      order: 2;
+      transform: none;
+      width: min(520px, calc(100% - 52px));
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    &__title-group {
+      width: 100%;
+      align-items: flex-start;
+    }
+
+    &__reveal {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    &-title {
+      width: min(200px, 60vw);
+      margin-bottom: -4px;
+
+      svg {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    &__title-line2 {
+      font-size: clamp(44px, 11vw, 80px);
+      margin: 0;
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    &__role {
+      width: 100%;
+      font-size: 17px;
+      font-weight: 500;
+      margin-top: 6px;
+    }
+
+    &__description {
+      width: 100%;
+      margin-top: 8px;
+      text-align: left;
+      line-height: 1.8;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    &__desc--desktop {
+      display: none;
+    }
+
+    &__desc--mobile {
+      display: inline;
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero {
+    height: auto;
+    min-height: auto;
+    display: flex;
+    align-items: flex-start;
+    padding: 0 0 120px;
+  }
+
+  .hero__inner {
+    padding: 100px 36px 0;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 32px;
+  }
+
+  .hero__content {
+    width: min(48vw, 460px);
+  }
+
+  .hero__visual {
+    flex: 0 1 360px;
+    align-items: flex-start;
+  }
+
+  .hero__character {
+    width: min(360px, 42vw);
+    height: auto;
+    aspect-ratio: 400 / 460;
+  }
+
+  .hero__description {
+    max-width: 420px;
+  }
+}

@@ -1,0 +1,23 @@
+@media (max-width: 768px) {
+  .life-motion {
+    &__row {
+      grid-auto-columns: 28px;
+      gap: 8px;
+      height: clamp(180px, 46vw, 220px);
+    }
+
+    &__item {
+      grid-column: span var(--mobile-span);
+    }
+
+    &__title {
+      font-size: 11px;
+      margin-bottom: 3px;
+    }
+
+    &__image-wrap {
+      height: calc(100% - 17px);
+      border-radius: 6px;
+    }
+  }
+}

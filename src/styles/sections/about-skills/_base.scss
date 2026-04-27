@@ -1,0 +1,22 @@
+.about-skills {
+  width: 100vw;
+  min-height: 100vh;
+  margin-left: calc(50% - 50vw);
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+}
+
+.about-skills__inner {
+  width: min(1100px, calc(100% - 24px));
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 40px;
+  justify-items: center;
+}

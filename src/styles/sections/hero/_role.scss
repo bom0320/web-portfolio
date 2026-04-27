@@ -1,0 +1,33 @@
+.hero {
+  &__role {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 20px;
+    min-height: clamp(40px, 4vw, 44px);
+    line-height: 1;
+  }
+
+  &__role-track {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__role-text {
+    display: inline-block;
+    font-size: clamp(26px, 3vw, 46px);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: #cccccc;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  &__caret {
+    display: inline-block;
+    margin-left: 3px;
+    font-size: clamp(28px, 3.2vw, 48px);
+    font-weight: 300;
+    color: #f3f3f3;
+    line-height: 1;
+  }
+}
