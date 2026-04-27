@@ -140,3 +140,57 @@
     opacity: 0.85;
   }
 }
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .about-hero {
+    height: 70svh;
+    min-height: 760px;
+    margin-top: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+
+  .about-hero__inner {
+    width: min(680px, calc(100% - 64px));
+    margin: 0 auto;
+    transform: translateY(-20px);
+  }
+
+  .about-title__svg {
+    width: min(340px, 46vw);
+    margin: 0 auto 32px;
+  }
+
+  .about-hero__desc {
+    margin: 0 auto 30px;
+    font-size: clamp(15px, 1.8vw, 18px);
+    line-height: 1.6;
+  }
+
+  .about-hero__btn {
+    height: 58px;
+    min-width: 180px;
+    padding: 14px 24px;
+  }
+  .decor--sun {
+    top: 7%;
+    left: 5%;
+  }
+
+  .decor--stars {
+    top: 9%;
+    right: 2%;
+  }
+
+  .decor--stars2 {
+    bottom: 8%;
+    left: 2%;
+  }
+
+  .decor--heart {
+    bottom: 4%;
+    right: 2%;
+  }
+}
