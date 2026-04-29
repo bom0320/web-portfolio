@@ -1,137 +1,131 @@
-/* =========================
-   Fixed Detail Bar
-========================= */
+.project-detail-page {
+  min-height: 100vh;
+  padding: 88px 0 120px;
+  background: #050505;
+  color: #ffffff;
+}
 
-.project-frame__detail {
-  flex: 0 0 auto;
-  height: clamp(320px, 24vh, 420px);
-  min-height: 0;
-  overflow: hidden;
+.project-detail-layout {
+  width: min(1180px, calc(100% - 64px));
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(260px, 340px) minmax(0, 1fr);
-  gap: 48px;
-  padding: 22px 68px;
-  background: #f2f2f2;
-  color: #111111;
-  margin-top: -2px;
-  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.08), 0 -2px 6px rgba(0, 0, 0, 0.05);
-  border-top: 1px solid rgba(17, 17, 17, 0.08);
-  align-items: stretch;
+  grid-template-columns: 360px minmax(0, 1fr);
+  gap: 80px;
+  align-items: start;
 }
 
-.project-frame__detail-left {
+.project-detail-hero {
+  position: sticky;
+  top: 128px;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  min-width: 0;
-  overflow: hidden;
+  align-items: flex-start;
+  gap: 24px;
 }
 
-.project-frame__text-block {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.project-frame__detail-title {
-  font-size: 1rem;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-top: 8px;
-}
-
-.project-frame__detail-content {
-  min-width: 0;
-}
-
-.project-frame__detail-text {
-  font-size: 0.98rem;
-  line-height: 1.5;
+.project-detail-hero__back {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
   margin-top: 0;
-}
-
-.project-frame__detail-text--overview {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* =========================
-   Thumbnails
-========================= */
-
-.project-frame__thumbs {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  gap: 16px;
-  min-width: 0;
-}
-
-.project-frame__thumb-track {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  width: 100%;
-  min-width: 0;
+  justify-content: center;
+  text-decoration: none;
 }
 
-.project-frame__thumbs-shell {
+.project-detail-hero__text {
+  flex: 1;
   min-width: 0;
-  width: 100%;
+  padding-top: 0;
+}
+
+.project-detail-hero__category {
+  margin: 0 0 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.project-detail-hero__title {
+  margin: 0 0 18px;
+  font-size: 32px;
+  font-weight: 750;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.project-detail-hero__overview {
+  margin: 0 0 24px;
+  max-width: 260px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.project-detail-hero__link {
+  width: fit-content;
+  color: rgba(255, 255, 255, 0.62);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.project-detail-gallery {
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  overflow: hidden;
+  flex-direction: column;
+  gap: 40px;
 }
 
-.project-frame__thumb {
+.project-detail-gallery__item {
   position: relative;
-  flex: 0 0 220px;
-  aspect-ratio: 1.58 / 1;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 18px;
   overflow: hidden;
-  background: #dddddd;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.project-frame__thumb-image {
+.project-detail-gallery__image {
   object-fit: cover;
 }
 
-@media (max-width: 1200px) {
-  .project-frame__detail {
-    flex: 0 0 300px;
-    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
-    gap: 24px;
-    padding: 16px 40px 20px;
+@media (max-width: 1024px) {
+  .project-detail-layout {
+    width: min(860px, calc(100% - 48px));
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 48px;
   }
 
-  .project-frame__detail-title {
-    font-size: 0.92rem;
+  .project-detail-hero {
+    gap: 20px;
   }
 
-  .project-frame__detail-text {
-    font-size: 0.9rem;
-    line-height: 1.55;
+  .project-detail-hero__overview {
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-detail-page {
+    padding: 88px 0;
   }
 
-  .project-frame__thumbs-shell {
-    min-width: 0;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    overflow: hidden;
+  .project-detail-layout {
+    width: min(720px, calc(100% - 40px));
+    display: block;
   }
 
-  .project-frame__thumbs {
-    padding-top: 0;
-    margin-top: 0;
-    gap: 12px;
+  .project-detail-hero {
+    position: relative;
+    top: auto;
+    margin-bottom: 40px;
   }
 
-  .project-frame__thumb {
-    flex: 0 0 160px;
+  .project-detail-gallery {
+    gap: 28px;
   }
 }

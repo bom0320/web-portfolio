@@ -13,6 +13,7 @@ export interface ProjectItem {
   detailImages: string[];
   liveUrl?: string;
   githubUrl?: string;
+  link: string;
 }
 
 export const PROJECTS: ProjectItem[] = [
@@ -35,6 +36,7 @@ export const PROJECTS: ProjectItem[] = [
       "/images/projects/washer-detail-3.png",
     ],
     githubUrl: "https://github.com/bom0320",
+    link: "https://workos.com",
   },
   {
     id: "hyoit",
@@ -54,6 +56,7 @@ export const PROJECTS: ProjectItem[] = [
       "/images/projects/hyoit-detail-2.png",
     ],
     githubUrl: "https://github.com/project-hyoit/hyoit-FE",
+    link: "https://workos.com",
   },
   {
     id: "portfolio",
@@ -74,6 +77,7 @@ export const PROJECTS: ProjectItem[] = [
     ],
     liveUrl: "https://your-domain.com",
     githubUrl: "https://github.com/bom0320/web-portfolio",
+    link: "https://workos.com",
   },
 ];
 

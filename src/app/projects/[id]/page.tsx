@@ -1,42 +1,16 @@
+import { PROJECTS } from "@/data/projects";
 import { notFound } from "next/navigation";
-import { getProjectById, PROJECTS } from "@/data/projects";
 import ProjectDetailHero from "@/components/project/detail/ProjectDetailHero";
 import ProjectDetailGallery from "@/components/project/detail/ProjectDetailGallery";
-import ProjectDetailContent from "@/components/project/detail/ProjectDetailContent";
 
-interface ProjectDetailPageProps {
-  params: Promise<{
+interface ProjectDetailPageParams {
+  params: {
     id: string;
-  }>;
-}
-
-export function generateStaticParams() {
-  return PROJECTS.map((project) => ({
-    id: project.id,
-  }));
-}
-
-export async function generateMetadata({ params }: ProjectDetailPageProps) {
-  const { id } = await params;
-  const project = getProjectById(id);
-
-  if (!project) {
-    return {
-      title: "Project Not Found",
-    };
-  }
-
-  return {
-    title: `${project.title} | BOM Portfolio`,
-    description: project.summary,
   };
 }
 
-export default async function ProjectDetailPage({
-  params,
-}: ProjectDetailPageProps) {
-  const { id } = await params;
-  const project = getProjectById(id);
+export default function ProjectDetailPage({ params }: ProjectDetailPageParams) {
+  const project = PROJECTS.find((p) => p.id === params.id);
 
   if (!project) {
     notFound();
@@ -44,9 +18,10 @@ export default async function ProjectDetailPage({
 
   return (
     <main className="project-detail-page">
-      <ProjectDetailHero project={project} />
-      <ProjectDetailGallery project={project} />
-      <ProjectDetailContent project={project} />
+      <section className="project-detail-layout">
+        <ProjectDetailHero project={project} />
+        <ProjectDetailGallery images={project.detailImages} />
+      </section>
     </main>
   );
 }

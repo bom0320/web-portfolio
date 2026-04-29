@@ -1,26 +1,25 @@
 import Image from "next/image";
-import type { ProjectItem } from "@/data/projects";
 
 interface ProjectDetailGalleryProps {
-  project: ProjectItem;
+  images: string[];
 }
 
 export default function ProjectDetailGallery({
-  project,
+  images,
 }: ProjectDetailGalleryProps) {
   return (
-    <section className="project-detail-gallery">
-      {project.detailImages.map((image, index) => (
-        <div className="project-detail-gallery__item" key={image}>
+    <div className="project-detail-gallery">
+      {images.map((src, index) => (
+        <div className="project-detail-gallery__item" key={`${src}-${index}`}>
           <Image
-            src={image}
-            alt={`${project.title} detail ${index + 1}`}
+            src={src}
+            alt={`project detail ${index + 1}`}
             fill
             className="project-detail-gallery__image"
-            sizes="(max-width: 1024px) 90vw, 760px"
+            sizes="(max-width: 1024px) 90vw, 720px"
           />
         </div>
       ))}
-    </section>
+    </div>
   );
 }
