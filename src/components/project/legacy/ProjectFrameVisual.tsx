@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ProjectItem } from "@/data/projects";
+import { ProjectItem } from "@/data/lagacy/projects";
 
 interface ProjectFrameVisualProps {
   project: ProjectItem;

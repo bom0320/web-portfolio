@@ -1,7 +1,7 @@
 "use client";
 
-import { ProjectItem } from "@/data/projects";
-import ProjectFrameText from "./ProjectFrameText";
+import { ProjectItem } from "@/data/lagacy/projects";
+import ProjectFrameText from "../ProjectFrameText";
 import ProjectFrameVisual from "./ProjectFrameVisual";
 import ProjectFrameDetail from "./ProjectFrameDetail";
 

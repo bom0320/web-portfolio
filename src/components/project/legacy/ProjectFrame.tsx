@@ -1,8 +1,8 @@
 "use client";
 
-import { ProjectItem } from "@/data/projects";
+import { ProjectItem } from "@/data/lagacy/projects";
 import { useLayoutEffect, useRef } from "react";
-import ProjectAnimation from "../animations/project";
+import ProjectAnimation from "../../animations/project";
 import ProjectCard from "./ProjectCard";
 import ProjectCardMobile from "./ProjectCardMobile";
 import useMediaQuery from "@/hooks/useMediaQuery";

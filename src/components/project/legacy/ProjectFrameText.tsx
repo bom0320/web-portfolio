@@ -1,6 +1,6 @@
 "use client";
 
-import { ProjectItem } from "@/data/projects";
+import { ProjectItem } from "@/data/lagacy/projects";
 
 interface ProjectFrameTextProps {
   project: ProjectItem;
