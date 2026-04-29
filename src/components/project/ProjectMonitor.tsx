@@ -32,15 +32,13 @@ export default function ProjectMonitor({
         </div>
 
         <Image
-          src="/images/projects/project-monitor-mockup.png"
+          src="/images/projects/project-monitor-mockup01.png"
           alt=""
           width={900}
           height={700}
           className="project-monitor__mockup"
           priority
         />
-
-        <div className="project-monitor__floor" />
       </div>
     </div>
   );
