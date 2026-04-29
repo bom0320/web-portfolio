@@ -25,7 +25,7 @@ export default function ProjectFrameVisual({
         </div>
 
         <Image
-          src="/images/projects/monitor-frame.png"
+          src="/images/projects/project-monitor-mockup.png"
           alt=""
           width={660}
           height={524}
