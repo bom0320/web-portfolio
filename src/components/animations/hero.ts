@@ -15,7 +15,7 @@ function addTypingAnimation(
         target.textContent = text.slice(0, index + 1);
       },
       undefined,
-      index === 0 ? "+=0.4" : "+=0.08" // 시작 타이핑
+      index === 0 ? "+=0.4" : "+=0.08"
     );
   });
 }
@@ -30,9 +30,7 @@ function addDeleteAnimation(
 
     if (index > text.length - 3) {
       delay = 0.12;
-    } else if (index > 3) {
-      delay = 0.06;
-    } else {
+    } else if (index <= 3) {
       delay = 0.1;
     }
 
@@ -52,13 +50,10 @@ function createLoopTypingAnimation(target: HTMLElement) {
   target.textContent = "";
 
   ROLE_TEXTS.forEach((text) => {
-    // 타이핑
     addTypingAnimation(tl, target, text);
-
     tl.to({}, { duration: 1.5 });
 
     addDeleteAnimation(tl, target, text);
-
     tl.to({}, { duration: 0.35 });
   });
 
@@ -71,20 +66,22 @@ const HeroAnimation = {
     const caret = section.querySelector<HTMLElement>(".js-hero-caret");
     const tl = gsap.timeline();
 
-    // 타이핑 루프
     if (roleText) {
       tl.add(createLoopTypingAnimation(roleText), 0);
     }
 
-    // 커서 깜빡임
     if (caret) {
-      gsap.to(caret, {
-        autoAlpha: 0,
-        duration: 0.7,
-        repeat: -1,
-        yoyo: true,
-        ease: "none",
-      });
+      tl.to(
+        caret,
+        {
+          autoAlpha: 0,
+          duration: 0.7,
+          repeat: -1,
+          yoyo: true,
+          ease: "none",
+        },
+        0
+      );
     }
 
     return tl;

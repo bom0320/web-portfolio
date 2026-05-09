@@ -4,6 +4,7 @@ type LifeMotionController = {
   readonly distance: number;
   refresh: () => void;
   setProgress: (progress: number) => void;
+  playIntroPull: () => void;
   destroy: () => void;
 };
 
@@ -29,11 +30,15 @@ const LifeMotionAnimation = {
     let currentBottomX = 0;
     let targetBottomX = 0;
 
+    let pullTopOffset = 0;
+    let pullBottomOffset = 0;
+
     const refresh = () => {
       const topDistance = Math.max(
         0,
         topTrack.scrollWidth - viewport.clientWidth
       );
+
       const bottomDistance = Math.max(
         0,
         bottomTrack.scrollWidth - viewport.clientWidth
@@ -43,7 +48,9 @@ const LifeMotionAnimation = {
 
       currentBottomX = -distance;
       targetBottomX = -distance;
-      setBottomX(currentBottomX);
+
+      setTopX(currentTopX + pullTopOffset);
+      setBottomX(currentBottomX + pullBottomOffset);
     };
 
     const setProgress = (progress: number) => {
@@ -51,12 +58,33 @@ const LifeMotionAnimation = {
       targetBottomX = -distance + distance * progress;
     };
 
+    const playIntroPull = () => {
+      const pullState = {
+        top: 80,
+        bottom: -80,
+      };
+
+      pullTopOffset = pullState.top;
+      pullBottomOffset = pullState.bottom;
+
+      gsap.to(pullState, {
+        top: 0,
+        bottom: 0,
+        duration: 0.75,
+        ease: "back.out(1.2)",
+        onUpdate: () => {
+          pullTopOffset = pullState.top;
+          pullBottomOffset = pullState.bottom;
+        },
+      });
+    };
+
     const tick = () => {
       currentTopX += (targetTopX - currentTopX) * 0.12;
       currentBottomX += (targetBottomX - currentBottomX) * 0.12;
 
-      setTopX(currentTopX);
-      setBottomX(currentBottomX);
+      setTopX(currentTopX + pullTopOffset);
+      setBottomX(currentBottomX + pullBottomOffset);
     };
 
     refresh();
@@ -68,8 +96,10 @@ const LifeMotionAnimation = {
       },
       refresh,
       setProgress,
+      playIntroPull,
       destroy() {
         gsap.ticker.remove(tick);
+        gsap.killTweensOf([topTrack, bottomTrack]);
         setTopX(0);
         setBottomX(0);
       },

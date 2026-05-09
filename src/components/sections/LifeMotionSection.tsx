@@ -32,11 +32,19 @@ export default function LifeMotionSection() {
       viewport
     );
 
+    let playedIntroPull = false;
+
     const st = ScrollTrigger.create({
       trigger: viewport,
       start: "top bottom",
       end: () => `+=${controller.distance * 2.5}`,
       scrub: 1.5,
+      onEnter: () => {
+        if (playedIntroPull) return;
+
+        playedIntroPull = true;
+        controller.playIntroPull();
+      },
       onUpdate: (self) => controller.setProgress(self.progress),
       invalidateOnRefresh: true,
       onRefresh: () => controller.refresh(),
@@ -70,6 +78,7 @@ export default function LifeMotionSection() {
         }
       >
         <p className="life-motion__title">{item.title}</p>
+
         <div className="life-motion__image-wrap">
           <Image
             src={item.src}
@@ -85,7 +94,10 @@ export default function LifeMotionSection() {
 
   return (
     <section className="life-motion" id="life">
-      <div className="life-motion__viewport" ref={viewportRef}>
+      <div
+        className="life-motion__viewport js-life-motion-enter"
+        ref={viewportRef}
+      >
         <div className="life-motion__track">
           <div
             className="life-motion__row life-motion__row--top"

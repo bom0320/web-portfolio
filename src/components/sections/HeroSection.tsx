@@ -24,14 +24,18 @@ export default function HeroSection() {
     <section className="hero" id="home" ref={sectionRef}>
       <div className="hero__inner">
         <div className="hero__content">
-          <div className="hero__title-group">
+          <div className="hero__title-group js-hero-exit-item">
             <div className="hero-title">
               <BomWaveTitle />
             </div>
 
             <h1 className="hero__title-line2">PORTFOLIO</h1>
           </div>
-          <h2 className="hero__role" aria-label="Frontend Developer">
+
+          <h2
+            className="hero__role js-hero-exit-item"
+            aria-label="Frontend Developer"
+          >
             <span className="hero__role-track">
               <span className="hero__role-text js-hero-role-text" />
               <span className="hero__caret js-hero-caret" aria-hidden="true">
@@ -40,7 +44,7 @@ export default function HeroSection() {
             </span>
           </h2>
 
-          <p className="hero__description">
+          <p className="hero__description js-hero-exit-item">
             <span className="hero__desc--desktop">
               FrontEnd 개발자 김봄입니다. FrontEnd 개발자 김봄입니다. FrontEnd
               개발자 김봄입니다. FrontEnd 개발자 김봄입니다. FrontEnd 개발자
