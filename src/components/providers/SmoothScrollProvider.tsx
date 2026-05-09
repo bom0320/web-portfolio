@@ -1,7 +1,7 @@
 "use client";
 
 import Lenis from "lenis";
-import { ReactNode, useEffect } from "react";
+import { type ReactNode, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -16,20 +16,45 @@ export default function SmoothScrollProvider({
 }: SmoothScrollProviderProps) {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: 1.2,
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.4,
+      wheelMultiplier: 0.9,
+      touchMultiplier: 1.2,
     });
 
     const update = (time: number) => {
       lenis.raf(time * 1000);
     };
 
-    lenis.on("scroll", ScrollTrigger.update);
-
     gsap.ticker.add(update);
     gsap.ticker.lagSmoothing(0);
+
+    lenis.on("scroll", ScrollTrigger.update);
+
+    ScrollTrigger.scrollerProxy(document.body, {
+      scrollTop(value) {
+        if (typeof value === "number") {
+          lenis.scrollTo(value, {
+            immediate: true,
+          });
+        }
+
+        return window.scrollY;
+      },
+
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+    });
+
+    ScrollTrigger.defaults({
+      scroller: document.body,
+    });
 
     ScrollTrigger.refresh();
 
