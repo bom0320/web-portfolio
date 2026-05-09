@@ -1,10 +1,9 @@
 export default function ProjectIntro() {
   return (
     <div className="project-intro">
-      <p className="project-intro__eyebrow">Projects</p>
-      <h2 className="project-intro__title">Selected Works</h2>
+      <h2 className="project-intro__title">Project Experiences</h2>
       <p className="project-intro__description">
-        인터랙션과 구조 설계를 중심으로 만든 프론트엔드 프로젝트입니다.
+        광주 소프트웨어 마이스터고 재학 중 진행한 프로젝트들을 담았습니다.
       </p>
     </div>
   );
