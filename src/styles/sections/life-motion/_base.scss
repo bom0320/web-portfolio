@@ -6,8 +6,12 @@
 
   &__viewport {
     overflow-x: hidden;
-    overflow-y: visible;
+    overflow-y: hidden;
+
     padding-inline: 24px;
     box-sizing: border-box;
+
+    transform: none;
+    will-change: transform;
   }
 }

@@ -36,7 +36,7 @@ export default function LifeMotionSection() {
 
     const st = ScrollTrigger.create({
       trigger: viewport,
-      start: "top bottom",
+      start: "top 85%",
       end: () => `+=${controller.distance * 2.5}`,
       scrub: 1.5,
       onEnter: () => {

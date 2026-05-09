@@ -5,23 +5,23 @@ const HeroToLifeAnimation = {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".hero",
-        start: "70% top",
+        start: "68% top",
         end: "bottom top",
-        scrub: 0.9,
+        scrub: 0.8,
         invalidateOnRefresh: true,
       },
     });
 
-    // 1. 캐릭터 (시선 아래 + 힘 빠짐)
+    // 1. 캐릭터
     tl.to(".js-hero-character", {
-      y: 28,
-      rotate: 6,
+      y: 30,
+      rotate: 5,
       scale: 0.95,
       opacity: 0.45,
       ease: "none",
     });
 
-    // 2. 텍스트 cascade exit
+    // 2. Hero 텍스트
     tl.to(
       ".js-hero-exit-item",
       {
@@ -29,30 +29,24 @@ const HeroToLifeAnimation = {
         opacity: 0,
         stagger: {
           each: 0.12,
-          from: "end", // 아래 → 위 순서
+          from: "end",
         },
         ease: "none",
       },
       "<"
     );
 
-    // 3. LifeMotion viewport 진입 (충돌 방지용 wrapper만)
+    // 3. LifeMotion (핵심 수정)
     tl.fromTo(
       ".js-life-motion-enter",
       {
-        y: 90,
-        x: -40,
-        rotate: -2,
-        opacity: 0,
+        y: 140, // 🔥 더 아래에서 시작
       },
       {
         y: 0,
-        x: 0,
-        rotate: 0,
-        opacity: 1,
-        ease: "power2.out",
+        ease: "none", // 🔥 linear 유지
       },
-      "<0.15"
+      "<0.08" // 🔥 거의 동시에 붙임
     );
 
     return tl;

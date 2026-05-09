@@ -53,15 +53,18 @@ const LifeMotionAnimation = {
       setBottomX(currentBottomX + pullBottomOffset);
     };
 
+    // 🔥 핵심 수정 (가속 적용)
     const setProgress = (progress: number) => {
-      targetTopX = -distance * progress;
-      targetBottomX = -distance + distance * progress;
+      const eased = Math.pow(progress, 2.3); // ← 여기만 바뀜
+
+      targetTopX = -distance * eased;
+      targetBottomX = -distance + distance * eased;
     };
 
     const playIntroPull = () => {
       const pullState = {
-        top: 80,
-        bottom: -80,
+        top: 55,
+        bottom: -55,
       };
 
       pullTopOffset = pullState.top;
@@ -70,8 +73,8 @@ const LifeMotionAnimation = {
       gsap.to(pullState, {
         top: 0,
         bottom: 0,
-        duration: 0.75,
-        ease: "back.out(1.2)",
+        duration: 0.55,
+        ease: "power2.out",
         onUpdate: () => {
           pullTopOffset = pullState.top;
           pullBottomOffset = pullState.bottom;
