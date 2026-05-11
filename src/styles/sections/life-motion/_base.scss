@@ -1,8 +1,6 @@
 .life-motion {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  padding: 0;
+  width: 100%;
+  overflow: hidden;
 }
 
 .life-motion__enter {
@@ -18,5 +16,4 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: none;
 }

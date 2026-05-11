@@ -1,25 +1,23 @@
 .life-motion {
   &__track {
-    width: 100vw;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    overflow: hidden;
   }
 
   &__row {
     display: flex;
-    gap: 12px;
     width: max-content;
     will-change: transform;
   }
 
-  &__row--top {
-    margin-left: -80px;
-  }
-
-  &__row--bottom {
-    margin-left: -180px;
+  &__group {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 12px;
+    padding-right: 12px;
   }
 
   &__item {
@@ -50,7 +48,6 @@
     position: relative;
     width: 100%;
     height: calc(100% - 18px);
-
     border-radius: 8px;
     overflow: hidden;
     background: #111;

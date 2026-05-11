@@ -1,18 +1,23 @@
 import gsap from "gsap";
 
 type LifeMotionController = {
-  readonly distance: number;
   refresh: () => void;
   setProgress: (progress: number) => void;
-  playIntroPull: () => void;
   destroy: () => void;
+};
+
+const EASE_POWER = 2.3;
+const LERP_SPEED = 0.12;
+
+const getGroupWidth = (row: HTMLDivElement) => {
+  const group = row.querySelector<HTMLElement>(".life-motion__group");
+  return group?.offsetWidth ?? 0;
 };
 
 const LifeMotionAnimation = {
   track(
     topTrack: HTMLDivElement,
-    bottomTrack: HTMLDivElement,
-    viewport: HTMLDivElement
+    bottomTrack: HTMLDivElement
   ): LifeMotionController {
     const setTopX = gsap.quickSetter(topTrack, "x", "px") as (
       value: number
@@ -22,7 +27,8 @@ const LifeMotionAnimation = {
       value: number
     ) => void;
 
-    let distance = 0;
+    let topDistance = 0;
+    let bottomDistance = 0;
 
     let currentTopX = 0;
     let targetTopX = 0;
@@ -30,75 +36,41 @@ const LifeMotionAnimation = {
     let currentBottomX = 0;
     let targetBottomX = 0;
 
-    let pullTopOffset = 0;
-    let pullBottomOffset = 0;
-
     const refresh = () => {
-      const topDistance = Math.max(
-        0,
-        topTrack.scrollWidth - viewport.clientWidth
-      );
+      topDistance = getGroupWidth(topTrack);
+      bottomDistance = getGroupWidth(bottomTrack);
 
-      const bottomDistance = Math.max(
-        0,
-        bottomTrack.scrollWidth - viewport.clientWidth
-      );
+      currentTopX = 0;
+      targetTopX = 0;
 
-      distance = Math.max(topDistance, bottomDistance);
+      currentBottomX = -bottomDistance;
+      targetBottomX = -bottomDistance;
 
-      currentBottomX = -distance;
-      targetBottomX = -distance;
-
-      setTopX(currentTopX + pullTopOffset);
-      setBottomX(currentBottomX + pullBottomOffset);
+      setTopX(currentTopX);
+      setBottomX(currentBottomX);
     };
 
     const setProgress = (progress: number) => {
-      const eased = Math.pow(progress, 2.3);
+      const easedProgress = Math.pow(progress, EASE_POWER);
 
-      targetTopX = -distance * eased;
-      targetBottomX = -distance + distance * eased;
-    };
-
-    const playIntroPull = () => {
-      const pullState = {
-        top: 70,
-        bottom: -70,
-      };
-
-      pullTopOffset = pullState.top;
-      pullBottomOffset = pullState.bottom;
-
-      gsap.to(pullState, {
-        top: 0,
-        bottom: 0,
-        duration: 0.75,
-        ease: "power3.out",
-        onUpdate: () => {
-          pullTopOffset = pullState.top;
-          pullBottomOffset = pullState.bottom;
-        },
-      });
+      targetTopX = -topDistance * easedProgress;
+      targetBottomX = -bottomDistance + bottomDistance * easedProgress;
     };
 
     const tick = () => {
-      currentTopX += (targetTopX - currentTopX) * 0.12;
-      currentBottomX += (targetBottomX - currentBottomX) * 0.12;
+      currentTopX += (targetTopX - currentTopX) * LERP_SPEED;
+      currentBottomX += (targetBottomX - currentBottomX) * LERP_SPEED;
 
-      setTopX(currentTopX + pullTopOffset);
-      setBottomX(currentBottomX + pullBottomOffset);
+      setTopX(currentTopX);
+      setBottomX(currentBottomX);
     };
 
     refresh();
     gsap.ticker.add(tick);
 
     return {
-      get distance() {
-        return distance;
-      },
       refresh,
       setProgress,
-      playIntroPull,
       destroy() {
         gsap.ticker.remove(tick);
         gsap.killTweensOf([topTrack, bottomTrack]);
