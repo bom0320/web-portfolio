@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useLayoutEffect, useRef } from "react";
-import ScrollTrigger from "gsap/ScrollTrigger";
 import { LIFE_MOTION_ITEMS } from "@/data/lifeMotions";
 import LifeMotionAnimation from "@/components/animations/lifeMotion";
 
@@ -57,44 +56,37 @@ export default function LifeMotionSection() {
   ).flat();
 
   useLayoutEffect(() => {
-    const viewport = viewportRef.current;
     const topWindow = topWindowRef.current;
     const bottomWindow = bottomWindowRef.current;
-    const topTrack = topTrackRef.current;
-    const bottomTrack = bottomTrackRef.current;
 
-    if (!viewport || !topWindow || !bottomWindow || !topTrack || !bottomTrack) {
-      return;
-    }
+    if (!topWindow || !bottomWindow) return;
 
     const controller = LifeMotionAnimation.track({
-      viewport,
       topWindow,
       bottomWindow,
-      topTrack,
-      bottomTrack,
     });
 
-    const st = ScrollTrigger.create({
-      trigger: ".js-hero-life",
-      start: "top top",
-      end: "bottom top",
-      scrub: true,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        controller.setProgress(self.progress);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+
+        controller.play();
+        observer.disconnect();
       },
-      onRefresh: () => {
-        controller.refresh();
-      },
-    });
+      {
+        threshold: 0.35,
+      }
+    );
+
+    if (viewportRef.current) {
+      observer.observe(viewportRef.current);
+    }
 
     return () => {
-      st.kill();
+      observer.disconnect();
       controller.destroy();
     };
   }, []);
-
   const renderItem = (
     item: (typeof LIFE_MOTION_ITEMS)[number],
     index: number

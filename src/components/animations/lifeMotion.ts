@@ -1,92 +1,55 @@
 import gsap from "gsap";
 
 type TrackParams = {
-  viewport: HTMLDivElement;
   topWindow: HTMLDivElement;
   bottomWindow: HTMLDivElement;
-  topTrack: HTMLDivElement;
-  bottomTrack: HTMLDivElement;
 };
 
 type LifeMotionController = {
-  refresh: () => void;
-  setProgress: (progress: number) => void;
+  play: () => void;
   destroy: () => void;
 };
 
-const EASE_POWER = 2.3;
-const LERP_SPEED = 0.12;
-
 const LifeMotionAnimation = {
-  track({
-    viewport,
-    topWindow,
-    bottomWindow,
-    topTrack,
-    bottomTrack,
-  }: TrackParams): LifeMotionController {
-    const setTopWindowX = gsap.quickSetter(topWindow, "x", "px") as (
-      value: number
-    ) => void;
+  track({ topWindow, bottomWindow }: TrackParams): LifeMotionController {
+    gsap.set(topWindow, {
+      xPercent: -100,
+    });
 
-    const setBottomWindowX = gsap.quickSetter(bottomWindow, "x", "px") as (
-      value: number
-    ) => void;
+    gsap.set(bottomWindow, {
+      xPercent: 100,
+    });
 
-    let viewportWidth = 0;
+    const timeline = gsap.timeline({
+      paused: true,
+      defaults: {
+        duration: 3.2,
+        ease: "power2.out",
+      },
+    });
 
-    let currentTopX = 0;
-    let targetTopX = 0;
-
-    let currentBottomX = 0;
-    let targetBottomX = 0;
-
-    const refresh = () => {
-      viewportWidth = viewport.clientWidth;
-
-      currentTopX = -viewportWidth;
-      targetTopX = -viewportWidth;
-
-      currentBottomX = viewportWidth;
-      targetBottomX = viewportWidth;
-
-      gsap.set([topTrack, bottomTrack], {
-        x: 0,
-      });
-
-      setTopWindowX(currentTopX);
-      setBottomWindowX(currentBottomX);
-    };
-
-    const setProgress = (progress: number) => {
-      const easedProgress = Math.pow(progress, EASE_POWER);
-
-      targetTopX = -viewportWidth + viewportWidth * easedProgress;
-      targetBottomX = viewportWidth - viewportWidth * easedProgress;
-    };
-
-    const tick = () => {
-      currentTopX += (targetTopX - currentTopX) * LERP_SPEED;
-      currentBottomX += (targetBottomX - currentBottomX) * LERP_SPEED;
-
-      setTopWindowX(currentTopX);
-      setBottomWindowX(currentBottomX);
-    };
-
-    refresh();
-    gsap.ticker.add(tick);
+    timeline
+      .to(topWindow, {
+        xPercent: 0,
+      })
+      .to(
+        bottomWindow,
+        {
+          xPercent: 0,
+        },
+        0
+      );
 
     return {
-      refresh,
-      setProgress,
+      play() {
+        timeline.play();
+      },
+
       destroy() {
-        gsap.ticker.remove(tick);
+        timeline.kill();
 
-        setTopWindowX(0);
-        setBottomWindowX(0);
-
-        gsap.set([topTrack, bottomTrack], {
-          x: 0,
+        gsap.set([topWindow, bottomWindow], {
+          xPercent: 0,
         });
       },
     };
