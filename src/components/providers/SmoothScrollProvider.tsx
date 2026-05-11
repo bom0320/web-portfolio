@@ -31,31 +31,6 @@ export default function SmoothScrollProvider({
 
     lenis.on("scroll", ScrollTrigger.update);
 
-    ScrollTrigger.scrollerProxy(document.body, {
-      scrollTop(value) {
-        if (typeof value === "number") {
-          lenis.scrollTo(value, {
-            immediate: true,
-          });
-        }
-
-        return window.scrollY;
-      },
-
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        };
-      },
-    });
-
-    ScrollTrigger.defaults({
-      scroller: document.body,
-    });
-
     ScrollTrigger.refresh();
 
     return () => {
