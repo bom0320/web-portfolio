@@ -6,6 +6,11 @@
     flex-direction: column;
     gap: 12px;
   }
+  &__row-window {
+    width: 100%;
+    overflow: hidden;
+    will-change: transform;
+  }
 
   &__row {
     display: flex;

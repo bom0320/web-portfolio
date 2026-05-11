@@ -1,5 +1,13 @@
 import gsap from "gsap";
 
+type TrackParams = {
+  viewport: HTMLDivElement;
+  topWindow: HTMLDivElement;
+  bottomWindow: HTMLDivElement;
+  topTrack: HTMLDivElement;
+  bottomTrack: HTMLDivElement;
+};
+
 type LifeMotionController = {
   refresh: () => void;
   setProgress: (progress: number) => void;
@@ -9,26 +17,23 @@ type LifeMotionController = {
 const EASE_POWER = 2.3;
 const LERP_SPEED = 0.12;
 
-const getGroupWidth = (row: HTMLDivElement) => {
-  const group = row.querySelector<HTMLElement>(".life-motion__group");
-  return group?.offsetWidth ?? 0;
-};
-
 const LifeMotionAnimation = {
-  track(
-    topTrack: HTMLDivElement,
-    bottomTrack: HTMLDivElement
-  ): LifeMotionController {
-    const setTopX = gsap.quickSetter(topTrack, "x", "px") as (
+  track({
+    viewport,
+    topWindow,
+    bottomWindow,
+    topTrack,
+    bottomTrack,
+  }: TrackParams): LifeMotionController {
+    const setTopWindowX = gsap.quickSetter(topWindow, "x", "px") as (
       value: number
     ) => void;
 
-    const setBottomX = gsap.quickSetter(bottomTrack, "x", "px") as (
+    const setBottomWindowX = gsap.quickSetter(bottomWindow, "x", "px") as (
       value: number
     ) => void;
 
-    let topDistance = 0;
-    let bottomDistance = 0;
+    let viewportWidth = 0;
 
     let currentTopX = 0;
     let targetTopX = 0;
@@ -37,32 +42,35 @@ const LifeMotionAnimation = {
     let targetBottomX = 0;
 
     const refresh = () => {
-      topDistance = getGroupWidth(topTrack);
-      bottomDistance = getGroupWidth(bottomTrack);
+      viewportWidth = viewport.clientWidth;
 
-      currentTopX = 0;
-      targetTopX = 0;
+      currentTopX = -viewportWidth;
+      targetTopX = -viewportWidth;
 
-      currentBottomX = -bottomDistance;
-      targetBottomX = -bottomDistance;
+      currentBottomX = viewportWidth;
+      targetBottomX = viewportWidth;
 
-      setTopX(currentTopX);
-      setBottomX(currentBottomX);
+      gsap.set([topTrack, bottomTrack], {
+        x: 0,
+      });
+
+      setTopWindowX(currentTopX);
+      setBottomWindowX(currentBottomX);
     };
 
     const setProgress = (progress: number) => {
       const easedProgress = Math.pow(progress, EASE_POWER);
 
-      targetTopX = -topDistance * easedProgress;
-      targetBottomX = -bottomDistance + bottomDistance * easedProgress;
+      targetTopX = -viewportWidth + viewportWidth * easedProgress;
+      targetBottomX = viewportWidth - viewportWidth * easedProgress;
     };
 
     const tick = () => {
       currentTopX += (targetTopX - currentTopX) * LERP_SPEED;
       currentBottomX += (targetBottomX - currentBottomX) * LERP_SPEED;
 
-      setTopX(currentTopX);
-      setBottomX(currentBottomX);
+      setTopWindowX(currentTopX);
+      setBottomWindowX(currentBottomX);
     };
 
     refresh();
@@ -73,9 +81,13 @@ const LifeMotionAnimation = {
       setProgress,
       destroy() {
         gsap.ticker.remove(tick);
-        gsap.killTweensOf([topTrack, bottomTrack]);
-        setTopX(0);
-        setBottomX(0);
+
+        setTopWindowX(0);
+        setBottomWindowX(0);
+
+        gsap.set([topTrack, bottomTrack], {
+          x: 0,
+        });
       },
     };
   },
