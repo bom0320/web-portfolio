@@ -1,9 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
 import { LIFE_MOTION_ITEMS } from "@/data/lifeMotions";
 import LifeMotionAnimation from "@/components/animations/lifeMotion";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const REPEAT_IN_GROUP = 8;
 
@@ -16,77 +21,74 @@ const fillToSameLength = <T,>(items: T[], targetLength: number) => {
   );
 };
 
+const repeatItems = <T,>(items: T[], repeatCount: number) => {
+  return Array.from({ length: repeatCount }, () => items).flat();
+};
+
 export default function LifeMotionSection() {
   const viewportRef = useRef<HTMLDivElement | null>(null);
-
   const topWindowRef = useRef<HTMLDivElement | null>(null);
   const bottomWindowRef = useRef<HTMLDivElement | null>(null);
 
-  const topTrackRef = useRef<HTMLDivElement | null>(null);
-  const bottomTrackRef = useRef<HTMLDivElement | null>(null);
+  const { topGroupItems, bottomGroupItems } = useMemo(() => {
+    const topBaseItems = LIFE_MOTION_ITEMS.filter(
+      (_, index) => index % 2 === 0
+    );
 
-  const topBaseItems = LIFE_MOTION_ITEMS.filter((_, index) => index % 2 === 0);
-  const bottomBaseItems = LIFE_MOTION_ITEMS.filter(
-    (_, index) => index % 2 === 1
-  );
+    const bottomBaseItems = LIFE_MOTION_ITEMS.filter(
+      (_, index) => index % 2 === 1
+    );
 
-  const targetBaseLength = Math.max(
-    topBaseItems.length,
-    bottomBaseItems.length
-  );
+    const targetBaseLength = Math.max(
+      topBaseItems.length,
+      bottomBaseItems.length
+    );
 
-  const normalizedTopBaseItems = fillToSameLength(
-    topBaseItems,
-    targetBaseLength
-  );
+    const normalizedTopBaseItems = fillToSameLength(
+      topBaseItems,
+      targetBaseLength
+    );
 
-  const normalizedBottomBaseItems = fillToSameLength(
-    bottomBaseItems,
-    targetBaseLength
-  );
+    const normalizedBottomBaseItems = fillToSameLength(
+      bottomBaseItems,
+      targetBaseLength
+    );
 
-  const topGroupItems = Array.from(
-    { length: REPEAT_IN_GROUP },
-    () => normalizedTopBaseItems
-  ).flat();
-
-  const bottomGroupItems = Array.from(
-    { length: REPEAT_IN_GROUP },
-    () => normalizedBottomBaseItems
-  ).flat();
+    return {
+      topGroupItems: repeatItems(normalizedTopBaseItems, REPEAT_IN_GROUP),
+      bottomGroupItems: repeatItems(normalizedBottomBaseItems, REPEAT_IN_GROUP),
+    };
+  }, []);
 
   useLayoutEffect(() => {
+    const viewport = viewportRef.current;
     const topWindow = topWindowRef.current;
     const bottomWindow = bottomWindowRef.current;
 
-    if (!topWindow || !bottomWindow) return;
+    if (!viewport || !topWindow || !bottomWindow) return;
 
     const controller = LifeMotionAnimation.track({
       topWindow,
       bottomWindow,
     });
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting) return;
-
-        controller.play();
-        observer.disconnect();
+    const scrollTrigger = ScrollTrigger.create({
+      trigger: viewport,
+      start: "bottom top",
+      end: "top bottom",
+      scrub: 2.5,
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        controller.setProgress(self.progress);
       },
-      {
-        threshold: 0.35,
-      }
-    );
-
-    if (viewportRef.current) {
-      observer.observe(viewportRef.current);
-    }
+    });
 
     return () => {
-      observer.disconnect();
+      scrollTrigger.kill();
       controller.destroy();
     };
   }, []);
+
   const renderItem = (
     item: (typeof LIFE_MOTION_ITEMS)[number],
     index: number
@@ -115,16 +117,14 @@ export default function LifeMotionSection() {
         >
           <div className="life-motion__track">
             <div
-              className="life-motion__row-window js-life-motion-top-window"
+              className="life-motion__row-window life-motion__row-window--top"
               ref={topWindowRef}
             >
-              <div
-                className="life-motion__row js-life-motion-top"
-                ref={topTrackRef}
-              >
+              <div className="life-motion__row">
                 <div className="life-motion__group">
                   {topGroupItems.map(renderItem)}
                 </div>
+
                 <div className="life-motion__group" aria-hidden="true">
                   {topGroupItems.map(renderItem)}
                 </div>
@@ -132,16 +132,14 @@ export default function LifeMotionSection() {
             </div>
 
             <div
-              className="life-motion__row-window js-life-motion-bottom-window"
+              className="life-motion__row-window life-motion__row-window--bottom"
               ref={bottomWindowRef}
             >
-              <div
-                className="life-motion__row js-life-motion-bottom"
-                ref={bottomTrackRef}
-              >
+              <div className="life-motion__row">
                 <div className="life-motion__group">
                   {bottomGroupItems.map(renderItem)}
                 </div>
+
                 <div className="life-motion__group" aria-hidden="true">
                   {bottomGroupItems.map(renderItem)}
                 </div>

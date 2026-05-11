@@ -6,47 +6,49 @@ type TrackParams = {
 };
 
 type LifeMotionController = {
-  play: () => void;
+  setProgress: (progress: number) => void;
   destroy: () => void;
 };
 
+const LERP_FACTOR = 0.02;
+
+const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
+
 const LifeMotionAnimation = {
   track({ topWindow, bottomWindow }: TrackParams): LifeMotionController {
-    gsap.set(topWindow, {
-      xPercent: -100,
-    });
+    const setTopX = gsap.quickSetter(topWindow, "xPercent") as (
+      value: number
+    ) => void;
 
-    gsap.set(bottomWindow, {
-      xPercent: 100,
-    });
+    const setBottomX = gsap.quickSetter(bottomWindow, "xPercent") as (
+      value: number
+    ) => void;
 
-    const timeline = gsap.timeline({
-      paused: true,
-      defaults: {
-        duration: 3.2,
-        ease: "power2.out",
-      },
-    });
+    let currentProgress = 0;
+    let targetProgress = 0;
 
-    timeline
-      .to(topWindow, {
-        xPercent: 0,
-      })
-      .to(
-        bottomWindow,
-        {
-          xPercent: 0,
-        },
-        0
-      );
+    const tick = () => {
+      currentProgress += (targetProgress - currentProgress) * LERP_FACTOR;
+
+      setTopX(-100 + 100 * currentProgress);
+      setBottomX(100 - 100 * currentProgress);
+    };
+
+    gsap.ticker.add(tick);
+
+    const setProgress = (progress: number) => {
+      targetProgress = clampProgress(progress);
+    };
+
+    setProgress(0);
 
     return {
-      play() {
-        timeline.play();
-      },
+      setProgress,
 
       destroy() {
-        timeline.kill();
+        gsap.ticker.remove(tick);
+
+        gsap.killTweensOf([topWindow, bottomWindow]);
 
         gsap.set([topWindow, bottomWindow], {
           xPercent: 0,
