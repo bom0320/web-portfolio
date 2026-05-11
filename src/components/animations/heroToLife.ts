@@ -2,31 +2,12 @@ import gsap from "gsap";
 
 const HeroToLifeAnimation = {
   create() {
-    const lifeEnter = document.querySelector(".js-life-motion-enter");
-    const topTrack = document.querySelector(".js-life-motion-top");
-    const bottomTrack = document.querySelector(".js-life-motion-bottom");
-    const viewport = document.querySelector(".js-life-motion-viewport");
-
-    if (!lifeEnter || !topTrack || !bottomTrack || !viewport) return;
-
-    const getDistance = () => {
-      const topDistance =
-        (topTrack as HTMLElement).scrollWidth -
-        (viewport as HTMLElement).clientWidth;
-
-      const bottomDistance =
-        (bottomTrack as HTMLElement).scrollWidth -
-        (viewport as HTMLElement).clientWidth;
-
-      return Math.max(topDistance, bottomDistance, 0);
-    };
-
-    gsap.set(lifeEnter, {
+    gsap.set(".js-life-motion-enter", {
       y: "100vh",
     });
 
-    gsap.set(bottomTrack, {
-      x: () => -getDistance(),
+    gsap.set([".js-life-motion-top", ".js-life-motion-bottom"], {
+      x: 0,
     });
 
     const tl = gsap.timeline({
@@ -39,27 +20,25 @@ const HeroToLifeAnimation = {
       },
     });
 
-    // 1. LifeMotion 아래에서 등장
     tl.to(
-      lifeEnter,
+      ".js-life-motion-enter",
       {
         y: "0vh",
-        ease: "power4.in",
-        duration: 0.55,
+        ease: "power4.inOut",
+        duration: 1,
       },
       0
     );
 
-    // 2. Hero 약하게 밀려나기
     tl.to(
       ".js-hero-character",
       {
         y: 44,
         rotate: 5,
         scale: 0.94,
-        opacity: 0.42,
+        opacity: 0.35,
         ease: "none",
-        duration: 0.45,
+        duration: 0.7,
       },
       0
     );
@@ -67,37 +46,16 @@ const HeroToLifeAnimation = {
     tl.to(
       ".js-hero-exit-item",
       {
-        y: -90,
+        y: -80,
         opacity: 0,
         stagger: {
           each: 0.08,
           from: "end",
         },
         ease: "none",
-        duration: 0.35,
+        duration: 0.6,
       },
-      0.08
-    );
-
-    // 3. LifeMotion이 화면을 채운 뒤 가로 트랙 이동
-    tl.to(
-      topTrack,
-      {
-        x: () => -getDistance(),
-        ease: "power2.in",
-        duration: 0.45,
-      },
-      0.55
-    );
-
-    tl.to(
-      bottomTrack,
-      {
-        x: 0,
-        ease: "power2.in",
-        duration: 0.45,
-      },
-      0.55
+      0.1
     );
 
     return tl;
