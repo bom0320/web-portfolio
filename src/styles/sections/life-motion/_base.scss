@@ -3,15 +3,19 @@
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   padding: 0;
+}
 
-  &__viewport {
-    overflow-x: hidden;
-    overflow-y: hidden;
+.life-motion__enter {
+  width: 100%;
+  height: 100vh;
+  transform: translateY(100vh);
+  will-change: transform;
+}
 
-    padding-inline: 24px;
-    box-sizing: border-box;
-
-    transform: none;
-    will-change: transform;
-  }
+.life-motion__viewport {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-inline: 24px;
+  box-sizing: border-box;
 }
