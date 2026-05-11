@@ -25,7 +25,8 @@ const HeroToLifeAnimation = {
         },
         0
       )
-      .to(
+      /**
+       * .to(
         ".js-hero-character",
         {
           y: 44,
@@ -36,6 +37,7 @@ const HeroToLifeAnimation = {
         },
         0
       )
+       */
       .to(
         ".js-hero-exit-item",
         {
