@@ -1,78 +1,59 @@
 import gsap from "gsap";
 
+type TrackParams = {
+  topWindow: HTMLDivElement;
+  bottomWindow: HTMLDivElement;
+};
+
 type LifeMotionController = {
-  readonly distance: number;
-  refresh: () => void;
   setProgress: (progress: number) => void;
   destroy: () => void;
 };
 
+const LERP_FACTOR = 0.02;
+
+const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
+
 const LifeMotionAnimation = {
-  track(
-    topTrack: HTMLDivElement,
-    bottomTrack: HTMLDivElement,
-    viewport: HTMLDivElement
-  ): LifeMotionController {
-    const setTopX = gsap.quickSetter(topTrack, "x", "px") as (
+  track({ topWindow, bottomWindow }: TrackParams): LifeMotionController {
+    const setTopX = gsap.quickSetter(topWindow, "xPercent") as (
       value: number
     ) => void;
 
-    const setBottomX = gsap.quickSetter(bottomTrack, "x", "px") as (
+    const setBottomX = gsap.quickSetter(bottomWindow, "xPercent") as (
       value: number
     ) => void;
 
-    let distance = 0;
+    let currentProgress = 0;
+    let targetProgress = 0;
 
-    let currentTopX = 0;
-    let targetTopX = 0;
+    const tick = () => {
+      currentProgress += (targetProgress - currentProgress) * LERP_FACTOR;
 
-    let currentBottomX = 0;
-    let targetBottomX = 0;
-
-    const refresh = () => {
-      const topDistance = Math.max(
-        0,
-        topTrack.scrollWidth - viewport.clientWidth
-      );
-      const bottomDistance = Math.max(
-        0,
-        bottomTrack.scrollWidth - viewport.clientWidth
-      );
-
-      distance = Math.max(topDistance, bottomDistance);
-
-      currentBottomX = -distance;
-      targetBottomX = -distance;
-      setBottomX(currentBottomX);
+      setTopX(-100 + 100 * currentProgress);
+      setBottomX(100 - 100 * currentProgress);
     };
 
     const setProgress = (progress: number) => {
-      targetTopX = -distance * progress;
-      targetBottomX = -distance + distance * progress;
+      targetProgress = clampProgress(progress);
     };
 
-    const tick = () => {
-      currentTopX += (targetTopX - currentTopX) * 0.12;
-      currentBottomX += (targetBottomX - currentBottomX) * 0.12;
+    const destroy = () => {
+      gsap.ticker.remove(tick);
 
-      setTopX(currentTopX);
-      setBottomX(currentBottomX);
+      gsap.killTweensOf([topWindow, bottomWindow]);
+
+      gsap.set([topWindow, bottomWindow], {
+        xPercent: 0,
+      });
     };
 
-    refresh();
     gsap.ticker.add(tick);
+    setProgress(0);
 
     return {
-      get distance() {
-        return distance;
-      },
-      refresh,
       setProgress,
-      destroy() {
-        gsap.ticker.remove(tick);
-        setTopX(0);
-        setBottomX(0);
-      },
+      destroy,
     };
   },
 };

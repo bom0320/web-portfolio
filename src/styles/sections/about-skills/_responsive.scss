@@ -16,23 +16,23 @@
 
   .about-skills__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 12px;
   }
 
   .skill-card__circle {
-    width: 140px;
-    height: 140px;
+    width: clamp(90px, 28vw, 120px);
+    height: clamp(90px, 28vw, 120px);
   }
 
   .skill-card__icon-wrap {
-    width: 56px;
-    height: 56px;
+    width: 38%;
+    height: 38%;
     border-width: 2px;
   }
 
   .skill-card__icon {
-    width: 26px !important;
-    height: 26px !important;
+    width: 55%;
+    height: 55%;
   }
 
   .skill-card__meta {
@@ -40,12 +40,12 @@
   }
 
   .skill-card__name {
-    font-size: 14px;
+    font-size: clamp(13px, 3vw, 14px);
     font-weight: 600;
   }
 
   .skill-card__sub {
-    font-size: 11px;
+    font-size: clamp(10px, 2.5vw, 11px);
     opacity: 0.6;
   }
 }

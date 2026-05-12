@@ -39,81 +39,87 @@ export default function ContactSection() {
 
     return () => ctx.revert();
   }, []);
+
   return (
     <section ref={sectionRef} className="contact-section">
-      <div className="contact-section__hero">
-        <div className="contact-section__inner">
-          <ContactTitle fillGroupRef={fillGroupRef} />
+      <div className="contact-section__pin">
+        <div className="contact-section__hero">
+          <div className="contact-section__inner">
+            <ContactTitle fillGroupRef={fillGroupRef} />
 
-          <div className="contact-section__content">
-            <aside className="contact-section__info">
-              <a
-                href={`mailto:${CONTACT_HERO.email}`}
-                className="contact-section__info-link"
+            <div className="contact-section__content">
+              <aside className="contact-section__info">
+                <a
+                  href={`mailto:${CONTACT_HERO.email}`}
+                  className="contact-section__info-link"
+                >
+                  {CONTACT_HERO.email}
+                </a>
+
+                <a
+                  href={CONTACT_HERO.phoneHref}
+                  className="contact-section__info-link"
+                >
+                  {CONTACT_HERO.phone}
+                </a>
+
+                <address className="contact-section__address">
+                  {CONTACT_HERO.address.map((line) => (
+                    <span key={line}>{line}</span>
+                  ))}
+                </address>
+              </aside>
+
+              <form
+                className="contact-form"
+                onSubmit={(e) => e.preventDefault()}
               >
-                {CONTACT_HERO.email}
-              </a>
+                <div className="contact-form__row">
+                  <div className="contact-form__field">
+                    <label htmlFor="firstName">{CONTACT_FORM.nameLabel}</label>
+                    <input
+                      id="firstName"
+                      name="firstName"
+                      type="text"
+                      placeholder={CONTACT_FORM.firstNamePlaceholder}
+                    />
+                  </div>
 
-              <a
-                href={CONTACT_HERO.phoneHref}
-                className="contact-section__info-link"
-              >
-                {CONTACT_HERO.phone}
-              </a>
-
-              <address className="contact-section__address">
-                {CONTACT_HERO.address.map((line) => (
-                  <span key={line}>{line}</span>
-                ))}
-              </address>
-            </aside>
-
-            <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
-              <div className="contact-form__row">
-                <div className="contact-form__field">
-                  <label htmlFor="firstName">{CONTACT_FORM.nameLabel}</label>
-                  <input
-                    id="firstName"
-                    name="firstName"
-                    type="text"
-                    placeholder={CONTACT_FORM.firstNamePlaceholder}
-                  />
+                  <div className="contact-form__field">
+                    <label
+                      htmlFor="lastName"
+                      className="contact-form__label contact-form__label--hidden"
+                    >
+                      {CONTACT_FORM.nameLabel}
+                    </label>
+                    <input
+                      id="lastName"
+                      name="lastName"
+                      type="text"
+                      placeholder={CONTACT_FORM.lastNamePlaceholder}
+                    />
+                  </div>
                 </div>
 
-                <div className="contact-form__field">
-                  <label
-                    htmlFor="lastName"
-                    className="contact-form__label contact-form__label--hidden"
-                  >
-                    {CONTACT_FORM.nameLabel}
-                  </label>
-                  <input
-                    id="lastName"
-                    name="lastName"
-                    type="text"
-                    placeholder={CONTACT_FORM.lastNamePlaceholder}
-                  />
+                <div className="contact-form__row contact-form__row--single">
+                  <div className="contact-form__field">
+                    <label htmlFor="email">{CONTACT_FORM.emailLabel}</label>
+                    <input id="email" name="email" type="email" />
+                  </div>
                 </div>
-              </div>
 
-              <div className="contact-form__row contact-form__row--single">
-                <div className="contact-form__field">
-                  <label htmlFor="email">{CONTACT_FORM.emailLabel}</label>
-                  <input id="email" name="email" type="email" />
+                <div className="contact-form__row contact-form__row--single">
+                  <div className="contact-form__field">
+                    <label htmlFor="message">{CONTACT_FORM.messageLabel}</label>
+                    <textarea id="message" name="message" rows={4} />
+                  </div>
                 </div>
-              </div>
 
-              <div className="contact-form__row contact-form__row--single">
-                <div className="contact-form__field">
-                  <label htmlFor="message">{CONTACT_FORM.messageLabel}</label>
-                  <textarea id="message" name="message" rows={4} />
-                </div>
-              </div>
-
-              <button type="submit" className="contact-form__submit">
-                {CONTACT_FORM.submitLabel}
-              </button>
-            </form>
+                <button type="submit" className="contact-form__submit">
+                  {CONTACT_FORM.submitLabel}
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

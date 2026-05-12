@@ -3,57 +3,56 @@
   width: 100vw;
   height: 100vh;
   margin-left: calc(50% - 50vw);
+  background: #050505;
+  color: #ffffff;
+  overflow: hidden;
 }
 
-/* =========================
-   Fixed Frame
-========================= */
+.project-showcase {
+  width: min(1180px, calc(100% - 64px));
+  height: 100vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(80px, 9vw, 150px);
+}
 
-.project-frame {
+.project-showcase__left {
   position: relative;
-  width: 100%;
-  height: 100%;
+  z-index: 3;
+  transform: translateY(-18px);
 }
 
-.project-frame__surface {
-  width: 100%;
-  height: 100%;
+.project-showcase__right {
   position: relative;
-}
-
-.project-layer {
-  position: absolute;
-  inset: 0;
-}
-
-.project-layer--current {
   z-index: 1;
+  min-width: 0;
 }
 
-.project-layer--next {
-  z-index: 2;
+@media (max-width: 1024px) {
+  .project-showcase {
+    width: min(760px, calc(100% - 48px));
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 48px;
+  }
+
+  .project-showcase__left {
+    transform: none;
+  }
 }
 
-@media (max-width: 1024px) and (orientation: portrait) {
+@media (max-width: 768px) {
   .projects-section {
     height: auto;
-    min-height: auto;
+    min-height: 100vh;
+    overflow: visible;
   }
 
-  .project-frame {
+  .project-showcase {
     height: auto;
-    min-height: auto;
-  }
-
-  .project-frame__surface {
-    height: auto;
-    min-height: auto;
-  }
-
-  .project-layer {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    height: auto;
+    min-height: 100vh;
+    padding: 96px 0;
   }
 }

@@ -2,11 +2,12 @@
 
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
 import SkillTitle from "./SkillTitle";
 import SkillCard from "./SkillCard";
 import { SKILLS } from "@/data/skills";
 import SkillAnimation from "@/components/animations/skill";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,10 +28,17 @@ export default function AboutSkills() {
         trigger: section,
         start: "top 74%",
         end: "bottom top",
+
         onEnter: () => {
-          titleTween.play();
-          introTween.play();
+          titleTween.restart();
+          introTween.restart();
         },
+
+        onEnterBack: () => {
+          titleTween.restart();
+          introTween.restart();
+        },
+
         onLeaveBack: () => {
           titleTween.pause(0);
           introTween.pause(0);

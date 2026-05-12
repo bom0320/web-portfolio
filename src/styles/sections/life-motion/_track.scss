@@ -1,53 +1,60 @@
 .life-motion {
   &__track {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
-
-  &__row {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 36px;
-    gap: 12px;
-    width: max-content;
-    height: clamp(200px, 30vw, 300px);
+  &__row-window {
+    width: 100%;
+    overflow: hidden;
     will-change: transform;
   }
 
+  &__row {
+    display: flex;
+    width: max-content;
+  }
+
+  &__group {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 12px;
+    padding-right: 12px;
+  }
+
   &__item {
-    position: relative;
-    grid-column: span var(--span);
+    flex: 0 0 clamp(240px, 20vw, 360px);
+    height: clamp(220px, 28vw, 320px);
+    margin: 0;
+
     display: flex;
     flex-direction: column;
-    margin: 0;
     min-width: 0;
-    opacity: 1;
   }
 
   &__title {
-    display: block;
     flex-shrink: 0;
     margin: 0 0 4px;
+
     font-size: 12px;
     line-height: 1.3;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.677);
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 100%;
   }
 
   &__image-wrap {
     position: relative;
     width: 100%;
-    height: calc(100% - 10px);
-    aspect-ratio: auto;
+    height: calc(100% - 18px);
     border-radius: 8px;
     overflow: hidden;
     background: #111;
-    transform: translateZ(0);
   }
 
   &__image {
