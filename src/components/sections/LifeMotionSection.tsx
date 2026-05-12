@@ -40,7 +40,7 @@ export default function LifeMotionSection() {
       trigger: viewport,
       start: "top bottom",
       end: "bottom top",
-      scrub: 2.5,
+      scrub: false,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
         trackController.setProgress(self.progress);
