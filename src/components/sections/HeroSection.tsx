@@ -5,10 +5,11 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 import HeroAnimation from "@/components/animations/hero";
-import HeroContent from "@/components/hero/HeroContent";
-import HeroVisual from "@/components/hero/HeroVisual";
-import { HERO_EXIT_SCROLL_DISTANCE } from "@/components/hero/hero.constants";
-
+import {
+  HeroContent,
+  HeroVisual,
+  HERO_EXIT_SCROLL_DISTANCE,
+} from "@/components/hero";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
