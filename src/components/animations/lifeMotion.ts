@@ -34,26 +34,26 @@ const LifeMotionAnimation = {
       setBottomX(100 - 100 * currentProgress);
     };
 
-    gsap.ticker.add(tick);
-
     const setProgress = (progress: number) => {
       targetProgress = clampProgress(progress);
     };
 
+    const destroy = () => {
+      gsap.ticker.remove(tick);
+
+      gsap.killTweensOf([topWindow, bottomWindow]);
+
+      gsap.set([topWindow, bottomWindow], {
+        xPercent: 0,
+      });
+    };
+
+    gsap.ticker.add(tick);
     setProgress(0);
 
     return {
       setProgress,
-
-      destroy() {
-        gsap.ticker.remove(tick);
-
-        gsap.killTweensOf([topWindow, bottomWindow]);
-
-        gsap.set([topWindow, bottomWindow], {
-          xPercent: 0,
-        });
-      },
+      destroy,
     };
   },
 };
