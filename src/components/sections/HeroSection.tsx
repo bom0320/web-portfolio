@@ -5,6 +5,9 @@ import Image from "next/image";
 import gsap from "gsap";
 import BomWaveTitle from "../hero/BomWaveTitle";
 import HeroAnimation from "../animations/hero";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -15,6 +18,25 @@ export default function HeroSection() {
 
     const ctx = gsap.context(() => {
       HeroAnimation.intro(section);
+
+      const exitController = HeroAnimation.exit(section);
+      exitController.setProgress(0);
+
+      const exitTrigger = ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: "+=1200",
+        scrub: false,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          exitController.setProgress(self.progress);
+        },
+      });
+
+      return () => {
+        exitTrigger.kill();
+        exitController.destroy();
+      };
     }, section);
 
     return () => ctx.revert();
