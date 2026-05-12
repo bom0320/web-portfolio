@@ -9,7 +9,7 @@ import LifeMotionSection from "@/components/sections/LifeMotionSection";
 import AboutSection from "@/components/sections/AboutSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import ContactSection from "@/components/sections/ContactSection";
-import HeroToLifeAnimation from "@/components/animations/heroToLife";
+import HeroToLifeAnimation from "@/components/animations/transitions/heroToLife";
 
 gsap.registerPlugin(ScrollTrigger);
 
