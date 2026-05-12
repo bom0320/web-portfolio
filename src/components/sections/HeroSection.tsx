@@ -5,11 +5,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 import HeroAnimation from "@/components/animations/hero";
-import {
-  HeroContent,
-  HeroVisual,
-  HERO_EXIT_SCROLL_DISTANCE,
-} from "@/components/hero";
+import { HeroContent, HeroVisual } from "@/components/hero";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroSection() {
@@ -28,7 +24,7 @@ export default function HeroSection() {
       const exitTrigger = ScrollTrigger.create({
         trigger: section,
         start: "top top",
-        end: `+=${HERO_EXIT_SCROLL_DISTANCE}`,
+        end: "bottom top",
         scrub: false,
         invalidateOnRefresh: true,
         onUpdate: (self) => {

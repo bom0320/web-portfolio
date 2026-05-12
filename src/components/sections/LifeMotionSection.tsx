@@ -38,8 +38,8 @@ export default function LifeMotionSection() {
 
     const scrollTrigger = ScrollTrigger.create({
       trigger: viewport,
-      start: "bottom top",
-      end: "top bottom",
+      start: "top bottom",
+      end: "bottom top",
       scrub: 2.5,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
