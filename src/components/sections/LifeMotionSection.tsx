@@ -29,10 +29,12 @@ export default function LifeMotionSection() {
 
     if (!viewport || !topWindow || !bottomWindow) return;
 
-    const controller = LifeMotionAnimation.track({
+    const trackController = LifeMotionAnimation.track({
       topWindow,
       bottomWindow,
     });
+
+    trackController.setProgress(0);
 
     const scrollTrigger = ScrollTrigger.create({
       trigger: viewport,
@@ -41,13 +43,13 @@ export default function LifeMotionSection() {
       scrub: 2.5,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
-        controller.setProgress(self.progress);
+        trackController.setProgress(self.progress);
       },
     });
 
     return () => {
       scrollTrigger.kill();
-      controller.destroy();
+      trackController.destroy();
     };
   }, []);
 

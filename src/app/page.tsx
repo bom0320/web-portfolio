@@ -16,7 +16,24 @@ gsap.registerPlugin(ScrollTrigger);
 export default function HomePage() {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      HeroToLifeAnimation.create();
+      const controller = HeroToLifeAnimation.create();
+      controller.setProgress(0);
+
+      const scrollTrigger = ScrollTrigger.create({
+        trigger: ".js-hero-life",
+        start: "top top",
+        end: "bottom top",
+        scrub: 1.2,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          controller.setProgress(self.progress);
+        },
+      });
+
+      return () => {
+        scrollTrigger.kill();
+        controller.destroy();
+      };
     });
 
     return () => ctx.revert();

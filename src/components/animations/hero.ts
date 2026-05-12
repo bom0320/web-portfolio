@@ -6,9 +6,12 @@ const HERO_EXIT_LERP = 0.02;
 const HERO_EXIT_DISTANCE_RATIO = 1.3;
 const CHARACTER_EXIT_DISTANCE_RATIO = 0.35;
 
-type HeroExitController = {
-  setProgress: (progress: number) => void;
+type HeroAnimationController = {
   destroy: () => void;
+};
+
+type HeroProgressController = HeroAnimationController & {
+  setProgress: (progress: number) => void;
 };
 
 type ExitItemController = {
@@ -36,6 +39,19 @@ const toLocalProgress = (progress: number, start: number, end: number) => {
   );
 };
 
+const getExitDistance = () => window.innerHeight * HERO_EXIT_DISTANCE_RATIO;
+
+const getCharacterExitDistance = () => {
+  return window.innerHeight * CHARACTER_EXIT_DISTANCE_RATIO;
+};
+
+function getDeleteDelay(index: number, length: number) {
+  if (index > length - 3) return 0.12;
+  if (index <= 3) return 0.1;
+
+  return 0.06;
+}
+
 function addTyping(tl: gsap.core.Timeline, target: HTMLElement, text: string) {
   text.split("").forEach((_, index) => {
     tl.call(
@@ -62,13 +78,6 @@ function addDeleting(
       `+=${getDeleteDelay(index, text.length)}`
     );
   }
-}
-
-function getDeleteDelay(index: number, length: number) {
-  if (index > length - 3) return 0.12;
-  if (index <= 3) return 0.1;
-
-  return 0.06;
 }
 
 function createTypingTimeline(target: HTMLElement) {
@@ -142,9 +151,8 @@ function renderExitItems(
     const opacity = 1 - fadeProgress;
 
     setY(-exitDistance * moveProgress);
-    setOpacity(opacity); // quickSetter로 통일
+    setOpacity(opacity);
 
-    // visibility만 직접 처리 (style 접근은 괜찮음)
     element.style.visibility = opacity <= 0.01 ? "hidden" : "visible";
   });
 }
@@ -157,28 +165,26 @@ function renderCharacter(
 
   const localProgress = toLocalProgress(progress, 0.05, 0.85);
 
-  controller.setY(
-    window.innerHeight * CHARACTER_EXIT_DISTANCE_RATIO * localProgress
-  );
+  controller.setY(getCharacterExitDistance() * localProgress);
   controller.setRotate(-6 * localProgress);
 
-  // 캐릭터는 opacity 건드리지 않음
   controller.element.style.opacity = "1";
   controller.element.style.visibility = "visible";
 }
 
 const HeroAnimation = {
-  intro(section: HTMLElement) {
+  intro(section: HTMLElement): HeroAnimationController {
     const roleText = section.querySelector<HTMLElement>(".js-hero-role-text");
     const caret = section.querySelector<HTMLElement>(".js-hero-caret");
-    const tl = gsap.timeline();
+
+    const timeline = gsap.timeline();
 
     if (roleText) {
-      tl.add(createTypingTimeline(roleText), 0);
+      timeline.add(createTypingTimeline(roleText), 0);
     }
 
     if (caret) {
-      tl.to(
+      timeline.to(
         caret,
         {
           autoAlpha: 0,
@@ -191,10 +197,24 @@ const HeroAnimation = {
       );
     }
 
-    return tl;
+    return {
+      destroy() {
+        timeline.kill();
+
+        if (roleText) {
+          roleText.textContent = "";
+        }
+
+        if (caret) {
+          gsap.set(caret, {
+            clearProps: "opacity,visibility",
+          });
+        }
+      },
+    };
   },
 
-  exit(section: HTMLElement): HeroExitController {
+  exit(section: HTMLElement): HeroProgressController {
     const exitItemControllers = createExitItemControllers(section);
     const characterController = createCharacterController(section);
 
@@ -204,9 +224,7 @@ const HeroAnimation = {
     const render = () => {
       currentProgress += (targetProgress - currentProgress) * HERO_EXIT_LERP;
 
-      const exitDistance = window.innerHeight * HERO_EXIT_DISTANCE_RATIO;
-
-      renderExitItems(exitItemControllers, currentProgress, exitDistance);
+      renderExitItems(exitItemControllers, currentProgress, getExitDistance());
       renderCharacter(characterController, currentProgress);
     };
 
@@ -236,14 +254,24 @@ const HeroAnimation = {
     };
   },
 
-  bomWave(target: HTMLElement | SVGElement) {
-    return gsap.to(target, {
+  bomWave(target: HTMLElement | SVGElement): HeroAnimationController {
+    const tween = gsap.to(target, {
       y: -6,
       duration: 1.3,
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut",
     });
+
+    return {
+      destroy() {
+        tween.kill();
+
+        gsap.set(target, {
+          clearProps: "transform",
+        });
+      },
+    };
   },
 };
 

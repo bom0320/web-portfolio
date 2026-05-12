@@ -3,6 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+
 import HeroAnimation from "@/components/animations/hero";
 import HeroContent from "@/components/hero/HeroContent";
 import HeroVisual from "@/components/hero/HeroVisual";
@@ -18,7 +19,7 @@ export default function HeroSection() {
     if (!section) return;
 
     const ctx = gsap.context(() => {
-      HeroAnimation.intro(section);
+      const introController = HeroAnimation.intro(section);
 
       const exitController = HeroAnimation.exit(section);
       exitController.setProgress(0);
@@ -36,6 +37,7 @@ export default function HeroSection() {
 
       return () => {
         exitTrigger.kill();
+        introController.destroy();
         exitController.destroy();
       };
     }, section);
