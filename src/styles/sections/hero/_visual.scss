@@ -2,15 +2,17 @@
   &__visual {
     flex: 0 0 350px;
     display: flex;
-    flex-direction: column;
+
     gap: 20px;
     align-items: center;
+    justify-content: flex-end;
+    transform: translateY(80px);
   }
 
   &__character {
     position: relative;
-    width: 400px;
-    height: 460px;
+    width: 320px;
+    height: 320px;
     overflow: hidden;
   }
 

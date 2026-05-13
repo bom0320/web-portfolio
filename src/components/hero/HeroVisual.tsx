@@ -5,7 +5,7 @@ export default function HeroVisual() {
     <div className="hero__visual">
       <div className="hero__character js-hero-character">
         <Image
-          src="/images/hero-character.png"
+          src="/images/character_1.png"
           alt="hero character"
           fill
           priority
