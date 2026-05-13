@@ -1,13 +1,14 @@
 .about-title {
-  width: min(720px, 92%);
-  margin: 0 auto 40px;
+  width: 100%;
+  margin: 0;
 }
 
 .about-title__svg {
-  width: min(480px, 80vw);
+  width: min(560px, 100%);
   height: auto;
+
   display: block;
-  margin: 0 auto 66px;
+  margin: 0;
 }
 
 .about-title__outline path {
@@ -17,5 +18,5 @@
 }
 
 .about-title__fill path {
-  fill: rgba(255, 255, 255, 0.9);
+  fill: rgba(255, 255, 255, 0.92);
 }

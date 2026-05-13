@@ -4,7 +4,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import AboutTitle from "./AboutTitle";
+
 import AboutAnimation from "@/components/animations/about";
 import CtaButton from "./CtaButton";
 
@@ -12,33 +12,45 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function AboutHero() {
   const sectionRef = useRef<HTMLElement | null>(null);
-  const fillGroupRef = useRef<SVGGElement | null>(null);
   const descRef = useRef<HTMLParagraphElement | null>(null);
+  const headingRef = useRef<HTMLHeadingElement | null>(null);
 
   const [active, setActive] = useState<"resume" | "github">("resume");
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
-    const fillGroup = fillGroupRef.current;
     const desc = descRef.current;
+    const heading = headingRef.current;
 
-    if (!section || !fillGroup || !desc) return;
+    if (!section || !desc || !heading) return;
 
     const ctx = gsap.context(() => {
-      const titleTween = AboutAnimation.createTitleFill(fillGroup);
-      const decorTween = AboutAnimation.createDecorEnter(section);
+      const headingTween = gsap.fromTo(
+        heading,
+        {
+          y: 40,
+          autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 1.1,
+          ease: "power3.out",
+        }
+      );
+
       const descTween = AboutAnimation.createDescDiagonalReveal(desc);
 
       const master = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: "top 70%",
-          end: "top 35%",
+          start: "top 72%",
+          end: "top 36%",
           scrub: 1.2,
         },
       });
 
-      master.add(decorTween, 0.1).add(descTween, 0.18).add(titleTween, ">");
+      master.add(headingTween, 0).add(descTween, 0.15);
     }, section);
 
     return () => ctx.revert();
@@ -49,6 +61,7 @@ export default function AboutHero() {
       if (typeof window === "undefined") return;
 
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
       if (!isMobile) return;
 
       if (active !== key) {
@@ -59,59 +72,61 @@ export default function AboutHero() {
 
   return (
     <section ref={sectionRef} className="about-hero">
-      <div className="about-hero__decor">
-        <img className="decor decor--sun" src="/images/about/sun.png" alt="" />
-        <img
-          className="decor decor--stars"
-          src="/images/about/stars.png"
-          alt=""
-        />
-        <img
-          className="decor decor--stars2"
-          src="/images/about/stars.png"
-          alt=""
-        />
-        <img
-          className="decor decor--heart"
-          src="/images/about/heart.png"
-          alt=""
-        />
-      </div>
+      <div className="about-hero__layout">
+        <div className="about-hero__visual" aria-hidden="true">
+          <img
+            className="about-hero__character"
+            src="/images/character_1.png"
+            alt=""
+          />
+        </div>
 
-      <div className="about-hero__inner">
-        <AboutTitle fillGroupRef={fillGroupRef} />
+        <div className="about-hero__content">
+          <span className="about-hero__eyebrow">ABOUT ME</span>
 
-        <p ref={descRef} className="about-hero__desc">
-          FrontEnd 개발자 김봄입니다. 사용자가 즐길 수 있는 직관적이고 의미 있는
-          경험을 만드는 것을 목표로 합니다. FrontEnd 개발자 김봄입니다. 사용자가
-          즐길 수 있는 직관적이고 의미 있는 경험을 만드는 것을 목표로 합니다.
-        </p>
+          <h2 ref={headingRef} className="about-hero__title">
+            안녕하세요.
+            <br />
+            고슴도치같이 예민하게
+            <br />
+            <span>디테일을 캐치해내는</span> 개발자입니다.
+          </h2>
 
-        <div
-          className="about-hero__cta about-hero__cta--swap"
-          data-active={active}
-        >
-          <CtaButton
-            href="https://..."
-            label="Go Resume"
-            variant="primary"
-            className="about-hero__btn about-hero__btn--resume"
-            ariaLabel="Go Resume"
-            onClick={handleMobileSwapClick("resume")}
+          <p ref={descRef} className="about-hero__desc">
+            FrontEnd 개발자 김봄입니다. 사용자가 즐길 수 있는 직관적이고 의미
+            있는 경험을 만드는 것을 목표로 합니다.
+          </p>
+
+          <div
+            className="about-hero__cta about-hero__cta--swap"
+            data-active={active}
           >
-            <img src="/icons/User.svg" alt="" className="cta-btn__iconImg" />
-          </CtaButton>
+            <CtaButton
+              href="https://..."
+              label="Go Resume"
+              variant="primary"
+              className="about-hero__btn about-hero__btn--resume"
+              ariaLabel="Go Resume"
+              onClick={handleMobileSwapClick("resume")}
+            >
+              <img src="/icons/User.svg" alt="" className="cta-btn__iconImg" />
+            </CtaButton>
 
-          <CtaButton
-            href="https://github.com/..."
-            label="Go Github"
-            variant="secondary"
-            className="about-hero__btn about-hero__btn--github"
-            ariaLabel="Go Github"
-            onClick={handleMobileSwapClick("github")}
-          >
-            <img src="/icons/GitHub.svg" alt="" className="cta-btn__iconImg" />
-          </CtaButton>
+            <CtaButton
+              href="https://github.com/..."
+              label="Go Github"
+              variant="secondary"
+              className="about-hero__btn about-hero__btn--github"
+              ariaLabel="Go Github"
+              onClick={handleMobileSwapClick("github")}
+            >
+              <img
+                src="/icons/GitHub.svg"
+                alt=""
+                className="cta-btn__iconImg"
+              />
+            </CtaButton>
+          </div>
         </div>
       </div>
     </section>
