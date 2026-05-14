@@ -1,8 +1,9 @@
 import { PROJECTS } from "@/data/projects";
 import { notFound } from "next/navigation";
-import ProjectDetailHero from "@/components/features/projects/detail/ProjectDetailHero";
-import ProjectDetailGallery from "@/components/features/projects/detail/ProjectDetailGallery";
-
+import {
+  ProjectDetailHero,
+  ProjectDetailGallery,
+} from "@/components/features/projects";
 interface ProjectDetailPageParams {
   params: {
     id: string;

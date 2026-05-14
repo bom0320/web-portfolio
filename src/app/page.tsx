@@ -1,17 +1,17 @@
-"use client";
-
-import AboutSection from "@/components/stages/AboutStage";
-import ProjectsSection from "@/components/stages/ProjectsStage";
-import ContactSection from "@/components/stages/ContactStage";
-import IntroStage from "@/components/stages/IntroStage";
+import {
+  AboutStage,
+  ContactStage,
+  IntroStage,
+  ProjectsStage,
+} from "../components/stages";
 
 export default function HomePage() {
   return (
     <>
       <IntroStage />
-      <AboutSection />
-      <ProjectsSection />
-      <ContactSection />
+      <AboutStage />
+      <ProjectsStage />
+      <ContactStage />
     </>
   );
 }
