@@ -4,8 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import SkillTitle from "../../features/about/skills/SkillTitle";
-import SkillCard from "../../features/about/skills/SkillCard";
+import { SkillTitle, SkillCard } from "@/components/features/about";
 import { SKILLS } from "@/data/skills";
 import SkillAnimation from "../../../animations/skill";
 

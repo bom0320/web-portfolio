@@ -6,7 +6,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 import AboutAnimation from "../../../animations/about";
-import CtaButton from "../../features/about/hero/CtaButton";
+import { CtaButton } from "@/components/features/about";
 
 gsap.registerPlugin(ScrollTrigger);
 

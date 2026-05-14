@@ -5,7 +5,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { INTERVIEWS } from "@/data/interviews";
 import InterviewAnimation from "../../../animations/interview";
-import InterviewTitle from "../../features/about/interview/InterviewTitle";
+import { InterviewTitle } from "@/components/features/about";
 
 gsap.registerPlugin(ScrollTrigger);
 
