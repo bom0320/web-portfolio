@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { PROJECTS } from "@/data/projects";
-import ProjectShowcaseScene from "../scenes/projects/ProjectShowcaseScene";
+import { ProjectShowcaseScene } from "../scenes";
 
 gsap.registerPlugin(ScrollTrigger);
 

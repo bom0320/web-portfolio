@@ -1,8 +1,6 @@
 "use client";
 
-import AboutHeroScene from "../scenes/about/AboutHeroScene";
-import InterviewScene from "../scenes/about/InterviewScene";
-import SkillsScene from "../scenes/about/SkillsScene";
+import { AboutHeroScene, InterviewScene, SkillsScene } from "../scenes";
 
 export default function AboutStage() {
   return (

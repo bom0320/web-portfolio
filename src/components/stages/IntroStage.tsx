@@ -4,9 +4,7 @@ import { useLayoutEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import HeroScene from "../scenes/intro/HeroScene";
-import LifeMotionScene from "../scenes/intro/LifeMotionScene";
-
+import { HeroScene, LifeMotionScene } from "../scenes";
 import HeroToLifeAnimation from "../../animations/transitions/heroToLife";
 
 gsap.registerPlugin(ScrollTrigger);
