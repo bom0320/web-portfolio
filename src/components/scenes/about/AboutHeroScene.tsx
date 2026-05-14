@@ -19,38 +19,34 @@ export default function AboutHeroScene() {
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
-    const desc = descRef.current;
     const heading = headingRef.current;
+    const desc = descRef.current;
 
-    if (!section || !desc || !heading) return;
+    if (!section || !heading || !desc) return;
 
     const ctx = gsap.context(() => {
-      const headingTween = gsap.fromTo(
+      const AboutHeroController = AboutAnimation.create({
         heading,
-        {
-          y: 40,
-          autoAlpha: 0,
-        },
-        {
-          y: 0,
-          autoAlpha: 1,
-          duration: 1.1,
-          ease: "power3.out",
-        }
-      );
+        desc,
+      });
 
-      const descTween = AboutAnimation.createDescDiagonalReveal(desc);
-
-      const master = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top 72%",
-          end: "top 36%",
-          scrub: 1.2,
+      const trigger = ScrollTrigger.create({
+        trigger: section,
+        start: "top 72%",
+        end: "top 36%",
+        scrub: 1.2,
+        markers: true,
+        onUpdate: (self) => {
+          AboutHeroController.setProgress(self.progress);
         },
       });
 
-      master.add(headingTween, 0).add(descTween, 0.15);
+      AboutHeroController.setProgress(0);
+
+      return () => {
+        trigger.kill();
+        AboutHeroController.destroy();
+      };
     }, section);
 
     return () => ctx.revert();

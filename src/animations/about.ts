@@ -1,44 +1,74 @@
 import gsap from "gsap";
 
-const AboutAnimation = {
-  createTitleFill(fillGroup: SVGGElement) {
-    return gsap.fromTo(fillGroup, { opacity: 0 }, { opacity: 1, ease: "none" });
-  },
+type AboutHeroController = {
+  setProgress: (progress: number) => void;
+  destroy: () => void;
+};
 
-  createDecorEnter(section: HTMLElement) {
-    const decor = gsap.utils.toArray<HTMLElement>(".decor", section);
+type AboutHeroParams = {
+  heading: HTMLElement;
+  desc: HTMLElement;
+};
 
-    gsap.set(".decor--sun", { x: -200, y: -120, rotate: -8 });
-    gsap.set(".decor--stars", { x: 200, y: -120, rotate: 8 });
-    gsap.set(".decor--stars2", { x: -180, y: 120, rotate: -170 });
-    gsap.set(".decor--heart", { x: 180, y: 140, rotate: 10 });
+const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
-    const tl = gsap.timeline();
-    tl.to(
-      decor,
-      {
-        x: 0,
-        y: 0,
-        scale: 1,
-        ease: "none", // scrub용
-        stagger: 0.05,
-      },
-      0
-    );
-
-    return tl;
-  },
-
-  createDescDiagonalReveal(descEl: HTMLElement) {
-    gsap.set(descEl, {
-      clipPath: "polygon(0 0, 30% 0, 0 100%, 0 100%)",
+const AboutHeroAnimation = {
+  create({ heading, desc }: AboutHeroParams): AboutHeroController {
+    gsap.set(heading, {
+      y: 40,
+      autoAlpha: 0,
     });
 
-    return gsap.to(descEl, {
-      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-      ease: "none",
+    gsap.set(desc, {
+      y: 28,
+      x: -18,
+      autoAlpha: 0,
     });
+
+    const timeline = gsap.timeline({
+      paused: true,
+    });
+
+    timeline
+      .to(
+        heading,
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 1,
+          ease: "power3.out",
+        },
+        0
+      )
+      .to(
+        desc,
+        {
+          y: 0,
+          x: 0,
+          autoAlpha: 1,
+          duration: 1,
+          ease: "power3.out",
+        },
+        0.18
+      );
+
+    const setProgress = (progress: number) => {
+      timeline.progress(clampProgress(progress));
+    };
+
+    const destroy = () => {
+      timeline.kill();
+
+      gsap.set([heading, desc], {
+        clearProps: "all",
+      });
+    };
+
+    return {
+      setProgress,
+      destroy,
+    };
   },
 };
 
-export default AboutAnimation;
+export default AboutHeroAnimation;
