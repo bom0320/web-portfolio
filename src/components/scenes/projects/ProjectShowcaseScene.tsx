@@ -1,10 +1,11 @@
 "use client";
 
 import type { ProjectItem } from "@/data/projects";
-import ProjectIntro from "../../features/projects/ProjectIntro";
-import ProjectList from "../../features/projects/ProjectList";
-import ProjectMonitor from "../../features/projects/ProjectMonitor";
-
+import {
+  ProjectIntro,
+  ProjectList,
+  ProjectMonitor,
+} from "@/components/features/projects";
 interface ProjectShowcaseProps {
   projects: ProjectItem[];
   activeIndex: number;
