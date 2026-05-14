@@ -10,16 +10,12 @@
 // layout
 @import "layout/header";
 @import "layout/main";
-@import "layout/hero-life";
+
+// stages
+@import "./stages/index";
 
 // features
-@import "./features/hero/index";
-@import "./features/life-motion/index";
-@import "./features/about-hero/index";
-@import "./features/about-interview/index";
-@import "./features/about-skills/index";
-@import "./features/projects/index";
-@import "./features/contact/index";
+@import "./features/index";
 
 body {
   background-color: #000;

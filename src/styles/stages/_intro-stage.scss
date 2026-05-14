@@ -1,0 +1,27 @@
+.intro-stage {
+  position: relative;
+  min-height: 420vh;
+  background: #000;
+
+  .hero {
+    height: 100vh;
+  }
+}
+
+.intro-stage__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.life-motion {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  margin-top: -100vh;
+  transform: none;
+  background: transparent;
+  overflow: hidden;
+}
