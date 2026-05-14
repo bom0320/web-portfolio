@@ -1,0 +1,15 @@
+.about {
+  position: relative;
+  z-index: 3;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+.about__panel {
+  position: relative;
+  z-index: 1;
+  background: #000;
+  will-change: transform;
+  backface-visibility: hidden;
+}

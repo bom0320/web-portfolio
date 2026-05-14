@@ -25,7 +25,7 @@ export default function AboutHeroScene() {
     if (!section || !heading || !desc) return;
 
     const ctx = gsap.context(() => {
-      const AboutHeroController = AboutAnimation.create({
+      const AboutHeroController = AboutAnimation.hero({
         heading,
         desc,
       });

@@ -12,8 +12,8 @@ type AboutHeroParams = {
 
 const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
-const AboutHeroAnimation = {
-  create({ heading, desc }: AboutHeroParams): AboutHeroController {
+const AboutAnimation = {
+  hero({ heading, desc }: AboutHeroParams): AboutHeroController {
     gsap.set(heading, {
       y: 40,
       autoAlpha: 0,
@@ -71,4 +71,4 @@ const AboutHeroAnimation = {
   },
 };
 
-export default AboutHeroAnimation;
+export default AboutAnimation;
