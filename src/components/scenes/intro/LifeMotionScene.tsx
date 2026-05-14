@@ -6,8 +6,10 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 import { LIFE_MOTION_ITEMS } from "@/data/lifeMotions";
 import LifeMotionAnimation from "../../../animations/lifeMotion";
-import LifeMotionItem from "@/components/features/lifeMotion/LifeMotionItem";
-import { createLifeMotionGroups } from "@/components/features/lifeMotion/lifeMotion.utils";
+import {
+  LifeMotionItem,
+  createLifeMotionGroups,
+} from "@/components/features/lifeMotion";
 
 gsap.registerPlugin(ScrollTrigger);
 
