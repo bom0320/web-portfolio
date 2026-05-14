@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const REPEAT_IN_GROUP = 8;
 
-export default function LifeMotionSection() {
+export default function LifeMotionScene() {
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const topWindowRef = useRef<HTMLDivElement | null>(null);
   const bottomWindowRef = useRef<HTMLDivElement | null>(null);

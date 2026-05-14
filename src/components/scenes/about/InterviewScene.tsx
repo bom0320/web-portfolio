@@ -5,11 +5,11 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { INTERVIEWS } from "@/data/interviews";
 import InterviewAnimation from "@/components/animations/interview";
-import InterviewTitle from "./InterviewTitle";
+import InterviewTitle from "../../about/interview/InterviewTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function AboutInterview() {
+export default function InterviewScene() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
   const outlineGroupRef = useRef<SVGGElement | null>(null);

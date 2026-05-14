@@ -15,7 +15,7 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ContactSection() {
+export default function ContactStage() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const fillGroupRef = useRef<SVGGElement | null>(null);
 

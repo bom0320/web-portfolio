@@ -8,7 +8,7 @@ import HeroAnimation from "@/components/animations/hero";
 import { HeroContent, HeroVisual } from "@/components/hero";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function HeroSection() {
+export default function HeroScene() {
   const sectionRef = useRef<HTMLElement | null>(null);
 
   useLayoutEffect(() => {

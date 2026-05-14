@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { PROJECTS } from "@/data/projects";
-import ProjectShowcase from "../project/ProjectShowcase";
+import ProjectShowcaseScene from "../scenes/projects/ProjectShowcaseScene";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +12,7 @@ function getProjectIndex(progress: number, total: number) {
   return Math.round(progress * (total - 1));
 }
 
-export default function ProjectsSection() {
+export default function ProjectsStage() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -40,7 +40,7 @@ export default function ProjectsSection() {
 
   return (
     <section ref={sectionRef} id="projects" className="projects-section">
-      <ProjectShowcase
+      <ProjectShowcaseScene
         projects={PROJECTS}
         activeIndex={activeIndex}
         onActiveIndexChange={setActiveIndex}

@@ -6,11 +6,11 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 import AboutAnimation from "@/components/animations/about";
-import CtaButton from "./CtaButton";
+import CtaButton from "../../about/hero/CtaButton";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function AboutHero() {
+export default function AboutHeroScene() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const descRef = useRef<HTMLParagraphElement | null>(null);
   const headingRef = useRef<HTMLHeadingElement | null>(null);

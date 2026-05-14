@@ -1,9 +1,9 @@
 "use client";
 
 import type { ProjectItem } from "@/data/projects";
-import ProjectIntro from "./ProjectIntro";
-import ProjectList from "./ProjectList";
-import ProjectMonitor from "./ProjectMonitor";
+import ProjectIntro from "../../projects/ProjectIntro";
+import ProjectList from "../../projects/ProjectList";
+import ProjectMonitor from "../../projects/ProjectMonitor";
 
 interface ProjectShowcaseProps {
   projects: ProjectItem[];
@@ -11,7 +11,7 @@ interface ProjectShowcaseProps {
   onActiveIndexChange: (index: number) => void;
 }
 
-export default function ProjectShowcase({
+export default function ProjectShowcaseScene({
   projects,
   activeIndex,
   onActiveIndexChange,
