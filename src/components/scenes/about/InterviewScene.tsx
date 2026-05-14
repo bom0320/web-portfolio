@@ -4,8 +4,8 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { INTERVIEWS } from "@/data/interviews";
-import InterviewAnimation from "@/components/animations/interview";
-import InterviewTitle from "../../about/interview/InterviewTitle";
+import InterviewAnimation from "../../../animations/interview";
+import InterviewTitle from "../../features/about/interview/InterviewTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 

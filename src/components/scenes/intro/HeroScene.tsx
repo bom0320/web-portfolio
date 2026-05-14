@@ -4,8 +4,8 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import HeroAnimation from "@/components/animations/hero";
-import { HeroContent, HeroVisual } from "@/components/hero";
+import HeroAnimation from "../../../animations/hero";
+import { HeroContent, HeroVisual } from "@/components/features/hero";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroScene() {

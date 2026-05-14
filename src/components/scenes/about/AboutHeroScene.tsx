@@ -5,8 +5,8 @@ import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import AboutAnimation from "@/components/animations/about";
-import CtaButton from "../../about/hero/CtaButton";
+import AboutAnimation from "../../../animations/about";
+import CtaButton from "../../features/about/hero/CtaButton";
 
 gsap.registerPlugin(ScrollTrigger);
 

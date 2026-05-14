@@ -4,8 +4,8 @@ import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import ContactTitle from "@/components/contact/ContactTitle";
-import { createContactTitleAnimation } from "@/components/animations/contact";
+import ContactTitle from "@/components/features/contact/ContactTitle";
+import { createContactTitleAnimation } from "../../animations/contact";
 import {
   CONTACT_FOOTER,
   CONTACT_FORM,

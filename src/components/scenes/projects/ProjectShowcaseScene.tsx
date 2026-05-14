@@ -1,9 +1,9 @@
 "use client";
 
 import type { ProjectItem } from "@/data/projects";
-import ProjectIntro from "../../projects/ProjectIntro";
-import ProjectList from "../../projects/ProjectList";
-import ProjectMonitor from "../../projects/ProjectMonitor";
+import ProjectIntro from "../../features/projects/ProjectIntro";
+import ProjectList from "../../features/projects/ProjectList";
+import ProjectMonitor from "../../features/projects/ProjectMonitor";
 
 interface ProjectShowcaseProps {
   projects: ProjectItem[];

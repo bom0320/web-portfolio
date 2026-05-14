@@ -4,10 +4,10 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import SkillTitle from "../../about/skills/SkillTitle";
-import SkillCard from "../../about/skills/SkillCard";
+import SkillTitle from "../../features/about/skills/SkillTitle";
+import SkillCard from "../../features/about/skills/SkillCard";
 import { SKILLS } from "@/data/skills";
-import SkillAnimation from "@/components/animations/skill";
+import SkillAnimation from "../../../animations/skill";
 
 gsap.registerPlugin(ScrollTrigger);
 

@@ -2,7 +2,7 @@
 
 import { useId, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-import HeroAnimation from "@/components/animations/hero";
+import HeroAnimation from "../../../animations/hero";
 
 export default function BomWaveTitle() {
   const waveRef = useRef<SVGGElement | null>(null);

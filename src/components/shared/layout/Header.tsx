@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import MarqueeComponents from "../common/MarqueeComponents";
-import HeaderAnimation from "../animations/header";
+import HeaderAnimation from "../../../animations/header";
 import gsap from "gsap";
 
 const NAV_ITEMS = [

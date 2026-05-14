@@ -1,4 +1,4 @@
-import BomWaveTitle from "@/components/hero/BomWaveTitle";
+import BomWaveTitle from "@/components/features/hero/BomWaveTitle";
 import { HERO_DESCRIPTION } from "./hero.constants";
 
 export default function HeroContent() {

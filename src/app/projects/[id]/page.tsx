@@ -1,7 +1,7 @@
 import { PROJECTS } from "@/data/projects";
 import { notFound } from "next/navigation";
-import ProjectDetailHero from "@/components/projects/detail/ProjectDetailHero";
-import ProjectDetailGallery from "@/components/projects/detail/ProjectDetailGallery";
+import ProjectDetailHero from "@/components/features/projects/detail/ProjectDetailHero";
+import ProjectDetailGallery from "@/components/features/projects/detail/ProjectDetailGallery";
 
 interface ProjectDetailPageParams {
   params: {

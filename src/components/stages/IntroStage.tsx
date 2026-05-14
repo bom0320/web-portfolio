@@ -7,7 +7,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import HeroScene from "../scenes/intro/HeroScene";
 import LifeMotionScene from "../scenes/intro/LifeMotionScene";
 
-import HeroToLifeAnimation from "@/components/animations/transitions/heroToLife";
+import HeroToLifeAnimation from "../../animations/transitions/heroToLife";
 
 gsap.registerPlugin(ScrollTrigger);
 
