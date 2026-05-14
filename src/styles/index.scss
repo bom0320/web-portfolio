@@ -12,14 +12,14 @@
 @import "layout/main";
 @import "layout/hero-life";
 
-// sections
-@import "sections/hero/index";
-@import "sections/life-motion/index.scss";
-@import "sections/about-hero/index.scss";
-@import "sections/about-interview/index.scss";
-@import "sections/about-skills/index.scss";
-@import "sections/projects/index.scss";
-@import "sections/contact/index.scss";
+// features
+@import "./features/hero/index";
+@import "./features/life-motion/index";
+@import "./features/about-hero/index";
+@import "./features/about-interview/index";
+@import "./features/about-skills/index";
+@import "./features/projects/index";
+@import "./features/contact/index";
 
 body {
   background-color: #000;
