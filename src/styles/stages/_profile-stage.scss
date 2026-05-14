@@ -1,14 +1,10 @@
-.intro-stage {
+.profile-stage {
   position: relative;
-  min-height: 420vh;
+  min-height: 500vh;
   background: #000;
-
-  .hero {
-    height: 100vh;
-  }
 }
 
-.intro-stage__sticky {
+.profile-stage__sticky {
   position: sticky;
   top: 0;
   height: 100vh;

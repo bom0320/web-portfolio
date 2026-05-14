@@ -1,15 +1,13 @@
 import {
-  AboutStage,
   ContactStage,
-  IntroStage,
+  ProfileStage,
   ProjectsStage,
 } from "../components/stages";
 
 export default function HomePage() {
   return (
     <>
-      <IntroStage />
-      <AboutStage />
+      <ProfileStage />
       <ProjectsStage />
       <ContactStage />
     </>
