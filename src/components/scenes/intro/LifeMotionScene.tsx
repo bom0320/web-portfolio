@@ -1,17 +1,12 @@
 "use client";
 
-import { useLayoutEffect, useMemo, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { useMemo, useRef } from "react";
 
 import { LIFE_MOTION_ITEMS } from "@/data/lifeMotions";
-import LifeMotionAnimation from "../../../animations/lifeMotion";
 import {
   LifeMotionItem,
   createLifeMotionGroups,
 } from "@/components/features/lifeMotion";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const REPEAT_IN_GROUP = 8;
 
@@ -24,37 +19,6 @@ export default function LifeMotionScene() {
     return createLifeMotionGroups(LIFE_MOTION_ITEMS, REPEAT_IN_GROUP);
   }, []);
 
-  useLayoutEffect(() => {
-    const viewport = viewportRef.current;
-    const topWindow = topWindowRef.current;
-    const bottomWindow = bottomWindowRef.current;
-
-    if (!viewport || !topWindow || !bottomWindow) return;
-
-    const trackController = LifeMotionAnimation.track({
-      topWindow,
-      bottomWindow,
-    });
-
-    trackController.setProgress(0);
-
-    const scrollTrigger = ScrollTrigger.create({
-      trigger: viewport,
-      start: "top bottom",
-      end: "bottom top",
-      scrub: false,
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        trackController.setProgress(self.progress);
-      },
-    });
-
-    return () => {
-      scrollTrigger.kill();
-      trackController.destroy();
-    };
-  }, []);
-
   return (
     <section className="life-motion" id="life">
       <div className="life-motion__enter js-life-motion-enter">
@@ -64,7 +28,7 @@ export default function LifeMotionScene() {
         >
           <div className="life-motion__track">
             <div
-              className="life-motion__row-window life-motion__row-window--top"
+              className="life-motion__row-window life-motion__row-window--top js-life-motion-top"
               ref={topWindowRef}
             >
               <div className="life-motion__row">
@@ -86,7 +50,7 @@ export default function LifeMotionScene() {
             </div>
 
             <div
-              className="life-motion__row-window life-motion__row-window--bottom"
+              className="life-motion__row-window life-motion__row-window--bottom js-life-motion-bottom"
               ref={bottomWindowRef}
             >
               <div className="life-motion__row">

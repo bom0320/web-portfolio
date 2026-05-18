@@ -19,7 +19,7 @@ const LifeToAboutAnimation = {
     }
 
     gsap.set(aboutScenes, {
-      yPercent: 100,
+      y: "100vh",
       scale: 0.98,
       borderRadius: "36px 36px 0 0",
       transformOrigin: "center bottom",
@@ -33,10 +33,10 @@ const LifeToAboutAnimation = {
     timeline.to(
       aboutScenes,
       {
-        yPercent: 0,
+        y: "0vh",
         scale: 1,
         borderRadius: "0px",
-        ease: "power4.inOut",
+        ease: "power3.inOut",
       },
       0
     );
@@ -48,9 +48,8 @@ const LifeToAboutAnimation = {
     const destroy = () => {
       timeline.kill();
 
-      gsap.set(aboutScenes, {
-        clearProps: "all",
-      });
+      // 테스트 중에는 clearProps 제거
+      // gsap.set(aboutScenes, { clearProps: "all" });
     };
 
     return {

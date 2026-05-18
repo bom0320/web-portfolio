@@ -1,7 +1,8 @@
 .profile-stage {
   position: relative;
-  height: 500vh;
+  min-height: 800vh;
   background: #000;
+  isolation: isolate;
 }
 
 .profile-stage__sticky {
@@ -12,13 +13,20 @@
   z-index: 1;
 }
 
-.life-motion {
+.profile-stage__sticky > .hero {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.profile-stage__sticky > .life-motion {
   position: absolute;
   inset: 0;
   z-index: 2;
-  min-height: 100vh;
-  margin-top: 0;
-  transform: none;
-  background: transparent;
-  overflow: hidden;
+}
+
+.profile-stage__sticky > .about-scenes {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
 }

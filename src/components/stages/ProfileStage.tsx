@@ -39,7 +39,7 @@ export default function ProfileStage() {
       const lifeToAboutTrigger = ScrollTrigger.create({
         trigger: ".js-intro-stage",
         start: "45% top",
-        end: "75% top",
+        end: "95% top",
         scrub: 1.2,
         invalidateOnRefresh: true,
         markers: true,
