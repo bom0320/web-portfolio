@@ -1,6 +1,6 @@
 .profile-stage {
   position: relative;
-  min-height: 500vh;
+  height: 500vh;
   background: #000;
 }
 
@@ -13,10 +13,11 @@
 }
 
 .life-motion {
-  position: relative;
+  position: absolute;
+  inset: 0;
   z-index: 2;
   min-height: 100vh;
-  margin-top: -100vh;
+  margin-top: 0;
   transform: none;
   background: transparent;
   overflow: hidden;

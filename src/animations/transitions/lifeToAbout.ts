@@ -9,10 +9,9 @@ const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
 const LifeToAboutAnimation = {
   create(): LifeToAboutController {
-    const lifeMotion = document.querySelector<HTMLElement>(".life-motion");
     const aboutScenes = document.querySelector<HTMLElement>(".js-about-scenes");
 
-    if (!lifeMotion || !aboutScenes) {
+    if (!aboutScenes) {
       return {
         setProgress: () => {},
         destroy: () => {},
@@ -20,37 +19,27 @@ const LifeToAboutAnimation = {
     }
 
     gsap.set(aboutScenes, {
-      y: "100vh",
-      scale: 0.96,
-      borderRadius: "40px 40px 0 0",
+      yPercent: 100,
+      scale: 0.98,
+      borderRadius: "36px 36px 0 0",
       transformOrigin: "center bottom",
+      autoAlpha: 1,
     });
 
     const timeline = gsap.timeline({
       paused: true,
     });
 
-    timeline
-      .to(
-        lifeMotion,
-        {
-          y: "-22vh",
-          scale: 0.96,
-          autoAlpha: 0.35,
-          ease: "power3.out",
-        },
-        0
-      )
-      .to(
-        aboutScenes,
-        {
-          y: "0vh",
-          scale: 1,
-          borderRadius: "0px",
-          ease: "power4.inOut",
-        },
-        0
-      );
+    timeline.to(
+      aboutScenes,
+      {
+        yPercent: 0,
+        scale: 1,
+        borderRadius: "0px",
+        ease: "power4.inOut",
+      },
+      0
+    );
 
     const setProgress = (progress: number) => {
       timeline.progress(clampProgress(progress));
@@ -59,7 +48,7 @@ const LifeToAboutAnimation = {
     const destroy = () => {
       timeline.kill();
 
-      gsap.set([lifeMotion, aboutScenes], {
+      gsap.set(aboutScenes, {
         clearProps: "all",
       });
     };
