@@ -148,12 +148,12 @@ const AboutSceneAnimation = {
 
       sceneTimeline.progress(nextProgress);
 
-      heroAnimation.setProgress(mapRange(nextProgress, 0.02, 0.24));
+      heroAnimation.setProgress(mapRange(nextProgress, 0.04, 0.34));
 
-      skillsTitleFillTimeline?.progress(mapRange(nextProgress, 0.42, 0.56));
-      skillsIntroTimeline.progress(mapRange(nextProgress, 0.44, 0.64));
+      skillsTitleFillTimeline?.progress(mapRange(nextProgress, 0.62, 0.74));
+      skillsIntroTimeline.progress(mapRange(nextProgress, 0.64, 0.82));
 
-      interviewTitleFillTimeline?.progress(mapRange(nextProgress, 0.76, 0.88));
+      interviewTitleFillTimeline?.progress(mapRange(nextProgress, 0.9, 1));
 
       interviewRowTimelines.forEach((tl, index) => {
         const start = 0.8 + index * 0.04;

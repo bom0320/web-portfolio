@@ -27,7 +27,7 @@ export default function ProfileStage() {
       const heroToLifeTrigger = ScrollTrigger.create({
         trigger: ".js-intro-stage",
         start: "top top",
-        end: "65% top",
+        end: () => `+=${window.innerHeight * 1.2}`,
         scrub: 1.2,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
@@ -37,8 +37,8 @@ export default function ProfileStage() {
 
       const lifeToAboutTrigger = ScrollTrigger.create({
         trigger: ".js-intro-stage",
-        start: "45% top",
-        end: "95% top",
+        start: () => `top+=${window.innerHeight * 1.1} top`,
+        end: () => `+=${window.innerHeight * 3.2}`,
         scrub: 1.2,
         invalidateOnRefresh: true,
         markers: true,
