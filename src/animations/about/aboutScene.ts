@@ -22,6 +22,16 @@ const AboutSceneAnimation = {
       ".js-about-interview"
     );
 
+    const heroInner = document.querySelector<HTMLElement>(
+      ".js-about-hero-inner"
+    );
+    const skillsInner = document.querySelector<HTMLElement>(
+      ".js-about-skills-inner"
+    );
+    const interviewInner = document.querySelector<HTMLElement>(
+      ".js-about-interview-inner"
+    );
+
     const heroEyebrow = document.querySelector<HTMLElement>(
       ".js-about-hero-eyebrow"
     );
@@ -49,7 +59,16 @@ const AboutSceneAnimation = {
       ".js-about-interview-row"
     );
 
-    if (!aboutHero || !skills || !interview || !heroHeading || !heroDesc) {
+    if (
+      !aboutHero ||
+      !skills ||
+      !interview ||
+      !heroInner ||
+      !skillsInner ||
+      !interviewInner ||
+      !heroHeading ||
+      !heroDesc
+    ) {
       return {
         setProgress: () => {},
         destroy: () => {},
@@ -64,6 +83,21 @@ const AboutSceneAnimation = {
     gsap.set([skills, interview], {
       autoAlpha: 0,
       pointerEvents: "none",
+    });
+
+    gsap.set(heroInner, {
+      y: 0,
+      autoAlpha: 1,
+    });
+
+    gsap.set(skillsInner, {
+      y: 140,
+      autoAlpha: 0,
+    });
+
+    gsap.set(interviewInner, {
+      y: 140,
+      autoAlpha: 0,
     });
 
     const heroAnimation = AboutHeroAnimation.create({
@@ -102,45 +136,116 @@ const AboutSceneAnimation = {
     const sceneTimeline = gsap.timeline({ paused: true });
 
     sceneTimeline
+      /**
+       * HERO → SKILLS
+       */
+
+      // Hero contents move up
+      .to(
+        heroInner,
+        {
+          y: -140,
+          autoAlpha: 0,
+          duration: 0.34,
+          ease: "power3.inOut",
+        },
+        0.5
+      )
+
+      // Skills scene softly appears
+      .to(
+        skills,
+        {
+          autoAlpha: 1,
+          pointerEvents: "auto",
+          duration: 0.18,
+          ease: "power2.out",
+        },
+        0.54
+      )
+
+      // Skills contents move in
+      .fromTo(
+        skillsInner,
+        {
+          y: 140,
+          autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.36,
+          ease: "power3.out",
+        },
+        0.56
+      )
+
+      // Hero scene off after overlap
       .to(
         aboutHero,
         {
           autoAlpha: 0,
           pointerEvents: "none",
-          duration: 0.25,
-          ease: "power2.inOut",
+          duration: 0.12,
+          ease: "power2.out",
         },
-        0.32
+        0.76
       )
+
+      /**
+       * SKILLS → INTERVIEW
+       */
+
+      // Skills contents move up
       .to(
-        skills,
+        skillsInner,
         {
-          autoAlpha: 1,
-          pointerEvents: "auto",
-          duration: 0.25,
-          ease: "power2.inOut",
-        },
-        0.4
-      )
-      .to(
-        skills,
-        {
+          y: -140,
           autoAlpha: 0,
-          pointerEvents: "none",
-          duration: 0.25,
-          ease: "power2.inOut",
+          duration: 0.34,
+          ease: "power3.inOut",
         },
-        0.66
+        0.8
       )
+
+      // Interview scene softly appears
       .to(
         interview,
         {
           autoAlpha: 1,
           pointerEvents: "auto",
-          duration: 0.25,
-          ease: "power2.inOut",
+          duration: 0.18,
+          ease: "power2.out",
         },
-        0.74
+        0.84
+      )
+
+      // Interview contents move in
+      .fromTo(
+        interviewInner,
+        {
+          y: 140,
+          autoAlpha: 0,
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.36,
+          ease: "power3.out",
+        },
+        0.86
+      )
+
+      // Skills scene off after overlap
+      .to(
+        skills,
+        {
+          autoAlpha: 0,
+          pointerEvents: "none",
+          duration: 0.12,
+          ease: "power2.out",
+        },
+        0.98
       );
 
     const setProgress = (progress: number) => {
@@ -156,8 +261,8 @@ const AboutSceneAnimation = {
       interviewTitleFillTimeline?.progress(mapRange(nextProgress, 0.9, 1));
 
       interviewRowTimelines.forEach((tl, index) => {
-        const start = 0.8 + index * 0.04;
-        const end = start + 0.16;
+        const start = 0.9 + index * 0.025;
+        const end = start + 0.1;
 
         tl.progress(mapRange(nextProgress, start, end));
       });
@@ -172,9 +277,12 @@ const AboutSceneAnimation = {
       interviewTitleFillTimeline?.kill();
       interviewRowTimelines.forEach((tl) => tl.kill());
 
-      gsap.set([aboutHero, skills, interview], {
-        clearProps: "all",
-      });
+      gsap.set(
+        [aboutHero, skills, interview, heroInner, skillsInner, interviewInner],
+        {
+          clearProps: "all",
+        }
+      );
     };
 
     return {

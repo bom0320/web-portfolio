@@ -26,6 +26,7 @@
   align-items: center;
 
   transform: translateY(0);
+  will-change: transform;
 }
 
 .about-hero__visual {

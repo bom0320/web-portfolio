@@ -10,7 +10,7 @@ export default function SkillsScene() {
 
   return (
     <section className="about-skills js-about-skills">
-      <div className="about-skills__inner">
+      <div className="about-skills__inner js-about-skills-inner">
         <SkillTitle fillGroupRef={fillGroupRef} />
 
         <div className="about-skills__grid">

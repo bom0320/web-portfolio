@@ -13,7 +13,7 @@ export default function InterviewScene() {
       className="about-interview js-about-interview"
       aria-label="Interview Section"
     >
-      <div className="about-interview__inner">
+      <div className="about-interview__inner js-about-interview-inner">
         <div className="about-interview__title">
           <InterviewTitle
             outlineGroupRef={outlineGroupRef}
