@@ -13,13 +13,13 @@ export default function InterviewTitle({
 }: InterviewTitleProps) {
   return (
     <svg
-      className="about-interview__title-svg"
+      className="interview__title-svg"
       viewBox="0 0 407 48"
       xmlns="http://www.w3.org/2000/svg"
       aria-label="INTERVIEWS"
       role="img"
     >
-      <g ref={outlineGroupRef} className="about-interview__title-outline">
+      <g ref={outlineGroupRef} className="interview__title-outline">
         {INTERVIEW_TITLE_PATHS.map((d, i) => (
           <path
             key={`outline-${i}`}
@@ -33,7 +33,7 @@ export default function InterviewTitle({
         ))}
       </g>
 
-      <g ref={fillGroupRef} className="about-interview__title-fill">
+      <g ref={fillGroupRef} className="interview__title-fill">
         {INTERVIEW_TITLE_PATHS.map((d, i) => (
           <path key={`fill-${i}`} d={d} fill="black" />
         ))}

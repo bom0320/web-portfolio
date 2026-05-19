@@ -1,4 +1,4 @@
-import { AboutHeroScene, InterviewScene, SkillsScene } from ".";
+import { AboutHeroScene, SkillsScene } from ".";
 
 export default function AboutScenes() {
   return (
@@ -11,7 +11,6 @@ export default function AboutScenes() {
     >
       <AboutHeroScene />
       <SkillsScene />
-      <InterviewScene />
     </div>
   );
 }

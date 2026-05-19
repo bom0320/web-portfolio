@@ -1,19 +1,19 @@
-.about-interview__title {
+.interview__title {
   display: flex;
   justify-content: center;
   margin-bottom: 80px;
 }
 
-.about-interview__title-svg {
+.interview__title-svg {
   display: block;
   width: clamp(440px, 48vw, 720px);
   height: auto;
 }
 
-.about-interview__title-outline {
+.interview__title-outline {
   opacity: 0.28;
 }
 
-.about-interview__title-fill {
+.interview__title-fill {
   opacity: 0;
 }

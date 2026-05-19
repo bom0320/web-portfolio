@@ -1,6 +1,6 @@
 .profile-stage {
   position: relative;
-  min-height: 800vh;
+  min-height: 620vh;
   background: #000;
   isolation: isolate;
 }
@@ -29,4 +29,15 @@
   position: absolute;
   inset: 0;
   z-index: 5;
+}
+
+.profile-stage__interview {
+  position: relative;
+  z-index: 20;
+
+  min-height: 160vh;
+
+  margin-top: 420vh;
+
+  background: #fff;
 }
