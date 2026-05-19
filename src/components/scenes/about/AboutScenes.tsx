@@ -10,8 +10,8 @@ export default function AboutScenes() {
       }}
     >
       <AboutHeroScene />
-      <InterviewScene />
       <SkillsScene />
+      <InterviewScene />
     </div>
   );
 }
