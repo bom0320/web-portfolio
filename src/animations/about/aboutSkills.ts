@@ -1,6 +1,6 @@
 import gsap from "gsap";
 
-const SkillAnimation = {
+const AboutSkillsAnimation = {
   createSkillTitleFill(fillGroup: SVGGElement) {
     return gsap.fromTo(
       fillGroup,
@@ -70,4 +70,4 @@ const SkillAnimation = {
   },
 };
 
-export default SkillAnimation;
+export default AboutSkillsAnimation;

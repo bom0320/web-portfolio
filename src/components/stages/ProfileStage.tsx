@@ -7,17 +7,22 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { HeroScene, LifeMotionScene, AboutScenes } from "@/components/scenes";
 import HeroToLifeAnimation from "@/animations/transitions/heroToLife";
 import LifeToAboutAnimation from "@/animations/transitions/lifeToAbout";
+import { AboutSceneAnimation } from "@/animations/about";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
 export default function ProfileStage() {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const heroToLifeController = HeroToLifeAnimation.create();
       const lifeToAboutController = LifeToAboutAnimation.create();
+      const aboutSceneController = AboutSceneAnimation.create();
 
       heroToLifeController.setProgress(0);
       lifeToAboutController.setProgress(0);
+      aboutSceneController.setProgress(0);
 
       const heroToLifeTrigger = ScrollTrigger.create({
         trigger: ".js-intro-stage",
@@ -26,12 +31,6 @@ export default function ProfileStage() {
         scrub: 1.2,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
-          console.log("heroToLife", {
-            progress: self.progress.toFixed(3),
-            start: self.start,
-            end: self.end,
-            scroll: self.scroll(),
-          });
           heroToLifeController.setProgress(self.progress);
         },
       });
@@ -44,14 +43,13 @@ export default function ProfileStage() {
         invalidateOnRefresh: true,
         markers: true,
         onUpdate: (self) => {
-          console.log("lifeToAbout", {
-            progress: self.progress.toFixed(3),
-            start: self.start,
-            end: self.end,
-            scroll: self.scroll(),
-          });
+          const progress = self.progress;
 
-          lifeToAboutController.setProgress(self.progress);
+          const enterProgress = clampProgress(progress / 0.32);
+          const sceneProgress = clampProgress((progress - 0.32) / 0.68);
+
+          lifeToAboutController.setProgress(enterProgress);
+          aboutSceneController.setProgress(sceneProgress);
         },
       });
 
@@ -61,6 +59,7 @@ export default function ProfileStage() {
 
         heroToLifeController.destroy();
         lifeToAboutController.destroy();
+        aboutSceneController.destroy();
       };
     });
 

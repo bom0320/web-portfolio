@@ -1,6 +1,6 @@
 import gsap from "gsap";
 
-const InterviewAnimation = {
+const AboutInterviewAnimation = {
   createTitleFill(outlineGroup: SVGGElement, fillGroup: SVGGElement) {
     const tl = gsap.timeline({ paused: true });
 
@@ -71,4 +71,4 @@ const InterviewAnimation = {
   },
 };
 
-export default InterviewAnimation;
+export default AboutInterviewAnimation;
