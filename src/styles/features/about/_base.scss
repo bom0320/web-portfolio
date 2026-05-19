@@ -9,6 +9,10 @@
   background: #000;
   color: #fff;
 
+  transform: translateY(100vh) scale(0.98);
+  transform-origin: center bottom;
+  border-radius: 36px 36px 0 0;
+
   overflow: hidden;
   will-change: transform;
   backface-visibility: hidden;

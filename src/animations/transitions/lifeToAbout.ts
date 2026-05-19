@@ -48,8 +48,9 @@ const LifeToAboutAnimation = {
     const destroy = () => {
       timeline.kill();
 
-      // 테스트 중에는 clearProps 제거
-      // gsap.set(aboutScenes, { clearProps: "all" });
+      gsap.set(aboutScenes, {
+        clearProps: "transform,borderRadius,opacity,visibility",
+      });
     };
 
     return {

@@ -16,6 +16,10 @@
   min-height: 0;
 
   background: #000;
+
+  transform: translateY(100vh);
+  visibility: hidden;
+
   will-change: transform;
 }
 

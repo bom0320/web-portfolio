@@ -22,6 +22,7 @@ const HeroToLifeAnimation = {
 
     gsap.set(enterElement, {
       y: "100vh",
+      autoAlpha: 1,
     });
 
     const timeline = gsap.timeline({
@@ -32,6 +33,7 @@ const HeroToLifeAnimation = {
       enterElement,
       {
         y: "0vh",
+        autoAlpha: 1,
         ease: "none",
       },
       0
