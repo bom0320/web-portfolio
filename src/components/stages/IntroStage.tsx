@@ -19,7 +19,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
-export default function ProfileStage() {
+export default function IntroStage() {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const heroToLifeController = HeroToLifeAnimation.create();
@@ -73,14 +73,16 @@ export default function ProfileStage() {
   }, []);
 
   return (
-    <section className="profile-stage js-intro-stage">
-      <div className="profile-stage__sticky">
+    <section className="intro-stage js-intro-stage">
+      <div className="intro-stage__sticky">
         <HeroScene />
+
         <LifeMotionScene />
+
         <AboutScenes />
       </div>
 
-      <div className="profile-stage__interview">
+      <div className="intro-stage__interview">
         <InterviewScene />
       </div>
     </section>

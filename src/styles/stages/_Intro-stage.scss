@@ -1,11 +1,11 @@
-.profile-stage {
+.intro-stage {
   position: relative;
-  min-height: 620vh;
+  min-height: 720vh;
   background: #000;
   isolation: isolate;
 }
 
-.profile-stage__sticky {
+.intro-stage__sticky {
   position: sticky;
   top: 0;
   height: 100vh;
@@ -13,30 +13,29 @@
   z-index: 1;
 }
 
-.profile-stage__sticky > .hero {
+.intro-stage__sticky > .hero {
   position: absolute;
   inset: 0;
   z-index: 1;
 }
 
-.profile-stage__sticky > .life-motion {
+.intro-stage__sticky > .life-motion {
   position: absolute;
   inset: 0;
   z-index: 2;
 }
 
-.profile-stage__sticky > .about-scenes {
+.intro-stage__sticky > .about-scenes {
   position: absolute;
   inset: 0;
   z-index: 5;
 }
 
-.profile-stage__interview {
+.intro-stage__interview {
   position: relative;
-  z-index: 20;
+  z-index: 10;
 
   min-height: 160vh;
-
   margin-top: 420vh;
 
   background: #fff;
