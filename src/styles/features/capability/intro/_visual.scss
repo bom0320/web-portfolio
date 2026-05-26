@@ -1,0 +1,70 @@
+.capability-intro-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  overflow: hidden;
+
+  background: #000;
+
+  will-change: opacity, transform;
+}
+
+.capability-intro-visual__field {
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+      circle at 24% 42%,
+      rgba(119, 225, 255, 0.62),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 72% 48%,
+      rgba(72, 122, 255, 0.58),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 52% 78%,
+      rgba(255, 179, 92, 0.46),
+      transparent 36%
+    ),
+    #000;
+
+  filter: saturate(1.2) contrast(1.06);
+  transform: scale(1.08);
+
+  will-change: transform, opacity;
+}
+
+.capability-intro-visual__mask-title {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  margin: 0;
+
+  width: max-content;
+
+  transform: translate(-50%, -50%) scale(5.2);
+  transform-origin: center center;
+
+  font-size: clamp(72px, 8.5vw, 150px);
+  line-height: 1;
+  font-weight: 850;
+  letter-spacing: -0.075em;
+
+  color: transparent;
+
+  background: radial-gradient(circle at 25% 38%, #d9ffff, transparent 34%),
+    radial-gradient(circle at 68% 52%, #5f92ff, transparent 34%),
+    radial-gradient(circle at 50% 80%, #ffc078, transparent 36%);
+
+  background-size: 150% 150%;
+  background-position: center;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  will-change: transform, opacity, background-position;
+}

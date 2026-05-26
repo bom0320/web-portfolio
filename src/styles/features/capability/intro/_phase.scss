@@ -1,0 +1,59 @@
+.capability-intro-phase-layer {
+  position: absolute;
+  z-index: 3;
+
+  left: 50%;
+  top: 59%;
+
+  width: min(760px, calc(100% - 48px));
+
+  transform: translateX(-50%);
+
+  text-align: center;
+}
+
+.capability-intro-phase {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+
+  opacity: 0;
+  transform: translateY(28px);
+
+  pointer-events: none;
+
+  will-change: transform, opacity;
+}
+
+.capability-intro-phase h3 {
+  margin: 0 0 24px;
+
+  font-size: clamp(28px, 3.2vw, 52px);
+  line-height: 1.12;
+  font-weight: 850;
+  letter-spacing: -0.06em;
+
+  color: transparent;
+
+  background: linear-gradient(90deg, #d8ffff 0%, #84cfd6 42%, #5b7daa 100%);
+
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.capability-intro-phase p {
+  margin: 0;
+
+  font-size: clamp(18px, 1.45vw, 24px);
+  line-height: 1.62;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.capability-intro-phase p + p {
+  margin-top: 24px;
+}
