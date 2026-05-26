@@ -1,5 +1,32 @@
-.skills-title__svg {
-  width: min(390px, 50vw);
-  margin: 0 auto 80px;
-  display: block;
+.skill-title {
+  margin-bottom: clamp(72px, 7vw, 90px);
+  text-align: left;
+}
+
+.skill-title__eyebrow {
+  margin-bottom: 18px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.skill-title__heading {
+  margin: 0;
+  font-size: clamp(40px, 5vw, 52px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.06em;
+
+  color: #fff;
+}
+
+.skill-title__description {
+  max-width: 600px;
+  margin-top: 26px;
+  font-size: clamp(17px, 1.25vw, 18px);
+  font-weight: 500;
+  line-height: 1.9;
+  letter-spacing: -0.035em;
+
+  color: rgba(255, 255, 255, 0.68);
 }

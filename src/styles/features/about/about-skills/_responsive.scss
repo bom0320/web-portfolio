@@ -3,15 +3,32 @@
     min-height: 100vh;
     height: auto;
     margin-top: 80px;
-    padding: 0 0 40px;
+    padding: 80px 0 40px;
   }
 
   .about-skills__inner {
     width: min(520px, calc(100% - 40px));
   }
 
-  .skills-title__svg {
-    margin: 0 auto 30px;
+  .skill-title {
+    margin-bottom: 52px;
+    text-align: left;
+  }
+
+  .skill-title__eyebrow {
+    margin-bottom: 14px;
+    font-size: 18px;
+  }
+
+  .skill-title__heading {
+    font-size: clamp(34px, 9vw, 44px);
+    line-height: 1.16;
+  }
+
+  .skill-title__description {
+    margin-top: 20px;
+    font-size: 15px;
+    line-height: 1.8;
   }
 
   .about-skills__grid {

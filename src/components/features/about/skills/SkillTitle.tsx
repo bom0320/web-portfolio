@@ -1,44 +1,16 @@
-"use client";
-
-import React from "react";
-import { SKILL_TITLE_FILL_PATHS } from "@/assets/svg/skillTitlePath";
-
-type SkillTitleProps = {
-  fillGroupRef: React.RefObject<SVGGElement | null>;
-};
-
-export default function SkillTitle({ fillGroupRef }: SkillTitleProps) {
+export default function SkillTitle() {
   return (
-    <svg
-      className="skills-title__svg"
-      width="507"
-      height="75"
-      viewBox="0 0 507 75"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      role="img"
-      aria-label="MY SKILLS"
-    >
-      {/* OUTLINE */}
-      <g opacity={0.45}>
-        {SKILL_TITLE_FILL_PATHS.map((d, i) => (
-          <path
-            key={i}
-            d={d}
-            fill="none"
-            stroke="rgb(255, 255, 255)"
-            strokeWidth={2}
-            strokeLinejoin="round"
-          />
-        ))}
-      </g>
+    <div className="skill-title">
+      <p className="skill-title__eyebrow">SKILLS</p>
 
-      {/* FILL */}
-      <g ref={fillGroupRef} opacity={0}>
-        {SKILL_TITLE_FILL_PATHS.map((d, i) => (
-          <path key={i} d={d} fill="rgb(255, 255, 255)" />
-        ))}
-      </g>
-    </svg>
+      <h2 className="skill-title__heading">
+        다음과 같은 기술을 활용하고 있습니다.
+      </h2>
+
+      <p className="skill-title__description">
+        React와 Next.js를 중심으로, TypeScript, 상태 관리, 인터랙션 라이브러리
+        등을 활용해 프론트엔드 구조를 설계하고 구현합니다.
+      </p>
+    </div>
   );
 }
