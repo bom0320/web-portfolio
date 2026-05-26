@@ -22,7 +22,7 @@
   font-weight: 800;
   letter-spacing: -0.02em;
 
-  color: rgba(245, 255, 252, 0.86);
+  color: rgba(255, 255, 255, 0.84);
 
   opacity: 0;
   transform: translateY(16px);
@@ -40,26 +40,12 @@
   letter-spacing: -0.02em;
   white-space: nowrap;
 
-  color: transparent;
-
-  background: linear-gradient(
-    90deg,
-    #f4fffd 0%,
-    #dcfaf2 18%,
-    #b8f2e4 42%,
-    #91dfcf 68%,
-    #6ec4b5 100%
-  );
-
-  -webkit-background-clip: text;
-  background-clip: text;
+  color: rgba(255, 255, 255, 0.96);
 
   transform: scale(5.4);
   transform-origin: center center;
 
   opacity: 0;
-
-  filter: brightness(1.08) saturate(1.08) contrast(1.04);
 
   will-change: transform, opacity;
 }
@@ -72,18 +58,7 @@
   font-weight: 850;
   letter-spacing: -0.07em;
 
-  color: transparent;
-
-  background: linear-gradient(
-    90deg,
-    #f4fffd 0%,
-    #c9f4ea 34%,
-    #8fd9ca 66%,
-    #67b4a8 100%
-  );
-
-  -webkit-background-clip: text;
-  background-clip: text;
+  color: rgba(255, 255, 255, 0.94);
 
   opacity: 0;
   transform: translateY(18px);

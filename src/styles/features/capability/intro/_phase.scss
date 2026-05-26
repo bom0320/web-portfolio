@@ -35,20 +35,7 @@
   font-weight: 800;
   letter-spacing: -0.06em;
 
-  color: transparent;
-
-  background: linear-gradient(
-    90deg,
-    #effffb 0%,
-    #a9e8dc 36%,
-    #79bdb1 68%,
-    #5f9b92 100%
-  );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  filter: brightness(1.04) saturate(1.06);
+  color: rgba(255, 255, 255, 0.94);
 }
 
 .capability-intro-phase p {
@@ -60,7 +47,7 @@
   font-weight: 600;
   letter-spacing: -0.035em;
 
-  color: rgba(235, 255, 250, 0.62);
+  color: rgba(255, 255, 255, 0.52);
 }
 
 .capability-intro-phase p + p {

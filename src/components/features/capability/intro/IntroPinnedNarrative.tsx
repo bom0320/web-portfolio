@@ -1,3 +1,5 @@
+import { GradientText } from "@/components/shared/ui";
+
 export default function IntroPinnedNarrative() {
   return (
     <div className="capability-intro-pinned js-capability-intro-pinned">
@@ -12,11 +14,11 @@ export default function IntroPinnedNarrative() {
           </p>
 
           <h2 className="capability-intro-title-layer__title js-capability-intro-title">
-            Flow. Structure. Motion.
+            <GradientText>Flow. Structure. Motion.</GradientText>
           </h2>
 
           <p className="capability-intro-title-layer__subtitle js-capability-intro-subtitle">
-            경험을 설계하는 방식.
+            <GradientText>경험을 설계하는 방식.</GradientText>
           </p>
         </div>
 
@@ -32,9 +34,11 @@ export default function IntroPinnedNarrative() {
 
           <div className="capability-intro-phase capability-intro-phase--02 js-capability-intro-phase-02">
             <h3>
-              망설임은 적게
-              <br />
-              흐름은 조금 더 자연스럽게
+              <GradientText>
+                망설임은 적게
+                <br />
+                흐름은 조금 더 자연스럽게
+              </GradientText>
             </h3>
 
             <p>

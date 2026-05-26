@@ -37,31 +37,6 @@
   justify-content: center;
 }
 
-.capability-intro-proof__character {
-  width: min(390px, 100%);
-  aspect-ratio: 1 / 1.12;
-
-  display: grid;
-  place-items: center;
-
-  border-radius: 48% 48% 42% 42%;
-
-  background: linear-gradient(
-    180deg,
-    rgba(126, 178, 164, 0.96),
-    rgba(83, 134, 126, 0.96)
-  );
-
-  box-shadow: 0 42px 90px rgba(0, 0, 0, 0.76),
-    0 20px 80px rgba(126, 178, 164, 0.16);
-
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-
-  color: rgba(255, 255, 255, 0.42);
-}
-
 .capability-intro-proof__point {
   position: relative;
 
@@ -174,4 +149,13 @@
 .capability-intro-proof__quote strong {
   font-weight: 750;
   color: rgba(126, 178, 164, 0.98);
+}
+
+.capability-intro-proof__character-image {
+  width: min(360px, 100%);
+  height: auto;
+
+  display: block;
+
+  filter: drop-shadow(0 42px 60px rgba(0, 0, 0, 0.72));
 }
