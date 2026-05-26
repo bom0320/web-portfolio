@@ -1,12 +1,10 @@
 .capability-intro-phase-layer {
   position: absolute;
   z-index: 3;
-
   left: 50%;
   top: 55%;
 
   width: min(760px, calc(100% - 48px));
-
   transform: translateX(-50%);
 
   text-align: center;
@@ -29,9 +27,10 @@
 
 .capability-intro-phase h3 {
   margin: 0 0 24px;
-  font-size: clamp(28px, 3.2vw, 28px);
+
+  font-size: clamp(28px, 3vw, 38px);
   line-height: 1.12;
-  font-weight: 800;
+  font-weight: 850;
   letter-spacing: -0.06em;
 
   color: transparent;
