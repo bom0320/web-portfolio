@@ -6,13 +6,22 @@
   overflow: hidden;
   background: #000;
 
-  --capability-intro-image: linear-gradient(
-    120deg,
-    #e4a853 0%,
-    #66d9ff 38%,
-    #0047ff 68%,
-    #9fdcff 100%
-  );
+  --capability-intro-image: radial-gradient(
+      circle at 22% 28%,
+      rgba(144, 255, 228, 0.34),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 76% 34%,
+      rgba(96, 214, 187, 0.32),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 54% 72%,
+      rgba(118, 235, 210, 0.18),
+      transparent 34%
+    ),
+    linear-gradient(135deg, #020706 0%, #071311 46%, #000000 100%);
 }
 
 .capability-intro-visual__field {
@@ -20,7 +29,7 @@
   inset: 0;
 
   background: var(--capability-intro-image);
-  background-size: cover;
+  background-size: 140% 140%;
   background-position: center;
   background-repeat: no-repeat;
 
@@ -29,7 +38,9 @@
 
   opacity: 1;
 
-  will-change: transform, opacity, visibility;
+  filter: saturate(1.12) contrast(1.05) brightness(1.02);
+
+  will-change: transform, opacity, visibility, background-position;
 }
 
 .capability-intro-visual__mask-title {
@@ -51,15 +62,20 @@
 
   color: transparent;
 
-  background: var(--capability-intro-image);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: linear-gradient(
+    90deg,
+    #b8fff0 0%,
+    #89ebd4 28%,
+    #62cdb6 58%,
+    #3f9f92 100%
+  );
 
   -webkit-background-clip: text;
   background-clip: text;
 
   opacity: 0;
+
+  filter: brightness(1.08) saturate(1.08) contrast(1.04);
 
   will-change: transform, opacity, visibility, background-position;
 }
