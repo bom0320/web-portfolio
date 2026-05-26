@@ -8,15 +8,15 @@ export default function IntroPinnedNarrative() {
 
         <div className="capability-intro-title-layer js-capability-intro-title-layer">
           <p className="capability-intro-title-layer__eyebrow js-capability-intro-eyebrow">
-            Capability
+            CAPABILITY
           </p>
 
           <h2 className="capability-intro-title-layer__title js-capability-intro-title">
-            FLOW. STRUCTURE. MOTION.
+            Flow. Structure. Motion.
           </h2>
 
           <p className="capability-intro-title-layer__subtitle js-capability-intro-subtitle">
-            경험을 설계하는 세 가지 방식.
+            경험을 설계하는 방식.
           </p>
         </div>
 
