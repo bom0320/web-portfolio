@@ -4,37 +4,32 @@
   z-index: 1;
 
   overflow: hidden;
-
   background: #000;
 
-  will-change: opacity, transform;
+  --capability-intro-image: linear-gradient(
+    120deg,
+    #e4a853 0%,
+    #66d9ff 38%,
+    #0047ff 68%,
+    #9fdcff 100%
+  );
 }
 
 .capability-intro-visual__field {
   position: absolute;
   inset: 0;
 
-  background: radial-gradient(
-      circle at 24% 42%,
-      rgba(119, 225, 255, 0.62),
-      transparent 32%
-    ),
-    radial-gradient(
-      circle at 72% 48%,
-      rgba(72, 122, 255, 0.58),
-      transparent 34%
-    ),
-    radial-gradient(
-      circle at 52% 78%,
-      rgba(255, 179, 92, 0.46),
-      transparent 36%
-    ),
-    #000;
+  background: var(--capability-intro-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-  filter: saturate(1.2) contrast(1.06);
   transform: scale(1.08);
+  transform-origin: center center;
 
-  will-change: transform, opacity;
+  opacity: 1;
+
+  will-change: transform, opacity, visibility;
 }
 
 .capability-intro-visual__mask-title {
@@ -43,28 +38,28 @@
   top: 50%;
 
   margin: 0;
-
   width: max-content;
 
-  transform: translate(-50%, -50%) scale(5.2);
+  transform: translate(-50%, -50%) scale(5.4);
   transform-origin: center center;
 
-  font-size: clamp(72px, 8.5vw, 150px);
+  font-size: clamp(72px, 9vw, 156px);
   line-height: 1;
   font-weight: 850;
   letter-spacing: -0.075em;
+  white-space: nowrap;
 
   color: transparent;
 
-  background: radial-gradient(circle at 25% 38%, #d9ffff, transparent 34%),
-    radial-gradient(circle at 68% 52%, #5f92ff, transparent 34%),
-    radial-gradient(circle at 50% 80%, #ffc078, transparent 36%);
-
-  background-size: 150% 150%;
+  background: var(--capability-intro-image);
+  background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 
   -webkit-background-clip: text;
   background-clip: text;
 
-  will-change: transform, opacity, background-position;
+  opacity: 0;
+
+  will-change: transform, opacity, visibility, background-position;
 }

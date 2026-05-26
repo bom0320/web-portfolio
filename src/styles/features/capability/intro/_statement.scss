@@ -13,11 +13,11 @@
   text-align: center;
 
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(28px);
 
   pointer-events: none;
 
-  will-change: transform, opacity;
+  will-change: transform, opacity, visibility;
 }
 
 .capability-intro-fixed__eyebrow {
@@ -42,7 +42,6 @@
   color: transparent;
 
   background: linear-gradient(90deg, #d8ffff 0%, #82c9d3 40%, #5b7daa 100%);
-
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -58,7 +57,6 @@
   color: transparent;
 
   background: linear-gradient(90deg, #d8ffff 0%, #82c9d3 44%, #5b7daa 100%);
-
   -webkit-background-clip: text;
   background-clip: text;
 }

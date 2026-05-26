@@ -3,7 +3,7 @@ export default function IntroPinnedNarrative() {
     <div className="capability-intro-pinned js-capability-intro-pinned">
       <div className="capability-intro-pinned__sticky js-capability-intro-sticky">
         <div className="capability-intro-visual js-capability-intro-visual">
-          <div className="capability-intro-visual__field" />
+          <div className="capability-intro-visual__field js-capability-intro-visual-field" />
 
           <h2 className="capability-intro-visual__mask-title js-capability-intro-mask-title">
             FLOW. STRUCTURE. MOTION.
