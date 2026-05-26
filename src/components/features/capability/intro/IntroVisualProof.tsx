@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function IntroProof() {
   return (
     <section className="capability-intro-proof js-capability-intro-proof">
@@ -31,7 +33,14 @@ export default function IntroProof() {
         </article>
 
         <div className="capability-intro-proof__visual" aria-hidden="true">
-          <div className="capability-intro-proof__character">Character</div>
+          <Image
+            className="capability-intro-proof__character-image"
+            src="/images/characters/hedgehog.png"
+            alt=""
+            width={420}
+            height={470}
+            priority
+          />
         </div>
 
         <article className="capability-intro-proof__point capability-intro-proof__point--03">
