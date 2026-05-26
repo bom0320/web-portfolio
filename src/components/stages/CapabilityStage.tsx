@@ -4,7 +4,6 @@ import {
   CapabilityClosingScene,
   CapabilityIntroScene,
   CapabilityNavigatorScene,
-  CapabilityProofScene,
   ExperienceCapabilityScene,
 } from "@/components/scenes/capability";
 
@@ -13,8 +12,6 @@ export default function CapabilityStage() {
     <section className="capability-stage">
       <div className="capability-stage__sticky">
         <CapabilityIntroScene />
-
-        <CapabilityProofScene />
 
         <ExperienceCapabilityScene />
 
