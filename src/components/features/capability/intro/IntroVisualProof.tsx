@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { GradientText } from "@/components/shared/ui";
 
 export default function IntroProof() {
   return (
@@ -6,7 +7,9 @@ export default function IntroProof() {
       <div className="capability-intro-proof__inner">
         <article className="capability-intro-proof__point capability-intro-proof__point--01">
           <div className="capability-intro-proof__label">
-            <span>01</span>
+            <span>
+              <GradientText>01</GradientText>
+            </span>
           </div>
 
           <h3>부담스럽지 않은 첫인상</h3>
@@ -20,7 +23,9 @@ export default function IntroProof() {
 
         <article className="capability-intro-proof__point capability-intro-proof__point--02">
           <div className="capability-intro-proof__label">
-            <span>02</span>
+            <span>
+              <GradientText>02</GradientText>
+            </span>
           </div>
 
           <h3>시선을 안내하는 기준점</h3>
@@ -45,7 +50,9 @@ export default function IntroProof() {
 
         <article className="capability-intro-proof__point capability-intro-proof__point--03">
           <div className="capability-intro-proof__label">
-            <span>03</span>
+            <span>
+              <GradientText>03</GradientText>
+            </span>
           </div>
 
           <h3>움직임의 감정 온도</h3>
@@ -59,7 +66,9 @@ export default function IntroProof() {
 
         <article className="capability-intro-proof__point capability-intro-proof__point--04">
           <div className="capability-intro-proof__label">
-            <span>04</span>
+            <span>
+              <GradientText>04</GradientText>
+            </span>
           </div>
 
           <h3>흐름 안에서 존재하는 요소</h3>

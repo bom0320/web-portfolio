@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { CtaButton } from "@/components/features/about";
+import { GradientText } from "@/components/shared/ui";
 
 export default function AboutHeroScene() {
   const [active, setActive] = useState<"resume" | "github">("resume");
@@ -45,7 +46,7 @@ export default function AboutHeroScene() {
             <br />
             고슴도치같이 예민하게
             <br />
-            <span>디테일을 캐치해내는</span> 개발자입니다.
+            <GradientText>디테일을 캐치해내는</GradientText> 개발자입니다.
           </h2>
 
           <p className="about-hero__desc js-about-hero-desc">
