@@ -5,77 +5,18 @@
 
   overflow: hidden;
   background: #000;
-
-  --capability-intro-image: radial-gradient(
-      circle at 22% 28%,
-      rgba(144, 255, 228, 0.34),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 76% 34%,
-      rgba(96, 214, 187, 0.32),
-      transparent 34%
-    ),
-    radial-gradient(
-      circle at 54% 72%,
-      rgba(118, 235, 210, 0.18),
-      transparent 34%
-    ),
-    linear-gradient(135deg, #020706 0%, #071311 46%, #000000 100%);
 }
 
 .capability-intro-visual__field {
   position: absolute;
   inset: 0;
 
-  background: var(--capability-intro-image);
-  background-size: 140% 140%;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: #000;
 
   transform: scale(1.08);
   transform-origin: center center;
 
   opacity: 1;
 
-  filter: saturate(1.12) contrast(1.05) brightness(1.02);
-
-  will-change: transform, opacity, visibility, background-position;
-}
-
-.capability-intro-visual__mask-title {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-
-  margin: 0;
-  width: max-content;
-
-  transform: translate(-50%, -50%) scale(5.4);
-  transform-origin: center center;
-
-  font-size: clamp(72px, 9vw, 156px);
-  line-height: 1;
-  font-weight: 850;
-  letter-spacing: -0.075em;
-  white-space: nowrap;
-
-  color: transparent;
-
-  background: linear-gradient(
-    90deg,
-    #b8fff0 0%,
-    #89ebd4 28%,
-    #62cdb6 58%,
-    #3f9f92 100%
-  );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  opacity: 0;
-
-  filter: brightness(1.08) saturate(1.08) contrast(1.04);
-
-  will-change: transform, opacity, visibility, background-position;
+  will-change: transform, opacity;
 }

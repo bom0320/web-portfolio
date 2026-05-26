@@ -19,6 +19,8 @@ const SELECTOR = {
   phase02: ".js-capability-intro-phase-02",
 } as const;
 
+const TITLE_INITIAL_SCALE = 3.8;
+
 const CapabilityIntroAnimation = {
   create(scope: HTMLElement): CapabilityIntroController {
     const visualField = scope.querySelector<HTMLElement>(SELECTOR.visualField);
@@ -68,9 +70,8 @@ const CapabilityIntroAnimation = {
      */
     gsap.set(visualField, {
       autoAlpha: 1,
-      scale: 1.08,
+      scale: 1,
       transformOrigin: "center center",
-      filter: "saturate(1.12) contrast(1.05) brightness(1.02)",
     });
 
     gsap.set(titleLayer, {
@@ -80,7 +81,7 @@ const CapabilityIntroAnimation = {
 
     gsap.set(title, {
       autoAlpha: 0,
-      scale: 5.4,
+      scale: TITLE_INITIAL_SCALE,
       y: 0,
       transformOrigin: "center center",
     });
@@ -101,65 +102,35 @@ const CapabilityIntroAnimation = {
     });
 
     /**
-     * 00. Full visual hold
+     * 01. Title appears
+     * FLOW. STRUCTURE. MOTION. 하나만 등장
      */
     timeline.to(
-      visualField,
+      title,
       {
-        scale: 1.16,
-        duration: 0.18,
+        autoAlpha: 1,
+        duration: 0.12,
       },
-      0
+      0.08
     );
 
     /**
-     * 01. Title appears
+     * 02. Title zooms out
+     * 타이틀 교체 없이 같은 h2가 scale만 줄어든다.
      */
-    timeline
-      .to(
-        visualField,
-        {
-          autoAlpha: 0.72,
-          duration: 0.14,
-        },
-        0.14
-      )
-      .to(
-        title,
-        {
-          autoAlpha: 1,
-          duration: 0.12,
-        },
-        0.14
-      );
-
-    /**
-     * 02. One title zooms out + background sinks to black
-     */
-    timeline
-      .to(
-        visualField,
-        {
-          autoAlpha: 0.05,
-          filter: "saturate(0.75) contrast(1) brightness(0.22)",
-          duration: 0.36,
-          ease: "power2.out",
-        },
-        0.22
-      )
-      .to(
-        title,
-        {
-          scale: 1,
-          duration: 0.36,
-          ease: "power2.out",
-        },
-        0.22
-      );
+    timeline.to(
+      title,
+      {
+        scale: 1,
+        duration: 0.42,
+        ease: "power2.out",
+      },
+      0.16
+    );
 
     /**
      * 03. Statement elements reveal
-     * title은 이미 보이고 있으므로 eyebrow / subtitle만 등장시킨다.
+     * title은 고정, eyebrow/subtitle만 등장
      */
     timeline
       .to(
@@ -170,7 +141,7 @@ const CapabilityIntroAnimation = {
           duration: 0.1,
           ease: "power2.out",
         },
-        0.58
+        0.56
       )
       .to(
         subtitle,
@@ -180,13 +151,12 @@ const CapabilityIntroAnimation = {
           duration: 0.12,
           ease: "power2.out",
         },
-        0.64
+        0.62
       );
 
     /**
-     * 04. Phase 01 body reveal
-     * titleLayer는 건드리지 않는다.
-     * FLOW. STRUCTURE. MOTION. / subtitle은 고정 유지.
+     * 04. Phase 01 reveal
+     * titleLayer는 절대 흐리게 만들지 않는다.
      */
     timeline.to(
       phase01,
