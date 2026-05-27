@@ -1,25 +1,12 @@
 .experience-capability-structure-map {
   position: relative;
+
+  --branch-top: 168px;
+  --node-size: 78px;
+
   width: min(1040px, 100%);
   height: 480px;
   margin: 0 auto;
-}
-
-.experience-capability-structure-map__glow {
-  position: absolute;
-  left: 50%;
-  top: 46%;
-  width: 760px;
-  height: 260px;
-  transform: translate(-50%, -50%);
-  border-radius: 999px;
-  background: radial-gradient(
-    circle,
-    rgba(120, 60, 255, 0.28),
-    rgba(120, 60, 255, 0.1) 42%,
-    transparent 72%
-  );
-  pointer-events: none;
 }
 
 /* 중앙 코어 */
@@ -28,18 +15,25 @@
   left: 50%;
   top: 12px;
   z-index: 5;
+
   width: 84px;
   height: 84px;
+
   transform: translateX(-50%);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(175, 135, 255, 0.95);
+
+  border: 2px solid rgba(176, 255, 242, 0.95);
   border-radius: 50%;
-  background: linear-gradient(155deg, #8b52ff 0%, #5018d8 100%);
-  box-shadow: 0 0 0 10px rgba(115, 65, 255, 0.13),
-    0 0 44px rgba(125, 75, 255, 0.8), inset 0 0 22px rgba(255, 255, 255, 0.09);
-  color: rgba(255, 255, 255, 0.95);
+
+  background: linear-gradient(155deg, #a8fff1 0%, #46dcc7 48%, #1f9f92 100%);
+
+  box-shadow: 0 0 0 10px rgba(84, 231, 211, 0.12),
+    0 0 44px rgba(98, 243, 221, 0.52), inset 0 0 22px rgba(255, 255, 255, 0.12);
+
+  color: rgba(10, 33, 30, 0.88);
   font-size: 26px;
 }
 
@@ -49,61 +43,74 @@
   left: 50%;
   top: 96px;
   z-index: 2;
+
   width: 3px;
   height: 72px;
+
   transform: translateX(-50%);
   border-radius: 999px;
+
   background: linear-gradient(
     180deg,
-    rgba(168, 125, 255, 1) 0%,
-    rgba(168, 125, 255, 0.9) 100%
+    rgba(136, 255, 236, 1) 0%,
+    rgba(109, 237, 214, 0.92) 100%
   );
-  box-shadow: 0 0 14px rgba(138, 88, 255, 0.9),
-    0 0 30px rgba(138, 88, 255, 0.35);
+
+  box-shadow: 0 0 14px rgba(92, 240, 217, 0.72),
+    0 0 30px rgba(92, 240, 217, 0.24);
 }
 
 /* 가로 브랜치 */
 .experience-capability-structure-map__branch {
   position: absolute;
   left: 50%;
-  top: 168px;
+  top: var(--branch-top);
   z-index: 2;
+
   width: min(860px, 90%);
   height: 3px;
+
   transform: translateX(-50%);
   border-radius: 999px;
+
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(148, 100, 255, 0.5) 3%,
-    rgba(148, 100, 255, 1) 50%,
-    rgba(148, 100, 255, 0.5) 97%,
+    rgba(118, 245, 225, 0.38) 3%,
+    rgba(118, 245, 225, 0.98) 50%,
+    rgba(118, 245, 225, 0.38) 97%,
     transparent 100%
   );
-  box-shadow: 0 0 12px rgba(138, 90, 255, 0.9),
-    0 0 30px rgba(138, 90, 255, 0.38);
+
+  box-shadow: 0 0 12px rgba(86, 233, 210, 0.74),
+    0 0 30px rgba(86, 233, 210, 0.24);
 }
 
+/* 양 끝 꺾임 */
 .experience-capability-structure-map__branch::before,
 .experience-capability-structure-map__branch::after {
   content: "";
   position: absolute;
   top: 0;
+
   width: 28px;
-  height: 72px;
-  border-top: 3px solid rgba(148, 100, 255, 0.85);
-  filter: drop-shadow(0 0 10px rgba(138, 90, 255, 0.85));
+  height: 48px;
+
+  border-top: 3px solid rgba(118, 245, 225, 0.82);
+  filter: drop-shadow(0 0 10px rgba(86, 233, 210, 0.7));
 }
 
 .experience-capability-structure-map__branch::before {
   left: 0;
-  border-left: 3px solid rgba(148, 100, 255, 0.85);
+
+  border-left: 3px solid rgba(118, 245, 225, 0.82);
   border-top-left-radius: 20px;
 }
 
 .experience-capability-structure-map__branch::after {
   right: 0;
-  border-right: 3px solid rgba(148, 100, 255, 0.85);
+
+  border-right: 3px solid rgba(118, 245, 225, 0.82);
   border-top-right-radius: 20px;
 }
 
@@ -117,17 +124,23 @@
 /* 노드 */
 .experience-capability-structure-map__node {
   position: absolute;
-  width: 78px;
-  height: 78px;
+
+  width: var(--node-size);
+  height: var(--node-size);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1.5px solid rgba(158, 115, 255, 0.52);
+
+  border: 1.5px solid rgba(146, 245, 229, 0.46);
   border-radius: 50%;
-  background: rgba(7, 5, 14, 0.95);
-  box-shadow: 0 0 0 8px rgba(108, 68, 255, 0.07),
-    inset 0 0 18px rgba(118, 72, 255, 0.18), 0 0 24px rgba(112, 72, 255, 0.52);
-  color: rgba(210, 195, 255, 0.85);
+
+  background: rgba(6, 16, 18, 0.95);
+
+  box-shadow: 0 0 0 8px rgba(66, 199, 182, 0.06),
+    inset 0 0 18px rgba(84, 221, 202, 0.12), 0 0 24px rgba(84, 221, 202, 0.32);
+
+  color: rgba(205, 255, 245, 0.88);
   font-size: 22px;
 }
 
@@ -137,54 +150,90 @@
   position: absolute;
   left: 50%;
   bottom: 100%;
+
   width: 3px;
   height: var(--line-height, 72px);
+
   transform: translateX(-50%);
   border-radius: 999px;
+
   background: linear-gradient(
     180deg,
-    rgba(148, 100, 255, 0.08) 0%,
-    rgba(148, 100, 255, 0.88) 100%
+    rgba(118, 245, 225, 0.08) 0%,
+    rgba(118, 245, 225, 0.88) 100%
   );
-  filter: drop-shadow(0 0 8px rgba(138, 90, 255, 0.72));
+
+  filter: drop-shadow(0 0 8px rgba(86, 233, 210, 0.58));
+}
+
+/* 양끝 노드는 branch의 꺾임 선이 담당하므로 중복 세로선 제거 */
+.experience-capability-structure-map__node--1::before,
+.experience-capability-structure-map__node--6::before {
+  display: none;
+}
+
+.experience-capability-structure-map__node-label {
+  max-width: 64px;
+
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+  text-align: center;
+
+  color: rgba(205, 255, 245, 0.9);
 }
 
 /*
-    노드 top = 브랜치 top(168px) + --line-height
-    수직 라인 길이와 노드 위치가 정확히 맞물림
-  */
+  좌표 기준:
+  - branch는 중앙 기준
+  - node도 중심점 기준
+  - left/right 혼용하지 않음
+*/
 .experience-capability-structure-map__node--1 {
-  left: 2%;
+  left: 9%;
   top: 216px;
+
+  transform: translateX(-50%);
   --line-height: 48px;
 }
 
 .experience-capability-structure-map__node--2 {
-  left: 19%;
+  left: 25%;
   top: 252px;
+
+  transform: translateX(-50%);
   --line-height: 84px;
 }
 
 .experience-capability-structure-map__node--3 {
-  left: 36%;
+  left: 41%;
   top: 288px;
+
+  transform: translateX(-50%);
   --line-height: 120px;
 }
 
 .experience-capability-structure-map__node--4 {
-  right: 36%;
+  left: 59%;
   top: 288px;
+
+  transform: translateX(-50%);
   --line-height: 120px;
 }
 
 .experience-capability-structure-map__node--5 {
-  right: 19%;
+  left: 75%;
   top: 252px;
+
+  transform: translateX(-50%);
   --line-height: 84px;
 }
 
 .experience-capability-structure-map__node--6 {
-  right: 2%;
+  left: 91%;
   top: 216px;
+
+  transform: translateX(-50%);
   --line-height: 48px;
 }

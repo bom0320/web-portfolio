@@ -32,8 +32,6 @@ export default function StructureCapabilityMap({
 }: StructureCapabilityMapProps) {
   return (
     <div className="experience-capability-structure-map">
-      <div className="experience-capability-structure-map__glow" />
-
       <div className="experience-capability-structure-map__core">
         <Boxes aria-hidden="true" />
       </div>
