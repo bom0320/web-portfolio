@@ -1,18 +1,20 @@
 "use client";
 
+import {
+  AICapabilityBlock,
+  StructureCapabilityBlock,
+  VisualCapabilityBlock,
+} from "@/components/features/capability";
+
 export default function ExperienceCapabilityScene() {
   return (
     <section className="experience-capability-scene">
       <div className="experience-capability-scene__inner">
-        <p className="experience-capability-scene__eyebrow">
-          Experience Capability
-        </p>
+        <StructureCapabilityBlock />
 
-        <h2 className="experience-capability-scene__title">
-          Structure,
-          <br />
-          behind simplicity.
-        </h2>
+        <AICapabilityBlock />
+
+        <VisualCapabilityBlock />
       </div>
     </section>
   );
