@@ -14,6 +14,7 @@ import {
 import {
   CapabilityIntroAnimation,
   CapabilityIntroProofAnimation,
+  StructureCapabilityAnimation,
 } from "@/animations/capability";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -29,7 +30,15 @@ export default function CapabilityStage() {
       const introController = CapabilityIntroAnimation.create(stage);
       const introProofController = CapabilityIntroProofAnimation.create(stage);
 
+      const structureElement = stage.querySelector<HTMLElement>(
+        ".js-structure-capability-block"
+      );
+
+      const structureController =
+        StructureCapabilityAnimation.create(structureElement);
+
       introController.setProgress(0);
+      structureController.setProgress(0);
 
       const introTrigger = ScrollTrigger.create({
         trigger: ".js-capability-intro-pinned",
@@ -43,13 +52,36 @@ export default function CapabilityStage() {
         },
       });
 
+      let structureMaxProgress = 0;
+
+      const structureTrigger = ScrollTrigger.create({
+        trigger: structureElement,
+        start: "top 78%",
+        end: "bottom 62%",
+        scrub: 1.1,
+        invalidateOnRefresh: true,
+        markers: true,
+
+        onUpdate: (self) => {
+          structureMaxProgress = Math.max(structureMaxProgress, self.progress);
+          structureController.setProgress(structureMaxProgress);
+        },
+
+        onLeaveBack: () => {
+          structureMaxProgress = 0;
+          structureController.setProgress(0);
+        },
+      });
+
       ScrollTrigger.refresh();
 
       return () => {
         introTrigger.kill();
+        structureTrigger.kill();
 
         introController.destroy();
         introProofController.destroy();
+        structureController.destroy();
       };
     }, stage);
 

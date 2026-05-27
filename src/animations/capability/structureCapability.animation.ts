@@ -1,16 +1,17 @@
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 type StructureCapabilityAnimationController = {
+  setProgress: (progress: number) => void;
   destroy: () => void;
 };
+
+const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
 const StructureCapabilityAnimation = {
   create(root: HTMLElement | null): StructureCapabilityAnimationController {
     if (!root) {
       return {
+        setProgress: () => {},
         destroy: () => {},
       };
     }
@@ -103,12 +104,7 @@ const StructureCapabilityAnimation = {
     });
 
     const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: root,
-        start: "top 72%",
-        end: "bottom 50%",
-        scrub: 1.2,
-      },
+      paused: true,
     });
 
     timeline
@@ -119,8 +115,8 @@ const StructureCapabilityAnimation = {
         autoAlpha: 1,
         y: 0,
         filter: "blur(0px)",
-        duration: 0.75,
-        ease: "power3.out",
+        duration: 0.13,
+        ease: "none",
       })
 
       /**
@@ -132,10 +128,10 @@ const StructureCapabilityAnimation = {
           autoAlpha: 1,
           scale: 1,
           filter: "blur(0px)",
-          duration: 0.65,
-          ease: "back.out(1.45)",
+          duration: 0.1,
+          ease: "none",
         },
-        "-=0.2"
+        "-=0.03"
       )
 
       /**
@@ -145,10 +141,10 @@ const StructureCapabilityAnimation = {
         stem,
         {
           scaleY: 1,
-          duration: 0.45,
-          ease: "power2.out",
+          duration: 0.08,
+          ease: "none",
         },
-        "-=0.08"
+        "-=0.01"
       )
 
       /**
@@ -156,8 +152,8 @@ const StructureCapabilityAnimation = {
        */
       .to(branch, {
         scaleX: 1,
-        duration: 0.78,
-        ease: "power2.inOut",
+        duration: 0.14,
+        ease: "none",
       })
 
       /**
@@ -167,16 +163,16 @@ const StructureCapabilityAnimation = {
         branch,
         {
           "--branch-end-scale": 1,
-          duration: 0.55,
-          ease: "power2.out",
+          duration: 0.08,
+          ease: "none",
         },
-        "-=0.26"
+        "-=0.04"
       )
 
       /**
-       * 06. Node branches start.
+       * 06. Node branches start
        */
-      .add("nodeDraw", "-=0.4");
+      .add("nodeDraw", "-=0.06");
 
     const nodeRevealOrder = [0, 5, 1, 4, 2, 3];
 
@@ -185,7 +181,7 @@ const StructureCapabilityAnimation = {
 
       if (!node) return;
 
-      const startAt = `nodeDraw+=${orderIndex * 0.08}`;
+      const startAt = `nodeDraw+=${orderIndex * 0.035}`;
 
       timeline
         /**
@@ -196,8 +192,8 @@ const StructureCapabilityAnimation = {
           {
             "--node-line-opacity": 1,
             "--node-line-scale": 1,
-            duration: 0.62,
-            ease: "power2.out",
+            duration: 0.08,
+            ease: "none",
           },
           startAt
         )
@@ -212,10 +208,10 @@ const StructureCapabilityAnimation = {
             scale: 1,
             y: 0,
             filter: "blur(0px)",
-            duration: 0.42,
-            ease: "power2.out",
+            duration: 0.07,
+            ease: "none",
           },
-          `${startAt}+=0.34`
+          `${startAt}+=0.055`
         );
     });
 
@@ -230,14 +226,14 @@ const StructureCapabilityAnimation = {
           y: 0,
           scale: 1,
           filter: "blur(0px)",
-          duration: 0.95,
+          duration: 0.16,
           stagger: {
-            each: 0.07,
+            each: 0.018,
             from: "start",
           },
-          ease: "power3.out",
+          ease: "none",
         },
-        "nodeDraw+=0.54"
+        "nodeDraw+=0.2"
       )
 
       /**
@@ -248,11 +244,11 @@ const StructureCapabilityAnimation = {
         {
           autoAlpha: 1,
           y: 0,
-          duration: 0.4,
-          stagger: 0.045,
-          ease: "power2.out",
+          duration: 0.08,
+          stagger: 0.012,
+          ease: "none",
         },
-        "-=0.66"
+        "nodeDraw+=0.25"
       )
 
       .to(
@@ -260,11 +256,11 @@ const StructureCapabilityAnimation = {
         {
           autoAlpha: 1,
           y: 0,
-          duration: 0.42,
-          stagger: 0.045,
-          ease: "power2.out",
+          duration: 0.08,
+          stagger: 0.012,
+          ease: "none",
         },
-        "-=0.5"
+        "nodeDraw+=0.28"
       )
 
       .to(
@@ -272,11 +268,11 @@ const StructureCapabilityAnimation = {
         {
           autoAlpha: 1,
           y: 0,
-          duration: 0.42,
-          stagger: 0.045,
-          ease: "power2.out",
+          duration: 0.08,
+          stagger: 0.012,
+          ease: "none",
         },
-        "-=0.38"
+        "nodeDraw+=0.31"
       )
 
       .to(
@@ -284,18 +280,42 @@ const StructureCapabilityAnimation = {
         {
           autoAlpha: 1,
           y: 0,
-          duration: 0.42,
-          stagger: 0.045,
-          ease: "power2.out",
+          duration: 0.08,
+          stagger: 0.012,
+          ease: "none",
         },
-        "-=0.34"
+        "nodeDraw+=0.34"
       );
 
+    const setProgress = (progress: number) => {
+      timeline.progress(clampProgress(progress));
+    };
+
+    const destroy = () => {
+      timeline.kill();
+
+      gsap.set(
+        [
+          header,
+          core,
+          stem,
+          branch,
+          ...nodes,
+          ...cards,
+          ...cardIcons,
+          ...cardTitles,
+          ...cardMessages,
+          ...cardDescs,
+        ],
+        {
+          clearProps: "all",
+        }
+      );
+    };
+
     return {
-      destroy: () => {
-        timeline.kill();
-        timeline.scrollTrigger?.kill();
-      },
+      setProgress,
+      destroy,
     };
   },
 };
