@@ -4,8 +4,8 @@ import { AI_ICON_MAP } from "./aiCapabilityIconMap";
 
 export default function AICapabilityBlock() {
   return (
-    <article className="experience-capability-block experience-capability-block--ai">
-      <div className="experience-capability-block__header">
+    <article className="experience-capability-block experience-capability-block--ai js-ai-capability-block">
+      <div className="experience-capability-block__header js-ai-capability-header">
         <p className="experience-capability-block__eyebrow">AI</p>
 
         <h2 className="experience-capability-block__title">

@@ -12,6 +12,7 @@ import {
 } from "@/components/scenes/capability";
 
 import {
+  AICapabilityAnimation,
   CapabilityIntroAnimation,
   CapabilityIntroProofAnimation,
   StructureCapabilityAnimation,
@@ -34,11 +35,18 @@ export default function CapabilityStage() {
         ".js-structure-capability-block"
       );
 
+      const aiElement = stage.querySelector<HTMLElement>(
+        ".js-ai-capability-block"
+      );
+
       const structureController =
         StructureCapabilityAnimation.create(structureElement);
 
+      const aiController = AICapabilityAnimation.create(aiElement);
+
       introController.setProgress(0);
       structureController.setProgress(0);
+      aiController.setProgress(0);
 
       const introTrigger = ScrollTrigger.create({
         trigger: ".js-capability-intro-pinned",
@@ -73,15 +81,38 @@ export default function CapabilityStage() {
         },
       });
 
+      let aiMaxProgress = 0;
+
+      const aiTrigger = ScrollTrigger.create({
+        trigger: aiElement,
+        start: "top 78%",
+        end: "bottom 64%",
+        scrub: 1,
+        invalidateOnRefresh: true,
+        markers: true,
+
+        onUpdate: (self) => {
+          aiMaxProgress = Math.max(aiMaxProgress, self.progress);
+          aiController.setProgress(aiMaxProgress);
+        },
+
+        onLeaveBack: () => {
+          aiMaxProgress = 0;
+          aiController.setProgress(0);
+        },
+      });
+
       ScrollTrigger.refresh();
 
       return () => {
         introTrigger.kill();
         structureTrigger.kill();
+        aiTrigger.kill();
 
         introController.destroy();
         introProofController.destroy();
         structureController.destroy();
+        aiController.destroy();
       };
     }, stage);
 
