@@ -159,7 +159,8 @@
   transform: translateX(-50%) scaleY(var(--node-line-scale, 1));
   transform-origin: top center;
 
-  transform: translateX(-50%);
+  opacity: var(--node-line-opacity, 1);
+
   border-radius: 999px;
 
   background: linear-gradient(

@@ -57,13 +57,13 @@ const StructureCapabilityAnimation = {
 
     gsap.set(header, {
       autoAlpha: 0,
-      y: 34,
+      y: 32,
       filter: "blur(10px)",
     });
 
     gsap.set(core, {
       autoAlpha: 0,
-      scale: 0.72,
+      scale: 0.74,
       filter: "blur(10px)",
       transformOrigin: "center center",
     });
@@ -81,16 +81,17 @@ const StructureCapabilityAnimation = {
 
     gsap.set(nodes, {
       autoAlpha: 0,
-      y: -28,
-      scale: 0.74,
-      filter: "blur(8px)",
+      scale: 0.88,
+      y: 10,
+      filter: "blur(6px)",
       transformOrigin: "center center",
       "--node-line-scale": 0,
+      "--node-line-opacity": 0,
     });
 
     gsap.set(cards, {
       autoAlpha: 0,
-      y: 130,
+      y: 120,
       scale: 0.96,
       filter: "blur(10px)",
       transformOrigin: "center top",
@@ -98,96 +99,130 @@ const StructureCapabilityAnimation = {
 
     gsap.set([cardIcons, cardTitles, cardMessages, cardDescs], {
       autoAlpha: 0,
-      y: 28,
+      y: 24,
     });
 
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: root,
         start: "top 72%",
-        end: "bottom 56%",
-        scrub: 1.15,
+        end: "bottom 50%",
+        scrub: 1.2,
       },
     });
 
     timeline
+      /**
+       * 01. Header
+       */
       .to(header, {
         autoAlpha: 1,
         y: 0,
         filter: "blur(0px)",
-        duration: 0.8,
+        duration: 0.75,
         ease: "power3.out",
       })
 
+      /**
+       * 02. Core
+       */
       .to(
         core,
         {
           autoAlpha: 1,
           scale: 1,
           filter: "blur(0px)",
-          duration: 0.7,
-          ease: "back.out(1.65)",
+          duration: 0.65,
+          ease: "back.out(1.45)",
         },
-        "-=0.22"
+        "-=0.2"
       )
 
+      /**
+       * 03. Stem
+       */
       .to(
         stem,
         {
           scaleY: 1,
-          duration: 0.5,
+          duration: 0.45,
           ease: "power2.out",
         },
-        "-=0.12"
+        "-=0.08"
       )
 
+      /**
+       * 04. Branch
+       */
       .to(branch, {
         scaleX: 1,
-        duration: 0.75,
+        duration: 0.78,
         ease: "power2.inOut",
       })
 
+      /**
+       * 05. Branch edge
+       */
       .to(
         branch,
         {
           "--branch-end-scale": 1,
-          duration: 0.45,
-          ease: "power2.out",
-        },
-        "-=0.18"
-      )
-
-      .to(
-        nodes,
-        {
-          "--node-line-scale": 1,
-          duration: 0.5,
-          stagger: {
-            each: 0.08,
-            from: "center",
-          },
-          ease: "power2.out",
-        },
-        "-=0.22"
-      )
-
-      .to(
-        nodes,
-        {
-          autoAlpha: 1,
-          y: 0,
-          scale: 1,
-          filter: "blur(0px)",
           duration: 0.55,
-          stagger: {
-            each: 0.08,
-            from: "center",
-          },
-          ease: "back.out(1.45)",
+          ease: "power2.out",
         },
-        "-=0.4"
+        "-=0.26"
       )
 
+      /**
+       * 06. Node branches start.
+       */
+      .add("nodeDraw", "-=0.4");
+
+    const nodeRevealOrder = [0, 5, 1, 4, 2, 3];
+
+    nodeRevealOrder.forEach((nodeIndex, orderIndex) => {
+      const node = nodes[nodeIndex];
+
+      if (!node) return;
+
+      const startAt = `nodeDraw+=${orderIndex * 0.08}`;
+
+      timeline
+        /**
+         * 가지가 위에서 아래로 자라남
+         */
+        .to(
+          node,
+          {
+            "--node-line-opacity": 1,
+            "--node-line-scale": 1,
+            duration: 0.62,
+            ease: "power2.out",
+          },
+          startAt
+        )
+
+        /**
+         * 가지 끝에 노드가 맺히듯 등장
+         */
+        .to(
+          node,
+          {
+            autoAlpha: 1,
+            scale: 1,
+            y: 0,
+            filter: "blur(0px)",
+            duration: 0.42,
+            ease: "power2.out",
+          },
+          `${startAt}+=0.34`
+        );
+    });
+
+    timeline
+      /**
+       * 07. Cards pull up
+       */
       .to(
         cards,
         {
@@ -195,23 +230,29 @@ const StructureCapabilityAnimation = {
           y: 0,
           scale: 1,
           filter: "blur(0px)",
-          duration: 0.9,
-          stagger: 0.08,
+          duration: 0.95,
+          stagger: {
+            each: 0.07,
+            from: "start",
+          },
           ease: "power3.out",
         },
-        "-=0.05"
+        "nodeDraw+=0.54"
       )
 
+      /**
+       * 08. Card contents
+       */
       .to(
         cardIcons,
         {
           autoAlpha: 1,
           y: 0,
-          duration: 0.45,
-          stagger: 0.05,
+          duration: 0.4,
+          stagger: 0.045,
           ease: "power2.out",
         },
-        "-=0.62"
+        "-=0.66"
       )
 
       .to(
@@ -219,11 +260,11 @@ const StructureCapabilityAnimation = {
         {
           autoAlpha: 1,
           y: 0,
-          duration: 0.45,
-          stagger: 0.05,
+          duration: 0.42,
+          stagger: 0.045,
           ease: "power2.out",
         },
-        "-=0.48"
+        "-=0.5"
       )
 
       .to(
@@ -231,11 +272,11 @@ const StructureCapabilityAnimation = {
         {
           autoAlpha: 1,
           y: 0,
-          duration: 0.45,
-          stagger: 0.05,
+          duration: 0.42,
+          stagger: 0.045,
           ease: "power2.out",
         },
-        "-=0.4"
+        "-=0.38"
       )
 
       .to(
@@ -243,11 +284,11 @@ const StructureCapabilityAnimation = {
         {
           autoAlpha: 1,
           y: 0,
-          duration: 0.45,
-          stagger: 0.05,
+          duration: 0.42,
+          stagger: 0.045,
           ease: "power2.out",
         },
-        "-=0.36"
+        "-=0.34"
       );
 
     return {
