@@ -1,3 +1,5 @@
+import { STRUCTURE_CAPABILITY_ITEMS } from "@/data/capability/experience";
+
 export default function StructureCapabilityBlock() {
   return (
     <article className="experience-capability-block experience-capability-block--structure">
@@ -26,14 +28,40 @@ export default function StructureCapabilityBlock() {
           <div className="experience-capability-structure-map__line" />
 
           <div className="experience-capability-structure-map__items">
-            <span>React Architecture</span>
-            <span>Shared Components</span>
-            <span>Role-based System</span>
-            <span>API & Data Flow</span>
-            <span>Motion System</span>
-            <span>Styling Structure</span>
+            {STRUCTURE_CAPABILITY_ITEMS.map((item) => (
+              <span key={item.id}>{item.title}</span>
+            ))}
           </div>
         </div>
+      </div>
+
+      <div className="experience-capability-structure-grid">
+        {STRUCTURE_CAPABILITY_ITEMS.map((item) => (
+          <article
+            key={item.id}
+            className="experience-capability-structure-card"
+          >
+            <div className="experience-capability-structure-card__top">
+              <span className="experience-capability-structure-card__index">
+                {item.index}
+              </span>
+
+              <span className="experience-capability-structure-card__line" />
+            </div>
+
+            <h3 className="experience-capability-structure-card__title">
+              {item.title}
+            </h3>
+
+            <p className="experience-capability-structure-card__message">
+              {item.message}
+            </p>
+
+            <p className="experience-capability-structure-card__desc">
+              {item.description}
+            </p>
+          </article>
+        ))}
       </div>
     </article>
   );
