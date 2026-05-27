@@ -98,6 +98,9 @@
 
   border-top: 3px solid rgba(118, 245, 225, 0.5);
   filter: drop-shadow(0 0 6px rgba(86, 233, 210, 0.36));
+
+  transform: scaleY(var(--branch-end-scale, 1));
+  transform-origin: top center;
 }
 
 .experience-capability-structure-map__branch::before {
@@ -152,6 +155,9 @@
 
   width: 3px;
   height: var(--line-height, 72px);
+
+  transform: translateX(-50%) scaleY(var(--node-line-scale, 1));
+  transform-origin: top center;
 
   transform: translateX(-50%);
   border-radius: 999px;
