@@ -1,5 +1,6 @@
 export {
   STRUCTURE_CAPABILITY_ITEMS,
+  type StructureCapabilityIcon,
   type StructureCapabilityItem,
 } from "./structureCapabilityItems";
 
