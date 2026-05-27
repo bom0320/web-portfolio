@@ -37,24 +37,36 @@ const StructureCapabilityAnimation = {
     );
 
     const cards = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-structure-card")
+      root.querySelectorAll(".experience-capability-card")
     );
 
     const cardIcons = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-structure-card__icon")
+      root.querySelectorAll(".experience-capability-card__icon")
+    );
+
+    const cardSubtitles = gsap.utils.toArray<HTMLElement>(
+      root.querySelectorAll(".experience-capability-card__subtitle")
     );
 
     const cardTitles = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-structure-card__title")
+      root.querySelectorAll(".experience-capability-card__title")
     );
 
     const cardMessages = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-structure-card__message")
+      root.querySelectorAll(".experience-capability-card__message")
     );
 
     const cardDescs = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-structure-card__desc")
+      root.querySelectorAll(".experience-capability-card__desc")
     );
+
+    const cardInnerElements = [
+      ...cardIcons,
+      ...cardSubtitles,
+      ...cardTitles,
+      ...cardMessages,
+      ...cardDescs,
+    ];
 
     gsap.set(header, {
       autoAlpha: 0,
@@ -98,7 +110,7 @@ const StructureCapabilityAnimation = {
       transformOrigin: "center top",
     });
 
-    gsap.set([cardIcons, cardTitles, cardMessages, cardDescs], {
+    gsap.set(cardInnerElements, {
       autoAlpha: 0,
       y: 24,
     });
@@ -252,6 +264,18 @@ const StructureCapabilityAnimation = {
       )
 
       .to(
+        cardSubtitles,
+        {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.08,
+          stagger: 0.012,
+          ease: "none",
+        },
+        "nodeDraw+=0.265"
+      )
+
+      .to(
         cardTitles,
         {
           autoAlpha: 1,
@@ -302,11 +326,8 @@ const StructureCapabilityAnimation = {
           branch,
           ...nodes,
           ...cards,
-          ...cardIcons,
-          ...cardTitles,
-          ...cardMessages,
-          ...cardDescs,
-        ],
+          ...cardInnerElements,
+        ].filter(Boolean),
         {
           clearProps: "all",
         }

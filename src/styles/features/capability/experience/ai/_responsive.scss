@@ -1,49 +1,11 @@
 @media (max-width: 900px) {
-  .experience-capability-ai-showcase {
+  .experience-capability-grid--ai {
     margin-top: 56px;
-    padding-left: 28px;
-  }
-
-  .experience-capability-ai-showcase__track {
-    grid-template-columns: 1fr;
-  }
-
-  .experience-capability-ai-card {
-    min-height: auto;
-    padding: 30px 26px;
-
-    border-right: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.055);
-  }
-
-  .experience-capability-ai-card:last-child {
-    border-bottom: 0;
-  }
-
-  .experience-capability-ai-card__icon {
-    margin-bottom: 64px;
   }
 }
 
 @media (max-width: 560px) {
-  .experience-capability-ai-showcase {
+  .experience-capability-grid--ai {
     margin-top: 48px;
-    padding-left: 18px;
-  }
-
-  .experience-capability-ai-showcase__accent {
-    width: 3px;
-  }
-
-  .experience-capability-ai-card {
-    padding: 28px 22px;
-  }
-
-  .experience-capability-ai-card__icon {
-    margin-bottom: 48px;
-  }
-
-  .experience-capability-ai-card__title {
-    font-size: 22px;
   }
 }

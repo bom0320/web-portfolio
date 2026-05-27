@@ -20,40 +20,36 @@ export default function AICapabilityBlock() {
         </p>
       </div>
 
-      <div className="experience-capability-ai-showcase">
-        <div className="experience-capability-ai-showcase__accent" />
+      <div className="experience-capability-grid experience-capability-grid--ai">
+        {AI_CAPABILITY_ITEMS.map((item) => {
+          const Icon = AI_ICON_MAP[item.icon];
 
-        <div className="experience-capability-ai-showcase__track">
-          {AI_CAPABILITY_ITEMS.map((item) => {
-            const Icon = AI_ICON_MAP[item.icon];
+          return (
+            <article key={item.id} className="experience-capability-card">
+              <div className="experience-capability-card__icon">
+                <Icon aria-hidden="true" />
+              </div>
 
-            return (
-              <article key={item.id} className="experience-capability-ai-card">
-                <div className="experience-capability-ai-card__icon">
-                  <Icon aria-hidden="true" />
-                </div>
+              <div className="experience-capability-card__content">
+                <span className="experience-capability-card__subtitle">
+                  {item.subtitle}
+                </span>
 
-                <div className="experience-capability-ai-card__content">
-                  <span className="experience-capability-ai-card__subtitle">
-                    {item.subtitle}
-                  </span>
+                <h3 className="experience-capability-card__title">
+                  {item.title}
+                </h3>
 
-                  <h3 className="experience-capability-ai-card__title">
-                    {item.title}
-                  </h3>
+                <p className="experience-capability-card__message">
+                  {item.message}
+                </p>
 
-                  <p className="experience-capability-ai-card__message">
-                    {item.message}
-                  </p>
-
-                  <p className="experience-capability-ai-card__desc">
-                    {item.description}
-                  </p>
-                </div>
-              </article>
-            );
-          })}
-        </div>
+                <p className="experience-capability-card__desc">
+                  {item.description}
+                </p>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </article>
   );

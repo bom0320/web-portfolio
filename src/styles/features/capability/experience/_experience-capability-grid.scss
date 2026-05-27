@@ -1,9 +1,9 @@
-.experience-capability-structure-grid {
+.experience-capability-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
 
-  width: min(1240px, 100%);
+  width: min(1040px, 100%);
   margin: 0 auto;
 
   border: 1px solid rgba(255, 255, 255, 0.055);
@@ -13,7 +13,7 @@
   overflow: hidden;
 }
 
-.experience-capability-structure-card {
+.experience-capability-card {
   position: relative;
 
   min-height: 220px;
@@ -29,15 +29,15 @@
   overflow: hidden;
 }
 
-.experience-capability-structure-card:nth-child(3n) {
+.experience-capability-card:nth-child(3n) {
   border-right: 0;
 }
 
-.experience-capability-structure-card:nth-last-child(-n + 3) {
+.experience-capability-card:nth-last-child(-n + 3) {
   border-bottom: 0;
 }
 
-.experience-capability-structure-card::before {
+.experience-capability-card::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -52,17 +52,17 @@
   transition: opacity 0.28s ease;
 }
 
-.experience-capability-structure-card:hover::before {
+.experience-capability-card:hover::before {
   opacity: 1;
 }
 
-.experience-capability-structure-card__icon {
+.experience-capability-card__icon {
   position: relative;
   z-index: 1;
 
   width: 34px;
   height: 34px;
-  margin-bottom: 52px;
+  margin-bottom: 58px;
 
   display: grid;
   place-items: center;
@@ -70,19 +70,32 @@
   color: rgba(255, 255, 255, 0.92);
 }
 
-.experience-capability-structure-card__icon svg {
+.experience-capability-card__icon svg {
   width: 24px;
   height: 24px;
 
   stroke-width: 2.2;
 }
 
-.experience-capability-structure-card__content {
+.experience-capability-card__content {
   position: relative;
   z-index: 1;
 }
 
-.experience-capability-structure-card__title {
+.experience-capability-card__subtitle {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.35;
+  letter-spacing: -0.035em;
+
+  color: rgba(112, 255, 230, 0.72);
+}
+
+.experience-capability-card__title {
   margin: 0 0 10px;
 
   font-size: 22px;
@@ -93,7 +106,7 @@
   color: rgba(255, 255, 255, 0.94);
 }
 
-.experience-capability-structure-card__message {
+.experience-capability-card__message {
   margin: 0 0 10px;
 
   font-size: 14px;
@@ -104,7 +117,7 @@
   color: rgba(255, 255, 255, 0.66);
 }
 
-.experience-capability-structure-card__desc {
+.experience-capability-card__desc {
   margin: 0;
 
   font-size: 13px;

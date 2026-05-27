@@ -1,29 +1,13 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
-
-import { StructureCapabilityAnimation } from "@/animations/capability";
 import { STRUCTURE_CAPABILITY_ITEMS } from "@/data/capability/experience";
 
 import StructureCapabilityGrid from "./StructureCapabilityGrid";
 import StructureCapabilityMap from "./StructureCapabilityMap";
 
 export default function StructureCapabilityBlock() {
-  const blockRef = useRef<HTMLElement | null>(null);
-
-  useLayoutEffect(() => {
-    const controller = StructureCapabilityAnimation.create(blockRef.current);
-
-    return () => {
-      controller.destroy();
-    };
-  }, []);
-
   return (
-    <article
-      ref={blockRef}
-      className="experience-capability-block experience-capability-block--structure js-structure-capability-block"
-    >
+    <article className="experience-capability-block experience-capability-block--structure js-structure-capability-block">
       <div className="experience-capability-block__header experience-capability-block__header--center js-structure-capability-header">
         <p className="experience-capability-block__eyebrow">Structure</p>
 
