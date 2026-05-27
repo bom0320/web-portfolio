@@ -1,0 +1,167 @@
+.experience-capability-visual-card {
+  position: relative;
+
+  min-height: 440px;
+
+  border: 1px solid rgba(255, 255, 255, 0.065);
+  border-radius: 28px;
+
+  background: rgba(255, 255, 255, 0.026);
+
+  overflow: hidden;
+}
+
+.experience-capability-visual-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(112, 255, 230, 0.12),
+    transparent 44%
+  );
+
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.experience-capability-visual-card:hover::before {
+  opacity: 1;
+}
+
+.experience-capability-visual-card__media {
+  position: relative;
+
+  height: 190px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.065);
+
+  background: linear-gradient(rgba(255, 255, 255, 0.026) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px),
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(112, 255, 230, 0.16),
+      transparent 58%
+    );
+  background-size: 26px 26px, 26px 26px, auto;
+
+  overflow: hidden;
+}
+
+.experience-capability-visual-card__media-grid {
+  position: absolute;
+  inset: 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: 18px;
+
+  opacity: 0.8;
+}
+
+.experience-capability-visual-card__badge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 64px;
+  height: 64px;
+
+  transform: translate(-50%, -50%);
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(112, 255, 230, 0.36);
+  border-radius: 50%;
+
+  background: rgba(6, 16, 18, 0.82);
+
+  box-shadow: 0 0 0 8px rgba(112, 255, 230, 0.045),
+    0 0 30px rgba(112, 255, 230, 0.18);
+
+  color: rgba(205, 255, 245, 0.9);
+}
+
+.experience-capability-visual-card__badge svg {
+  width: 26px;
+  height: 26px;
+  stroke-width: 2.2;
+}
+
+.experience-capability-visual-card__type {
+  position: absolute;
+  left: 18px;
+  bottom: 16px;
+
+  font-size: 11px;
+  font-weight: 750;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.experience-capability-visual-card__body {
+  position: relative;
+  z-index: 1;
+
+  padding: 24px 22px 26px;
+}
+
+.experience-capability-visual-card__index {
+  display: block;
+
+  margin-bottom: 14px;
+
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1;
+
+  color: rgba(112, 255, 230, 0.72);
+}
+
+.experience-capability-visual-card__subtitle {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.45;
+  letter-spacing: -0.04em;
+
+  color: rgba(255, 255, 255, 0.46);
+}
+
+.experience-capability-visual-card__title {
+  margin: 0 0 14px;
+
+  font-size: 24px;
+  font-weight: 850;
+  line-height: 1.08;
+  letter-spacing: -0.06em;
+
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.experience-capability-visual-card__message {
+  margin: 0 0 12px;
+
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.55;
+  letter-spacing: -0.045em;
+
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.experience-capability-visual-card__desc {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.68;
+  letter-spacing: -0.04em;
+
+  color: rgba(255, 255, 255, 0.42);
+}
