@@ -1,3 +1,7 @@
+import { AI_CAPABILITY_ITEMS } from "@/data/capability/experience";
+
+import { AI_ICON_MAP } from "./aiCapabilityIconMap";
+
 export default function AICapabilityBlock() {
   return (
     <article className="experience-capability-block experience-capability-block--ai">
@@ -16,24 +20,40 @@ export default function AICapabilityBlock() {
         </p>
       </div>
 
-      <div className="experience-capability-ai-grid">
-        <article className="experience-capability-ai-card">
-          <span>01</span>
-          <h3>Comparative Reasoning</h3>
-          <p>답을 받아들이기보다, 더 나은 방향을 계속 비교합니다.</p>
-        </article>
+      <div className="experience-capability-ai-showcase">
+        <div className="experience-capability-ai-showcase__accent" />
 
-        <article className="experience-capability-ai-card">
-          <span>02</span>
-          <h3>Expanded Exploration</h3>
-          <p>여러 레퍼런스와 도구를 연결해 더 넓게 탐색합니다.</p>
-        </article>
+        <div className="experience-capability-ai-showcase__track">
+          {AI_CAPABILITY_ITEMS.map((item) => {
+            const Icon = AI_ICON_MAP[item.icon];
 
-        <article className="experience-capability-ai-card">
-          <span>03</span>
-          <h3>Understanding Over Answers</h3>
-          <p>결과보다 구조와 이유를 이해하는 과정을 중요하게 봅니다.</p>
-        </article>
+            return (
+              <article key={item.id} className="experience-capability-ai-card">
+                <div className="experience-capability-ai-card__icon">
+                  <Icon aria-hidden="true" />
+                </div>
+
+                <div className="experience-capability-ai-card__content">
+                  <span className="experience-capability-ai-card__subtitle">
+                    {item.subtitle}
+                  </span>
+
+                  <h3 className="experience-capability-ai-card__title">
+                    {item.title}
+                  </h3>
+
+                  <p className="experience-capability-ai-card__message">
+                    {item.message}
+                  </p>
+
+                  <p className="experience-capability-ai-card__desc">
+                    {item.description}
+                  </p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </article>
   );

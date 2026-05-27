@@ -6,6 +6,7 @@ export {
 
 export {
   AI_CAPABILITY_ITEMS,
+  type AICapabilityIcon,
   type AICapabilityItem,
 } from "./aiCapabilityItems";
 
