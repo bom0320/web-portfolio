@@ -1,39 +1,23 @@
-import {
-  ArrowLeftRight,
-  Boxes,
-  Component,
-  GitBranch,
-  Palette,
-  UsersRound,
-  Waves,
-  type LucideIcon,
-} from "lucide-react";
+import type { StructureCapabilityItem } from "@/data/capability/experience";
 
-import type {
-  StructureCapabilityIcon,
-  StructureCapabilityItem,
-} from "@/data/capability/experience";
+import {
+  STRUCTURE_CORE_ICON,
+  STRUCTURE_ICON_MAP,
+} from "./structureCapabilityIconMap";
 
 type StructureCapabilityMapProps = {
   items: StructureCapabilityItem[];
 };
 
-const STRUCTURE_ICON_MAP: Record<StructureCapabilityIcon, LucideIcon> = {
-  hierarchy: GitBranch,
-  components: Component,
-  "users-group": UsersRound,
-  "arrows-exchange": ArrowLeftRight,
-  ripple: Waves,
-  palette: Palette,
-};
-
 export default function StructureCapabilityMap({
   items,
 }: StructureCapabilityMapProps) {
+  const CoreIcon = STRUCTURE_CORE_ICON;
+
   return (
     <div className="experience-capability-structure-map">
       <div className="experience-capability-structure-map__core">
-        <Boxes aria-hidden="true" />
+        <CoreIcon aria-hidden="true" />
       </div>
 
       <div className="experience-capability-structure-map__stem" />
