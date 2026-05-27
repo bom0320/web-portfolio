@@ -1,0 +1,114 @@
+.experience-capability {
+  position: relative;
+  min-height: 100vh;
+
+  background: #000;
+  color: #fff;
+
+  overflow: hidden;
+}
+
+.experience-capability::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+      circle at 50% 18%,
+      rgba(126, 76, 255, 0.16),
+      transparent 32%
+    ),
+    linear-gradient(rgba(255, 255, 255, 0.024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.024) 1px, transparent 1px);
+  background-size: auto, 72px 72px, 72px 72px;
+
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.experience-capability::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    #000 0%,
+    rgba(0, 0, 0, 0.18) 34%,
+    rgba(0, 0, 0, 0.74) 74%,
+    #000 100%
+  );
+
+  pointer-events: none;
+}
+
+.experience-capability__inner {
+  position: relative;
+  z-index: 1;
+
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 120px 0 160px;
+}
+
+.experience-capability-block {
+  position: relative;
+}
+
+.experience-capability-block + .experience-capability-block {
+  margin-top: 180px;
+}
+
+.experience-capability-block__header {
+  max-width: 760px;
+}
+
+.experience-capability-block__header--center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.experience-capability-block__eyebrow {
+  margin: 0 0 20px;
+
+  font-size: 20px;
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -0.04em;
+
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.experience-capability-block__title {
+  margin: 0;
+
+  font-size: clamp(36px, 5.2vw, 68px);
+  font-weight: 900;
+  line-height: 1.13;
+  letter-spacing: -0.075em;
+
+  color: #fff;
+}
+
+.experience-capability-block__desc {
+  max-width: 680px;
+  margin: 28px 0 0;
+
+  font-size: clamp(15px, 1.35vw, 18px);
+  font-weight: 500;
+  line-height: 1.9;
+  letter-spacing: -0.045em;
+
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.experience-capability-block__header--center
+  .experience-capability-block__desc {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.experience-capability-visual {
+  position: relative;
+  width: 100%;
+}

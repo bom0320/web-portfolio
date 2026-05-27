@@ -1,5 +1,8 @@
 import { STRUCTURE_CAPABILITY_ITEMS } from "@/data/capability/experience";
 
+import StructureCapabilityGrid from "./StructureCapabilityGrid";
+import StructureCapabilityMap from "./StructureCapabilityMap";
+
 export default function StructureCapabilityBlock() {
   return (
     <article className="experience-capability-block experience-capability-block--structure">
@@ -20,49 +23,10 @@ export default function StructureCapabilityBlock() {
       </div>
 
       <div className="experience-capability-visual experience-capability-visual--structure">
-        <div className="experience-capability-structure-map">
-          <div className="experience-capability-structure-map__core">
-            Readable Flow
-          </div>
-
-          <div className="experience-capability-structure-map__line" />
-
-          <div className="experience-capability-structure-map__items">
-            {STRUCTURE_CAPABILITY_ITEMS.map((item) => (
-              <span key={item.id}>{item.title}</span>
-            ))}
-          </div>
-        </div>
+        <StructureCapabilityMap items={STRUCTURE_CAPABILITY_ITEMS} />
       </div>
 
-      <div className="experience-capability-structure-grid">
-        {STRUCTURE_CAPABILITY_ITEMS.map((item) => (
-          <article
-            key={item.id}
-            className="experience-capability-structure-card"
-          >
-            <div className="experience-capability-structure-card__top">
-              <span className="experience-capability-structure-card__index">
-                {item.index}
-              </span>
-
-              <span className="experience-capability-structure-card__line" />
-            </div>
-
-            <h3 className="experience-capability-structure-card__title">
-              {item.title}
-            </h3>
-
-            <p className="experience-capability-structure-card__message">
-              {item.message}
-            </p>
-
-            <p className="experience-capability-structure-card__desc">
-              {item.description}
-            </p>
-          </article>
-        ))}
-      </div>
+      <StructureCapabilityGrid items={STRUCTURE_CAPABILITY_ITEMS} />
     </article>
   );
 }
