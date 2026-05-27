@@ -72,7 +72,7 @@
   margin: 0 0 20px;
 
   font-size: 20px;
-  font-weight: 850;
+  font-weight: 750;
   line-height: 1;
   letter-spacing: -0.04em;
 
@@ -82,7 +82,7 @@
 .experience-capability-block__title {
   margin: 0;
 
-  font-size: clamp(36px, 5.2vw, 68px);
+  font-size: clamp(36px, 5.2vw, 62px);
   font-weight: 900;
   line-height: 1.13;
   letter-spacing: -0.075em;
@@ -94,10 +94,10 @@
   max-width: 680px;
   margin: 28px 0 0;
 
-  font-size: clamp(15px, 1.35vw, 18px);
+  font-size: clamp(15px, 1.35vw, 17px);
   font-weight: 500;
-  line-height: 1.9;
-  letter-spacing: -0.045em;
+  line-height: 2;
+  letter-spacing: -0.02em;
 
   color: rgba(255, 255, 255, 0.62);
 }
