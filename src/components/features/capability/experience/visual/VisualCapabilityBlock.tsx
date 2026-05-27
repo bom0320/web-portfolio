@@ -1,7 +1,11 @@
+import { VISUAL_CAPABILITY_ITEMS } from "@/data/capability/experience";
+
+import VisualCapabilityGallery from "./VisualCapabilityGallery";
+
 export default function VisualCapabilityBlock() {
   return (
-    <article className="experience-capability-block experience-capability-block--visual">
-      <div className="experience-capability-block__header">
+    <article className="experience-capability-block experience-capability-block--visual js-visual-capability-block">
+      <div className="experience-capability-block__header experience-capability-block__header--center js-visual-capability-header">
         <p className="experience-capability-block__eyebrow">Beyond</p>
 
         <h2 className="experience-capability-block__title">
@@ -17,17 +21,7 @@ export default function VisualCapabilityBlock() {
         </p>
       </div>
 
-      <div className="experience-capability-visual-gallery">
-        <div className="experience-capability-visual-gallery__item">
-          Character
-        </div>
-        <div className="experience-capability-visual-gallery__item">
-          Typography
-        </div>
-        <div className="experience-capability-visual-gallery__item">
-          Motion Balance
-        </div>
-      </div>
+      <VisualCapabilityGallery items={VISUAL_CAPABILITY_ITEMS} />
     </article>
   );
 }

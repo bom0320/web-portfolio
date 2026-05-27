@@ -12,5 +12,6 @@ export {
 
 export {
   VISUAL_CAPABILITY_ITEMS,
+  type VisualCapabilityIcon,
   type VisualCapabilityItem,
 } from "./visualCapabilityItems";
