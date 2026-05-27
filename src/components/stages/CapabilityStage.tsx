@@ -11,7 +11,10 @@ import {
   ExperienceCapabilityScene,
 } from "@/components/scenes/capability";
 
-import { CapabilityIntroAnimation } from "@/animations/capability";
+import {
+  CapabilityIntroAnimation,
+  CapabilityIntroProofAnimation,
+} from "@/animations/capability";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,6 +27,7 @@ export default function CapabilityStage() {
 
     const ctx = gsap.context(() => {
       const introController = CapabilityIntroAnimation.create(stage);
+      const introProofController = CapabilityIntroProofAnimation.create(stage);
 
       introController.setProgress(0);
 
@@ -43,7 +47,9 @@ export default function CapabilityStage() {
 
       return () => {
         introTrigger.kill();
+
         introController.destroy();
+        introProofController.destroy();
       };
     }, stage);
 

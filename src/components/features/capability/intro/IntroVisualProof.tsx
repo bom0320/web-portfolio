@@ -5,7 +5,7 @@ export default function IntroProof() {
   return (
     <section className="capability-intro-proof js-capability-intro-proof">
       <div className="capability-intro-proof__inner">
-        <article className="capability-intro-proof__point capability-intro-proof__point--01">
+        <article className="capability-intro-proof__point capability-intro-proof__point--01 js-capability-intro-proof-point-left">
           <div className="capability-intro-proof__label">
             <span>
               <GradientText>01</GradientText>
@@ -21,7 +21,7 @@ export default function IntroProof() {
           </p>
         </article>
 
-        <article className="capability-intro-proof__point capability-intro-proof__point--02">
+        <article className="capability-intro-proof__point capability-intro-proof__point--02 js-capability-intro-proof-point-right">
           <div className="capability-intro-proof__label">
             <span>
               <GradientText>02</GradientText>
@@ -37,9 +37,12 @@ export default function IntroProof() {
           </p>
         </article>
 
-        <div className="capability-intro-proof__visual" aria-hidden="true">
+        <div
+          className="capability-intro-proof__visual js-capability-intro-proof-visual"
+          aria-hidden="true"
+        >
           <Image
-            className="capability-intro-proof__character-image"
+            className="capability-intro-proof__character-image js-capability-intro-proof-character"
             src="/images/character_1.png"
             alt=""
             width={420}
@@ -48,7 +51,7 @@ export default function IntroProof() {
           />
         </div>
 
-        <article className="capability-intro-proof__point capability-intro-proof__point--03">
+        <article className="capability-intro-proof__point capability-intro-proof__point--03 js-capability-intro-proof-point-left">
           <div className="capability-intro-proof__label">
             <span>
               <GradientText>03</GradientText>
@@ -64,7 +67,7 @@ export default function IntroProof() {
           </p>
         </article>
 
-        <article className="capability-intro-proof__point capability-intro-proof__point--04">
+        <article className="capability-intro-proof__point capability-intro-proof__point--04 js-capability-intro-proof-point-right">
           <div className="capability-intro-proof__label">
             <span>
               <GradientText>04</GradientText>
@@ -80,12 +83,21 @@ export default function IntroProof() {
           </p>
         </article>
 
-        <p className="capability-intro-proof__quote">
-          <span aria-hidden="true">“</span>
+        <p className="capability-intro-proof__quote js-capability-intro-proof-quote">
+          <span
+            className="capability-intro-proof__quote-mark"
+            aria-hidden="true"
+          >
+            “
+          </span>
           <br />
           저는 인터페이스를 단순히 정보를 보여주는 화면보다,
           <br />
-          <strong>사용자가 자연스럽게 흐름을 이어갈 수 있는 경험</strong>
+          <strong>
+            <GradientText>
+              사용자가 자연스럽게 흐름을 이어갈 수 있는 경험
+            </GradientText>
+          </strong>
           으로 만들고 싶었습니다.
         </p>
       </div>
