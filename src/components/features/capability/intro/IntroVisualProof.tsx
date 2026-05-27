@@ -40,7 +40,7 @@ export default function IntroProof() {
         <div className="capability-intro-proof__visual" aria-hidden="true">
           <Image
             className="capability-intro-proof__character-image"
-            src="/images/characters/hedgehog.png"
+            src="/images/character_1.png"
             alt=""
             width={420}
             height={470}

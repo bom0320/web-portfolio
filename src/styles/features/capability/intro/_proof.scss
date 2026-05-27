@@ -105,9 +105,9 @@
 }
 
 .capability-intro-proof__point h3 {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
 
-  font-size: clamp(24px, 2vw, 34px);
+  font-size: clamp(21px, 1.7vw, 28px);
   line-height: 1.25;
   font-weight: 750;
   letter-spacing: -0.055em;
@@ -118,8 +118,8 @@
 .capability-intro-proof__point p {
   margin: 0;
 
-  font-size: clamp(15px, 1.08vw, 18px);
-  line-height: 1.76;
+  font-size: clamp(14px, 0.95vw, 16px);
+  line-height: 1.72;
   font-weight: 550;
   letter-spacing: -0.035em;
 
@@ -146,10 +146,9 @@
   display: inline-block;
   margin-bottom: 8px;
 
-  font-size: clamp(48px, 4vw, 72px);
+  font-size: clamp(30px, 2.5vw, 36px);
   line-height: 0.8;
   font-weight: 850;
-
   color: rgba(126, 178, 164, 0.9);
 }
 
