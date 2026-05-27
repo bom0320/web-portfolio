@@ -1,42 +1,43 @@
 .experience-capability-structure-map {
   position: relative;
 
-  width: min(920px, 100%);
-  height: 360px;
+  width: min(1040px, 100%);
+  height: 430px;
   margin: 0 auto;
 }
 
 .experience-capability-structure-map__glow {
   position: absolute;
   left: 50%;
-  top: 46%;
+  top: 48%;
 
-  width: 720px;
-  height: 240px;
+  width: 900px;
+  height: 320px;
 
   transform: translate(-50%, -50%);
   border-radius: 999px;
 
   background: radial-gradient(
     circle,
-    rgba(126, 76, 255, 0.34),
-    rgba(126, 76, 255, 0.12) 40%,
-    transparent 72%
+    rgba(126, 76, 255, 0.28),
+    rgba(126, 76, 255, 0.11) 38%,
+    transparent 74%
   );
 
-  filter: blur(34px);
-  opacity: 0.86;
+  filter: blur(42px);
+  opacity: 0.88;
   pointer-events: none;
 }
 
+/* 중앙 코어 */
 .experience-capability-structure-map__core {
   position: absolute;
   left: 50%;
-  top: 16px;
+  top: 4px;
   z-index: 5;
 
-  width: 96px;
-  height: 96px;
+  width: 98px;
+  height: 98px;
 
   transform: translateX(-50%);
 
@@ -45,7 +46,7 @@
   align-items: center;
   justify-content: center;
 
-  border: 1px solid rgba(174, 136, 255, 0.92);
+  border: 1px solid rgba(177, 140, 255, 0.96);
   border-radius: 50%;
 
   background: radial-gradient(
@@ -53,10 +54,10 @@
       rgba(255, 255, 255, 0.35),
       transparent 24%
     ),
-    linear-gradient(180deg, #8d50ff 0%, #4c1ed8 100%);
+    linear-gradient(180deg, #8d50ff 0%, #4b1ed6 100%);
 
-  box-shadow: 0 0 0 8px rgba(130, 82, 255, 0.12),
-    0 0 42px rgba(130, 82, 255, 0.76), inset 0 0 24px rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 9px rgba(130, 82, 255, 0.13),
+    0 0 46px rgba(130, 82, 255, 0.78), inset 0 0 24px rgba(255, 255, 255, 0.12);
 
   color: #fff;
 }
@@ -79,14 +80,15 @@
   letter-spacing: -0.07em;
 }
 
+/* 중앙 세로 줄 */
 .experience-capability-structure-map__stem {
   position: absolute;
   left: 50%;
-  top: 112px;
+  top: 102px;
   z-index: 2;
 
-  width: 3px;
-  height: 70px;
+  width: 4px;
+  height: 86px;
 
   transform: translateX(-50%);
 
@@ -94,21 +96,23 @@
 
   background: linear-gradient(
     180deg,
-    rgba(165, 126, 255, 0.95),
-    rgba(165, 126, 255, 0.12)
+    rgba(172, 134, 255, 0.98),
+    rgba(172, 134, 255, 0.18)
   );
 
-  filter: drop-shadow(0 0 12px rgba(140, 90, 255, 0.92));
+  box-shadow: 0 0 16px rgba(142, 90, 255, 0.9),
+    0 0 32px rgba(142, 90, 255, 0.34);
 }
 
+/* 가로 브랜치 */
 .experience-capability-structure-map__branch {
   position: absolute;
   left: 50%;
-  top: 182px;
+  top: 186px;
   z-index: 2;
 
-  width: min(760px, 86vw);
-  height: 3px;
+  width: min(940px, 92vw);
+  height: 4px;
 
   transform: translateX(-50%);
 
@@ -117,40 +121,43 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(150, 105, 255, 0.22) 8%,
-    rgba(150, 105, 255, 0.98) 50%,
-    rgba(150, 105, 255, 0.22) 92%,
+    rgba(154, 108, 255, 0.5) 5%,
+    rgba(154, 108, 255, 0.98) 50%,
+    rgba(154, 108, 255, 0.5) 95%,
     transparent 100%
   );
 
-  filter: drop-shadow(0 0 15px rgba(140, 90, 255, 0.9));
+  box-shadow: 0 0 14px rgba(142, 90, 255, 0.9),
+    0 0 34px rgba(142, 90, 255, 0.38);
 }
 
+/* 양 끝 꺾이는 라운드 */
 .experience-capability-structure-map__branch::before,
 .experience-capability-structure-map__branch::after {
   content: "";
   position: absolute;
   top: 0;
 
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 42px;
 
-  border-top: 3px solid rgba(150, 105, 255, 0.7);
-  filter: drop-shadow(0 0 10px rgba(140, 90, 255, 0.76));
+  border-top: 4px solid rgba(154, 108, 255, 0.76);
+
+  filter: drop-shadow(0 0 12px rgba(142, 90, 255, 0.8));
 }
 
 .experience-capability-structure-map__branch::before {
   left: 0;
 
-  border-left: 3px solid rgba(150, 105, 255, 0.7);
-  border-top-left-radius: 18px;
+  border-left: 4px solid rgba(154, 108, 255, 0.76);
+  border-top-left-radius: 24px;
 }
 
 .experience-capability-structure-map__branch::after {
   right: 0;
 
-  border-right: 3px solid rgba(150, 105, 255, 0.7);
-  border-top-right-radius: 18px;
+  border-right: 4px solid rgba(154, 108, 255, 0.76);
+  border-top-right-radius: 24px;
 }
 
 .experience-capability-structure-map__items {
@@ -159,31 +166,32 @@
   z-index: 3;
 }
 
+/* 노드 */
 .experience-capability-structure-map__node {
   position: absolute;
 
-  width: 78px;
-  height: 78px;
+  width: 84px;
+  height: 84px;
 
   display: grid;
   place-items: center;
 
-  border: 1px solid rgba(166, 128, 255, 0.58);
+  border: 1px solid rgba(172, 134, 255, 0.64);
   border-radius: 50%;
 
   background: radial-gradient(
       circle at 36% 24%,
-      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.13),
       transparent 26%
     ),
-    rgba(8, 8, 14, 0.9);
+    rgba(6, 6, 12, 0.92);
 
   backdrop-filter: blur(14px);
 
-  box-shadow: 0 0 0 6px rgba(120, 76, 255, 0.08),
-    inset 0 0 18px rgba(130, 80, 255, 0.2), 0 0 24px rgba(120, 78, 255, 0.42);
+  box-shadow: 0 0 0 7px rgba(120, 76, 255, 0.08),
+    inset 0 0 18px rgba(130, 80, 255, 0.22), 0 0 26px rgba(120, 78, 255, 0.48);
 
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .experience-capability-structure-map__node::before {
@@ -192,70 +200,71 @@
   left: 50%;
   bottom: 100%;
 
-  width: 2px;
-  height: var(--line-height, 62px);
+  width: 3px;
+  height: var(--line-height, 78px);
 
   transform: translateX(-50%);
 
+  border-radius: 999px;
+
   background: linear-gradient(
     180deg,
-    rgba(150, 105, 255, 0.08),
-    rgba(150, 105, 255, 0.78)
+    rgba(154, 108, 255, 0.08),
+    rgba(154, 108, 255, 0.82)
   );
 
-  filter: drop-shadow(0 0 8px rgba(140, 90, 255, 0.72));
+  filter: drop-shadow(0 0 9px rgba(142, 90, 255, 0.76));
 }
 
 .experience-capability-structure-map__node-label {
-  max-width: 64px;
+  max-width: 68px;
 
   font-size: 12px;
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.04em;
+  font-weight: 850;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
   text-align: center;
 }
 
+/* 레퍼런스처럼 살짝 아래로 떨어지는 리듬 */
 .experience-capability-structure-map__node--1 {
-  left: 4%;
-  top: 246px;
+  left: 0;
+  top: 250px;
 
   --line-height: 64px;
 }
 
 .experience-capability-structure-map__node--2 {
-  left: 19%;
-  top: 226px;
+  left: 17%;
+  top: 286px;
 
-  --line-height: 44px;
+  --line-height: 100px;
 }
 
 .experience-capability-structure-map__node--3 {
   left: 34%;
-  top: 264px;
+  top: 322px;
 
-  --line-height: 82px;
+  --line-height: 136px;
 }
 
 .experience-capability-structure-map__node--4 {
-  left: 50%;
-  top: 226px;
+  right: 34%;
+  top: 322px;
 
-  transform: translateX(-50%);
-
-  --line-height: 44px;
+  --line-height: 136px;
 }
 
 .experience-capability-structure-map__node--5 {
-  right: 19%;
-  top: 264px;
+  right: 17%;
+  top: 286px;
 
-  --line-height: 82px;
+  --line-height: 100px;
 }
 
 .experience-capability-structure-map__node--6 {
-  right: 4%;
-  top: 226px;
+  right: 0;
+  top: 250px;
 
-  --line-height: 44px;
+  --line-height: 64px;
 }
