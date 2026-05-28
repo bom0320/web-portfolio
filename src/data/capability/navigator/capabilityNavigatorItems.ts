@@ -40,7 +40,7 @@ export const CAPABILITY_NAVIGATOR_ITEMS: CapabilityNavigatorItem[] = [
   },
   {
     id: "nova",
-    title: "NOVA",
+    title: "Nova",
     category: "Career Exploration App",
     period: "2025.?? - 2025.??",
     contribution: "Client · UI/UX · Team Lead",
