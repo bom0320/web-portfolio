@@ -16,6 +16,7 @@ import {
   CapabilityIntroAnimation,
   CapabilityIntroProofAnimation,
   StructureCapabilityAnimation,
+  VisualCapabilityAnimation,
 } from "@/animations/capability";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -39,14 +40,21 @@ export default function CapabilityStage() {
         ".js-ai-capability-block"
       );
 
+      const visualElement = stage.querySelector<HTMLElement>(
+        ".js-visual-capability-block"
+      );
+
       const structureController =
         StructureCapabilityAnimation.create(structureElement);
 
       const aiController = AICapabilityAnimation.create(aiElement);
 
+      const visualController = VisualCapabilityAnimation.create(visualElement);
+
       introController.setProgress(0);
       structureController.setProgress(0);
       aiController.setProgress(0);
+      visualController.setProgress(0);
 
       const introTrigger = ScrollTrigger.create({
         trigger: ".js-capability-intro-pinned",
@@ -102,17 +110,40 @@ export default function CapabilityStage() {
         },
       });
 
+      let visualMaxProgress = 0;
+
+      const visualTrigger = ScrollTrigger.create({
+        trigger: visualElement,
+        start: "top 78%",
+        end: "top 42%",
+        scrub: 1,
+        invalidateOnRefresh: true,
+        markers: true,
+
+        onUpdate: (self) => {
+          visualMaxProgress = Math.max(visualMaxProgress, self.progress);
+          visualController.setProgress(visualMaxProgress);
+        },
+
+        onLeaveBack: () => {
+          visualMaxProgress = 0;
+          visualController.setProgress(0);
+        },
+      });
+
       ScrollTrigger.refresh();
 
       return () => {
         introTrigger.kill();
         structureTrigger.kill();
         aiTrigger.kill();
+        visualTrigger.kill();
 
         introController.destroy();
         introProofController.destroy();
         structureController.destroy();
         aiController.destroy();
+        visualController.destroy();
       };
     }, stage);
 
