@@ -28,6 +28,14 @@ function getCapabilityNavigatorIndex(progress: number, total: number) {
   return Math.round(progress * (total - 1));
 }
 
+function refreshScrollTrigger() {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      ScrollTrigger.refresh();
+    });
+  });
+}
+
 export default function CapabilityStage() {
   const stageRef = useRef<HTMLElement | null>(null);
   const previousNavigatorIndexRef = useRef(0);
@@ -53,6 +61,10 @@ export default function CapabilityStage() {
         ".js-visual-capability-block"
       );
 
+      const navigatorIntroElement = stage.querySelector<HTMLElement>(
+        ".js-capability-navigator-intro"
+      );
+
       const navigatorPinElement = stage.querySelector<HTMLElement>(
         ".js-capability-navigator-pin"
       );
@@ -64,10 +76,17 @@ export default function CapabilityStage() {
 
       const visualController = VisualCapabilityAnimation.create(visualElement);
 
+      const navigatorIntroController = CapabilityNavigatorAnimation.createIntro(
+        navigatorIntroElement
+      );
+
       introController.setProgress(0);
       structureController.setProgress(0);
       aiController.setProgress(0);
       visualController.setProgress(0);
+      navigatorIntroController.setProgress(0);
+
+      const triggers: ScrollTrigger[] = [];
 
       const introTrigger = ScrollTrigger.create({
         trigger: ".js-capability-intro-pinned",
@@ -80,6 +99,8 @@ export default function CapabilityStage() {
           introController.setProgress(self.progress);
         },
       });
+
+      triggers.push(introTrigger);
 
       let structureMaxProgress = 0;
 
@@ -102,6 +123,8 @@ export default function CapabilityStage() {
         },
       });
 
+      triggers.push(structureTrigger);
+
       let aiMaxProgress = 0;
 
       const aiTrigger = ScrollTrigger.create({
@@ -122,6 +145,8 @@ export default function CapabilityStage() {
           aiController.setProgress(0);
         },
       });
+
+      triggers.push(aiTrigger);
 
       let visualMaxProgress = 0;
 
@@ -144,83 +169,80 @@ export default function CapabilityStage() {
         },
       });
 
-      if (!navigatorPinElement) {
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            ScrollTrigger.refresh();
-          });
+      triggers.push(visualTrigger);
+
+      if (navigatorIntroElement) {
+        const navigatorIntroTrigger = ScrollTrigger.create({
+          trigger: navigatorIntroElement,
+          start: "top 78%",
+          end: "top 36%",
+          scrub: 1,
+          invalidateOnRefresh: true,
+          markers: true,
+
+          onUpdate: (self) => {
+            navigatorIntroController.setProgress(self.progress);
+          },
         });
 
-        return () => {
-          introTrigger.kill();
-          structureTrigger.kill();
-          aiTrigger.kill();
-          visualTrigger.kill();
-
-          introController.destroy();
-          introProofController.destroy();
-          structureController.destroy();
-          aiController.destroy();
-          visualController.destroy();
-        };
+        triggers.push(navigatorIntroTrigger);
       }
 
-      const navigatorTrigger = ScrollTrigger.create({
-        trigger: navigatorPinElement,
-        start: "top top",
-        end: () =>
-          `+=${
-            window.innerHeight * (CAPABILITY_NAVIGATOR_ITEMS.length - 1) * 1.45
-          }`,
-        pin: true,
-        pinSpacing: true,
-        pinType: "transform",
-        scrub: 1,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        markers: true,
+      if (navigatorPinElement) {
+        const navigatorTrigger = ScrollTrigger.create({
+          trigger: navigatorPinElement,
+          start: "top top",
+          end: () =>
+            `+=${
+              window.innerHeight *
+              (CAPABILITY_NAVIGATOR_ITEMS.length - 1) *
+              1.45
+            }`,
+          pin: true,
+          pinSpacing: true,
+          pinType: "transform",
+          scrub: 1,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          markers: true,
 
-        onUpdate: (self) => {
-          const nextIndex = getCapabilityNavigatorIndex(
-            self.progress,
-            CAPABILITY_NAVIGATOR_ITEMS.length
-          );
+          onUpdate: (self) => {
+            const nextIndex = getCapabilityNavigatorIndex(
+              self.progress,
+              CAPABILITY_NAVIGATOR_ITEMS.length
+            );
 
-          if (nextIndex === previousNavigatorIndexRef.current) return;
+            if (nextIndex === previousNavigatorIndexRef.current) return;
 
-          previousNavigatorIndexRef.current = nextIndex;
-          setActiveNavigatorIndex(nextIndex);
+            previousNavigatorIndexRef.current = nextIndex;
+            setActiveNavigatorIndex(nextIndex);
 
-          const nextLayer = stage.querySelector<HTMLElement>(
-            `.js-capability-navigator-layer[data-index="${nextIndex}"]`
-          );
+            const nextLayer = stage.querySelector<HTMLElement>(
+              `.js-capability-navigator-layer[data-index="${nextIndex}"]`
+            );
 
-          if (!nextLayer) return;
+            if (!nextLayer) return;
 
-          CapabilityNavigatorAnimation.createLayerTransition({
-            nextLayer,
-          });
-        },
-      });
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          ScrollTrigger.refresh();
+            CapabilityNavigatorAnimation.createLayerTransition({
+              nextLayer,
+            });
+          },
         });
-      });
+
+        triggers.push(navigatorTrigger);
+      }
+
+      refreshScrollTrigger();
 
       return () => {
-        introTrigger.kill();
-        structureTrigger.kill();
-        aiTrigger.kill();
-        visualTrigger.kill();
-        navigatorTrigger.kill();
+        triggers.forEach((trigger) => trigger.kill());
 
         introController.destroy();
         introProofController.destroy();
         structureController.destroy();
         aiController.destroy();
         visualController.destroy();
+        navigatorIntroController.destroy();
       };
     }, stage);
 
