@@ -1,8 +1,14 @@
 .experience-capability-visual-gallery {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
 
-  width: min(1120px, 100%);
-  margin: 84px auto 0;
+  width: min(1080px, 100%);
+  margin: 92px auto 0;
+}
+
+.experience-capability-visual-gallery__column {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }

@@ -1,167 +1,147 @@
 .experience-capability-visual-card {
   position: relative;
-
-  min-height: 440px;
-
-  border: 1px solid rgba(255, 255, 255, 0.065);
-  border-radius: 28px;
-
-  background: rgba(255, 255, 255, 0.026);
-
+  border-radius: 24px;
+  background: linear-gradient(180deg, #1e1e22 0%, #19191d 100%);
   overflow: hidden;
-}
-
-.experience-capability-visual-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: radial-gradient(
-    circle at 50% 0%,
-    rgba(112, 255, 230, 0.12),
-    transparent 44%
-  );
-
-  opacity: 0;
-  transition: opacity 0.28s ease;
-}
-
-.experience-capability-visual-card:hover::before {
-  opacity: 1;
+  isolation: isolate;
 }
 
 .experience-capability-visual-card__media {
-  position: relative;
-
-  height: 190px;
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.065);
-
-  background: linear-gradient(rgba(255, 255, 255, 0.026) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.026) 1px, transparent 1px),
-    radial-gradient(
-      circle at 50% 20%,
-      rgba(112, 255, 230, 0.16),
-      transparent 58%
-    );
-  background-size: 26px 26px, 26px 26px, auto;
-
-  overflow: hidden;
-}
-
-.experience-capability-visual-card__media-grid {
   position: absolute;
-  inset: 18px;
-
-  border: 1px solid rgba(255, 255, 255, 0.055);
-  border-radius: 18px;
-
-  opacity: 0.8;
+  inset: 0;
+  z-index: 0;
 }
 
-.experience-capability-visual-card__badge {
+.experience-capability-visual-card__image {
+  object-fit: cover;
+}
+
+.experience-capability-visual-card__overlay {
   position: absolute;
-  left: 50%;
-  top: 50%;
-
-  width: 64px;
-  height: 64px;
-
-  transform: translate(-50%, -50%);
-
-  display: grid;
-  place-items: center;
-
-  border: 1px solid rgba(112, 255, 230, 0.36);
-  border-radius: 50%;
-
-  background: rgba(6, 16, 18, 0.82);
-
-  box-shadow: 0 0 0 8px rgba(112, 255, 230, 0.045),
-    0 0 30px rgba(112, 255, 230, 0.18);
-
-  color: rgba(205, 255, 245, 0.9);
-}
-
-.experience-capability-visual-card__badge svg {
-  width: 26px;
-  height: 26px;
-  stroke-width: 2.2;
-}
-
-.experience-capability-visual-card__type {
-  position: absolute;
-  left: 18px;
-  bottom: 16px;
-
-  font-size: 11px;
-  font-weight: 750;
-  line-height: 1.2;
-  letter-spacing: -0.035em;
-
-  color: rgba(255, 255, 255, 0.42);
-}
-
-.experience-capability-visual-card__body {
-  position: relative;
+  inset: 0;
   z-index: 1;
-
-  padding: 24px 22px 26px;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.04) 0%,
+    rgba(0, 0, 0, 0.18) 45%,
+    rgba(0, 0, 0, 0.78) 100%
+  );
 }
 
-.experience-capability-visual-card__index {
-  display: block;
-
-  margin-bottom: 14px;
-
-  font-size: 12px;
-  font-weight: 850;
-  line-height: 1;
-
-  color: rgba(112, 255, 230, 0.72);
+.experience-capability-visual-card--typography
+  .experience-capability-visual-card__overlay,
+.experience-capability-visual-card--storytelling
+  .experience-capability-visual-card__overlay {
+  background: radial-gradient(
+      circle at 85% 10%,
+      rgba(255, 255, 255, 0.05),
+      transparent 35%
+    ),
+    linear-gradient(180deg, #202024 0%, #1a1a1d 100%);
 }
 
-.experience-capability-visual-card__subtitle {
-  display: block;
+.experience-capability-visual-card__content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 42px 40px;
+  color: #fff;
+}
 
-  margin-bottom: 12px;
+.experience-capability-visual-card__icon {
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.96);
+}
 
-  font-size: 12px;
-  font-weight: 750;
-  line-height: 1.45;
-  letter-spacing: -0.04em;
-
-  color: rgba(255, 255, 255, 0.46);
+.experience-capability-visual-card__icon svg {
+  width: 56px;
+  height: 56px;
+  stroke-width: 2.35;
 }
 
 .experience-capability-visual-card__title {
-  margin: 0 0 14px;
-
-  font-size: 24px;
-  font-weight: 850;
-  line-height: 1.08;
-  letter-spacing: -0.06em;
-
-  color: rgba(255, 255, 255, 0.94);
-}
-
-.experience-capability-visual-card__message {
-  margin: 0 0 12px;
-
-  font-size: 14px;
-  font-weight: 750;
-  line-height: 1.55;
-  letter-spacing: -0.045em;
-
-  color: rgba(255, 255, 255, 0.68);
+  margin: 0;
+  font-size: clamp(28px, 2vw, 42px);
+  font-weight: 900;
+  line-height: 1.14;
+  letter-spacing: -0.07em;
+  color: rgba(255, 255, 255, 0.97);
 }
 
 .experience-capability-visual-card__desc {
-  margin: 0;
-
-  font-size: 13px;
-  line-height: 1.68;
+  margin: 14px 0 0;
+  font-size: 14px;
+  line-height: 1.65;
   letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.58);
+}
 
-  color: rgba(255, 255, 255, 0.42);
+/* 카드별 높이 / 정렬 */
+
+.experience-capability-visual-card--character {
+  min-height: 420px;
+}
+
+.experience-capability-visual-card--character
+  .experience-capability-visual-card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.experience-capability-visual-card--typography {
+  min-height: 260px;
+}
+
+.experience-capability-visual-card--typography
+  .experience-capability-visual-card__content {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.experience-capability-visual-card--typography
+  .experience-capability-visual-card__icon {
+  flex: 0 0 auto;
+  margin-bottom: 0;
+}
+
+.experience-capability-visual-card--typography
+  .experience-capability-visual-card__title {
+  font-size: clamp(24px, 1.9vw, 34px);
+  line-height: 1.26;
+}
+
+.experience-capability-visual-card--storytelling {
+  min-height: 260px;
+}
+
+.experience-capability-visual-card--storytelling
+  .experience-capability-visual-card__content {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.experience-capability-visual-card--storytelling
+  .experience-capability-visual-card__icon {
+  flex: 0 0 auto;
+  margin-bottom: 0;
+}
+
+.experience-capability-visual-card--storytelling
+  .experience-capability-visual-card__title {
+  font-size: clamp(24px, 1.9vw, 34px);
+  line-height: 1.28;
+}
+
+.experience-capability-visual-card--motion {
+  min-height: 430px;
+}
+
+.experience-capability-visual-card--motion
+  .experience-capability-visual-card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
