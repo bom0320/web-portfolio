@@ -1,15 +1,15 @@
 import gsap from "gsap";
 
-interface ProjectLayerTransitionParams {
+interface CapabilityNavigatorLayerTransitionParams {
   nextLayer: HTMLDivElement;
   onComplete?: () => void;
 }
 
-const ProjectAnimation = {
-  createProjectLayerTransition({
+const CapabilityNavigatorAnimation = {
+  createLayerTransition({
     nextLayer,
     onComplete,
-  }: ProjectLayerTransitionParams) {
+  }: CapabilityNavigatorLayerTransitionParams) {
     gsap.set(nextLayer, { opacity: 0 });
 
     return gsap
@@ -24,4 +24,4 @@ const ProjectAnimation = {
   },
 };
 
-export default ProjectAnimation;
+export default CapabilityNavigatorAnimation;

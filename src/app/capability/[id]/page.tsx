@@ -1,28 +1,35 @@
-import { PROJECTS } from "@/data/projects";
 import { notFound } from "next/navigation";
+import { getCapabilityNavigatorItemById } from "@/data/capability";
 import {
-  ProjectDetailHero,
-  ProjectDetailGallery,
-} from "@/components/features/projects";
-interface ProjectDetailPageParams {
+  CapabilityDetailContent,
+  CapabilityDetailGallery,
+  CapabilityDetailHero,
+} from "@/components/features/capability/navigator";
+
+interface CapabilityDetailPageProps {
   params: {
     id: string;
   };
 }
 
-export default function ProjectDetailPage({ params }: ProjectDetailPageParams) {
-  const project = PROJECTS.find((p) => p.id === params.id);
+export default function CapabilityDetailPage({
+  params,
+}: CapabilityDetailPageProps) {
+  const item = getCapabilityNavigatorItemById(params.id);
 
-  if (!project) {
+  if (!item) {
     notFound();
   }
 
   return (
-    <main className="project-detail-page">
-      <section className="project-detail-layout">
-        <ProjectDetailHero project={project} />
-        <ProjectDetailGallery images={project.detailImages} />
-      </section>
+    <main className="capability-detail-page">
+      <CapabilityDetailHero item={item} />
+
+      <div className="capability-detail-page__body">
+        <CapabilityDetailGallery images={item.detailImages} />
+
+        <CapabilityDetailContent item={item} />
+      </div>
     </main>
   );
 }

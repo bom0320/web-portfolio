@@ -39,10 +39,10 @@
   color: #ffffff;
   background: linear-gradient(
     180deg,
-    rgba(145, 255, 225, 0.15),
+    rgba(255, 255, 255, 0.13),
     rgba(255, 255, 255, 0.065)
   );
-  border: 1px solid rgba(145, 255, 225, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.11);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08),
     0 14px 40px rgba(0, 0, 0, 0.35);
 }
@@ -58,7 +58,7 @@
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: rgba(145, 255, 225, 0.48);
+  color: rgba(255, 255, 255, 0.32);
 }
 
 .capability-navigator-list__title {
@@ -72,8 +72,7 @@
   opacity: 0;
   transform: translate(-4px, 4px);
   font-size: 15px;
-  color: rgba(145, 255, 225, 0.8);
-
+  color: rgba(255, 255, 255, 0.7);
   transition: opacity 0.2s ease, transform 0.25s ease;
 }
 
