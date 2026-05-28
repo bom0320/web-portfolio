@@ -1,4 +1,4 @@
-import { createCapabilityNavigatorImages } from "@/assets/capabilityNavigatorImages";
+import { createCapabilityNavigatorImages } from "@/assets/capabilityImages";
 
 export interface CapabilityNavigatorItem {
   id: string;

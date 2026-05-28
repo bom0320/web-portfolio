@@ -1,3 +1,5 @@
+import { getCapabilityImagePath } from "@/assets/capabilityImages";
+
 export type VisualCapabilityIcon = "sparkles" | "type" | "motion" | "workflow";
 
 export type VisualCapabilityVariant = "image" | "text" | "motion";
@@ -8,7 +10,7 @@ export type VisualCapabilityItem = {
   description?: string;
   icon: VisualCapabilityIcon;
   variant: VisualCapabilityVariant;
-  accent?: boolean; // accent가 true면 아이콘에 그라데이션 적용
+  accent?: boolean;
   image?: {
     src: string;
     alt: string;
@@ -22,7 +24,7 @@ export const VISUAL_CAPABILITY_ITEMS: VisualCapabilityItem[] = [
     icon: "sparkles",
     variant: "image",
     image: {
-      src: "/images/capability/visual/character-sketch.jpg",
+      src: getCapabilityImagePath("visual", "character-sketch.jpg"),
       alt: "직접 그린 캐릭터 스케치와 시각 실험 과정",
     },
   },
@@ -46,7 +48,7 @@ export const VISUAL_CAPABILITY_ITEMS: VisualCapabilityItem[] = [
     icon: "motion",
     variant: "motion",
     image: {
-      src: "/images/capability/visual/motion-curve.jpg",
+      src: getCapabilityImagePath("visual", "motion-curve.jpg"),
       alt: "GSAP easing curves와 motion timing 조율 화면",
     },
   },

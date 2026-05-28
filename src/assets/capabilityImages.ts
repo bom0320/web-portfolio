@@ -1,9 +1,12 @@
-const CAPABILITY_NAVIGATOR_IMAGE_BASE_PATH = "/images/capability/navigator";
+const CAPABILITY_IMAGE_BASE_PATH = "/images/capability";
+
+export const getCapabilityImagePath = (section: string, fileName: string) =>
+  `${CAPABILITY_IMAGE_BASE_PATH}/${section}/${fileName}`;
 
 export const getCapabilityNavigatorImagePath = (
   projectId: string,
   fileName: string
-) => `${CAPABILITY_NAVIGATOR_IMAGE_BASE_PATH}/${projectId}/${fileName}`;
+) => getCapabilityImagePath(`navigator/${projectId}`, fileName);
 
 export const getCapabilityNavigatorDetailImages = (
   projectId: string,
