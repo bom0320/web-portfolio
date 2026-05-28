@@ -53,8 +53,8 @@ export default function CapabilityStage() {
         ".js-visual-capability-block"
       );
 
-      const navigatorElement = stage.querySelector<HTMLElement>(
-        ".js-capability-navigator"
+      const navigatorPinElement = stage.querySelector<HTMLElement>(
+        ".js-capability-navigator-pin"
       );
 
       const structureController =
@@ -144,8 +144,25 @@ export default function CapabilityStage() {
         },
       });
 
+      if (!navigatorPinElement) {
+        ScrollTrigger.refresh();
+
+        return () => {
+          introTrigger.kill();
+          structureTrigger.kill();
+          aiTrigger.kill();
+          visualTrigger.kill();
+
+          introController.destroy();
+          introProofController.destroy();
+          structureController.destroy();
+          aiController.destroy();
+          visualController.destroy();
+        };
+      }
+
       const navigatorTrigger = ScrollTrigger.create({
-        trigger: navigatorElement,
+        trigger: navigatorPinElement,
         start: "top top",
         end: () =>
           `+=${

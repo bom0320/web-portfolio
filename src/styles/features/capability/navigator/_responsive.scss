@@ -1,36 +1,64 @@
 @media (max-width: 1024px) {
-  .capability-detail-layout {
-    width: min(860px, calc(100% - 48px));
-    grid-template-columns: 320px minmax(0, 1fr);
+  .capability-navigator-intro {
+    width: min(760px, calc(100% - 48px));
+    padding: 140px 0 56px;
+  }
+
+  .capability-navigator-showcase {
+    width: min(760px, calc(100% - 48px));
+    grid-template-columns: 1fr;
+    align-content: center;
     gap: 48px;
   }
 
-  .capability-detail-hero {
-    gap: 20px;
+  .capability-navigator-showcase__left {
+    transform: none;
   }
 
-  .capability-detail-hero__overview {
-    max-width: 240px;
+  .capability-navigator-list {
+    max-width: 420px;
+  }
+
+  .capability-navigator-monitor {
+    transform: none;
+  }
+
+  .capability-navigator-monitor__stage {
+    width: min(720px, 88vw);
   }
 }
 
 @media (max-width: 768px) {
-  .capability-detail-page {
-    padding: 88px 0;
+  .capability-navigator {
+    overflow: visible;
   }
 
-  .capability-detail-layout {
-    width: min(720px, calc(100% - 40px));
-    display: block;
+  .capability-navigator-intro {
+    width: min(100% - 40px, 520px);
+    padding: 112px 0 44px;
   }
 
-  .capability-detail-hero {
-    position: relative;
-    top: auto;
-    margin-bottom: 40px;
+  .capability-navigator-intro__title {
+    font-size: clamp(38px, 11vw, 56px);
   }
 
-  .capability-detail-gallery {
-    gap: 28px;
+  .capability-navigator-intro__description {
+    font-size: 16px;
+  }
+
+  .capability-navigator-pin {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .capability-navigator-showcase {
+    height: auto;
+    min-height: 100vh;
+    padding: 72px 0 96px;
+  }
+
+  .capability-navigator-monitor__stage {
+    width: min(560px, 94vw);
   }
 }

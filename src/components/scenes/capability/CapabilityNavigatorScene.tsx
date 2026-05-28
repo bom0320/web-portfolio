@@ -24,19 +24,26 @@ export default function CapabilityNavigatorScene({
       id="capability-navigator"
       className="capability-navigator js-capability-navigator"
     >
-      <div className="capability-navigator-showcase">
-        <div className="capability-navigator-showcase__left">
-          <CapabilityNavigatorIntro />
+      <div className="capability-navigator__inner">
+        <CapabilityNavigatorIntro />
 
-          <CapabilityNavigatorList
-            items={items}
-            activeIndex={activeIndex}
-            onActiveIndexChange={onActiveIndexChange}
-          />
-        </div>
+        <div className="capability-navigator-pin js-capability-navigator-pin">
+          <div className="capability-navigator-showcase">
+            <div className="capability-navigator-showcase__left">
+              <CapabilityNavigatorList
+                items={items}
+                activeIndex={activeIndex}
+                onActiveIndexChange={onActiveIndexChange}
+              />
+            </div>
 
-        <div className="capability-navigator-showcase__right">
-          <CapabilityNavigatorMonitor items={items} activeIndex={activeIndex} />
+            <div className="capability-navigator-showcase__right">
+              <CapabilityNavigatorMonitor
+                items={items}
+                activeIndex={activeIndex}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

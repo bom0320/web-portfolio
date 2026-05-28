@@ -6,7 +6,7 @@ export default function VisualCapabilityBlock() {
   return (
     <article className="experience-capability-block experience-capability-block--visual js-visual-capability-block">
       <div className="experience-capability-block__header experience-capability-block__header--center js-visual-capability-header">
-        <p className="experience-capability-block__eyebrow">Beyond</p>
+        <p className="experience-capability-block__eyebrow">BEYOND</p>
 
         <h2 className="experience-capability-block__title">
           인터페이스 너머의
