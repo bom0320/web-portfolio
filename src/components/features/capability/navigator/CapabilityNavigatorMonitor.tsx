@@ -16,22 +16,6 @@ export default function CapabilityNavigatorMonitor({
   return (
     <div className="capability-navigator-monitor">
       <div className="capability-navigator-monitor__stage">
-        <div className="capability-navigator-monitor__screen">
-          {items.map((item, index) => (
-            <Image
-              key={item.id}
-              src={item.heroImage}
-              alt={`${item.title} preview`}
-              fill
-              className={`capability-navigator-monitor__screen-image ${
-                index === activeIndex ? "is-active" : ""
-              }`}
-              sizes="(max-width: 1024px) 70vw, 680px"
-              priority={index === 0}
-            />
-          ))}
-        </div>
-
         <Image
           src={CAPABILITY_NAVIGATOR_MONITOR_FRAME}
           alt=""
@@ -40,6 +24,24 @@ export default function CapabilityNavigatorMonitor({
           className="capability-navigator-monitor__mockup"
           priority
         />
+
+        <div className="capability-navigator-monitor__screen">
+          <div className="capability-navigator-monitor__image-box">
+            {items.map((item, index) => (
+              <Image
+                key={item.id}
+                src={item.heroImage}
+                alt={`${item.title} preview`}
+                fill
+                className={`capability-navigator-monitor__screen-image ${
+                  index === activeIndex ? "is-active" : ""
+                }`}
+                sizes="(max-width: 1024px) 42vw, 520px"
+                priority={index === 0}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

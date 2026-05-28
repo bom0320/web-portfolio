@@ -12,31 +12,51 @@
 
 .capability-navigator-monitor__mockup {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+
+  display: block;
   width: 100%;
   height: auto;
-  display: block;
+
   pointer-events: none;
   user-select: none;
 }
 
 .capability-navigator-monitor__screen {
   position: absolute;
-  z-index: 1;
-  top: 6.5%;
-  left: 10.2%;
-  width: 79.4%;
-  height: 33.6%;
+  z-index: 2;
+
+  top: 1.8%;
+  left: 15.7%;
+  width: 65.7%;
+  height: 48.1%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   overflow: hidden;
-  border-radius: 4px;
-  background: #000000;
+  border-radius: 2px;
+}
+
+.capability-navigator-monitor__image-box {
+  position: relative;
+
+  width: 94%;
+  aspect-ratio: 16 / 16;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #252525;
 }
 
 .capability-navigator-monitor__screen-image {
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+
   opacity: 0;
-  transform: scale(1.025);
+  transform: scale(1);
+
+  transition: opacity 0.35s ease, transform 0.45s ease;
 }
 
 .capability-navigator-monitor__screen-image.is-active {
