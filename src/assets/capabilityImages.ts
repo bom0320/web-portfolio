@@ -3,6 +3,9 @@ const CAPABILITY_IMAGE_BASE_PATH = "/images/capability";
 export const getCapabilityImagePath = (section: string, fileName: string) =>
   `${CAPABILITY_IMAGE_BASE_PATH}/${section}/${fileName}`;
 
+export const getCapabilityNavigatorAssetPath = (fileName: string) =>
+  getCapabilityImagePath("navigator", fileName);
+
 export const getCapabilityNavigatorImagePath = (
   projectId: string,
   fileName: string
@@ -24,6 +27,9 @@ export const createCapabilityNavigatorImages = (
   detailCount: number
 ) => ({
   heroImage: getCapabilityNavigatorImagePath(projectId, "hero.png"),
-  monitorImage: getCapabilityNavigatorImagePath(projectId, "monitor.png"),
+  previewImage: getCapabilityNavigatorImagePath(projectId, "preview.png"),
   detailImages: getCapabilityNavigatorDetailImages(projectId, detailCount),
 });
+
+export const CAPABILITY_NAVIGATOR_MONITOR_FRAME =
+  getCapabilityNavigatorAssetPath("monitor-frame.png");

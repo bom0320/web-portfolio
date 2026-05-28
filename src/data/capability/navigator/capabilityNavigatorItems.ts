@@ -11,7 +11,7 @@ export interface CapabilityNavigatorItem {
   summary: string;
   overview: string;
   heroImage: string;
-  monitorImage: string;
+  previewImage: string;
   detailImages: string[];
   liveUrl?: string;
   githubUrl?: string;

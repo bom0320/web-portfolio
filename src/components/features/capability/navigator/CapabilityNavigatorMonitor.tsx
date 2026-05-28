@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { CAPABILITY_NAVIGATOR_MONITOR_FRAME } from "@/assets/capabilityImages";
 import type { CapabilityNavigatorItem } from "@/data/capability";
 
 interface CapabilityNavigatorMonitorProps {
@@ -19,7 +20,7 @@ export default function CapabilityNavigatorMonitor({
           {items.map((item, index) => (
             <Image
               key={item.id}
-              src={item.monitorImage}
+              src={item.previewImage}
               alt={`${item.title} preview`}
               fill
               className={`capability-navigator-monitor__screen-image ${
@@ -32,7 +33,7 @@ export default function CapabilityNavigatorMonitor({
         </div>
 
         <Image
-          src="/images/projects/project-monitor-mockup01.png"
+          src={CAPABILITY_NAVIGATOR_MONITOR_FRAME}
           alt=""
           width={900}
           height={700}
