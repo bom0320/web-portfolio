@@ -145,7 +145,11 @@ export default function CapabilityStage() {
       });
 
       if (!navigatorPinElement) {
-        ScrollTrigger.refresh();
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
+        });
 
         return () => {
           introTrigger.kill();
@@ -163,13 +167,15 @@ export default function CapabilityStage() {
 
       const navigatorTrigger = ScrollTrigger.create({
         trigger: navigatorPinElement,
-        start: "top top",
+        start: "top 12%",
         end: () =>
           `+=${
             window.innerHeight * (CAPABILITY_NAVIGATOR_ITEMS.length - 1) * 1.8
           }`,
         pin: true,
-        scrub: true,
+        pinSpacing: true,
+        scrub: 1,
+        anticipatePin: 1,
         invalidateOnRefresh: true,
         markers: true,
 
@@ -196,7 +202,11 @@ export default function CapabilityStage() {
         },
       });
 
-      ScrollTrigger.refresh();
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+        });
+      });
 
       return () => {
         introTrigger.kill();

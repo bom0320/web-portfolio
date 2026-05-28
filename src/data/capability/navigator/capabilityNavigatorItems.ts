@@ -39,6 +39,28 @@ export const CAPABILITY_NAVIGATOR_ITEMS: CapabilityNavigatorItem[] = [
     link: "/capability/washer",
   },
   {
+    id: "nova",
+    title: "NOVA",
+    category: "Career Exploration App",
+    period: "2025.?? - 2025.??",
+    contribution: "Client · UI/UX · Team Lead",
+    stack: ["React Native", "JavaScript", "Expo", "OpenAI API"],
+    role: "클라이언트 개발 · UI/UX 설계 · 인터랙션 설계 · 팀 리딩",
+    summary:
+      "마이스터고 학생들의 빠른 전공 선택 부담을 완화하기 위한 개발자 진로 탐색 앱입니다.",
+    overview:
+      "NOVA는 마이스터고 학생들이 겪는 빠른 전공 선택의 부담을 줄이기 위해 진로 탐색 과정을 경험 중심으로 재구성한 앱입니다. 개발 분야별 미션과 캐릭터 성장 시스템을 통해 사용자가 자신의 진로 방향성과 목표 달성 과정을 시각적으로 확인할 수 있도록 설계했습니다.",
+    heroImage: "/images/projects/nova-hero.png",
+    monitorImage: "/images/projects/nova-monitor.png",
+    detailImages: [
+      "/images/projects/nova-detail-1.png",
+      "/images/projects/nova-detail-2.png",
+      "/images/projects/nova-detail-3.png",
+    ],
+    githubUrl: "https://github.com/bom0320",
+    link: "/capability/nova",
+  },
+  {
     id: "hyoit",
     title: "Hyoit",
     category: "Mobile App",
