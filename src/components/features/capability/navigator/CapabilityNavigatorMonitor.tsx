@@ -26,7 +26,7 @@ export default function CapabilityNavigatorMonitor({
         />
 
         <div className="capability-navigator-monitor__screen">
-          <div className="capability-navigator-monitor__image-box">
+          <div className="capability-navigator-monitor__viewport">
             {items.map((item, index) => (
               <Image
                 key={item.id}

@@ -26,10 +26,10 @@
   position: absolute;
   z-index: 2;
 
-  top: 1.8%;
-  left: 15.7%;
-  width: 65.7%;
-  height: 48.1%;
+  top: 1.7%;
+  left: 17.6%;
+  width: 61.7%;
+  height: 48.5%;
 
   display: flex;
   align-items: center;
@@ -37,24 +37,32 @@
 
   overflow: hidden;
   border-radius: 2px;
+  background: radial-gradient(
+      circle at 70% 20%,
+      rgba(92, 135, 255, 0.24),
+      transparent 36%
+    ),
+    linear-gradient(135deg, #111827 0%, #1b2440 100%);
 }
 
-.capability-navigator-monitor__image-box {
+.capability-navigator-monitor__viewport {
   position: relative;
 
-  width: 94%;
-  aspect-ratio: 16 / 16;
+  width: 86%;
+  aspect-ratio: 16 / 10;
+
   overflow: hidden;
   border-radius: 2px;
-  background: #252525;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
 }
 
 .capability-navigator-monitor__screen-image {
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
+  object-position: center top;
 
   opacity: 0;
-  transform: scale(1);
+  transform: scale(1.015);
 
   transition: opacity 0.35s ease, transform 0.45s ease;
 }
