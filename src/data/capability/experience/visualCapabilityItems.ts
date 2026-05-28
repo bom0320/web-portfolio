@@ -3,11 +3,12 @@ export type VisualCapabilityIcon = "sparkles" | "type" | "motion" | "workflow";
 export type VisualCapabilityVariant = "image" | "text" | "motion";
 
 export type VisualCapabilityItem = {
-  id: string;
+  id: "character" | "typography" | "storytelling" | "motion";
   title: string;
   description?: string;
   icon: VisualCapabilityIcon;
   variant: VisualCapabilityVariant;
+  accent?: boolean; // accent가 true면 아이콘에 그라데이션 적용
   image?: {
     src: string;
     alt: string;
@@ -30,12 +31,14 @@ export const VISUAL_CAPABILITY_ITEMS: VisualCapabilityItem[] = [
     title: "텍스트의 크기, 간격, 밀도를 조정해 화면의 리듬까지 설계합니다.",
     icon: "type",
     variant: "text",
+    accent: true,
   },
   {
     id: "storytelling",
     title: "하나의 흐름으로 경험되도록 구현합니다.",
     icon: "workflow",
     variant: "text",
+    accent: true,
   },
   {
     id: "motion",
@@ -44,7 +47,7 @@ export const VISUAL_CAPABILITY_ITEMS: VisualCapabilityItem[] = [
     variant: "motion",
     image: {
       src: "/images/capability/visual/motion-curve.jpg",
-      alt: "GSAP easing curve와 motion timing 조율 화면",
+      alt: "GSAP easing curves와 motion timing 조율 화면",
     },
   },
 ];
