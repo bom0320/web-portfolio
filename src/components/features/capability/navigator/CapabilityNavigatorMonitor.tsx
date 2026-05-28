@@ -20,7 +20,7 @@ export default function CapabilityNavigatorMonitor({
           {items.map((item, index) => (
             <Image
               key={item.id}
-              src={item.previewImage}
+              src={item.heroImage}
               alt={`${item.title} preview`}
               fill
               className={`capability-navigator-monitor__screen-image ${

@@ -27,7 +27,6 @@ export const createCapabilityNavigatorImages = (
   detailCount: number
 ) => ({
   heroImage: getCapabilityNavigatorImagePath(projectId, "hero.png"),
-  previewImage: getCapabilityNavigatorImagePath(projectId, "preview.png"),
   detailImages: getCapabilityNavigatorDetailImages(projectId, detailCount),
 });
 
