@@ -17,6 +17,7 @@ import {
   AICapabilityAnimation,
   CapabilityIntroAnimation,
   CapabilityIntroProofAnimation,
+  CapabilityNavigatorAnimation,
   StructureCapabilityAnimation,
   VisualCapabilityAnimation,
 } from "@/animations/capability";
@@ -29,6 +30,7 @@ function getCapabilityNavigatorIndex(progress: number, total: number) {
 
 export default function CapabilityStage() {
   const stageRef = useRef<HTMLElement | null>(null);
+  const previousNavigatorIndexRef = useRef(0);
   const [activeNavigatorIndex, setActiveNavigatorIndex] = useState(0);
 
   useLayoutEffect(() => {
@@ -88,10 +90,12 @@ export default function CapabilityStage() {
         scrub: 1.1,
         invalidateOnRefresh: true,
         markers: true,
+
         onUpdate: (self) => {
           structureMaxProgress = Math.max(structureMaxProgress, self.progress);
           structureController.setProgress(structureMaxProgress);
         },
+
         onLeaveBack: () => {
           structureMaxProgress = 0;
           structureController.setProgress(0);
@@ -107,10 +111,12 @@ export default function CapabilityStage() {
         scrub: 1,
         invalidateOnRefresh: true,
         markers: true,
+
         onUpdate: (self) => {
           aiMaxProgress = Math.max(aiMaxProgress, self.progress);
           aiController.setProgress(aiMaxProgress);
         },
+
         onLeaveBack: () => {
           aiMaxProgress = 0;
           aiController.setProgress(0);
@@ -126,10 +132,12 @@ export default function CapabilityStage() {
         scrub: 1,
         invalidateOnRefresh: true,
         markers: true,
+
         onUpdate: (self) => {
           visualMaxProgress = Math.max(visualMaxProgress, self.progress);
           visualController.setProgress(visualMaxProgress);
         },
+
         onLeaveBack: () => {
           visualMaxProgress = 0;
           visualController.setProgress(0);
@@ -147,13 +155,27 @@ export default function CapabilityStage() {
         scrub: true,
         invalidateOnRefresh: true,
         markers: true,
+
         onUpdate: (self) => {
           const nextIndex = getCapabilityNavigatorIndex(
             self.progress,
             CAPABILITY_NAVIGATOR_ITEMS.length
           );
 
+          if (nextIndex === previousNavigatorIndexRef.current) return;
+
+          previousNavigatorIndexRef.current = nextIndex;
           setActiveNavigatorIndex(nextIndex);
+
+          const nextLayer = stage.querySelector<HTMLElement>(
+            `.js-capability-navigator-layer[data-index="${nextIndex}"]`
+          );
+
+          if (!nextLayer) return;
+
+          CapabilityNavigatorAnimation.createLayerTransition({
+            nextLayer,
+          });
         },
       });
 

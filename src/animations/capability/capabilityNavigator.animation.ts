@@ -1,7 +1,7 @@
 import gsap from "gsap";
 
 interface CapabilityNavigatorLayerTransitionParams {
-  nextLayer: HTMLDivElement;
+  nextLayer: HTMLElement;
   onComplete?: () => void;
 }
 
@@ -10,7 +10,10 @@ const CapabilityNavigatorAnimation = {
     nextLayer,
     onComplete,
   }: CapabilityNavigatorLayerTransitionParams) {
-    gsap.set(nextLayer, { opacity: 0 });
+    gsap.set(nextLayer, {
+      opacity: 0,
+      scale: 1.025,
+    });
 
     return gsap
       .timeline({
@@ -20,7 +23,14 @@ const CapabilityNavigatorAnimation = {
         },
         onComplete,
       })
-      .to(nextLayer, { opacity: 1 }, 0);
+      .to(
+        nextLayer,
+        {
+          opacity: 1,
+          scale: 1,
+        },
+        0
+      );
   },
 };
 

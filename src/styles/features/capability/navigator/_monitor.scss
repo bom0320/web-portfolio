@@ -38,8 +38,6 @@
   object-fit: cover;
   opacity: 0;
   transform: scale(1.025);
-
-  transition: opacity 0.45s ease, transform 0.7s ease;
 }
 
 .capability-navigator-monitor__screen-image.is-active {
