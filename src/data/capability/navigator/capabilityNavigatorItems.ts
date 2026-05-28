@@ -45,7 +45,7 @@ export const CAPABILITY_NAVIGATOR_ITEMS: CapabilityNavigatorItem[] = [
       "마이스터고 학생들의 빠른 전공 선택 부담을 완화하기 위한 개발자 진로 탐색 앱입니다.",
     overview:
       "NOVA는 마이스터고 학생들이 겪는 빠른 전공 선택의 부담을 줄이기 위해 진로 탐색 과정을 경험 중심으로 재구성한 앱입니다. 개발 분야별 미션과 캐릭터 성장 시스템을 통해 사용자가 자신의 진로 방향성과 목표 달성 과정을 시각적으로 확인할 수 있도록 설계했습니다.",
-    ...createCapabilityNavigatorImages("nova", 3),
+    ...createCapabilityNavigatorImages("nova", 16),
     githubUrl: "https://github.com/bom0320",
     link: "/capability/nova",
   },
