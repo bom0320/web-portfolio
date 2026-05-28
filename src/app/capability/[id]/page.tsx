@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
+
 import { getCapabilityNavigatorItemById } from "@/data/capability";
 import {
-  CapabilityDetailContent,
   CapabilityDetailGallery,
   CapabilityDetailHero,
 } from "@/components/features/capability/navigator";
@@ -23,12 +23,10 @@ export default function CapabilityDetailPage({
 
   return (
     <main className="capability-detail-page">
-      <CapabilityDetailHero item={item} />
+      <div className="capability-detail-layout">
+        <CapabilityDetailHero item={item} />
 
-      <div className="capability-detail-page__body">
         <CapabilityDetailGallery images={item.detailImages} />
-
-        <CapabilityDetailContent item={item} />
       </div>
     </main>
   );
