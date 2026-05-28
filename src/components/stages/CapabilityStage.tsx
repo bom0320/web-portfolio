@@ -167,13 +167,14 @@ export default function CapabilityStage() {
 
       const navigatorTrigger = ScrollTrigger.create({
         trigger: navigatorPinElement,
-        start: "top 12%",
+        start: "top top",
         end: () =>
           `+=${
-            window.innerHeight * (CAPABILITY_NAVIGATOR_ITEMS.length - 1) * 1.8
+            window.innerHeight * (CAPABILITY_NAVIGATOR_ITEMS.length - 1) * 1.45
           }`,
         pin: true,
         pinSpacing: true,
+        pinType: "transform",
         scrub: 1,
         anticipatePin: 1,
         invalidateOnRefresh: true,
