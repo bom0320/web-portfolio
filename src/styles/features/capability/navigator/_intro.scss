@@ -1,0 +1,26 @@
+.capability-navigator-intro {
+  margin-bottom: 54px;
+}
+
+.capability-navigator-intro__eyebrow {
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(145, 255, 225, 0.58);
+}
+
+.capability-navigator-intro__title {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 750;
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+}
+
+.capability-navigator-intro__description {
+  margin-top: 14px;
+  font-size: 20px;
+  line-height: 1.35;
+  letter-spacing: -0.03em;
+  color: rgba(255, 255, 255, 0.58);
+}

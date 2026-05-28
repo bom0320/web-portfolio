@@ -2,7 +2,6 @@ import {
   CapabilityStage,
   ContactStage,
   IntroStage,
-  ProjectsStage,
 } from "../components/stages";
 
 export default function HomePage() {
@@ -11,8 +10,6 @@ export default function HomePage() {
       <IntroStage />
 
       <CapabilityStage />
-
-      <ProjectsStage />
 
       <ContactStage />
     </>

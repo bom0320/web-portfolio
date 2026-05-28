@@ -1,20 +1,43 @@
 "use client";
 
-export default function CapabilityNavigatorScene() {
-  return (
-    <section className="capability-navigator-scene">
-      <div className="capability-navigator-scene__inner">
-        <h2 className="capability-navigator-scene__title">
-          How Those Thoughts
-          <br />
-          Took Shape
-        </h2>
+import type { CapabilityNavigatorItem } from "@/data/capability";
 
-        <p className="capability-navigator-scene__desc">
-          생각과 구조, 그리고 흐름에 대한 고민들은
-          <br />
-          각기 다른 경험의 형태로 이어졌습니다.
-        </p>
+import {
+  CapabilityNavigatorIntro,
+  CapabilityNavigatorList,
+  CapabilityNavigatorMonitor,
+} from "@/components/features/capability/navigator";
+
+interface CapabilityNavigatorSceneProps {
+  items: CapabilityNavigatorItem[];
+  activeIndex: number;
+  onActiveIndexChange: (index: number) => void;
+}
+
+export default function CapabilityNavigatorScene({
+  items,
+  activeIndex,
+  onActiveIndexChange,
+}: CapabilityNavigatorSceneProps) {
+  return (
+    <section
+      id="capability-navigator"
+      className="capability-navigator js-capability-navigator"
+    >
+      <div className="capability-navigator-showcase">
+        <div className="capability-navigator-showcase__left">
+          <CapabilityNavigatorIntro />
+
+          <CapabilityNavigatorList
+            items={items}
+            activeIndex={activeIndex}
+            onActiveIndexChange={onActiveIndexChange}
+          />
+        </div>
+
+        <div className="capability-navigator-showcase__right">
+          <CapabilityNavigatorMonitor items={items} activeIndex={activeIndex} />
+        </div>
       </div>
     </section>
   );

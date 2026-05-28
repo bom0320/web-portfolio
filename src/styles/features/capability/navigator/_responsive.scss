@@ -1,0 +1,36 @@
+@media (max-width: 1024px) {
+  .capability-detail-layout {
+    width: min(860px, calc(100% - 48px));
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 48px;
+  }
+
+  .capability-detail-hero {
+    gap: 20px;
+  }
+
+  .capability-detail-hero__overview {
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  .capability-detail-page {
+    padding: 88px 0;
+  }
+
+  .capability-detail-layout {
+    width: min(720px, calc(100% - 40px));
+    display: block;
+  }
+
+  .capability-detail-hero {
+    position: relative;
+    top: auto;
+    margin-bottom: 40px;
+  }
+
+  .capability-detail-gallery {
+    gap: 28px;
+  }
+}

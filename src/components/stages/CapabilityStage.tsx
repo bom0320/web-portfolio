@@ -1,6 +1,6 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -10,6 +10,8 @@ import {
   CapabilityNavigatorScene,
   ExperienceCapabilityScene,
 } from "@/components/scenes/capability";
+
+import { CAPABILITY_NAVIGATOR_ITEMS } from "@/data/capability";
 
 import {
   AICapabilityAnimation,
@@ -21,8 +23,13 @@ import {
 
 gsap.registerPlugin(ScrollTrigger);
 
+function getCapabilityNavigatorIndex(progress: number, total: number) {
+  return Math.round(progress * (total - 1));
+}
+
 export default function CapabilityStage() {
   const stageRef = useRef<HTMLElement | null>(null);
+  const [activeNavigatorIndex, setActiveNavigatorIndex] = useState(0);
 
   useLayoutEffect(() => {
     const stage = stageRef.current;
@@ -42,6 +49,10 @@ export default function CapabilityStage() {
 
       const visualElement = stage.querySelector<HTMLElement>(
         ".js-visual-capability-block"
+      );
+
+      const navigatorElement = stage.querySelector<HTMLElement>(
+        ".js-capability-navigator"
       );
 
       const structureController =
@@ -77,12 +88,10 @@ export default function CapabilityStage() {
         scrub: 1.1,
         invalidateOnRefresh: true,
         markers: true,
-
         onUpdate: (self) => {
           structureMaxProgress = Math.max(structureMaxProgress, self.progress);
           structureController.setProgress(structureMaxProgress);
         },
-
         onLeaveBack: () => {
           structureMaxProgress = 0;
           structureController.setProgress(0);
@@ -98,12 +107,10 @@ export default function CapabilityStage() {
         scrub: 1,
         invalidateOnRefresh: true,
         markers: true,
-
         onUpdate: (self) => {
           aiMaxProgress = Math.max(aiMaxProgress, self.progress);
           aiController.setProgress(aiMaxProgress);
         },
-
         onLeaveBack: () => {
           aiMaxProgress = 0;
           aiController.setProgress(0);
@@ -119,15 +126,34 @@ export default function CapabilityStage() {
         scrub: 1,
         invalidateOnRefresh: true,
         markers: true,
-
         onUpdate: (self) => {
           visualMaxProgress = Math.max(visualMaxProgress, self.progress);
           visualController.setProgress(visualMaxProgress);
         },
-
         onLeaveBack: () => {
           visualMaxProgress = 0;
           visualController.setProgress(0);
+        },
+      });
+
+      const navigatorTrigger = ScrollTrigger.create({
+        trigger: navigatorElement,
+        start: "top top",
+        end: () =>
+          `+=${
+            window.innerHeight * (CAPABILITY_NAVIGATOR_ITEMS.length - 1) * 1.8
+          }`,
+        pin: true,
+        scrub: true,
+        invalidateOnRefresh: true,
+        markers: true,
+        onUpdate: (self) => {
+          const nextIndex = getCapabilityNavigatorIndex(
+            self.progress,
+            CAPABILITY_NAVIGATOR_ITEMS.length
+          );
+
+          setActiveNavigatorIndex(nextIndex);
         },
       });
 
@@ -138,6 +164,7 @@ export default function CapabilityStage() {
         structureTrigger.kill();
         aiTrigger.kill();
         visualTrigger.kill();
+        navigatorTrigger.kill();
 
         introController.destroy();
         introProofController.destroy();
@@ -156,7 +183,11 @@ export default function CapabilityStage() {
 
       <ExperienceCapabilityScene />
 
-      <CapabilityNavigatorScene />
+      <CapabilityNavigatorScene
+        items={CAPABILITY_NAVIGATOR_ITEMS}
+        activeIndex={activeNavigatorIndex}
+        onActiveIndexChange={setActiveNavigatorIndex}
+      />
 
       <CapabilityClosingScene />
     </section>

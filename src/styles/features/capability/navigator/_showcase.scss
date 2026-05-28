@@ -1,0 +1,22 @@
+.capability-navigator-showcase {
+  width: min(1180px, calc(100% - 64px));
+  height: 100vh;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(80px, 9vw, 150px);
+}
+
+.capability-navigator-showcase__left {
+  position: relative;
+  z-index: 3;
+  transform: translateY(-18px);
+}
+
+.capability-navigator-showcase__right {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}

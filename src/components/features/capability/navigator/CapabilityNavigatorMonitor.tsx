@@ -1,0 +1,45 @@
+"use client";
+
+import Image from "next/image";
+import type { CapabilityNavigatorItem } from "@/data/capability";
+
+interface CapabilityNavigatorMonitorProps {
+  items: CapabilityNavigatorItem[];
+  activeIndex: number;
+}
+
+export default function CapabilityNavigatorMonitor({
+  items,
+  activeIndex,
+}: CapabilityNavigatorMonitorProps) {
+  return (
+    <div className="capability-navigator-monitor">
+      <div className="capability-navigator-monitor__stage">
+        <div className="capability-navigator-monitor__screen">
+          {items.map((item, index) => (
+            <Image
+              key={item.id}
+              src={item.monitorImage}
+              alt={`${item.title} preview`}
+              fill
+              className={`capability-navigator-monitor__screen-image ${
+                index === activeIndex ? "is-active" : ""
+              }`}
+              sizes="(max-width: 1024px) 70vw, 680px"
+              priority={index === 0}
+            />
+          ))}
+        </div>
+
+        <Image
+          src="/images/projects/project-monitor-mockup01.png"
+          alt=""
+          width={900}
+          height={700}
+          className="capability-navigator-monitor__mockup"
+          priority
+        />
+      </div>
+    </div>
+  );
+}
