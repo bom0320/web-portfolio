@@ -259,7 +259,7 @@ export default function CapabilityStage() {
         const closingTrigger = ScrollTrigger.create({
           trigger: closingElement,
           start: "top 82%",
-          end: "top 10%",
+          end: "top 18%",
           scrub: 1.6,
           invalidateOnRefresh: true,
           markers: true,
