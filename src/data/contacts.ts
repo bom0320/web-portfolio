@@ -66,3 +66,24 @@ export const CONTACT_SOCIAL_LINKS = [
     icon: "/icons/github.svg",
   },
 ];
+
+export const CONTACT_SUBMIT_MODAL = {
+  success: {
+    title: "메시지가 전송되었습니다.",
+    description: [
+      "보내주신 내용은 확인 후 답변드리겠습니다.",
+      "좋은 경험을 만드는 대화가 되길 기대합니다.",
+    ],
+    buttonLabel: "확인",
+  },
+  error: {
+    title: "전송에 실패했습니다.",
+    description: [
+      "잠시 후 다시 시도해주세요.",
+      "문제가 계속된다면 이메일로 직접 연락해주셔도 됩니다.",
+    ],
+    buttonLabel: "다시 시도하기",
+  },
+} as const;
+
+export type ContactSubmitStatus = keyof typeof CONTACT_SUBMIT_MODAL;
