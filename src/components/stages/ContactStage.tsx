@@ -5,7 +5,10 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 import { ContactScene } from "@/components/scenes/contact";
-import { createContactFooterAnimation } from "@/animations/contact";
+import {
+  createContactFooterAnimation,
+  createContactIntroAnimation,
+} from "@/animations/contact";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,30 +28,60 @@ export default function ContactStage() {
     if (!stage) return;
 
     const ctx = gsap.context(() => {
+      const intro = stage.querySelector<HTMLElement>(".js-contact-intro");
       const footer = stage.querySelector<HTMLElement>(".js-contact-footer");
 
-      if (!footer) {
-        refreshScrollTrigger();
-        return;
+      const triggers: ScrollTrigger[] = [];
+
+      let introController:
+        | ReturnType<typeof createContactIntroAnimation>
+        | undefined;
+
+      let footerTimeline: gsap.core.Timeline | undefined;
+
+      if (intro) {
+        introController = createContactIntroAnimation({ intro });
+        introController.setProgress(0);
+
+        const introTrigger = ScrollTrigger.create({
+          trigger: intro,
+          start: "top 78%",
+          end: "top 36%",
+          scrub: 1,
+          invalidateOnRefresh: true,
+          markers: true,
+
+          onUpdate: (self) => {
+            introController?.setProgress(self.progress);
+          },
+        });
+
+        triggers.push(introTrigger);
       }
 
-      const footerTimeline = createContactFooterAnimation({ footer });
+      if (footer) {
+        footerTimeline = createContactFooterAnimation({ footer });
 
-      const footerTrigger = ScrollTrigger.create({
-        trigger: footer,
-        start: "top 100%",
-        end: "top 72%",
-        scrub: 1,
-        animation: footerTimeline,
-        invalidateOnRefresh: true,
-        markers: true,
-      });
+        const footerTrigger = ScrollTrigger.create({
+          trigger: footer,
+          start: "top 105%",
+          end: "top 72%",
+          scrub: 1,
+          animation: footerTimeline,
+          invalidateOnRefresh: true,
+          markers: true,
+        });
+
+        triggers.push(footerTrigger);
+      }
 
       refreshScrollTrigger();
 
       return () => {
-        footerTrigger.kill();
-        footerTimeline.kill();
+        triggers.forEach((trigger) => trigger.kill());
+
+        introController?.destroy();
+        footerTimeline?.kill();
       };
     }, stage);
 
