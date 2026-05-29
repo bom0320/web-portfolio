@@ -15,6 +15,7 @@ import { CAPABILITY_NAVIGATOR_ITEMS } from "@/data/capability";
 
 import {
   AICapabilityAnimation,
+  CapabilityClosingAnimation,
   CapabilityIntroAnimation,
   CapabilityIntroProofAnimation,
   CapabilityNavigatorAnimation,
@@ -69,6 +70,10 @@ export default function CapabilityStage() {
         ".js-capability-navigator-pin"
       );
 
+      const closingElement = stage.querySelector<HTMLElement>(
+        ".js-capability-closing"
+      );
+
       const structureController =
         StructureCapabilityAnimation.create(structureElement);
 
@@ -80,11 +85,15 @@ export default function CapabilityStage() {
         navigatorIntroElement
       );
 
+      const closingController =
+        CapabilityClosingAnimation.create(closingElement);
+
       introController.setProgress(0);
       structureController.setProgress(0);
       aiController.setProgress(0);
       visualController.setProgress(0);
       navigatorIntroController.setProgress(0);
+      closingController.setProgress(0);
 
       const triggers: ScrollTrigger[] = [];
 
@@ -172,6 +181,8 @@ export default function CapabilityStage() {
       triggers.push(visualTrigger);
 
       if (navigatorIntroElement) {
+        let navigatorIntroMaxProgress = 0;
+
         const navigatorIntroTrigger = ScrollTrigger.create({
           trigger: navigatorIntroElement,
           start: "top 78%",
@@ -181,7 +192,17 @@ export default function CapabilityStage() {
           markers: true,
 
           onUpdate: (self) => {
-            navigatorIntroController.setProgress(self.progress);
+            navigatorIntroMaxProgress = Math.max(
+              navigatorIntroMaxProgress,
+              self.progress
+            );
+
+            navigatorIntroController.setProgress(navigatorIntroMaxProgress);
+          },
+
+          onLeaveBack: () => {
+            navigatorIntroMaxProgress = 0;
+            navigatorIntroController.setProgress(0);
           },
         });
 
@@ -232,6 +253,31 @@ export default function CapabilityStage() {
         triggers.push(navigatorTrigger);
       }
 
+      if (closingElement) {
+        let closingMaxProgress = 0;
+
+        const closingTrigger = ScrollTrigger.create({
+          trigger: closingElement,
+          start: "top 82%",
+          end: "top 10%",
+          scrub: 1.6,
+          invalidateOnRefresh: true,
+          markers: true,
+
+          onUpdate: (self) => {
+            closingMaxProgress = Math.max(closingMaxProgress, self.progress);
+            closingController.setProgress(closingMaxProgress);
+          },
+
+          onLeaveBack: () => {
+            closingMaxProgress = 0;
+            closingController.setProgress(0);
+          },
+        });
+
+        triggers.push(closingTrigger);
+      }
+
       refreshScrollTrigger();
 
       return () => {
@@ -243,6 +289,7 @@ export default function CapabilityStage() {
         aiController.destroy();
         visualController.destroy();
         navigatorIntroController.destroy();
+        closingController.destroy();
       };
     }, stage);
 

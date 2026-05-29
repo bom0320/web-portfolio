@@ -1,6 +1,6 @@
 export default function CapabilityClosingStatement() {
   return (
-    <div className="capability-closing__content">
+    <div className="capability-closing__content js-capability-closing-content">
       <p className="capability-closing__eyebrow js-capability-closing-eyebrow">
         CLOSING
       </p>
