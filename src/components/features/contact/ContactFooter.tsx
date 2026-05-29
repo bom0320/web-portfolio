@@ -4,7 +4,7 @@ import ContactSocialLinks from "./ContactSocialLinks";
 
 export default function ContactFooter() {
   return (
-    <footer className="contact-footer">
+    <footer className="contact-footer js-contact-footer">
       <div className="contact-footer__inner">
         <div className="contact-footer__main">
           <div className="contact-footer__brand">

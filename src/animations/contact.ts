@@ -1,24 +1,26 @@
 import gsap from "gsap";
 
-interface CreateContactTitleAnimationParams {
-  fillGroup: SVGGElement;
+interface CreateContactFooterAnimationParams {
+  footer: HTMLElement;
 }
 
-export function createContactTitleAnimation({
-  fillGroup,
-}: CreateContactTitleAnimationParams) {
-  const tl = gsap.timeline();
+export function createContactFooterAnimation({
+  footer,
+}: CreateContactFooterAnimationParams) {
+  gsap.set(footer, {
+    y: 110,
+    willChange: "transform",
+  });
 
-  tl.fromTo(
-    fillGroup,
-    { opacity: 0 },
-    {
-      opacity: 1,
-      duration: 0.8,
-      ease: "power2.out",
-      delay: 0.2,
-    }
-  );
+  const timeline = gsap.timeline({
+    paused: true,
+  });
 
-  return tl;
+  timeline.to(footer, {
+    y: 0,
+    duration: 1,
+    ease: "power2.out",
+  });
+
+  return timeline;
 }
