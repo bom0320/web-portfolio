@@ -78,7 +78,7 @@ export default function AboutHeroScene() {
               onClick={handleMobileSwapClick("github")}
             >
               <img
-                src="/icons/gitHub.svg"
+                src="/icons/github.svg"
                 alt=""
                 className="cta-btn__iconImg"
               />

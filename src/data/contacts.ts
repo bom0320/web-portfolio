@@ -39,7 +39,7 @@ export const CONTACT_FOOTER_LINK_GROUPS = [
     ],
   },
   {
-    title: "Building with",
+    title: "Connect",
     links: [
       { label: "Email", href: "mailto:bom0320.dev@gmail.com" },
       { label: "GitHub", href: "https://github.com/bom0320" },
