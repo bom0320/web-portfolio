@@ -1,13 +1,9 @@
 import gsap from "gsap";
 
-type ContactIntroAnimationController = {
+export type ContactIntroAnimationController = {
   setProgress: (progress: number) => void;
   destroy: () => void;
 };
-
-interface CreateContactFooterAnimationParams {
-  footer: HTMLElement;
-}
 
 interface CreateContactIntroAnimationParams {
   intro: HTMLElement;
@@ -83,25 +79,4 @@ export function createContactIntroAnimation({
     setProgress,
     destroy,
   };
-}
-
-export function createContactFooterAnimation({
-  footer,
-}: CreateContactFooterAnimationParams) {
-  gsap.set(footer, {
-    y: 110,
-    willChange: "transform",
-  });
-
-  const timeline = gsap.timeline({
-    paused: true,
-  });
-
-  timeline.to(footer, {
-    y: 0,
-    duration: 1,
-    ease: "power2.out",
-  });
-
-  return timeline;
 }
