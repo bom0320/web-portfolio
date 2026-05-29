@@ -1,0 +1,22 @@
+.capability-intro-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  overflow: hidden;
+  background: #000;
+}
+
+.capability-intro-visual__field {
+  position: absolute;
+  inset: 0;
+
+  background: #000;
+
+  transform: scale(1.08);
+  transform-origin: center center;
+
+  opacity: 1;
+
+  will-change: transform, opacity;
+}

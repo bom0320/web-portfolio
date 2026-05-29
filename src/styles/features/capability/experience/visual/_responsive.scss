@@ -1,0 +1,67 @@
+@media (max-width: 1100px) {
+  .experience-capability-visual-gallery {
+    width: min(760px, 100%);
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .experience-capability-visual-card {
+    min-height: 320px;
+  }
+
+  .experience-capability-visual-card--character,
+  .experience-capability-visual-card--motion {
+    min-height: 460px;
+  }
+
+  .experience-capability-visual-card--typography
+    .experience-capability-visual-card__content,
+  .experience-capability-visual-card--storytelling
+    .experience-capability-visual-card__content {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 640px) {
+  .experience-capability-visual-gallery {
+    gap: 18px;
+    margin-top: 64px;
+  }
+
+  .experience-capability-visual-card {
+    border-radius: 18px;
+  }
+
+  .experience-capability-visual-card--character,
+  .experience-capability-visual-card--motion {
+    min-height: 380px;
+  }
+
+  .experience-capability-visual-card__content {
+    left: 26px;
+    right: 24px;
+    bottom: 28px;
+  }
+
+  .experience-capability-visual-card--typography
+    .experience-capability-visual-card__content,
+  .experience-capability-visual-card--storytelling
+    .experience-capability-visual-card__content {
+    padding: 34px 28px;
+    gap: 22px;
+  }
+
+  .experience-capability-visual-card__icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .experience-capability-visual-card__icon svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .experience-capability-visual-card__title {
+    font-size: 25px;
+  }
+}

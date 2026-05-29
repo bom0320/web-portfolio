@@ -1,0 +1,64 @@
+@media (max-width: 1024px) {
+  .capability-navigator-intro {
+    width: min(760px, calc(100% - 48px));
+    padding: 140px 0 56px;
+  }
+
+  .capability-navigator-showcase {
+    width: min(760px, calc(100% - 48px));
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 48px;
+  }
+
+  .capability-navigator-showcase__left {
+    transform: none;
+  }
+
+  .capability-navigator-list {
+    max-width: 420px;
+  }
+
+  .capability-navigator-monitor {
+    transform: none;
+  }
+
+  .capability-navigator-monitor__stage {
+    width: min(720px, 88vw);
+  }
+}
+
+@media (max-width: 768px) {
+  .capability-navigator {
+    overflow: visible;
+  }
+
+  .capability-navigator-intro {
+    width: min(100% - 40px, 520px);
+    padding: 112px 0 44px;
+  }
+
+  .capability-navigator-intro__title {
+    font-size: clamp(38px, 11vw, 56px);
+  }
+
+  .capability-navigator-intro__description {
+    font-size: 16px;
+  }
+
+  .capability-navigator-pin {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .capability-navigator-showcase {
+    height: auto;
+    min-height: 100vh;
+    padding: 72px 0 96px;
+  }
+
+  .capability-navigator-monitor__stage {
+    width: min(560px, 94vw);
+  }
+}

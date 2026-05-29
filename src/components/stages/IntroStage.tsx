@@ -4,12 +4,7 @@ import { useLayoutEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import {
-  HeroScene,
-  LifeMotionScene,
-  AboutScenes,
-  InterviewScene,
-} from "@/components/scenes";
+import { HeroScene, LifeMotionScene, AboutScenes } from "@/components/scenes";
 
 import HeroToLifeAnimation from "@/animations/transitions/heroToLife";
 import LifeToAboutAnimation from "@/animations/transitions/lifeToAbout";
@@ -76,14 +71,8 @@ export default function IntroStage() {
     <section className="intro-stage js-intro-stage">
       <div className="intro-stage__sticky">
         <HeroScene />
-
         <LifeMotionScene />
-
         <AboutScenes />
-      </div>
-
-      <div className="intro-stage__interview">
-        <InterviewScene />
       </div>
     </section>
   );

@@ -1,0 +1,55 @@
+.capability-intro-phase-layer {
+  position: absolute;
+  z-index: 4;
+
+  left: 50%;
+  top: 55%;
+
+  width: min(760px, calc(100% - 48px));
+
+  transform: translateX(-50%);
+
+  text-align: center;
+}
+
+.capability-intro-phase {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+
+  opacity: 0;
+  transform: translateY(28px);
+
+  pointer-events: none;
+
+  will-change: transform, opacity;
+}
+
+.capability-intro-phase h3 {
+  margin: 0 0 24px;
+
+  font-size: clamp(28px, 3.2vw, 32px);
+  line-height: 1.12;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.capability-intro-phase p {
+  max-width: 760px;
+  margin: 0 auto;
+
+  font-size: clamp(16px, 1.15vw, 20px);
+  line-height: 1.7;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.capability-intro-phase p + p {
+  margin-top: 18px;
+}

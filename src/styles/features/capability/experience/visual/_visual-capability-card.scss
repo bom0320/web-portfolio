@@ -1,0 +1,216 @@
+.experience-capability-visual-card {
+  position: relative;
+
+  border-radius: 32px;
+  background: linear-gradient(180deg, #202024 0%, #19191d 100%);
+
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.experience-capability-visual-card__gradient-def {
+  position: absolute;
+
+  width: 0;
+  height: 0;
+
+  overflow: hidden;
+}
+
+.experience-capability-visual-card__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.experience-capability-visual-card__image {
+  object-fit: cover;
+  filter: saturate(0.95) contrast(1.04);
+}
+
+.experience-capability-visual-card__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.02) 0%,
+    rgba(0, 0, 0, 0.16) 42%,
+    rgba(0, 0, 0, 0.78) 100%
+  );
+}
+
+.experience-capability-visual-card--character
+  .experience-capability-visual-card__overlay,
+.experience-capability-visual-card--motion
+  .experience-capability-visual-card__overlay {
+  background: radial-gradient(
+      circle at 50% 18%,
+      rgba(255, 255, 255, 0.03),
+      transparent 42%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(32, 32, 36, 0.02) 0%,
+      rgba(32, 32, 36, 0.08) 34%,
+      rgba(28, 28, 32, 0.46) 62%,
+      rgba(26, 26, 30, 0.82) 82%,
+      rgba(25, 25, 29, 0.96) 100%
+    );
+}
+
+.experience-capability-visual-card--text
+  .experience-capability-visual-card__overlay {
+  background: radial-gradient(
+      circle at 74% 12%,
+      rgba(255, 255, 255, 0.055),
+      transparent 34%
+    ),
+    linear-gradient(180deg, #222226 0%, #1a1a1e 100%);
+}
+
+.experience-capability-visual-card__content {
+  position: relative;
+  z-index: 2;
+
+  height: 100%;
+  padding: 40px 44px;
+
+  color: #fff;
+}
+
+.experience-capability-visual-card__icon {
+  flex: 0 0 auto;
+
+  width: 76px;
+  height: 76px;
+  margin-bottom: 10px;
+
+  display: grid;
+  place-items: center;
+
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.experience-capability-visual-card__icon svg {
+  width: 58px;
+  height: 58px;
+
+  stroke-width: 2.45;
+  overflow: visible;
+}
+
+.experience-capability-visual-card--accent
+  .experience-capability-visual-card__icon
+  svg
+  * {
+  stroke: var(--visual-icon-gradient);
+}
+
+.experience-capability-visual-card__title {
+  margin: 0;
+
+  font-size: clamp(28px, 2vw, 34px);
+  font-weight: 900;
+  line-height: 1.13;
+  letter-spacing: -0.078em;
+
+  color: rgba(255, 255, 255, 0.98);
+}
+
+.experience-capability-visual-card__desc {
+  margin: 14px 0 0;
+
+  font-size: 15px;
+  line-height: 1.65;
+  letter-spacing: -0.04em;
+
+  color: rgba(255, 255, 255, 0.58);
+}
+
+/* 카드별 높이 / 정렬 */
+
+.experience-capability-visual-card--character {
+  min-height: 440px;
+}
+
+.experience-capability-visual-card--character
+  .experience-capability-visual-card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.experience-capability-visual-card--character
+  .experience-capability-visual-card__title {
+  max-width: 88%;
+}
+
+.experience-capability-visual-card--typography {
+  min-height: 270px;
+}
+
+.experience-capability-visual-card--typography
+  .experience-capability-visual-card__content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.experience-capability-visual-card--typography
+  .experience-capability-visual-card__icon {
+  margin-bottom: 0;
+}
+
+.experience-capability-visual-card--typography
+  .experience-capability-visual-card__title {
+  max-width: 430px;
+
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.24;
+  letter-spacing: -0.07em;
+}
+
+.experience-capability-visual-card--storytelling {
+  min-height: 270px;
+}
+
+.experience-capability-visual-card--storytelling
+  .experience-capability-visual-card__content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.experience-capability-visual-card--storytelling
+  .experience-capability-visual-card__icon {
+  margin-bottom: 0;
+}
+
+.experience-capability-visual-card--storytelling
+  .experience-capability-visual-card__title {
+  max-width: 430px;
+
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.28;
+  letter-spacing: -0.07em;
+}
+
+.experience-capability-visual-card--motion {
+  min-height: 450px;
+}
+
+.experience-capability-visual-card--motion
+  .experience-capability-visual-card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.experience-capability-visual-card--motion
+  .experience-capability-visual-card__title {
+  max-width: 88%;
+}

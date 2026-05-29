@@ -1,17 +1,13 @@
 "use client";
 
-import { useRef } from "react";
-
 import { SkillTitle, SkillCard } from "@/components/features/about";
 import { SKILLS } from "@/data/skills";
 
 export default function SkillsScene() {
-  const fillGroupRef = useRef<SVGGElement | null>(null);
-
   return (
     <section className="about-skills js-about-skills">
       <div className="about-skills__inner js-about-skills-inner">
-        <SkillTitle fillGroupRef={fillGroupRef} />
+        <SkillTitle />
 
         <div className="about-skills__grid">
           {SKILLS.map((s) => (

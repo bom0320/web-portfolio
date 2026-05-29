@@ -1,0 +1,52 @@
+@media (max-width: 768px) {
+  .capability-intro-pinned {
+    height: 320vh;
+  }
+
+  .capability-intro-fixed {
+    padding: 0 24px 24vh;
+  }
+
+  .capability-intro-fixed__title {
+    font-size: clamp(36px, 11vw, 64px);
+  }
+
+  .capability-intro-fixed__subtitle {
+    font-size: clamp(28px, 8vw, 48px);
+  }
+
+  .capability-intro-phase-layer {
+    top: 58%;
+    width: min(520px, calc(100% - 40px));
+  }
+
+  .capability-intro-phase p {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .capability-intro-proof {
+    padding: 100px 0 140px;
+  }
+
+  .capability-intro-proof__inner {
+    width: min(520px, calc(100% - 40px));
+
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .capability-intro-proof__point {
+    max-width: none;
+    width: 100%;
+  }
+
+  .capability-intro-proof__visual {
+    order: -1;
+  }
+
+  .capability-intro-proof__character {
+    width: min(280px, 72vw);
+  }
+}

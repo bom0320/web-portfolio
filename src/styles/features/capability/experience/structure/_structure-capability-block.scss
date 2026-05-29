@@ -1,0 +1,11 @@
+// Structure 블록의 바깥 간격만 담당
+// 맵 내부, 카드 내부는 여기에 넣지 x
+
+.experience-capability-block--structure {
+  position: relative;
+}
+
+.experience-capability-visual--structure {
+  margin-top: 110px;
+  margin-bottom: 78px;
+}
