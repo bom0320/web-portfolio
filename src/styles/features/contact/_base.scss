@@ -14,20 +14,20 @@
 }
 
 .contact-section__inner {
-  width: min(560px, calc(100% - 48px));
+  width: min(660px, calc(100% - 48px));
   margin: 0 auto;
 }
 
 .contact-intro {
-  margin-bottom: 72px;
+  margin-bottom: 70px;
   text-align: center;
 }
 
 .contact-intro__eyebrow {
-  margin: 0 0 18px;
+  margin: 0 0 10px;
 
-  font-size: 22px;
-  font-weight: 850;
+  font-size: 18px;
+  font-weight: 750;
   line-height: 1;
   letter-spacing: -0.035em;
 
@@ -37,10 +37,10 @@
 .contact-intro__title {
   margin: 0;
 
-  font-size: clamp(38px, 4.4vw, 54px);
+  font-size: clamp(38px, 4.4vw, 58px);
   font-weight: 900;
   line-height: 1.08;
-  letter-spacing: -0.075em;
+  letter-spacing: -0.02em;
 
   color: #ffffff;
 }
@@ -50,11 +50,11 @@
   flex-direction: column;
   gap: 8px;
 
-  margin: 30px 0 0;
+  margin: 20px 0 0;
 
   font-size: 16px;
   font-weight: 500;
-  line-height: 1.75;
+  line-height: 0.9;
   letter-spacing: -0.04em;
 
   color: rgba(255, 255, 255, 0.62);

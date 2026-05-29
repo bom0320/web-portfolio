@@ -1,6 +1,6 @@
 export const CONTACT_INTRO = {
-  eyebrow: "CONTACT",
-  title: "편하게 연락주세요.",
+  eyebrow: "CONNECT",
+  title: "CONTACT ME",
   description: [
     "좋은 경험을 함께 만들 준비가 되어 있습니다.",
     "작은 제안이나 질문도 편하게 남겨주세요.",

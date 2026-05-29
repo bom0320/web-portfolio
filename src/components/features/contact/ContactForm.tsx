@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import ContactPurposeOptions from "./ContactPurposeOptions";
 
 export default function ContactForm() {
@@ -66,7 +67,12 @@ export default function ContactForm() {
       <div className="contact-form__submit-wrap">
         <button type="submit" className="contact-form__submit">
           <span>Submit</span>
-          <span>→</span>
+          <ArrowRight
+            size={22}
+            strokeWidth={2.4}
+            className="contact-form__submit-icon"
+            aria-hidden="true"
+          />
         </button>
       </div>
     </form>
