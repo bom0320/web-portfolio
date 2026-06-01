@@ -52,7 +52,7 @@ const HeroToLifeAnimation = {
 
     if (topRow) {
       gsap.set(topRow, {
-        xPercent: 0,
+        xPercent: -6,
       });
     }
 
@@ -69,6 +69,7 @@ const HeroToLifeAnimation = {
       },
     });
 
+    // Hero exit
     timeline.to(
       heroItems,
       {
@@ -82,6 +83,7 @@ const HeroToLifeAnimation = {
       0
     );
 
+    // LifeMotion enter
     timeline.to(
       lifeStage,
       {
@@ -93,6 +95,7 @@ const HeroToLifeAnimation = {
       0
     );
 
+    // LifeMotion edge mask release
     timeline.to(
       lifeTrack,
       {
@@ -107,7 +110,7 @@ const HeroToLifeAnimation = {
       timeline.to(
         topRow,
         {
-          xPercent: -6,
+          xPercent: 0,
         },
         0
       );
