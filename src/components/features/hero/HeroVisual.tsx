@@ -1,15 +1,13 @@
-import Image from "next/image";
-
 export default function HeroVisual() {
   return (
-    <div className="hero__visual">
-      <div className="hero__character js-hero-character">
-        <Image
-          src="/images/character_1.png"
-          alt="hero character"
-          fill
-          priority
-        />
+    <div className="hero__visual js-hero-exit-item">
+      <div className="hero__statement">
+        <span className="hero__eyebrow">I AM</span>
+
+        <h1 className="hero__headline" aria-label="Interactive FE Developer">
+          <span className="hero__headline-muted">INTERACTIVE</span>
+          <span>FE DEVELOPER</span>
+        </h1>
       </div>
     </div>
   );
