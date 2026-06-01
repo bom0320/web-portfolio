@@ -1,4 +1,9 @@
 @media (max-width: 1180px) {
+  .hero__body {
+    grid-template-columns: 300px minmax(0, 1fr);
+    column-gap: 40px;
+  }
+
   .hero__content {
     width: 300px;
   }
@@ -9,18 +14,19 @@
 }
 
 @media (max-width: 900px) {
-  .hero__content {
-    left: 0;
-    top: 26%;
+  .hero__body {
+    grid-template-columns: 1fr;
+    row-gap: 72px;
 
+    padding-top: clamp(180px, 24vh, 240px);
+  }
+
+  .hero__content {
     width: 100%;
     min-height: 180px;
   }
 
   .hero__visual {
-    left: 0;
-    right: auto;
-    top: 52%;
     justify-content: flex-start;
   }
 
@@ -35,12 +41,9 @@
 }
 
 @media (max-width: 640px) {
-  .hero__content {
-    top: 24%;
-  }
-
-  .hero__visual {
-    top: 54%;
+  .hero__body {
+    row-gap: 56px;
+    padding-top: clamp(150px, 22vh, 200px);
   }
 
   .hero__description {
@@ -63,6 +66,7 @@
 
   .hero__eyebrow {
     margin-top: 0;
+    margin-right: 0;
     font-size: 18px;
   }
 

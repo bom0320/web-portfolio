@@ -46,8 +46,10 @@ export default function HeroScene() {
   return (
     <section className="hero" id="home" ref={sectionRef}>
       <div className="hero__inner">
-        <HeroContent />
-        <HeroVisual />
+        <div className="hero__body">
+          <HeroContent />
+          <HeroVisual />
+        </div>
       </div>
     </section>
   );
