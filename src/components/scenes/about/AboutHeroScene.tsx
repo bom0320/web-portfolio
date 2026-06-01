@@ -66,7 +66,7 @@ export default function AboutHeroScene() {
               ariaLabel="Go Resume"
               onClick={handleMobileSwapClick("resume")}
             >
-              <img src="/icons/User.svg" alt="" className="cta-btn__iconImg" />
+              <img src="/icons/user.svg" alt="" className="cta-btn__iconImg" />
             </CtaButton>
 
             <CtaButton
@@ -78,7 +78,7 @@ export default function AboutHeroScene() {
               onClick={handleMobileSwapClick("github")}
             >
               <img
-                src="/icons/GitHub.svg"
+                src="/icons/github-white.svg"
                 alt=""
                 className="cta-btn__iconImg"
               />

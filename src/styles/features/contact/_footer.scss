@@ -1,102 +1,161 @@
 .contact-footer {
-  width: calc(100% - 24px);
-  margin: 0 auto;
-  padding: 34px 42px 28px;
   position: relative;
-  z-index: 3;
-  border-radius: 28px 28px 0 0;
-  background: #ececec;
-  color: #111111;
-  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+
+  background: #f3f3f3;
+  color: #050505;
 }
 
-.contact-footer__top {
-  padding-bottom: 26px;
-  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+.contact-footer__inner {
+  width: min(1280px, calc(100% - 54px));
+  margin: 0 auto;
+  padding: 52px 0 50px;
+}
+
+.contact-footer__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 440px;
+  gap: 80px;
+  align-items: start;
+}
+
+.contact-footer__brand {
+  min-width: 0;
 }
 
 .contact-footer__email {
-  color: #111111;
-  font-size: clamp(34px, 4vw, 60px);
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: -0.05em;
+  display: inline-block;
+  color: #050505;
   text-decoration: none;
+
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.06em;
+}
+
+.contact-footer__description {
+  margin: 18px 0 0;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: -0.035em;
+
+  color: rgba(0, 0, 0, 0.525);
+}
+
+.contact-footer-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 42px;
+}
+
+.contact-footer-links__group {
+  min-width: 0;
+}
+
+.contact-footer-links__title {
+  margin: 0 0 14px;
+
+  font-size: 18px;
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -0.03em;
+
+  color: #050505;
+}
+
+.contact-footer-links__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-footer-links__list a {
+  color: rgba(0, 0, 0, 0.58);
+  text-decoration: none;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+
+  transition: color 0.2s ease;
+}
+
+.contact-footer-links__list a:hover {
+  color: #050505;
 }
 
 .contact-footer__bottom {
-  display: grid;
-  grid-template-columns: 1.45fr 1.15fr 0.8fr 1fr;
-  align-items: start;
-  gap: 32px;
+  position: relative;
+
+  margin-top: 72px;
   padding-top: 24px;
-}
+  border-top: 0;
 
-.contact-footer__meta {
   display: flex;
-  flex-direction: column;
+  align-items: flex-end;
   justify-content: space-between;
-  min-height: 96px;
+  gap: 40px;
 }
 
-.contact-footer__location {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
+.contact-footer__bottom::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
 
-.contact-footer__location p,
-.contact-footer__hours p,
-.contact-footer__links a,
-.contact-footer__social a {
-  margin: 0;
-  color: #111111;
-  font-size: 0.88rem;
-  line-height: 1.45;
-  text-decoration: none;
-}
+  width: min(500px, 100%);
+  height: 1px;
 
-.contact-footer__hours {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  text-align: center;
-}
-
-.contact-footer__label {
-  font-weight: 700;
-}
-
-.contact-footer__links {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  gap: 14px;
-  white-space: nowrap;
-}
-
-.contact-footer__social {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 18px;
-  white-space: nowrap;
-}
-
-.contact-footer__social svg {
-  display: block;
-  width: 22px;
-  height: 22px;
+  background: rgba(0, 0, 0, 0.22);
 }
 
 .contact-footer__copyright {
-  margin: 24px 0 0;
-  color: rgba(17, 17, 17, 0.78);
-  font-size: 0.82rem;
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 600;
   line-height: 1.4;
+  letter-spacing: -0.035em;
+
+  color: rgba(0, 0, 0, 0.672);
 }
 
-.contact-footer__copyright a {
-  color: inherit;
-  text-decoration: underline;
+.contact-social {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.contact-social__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  text-decoration: none;
+
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.contact-social__link:hover {
+  opacity: 0.65;
+  transform: translateY(-2px);
+}
+
+.contact-social__icon {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
