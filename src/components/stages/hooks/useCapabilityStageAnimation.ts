@@ -9,7 +9,6 @@ import {
   useState,
 } from "react";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
 import {
   AICapabilityAnimation,
@@ -21,7 +20,11 @@ import {
   VisualCapabilityAnimation,
 } from "@/animations/capability";
 import { CAPABILITY_NAVIGATOR_ITEMS } from "@/data/capability";
-import { refreshScrollTrigger } from "@/lib/gsap";
+import {
+  createScrollTrigger,
+  refreshScrollTrigger,
+  type ScrollTriggerInstance,
+} from "@/lib/gsap";
 
 type UseCapabilityStageAnimationReturn = {
   activeNavigatorIndex: number;
@@ -91,15 +94,13 @@ export function useCapabilityStageAnimation(
       navigatorIntroController.setProgress(0);
       closingController.setProgress(0);
 
-      const triggers: ScrollTrigger[] = [];
+      const triggers: ScrollTriggerInstance[] = [];
 
-      const introTrigger = ScrollTrigger.create({
+      const introTrigger = createScrollTrigger({
         trigger: ".js-capability-intro-pinned",
         start: "top top",
         end: "bottom bottom",
         scrub: 1.2,
-        invalidateOnRefresh: true,
-        markers: true,
         onUpdate: (self) => {
           introController.setProgress(self.progress);
         },
@@ -109,13 +110,11 @@ export function useCapabilityStageAnimation(
 
       let structureMaxProgress = 0;
 
-      const structureTrigger = ScrollTrigger.create({
+      const structureTrigger = createScrollTrigger({
         trigger: structureElement,
         start: "top 78%",
         end: "bottom 62%",
         scrub: 1.1,
-        invalidateOnRefresh: true,
-        markers: true,
 
         onUpdate: (self) => {
           structureMaxProgress = Math.max(structureMaxProgress, self.progress);
@@ -132,13 +131,11 @@ export function useCapabilityStageAnimation(
 
       let aiMaxProgress = 0;
 
-      const aiTrigger = ScrollTrigger.create({
+      const aiTrigger = createScrollTrigger({
         trigger: aiElement,
         start: "top 78%",
         end: "bottom 64%",
         scrub: 1,
-        invalidateOnRefresh: true,
-        markers: true,
 
         onUpdate: (self) => {
           aiMaxProgress = Math.max(aiMaxProgress, self.progress);
@@ -155,13 +152,11 @@ export function useCapabilityStageAnimation(
 
       let visualMaxProgress = 0;
 
-      const visualTrigger = ScrollTrigger.create({
+      const visualTrigger = createScrollTrigger({
         trigger: visualElement,
         start: "top 78%",
         end: "top 42%",
         scrub: 1,
-        invalidateOnRefresh: true,
-        markers: true,
 
         onUpdate: (self) => {
           visualMaxProgress = Math.max(visualMaxProgress, self.progress);
@@ -179,13 +174,11 @@ export function useCapabilityStageAnimation(
       if (navigatorIntroElement) {
         let navigatorIntroMaxProgress = 0;
 
-        const navigatorIntroTrigger = ScrollTrigger.create({
+        const navigatorIntroTrigger = createScrollTrigger({
           trigger: navigatorIntroElement,
           start: "top 78%",
           end: "top 36%",
           scrub: 1,
-          invalidateOnRefresh: true,
-          markers: true,
 
           onUpdate: (self) => {
             navigatorIntroMaxProgress = Math.max(
@@ -206,7 +199,7 @@ export function useCapabilityStageAnimation(
       }
 
       if (navigatorPinElement) {
-        const navigatorTrigger = ScrollTrigger.create({
+        const navigatorTrigger = createScrollTrigger({
           trigger: navigatorPinElement,
           start: "top top",
           end: () =>
@@ -220,8 +213,6 @@ export function useCapabilityStageAnimation(
           pinType: "transform",
           scrub: 1,
           anticipatePin: 1,
-          invalidateOnRefresh: true,
-          markers: true,
 
           onUpdate: (self) => {
             const nextIndex = getCapabilityNavigatorIndex(
@@ -252,13 +243,11 @@ export function useCapabilityStageAnimation(
       if (closingElement) {
         let closingMaxProgress = 0;
 
-        const closingTrigger = ScrollTrigger.create({
+        const closingTrigger = createScrollTrigger({
           trigger: closingElement,
           start: "top 82%",
           end: "top 18%",
           scrub: 1.6,
-          invalidateOnRefresh: true,
-          markers: true,
 
           onUpdate: (self) => {
             closingMaxProgress = Math.max(closingMaxProgress, self.progress);
