@@ -93,9 +93,6 @@ const HeroToLifeAnimation = {
       0
     );
 
-    /*
-      LifeMotion이 꽉 차게 보일수록 좌우 페이드 제거
-    */
     timeline.to(
       lifeTrack,
       {
