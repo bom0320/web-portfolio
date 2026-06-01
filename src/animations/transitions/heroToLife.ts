@@ -17,9 +17,12 @@ const HeroToLifeAnimation = {
       ".js-life-motion-stage"
     );
 
-    const topRow = document.querySelector<HTMLElement>(".js-life-motion-top");
+    const topRow = document.querySelector<HTMLElement>(
+      ".js-life-motion-top .life-motion__row"
+    );
+
     const bottomRow = document.querySelector<HTMLElement>(
-      ".js-life-motion-bottom"
+      ".js-life-motion-bottom .life-motion__row"
     );
 
     if (!lifeStage) {
@@ -30,7 +33,7 @@ const HeroToLifeAnimation = {
     }
 
     gsap.set(lifeStage, {
-      y: "48vh",
+      y: "52vh",
       scale: 0.78,
       opacity: 0.42,
       filter: "brightness(0.5)",
@@ -84,7 +87,7 @@ const HeroToLifeAnimation = {
       timeline.to(
         topRow,
         {
-          xPercent: -8,
+          xPercent: -6,
         },
         0
       );
@@ -94,7 +97,7 @@ const HeroToLifeAnimation = {
       timeline.to(
         bottomRow,
         {
-          xPercent: -20,
+          xPercent: -18,
         },
         0
       );
