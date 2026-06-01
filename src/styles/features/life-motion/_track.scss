@@ -1,21 +1,23 @@
 .life-motion {
-  &__track {
+  &__stage {
     position: absolute;
-    left: 50%;
-    bottom: -30vh;
+    inset: 0;
+
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    will-change: transform, opacity, filter;
+  }
+
+  &__track {
     width: 100%;
 
     display: flex;
     flex-direction: column;
     gap: 12px;
-
-    transform: translateX(-50%) scale(0.78);
-    transform-origin: center bottom;
-
-    opacity: 0.42;
-    filter: brightness(0.5);
-
-    will-change: transform, opacity, filter;
   }
 
   &__row-window {

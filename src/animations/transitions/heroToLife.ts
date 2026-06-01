@@ -13,12 +13,8 @@ const HeroToLifeAnimation = {
       ".hero .js-hero-exit-item"
     );
 
-    const lifeEnter = document.querySelector<HTMLElement>(
-      ".js-life-motion-enter"
-    );
-
-    const lifeTrack = document.querySelector<HTMLElement>(
-      ".js-life-motion-track"
+    const lifeStage = document.querySelector<HTMLElement>(
+      ".js-life-motion-stage"
     );
 
     const topRow = document.querySelector<HTMLElement>(".js-life-motion-top");
@@ -26,33 +22,32 @@ const HeroToLifeAnimation = {
       ".js-life-motion-bottom"
     );
 
-    if (!lifeEnter || !lifeTrack) {
+    if (!lifeStage) {
       return {
         setProgress: () => {},
         destroy: () => {},
       };
     }
 
-    gsap.set(lifeEnter, {
-      autoAlpha: 1,
-    });
-
-    gsap.set(lifeTrack, {
-      xPercent: -50,
-      y: 0,
+    gsap.set(lifeStage, {
+      y: "48vh",
       scale: 0.78,
       opacity: 0.42,
       filter: "brightness(0.5)",
-      transformOrigin: "center bottom",
+      transformOrigin: "center center",
     });
 
-    gsap.set(topRow, {
-      xPercent: 0,
-    });
+    if (topRow) {
+      gsap.set(topRow, {
+        xPercent: 0,
+      });
+    }
 
-    gsap.set(bottomRow, {
-      xPercent: -12,
-    });
+    if (bottomRow) {
+      gsap.set(bottomRow, {
+        xPercent: -12,
+      });
+    }
 
     const timeline = gsap.timeline({
       paused: true,
@@ -75,9 +70,9 @@ const HeroToLifeAnimation = {
     );
 
     timeline.to(
-      lifeTrack,
+      lifeStage,
       {
-        y: "-56vh",
+        y: "0vh",
         scale: 1,
         opacity: 1,
         filter: "brightness(1)",
@@ -85,21 +80,25 @@ const HeroToLifeAnimation = {
       0
     );
 
-    timeline.to(
-      topRow,
-      {
-        xPercent: -8,
-      },
-      0
-    );
+    if (topRow) {
+      timeline.to(
+        topRow,
+        {
+          xPercent: -8,
+        },
+        0
+      );
+    }
 
-    timeline.to(
-      bottomRow,
-      {
-        xPercent: -20,
-      },
-      0
-    );
+    if (bottomRow) {
+      timeline.to(
+        bottomRow,
+        {
+          xPercent: -20,
+        },
+        0
+      );
+    }
 
     return {
       setProgress(progress: number) {
@@ -109,7 +108,7 @@ const HeroToLifeAnimation = {
       destroy() {
         timeline.kill();
 
-        gsap.set([heroItems, lifeEnter, lifeTrack, topRow, bottomRow], {
+        gsap.set([heroItems, lifeStage, topRow, bottomRow], {
           clearProps: "transform,opacity,visibility,filter",
         });
       },

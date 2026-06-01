@@ -15,13 +15,9 @@
   height: 100vh;
   min-height: 0;
 
-  background: #000;
-
-  transform: none;
+  background: transparent;
   opacity: 1;
   visibility: visible;
-
-  will-change: opacity;
 }
 
 .life-motion__viewport {

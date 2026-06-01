@@ -26,47 +26,49 @@ export default function LifeMotionScene() {
           className="life-motion__viewport js-life-motion-viewport"
           ref={viewportRef}
         >
-          <div className="life-motion__track js-life-motion-track">
-            <div
-              className="life-motion__row-window life-motion__row-window--top js-life-motion-top"
-              ref={topWindowRef}
-            >
-              <div className="life-motion__row">
-                <div className="life-motion__group">
-                  {topGroupItems.map((item, index) => (
-                    <LifeMotionItem key={`${item.id}-${index}`} item={item} />
-                  ))}
-                </div>
+          <div className="life-motion__stage js-life-motion-stage">
+            <div className="life-motion__track js-life-motion-track">
+              <div
+                className="life-motion__row-window life-motion__row-window--top js-life-motion-top"
+                ref={topWindowRef}
+              >
+                <div className="life-motion__row">
+                  <div className="life-motion__group">
+                    {topGroupItems.map((item, index) => (
+                      <LifeMotionItem key={`${item.id}-${index}`} item={item} />
+                    ))}
+                  </div>
 
-                <div className="life-motion__group" aria-hidden="true">
-                  {topGroupItems.map((item, index) => (
-                    <LifeMotionItem
-                      key={`clone-${item.id}-${index}`}
-                      item={item}
-                    />
-                  ))}
+                  <div className="life-motion__group" aria-hidden="true">
+                    {topGroupItems.map((item, index) => (
+                      <LifeMotionItem
+                        key={`clone-${item.id}-${index}`}
+                        item={item}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div
-              className="life-motion__row-window life-motion__row-window--bottom js-life-motion-bottom"
-              ref={bottomWindowRef}
-            >
-              <div className="life-motion__row">
-                <div className="life-motion__group">
-                  {bottomGroupItems.map((item, index) => (
-                    <LifeMotionItem key={`${item.id}-${index}`} item={item} />
-                  ))}
-                </div>
+              <div
+                className="life-motion__row-window life-motion__row-window--bottom js-life-motion-bottom"
+                ref={bottomWindowRef}
+              >
+                <div className="life-motion__row">
+                  <div className="life-motion__group">
+                    {bottomGroupItems.map((item, index) => (
+                      <LifeMotionItem key={`${item.id}-${index}`} item={item} />
+                    ))}
+                  </div>
 
-                <div className="life-motion__group" aria-hidden="true">
-                  {bottomGroupItems.map((item, index) => (
-                    <LifeMotionItem
-                      key={`clone-${item.id}-${index}`}
-                      item={item}
-                    />
-                  ))}
+                  <div className="life-motion__group" aria-hidden="true">
+                    {bottomGroupItems.map((item, index) => (
+                      <LifeMotionItem
+                        key={`clone-${item.id}-${index}`}
+                        item={item}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
