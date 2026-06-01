@@ -52,7 +52,7 @@ const HeroToLifeAnimation = {
 
     if (topRow) {
       gsap.set(topRow, {
-        xPercent: -6,
+        xPercent: -3,
       });
     }
 
@@ -120,7 +120,7 @@ const HeroToLifeAnimation = {
       timeline.to(
         bottomRow,
         {
-          xPercent: -18,
+          xPercent: -15,
         },
         0
       );
