@@ -16,7 +16,7 @@
 .hero__inner {
   position: relative;
 
-  width: min(100% - 48px, var(--container));
+  width: min(100% - 50px, var(--container));
   height: 100%;
   margin: 0 auto;
 
@@ -28,7 +28,7 @@
   grid-template-columns: 320px minmax(0, 1fr);
   column-gap: 64px;
   align-items: flex-start;
-  padding-top: clamp(150px, 22vh, 210px);
+  padding-top: clamp(120px, 20vh, 160px);
 }
 
 .hero__content {

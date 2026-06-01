@@ -18,7 +18,7 @@
   }
 
   &__track {
-    width: 100vw;
+    width: 118vw;
 
     display: flex;
     flex-direction: column;
@@ -26,35 +26,31 @@
 
     transform-origin: center center;
 
-    /*
-      1 = 좌우 페이드 강함
-      0 = 좌우 페이드 없음
-    */
-    --life-edge-start: 0;
-    --life-edge-soft: 0.45;
-    --life-edge-strong: 0.9;
+    --life-edge-start: 0.5;
+    --life-edge-soft: 0.8;
+    --life-edge-strong: 1;
 
     -webkit-mask-image: linear-gradient(
       to right,
       rgba(0, 0, 0, var(--life-edge-start)) 0%,
-      rgba(0, 0, 0, var(--life-edge-soft)) 6%,
-      rgba(0, 0, 0, var(--life-edge-strong)) 14%,
-      #000 22%,
-      #000 78%,
-      rgba(0, 0, 0, var(--life-edge-strong)) 86%,
-      rgba(0, 0, 0, var(--life-edge-soft)) 94%,
+      rgba(0, 0, 0, var(--life-edge-soft)) 4%,
+      rgba(0, 0, 0, var(--life-edge-strong)) 10%,
+      #000 16%,
+      #000 84%,
+      rgba(0, 0, 0, var(--life-edge-strong)) 90%,
+      rgba(0, 0, 0, var(--life-edge-soft)) 96%,
       rgba(0, 0, 0, var(--life-edge-start)) 100%
     );
 
     mask-image: linear-gradient(
       to right,
       rgba(0, 0, 0, var(--life-edge-start)) 0%,
-      rgba(0, 0, 0, var(--life-edge-soft)) 6%,
-      rgba(0, 0, 0, var(--life-edge-strong)) 14%,
-      #000 22%,
-      #000 78%,
-      rgba(0, 0, 0, var(--life-edge-strong)) 86%,
-      rgba(0, 0, 0, var(--life-edge-soft)) 94%,
+      rgba(0, 0, 0, var(--life-edge-soft)) 4%,
+      rgba(0, 0, 0, var(--life-edge-strong)) 10%,
+      #000 16%,
+      #000 84%,
+      rgba(0, 0, 0, var(--life-edge-strong)) 90%,
+      rgba(0, 0, 0, var(--life-edge-soft)) 96%,
       rgba(0, 0, 0, var(--life-edge-start)) 100%
     );
   }
