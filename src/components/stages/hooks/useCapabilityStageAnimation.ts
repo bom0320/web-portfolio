@@ -26,6 +26,11 @@ import {
   type ScrollTriggerInstance,
 } from "@/lib/gsap";
 
+import {
+  CAPABILITY_STAGE_SCROLL_CONFIG,
+  CAPABILITY_STAGE_SELECTORS,
+} from "../constants";
+
 type UseCapabilityStageAnimationReturn = {
   activeNavigatorIndex: number;
   setActiveNavigatorIndex: Dispatch<SetStateAction<number>>;
@@ -50,27 +55,27 @@ export function useCapabilityStageAnimation(
       const introProofController = CapabilityIntroProofAnimation.create(stage);
 
       const structureElement = stage.querySelector<HTMLElement>(
-        ".js-structure-capability-block"
+        CAPABILITY_STAGE_SELECTORS.structureBlock
       );
 
       const aiElement = stage.querySelector<HTMLElement>(
-        ".js-ai-capability-block"
+        CAPABILITY_STAGE_SELECTORS.aiBlock
       );
 
       const visualElement = stage.querySelector<HTMLElement>(
-        ".js-visual-capability-block"
+        CAPABILITY_STAGE_SELECTORS.visualBlock
       );
 
       const navigatorIntroElement = stage.querySelector<HTMLElement>(
-        ".js-capability-navigator-intro"
+        CAPABILITY_STAGE_SELECTORS.navigatorIntro
       );
 
       const navigatorPinElement = stage.querySelector<HTMLElement>(
-        ".js-capability-navigator-pin"
+        CAPABILITY_STAGE_SELECTORS.navigatorPin
       );
 
       const closingElement = stage.querySelector<HTMLElement>(
-        ".js-capability-closing"
+        CAPABILITY_STAGE_SELECTORS.closing
       );
 
       const structureController =
@@ -97,10 +102,10 @@ export function useCapabilityStageAnimation(
       const triggers: ScrollTriggerInstance[] = [];
 
       const introTrigger = createScrollTrigger({
-        trigger: ".js-capability-intro-pinned",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 1.2,
+        trigger: CAPABILITY_STAGE_SELECTORS.introPinned,
+        start: CAPABILITY_STAGE_SCROLL_CONFIG.intro.start,
+        end: CAPABILITY_STAGE_SCROLL_CONFIG.intro.end,
+        scrub: CAPABILITY_STAGE_SCROLL_CONFIG.intro.scrub,
         onUpdate: (self) => {
           introController.setProgress(self.progress);
         },
@@ -112,15 +117,13 @@ export function useCapabilityStageAnimation(
 
       const structureTrigger = createScrollTrigger({
         trigger: structureElement,
-        start: "top 78%",
-        end: "bottom 62%",
-        scrub: 1.1,
-
+        start: CAPABILITY_STAGE_SCROLL_CONFIG.structure.start,
+        end: CAPABILITY_STAGE_SCROLL_CONFIG.structure.end,
+        scrub: CAPABILITY_STAGE_SCROLL_CONFIG.structure.scrub,
         onUpdate: (self) => {
           structureMaxProgress = Math.max(structureMaxProgress, self.progress);
           structureController.setProgress(structureMaxProgress);
         },
-
         onLeaveBack: () => {
           structureMaxProgress = 0;
           structureController.setProgress(0);
@@ -133,15 +136,13 @@ export function useCapabilityStageAnimation(
 
       const aiTrigger = createScrollTrigger({
         trigger: aiElement,
-        start: "top 78%",
-        end: "bottom 64%",
-        scrub: 1,
-
+        start: CAPABILITY_STAGE_SCROLL_CONFIG.ai.start,
+        end: CAPABILITY_STAGE_SCROLL_CONFIG.ai.end,
+        scrub: CAPABILITY_STAGE_SCROLL_CONFIG.ai.scrub,
         onUpdate: (self) => {
           aiMaxProgress = Math.max(aiMaxProgress, self.progress);
           aiController.setProgress(aiMaxProgress);
         },
-
         onLeaveBack: () => {
           aiMaxProgress = 0;
           aiController.setProgress(0);
@@ -154,15 +155,13 @@ export function useCapabilityStageAnimation(
 
       const visualTrigger = createScrollTrigger({
         trigger: visualElement,
-        start: "top 78%",
-        end: "top 42%",
-        scrub: 1,
-
+        start: CAPABILITY_STAGE_SCROLL_CONFIG.visual.start,
+        end: CAPABILITY_STAGE_SCROLL_CONFIG.visual.end,
+        scrub: CAPABILITY_STAGE_SCROLL_CONFIG.visual.scrub,
         onUpdate: (self) => {
           visualMaxProgress = Math.max(visualMaxProgress, self.progress);
           visualController.setProgress(visualMaxProgress);
         },
-
         onLeaveBack: () => {
           visualMaxProgress = 0;
           visualController.setProgress(0);
@@ -176,10 +175,9 @@ export function useCapabilityStageAnimation(
 
         const navigatorIntroTrigger = createScrollTrigger({
           trigger: navigatorIntroElement,
-          start: "top 78%",
-          end: "top 36%",
-          scrub: 1,
-
+          start: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorIntro.start,
+          end: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorIntro.end,
+          scrub: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorIntro.scrub,
           onUpdate: (self) => {
             navigatorIntroMaxProgress = Math.max(
               navigatorIntroMaxProgress,
@@ -188,7 +186,6 @@ export function useCapabilityStageAnimation(
 
             navigatorIntroController.setProgress(navigatorIntroMaxProgress);
           },
-
           onLeaveBack: () => {
             navigatorIntroMaxProgress = 0;
             navigatorIntroController.setProgress(0);
@@ -201,19 +198,19 @@ export function useCapabilityStageAnimation(
       if (navigatorPinElement) {
         const navigatorTrigger = createScrollTrigger({
           trigger: navigatorPinElement,
-          start: "top top",
+          start: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.start,
           end: () =>
             `+=${
               window.innerHeight *
               (CAPABILITY_NAVIGATOR_ITEMS.length - 1) *
-              1.45
+              CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.distanceMultiplier
             }`,
           pin: true,
           pinSpacing: true,
           pinType: "transform",
-          scrub: 1,
-          anticipatePin: 1,
-
+          scrub: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.scrub,
+          anticipatePin:
+            CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.anticipatePin,
           onUpdate: (self) => {
             const nextIndex = getCapabilityNavigatorIndex(
               self.progress,
@@ -226,7 +223,7 @@ export function useCapabilityStageAnimation(
             setActiveNavigatorIndex(nextIndex);
 
             const nextLayer = stage.querySelector<HTMLElement>(
-              `.js-capability-navigator-layer[data-index="${nextIndex}"]`
+              `${CAPABILITY_STAGE_SELECTORS.navigatorLayer}[data-index="${nextIndex}"]`
             );
 
             if (!nextLayer) return;
@@ -245,15 +242,13 @@ export function useCapabilityStageAnimation(
 
         const closingTrigger = createScrollTrigger({
           trigger: closingElement,
-          start: "top 82%",
-          end: "top 18%",
-          scrub: 1.6,
-
+          start: CAPABILITY_STAGE_SCROLL_CONFIG.closing.start,
+          end: CAPABILITY_STAGE_SCROLL_CONFIG.closing.end,
+          scrub: CAPABILITY_STAGE_SCROLL_CONFIG.closing.scrub,
           onUpdate: (self) => {
             closingMaxProgress = Math.max(closingMaxProgress, self.progress);
             closingController.setProgress(closingMaxProgress);
           },
-
           onLeaveBack: () => {
             closingMaxProgress = 0;
             closingController.setProgress(0);

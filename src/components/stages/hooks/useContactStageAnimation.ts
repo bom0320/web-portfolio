@@ -13,6 +13,11 @@ import {
   type ScrollTriggerInstance,
 } from "@/lib/gsap";
 
+import {
+  CONTACT_STAGE_SCROLL_CONFIG,
+  CONTACT_STAGE_SELECTORS,
+} from "../constants";
+
 export function useContactStageAnimation(
   stageRef: RefObject<HTMLElement | null>
 ) {
@@ -21,8 +26,13 @@ export function useContactStageAnimation(
     if (!stage) return;
 
     const ctx = gsap.context(() => {
-      const intro = stage.querySelector<HTMLElement>(".js-contact-intro");
-      const footer = stage.querySelector<HTMLElement>(".js-contact-footer");
+      const intro = stage.querySelector<HTMLElement>(
+        CONTACT_STAGE_SELECTORS.intro
+      );
+
+      const footer = stage.querySelector<HTMLElement>(
+        CONTACT_STAGE_SELECTORS.footer
+      );
 
       const triggers: ScrollTriggerInstance[] = [];
 
@@ -38,10 +48,9 @@ export function useContactStageAnimation(
 
         const introTrigger = createScrollTrigger({
           trigger: intro,
-          start: "top 78%",
-          end: "top 36%",
-          scrub: 1,
-
+          start: CONTACT_STAGE_SCROLL_CONFIG.intro.start,
+          end: CONTACT_STAGE_SCROLL_CONFIG.intro.end,
+          scrub: CONTACT_STAGE_SCROLL_CONFIG.intro.scrub,
           onUpdate: (self) => {
             introController?.setProgress(self.progress);
           },
@@ -55,9 +64,9 @@ export function useContactStageAnimation(
 
         const footerTrigger = createScrollTrigger({
           trigger: footer,
-          start: "top 105%",
-          end: "top 72%",
-          scrub: 1,
+          start: CONTACT_STAGE_SCROLL_CONFIG.footer.start,
+          end: CONTACT_STAGE_SCROLL_CONFIG.footer.end,
+          scrub: CONTACT_STAGE_SCROLL_CONFIG.footer.scrub,
           animation: footerTimeline,
         });
 

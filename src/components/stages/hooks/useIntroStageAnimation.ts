@@ -8,6 +8,8 @@ import HeroToLifeAnimation from "@/animations/transitions/heroToLife";
 import LifeToAboutAnimation from "@/animations/transitions/lifeToAbout";
 import { createScrollTrigger, refreshScrollTrigger } from "@/lib/gsap";
 
+import { INTRO_STAGE_SCROLL_CONFIG, INTRO_STAGE_SELECTORS } from "../constants";
+
 const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
 export function useIntroStageAnimation() {
@@ -22,25 +24,43 @@ export function useIntroStageAnimation() {
       aboutSceneController.setProgress(0);
 
       const heroToLifeTrigger = createScrollTrigger({
-        trigger: ".js-intro-stage",
-        start: "top top",
-        end: () => `+=${window.innerHeight * 1.2}`,
-        scrub: 1.2,
+        trigger: INTRO_STAGE_SELECTORS.root,
+        start: INTRO_STAGE_SCROLL_CONFIG.heroToLife.start,
+        end: () =>
+          `+=${
+            window.innerHeight *
+            INTRO_STAGE_SCROLL_CONFIG.heroToLife.endMultiplier
+          }`,
+        scrub: INTRO_STAGE_SCROLL_CONFIG.heroToLife.scrub,
         onUpdate: (self) => {
           heroToLifeController.setProgress(self.progress);
         },
       });
 
       const lifeToAboutTrigger = createScrollTrigger({
-        trigger: ".js-intro-stage",
-        start: () => `top+=${window.innerHeight * 1.1} top`,
-        end: () => `+=${window.innerHeight * 3.2}`,
-        scrub: 1.2,
+        trigger: INTRO_STAGE_SELECTORS.root,
+        start: () =>
+          `top+=${
+            window.innerHeight *
+            INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.startOffsetMultiplier
+          } top`,
+        end: () =>
+          `+=${
+            window.innerHeight *
+            INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.endMultiplier
+          }`,
+        scrub: INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.scrub,
         onUpdate: (self) => {
           const progress = self.progress;
 
-          const enterProgress = clampProgress(progress / 0.32);
-          const sceneProgress = clampProgress((progress - 0.32) / 0.68);
+          const enterProgress = clampProgress(
+            progress / INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.enterRatio
+          );
+
+          const sceneProgress = clampProgress(
+            (progress - INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.enterRatio) /
+              INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.sceneRatio
+          );
 
           lifeToAboutController.setProgress(enterProgress);
           aboutSceneController.setProgress(sceneProgress);
