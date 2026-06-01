@@ -17,10 +17,11 @@
 
   background: #000;
 
-  transform: translateY(100vh);
-  visibility: hidden;
+  transform: none;
+  opacity: 1;
+  visibility: visible;
 
-  will-change: transform;
+  will-change: opacity;
 }
 
 .life-motion__viewport {

@@ -26,7 +26,7 @@ export default function LifeMotionScene() {
           className="life-motion__viewport js-life-motion-viewport"
           ref={viewportRef}
         >
-          <div className="life-motion__track">
+          <div className="life-motion__track js-life-motion-track">
             <div
               className="life-motion__row-window life-motion__row-window--top js-life-motion-top"
               ref={topWindowRef}
