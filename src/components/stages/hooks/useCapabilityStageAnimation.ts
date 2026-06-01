@@ -30,6 +30,7 @@ import {
   CAPABILITY_STAGE_SCROLL_CONFIG,
   CAPABILITY_STAGE_SELECTORS,
 } from "../constants";
+import { createMaxProgressScrollTrigger } from "./helpers/createMaxProgressScrollTrigger";
 
 type UseCapabilityStageAnimationReturn = {
   activeNavigatorIndex: number;
@@ -113,83 +114,43 @@ export function useCapabilityStageAnimation(
 
       triggers.push(introTrigger);
 
-      let structureMaxProgress = 0;
-
-      const structureTrigger = createScrollTrigger({
+      const structureTrigger = createMaxProgressScrollTrigger({
         trigger: structureElement,
         start: CAPABILITY_STAGE_SCROLL_CONFIG.structure.start,
         end: CAPABILITY_STAGE_SCROLL_CONFIG.structure.end,
         scrub: CAPABILITY_STAGE_SCROLL_CONFIG.structure.scrub,
-        onUpdate: (self) => {
-          structureMaxProgress = Math.max(structureMaxProgress, self.progress);
-          structureController.setProgress(structureMaxProgress);
-        },
-        onLeaveBack: () => {
-          structureMaxProgress = 0;
-          structureController.setProgress(0);
-        },
+        controller: structureController,
       });
 
       triggers.push(structureTrigger);
 
-      let aiMaxProgress = 0;
-
-      const aiTrigger = createScrollTrigger({
+      const aiTrigger = createMaxProgressScrollTrigger({
         trigger: aiElement,
         start: CAPABILITY_STAGE_SCROLL_CONFIG.ai.start,
         end: CAPABILITY_STAGE_SCROLL_CONFIG.ai.end,
         scrub: CAPABILITY_STAGE_SCROLL_CONFIG.ai.scrub,
-        onUpdate: (self) => {
-          aiMaxProgress = Math.max(aiMaxProgress, self.progress);
-          aiController.setProgress(aiMaxProgress);
-        },
-        onLeaveBack: () => {
-          aiMaxProgress = 0;
-          aiController.setProgress(0);
-        },
+        controller: aiController,
       });
 
       triggers.push(aiTrigger);
 
-      let visualMaxProgress = 0;
-
-      const visualTrigger = createScrollTrigger({
+      const visualTrigger = createMaxProgressScrollTrigger({
         trigger: visualElement,
         start: CAPABILITY_STAGE_SCROLL_CONFIG.visual.start,
         end: CAPABILITY_STAGE_SCROLL_CONFIG.visual.end,
         scrub: CAPABILITY_STAGE_SCROLL_CONFIG.visual.scrub,
-        onUpdate: (self) => {
-          visualMaxProgress = Math.max(visualMaxProgress, self.progress);
-          visualController.setProgress(visualMaxProgress);
-        },
-        onLeaveBack: () => {
-          visualMaxProgress = 0;
-          visualController.setProgress(0);
-        },
+        controller: visualController,
       });
 
       triggers.push(visualTrigger);
 
       if (navigatorIntroElement) {
-        let navigatorIntroMaxProgress = 0;
-
-        const navigatorIntroTrigger = createScrollTrigger({
+        const navigatorIntroTrigger = createMaxProgressScrollTrigger({
           trigger: navigatorIntroElement,
           start: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorIntro.start,
           end: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorIntro.end,
           scrub: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorIntro.scrub,
-          onUpdate: (self) => {
-            navigatorIntroMaxProgress = Math.max(
-              navigatorIntroMaxProgress,
-              self.progress
-            );
-
-            navigatorIntroController.setProgress(navigatorIntroMaxProgress);
-          },
-          onLeaveBack: () => {
-            navigatorIntroMaxProgress = 0;
-            navigatorIntroController.setProgress(0);
-          },
+          controller: navigatorIntroController,
         });
 
         triggers.push(navigatorIntroTrigger);
@@ -238,21 +199,12 @@ export function useCapabilityStageAnimation(
       }
 
       if (closingElement) {
-        let closingMaxProgress = 0;
-
-        const closingTrigger = createScrollTrigger({
+        const closingTrigger = createMaxProgressScrollTrigger({
           trigger: closingElement,
           start: CAPABILITY_STAGE_SCROLL_CONFIG.closing.start,
           end: CAPABILITY_STAGE_SCROLL_CONFIG.closing.end,
           scrub: CAPABILITY_STAGE_SCROLL_CONFIG.closing.scrub,
-          onUpdate: (self) => {
-            closingMaxProgress = Math.max(closingMaxProgress, self.progress);
-            closingController.setProgress(closingMaxProgress);
-          },
-          onLeaveBack: () => {
-            closingMaxProgress = 0;
-            closingController.setProgress(0);
-          },
+          controller: closingController,
         });
 
         triggers.push(closingTrigger);
