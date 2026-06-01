@@ -17,6 +17,10 @@ const HeroToLifeAnimation = {
       ".js-life-motion-stage"
     );
 
+    const lifeTrack = document.querySelector<HTMLElement>(
+      ".js-life-motion-track"
+    );
+
     const topRow = document.querySelector<HTMLElement>(
       ".js-life-motion-top .life-motion__row"
     );
@@ -25,7 +29,7 @@ const HeroToLifeAnimation = {
       ".js-life-motion-bottom .life-motion__row"
     );
 
-    if (!lifeStage) {
+    if (!lifeStage || !lifeTrack) {
       return {
         setProgress: () => {},
         destroy: () => {},
@@ -33,11 +37,17 @@ const HeroToLifeAnimation = {
     }
 
     gsap.set(lifeStage, {
-      y: "52vh",
-      scale: 0.78,
-      opacity: 0.42,
-      filter: "brightness(0.5)",
+      y: "54vh",
+      scale: 0.74,
+      opacity: 0.58,
+      filter: "brightness(0.62)",
       transformOrigin: "center center",
+    });
+
+    gsap.set(lifeTrack, {
+      "--life-edge-start": 0,
+      "--life-edge-soft": 0.45,
+      "--life-edge-strong": 0.9,
     });
 
     if (topRow) {
@@ -83,6 +93,19 @@ const HeroToLifeAnimation = {
       0
     );
 
+    /*
+      LifeMotion이 꽉 차게 보일수록 좌우 페이드 제거
+    */
+    timeline.to(
+      lifeTrack,
+      {
+        "--life-edge-start": 1,
+        "--life-edge-soft": 1,
+        "--life-edge-strong": 1,
+      },
+      0
+    );
+
     if (topRow) {
       timeline.to(
         topRow,
@@ -111,8 +134,9 @@ const HeroToLifeAnimation = {
       destroy() {
         timeline.kill();
 
-        gsap.set([heroItems, lifeStage, topRow, bottomRow], {
-          clearProps: "transform,opacity,visibility,filter",
+        gsap.set([heroItems, lifeStage, lifeTrack, topRow, bottomRow], {
+          clearProps:
+            "transform,opacity,visibility,filter,--life-edge-start,--life-edge-soft,--life-edge-strong",
         });
       },
     };
