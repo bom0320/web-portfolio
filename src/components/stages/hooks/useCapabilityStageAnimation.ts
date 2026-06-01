@@ -24,17 +24,28 @@ import {
   createScrollTrigger,
   refreshScrollTrigger,
   type ScrollTriggerInstance,
+  type ScrollTriggerVars,
 } from "@/lib/gsap";
 
 import {
   CAPABILITY_STAGE_SCROLL_CONFIG,
   CAPABILITY_STAGE_SELECTORS,
 } from "../constants";
-import { createMaxProgressScrollTrigger } from "./helpers/createMaxProgressScrollTrigger";
+import { createPersistentProgressScrollTrigger } from "./helpers/createPersistentProgressScrollTrigger";
 
 type UseCapabilityStageAnimationReturn = {
   activeNavigatorIndex: number;
   setActiveNavigatorIndex: Dispatch<SetStateAction<number>>;
+};
+
+type ProgressController = {
+  setProgress: (progress: number) => void;
+};
+
+type OnceTriggerConfig = {
+  start: ScrollTriggerVars["start"];
+  end: ScrollTriggerVars["end"];
+  scrub: ScrollTriggerVars["scrub"];
 };
 
 function getCapabilityNavigatorIndex(progress: number, total: number) {
@@ -102,113 +113,111 @@ export function useCapabilityStageAnimation(
 
       const triggers: ScrollTriggerInstance[] = [];
 
-      const introTrigger = createScrollTrigger({
-        trigger: CAPABILITY_STAGE_SELECTORS.introPinned,
-        start: CAPABILITY_STAGE_SCROLL_CONFIG.intro.start,
-        end: CAPABILITY_STAGE_SCROLL_CONFIG.intro.end,
-        scrub: CAPABILITY_STAGE_SCROLL_CONFIG.intro.scrub,
-        onUpdate: (self) => {
-          introController.setProgress(self.progress);
-        },
-      });
+      const addTrigger = (trigger: ScrollTriggerInstance) => {
+        triggers.push(trigger);
+      };
 
-      triggers.push(introTrigger);
+      const addOnceProgressTrigger = (
+        triggerElement: HTMLElement | null,
+        config: OnceTriggerConfig,
+        controller: ProgressController
+      ) => {
+        if (!triggerElement) return;
 
-      const structureTrigger = createMaxProgressScrollTrigger({
-        trigger: structureElement,
-        start: CAPABILITY_STAGE_SCROLL_CONFIG.structure.start,
-        end: CAPABILITY_STAGE_SCROLL_CONFIG.structure.end,
-        scrub: CAPABILITY_STAGE_SCROLL_CONFIG.structure.scrub,
-        controller: structureController,
-      });
+        addTrigger(
+          createPersistentProgressScrollTrigger({
+            trigger: triggerElement,
+            start: config.start,
+            end: config.end,
+            scrub: config.scrub,
+            controller,
+          })
+        );
+      };
 
-      triggers.push(structureTrigger);
+      addTrigger(
+        createScrollTrigger({
+          trigger: CAPABILITY_STAGE_SELECTORS.introPinned,
+          start: CAPABILITY_STAGE_SCROLL_CONFIG.intro.start,
+          end: CAPABILITY_STAGE_SCROLL_CONFIG.intro.end,
+          scrub: CAPABILITY_STAGE_SCROLL_CONFIG.intro.scrub,
+          onUpdate: (self) => {
+            introController.setProgress(self.progress);
+          },
+        })
+      );
 
-      const aiTrigger = createMaxProgressScrollTrigger({
-        trigger: aiElement,
-        start: CAPABILITY_STAGE_SCROLL_CONFIG.ai.start,
-        end: CAPABILITY_STAGE_SCROLL_CONFIG.ai.end,
-        scrub: CAPABILITY_STAGE_SCROLL_CONFIG.ai.scrub,
-        controller: aiController,
-      });
+      addOnceProgressTrigger(
+        structureElement,
+        CAPABILITY_STAGE_SCROLL_CONFIG.structure,
+        structureController
+      );
 
-      triggers.push(aiTrigger);
+      addOnceProgressTrigger(
+        aiElement,
+        CAPABILITY_STAGE_SCROLL_CONFIG.ai,
+        aiController
+      );
 
-      const visualTrigger = createMaxProgressScrollTrigger({
-        trigger: visualElement,
-        start: CAPABILITY_STAGE_SCROLL_CONFIG.visual.start,
-        end: CAPABILITY_STAGE_SCROLL_CONFIG.visual.end,
-        scrub: CAPABILITY_STAGE_SCROLL_CONFIG.visual.scrub,
-        controller: visualController,
-      });
+      addOnceProgressTrigger(
+        visualElement,
+        CAPABILITY_STAGE_SCROLL_CONFIG.visual,
+        visualController
+      );
 
-      triggers.push(visualTrigger);
-
-      if (navigatorIntroElement) {
-        const navigatorIntroTrigger = createMaxProgressScrollTrigger({
-          trigger: navigatorIntroElement,
-          start: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorIntro.start,
-          end: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorIntro.end,
-          scrub: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorIntro.scrub,
-          controller: navigatorIntroController,
-        });
-
-        triggers.push(navigatorIntroTrigger);
-      }
+      addOnceProgressTrigger(
+        navigatorIntroElement,
+        CAPABILITY_STAGE_SCROLL_CONFIG.navigatorIntro,
+        navigatorIntroController
+      );
 
       if (navigatorPinElement) {
-        const navigatorTrigger = createScrollTrigger({
-          trigger: navigatorPinElement,
-          start: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.start,
-          end: () =>
-            `+=${
-              window.innerHeight *
-              (CAPABILITY_NAVIGATOR_ITEMS.length - 1) *
-              CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.distanceMultiplier
-            }`,
-          pin: true,
-          pinSpacing: true,
-          pinType: "transform",
-          scrub: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.scrub,
-          anticipatePin:
-            CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.anticipatePin,
-          onUpdate: (self) => {
-            const nextIndex = getCapabilityNavigatorIndex(
-              self.progress,
-              CAPABILITY_NAVIGATOR_ITEMS.length
-            );
+        addTrigger(
+          createScrollTrigger({
+            trigger: navigatorPinElement,
+            start: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.start,
+            end: () =>
+              `+=${
+                window.innerHeight *
+                (CAPABILITY_NAVIGATOR_ITEMS.length - 1) *
+                CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.distanceMultiplier
+              }`,
+            pin: true,
+            pinSpacing: true,
+            pinType: "transform",
+            scrub: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.scrub,
+            anticipatePin:
+              CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.anticipatePin,
+            onUpdate: (self) => {
+              const nextIndex = getCapabilityNavigatorIndex(
+                self.progress,
+                CAPABILITY_NAVIGATOR_ITEMS.length
+              );
 
-            if (nextIndex === previousNavigatorIndexRef.current) return;
+              if (nextIndex === previousNavigatorIndexRef.current) return;
 
-            previousNavigatorIndexRef.current = nextIndex;
-            setActiveNavigatorIndex(nextIndex);
+              previousNavigatorIndexRef.current = nextIndex;
+              setActiveNavigatorIndex(nextIndex);
 
-            const nextLayer = stage.querySelector<HTMLElement>(
-              `${CAPABILITY_STAGE_SELECTORS.navigatorLayer}[data-index="${nextIndex}"]`
-            );
+              const nextLayer = stage.querySelector<HTMLElement>(
+                `${CAPABILITY_STAGE_SELECTORS.navigatorLayer}[data-index="${nextIndex}"]`
+              );
 
-            if (!nextLayer) return;
+              if (!nextLayer) return;
 
-            CapabilityNavigatorAnimation.createLayerTransition({
-              nextLayer,
-            });
-          },
-        });
-
-        triggers.push(navigatorTrigger);
+              CapabilityNavigatorAnimation.createLayerTransition({
+                nextLayer,
+              });
+            },
+          })
+        );
       }
 
-      if (closingElement) {
-        const closingTrigger = createMaxProgressScrollTrigger({
-          trigger: closingElement,
-          start: CAPABILITY_STAGE_SCROLL_CONFIG.closing.start,
-          end: CAPABILITY_STAGE_SCROLL_CONFIG.closing.end,
-          scrub: CAPABILITY_STAGE_SCROLL_CONFIG.closing.scrub,
-          controller: closingController,
-        });
-
-        triggers.push(closingTrigger);
-      }
+      addOnceProgressTrigger(
+        closingElement,
+        CAPABILITY_STAGE_SCROLL_CONFIG.closing,
+        closingController
+      );
 
       refreshScrollTrigger();
 
