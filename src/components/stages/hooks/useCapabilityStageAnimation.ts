@@ -11,8 +11,6 @@ import {
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import { CAPABILITY_NAVIGATOR_ITEMS } from "@/data/capability";
-
 import {
   AICapabilityAnimation,
   CapabilityClosingAnimation,
@@ -22,8 +20,8 @@ import {
   StructureCapabilityAnimation,
   VisualCapabilityAnimation,
 } from "@/animations/capability";
-
-gsap.registerPlugin(ScrollTrigger);
+import { CAPABILITY_NAVIGATOR_ITEMS } from "@/data/capability";
+import { refreshScrollTrigger } from "@/lib/gsap";
 
 type UseCapabilityStageAnimationReturn = {
   activeNavigatorIndex: number;
@@ -32,14 +30,6 @@ type UseCapabilityStageAnimationReturn = {
 
 function getCapabilityNavigatorIndex(progress: number, total: number) {
   return Math.round(progress * (total - 1));
-}
-
-function refreshScrollTrigger() {
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      ScrollTrigger.refresh();
-    });
-  });
 }
 
 export function useCapabilityStageAnimation(
@@ -126,10 +116,12 @@ export function useCapabilityStageAnimation(
         scrub: 1.1,
         invalidateOnRefresh: true,
         markers: true,
+
         onUpdate: (self) => {
           structureMaxProgress = Math.max(structureMaxProgress, self.progress);
           structureController.setProgress(structureMaxProgress);
         },
+
         onLeaveBack: () => {
           structureMaxProgress = 0;
           structureController.setProgress(0);
@@ -147,10 +139,12 @@ export function useCapabilityStageAnimation(
         scrub: 1,
         invalidateOnRefresh: true,
         markers: true,
+
         onUpdate: (self) => {
           aiMaxProgress = Math.max(aiMaxProgress, self.progress);
           aiController.setProgress(aiMaxProgress);
         },
+
         onLeaveBack: () => {
           aiMaxProgress = 0;
           aiController.setProgress(0);
@@ -168,10 +162,12 @@ export function useCapabilityStageAnimation(
         scrub: 1,
         invalidateOnRefresh: true,
         markers: true,
+
         onUpdate: (self) => {
           visualMaxProgress = Math.max(visualMaxProgress, self.progress);
           visualController.setProgress(visualMaxProgress);
         },
+
         onLeaveBack: () => {
           visualMaxProgress = 0;
           visualController.setProgress(0);
@@ -190,6 +186,7 @@ export function useCapabilityStageAnimation(
           scrub: 1,
           invalidateOnRefresh: true,
           markers: true,
+
           onUpdate: (self) => {
             navigatorIntroMaxProgress = Math.max(
               navigatorIntroMaxProgress,
@@ -198,6 +195,7 @@ export function useCapabilityStageAnimation(
 
             navigatorIntroController.setProgress(navigatorIntroMaxProgress);
           },
+
           onLeaveBack: () => {
             navigatorIntroMaxProgress = 0;
             navigatorIntroController.setProgress(0);
@@ -224,6 +222,7 @@ export function useCapabilityStageAnimation(
           anticipatePin: 1,
           invalidateOnRefresh: true,
           markers: true,
+
           onUpdate: (self) => {
             const nextIndex = getCapabilityNavigatorIndex(
               self.progress,
@@ -260,10 +259,12 @@ export function useCapabilityStageAnimation(
           scrub: 1.6,
           invalidateOnRefresh: true,
           markers: true,
+
           onUpdate: (self) => {
             closingMaxProgress = Math.max(closingMaxProgress, self.progress);
             closingController.setProgress(closingMaxProgress);
           },
+
           onLeaveBack: () => {
             closingMaxProgress = 0;
             closingController.setProgress(0);

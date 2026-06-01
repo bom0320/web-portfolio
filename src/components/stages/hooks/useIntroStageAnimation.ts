@@ -7,8 +7,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { AboutSceneAnimation } from "@/animations/about";
 import HeroToLifeAnimation from "@/animations/transitions/heroToLife";
 import LifeToAboutAnimation from "@/animations/transitions/lifeToAbout";
-
-gsap.registerPlugin(ScrollTrigger);
+import { refreshScrollTrigger } from "@/lib/gsap";
 
 const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
@@ -51,6 +50,8 @@ export function useIntroStageAnimation() {
           aboutSceneController.setProgress(sceneProgress);
         },
       });
+
+      refreshScrollTrigger();
 
       return () => {
         heroToLifeTrigger.kill();

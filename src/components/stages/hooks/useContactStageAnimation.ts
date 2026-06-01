@@ -8,16 +8,7 @@ import {
   createContactFooterAnimation,
   createContactIntroAnimation,
 } from "@/animations/contact";
-
-gsap.registerPlugin(ScrollTrigger);
-
-function refreshScrollTrigger() {
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      ScrollTrigger.refresh();
-    });
-  });
-}
+import { refreshScrollTrigger } from "@/lib/gsap";
 
 export function useContactStageAnimation(
   stageRef: RefObject<HTMLElement | null>
@@ -49,6 +40,7 @@ export function useContactStageAnimation(
           scrub: 1,
           invalidateOnRefresh: true,
           markers: true,
+
           onUpdate: (self) => {
             introController?.setProgress(self.progress);
           },
