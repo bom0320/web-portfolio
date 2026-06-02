@@ -20,14 +20,10 @@ import {
 const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
 function getLifeToAboutProgress(progress: number) {
-  const enterProgress = clampProgress(
-    progress / INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.enterRatio
-  );
+  const { enterRatio, sceneRatio } = INTRO_STAGE_SCROLL_CONFIG.lifeToAbout;
 
-  const sceneProgress = clampProgress(
-    (progress - INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.enterRatio) /
-      INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.sceneRatio
-  );
+  const enterProgress = clampProgress(progress / enterRatio);
+  const sceneProgress = clampProgress((progress - enterRatio) / sceneRatio);
 
   return {
     enterProgress,
