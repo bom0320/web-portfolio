@@ -8,7 +8,7 @@ import {
   VisualCapabilityAnimation,
 } from "@/animations/capability";
 
-import type { CapabilityStageElements } from "./getCapabilityStageElements";
+import type { CapabilityStageElements } from "./capabilityStageElements";
 
 export function createCapabilityStageControllers(
   elements: CapabilityStageElements
@@ -29,3 +29,26 @@ export function createCapabilityStageControllers(
 export type CapabilityStageControllers = ReturnType<
   typeof createCapabilityStageControllers
 >;
+
+export function resetCapabilityProgressControllers(
+  controllers: CapabilityStageControllers
+) {
+  controllers.intro.setProgress(0);
+  controllers.structure.setProgress(0);
+  controllers.ai.setProgress(0);
+  controllers.visual.setProgress(0);
+  controllers.navigatorIntro.setProgress(0);
+  controllers.closing.setProgress(0);
+}
+
+export function destroyCapabilityStageControllers(
+  controllers: CapabilityStageControllers
+) {
+  controllers.intro.destroy();
+  controllers.introProof.destroy();
+  controllers.structure.destroy();
+  controllers.ai.destroy();
+  controllers.visual.destroy();
+  controllers.navigatorIntro.destroy();
+  controllers.closing.destroy();
+}

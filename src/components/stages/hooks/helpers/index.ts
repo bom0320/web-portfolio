@@ -1,20 +1,19 @@
-export { addProgressTrigger } from "./addProgressTrigger";
-export { addPersistentProgressTrigger } from "./addPersistentProgressTrigger";
-
 export {
   createCapabilityStageControllers,
+  destroyCapabilityStageControllers,
+  resetCapabilityProgressControllers,
   type CapabilityStageControllers,
-} from "./createCapabilityStageControllers";
-
-export { createPersistentProgressScrollTrigger } from "./createPersistentProgressScrollTrigger";
-
-export { destroyCapabilityStageControllers } from "./destroyCapabilityStageControllers";
+} from "./capabilityStageControllers";
 
 export {
   getCapabilityStageElements,
   type CapabilityStageElements,
-} from "./getCapabilityStageElements";
+} from "./capabilityStageElements";
 
-export { getPersistentProgressTargets } from "./getPersistentProgressTargets";
+export {
+  addPersistentProgressTrigger,
+  addProgressTrigger,
+  getPersistentProgressTriggerTargets,
+} from "./capabilityProgressTriggers";
 
-export { resetCapabilityProgressControllers } from "./resetCapabilityProgressControllers";
+export { createPersistentProgressScrollTrigger } from "./createPersistentProgressScrollTrigger";

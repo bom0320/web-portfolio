@@ -28,7 +28,7 @@ import {
   createCapabilityStageControllers,
   destroyCapabilityStageControllers,
   getCapabilityStageElements,
-  getPersistentProgressTargets,
+  getPersistentProgressTriggerTargets,
   resetCapabilityProgressControllers,
 } from "./helpers";
 
@@ -70,7 +70,7 @@ export function useCapabilityStageAnimation(
         addTrigger,
       });
 
-      getPersistentProgressTargets(elements, controllers).forEach(
+      getPersistentProgressTriggerTargets(elements, controllers).forEach(
         ({ element, config, controller }) => {
           addPersistentProgressTrigger({
             triggerElement: element,
