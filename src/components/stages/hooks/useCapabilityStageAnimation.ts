@@ -95,7 +95,8 @@ export function useCapabilityStageAnimation(
               `+=${
                 window.innerHeight *
                 (CAPABILITY_NAVIGATOR_ITEMS.length - 1) *
-                CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.distanceMultiplier
+                CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin
+                  .itemScrollLengthMultiplier
               }`,
             pin: true,
             pinSpacing: true,

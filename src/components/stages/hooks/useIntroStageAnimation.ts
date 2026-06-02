@@ -16,6 +16,22 @@ import { INTRO_STAGE_SCROLL_CONFIG, INTRO_STAGE_SELECTORS } from "../constants";
 
 const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
+function getLifeToAboutProgress(progress: number) {
+  const enterProgress = clampProgress(
+    progress / INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.enterRatio
+  );
+
+  const sceneProgress = clampProgress(
+    (progress - INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.enterRatio) /
+      INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.sceneRatio
+  );
+
+  return {
+    enterProgress,
+    sceneProgress,
+  };
+}
+
 export function useIntroStageAnimation() {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -31,14 +47,18 @@ export function useIntroStageAnimation() {
 
       const triggers: ScrollTriggerInstance[] = [];
 
-      triggers.push(
+      const registerTrigger = (trigger: ScrollTriggerInstance) => {
+        triggers.push(trigger);
+      };
+
+      registerTrigger(
         createScrollTrigger({
           trigger: INTRO_STAGE_SELECTORS.root,
           start: INTRO_STAGE_SCROLL_CONFIG.heroToLife.start,
           end: () =>
             `+=${
               window.innerHeight *
-              INTRO_STAGE_SCROLL_CONFIG.heroToLife.endMultiplier
+              INTRO_STAGE_SCROLL_CONFIG.heroToLife.scrollLengthMultiplier
             }`,
           scrub: INTRO_STAGE_SCROLL_CONFIG.heroToLife.scrub,
           onUpdate: (self) => {
@@ -47,7 +67,7 @@ export function useIntroStageAnimation() {
         })
       );
 
-      triggers.push(
+      registerTrigger(
         createScrollTrigger({
           trigger: INTRO_STAGE_SELECTORS.root,
           start: () =>
@@ -58,19 +78,12 @@ export function useIntroStageAnimation() {
           end: () =>
             `+=${
               window.innerHeight *
-              INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.endMultiplier
+              INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.scrollLengthMultiplier
             }`,
           scrub: INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.scrub,
           onUpdate: (self) => {
-            const progress = self.progress;
-
-            const enterProgress = clampProgress(
-              progress / INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.enterRatio
-            );
-
-            const sceneProgress = clampProgress(
-              (progress - INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.enterRatio) /
-                INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.sceneRatio
+            const { enterProgress, sceneProgress } = getLifeToAboutProgress(
+              self.progress
             );
 
             controllers.lifeToAbout.setProgress(enterProgress);

@@ -36,7 +36,7 @@ export const CAPABILITY_STAGE_SCROLL_CONFIG = {
   navigatorPin: {
     start: "top top",
     scrub: 1,
-    distanceMultiplier: 1.45,
+    itemScrollLengthMultiplier: 1.45,
     anticipatePin: 1,
   },
 
