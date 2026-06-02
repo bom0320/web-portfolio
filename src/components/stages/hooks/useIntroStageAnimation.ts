@@ -1,18 +1,21 @@
 "use client";
 
-import { useLayoutEffect } from "react";
+import { type RefObject, useLayoutEffect } from "react";
 import gsap from "gsap";
 
-import { AboutSceneAnimation } from "@/animations/about";
-import HeroToLifeAnimation from "@/animations/transitions/heroToLife";
-import LifeToAboutAnimation from "@/animations/transitions/lifeToAbout";
 import {
   createScrollTrigger,
   refreshScrollTrigger,
   type ScrollTriggerInstance,
 } from "@/lib/gsap";
 
-import { INTRO_STAGE_SCROLL_CONFIG, INTRO_STAGE_SELECTORS } from "../constants";
+import { INTRO_STAGE_SCROLL_CONFIG } from "../constants";
+import {
+  createIntroStageControllers,
+  destroyIntroStageControllers,
+  getIntroStageElements,
+  resetIntroStageControllers,
+} from "./helpers";
 
 const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
@@ -32,18 +35,18 @@ function getLifeToAboutProgress(progress: number) {
   };
 }
 
-export function useIntroStageAnimation() {
+export function useIntroStageAnimation(
+  stageRef: RefObject<HTMLElement | null>
+) {
   useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const controllers = {
-        heroToLife: HeroToLifeAnimation.create(),
-        lifeToAbout: LifeToAboutAnimation.create(),
-        aboutScene: AboutSceneAnimation.create(),
-      };
+    const stage = stageRef.current;
+    if (!stage) return;
 
-      controllers.heroToLife.setProgress(0);
-      controllers.lifeToAbout.setProgress(0);
-      controllers.aboutScene.setProgress(0);
+    const ctx = gsap.context(() => {
+      const elements = getIntroStageElements(stage);
+      const controllers = createIntroStageControllers(elements);
+
+      resetIntroStageControllers(controllers);
 
       const triggers: ScrollTriggerInstance[] = [];
 
@@ -53,7 +56,7 @@ export function useIntroStageAnimation() {
 
       registerTrigger(
         createScrollTrigger({
-          trigger: INTRO_STAGE_SELECTORS.root,
+          trigger: elements.root,
           start: INTRO_STAGE_SCROLL_CONFIG.heroToLife.start,
           end: () =>
             `+=${
@@ -69,7 +72,7 @@ export function useIntroStageAnimation() {
 
       registerTrigger(
         createScrollTrigger({
-          trigger: INTRO_STAGE_SELECTORS.root,
+          trigger: elements.root,
           start: () =>
             `top+=${
               window.innerHeight *
@@ -99,12 +102,10 @@ export function useIntroStageAnimation() {
           trigger.kill();
         });
 
-        Object.values(controllers).forEach((controller) => {
-          controller.destroy();
-        });
+        destroyIntroStageControllers(controllers);
       };
-    });
+    }, stage);
 
     return () => ctx.revert();
-  }, []);
+  }, [stageRef]);
 }

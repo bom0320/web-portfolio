@@ -8,9 +8,7 @@ type LifeToAboutController = {
 const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
 const LifeToAboutAnimation = {
-  create(): LifeToAboutController {
-    const aboutScenes = document.querySelector<HTMLElement>(".js-about-scenes");
-
+  create(aboutScenes: HTMLElement | null): LifeToAboutController {
     if (!aboutScenes) {
       return {
         setProgress: () => {},

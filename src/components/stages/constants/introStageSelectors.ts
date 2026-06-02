@@ -1,3 +1,5 @@
 export const INTRO_STAGE_SELECTORS = {
-  root: ".js-intro-stage",
+  hero: ".js-intro-hero",
+  lifeMotion: ".js-intro-life-motion",
+  about: ".js-intro-about",
 } as const;

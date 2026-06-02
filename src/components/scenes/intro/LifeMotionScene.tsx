@@ -16,7 +16,7 @@ export default function LifeMotionScene() {
   }, []);
 
   return (
-    <section className="life-motion" id="life">
+    <section className="life-motion js-intro-life-motion" id="life">
       <div className="life-motion__enter js-life-motion-enter">
         <div className="life-motion__viewport js-life-motion-viewport">
           <div className="life-motion__stage js-life-motion-stage">

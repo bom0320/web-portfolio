@@ -1,14 +1,10 @@
 "use client";
 
-import { useRef } from "react";
-
 import { HeroContent, HeroVisual } from "@/components/features/hero";
 
 export default function HeroScene() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-
   return (
-    <section className="hero" id="home" ref={sectionRef}>
+    <section className="hero js-intro-hero" id="home">
       <div className="hero__inner">
         <div className="hero__body">
           <HeroContent />
