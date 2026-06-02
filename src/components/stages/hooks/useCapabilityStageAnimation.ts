@@ -42,7 +42,7 @@ type ProgressController = {
   setProgress: (progress: number) => void;
 };
 
-type PersistentTriggerConfig = {
+type ProgressTriggerConfig = {
   start: ScrollTriggerVars["start"];
   end: ScrollTriggerVars["end"];
   scrub: ScrollTriggerVars["scrub"];
@@ -113,9 +113,29 @@ export function useCapabilityStageAnimation(
         triggers.push(trigger);
       };
 
+      const addProgressTrigger = (
+        triggerElement: HTMLElement | string | null,
+        config: ProgressTriggerConfig,
+        controller: ProgressController
+      ) => {
+        if (!triggerElement) return;
+
+        addTrigger(
+          createScrollTrigger({
+            trigger: triggerElement,
+            start: config.start,
+            end: config.end,
+            scrub: config.scrub,
+            onUpdate: (self) => {
+              controller.setProgress(self.progress);
+            },
+          })
+        );
+      };
+
       const addPersistentProgressTrigger = (
         triggerElement: HTMLElement | null,
-        config: PersistentTriggerConfig,
+        config: ProgressTriggerConfig,
         controller: ProgressController
       ) => {
         if (!triggerElement) return;
@@ -131,41 +151,43 @@ export function useCapabilityStageAnimation(
         );
       };
 
-      addTrigger(
-        createScrollTrigger({
-          trigger: CAPABILITY_STAGE_SELECTORS.introPinned,
-          start: CAPABILITY_STAGE_SCROLL_CONFIG.intro.start,
-          end: CAPABILITY_STAGE_SCROLL_CONFIG.intro.end,
-          scrub: CAPABILITY_STAGE_SCROLL_CONFIG.intro.scrub,
-          onUpdate: (self) => {
-            controllers.intro.setProgress(self.progress);
-          },
-        })
+      addProgressTrigger(
+        CAPABILITY_STAGE_SELECTORS.introPinned,
+        CAPABILITY_STAGE_SCROLL_CONFIG.intro,
+        controllers.intro
       );
 
-      addPersistentProgressTrigger(
-        elements.structure,
-        CAPABILITY_STAGE_SCROLL_CONFIG.structure,
-        controllers.structure
-      );
+      const persistentProgressTargets = [
+        {
+          element: elements.structure,
+          config: CAPABILITY_STAGE_SCROLL_CONFIG.structure,
+          controller: controllers.structure,
+        },
+        {
+          element: elements.ai,
+          config: CAPABILITY_STAGE_SCROLL_CONFIG.ai,
+          controller: controllers.ai,
+        },
+        {
+          element: elements.visual,
+          config: CAPABILITY_STAGE_SCROLL_CONFIG.visual,
+          controller: controllers.visual,
+        },
+        {
+          element: elements.navigatorIntro,
+          config: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorIntro,
+          controller: controllers.navigatorIntro,
+        },
+        {
+          element: elements.closing,
+          config: CAPABILITY_STAGE_SCROLL_CONFIG.closing,
+          controller: controllers.closing,
+        },
+      ] as const;
 
-      addPersistentProgressTrigger(
-        elements.ai,
-        CAPABILITY_STAGE_SCROLL_CONFIG.ai,
-        controllers.ai
-      );
-
-      addPersistentProgressTrigger(
-        elements.visual,
-        CAPABILITY_STAGE_SCROLL_CONFIG.visual,
-        controllers.visual
-      );
-
-      addPersistentProgressTrigger(
-        elements.navigatorIntro,
-        CAPABILITY_STAGE_SCROLL_CONFIG.navigatorIntro,
-        controllers.navigatorIntro
-      );
+      persistentProgressTargets.forEach(({ element, config, controller }) => {
+        addPersistentProgressTrigger(element, config, controller);
+      });
 
       if (elements.navigatorPin) {
         addTrigger(
@@ -208,12 +230,6 @@ export function useCapabilityStageAnimation(
           })
         );
       }
-
-      addPersistentProgressTrigger(
-        elements.closing,
-        CAPABILITY_STAGE_SCROLL_CONFIG.closing,
-        controllers.closing
-      );
 
       refreshScrollTrigger();
 
