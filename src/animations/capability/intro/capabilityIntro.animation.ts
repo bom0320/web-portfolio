@@ -22,7 +22,16 @@ const SELECTOR = {
 const TITLE_INITIAL_SCALE = 3.8;
 
 const CapabilityIntroAnimation = {
-  create(scope: HTMLElement): CapabilityIntroController {
+  create(scope: HTMLElement | null): CapabilityIntroController {
+    if (!scope) {
+      console.warn("[CapabilityIntroAnimation] Missing scope");
+
+      return {
+        setProgress: () => {},
+        destroy: () => {},
+      };
+    }
+
     const visualField = scope.querySelector<HTMLElement>(SELECTOR.visualField);
 
     const titleLayer = scope.querySelector<HTMLElement>(SELECTOR.titleLayer);

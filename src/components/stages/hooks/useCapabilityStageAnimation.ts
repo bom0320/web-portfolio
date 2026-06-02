@@ -67,6 +67,9 @@ export function useCapabilityStageAnimation(
         intro: stage.querySelector<HTMLElement>(
           CAPABILITY_STAGE_SELECTORS.intro
         ),
+        introProof: stage.querySelector<HTMLElement>(
+          CAPABILITY_STAGE_SELECTORS.introProof
+        ),
         structure: stage.querySelector<HTMLElement>(
           CAPABILITY_STAGE_SELECTORS.structure
         ),
@@ -86,8 +89,8 @@ export function useCapabilityStageAnimation(
       };
 
       const controllers = {
-        intro: CapabilityIntroAnimation.create(stage),
-        introProof: CapabilityIntroProofAnimation.create(stage),
+        intro: CapabilityIntroAnimation.create(elements.intro),
+        introProof: CapabilityIntroProofAnimation.create(elements.introProof),
         structure: StructureCapabilityAnimation.create(elements.structure),
         ai: AICapabilityAnimation.create(elements.ai),
         visual: VisualCapabilityAnimation.create(elements.visual),

@@ -1,14 +1,12 @@
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+import { createScrollTrigger } from "@/lib/gsap";
 
 type IntroProofController = {
   destroy: () => void;
 };
 
 const SELECTOR = {
-  section: ".js-capability-intro-proof",
   character: ".js-capability-intro-proof-character",
   leftPoints: ".js-capability-intro-proof-point-left",
   rightPoints: ".js-capability-intro-proof-point-right",
@@ -16,14 +14,16 @@ const SELECTOR = {
 } as const;
 
 const CapabilityIntroProofAnimation = {
-  create(scope: HTMLElement): IntroProofController {
-    const section = scope.querySelector<HTMLElement>(SELECTOR.section);
+  create(scope: HTMLElement | null): IntroProofController {
+    if (!scope) {
+      console.warn("[CapabilityIntroProofAnimation] Missing scope");
 
-    if (!section) {
       return {
         destroy: () => {},
       };
     }
+
+    const section = scope;
 
     const character = section.querySelector<HTMLElement>(SELECTOR.character);
     const leftPoints = section.querySelectorAll<HTMLElement>(
@@ -128,11 +128,10 @@ const CapabilityIntroProofAnimation = {
         "-=0.24"
       );
 
-    const trigger = ScrollTrigger.create({
+    const trigger = createScrollTrigger({
       trigger: section,
       start: "top 66%",
       end: "bottom top",
-      invalidateOnRefresh: true,
 
       onEnter: () => {
         timeline.restart();
