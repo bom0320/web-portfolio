@@ -4,19 +4,19 @@ import { type RefObject, useLayoutEffect } from "react";
 import gsap from "gsap";
 
 import {
-  createContactFooterAnimation,
-  createContactIntroAnimation,
-} from "@/animations/contact";
-import {
   createScrollTrigger,
   refreshScrollTrigger,
   type ScrollTriggerInstance,
 } from "@/lib/gsap";
 
+import { CONTACT_STAGE_SCROLL_CONFIG } from "../constants";
 import {
-  CONTACT_STAGE_SCROLL_CONFIG,
-  CONTACT_STAGE_SELECTORS,
-} from "../constants";
+  createContactStageControllers,
+  destroyContactStageControllers,
+  getContactStageElements,
+  resetContactStageControllers,
+  registerProgressTrigger,
+} from "./helpers";
 
 export function useContactStageAnimation(
   stageRef: RefObject<HTMLElement | null>
@@ -26,60 +26,46 @@ export function useContactStageAnimation(
     if (!stage) return;
 
     const ctx = gsap.context(() => {
-      const intro = stage.querySelector<HTMLElement>(
-        CONTACT_STAGE_SELECTORS.intro
-      );
+      const elements = getContactStageElements(stage);
+      const controllers = createContactStageControllers(elements);
 
-      const footer = stage.querySelector<HTMLElement>(
-        CONTACT_STAGE_SELECTORS.footer
-      );
+      resetContactStageControllers(controllers);
 
       const triggers: ScrollTriggerInstance[] = [];
 
-      let introController:
-        | ReturnType<typeof createContactIntroAnimation>
-        | undefined;
+      const registerTrigger = (trigger: ScrollTriggerInstance) => {
+        triggers.push(trigger);
+      };
 
-      let footerTimeline: gsap.core.Timeline | undefined;
-
-      if (intro) {
-        introController = createContactIntroAnimation({ intro });
-        introController.setProgress(0);
-
-        const introTrigger = createScrollTrigger({
-          trigger: intro,
-          start: CONTACT_STAGE_SCROLL_CONFIG.intro.start,
-          end: CONTACT_STAGE_SCROLL_CONFIG.intro.end,
-          scrub: CONTACT_STAGE_SCROLL_CONFIG.intro.scrub,
-          onUpdate: (self) => {
-            introController?.setProgress(self.progress);
-          },
+      if (controllers.intro) {
+        registerProgressTrigger({
+          triggerElement: elements.intro,
+          config: CONTACT_STAGE_SCROLL_CONFIG.intro,
+          controller: controllers.intro,
+          registerTrigger,
         });
-
-        triggers.push(introTrigger);
       }
 
-      if (footer) {
-        footerTimeline = createContactFooterAnimation({ footer });
-
-        const footerTrigger = createScrollTrigger({
-          trigger: footer,
-          start: CONTACT_STAGE_SCROLL_CONFIG.footer.start,
-          end: CONTACT_STAGE_SCROLL_CONFIG.footer.end,
-          scrub: CONTACT_STAGE_SCROLL_CONFIG.footer.scrub,
-          animation: footerTimeline,
-        });
-
-        triggers.push(footerTrigger);
+      if (elements.footer && controllers.footer) {
+        registerTrigger(
+          createScrollTrigger({
+            trigger: elements.footer,
+            start: CONTACT_STAGE_SCROLL_CONFIG.footer.start,
+            end: CONTACT_STAGE_SCROLL_CONFIG.footer.end,
+            scrub: CONTACT_STAGE_SCROLL_CONFIG.footer.scrub,
+            animation: controllers.footer,
+          })
+        );
       }
 
       refreshScrollTrigger();
 
       return () => {
-        triggers.forEach((trigger) => trigger.kill());
+        triggers.forEach((trigger) => {
+          trigger.kill();
+        });
 
-        introController?.destroy();
-        footerTimeline?.kill();
+        destroyContactStageControllers(controllers);
       };
     }, stage);
 

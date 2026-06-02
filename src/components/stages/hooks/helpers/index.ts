@@ -13,3 +13,12 @@ export {
   type IntroStageControllers,
   type IntroStageElements,
 } from "./intro";
+
+export {
+  createContactStageControllers,
+  destroyContactStageControllers,
+  getContactStageElements,
+  resetContactStageControllers,
+  type ContactStageControllers,
+  type ContactStageElements,
+} from "./contact";
