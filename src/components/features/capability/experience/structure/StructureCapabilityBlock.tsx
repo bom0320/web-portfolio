@@ -7,7 +7,7 @@ import StructureCapabilityMap from "./StructureCapabilityMap";
 
 export default function StructureCapabilityBlock() {
   return (
-    <article className="experience-capability-block experience-capability-block--structure js-structure-capability-block">
+    <article className="experience-capability-block experience-capability-block--structure js-capability-structure">
       <div className="experience-capability-block__header experience-capability-block__header--center js-structure-capability-header">
         <p className="experience-capability-block__eyebrow">Structure</p>
 

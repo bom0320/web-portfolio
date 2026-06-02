@@ -4,7 +4,7 @@ import VisualCapabilityGallery from "./VisualCapabilityGallery";
 
 export default function VisualCapabilityBlock() {
   return (
-    <article className="experience-capability-block experience-capability-block--visual js-visual-capability-block">
+    <article className="experience-capability-block experience-capability-block--visual js-capability-visual">
       <div className="experience-capability-block__header experience-capability-block__header--center js-visual-capability-header">
         <p className="experience-capability-block__eyebrow">BEYOND</p>
 
