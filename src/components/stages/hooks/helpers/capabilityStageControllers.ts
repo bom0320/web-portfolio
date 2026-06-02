@@ -34,6 +34,7 @@ export function resetCapabilityProgressControllers(
   controllers: CapabilityStageControllers
 ) {
   controllers.intro.setProgress(0);
+  controllers.introProof.setProgress(0);
   controllers.structure.setProgress(0);
   controllers.ai.setProgress(0);
   controllers.visual.setProgress(0);

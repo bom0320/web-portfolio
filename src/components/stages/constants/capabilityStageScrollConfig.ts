@@ -4,7 +4,11 @@ export const CAPABILITY_STAGE_SCROLL_CONFIG = {
     end: "bottom bottom",
     scrub: 1.2,
   },
-
+  introProof: {
+    start: "top 66%",
+    end: "bottom top",
+    scrub: 1.2,
+  },
   structure: {
     start: "top 78%",
     end: "bottom 62%",

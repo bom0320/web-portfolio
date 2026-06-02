@@ -79,6 +79,11 @@ export function getPersistentProgressTriggerTargets(
 ) {
   return [
     {
+      element: elements.introProof,
+      config: CAPABILITY_STAGE_SCROLL_CONFIG.introProof,
+      controller: controllers.introProof,
+    },
+    {
       element: elements.structure,
       config: CAPABILITY_STAGE_SCROLL_CONFIG.structure,
       controller: controllers.structure,

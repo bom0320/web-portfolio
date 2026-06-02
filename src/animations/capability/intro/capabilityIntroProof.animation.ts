@@ -1,10 +1,11 @@
 import gsap from "gsap";
 
-import { createScrollTrigger } from "@/lib/gsap";
-
 type IntroProofController = {
+  setProgress: (progress: number) => void;
   destroy: () => void;
 };
+
+const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
 const SELECTOR = {
   character: ".js-capability-intro-proof-character",
@@ -19,6 +20,7 @@ const CapabilityIntroProofAnimation = {
       console.warn("[CapabilityIntroProofAnimation] Missing scope");
 
       return {
+        setProgress: () => {},
         destroy: () => {},
       };
     }
@@ -43,6 +45,7 @@ const CapabilityIntroProofAnimation = {
       });
 
       return {
+        setProgress: () => {},
         destroy: () => {},
       };
     }
@@ -54,33 +57,29 @@ const CapabilityIntroProofAnimation = {
       quote,
     ];
 
-    const setInitialState = () => {
-      gsap.set(character, {
-        autoAlpha: 0,
-        y: 40,
-        scale: 0.92,
-        transformOrigin: "center bottom",
-      });
+    gsap.set(character, {
+      autoAlpha: 0,
+      y: 40,
+      scale: 0.92,
+      transformOrigin: "center bottom",
+    });
 
-      gsap.set(leftPoints, {
-        autoAlpha: 0,
-        x: -72,
-        y: 12,
-      });
+    gsap.set(leftPoints, {
+      autoAlpha: 0,
+      x: -72,
+      y: 12,
+    });
 
-      gsap.set(rightPoints, {
-        autoAlpha: 0,
-        x: 72,
-        y: 12,
-      });
+    gsap.set(rightPoints, {
+      autoAlpha: 0,
+      x: 72,
+      y: 12,
+    });
 
-      gsap.set(quote, {
-        autoAlpha: 0,
-        y: 36,
-      });
-    };
-
-    setInitialState();
+    gsap.set(quote, {
+      autoAlpha: 0,
+      y: 36,
+    });
 
     const timeline = gsap.timeline({
       paused: true,
@@ -128,23 +127,11 @@ const CapabilityIntroProofAnimation = {
         "-=0.24"
       );
 
-    const trigger = createScrollTrigger({
-      trigger: section,
-      start: "top 66%",
-      end: "bottom top",
-
-      onEnter: () => {
-        timeline.restart();
-      },
-
-      onLeaveBack: () => {
-        timeline.pause(0);
-        setInitialState();
-      },
-    });
+    const setProgress = (progress: number) => {
+      timeline.progress(clampProgress(progress));
+    };
 
     const destroy = () => {
-      trigger.kill();
       timeline.kill();
 
       gsap.set(animatedElements, {
@@ -153,6 +140,7 @@ const CapabilityIntroProofAnimation = {
     };
 
     return {
+      setProgress,
       destroy,
     };
   },
