@@ -34,14 +34,14 @@ export function useContactStageAnimation(
         triggers.push(trigger);
       };
 
-      registerProgressTrigger({
+      registerMaxProgressTrigger({
         triggerElement: elements.intro,
         config: CONTACT_STAGE_SCROLL_CONFIG.intro,
         controller: controllers.intro,
         registerTrigger,
       });
 
-      registerMaxProgressTrigger({
+      registerProgressTrigger({
         triggerElement: elements.footer,
         config: CONTACT_STAGE_SCROLL_CONFIG.footer,
         controller: controllers.footer,

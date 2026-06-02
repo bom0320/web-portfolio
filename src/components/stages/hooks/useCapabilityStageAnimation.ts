@@ -41,7 +41,6 @@ const MAX_PROGRESS_TARGET_KEYS = [
   "ai",
   "visual",
   "navigatorIntro",
-  "closing",
 ] as const;
 
 function getCapabilityNavigatorIndex(progress: number, total: number) {
@@ -84,6 +83,13 @@ export function useCapabilityStageAnimation(
           controller: controllers[key],
           registerTrigger,
         });
+      });
+
+      registerProgressTrigger({
+        triggerElement: elements.closing,
+        config: CAPABILITY_STAGE_SCROLL_CONFIG.closing,
+        controller: controllers.closing,
+        registerTrigger,
       });
 
       if (elements.navigatorPin) {
