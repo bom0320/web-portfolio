@@ -1,12 +1,26 @@
 import gsap from "gsap";
 
 interface CreateContactFooterAnimationParams {
-  footer: HTMLElement;
+  footer: HTMLElement | null;
 }
+
+type ContactFooterAnimationController = {
+  setProgress: (progress: number) => void;
+  destroy: () => void;
+};
+
+const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
 export function createContactFooterAnimation({
   footer,
-}: CreateContactFooterAnimationParams) {
+}: CreateContactFooterAnimationParams): ContactFooterAnimationController {
+  if (!footer) {
+    return {
+      setProgress: () => {},
+      destroy: () => {},
+    };
+  }
+
   gsap.set(footer, {
     y: 110,
     willChange: "transform",
@@ -22,5 +36,17 @@ export function createContactFooterAnimation({
     ease: "power2.out",
   });
 
-  return timeline;
+  return {
+    setProgress(progress: number) {
+      timeline.progress(clampProgress(progress));
+    },
+
+    destroy() {
+      timeline.kill();
+
+      gsap.set(footer, {
+        clearProps: "transform,willChange",
+      });
+    },
+  };
 }

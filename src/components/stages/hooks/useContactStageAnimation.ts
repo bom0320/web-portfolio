@@ -3,19 +3,16 @@
 import { type RefObject, useLayoutEffect } from "react";
 import gsap from "gsap";
 
-import {
-  createScrollTrigger,
-  refreshScrollTrigger,
-  type ScrollTriggerInstance,
-} from "@/lib/gsap";
+import { refreshScrollTrigger, type ScrollTriggerInstance } from "@/lib/gsap";
 
 import { CONTACT_STAGE_SCROLL_CONFIG } from "../constants";
 import {
   createContactStageControllers,
   destroyContactStageControllers,
   getContactStageElements,
-  resetContactStageControllers,
+  registerMaxProgressTrigger,
   registerProgressTrigger,
+  resetContactStageControllers,
 } from "./helpers";
 
 export function useContactStageAnimation(
@@ -37,26 +34,19 @@ export function useContactStageAnimation(
         triggers.push(trigger);
       };
 
-      if (controllers.intro) {
-        registerProgressTrigger({
-          triggerElement: elements.intro,
-          config: CONTACT_STAGE_SCROLL_CONFIG.intro,
-          controller: controllers.intro,
-          registerTrigger,
-        });
-      }
+      registerProgressTrigger({
+        triggerElement: elements.intro,
+        config: CONTACT_STAGE_SCROLL_CONFIG.intro,
+        controller: controllers.intro,
+        registerTrigger,
+      });
 
-      if (elements.footer && controllers.footer) {
-        registerTrigger(
-          createScrollTrigger({
-            trigger: elements.footer,
-            start: CONTACT_STAGE_SCROLL_CONFIG.footer.start,
-            end: CONTACT_STAGE_SCROLL_CONFIG.footer.end,
-            scrub: CONTACT_STAGE_SCROLL_CONFIG.footer.scrub,
-            animation: controllers.footer,
-          })
-        );
-      }
+      registerMaxProgressTrigger({
+        triggerElement: elements.footer,
+        config: CONTACT_STAGE_SCROLL_CONFIG.footer,
+        controller: controllers.footer,
+        registerTrigger,
+      });
 
       refreshScrollTrigger();
 
