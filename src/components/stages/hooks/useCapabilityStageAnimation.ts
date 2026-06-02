@@ -17,6 +17,7 @@ import {
   refreshScrollTrigger,
   type ScrollTriggerInstance,
 } from "@/lib/gsap";
+
 import {
   CAPABILITY_STAGE_SCROLL_CONFIG,
   CAPABILITY_STAGE_SELECTORS,
@@ -24,7 +25,6 @@ import {
 import {
   createCapabilityStageControllers,
   destroyCapabilityStageControllers,
-  getCapabilityMaxProgressTargets,
   getCapabilityStageElements,
   resetCapabilityProgressControllers,
 } from "./helpers/capability";
@@ -34,6 +34,15 @@ type UseCapabilityStageAnimationReturn = {
   activeNavigatorIndex: number;
   setActiveNavigatorIndex: Dispatch<SetStateAction<number>>;
 };
+
+const MAX_PROGRESS_TARGET_KEYS = [
+  "introProof",
+  "structure",
+  "ai",
+  "visual",
+  "navigatorIntro",
+  "closing",
+] as const;
 
 function getCapabilityNavigatorIndex(progress: number, total: number) {
   return Math.round(progress * (total - 1));
@@ -68,16 +77,14 @@ export function useCapabilityStageAnimation(
         registerTrigger,
       });
 
-      getCapabilityMaxProgressTargets(elements, controllers).forEach(
-        ({ element, config, controller }) => {
-          registerMaxProgressTrigger({
-            triggerElement: element,
-            config,
-            controller,
-            registerTrigger,
-          });
-        }
-      );
+      MAX_PROGRESS_TARGET_KEYS.forEach((key) => {
+        registerMaxProgressTrigger({
+          triggerElement: elements[key],
+          config: CAPABILITY_STAGE_SCROLL_CONFIG[key],
+          controller: controllers[key],
+          registerTrigger,
+        });
+      });
 
       if (elements.navigatorPin) {
         registerTrigger(
