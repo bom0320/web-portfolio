@@ -42,7 +42,7 @@ type ProgressController = {
   setProgress: (progress: number) => void;
 };
 
-type OnceTriggerConfig = {
+type PersistentTriggerConfig = {
   start: ScrollTriggerVars["start"];
   end: ScrollTriggerVars["end"];
   scrub: ScrollTriggerVars["scrub"];
@@ -63,53 +63,46 @@ export function useCapabilityStageAnimation(
     if (!stage) return;
 
     const ctx = gsap.context(() => {
-      const introController = CapabilityIntroAnimation.create(stage);
-      const introProofController = CapabilityIntroProofAnimation.create(stage);
+      const elements = {
+        intro: stage.querySelector<HTMLElement>(
+          CAPABILITY_STAGE_SELECTORS.intro
+        ),
+        structure: stage.querySelector<HTMLElement>(
+          CAPABILITY_STAGE_SELECTORS.structure
+        ),
+        ai: stage.querySelector<HTMLElement>(CAPABILITY_STAGE_SELECTORS.ai),
+        visual: stage.querySelector<HTMLElement>(
+          CAPABILITY_STAGE_SELECTORS.visual
+        ),
+        navigatorIntro: stage.querySelector<HTMLElement>(
+          CAPABILITY_STAGE_SELECTORS.navigatorIntro
+        ),
+        navigatorPin: stage.querySelector<HTMLElement>(
+          CAPABILITY_STAGE_SELECTORS.navigatorPin
+        ),
+        closing: stage.querySelector<HTMLElement>(
+          CAPABILITY_STAGE_SELECTORS.closing
+        ),
+      };
 
-      const structureElement = stage.querySelector<HTMLElement>(
-        CAPABILITY_STAGE_SELECTORS.structureBlock
-      );
+      const controllers = {
+        intro: CapabilityIntroAnimation.create(stage),
+        introProof: CapabilityIntroProofAnimation.create(stage),
+        structure: StructureCapabilityAnimation.create(elements.structure),
+        ai: AICapabilityAnimation.create(elements.ai),
+        visual: VisualCapabilityAnimation.create(elements.visual),
+        navigatorIntro: CapabilityNavigatorAnimation.createIntro(
+          elements.navigatorIntro
+        ),
+        closing: CapabilityClosingAnimation.create(elements.closing),
+      };
 
-      const aiElement = stage.querySelector<HTMLElement>(
-        CAPABILITY_STAGE_SELECTORS.aiBlock
-      );
-
-      const visualElement = stage.querySelector<HTMLElement>(
-        CAPABILITY_STAGE_SELECTORS.visualBlock
-      );
-
-      const navigatorIntroElement = stage.querySelector<HTMLElement>(
-        CAPABILITY_STAGE_SELECTORS.navigatorIntro
-      );
-
-      const navigatorPinElement = stage.querySelector<HTMLElement>(
-        CAPABILITY_STAGE_SELECTORS.navigatorPin
-      );
-
-      const closingElement = stage.querySelector<HTMLElement>(
-        CAPABILITY_STAGE_SELECTORS.closing
-      );
-
-      const structureController =
-        StructureCapabilityAnimation.create(structureElement);
-
-      const aiController = AICapabilityAnimation.create(aiElement);
-
-      const visualController = VisualCapabilityAnimation.create(visualElement);
-
-      const navigatorIntroController = CapabilityNavigatorAnimation.createIntro(
-        navigatorIntroElement
-      );
-
-      const closingController =
-        CapabilityClosingAnimation.create(closingElement);
-
-      introController.setProgress(0);
-      structureController.setProgress(0);
-      aiController.setProgress(0);
-      visualController.setProgress(0);
-      navigatorIntroController.setProgress(0);
-      closingController.setProgress(0);
+      controllers.intro.setProgress(0);
+      controllers.structure.setProgress(0);
+      controllers.ai.setProgress(0);
+      controllers.visual.setProgress(0);
+      controllers.navigatorIntro.setProgress(0);
+      controllers.closing.setProgress(0);
 
       const triggers: ScrollTriggerInstance[] = [];
 
@@ -117,9 +110,9 @@ export function useCapabilityStageAnimation(
         triggers.push(trigger);
       };
 
-      const addOnceProgressTrigger = (
+      const addPersistentProgressTrigger = (
         triggerElement: HTMLElement | null,
-        config: OnceTriggerConfig,
+        config: PersistentTriggerConfig,
         controller: ProgressController
       ) => {
         if (!triggerElement) return;
@@ -142,39 +135,39 @@ export function useCapabilityStageAnimation(
           end: CAPABILITY_STAGE_SCROLL_CONFIG.intro.end,
           scrub: CAPABILITY_STAGE_SCROLL_CONFIG.intro.scrub,
           onUpdate: (self) => {
-            introController.setProgress(self.progress);
+            controllers.intro.setProgress(self.progress);
           },
         })
       );
 
-      addOnceProgressTrigger(
-        structureElement,
+      addPersistentProgressTrigger(
+        elements.structure,
         CAPABILITY_STAGE_SCROLL_CONFIG.structure,
-        structureController
+        controllers.structure
       );
 
-      addOnceProgressTrigger(
-        aiElement,
+      addPersistentProgressTrigger(
+        elements.ai,
         CAPABILITY_STAGE_SCROLL_CONFIG.ai,
-        aiController
+        controllers.ai
       );
 
-      addOnceProgressTrigger(
-        visualElement,
+      addPersistentProgressTrigger(
+        elements.visual,
         CAPABILITY_STAGE_SCROLL_CONFIG.visual,
-        visualController
+        controllers.visual
       );
 
-      addOnceProgressTrigger(
-        navigatorIntroElement,
+      addPersistentProgressTrigger(
+        elements.navigatorIntro,
         CAPABILITY_STAGE_SCROLL_CONFIG.navigatorIntro,
-        navigatorIntroController
+        controllers.navigatorIntro
       );
 
-      if (navigatorPinElement) {
+      if (elements.navigatorPin) {
         addTrigger(
           createScrollTrigger({
-            trigger: navigatorPinElement,
+            trigger: elements.navigatorPin,
             start: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.start,
             end: () =>
               `+=${
@@ -213,10 +206,10 @@ export function useCapabilityStageAnimation(
         );
       }
 
-      addOnceProgressTrigger(
-        closingElement,
+      addPersistentProgressTrigger(
+        elements.closing,
         CAPABILITY_STAGE_SCROLL_CONFIG.closing,
-        closingController
+        controllers.closing
       );
 
       refreshScrollTrigger();
@@ -224,13 +217,13 @@ export function useCapabilityStageAnimation(
       return () => {
         triggers.forEach((trigger) => trigger.kill());
 
-        introController.destroy();
-        introProofController.destroy();
-        structureController.destroy();
-        aiController.destroy();
-        visualController.destroy();
-        navigatorIntroController.destroy();
-        closingController.destroy();
+        controllers.intro.destroy();
+        controllers.introProof.destroy();
+        controllers.structure.destroy();
+        controllers.ai.destroy();
+        controllers.visual.destroy();
+        controllers.navigatorIntro.destroy();
+        controllers.closing.destroy();
       };
     }, stage);
 
