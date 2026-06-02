@@ -17,20 +17,18 @@ import {
   refreshScrollTrigger,
   type ScrollTriggerInstance,
 } from "@/lib/gsap";
-
 import {
   CAPABILITY_STAGE_SCROLL_CONFIG,
   CAPABILITY_STAGE_SELECTORS,
 } from "../constants";
 import {
-  addPersistentProgressTrigger,
-  addProgressTrigger,
   createCapabilityStageControllers,
   destroyCapabilityStageControllers,
+  getCapabilityMaxProgressTargets,
   getCapabilityStageElements,
-  getPersistentProgressTriggerTargets,
   resetCapabilityProgressControllers,
-} from "./helpers";
+} from "./helpers/capability";
+import { registerMaxProgressTrigger, registerProgressTrigger } from "./helpers";
 
 type UseCapabilityStageAnimationReturn = {
   activeNavigatorIndex: number;
@@ -59,30 +57,30 @@ export function useCapabilityStageAnimation(
 
       const triggers: ScrollTriggerInstance[] = [];
 
-      const addTrigger = (trigger: ScrollTriggerInstance) => {
+      const registerTrigger = (trigger: ScrollTriggerInstance) => {
         triggers.push(trigger);
       };
 
-      addProgressTrigger({
+      registerProgressTrigger({
         triggerElement: CAPABILITY_STAGE_SELECTORS.introPinned,
         config: CAPABILITY_STAGE_SCROLL_CONFIG.intro,
         controller: controllers.intro,
-        addTrigger,
+        registerTrigger,
       });
 
-      getPersistentProgressTriggerTargets(elements, controllers).forEach(
+      getCapabilityMaxProgressTargets(elements, controllers).forEach(
         ({ element, config, controller }) => {
-          addPersistentProgressTrigger({
+          registerMaxProgressTrigger({
             triggerElement: element,
             config,
             controller,
-            addTrigger,
+            registerTrigger,
           });
         }
       );
 
       if (elements.navigatorPin) {
-        addTrigger(
+        registerTrigger(
           createScrollTrigger({
             trigger: elements.navigatorPin,
             start: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.start,
@@ -126,7 +124,10 @@ export function useCapabilityStageAnimation(
       refreshScrollTrigger();
 
       return () => {
-        triggers.forEach((trigger) => trigger.kill());
+        triggers.forEach((trigger) => {
+          trigger.kill();
+        });
+
         destroyCapabilityStageControllers(controllers);
       };
     }, stage);

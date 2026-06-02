@@ -8,7 +8,7 @@ type ProgressController = {
   setProgress: (progress: number) => void;
 };
 
-type CreatePersistentProgressScrollTriggerOptions = {
+type CreateMaxProgressScrollTriggerOptions = {
   trigger: ScrollTriggerVars["trigger"];
   start: ScrollTriggerVars["start"];
   end: ScrollTriggerVars["end"];
@@ -16,13 +16,13 @@ type CreatePersistentProgressScrollTriggerOptions = {
   controller: ProgressController;
 };
 
-export function createPersistentProgressScrollTrigger({
+export function createMaxProgressScrollTrigger({
   trigger,
   start,
   end,
   scrub,
   controller,
-}: CreatePersistentProgressScrollTriggerOptions): ScrollTriggerInstance {
+}: CreateMaxProgressScrollTriggerOptions): ScrollTriggerInstance {
   let maxProgress = 0;
 
   return createScrollTrigger({

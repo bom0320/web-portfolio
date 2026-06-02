@@ -1,4 +1,4 @@
-import { CAPABILITY_STAGE_SELECTORS } from "../../constants";
+import { CAPABILITY_STAGE_SELECTORS } from "../../../constants";
 
 export function getCapabilityStageElements(stage: HTMLElement) {
   return {
