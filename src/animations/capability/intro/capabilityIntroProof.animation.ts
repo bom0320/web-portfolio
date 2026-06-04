@@ -1,13 +1,12 @@
 import gsap from "gsap";
 
-type IntroProofController = {
-  setProgress: (progress: number) => void;
-  destroy: () => void;
-};
+import {
+  clampProgress,
+  createNoopController,
+  type AnimationController,
+} from "@/animations/_shared";
 
-const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
-
-const SELECTOR = {
+const SELECTORS = {
   character: ".js-capability-intro-proof-character",
   leftPoints: ".js-capability-intro-proof-point-left",
   rightPoints: ".js-capability-intro-proof-point-right",
@@ -15,26 +14,21 @@ const SELECTOR = {
 } as const;
 
 const CapabilityIntroProofAnimation = {
-  create(scope: HTMLElement | null): IntroProofController {
+  create(scope: HTMLElement | null): AnimationController {
     if (!scope) {
       console.warn("[CapabilityIntroProofAnimation] Missing scope");
 
-      return {
-        setProgress: () => {},
-        destroy: () => {},
-      };
+      return createNoopController();
     }
 
-    const section = scope;
-
-    const character = section.querySelector<HTMLElement>(SELECTOR.character);
-    const leftPoints = section.querySelectorAll<HTMLElement>(
-      SELECTOR.leftPoints
+    const character = scope.querySelector<HTMLElement>(SELECTORS.character);
+    const leftPoints = scope.querySelectorAll<HTMLElement>(
+      SELECTORS.leftPoints
     );
-    const rightPoints = section.querySelectorAll<HTMLElement>(
-      SELECTOR.rightPoints
+    const rightPoints = scope.querySelectorAll<HTMLElement>(
+      SELECTORS.rightPoints
     );
-    const quote = section.querySelector<HTMLElement>(SELECTOR.quote);
+    const quote = scope.querySelector<HTMLElement>(SELECTORS.quote);
 
     if (!character || !leftPoints.length || !rightPoints.length || !quote) {
       console.warn("[CapabilityIntroProofAnimation] Missing elements", {
@@ -44,10 +38,7 @@ const CapabilityIntroProofAnimation = {
         quote,
       });
 
-      return {
-        setProgress: () => {},
-        destroy: () => {},
-      };
+      return createNoopController();
     }
 
     const animatedElements = [
@@ -57,6 +48,7 @@ const CapabilityIntroProofAnimation = {
       quote,
     ];
 
+    // Initial
     gsap.set(character, {
       autoAlpha: 0,
       y: 40,
@@ -81,6 +73,7 @@ const CapabilityIntroProofAnimation = {
       y: 36,
     });
 
+    // Timeline
     const timeline = gsap.timeline({
       paused: true,
       defaults: {
