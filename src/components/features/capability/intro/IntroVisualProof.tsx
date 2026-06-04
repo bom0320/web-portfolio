@@ -1,10 +1,6 @@
 import Image from "next/image";
 
-import {
-  CAPABILITY_INTRO_PROOF_IMAGE,
-  CAPABILITY_INTRO_PROOF_POINTS,
-  CAPABILITY_INTRO_PROOF_QUOTE,
-} from "@/data/capability";
+import { CAPABILITY_INTRO_PROOF_POINTS } from "@/data/capability";
 import { GradientText } from "@/components/shared/ui";
 
 import IntroProofPoint from "./visual/IntroProofPoint";
@@ -26,10 +22,10 @@ export default function IntroVisualProof() {
         >
           <Image
             className="capability-intro-proof__character-image js-capability-intro-proof-character"
-            src={CAPABILITY_INTRO_PROOF_IMAGE.src}
-            alt={CAPABILITY_INTRO_PROOF_IMAGE.alt}
-            width={CAPABILITY_INTRO_PROOF_IMAGE.width}
-            height={CAPABILITY_INTRO_PROOF_IMAGE.height}
+            src="/images/character_1.png"
+            alt=""
+            width={420}
+            height={470}
             priority
           />
         </div>
@@ -46,12 +42,14 @@ export default function IntroVisualProof() {
             “
           </span>
           <br />
-          {CAPABILITY_INTRO_PROOF_QUOTE.lead}
+          저는 인터페이스를 단순히 정보를 보여주는 화면보다,
           <br />
           <strong>
-            <GradientText>{CAPABILITY_INTRO_PROOF_QUOTE.emphasis}</GradientText>
+            <GradientText>
+              사용자가 자연스럽게 흐름을 이어갈 수 있는 경험
+            </GradientText>
           </strong>
-          {CAPABILITY_INTRO_PROOF_QUOTE.suffix}
+          으로 만들고 싶었습니다.
         </p>
       </div>
     </section>
