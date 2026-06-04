@@ -1,18 +1,14 @@
 import gsap from "gsap";
 
+import {
+  clampProgress,
+  createNoopController,
+  type AnimationController,
+} from "@/animations/_shared";
 import type { AICapabilityAnimationElements } from "@/components/scenes/capability/dom";
 
-type AICapabilityAnimationController = {
-  setProgress: (progress: number) => void;
-  destroy: () => void;
-};
-
-const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
-
 const AICapabilityAnimation = {
-  create(
-    elements: AICapabilityAnimationElements
-  ): AICapabilityAnimationController {
+  create(elements: AICapabilityAnimationElements): AnimationController {
     const {
       root,
       header,
@@ -26,10 +22,7 @@ const AICapabilityAnimation = {
     } = elements;
 
     if (!root) {
-      return {
-        setProgress: () => {},
-        destroy: () => {},
-      };
+      return createNoopController();
     }
 
     const cardInnerElements = [

@@ -1,18 +1,14 @@
 import gsap from "gsap";
 
+import {
+  clampProgress,
+  createNoopController,
+  type AnimationController,
+} from "@/animations/_shared";
 import type { StructureCapabilityAnimationElements } from "@/components/scenes/capability/dom";
 
-type StructureCapabilityAnimationController = {
-  setProgress: (progress: number) => void;
-  destroy: () => void;
-};
-
-const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
-
 const StructureCapabilityAnimation = {
-  create(
-    elements: StructureCapabilityAnimationElements
-  ): StructureCapabilityAnimationController {
+  create(elements: StructureCapabilityAnimationElements): AnimationController {
     const {
       root,
       header,
@@ -28,10 +24,7 @@ const StructureCapabilityAnimation = {
     } = elements;
 
     if (!root) {
-      return {
-        setProgress: () => {},
-        destroy: () => {},
-      };
+      return createNoopController();
     }
 
     const cardInnerElements = [
