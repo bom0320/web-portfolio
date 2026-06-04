@@ -1,19 +1,32 @@
-@media (max-width: 768px) {
+@import "../../../abstracts/mixins";
+
+@include tablet {
   .about-hero {
-    min-height: auto;
-    padding: 72px 0 120px;
+    height: 100vh;
+    height: 100svh;
+    align-items: flex-start;
+    justify-content: center;
   }
 
   .about-hero__layout {
     width: min(520px, calc(100% - 44px));
-    grid-template-columns: 1fr;
-    gap: 34px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    gap: 0;
+    padding-top: clamp(96px, 12vh, 132px);
+
     transform: none;
   }
 
   .about-hero__visual {
     order: 1;
     justify-content: center;
+    align-items: center;
     transform: none;
   }
 
@@ -24,9 +37,11 @@
   .about-hero__content {
     order: 2;
     max-width: none;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    text-align: left;
     transform: none;
+
+    margin-top: clamp(44px, 6vh, 72px);
   }
 
   .about-hero__eyebrow {
@@ -41,19 +56,20 @@
   }
 
   .about-hero__desc {
-    width: min(330px, 100%);
-    margin: 24px auto 0;
+    width: min(430px, 100%);
+    margin: 24px 0 0;
+
     font-size: 14px;
     line-height: 1.8;
-    text-align: center;
+    text-align: left;
   }
 
   .about-hero__cta--swap {
-    width: min(260px, 86vw);
-    margin: 36px auto 0;
+    width: min(360px, 100%);
+    margin: clamp(42px, 7vh, 64px) 0 0;
 
     display: flex;
-    gap: 12px;
+    gap: 14px;
     align-items: center;
   }
 
@@ -127,28 +143,69 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@include mobile {
   .about-hero__layout {
-    width: min(920px, calc(100% - 64px));
-    grid-template-columns: 360px 1fr;
-    column-gap: 48px;
+    width: min(100% - 48px, 520px);
+    padding-top: clamp(92px, 12vh, 116px);
   }
 
   .about-hero__character {
-    width: 360px;
+    width: min(260px, 66vw);
+  }
+
+  .about-hero__content {
+    margin-top: clamp(40px, 5.5vh, 60px);
+  }
+
+  .about-hero__eyebrow {
+    margin-bottom: 16px;
+    font-size: 14px;
   }
 
   .about-hero__title {
-    font-size: clamp(34px, 4vw, 46px);
+    font-size: clamp(28px, 8vw, 38px);
+    line-height: 1.18;
   }
 
   .about-hero__desc {
-    font-size: 16px;
+    width: min(360px, 100%);
+    margin-top: 24px;
+    font-size: 14px;
+    line-height: 1.75;
   }
 
-  .about-hero__btn {
-    height: 52px;
-    min-width: 150px;
-    padding: 12px 20px;
+  .about-hero__cta--swap {
+    width: min(340px, 100%);
+    margin-top: clamp(44px, 7vh, 64px);
+  }
+}
+
+@include small-mobile {
+  .about-hero__layout {
+    width: calc(100% - 40px);
+    padding-top: clamp(82px, 10vh, 100px);
+  }
+
+  .about-hero__character {
+    width: min(230px, 62vw);
+  }
+
+  .about-hero__content {
+    margin-top: clamp(34px, 5vh, 48px);
+  }
+
+  .about-hero__title {
+    font-size: clamp(26px, 7.6vw, 34px);
+  }
+
+  .about-hero__desc {
+    width: min(320px, 100%);
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .about-hero__cta--swap {
+    width: min(320px, 100%);
+    margin-top: clamp(42px, 6vh, 56px);
   }
 }
