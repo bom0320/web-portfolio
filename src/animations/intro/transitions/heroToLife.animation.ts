@@ -21,8 +21,8 @@ const getLifeCanvasInitialState = () => {
 
   if (isViewport("(max-width: 430px)")) {
     return {
-      y: clampValue(210, viewportHeight * 0.3, 260),
-      scale: 0.78,
+      y: clampValue(320, viewportHeight * 0.5, 390),
+      scale: 0.76,
       opacity: 0.54,
       filter: "brightness(0.62)",
     };
@@ -30,8 +30,8 @@ const getLifeCanvasInitialState = () => {
 
   if (isViewport("(max-width: 640px)")) {
     return {
-      y: clampValue(240, viewportHeight * 0.34, 320),
-      scale: 0.78,
+      y: clampValue(340, viewportHeight * 0.48, 430),
+      scale: 0.77,
       opacity: 0.55,
       filter: "brightness(0.62)",
     };
@@ -39,7 +39,7 @@ const getLifeCanvasInitialState = () => {
 
   if (isViewport("(max-width: 1024px)")) {
     return {
-      y: clampValue(360, viewportHeight * 0.42, 520),
+      y: clampValue(420, viewportHeight * 0.48, 560),
       scale: 0.78,
       opacity: 0.57,
       filter: "brightness(0.62)",
@@ -48,7 +48,7 @@ const getLifeCanvasInitialState = () => {
 
   if (isViewport("(max-width: 1180px)")) {
     return {
-      y: clampValue(400, viewportHeight * 0.46, 540),
+      y: clampValue(440, viewportHeight * 0.5, 600),
       scale: 0.76,
       opacity: 0.58,
       filter: "brightness(0.62)",
@@ -69,28 +69,28 @@ const getLifeCanvasPinnedState = () => {
 
   if (isViewport("(max-width: 430px)")) {
     return {
-      y: clampValue(36, viewportHeight * 0.055, 60),
+      y: clampValue(110, viewportHeight * 0.16, 150),
       scale: 1,
     };
   }
 
   if (isViewport("(max-width: 640px)")) {
     return {
-      y: clampValue(44, viewportHeight * 0.06, 72),
+      y: clampValue(120, viewportHeight * 0.15, 170),
       scale: 1,
     };
   }
 
   if (isViewport("(max-width: 1024px)")) {
     return {
-      y: clampValue(140, viewportHeight * 0.12, 190),
+      y: clampValue(160, viewportHeight * 0.13, 220),
       scale: 1,
     };
   }
 
   if (isViewport("(max-width: 1180px)")) {
     return {
-      y: clampValue(96, viewportHeight * 0.09, 140),
+      y: clampValue(120, viewportHeight * 0.1, 170),
       scale: 1,
     };
   }
