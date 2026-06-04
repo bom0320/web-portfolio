@@ -11,14 +11,15 @@ const clampValue = (min: number, value: number, max: number) => {
   return Math.min(Math.max(value, min), max);
 };
 
-const getLifeStageInitialState = () => {
+const isViewport = (query: string) => {
+  return typeof window !== "undefined" && window.matchMedia(query).matches;
+};
+
+const getLifeCanvasInitialState = () => {
   const viewportHeight =
     typeof window === "undefined" ? 900 : window.innerHeight;
 
-  if (
-    typeof window !== "undefined" &&
-    window.matchMedia("(max-width: 430px)").matches
-  ) {
+  if (isViewport("(max-width: 430px)")) {
     return {
       y: clampValue(220, viewportHeight * 0.27, 240),
       scale: 0.78,
@@ -27,44 +28,35 @@ const getLifeStageInitialState = () => {
     };
   }
 
-  if (
-    typeof window !== "undefined" &&
-    window.matchMedia("(max-width: 640px)").matches
-  ) {
+  if (isViewport("(max-width: 640px)")) {
     return {
-      y: clampValue(220, viewportHeight * 0.34, 300),
-      scale: 0.76,
+      y: clampValue(220, viewportHeight * 0.31, 280),
+      scale: 0.78,
       opacity: 0.55,
       filter: "brightness(0.62)",
     };
   }
 
-  if (
-    typeof window !== "undefined" &&
-    window.matchMedia("(max-width: 900px)").matches
-  ) {
+  if (isViewport("(max-width: 1024px)")) {
     return {
-      y: clampValue(300, viewportHeight * 0.42, 400),
-      scale: 0.7,
-      opacity: 0.56,
-      filter: "brightness(0.62)",
-    };
-  }
-
-  if (
-    typeof window !== "undefined" &&
-    window.matchMedia("(max-width: 1180px)").matches
-  ) {
-    return {
-      y: clampValue(390, viewportHeight * 0.5, 520),
-      scale: 0.72,
+      y: clampValue(220, viewportHeight * 0.28, 340),
+      scale: 0.8,
       opacity: 0.57,
       filter: "brightness(0.62)",
     };
   }
 
+  if (isViewport("(max-width: 1180px)")) {
+    return {
+      y: clampValue(300, viewportHeight * 0.38, 460),
+      scale: 0.78,
+      opacity: 0.58,
+      filter: "brightness(0.62)",
+    };
+  }
+
   return {
-    y: clampValue(470, viewportHeight * 0.58, 620),
+    y: clampValue(560, viewportHeight * 0.68, 760),
     scale: 0.74,
     opacity: 0.58,
     filter: "brightness(0.62)",
@@ -73,14 +65,14 @@ const getLifeStageInitialState = () => {
 
 const HeroToLifeAnimation = {
   create(elements: HeroToLifeAnimationElements): AnimationController {
-    const { heroItems, lifeStage, lifeTrack, topRow, bottomRow } = elements;
+    const { heroItems, lifeCanvas, lifeTrack, topRow, bottomRow } = elements;
 
-    if (!lifeStage || !lifeTrack) {
+    if (!lifeCanvas || !lifeTrack) {
       return createNoopController();
     }
 
-    gsap.set(lifeStage, {
-      ...getLifeStageInitialState(),
+    gsap.set(lifeCanvas, {
+      ...getLifeCanvasInitialState(),
       transformOrigin: "center center",
     });
 
@@ -123,7 +115,7 @@ const HeroToLifeAnimation = {
     );
 
     timeline.to(
-      lifeStage,
+      lifeCanvas,
       {
         y: 0,
         scale: 1,
@@ -174,7 +166,7 @@ const HeroToLifeAnimation = {
         clearProps: "transform,opacity,visibility",
       });
 
-      gsap.set([lifeStage, lifeTrack, topRow, bottomRow].filter(Boolean), {
+      gsap.set([lifeCanvas, lifeTrack, topRow, bottomRow].filter(Boolean), {
         clearProps:
           "transform,opacity,visibility,filter,--life-edge-start,--life-edge-soft,--life-edge-strong",
       });

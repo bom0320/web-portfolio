@@ -1,21 +1,3 @@
-.life-motion__stage {
-  position: absolute;
-  inset: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transform: translateY(54vh) scale(0.74);
-  opacity: 0.58;
-  filter: brightness(0.62);
-
-  width: 100%;
-  height: 100%;
-
-  will-change: transform, opacity, filter;
-}
-
 .life-motion__track {
   width: 118vw;
 

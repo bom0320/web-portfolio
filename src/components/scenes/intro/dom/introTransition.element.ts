@@ -8,7 +8,7 @@ type IntroTransitionRootElements = {
 
 export type HeroToLifeAnimationElements = {
   heroItems: HTMLElement[];
-  lifeStage: HTMLElement | null;
+  lifeCanvas: HTMLElement | null;
   lifeTrack: HTMLElement | null;
   topRow: HTMLElement | null;
   bottomRow: HTMLElement | null;
@@ -44,7 +44,7 @@ export const getHeroToLifeAnimationElements = ({
 
   return {
     heroItems: queryElements(hero, selectors.heroItems),
-    lifeStage: queryElement(lifeMotion, selectors.lifeStage),
+    lifeCanvas: queryElement(lifeMotion, selectors.lifeCanvas),
     lifeTrack: queryElement(lifeMotion, selectors.lifeTrack),
     topRow: queryElement(lifeMotion, selectors.topRow),
     bottomRow: queryElement(lifeMotion, selectors.bottomRow),
