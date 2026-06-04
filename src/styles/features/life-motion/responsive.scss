@@ -1,79 +1,98 @@
 @import "../../abstracts/mixins";
 
 @include tablet {
-  .life-motion {
-    transform: translateY(-4px);
+  .life-motion__stage {
+    transform: translateY(44vh) scale(0.72);
+    opacity: 0.56;
+    filter: brightness(0.62);
+  }
 
-    &__row {
-      grid-auto-columns: 28px;
-      gap: 8px;
-      height: clamp(160px, 40vw, 200px);
-    }
+  .life-motion__track {
+    width: 132vw;
+    gap: 10px;
+  }
 
-    &__item {
-      grid-column: span var(--mobile-span);
-    }
+  .life-motion__group {
+    gap: 10px;
+    padding-right: 10px;
+  }
 
-    &__title {
-      font-size: 11px;
-      margin-bottom: 3px;
-    }
+  .life-motion__item {
+    flex: 0 0 clamp(150px, 28vw, 220px);
+    height: clamp(145px, 30vw, 200px);
+  }
 
-    &__image-wrap {
-      height: calc(100% - 17px);
-      border-radius: 6px;
-    }
+  .life-motion__title {
+    font-size: 11px;
+    margin-bottom: 3px;
+  }
+
+  .life-motion__image-wrap {
+    height: calc(100% - 17px);
+    border-radius: 6px;
   }
 }
 
 @include mobile {
-  .life-motion {
-    transform: translateY(-8px);
+  .life-motion__stage {
+    transform: translateY(38vh) scale(0.68);
+    opacity: 0.55;
+  }
 
-    &__row {
-      grid-auto-columns: 26px;
-      gap: 7px;
-      height: clamp(140px, 36vw, 170px);
-    }
+  .life-motion__track {
+    width: 140vw;
+    gap: 8px;
+  }
 
-    &__item {
-      grid-column: span var(--mobile-span);
-    }
+  .life-motion__group {
+    gap: 8px;
+    padding-right: 8px;
+  }
 
-    &__title {
-      font-size: 10px;
-      margin-bottom: 3px;
-    }
+  .life-motion__item {
+    flex: 0 0 clamp(124px, 33vw, 165px);
+    height: clamp(120px, 34vw, 155px);
+  }
 
-    &__image-wrap {
-      height: calc(100% - 16px);
-      border-radius: 6px;
-    }
+  .life-motion__title {
+    font-size: 10px;
+    margin-bottom: 3px;
+  }
+
+  .life-motion__image-wrap {
+    height: calc(100% - 16px);
+    border-radius: 6px;
   }
 }
 
 @include small-mobile {
-  .life-motion {
-    transform: translateY(-10px);
+  .life-motion__stage {
+    transform: translateY(34vh) scale(0.66);
+    opacity: 0.54;
+  }
 
-    &__row {
-      grid-auto-columns: 24px;
-      gap: 6px;
-      height: clamp(120px, 32vw, 145px);
-    }
+  .life-motion__track {
+    width: 148vw;
+    gap: 7px;
+  }
 
-    &__item {
-      grid-column: span var(--mobile-span);
-    }
+  .life-motion__group {
+    gap: 7px;
+    padding-right: 7px;
+  }
 
-    &__title {
-      font-size: 9px;
-      margin-bottom: 3px;
-    }
+  .life-motion__item {
+    flex: 0 0 clamp(112px, 35vw, 140px);
+    height: clamp(108px, 34vw, 132px);
+  }
 
-    &__image-wrap {
-      height: calc(100% - 15px);
-      border-radius: 6px;
-    }
+  .life-motion__title {
+    font-size: 9px;
+    margin-bottom: 3px;
+  }
+
+  .life-motion__image-wrap {
+    height: calc(100% - 15px);
+    border-radius: 6px;
   }
 }
