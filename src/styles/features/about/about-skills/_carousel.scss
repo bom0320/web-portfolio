@@ -1,0 +1,67 @@
+.skill-carousel {
+  width: 100%;
+  margin-top: 56px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skill-carousel__viewport {
+  width: 100%;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 0;
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.skill-carousel__viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.skill-carousel__track {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+
+  width: max-content;
+  min-width: 100%;
+}
+
+.skill-carousel__slide {
+  flex: 0 0 clamp(150px, 13vw, 190px);
+  scroll-snap-align: start;
+}
+
+.skill-carousel__pagination {
+  margin-top: 72px;
+  padding: 13px 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.skill-carousel__pagination-bar {
+  width: 42px;
+  height: 6px;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.skill-carousel__pagination-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+}
