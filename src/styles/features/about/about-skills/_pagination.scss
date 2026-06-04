@@ -1,0 +1,29 @@
+.skill-pagination {
+  margin-top: 72px;
+  padding: 13px 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.skill-pagination__item {
+  width: 6px;
+  height: 6px;
+
+  display: block;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+
+  transition: width 0.28s ease, background 0.28s ease, opacity 0.28s ease;
+}
+
+.skill-pagination__item--active {
+  width: 42px;
+  background: rgba(255, 255, 255, 0.92);
+}

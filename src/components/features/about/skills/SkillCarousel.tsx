@@ -1,4 +1,7 @@
-import { SkillCard } from "@/components/features/about/skills";
+"use client";
+
+import { useRef, useState } from "react";
+import { SkillCard, SkillPagination } from "@/components/features/about/skills";
 
 type SkillCarouselItem = {
   name: string;
@@ -13,9 +16,31 @@ type SkillCarouselProps = {
 };
 
 export default function SkillCarousel({ skills }: SkillCarouselProps) {
+  const viewportRef = useRef<HTMLDivElement | null>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleScroll = () => {
+    const viewport = viewportRef.current;
+
+    if (!viewport) {
+      return;
+    }
+
+    const slideWidth = viewport.scrollWidth / skills.length;
+    const nextIndex = Math.round(viewport.scrollLeft / slideWidth);
+    const safeIndex = Math.min(Math.max(nextIndex, 0), skills.length - 1);
+
+    setActiveIndex(safeIndex);
+  };
+
   return (
-    <div className="skill-carousel" aria-label="기술 스택 목록">
-      <div className="skill-carousel__viewport">
+    <div className="skill-carousel">
+      <div
+        ref={viewportRef}
+        className="skill-carousel__viewport"
+        aria-label="기술 스택 목록"
+        onScroll={handleScroll}
+      >
         <div className="skill-carousel__track">
           {skills.map((skill) => (
             <div className="skill-carousel__slide" key={skill.name}>
@@ -31,13 +56,7 @@ export default function SkillCarousel({ skills }: SkillCarouselProps) {
         </div>
       </div>
 
-      <div className="skill-carousel__pagination" aria-hidden="true">
-        <span className="skill-carousel__pagination-bar" />
-        <span className="skill-carousel__pagination-dot" />
-        <span className="skill-carousel__pagination-dot" />
-        <span className="skill-carousel__pagination-dot" />
-        <span className="skill-carousel__pagination-dot" />
-      </div>
+      <SkillPagination total={skills.length} activeIndex={activeIndex} />
     </div>
   );
 }
