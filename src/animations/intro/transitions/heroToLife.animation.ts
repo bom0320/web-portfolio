@@ -7,6 +7,70 @@ import {
 } from "@/animations/_shared";
 import type { HeroToLifeAnimationElements } from "@/components/scenes/intro/dom";
 
+const clampValue = (min: number, value: number, max: number) => {
+  return Math.min(Math.max(value, min), max);
+};
+
+const getLifeStageInitialState = () => {
+  const viewportHeight =
+    typeof window === "undefined" ? 900 : window.innerHeight;
+
+  if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 430px)").matches
+  ) {
+    return {
+      y: clampValue(220, viewportHeight * 0.27, 240),
+      scale: 0.78,
+      opacity: 0.54,
+      filter: "brightness(0.62)",
+    };
+  }
+
+  if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 640px)").matches
+  ) {
+    return {
+      y: clampValue(220, viewportHeight * 0.34, 300),
+      scale: 0.76,
+      opacity: 0.55,
+      filter: "brightness(0.62)",
+    };
+  }
+
+  if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 900px)").matches
+  ) {
+    return {
+      y: clampValue(300, viewportHeight * 0.42, 400),
+      scale: 0.7,
+      opacity: 0.56,
+      filter: "brightness(0.62)",
+    };
+  }
+
+  if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 1180px)").matches
+  ) {
+    return {
+      y: clampValue(390, viewportHeight * 0.5, 520),
+      scale: 0.72,
+      opacity: 0.57,
+      filter: "brightness(0.62)",
+    };
+  }
+
+  return {
+    y: clampValue(470, viewportHeight * 0.58, 620),
+    scale: 0.74,
+    opacity: 0.58,
+    filter: "brightness(0.62)",
+  };
+};
+
 const HeroToLifeAnimation = {
   create(elements: HeroToLifeAnimationElements): AnimationController {
     const { heroItems, lifeStage, lifeTrack, topRow, bottomRow } = elements;
@@ -16,10 +80,7 @@ const HeroToLifeAnimation = {
     }
 
     gsap.set(lifeStage, {
-      y: "54vh",
-      scale: 0.74,
-      opacity: 0.58,
-      filter: "brightness(0.62)",
+      ...getLifeStageInitialState(),
       transformOrigin: "center center",
     });
 
@@ -48,7 +109,6 @@ const HeroToLifeAnimation = {
       },
     });
 
-    // Hero exit
     timeline.to(
       heroItems,
       {
@@ -62,11 +122,10 @@ const HeroToLifeAnimation = {
       0
     );
 
-    // LifeMotion enter
     timeline.to(
       lifeStage,
       {
-        y: "0vh",
+        y: 0,
         scale: 1,
         opacity: 1,
         filter: "brightness(1)",
@@ -74,7 +133,6 @@ const HeroToLifeAnimation = {
       0
     );
 
-    // LifeMotion edge mask release
     timeline.to(
       lifeTrack,
       {

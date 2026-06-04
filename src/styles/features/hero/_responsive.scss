@@ -1,4 +1,4 @@
-@import "../../abstracts";
+@import "../../abstracts/mixins";
 
 @include laptop {
   .hero__body {
@@ -40,15 +40,17 @@
 
   .hero__inner {
     width: min(100% - 40px, var(--container));
+    height: 100%;
   }
 
   .hero__body {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-
-    padding-top: clamp(170px, 24vh, 220px);
     gap: 0;
+
+    height: 100%;
+    padding-top: clamp(112px, 14vh, 140px);
   }
 
   .hero__visual {
@@ -71,7 +73,7 @@
   }
 
   .hero__headline {
-    font-size: clamp(52px, 11vw, 76px);
+    font-size: clamp(44px, 7.6vw, 58px);
     line-height: 0.92;
     text-align: right;
   }
@@ -83,23 +85,28 @@
   .hero__content {
     order: 2;
 
+    display: block;
     width: 100%;
-    min-height: auto;
-    margin-top: 72px;
+    min-height: 0;
+    margin-top: clamp(64px, 8vh, 84px);
   }
 
   .hero__description {
     max-width: 280px;
 
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     line-height: 1.45;
     letter-spacing: -0.045em;
   }
 
   .hero__meta {
-    margin-top: clamp(150px, 20vh, 220px);
+    position: static;
 
+    margin-top: clamp(82px, 10vh, 118px);
+
+    display: flex;
+    align-items: flex-start;
     gap: 22px;
 
     font-size: 13px;
@@ -111,18 +118,27 @@
 @include mobile {
   .hero__inner {
     width: min(100% - 48px, var(--container));
+    height: 100%;
   }
 
   .hero__body {
-    padding-top: clamp(130px, 20vh, 160px);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    height: 100%;
+    padding-top: clamp(82px, 10vh, 104px);
   }
 
   .hero__visual {
+    order: 1;
     justify-content: flex-end;
+    width: 100%;
   }
 
   .hero__statement {
     justify-content: flex-end;
+    width: 100%;
   }
 
   .hero__eyebrow {
@@ -130,6 +146,7 @@
     margin-right: -22px;
 
     font-size: 15px;
+    line-height: 1;
   }
 
   .hero__headline {
@@ -144,7 +161,12 @@
   }
 
   .hero__content {
-    margin-top: 82px;
+    order: 2;
+
+    display: block;
+    width: 100%;
+    min-height: 0;
+    margin-top: clamp(48px, 6vh, 64px);
   }
 
   .hero__description {
@@ -160,7 +182,9 @@
   }
 
   .hero__meta {
-    margin-top: clamp(108px, 17vh, 140px);
+    position: static;
+
+    margin-top: clamp(72px, 9vh, 104px);
 
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -183,7 +207,7 @@
   }
 
   .hero__body {
-    padding-top: clamp(86px, 15vh, 100px);
+    padding-top: clamp(76px, 9vh, 90px);
   }
 
   .hero__headline {
@@ -196,7 +220,7 @@
   }
 
   .hero__content {
-    margin-top: 78px;
+    margin-top: clamp(42px, 5vh, 56px);
   }
 
   .hero__description {
@@ -205,8 +229,8 @@
   }
 
   .hero__meta {
-    margin-top: clamp(80px, 8vh, 120px);
-    gap: 2px;
+    margin-top: clamp(64px, 8vh, 88px);
+    gap: 8px;
     font-size: 10px;
   }
 }

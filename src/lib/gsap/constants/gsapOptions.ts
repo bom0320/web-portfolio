@@ -1,1 +1,1 @@
-export const GSAP_MARKERS = false;
+export const GSAP_MARKERS = process.env.NODE_ENV === "development";
