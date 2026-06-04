@@ -6,7 +6,7 @@ import {
 
 export default function ContactScene() {
   return (
-    <section id="contact" className="contact-section">
+    <section id="contact" className="contact-section js-contact-section">
       <div className="contact-section__main">
         <div className="contact-section__inner">
           <ContactIntro />

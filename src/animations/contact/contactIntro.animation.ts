@@ -1,37 +1,26 @@
 import gsap from "gsap";
 
-export type ContactIntroAnimationController = {
-  setProgress: (progress: number) => void;
-  destroy: () => void;
-};
+import {
+  clampProgress,
+  createNoopController,
+  type AnimationController,
+} from "@/animations/_shared";
+import type { ContactIntroAnimationElements } from "@/components/scenes/contact/dom";
 
-interface CreateContactIntroAnimationParams {
-  intro: HTMLElement | null;
-}
+export function createContactIntroAnimation(
+  elements: ContactIntroAnimationElements
+): AnimationController {
+  const { root, eyebrow, title, description } = elements;
 
-const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
-
-export function createContactIntroAnimation({
-  intro,
-}: CreateContactIntroAnimationParams): ContactIntroAnimationController {
-  if (!intro) {
-    return {
-      setProgress: () => {},
-      destroy: () => {},
-    };
+  if (!root) {
+    return createNoopController();
   }
 
-  const eyebrow = intro.querySelector<HTMLElement>(".js-contact-intro-eyebrow");
-  const title = intro.querySelector<HTMLElement>(".js-contact-intro-title");
-  const description = intro.querySelector<HTMLElement>(
-    ".js-contact-intro-description"
-  );
-
-  const elements = [eyebrow, title, description].filter(
+  const revealElements = [eyebrow, title, description].filter(
     (element): element is HTMLElement => Boolean(element)
   );
 
-  gsap.set(elements, {
+  gsap.set(revealElements, {
     autoAlpha: 0,
     y: 36,
     filter: "blur(10px)",
@@ -79,17 +68,20 @@ export function createContactIntroAnimation({
     );
   }
 
+  const setProgress = (progress: number) => {
+    timeline.progress(clampProgress(progress));
+  };
+
+  const destroy = () => {
+    timeline.kill();
+
+    gsap.set(revealElements, {
+      clearProps: "all",
+    });
+  };
+
   return {
-    setProgress(progress: number) {
-      timeline.progress(clampProgress(progress));
-    },
-
-    destroy() {
-      timeline.kill();
-
-      gsap.set(elements, {
-        clearProps: "all",
-      });
-    },
+    setProgress,
+    destroy,
   };
 }

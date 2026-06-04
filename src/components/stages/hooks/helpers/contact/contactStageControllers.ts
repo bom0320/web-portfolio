@@ -3,17 +3,22 @@ import {
   createContactIntroAnimation,
 } from "@/animations/contact";
 
+import {
+  getContactFooterAnimationElements,
+  getContactIntroAnimationElements,
+} from "@/components/scenes/contact/dom";
+
 import type { ContactStageElements } from "./getContactStageElements";
 
 export function createContactStageControllers(elements: ContactStageElements) {
   return {
-    intro: createContactIntroAnimation({
-      intro: elements.intro,
-    }),
+    intro: createContactIntroAnimation(
+      getContactIntroAnimationElements(elements.intro)
+    ),
 
-    footer: createContactFooterAnimation({
-      footer: elements.footer,
-    }),
+    footer: createContactFooterAnimation(
+      getContactFooterAnimationElements(elements.footer)
+    ),
   };
 }
 
