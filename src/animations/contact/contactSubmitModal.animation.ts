@@ -1,16 +1,22 @@
 import gsap from "gsap";
 
-interface ContactSubmitModalAnimationElements {
+export type ContactSubmitModalAnimationElements = {
   root: HTMLElement;
   backdrop: HTMLElement;
   card: HTMLElement;
-}
+};
+
+export type ContactSubmitModalAnimationController = {
+  open: () => gsap.core.Timeline;
+  close: (onComplete?: () => void) => gsap.core.Timeline;
+  destroy: () => void;
+};
 
 export function createContactSubmitModalAnimation({
   root,
   backdrop,
   card,
-}: ContactSubmitModalAnimationElements) {
+}: ContactSubmitModalAnimationElements): ContactSubmitModalAnimationController {
   const open = () => {
     gsap.set(root, {
       autoAlpha: 1,
