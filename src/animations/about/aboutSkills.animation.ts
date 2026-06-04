@@ -2,7 +2,7 @@ import gsap from "gsap";
 
 import type { AboutSkillsAnimationElements } from "@/components/scenes/about/dom";
 
-type SkillPaginationCursorController = {
+type SkillPaginationIndicatorController = {
   updateTarget: () => void;
   tick: () => void;
   destroy: () => void;
@@ -11,7 +11,11 @@ type SkillPaginationCursorController = {
 const lerp = (start: number, end: number, amount: number) =>
   start + (end - start) * amount;
 
-const parsePixelValue = (value: string) => Number(value.replace("px", ""));
+const parsePixelValue = (value: string, fallback: number) => {
+  const parsed = Number(value.replace("px", "").trim());
+
+  return Number.isNaN(parsed) ? fallback : parsed;
+};
 
 const AboutSkillsAnimation = {
   createSkillTitleFill(fillGroup: SVGGElement | null) {
@@ -29,13 +33,12 @@ const AboutSkillsAnimation = {
     );
   },
 
-  createPaginationCursor(
+  createPaginationIndicator(
     elements: AboutSkillsAnimationElements
-  ): SkillPaginationCursorController {
-    const { carouselViewport, pagination, paginationCursor, pacmans } =
-      elements;
+  ): SkillPaginationIndicatorController {
+    const { carouselViewport, pagination, paginationItems } = elements;
 
-    if (!carouselViewport || !paginationCursor || !pagination) {
+    if (!carouselViewport || !pagination || paginationItems.length === 0) {
       return {
         updateTarget: () => {},
         tick: () => {},
@@ -43,56 +46,79 @@ const AboutSkillsAnimation = {
       };
     }
 
-    let targetX = 0;
-    let currentX = 0;
+    let targetProgress = 0;
+    let currentProgress = 0;
 
-    carouselViewport.scrollLeft = 0;
-
-    gsap.set(paginationCursor, {
-      x: 0,
-    });
-
-    const getCursorStep = () => {
+    const getSizes = () => {
       const styles = getComputedStyle(pagination);
 
       const dotSize = parsePixelValue(
-        styles.getPropertyValue("--skill-pagination-dot-size")
+        styles.getPropertyValue("--skill-pagination-dot-size"),
+        8
       );
 
-      const gap = parsePixelValue(
-        styles.getPropertyValue("--skill-pagination-gap")
+      const barWidth = parsePixelValue(
+        styles.getPropertyValue("--skill-pagination-bar-width"),
+        48
       );
 
-      return dotSize + gap;
+      return {
+        dotSize,
+        barWidth,
+      };
     };
+
+    const applyProgress = (progress: number) => {
+      const { dotSize, barWidth } = getSizes();
+
+      paginationItems.forEach((item, index) => {
+        const distance = Math.abs(progress - index);
+        const activeAmount = Math.max(0, 1 - distance);
+        const width = dotSize + (barWidth - dotSize) * activeAmount;
+
+        gsap.set(item, {
+          width,
+          backgroundColor:
+            activeAmount > 0.5
+              ? "rgba(255, 255, 255, 0.94)"
+              : "rgba(255, 255, 255, 0.72)",
+        });
+      });
+    };
+
+    const reset = () => {
+      carouselViewport.scrollLeft = 0;
+      targetProgress = 0;
+      currentProgress = 0;
+      applyProgress(0);
+    };
+
+    reset();
 
     const updateTarget = () => {
       const maxScrollLeft =
         carouselViewport.scrollWidth - carouselViewport.clientWidth;
 
-      const maxIndex = Math.max(pacmans.length - 1, 0);
+      const maxIndex = Math.max(paginationItems.length - 1, 0);
 
       if (maxScrollLeft <= 0 || maxIndex <= 0) {
-        targetX = 0;
+        targetProgress = 0;
         return;
       }
 
       const scrollRatio = carouselViewport.scrollLeft / maxScrollLeft;
 
-      targetX = scrollRatio * maxIndex * getCursorStep();
+      targetProgress = scrollRatio * maxIndex;
     };
 
     const tick = () => {
-      currentX = lerp(currentX, targetX, 0.16);
-
-      gsap.set(paginationCursor, {
-        x: currentX,
-      });
+      currentProgress = lerp(currentProgress, targetProgress, 0.16);
+      applyProgress(currentProgress);
     };
 
     const destroy = () => {
-      gsap.set(paginationCursor, {
-        clearProps: "transform",
+      gsap.set(paginationItems, {
+        clearProps: "width,backgroundColor",
       });
     };
 

@@ -18,7 +18,7 @@ export const ABOUT_SCENE_SELECTORS = {
     carouselViewport: ".js-skill-carousel-viewport",
     carouselTrack: ".js-skill-carousel-track",
     pagination: ".js-skill-pagination",
-    paginationCursor: ".js-skill-pagination-cursor",
+    paginationItems: ".js-skill-pagination-item",
 
     gauges: ".skill-card__gauge",
     pacmans: ".skill-card__circle",

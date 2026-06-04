@@ -63,6 +63,35 @@ const AboutSceneAnimation = {
       skills.titleFill
     );
 
+    const skillPaginationIndicator =
+      AboutSkillsAnimation.createPaginationIndicator(skills);
+
+    const handleSkillCarouselScroll = () => {
+      skillPaginationIndicator.updateTarget();
+    };
+
+    const handleResize = () => {
+      skillPaginationIndicator.updateTarget();
+    };
+
+    skills.carouselViewport?.addEventListener(
+      "scroll",
+      handleSkillCarouselScroll,
+      { passive: true }
+    );
+
+    window.addEventListener("resize", handleResize);
+
+    let paginationFrameId: number | null = null;
+
+    const tickPaginationIndicator = () => {
+      skillPaginationIndicator.tick();
+      paginationFrameId = requestAnimationFrame(tickPaginationIndicator);
+    };
+
+    skillPaginationIndicator.updateTarget();
+    tickPaginationIndicator();
+
     const sceneTimeline = gsap.timeline({ paused: true });
 
     sceneTimeline
@@ -123,6 +152,19 @@ const AboutSceneAnimation = {
     };
 
     const destroy = () => {
+      skills.carouselViewport?.removeEventListener(
+        "scroll",
+        handleSkillCarouselScroll
+      );
+
+      window.removeEventListener("resize", handleResize);
+
+      if (paginationFrameId !== null) {
+        cancelAnimationFrame(paginationFrameId);
+      }
+
+      skillPaginationIndicator.destroy();
+
       sceneTimeline.kill();
 
       heroAnimation.destroy();

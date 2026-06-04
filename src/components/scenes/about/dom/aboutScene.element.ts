@@ -19,7 +19,7 @@ export type AboutSkillsAnimationElements = {
   carouselViewport: HTMLElement | null;
   carouselTrack: HTMLElement | null;
   pagination: HTMLElement | null;
-  paginationCursor: HTMLElement | null;
+  paginationItems: HTMLElement[];
 
   gauges: HTMLElement[];
   pacmans: HTMLElement[];
@@ -92,9 +92,9 @@ export const getAboutSceneAnimationElements = (
       ),
       carouselTrack: queryElement(skillsRoot, skillsSelectors.carouselTrack),
       pagination: queryElement(skillsRoot, skillsSelectors.pagination),
-      paginationCursor: queryElement(
+      paginationItems: queryElements(
         skillsRoot,
-        skillsSelectors.paginationCursor
+        skillsSelectors.paginationItems
       ),
 
       gauges: queryElements(skillsRoot, skillsSelectors.gauges),

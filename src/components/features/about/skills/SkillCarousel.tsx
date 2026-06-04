@@ -12,6 +12,8 @@ type SkillCarouselProps = {
   skills: SkillCarouselItem[];
 };
 
+const PAGINATION_COUNT = 4;
+
 export default function SkillCarousel({ skills }: SkillCarouselProps) {
   return (
     <div className="skill-carousel js-skill-carousel">
@@ -34,7 +36,7 @@ export default function SkillCarousel({ skills }: SkillCarouselProps) {
         </div>
       </div>
 
-      <SkillPagination total={skills.length} />
+      <SkillPagination total={PAGINATION_COUNT} />
     </div>
   );
 }
