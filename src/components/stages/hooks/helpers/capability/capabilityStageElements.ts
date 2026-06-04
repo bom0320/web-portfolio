@@ -1,6 +1,19 @@
 import { CAPABILITY_STAGE_SELECTORS } from "../../../constants";
 
-export function getCapabilityStageElements(stage: HTMLElement) {
+export type CapabilityStageElements = {
+  intro: HTMLElement | null;
+  introProof: HTMLElement | null;
+  structure: HTMLElement | null;
+  ai: HTMLElement | null;
+  visual: HTMLElement | null;
+  navigatorIntro: HTMLElement | null;
+  navigatorPin: HTMLElement | null;
+  closing: HTMLElement | null;
+};
+
+export function getCapabilityStageElements(
+  stage: HTMLElement
+): CapabilityStageElements {
   return {
     intro: stage.querySelector<HTMLElement>(CAPABILITY_STAGE_SELECTORS.intro),
 
@@ -29,7 +42,3 @@ export function getCapabilityStageElements(stage: HTMLElement) {
     ),
   };
 }
-
-export type CapabilityStageElements = ReturnType<
-  typeof getCapabilityStageElements
->;

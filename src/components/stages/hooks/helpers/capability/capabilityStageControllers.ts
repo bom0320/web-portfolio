@@ -13,6 +13,12 @@ import {
   getCapabilityIntroProofAnimationElements,
 } from "@/components/scenes/capability/dom/intro";
 
+import {
+  getAICapabilityAnimationElements,
+  getStructureCapabilityAnimationElements,
+  getVisualCapabilityAnimationElements,
+} from "@/components/scenes/capability/dom/experience";
+
 import type { CapabilityStageElements } from "./capabilityStageElements";
 
 export function createCapabilityStageControllers(
@@ -27,9 +33,17 @@ export function createCapabilityStageControllers(
       getCapabilityIntroProofAnimationElements(elements.introProof)
     ),
 
-    structure: StructureCapabilityAnimation.create(elements.structure),
-    ai: AICapabilityAnimation.create(elements.ai),
-    visual: VisualCapabilityAnimation.create(elements.visual),
+    structure: StructureCapabilityAnimation.create(
+      getStructureCapabilityAnimationElements(elements.structure)
+    ),
+
+    ai: AICapabilityAnimation.create(
+      getAICapabilityAnimationElements(elements.ai)
+    ),
+
+    visual: VisualCapabilityAnimation.create(
+      getVisualCapabilityAnimationElements(elements.visual)
+    ),
 
     navigatorIntro: CapabilityNavigatorAnimation.createIntro(
       elements.navigatorIntro

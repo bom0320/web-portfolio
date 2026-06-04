@@ -1,6 +1,14 @@
 import { CONTACT_STAGE_SELECTORS } from "../../../constants";
 
-export function getContactStageElements(stage: HTMLElement) {
+export type ContactStageElements = {
+  root: HTMLElement;
+  intro: HTMLElement | null;
+  footer: HTMLElement | null;
+};
+
+export function getContactStageElements(
+  stage: HTMLElement
+): ContactStageElements {
   return {
     root: stage,
 
@@ -9,5 +17,3 @@ export function getContactStageElements(stage: HTMLElement) {
     footer: stage.querySelector<HTMLElement>(CONTACT_STAGE_SELECTORS.footer),
   };
 }
-
-export type ContactStageElements = ReturnType<typeof getContactStageElements>;

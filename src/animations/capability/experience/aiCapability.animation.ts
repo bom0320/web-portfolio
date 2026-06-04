@@ -1,5 +1,7 @@
 import gsap from "gsap";
 
+import type { AICapabilityAnimationElements } from "@/components/scenes/capability/dom";
+
 type AICapabilityAnimationController = {
   setProgress: (progress: number) => void;
   destroy: () => void;
@@ -8,43 +10,27 @@ type AICapabilityAnimationController = {
 const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
 const AICapabilityAnimation = {
-  create(root: HTMLElement | null): AICapabilityAnimationController {
+  create(
+    elements: AICapabilityAnimationElements
+  ): AICapabilityAnimationController {
+    const {
+      root,
+      header,
+      grid,
+      cards,
+      cardIcons,
+      cardSubtitles,
+      cardTitles,
+      cardMessages,
+      cardDescs,
+    } = elements;
+
     if (!root) {
       return {
         setProgress: () => {},
         destroy: () => {},
       };
     }
-
-    const header = root.querySelector<HTMLElement>(".js-ai-capability-header");
-
-    const grid = root.querySelector<HTMLElement>(
-      ".experience-capability-grid--ai"
-    );
-
-    const cards = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-card")
-    );
-
-    const cardIcons = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-card__icon")
-    );
-
-    const cardSubtitles = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-card__subtitle")
-    );
-
-    const cardTitles = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-card__title")
-    );
-
-    const cardMessages = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-card__message")
-    );
-
-    const cardDescs = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-card__desc")
-    );
 
     const cardInnerElements = [
       ...cardIcons,

@@ -1,5 +1,7 @@
 import gsap from "gsap";
 
+import type { VisualCapabilityAnimationElements } from "@/components/scenes/capability/dom";
+
 type VisualCapabilityAnimationController = {
   setProgress: (progress: number) => void;
   destroy: () => void;
@@ -8,17 +10,17 @@ type VisualCapabilityAnimationController = {
 const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
 const VisualCapabilityAnimation = {
-  create(root: HTMLElement | null): VisualCapabilityAnimationController {
+  create(
+    elements: VisualCapabilityAnimationElements
+  ): VisualCapabilityAnimationController {
+    const { root, header } = elements;
+
     if (!root) {
       return {
         setProgress: () => {},
         destroy: () => {},
       };
     }
-
-    const header = root.querySelector<HTMLElement>(
-      ".js-visual-capability-header"
-    );
 
     gsap.set(header, {
       autoAlpha: 0,

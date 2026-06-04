@@ -1,5 +1,7 @@
 import gsap from "gsap";
 
+import type { StructureCapabilityAnimationElements } from "@/components/scenes/capability/dom";
+
 type StructureCapabilityAnimationController = {
   setProgress: (progress: number) => void;
   destroy: () => void;
@@ -8,7 +10,23 @@ type StructureCapabilityAnimationController = {
 const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
 const StructureCapabilityAnimation = {
-  create(root: HTMLElement | null): StructureCapabilityAnimationController {
+  create(
+    elements: StructureCapabilityAnimationElements
+  ): StructureCapabilityAnimationController {
+    const {
+      root,
+      header,
+      core,
+      stem,
+      branch,
+      nodes,
+      cards,
+      cardIcons,
+      cardTitles,
+      cardMessages,
+      cardDescs,
+    } = elements;
+
     if (!root) {
       return {
         setProgress: () => {},
@@ -16,53 +34,8 @@ const StructureCapabilityAnimation = {
       };
     }
 
-    const header = root.querySelector<HTMLElement>(
-      ".js-structure-capability-header"
-    );
-
-    const core = root.querySelector<HTMLElement>(
-      ".experience-capability-structure-map__core"
-    );
-
-    const stem = root.querySelector<HTMLElement>(
-      ".experience-capability-structure-map__stem"
-    );
-
-    const branch = root.querySelector<HTMLElement>(
-      ".experience-capability-structure-map__branch"
-    );
-
-    const nodes = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-structure-map__node")
-    );
-
-    const cards = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-card")
-    );
-
-    const cardIcons = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-card__icon")
-    );
-
-    const cardSubtitles = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-card__subtitle")
-    );
-
-    const cardTitles = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-card__title")
-    );
-
-    const cardMessages = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-card__message")
-    );
-
-    const cardDescs = gsap.utils.toArray<HTMLElement>(
-      root.querySelectorAll(".experience-capability-card__desc")
-    );
-
     const cardInnerElements = [
       ...cardIcons,
-      ...cardSubtitles,
       ...cardTitles,
       ...cardMessages,
       ...cardDescs,
@@ -120,9 +93,6 @@ const StructureCapabilityAnimation = {
     });
 
     timeline
-      /**
-       * 01. Header
-       */
       .to(header, {
         autoAlpha: 1,
         y: 0,
@@ -131,9 +101,6 @@ const StructureCapabilityAnimation = {
         ease: "none",
       })
 
-      /**
-       * 02. Core
-       */
       .to(
         core,
         {
@@ -146,9 +113,6 @@ const StructureCapabilityAnimation = {
         "-=0.03"
       )
 
-      /**
-       * 03. Stem
-       */
       .to(
         stem,
         {
@@ -159,18 +123,12 @@ const StructureCapabilityAnimation = {
         "-=0.01"
       )
 
-      /**
-       * 04. Branch
-       */
       .to(branch, {
         scaleX: 1,
         duration: 0.14,
         ease: "none",
       })
 
-      /**
-       * 05. Branch edge
-       */
       .to(
         branch,
         {
@@ -181,9 +139,6 @@ const StructureCapabilityAnimation = {
         "-=0.04"
       )
 
-      /**
-       * 06. Node branches start
-       */
       .add("nodeDraw", "-=0.06");
 
     const nodeRevealOrder = [0, 5, 1, 4, 2, 3];
@@ -196,9 +151,6 @@ const StructureCapabilityAnimation = {
       const startAt = `nodeDraw+=${orderIndex * 0.035}`;
 
       timeline
-        /**
-         * 가지가 위에서 아래로 자라남
-         */
         .to(
           node,
           {
@@ -210,9 +162,6 @@ const StructureCapabilityAnimation = {
           startAt
         )
 
-        /**
-         * 가지 끝에 노드가 맺히듯 등장
-         */
         .to(
           node,
           {
@@ -228,9 +177,6 @@ const StructureCapabilityAnimation = {
     });
 
     timeline
-      /**
-       * 07. Cards pull up
-       */
       .to(
         cards,
         {
@@ -248,9 +194,6 @@ const StructureCapabilityAnimation = {
         "nodeDraw+=0.2"
       )
 
-      /**
-       * 08. Card contents
-       */
       .to(
         cardIcons,
         {
@@ -261,18 +204,6 @@ const StructureCapabilityAnimation = {
           ease: "none",
         },
         "nodeDraw+=0.25"
-      )
-
-      .to(
-        cardSubtitles,
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.08,
-          stagger: 0.012,
-          ease: "none",
-        },
-        "nodeDraw+=0.265"
       )
 
       .to(
