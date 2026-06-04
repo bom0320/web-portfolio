@@ -8,7 +8,7 @@ import {
 
 export default function ExperienceCapabilityScene() {
   return (
-    <section className="experience-capability-scene">
+    <section className="experience-capability-scene js-capability-experience">
       <div className="experience-capability-scene__inner">
         <StructureCapabilityBlock />
 
