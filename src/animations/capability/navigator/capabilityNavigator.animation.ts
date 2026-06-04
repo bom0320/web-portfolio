@@ -1,37 +1,26 @@
 import gsap from "gsap";
 
+import {
+  clampProgress,
+  createNoopController,
+  type AnimationController,
+} from "@/animations/_shared";
+import type { CapabilityNavigatorIntroAnimationElements } from "@/components/scenes/capability/dom";
+
 interface CapabilityNavigatorLayerTransitionParams {
   nextLayer: HTMLElement;
   onComplete?: () => void;
 }
 
-type CapabilityNavigatorIntroController = {
-  setProgress: (progress: number) => void;
-  destroy: () => void;
-};
-
-const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
-
 const CapabilityNavigatorAnimation = {
-  createIntro(root: HTMLElement | null): CapabilityNavigatorIntroController {
+  createIntro(
+    elements: CapabilityNavigatorIntroAnimationElements
+  ): AnimationController {
+    const { root, eyebrow, title, desc } = elements;
+
     if (!root) {
-      return {
-        setProgress: () => {},
-        destroy: () => {},
-      };
+      return createNoopController();
     }
-
-    const eyebrow = root.querySelector<HTMLElement>(
-      ".js-capability-navigator-intro-eyebrow"
-    );
-
-    const title = root.querySelector<HTMLElement>(
-      ".js-capability-navigator-intro-title"
-    );
-
-    const desc = root.querySelector<HTMLElement>(
-      ".js-capability-navigator-intro-desc"
-    );
 
     gsap.set([eyebrow, title, desc].filter(Boolean), {
       autoAlpha: 0,
