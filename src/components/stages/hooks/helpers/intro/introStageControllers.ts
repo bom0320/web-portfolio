@@ -1,7 +1,5 @@
 import { AboutSceneAnimation } from "@/animations/about";
-import HeroToLifeAnimation from "@/animations/transitions/heroToLife.animation";
-import LifeToAboutAnimation from "@/animations/transitions/lifeToAbout.animation";
-
+import { HeroToLifeAnimation, LifeToAboutAnimation } from "@/animations/intro";
 import type { IntroStageElements } from "./getIntroStageElements";
 
 export function createIntroStageControllers(elements: IntroStageElements) {
