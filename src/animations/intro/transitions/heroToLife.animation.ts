@@ -48,7 +48,7 @@ const getLifeCanvasInitialState = () => {
 
   if (isViewport("(max-width: 1180px)")) {
     return {
-      y: clampValue(420, viewportHeight * 0.48, 580),
+      y: clampValue(400, viewportHeight * 0.46, 540),
       scale: 0.76,
       opacity: 0.58,
       filter: "brightness(0.62)",
@@ -56,7 +56,7 @@ const getLifeCanvasInitialState = () => {
   }
 
   return {
-    y: clampValue(620, viewportHeight * 0.74, 820),
+    y: clampValue(480, viewportHeight * 0.56, 620),
     scale: 0.74,
     opacity: 0.58,
     filter: "brightness(0.62)",
@@ -69,49 +69,56 @@ const getLifeCanvasPinnedState = () => {
 
   if (isViewport("(max-width: 430px)")) {
     return {
-      y: clampValue(24, viewportHeight * 0.04, 44),
+      y: clampValue(36, viewportHeight * 0.055, 60),
       scale: 1,
     };
   }
 
   if (isViewport("(max-width: 640px)")) {
     return {
-      y: clampValue(28, viewportHeight * 0.045, 56),
+      y: clampValue(44, viewportHeight * 0.06, 72),
       scale: 1,
     };
   }
 
   if (isViewport("(max-width: 1024px)")) {
     return {
-      y: clampValue(120, viewportHeight * 0.1, 160),
+      y: clampValue(140, viewportHeight * 0.12, 190),
       scale: 1,
     };
   }
 
   if (isViewport("(max-width: 1180px)")) {
     return {
-      y: clampValue(72, viewportHeight * 0.07, 116),
+      y: clampValue(96, viewportHeight * 0.09, 140),
       scale: 1,
     };
   }
 
   return {
-    y: clampValue(36, viewportHeight * 0.04, 72),
+    y: clampValue(90, viewportHeight * 0.1, 130),
     scale: 1,
   };
 };
 
 const HeroToLifeAnimation = {
   create(elements: HeroToLifeAnimationElements): AnimationController {
-    const { heroItems, lifeCanvas, lifeTrack, topRow, bottomRow } = elements;
+    const { heroItems, lifeRoot, lifeCanvas, lifeTrack, topRow, bottomRow } =
+      elements;
 
-    if (!lifeCanvas || !lifeTrack) {
+    if (!lifeRoot || !lifeCanvas || !lifeTrack) {
       return createNoopController();
     }
 
+    const lifeCanvasInitialState = getLifeCanvasInitialState();
+
     gsap.set(lifeCanvas, {
-      ...getLifeCanvasInitialState(),
+      ...lifeCanvasInitialState,
       transformOrigin: "center center",
+    });
+
+    gsap.set(lifeRoot, {
+      autoAlpha: 1,
     });
 
     gsap.set(lifeTrack, {
@@ -203,10 +210,13 @@ const HeroToLifeAnimation = {
         clearProps: "transform,opacity,visibility",
       });
 
-      gsap.set([lifeCanvas, lifeTrack, topRow, bottomRow].filter(Boolean), {
-        clearProps:
-          "transform,opacity,visibility,filter,--life-edge-start,--life-edge-soft,--life-edge-strong",
-      });
+      gsap.set(
+        [lifeRoot, lifeCanvas, lifeTrack, topRow, bottomRow].filter(Boolean),
+        {
+          clearProps:
+            "transform,opacity,visibility,filter,--life-edge-start,--life-edge-soft,--life-edge-strong",
+        }
+      );
     };
 
     return {
