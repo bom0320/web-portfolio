@@ -8,20 +8,33 @@ import {
   VisualCapabilityAnimation,
 } from "@/animations/capability";
 
+import {
+  getCapabilityIntroAnimationElements,
+  getCapabilityIntroProofAnimationElements,
+} from "@/components/scenes/capability/dom";
+
 import type { CapabilityStageElements } from "./capabilityStageElements";
 
 export function createCapabilityStageControllers(
   elements: CapabilityStageElements
 ) {
   return {
-    intro: CapabilityIntroAnimation.create(elements.intro),
-    introProof: CapabilityIntroProofAnimation.create(elements.introProof),
+    intro: CapabilityIntroAnimation.create(
+      getCapabilityIntroAnimationElements(elements.intro)
+    ),
+
+    introProof: CapabilityIntroProofAnimation.create(
+      getCapabilityIntroProofAnimationElements(elements.introProof)
+    ),
+
     structure: StructureCapabilityAnimation.create(elements.structure),
     ai: AICapabilityAnimation.create(elements.ai),
     visual: VisualCapabilityAnimation.create(elements.visual),
+
     navigatorIntro: CapabilityNavigatorAnimation.createIntro(
       elements.navigatorIntro
     ),
+
     closing: CapabilityClosingAnimation.create(elements.closing),
   };
 }

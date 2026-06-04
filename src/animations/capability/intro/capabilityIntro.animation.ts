@@ -6,27 +6,21 @@ import {
   type AnimationController,
 } from "@/animations/_shared";
 
-import { CAPABILITY_INTRO_ANIMATION_SELECTORS as SELECTORS } from "./introAnimation.selectors";
+import type { CapabilityIntroAnimationElements } from "@/components/scenes/capability/dom";
 
 const TITLE_INITIAL_SCALE = 3.8;
 
 const CapabilityIntroAnimation = {
-  create(scope: HTMLElement | null): AnimationController {
-    if (!scope) {
-      console.warn("[CapabilityIntroAnimation] Missing scope");
-
-      return createNoopController();
-    }
-
-    const visualField = scope.querySelector<HTMLElement>(SELECTORS.visualField);
-
-    const titleLayer = scope.querySelector<HTMLElement>(SELECTORS.titleLayer);
-    const eyebrow = scope.querySelector<HTMLElement>(SELECTORS.eyebrow);
-    const title = scope.querySelector<HTMLElement>(SELECTORS.title);
-    const subtitle = scope.querySelector<HTMLElement>(SELECTORS.subtitle);
-
-    const phase01 = scope.querySelector<HTMLElement>(SELECTORS.phase01);
-    const phase02 = scope.querySelector<HTMLElement>(SELECTORS.phase02);
+  create(elements: CapabilityIntroAnimationElements): AnimationController {
+    const {
+      visualField,
+      titleLayer,
+      eyebrow,
+      title,
+      subtitle,
+      phase01,
+      phase02,
+    } = elements;
 
     if (
       !visualField ||
@@ -37,15 +31,7 @@ const CapabilityIntroAnimation = {
       !phase01 ||
       !phase02
     ) {
-      console.warn("[CapabilityIntroAnimation] Missing elements", {
-        visualField,
-        titleLayer,
-        eyebrow,
-        title,
-        subtitle,
-        phase01,
-        phase02,
-      });
+      console.warn("[CapabilityIntroAnimation] Missing elements", elements);
 
       return createNoopController();
     }

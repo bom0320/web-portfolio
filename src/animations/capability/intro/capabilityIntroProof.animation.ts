@@ -6,32 +6,17 @@ import {
   type AnimationController,
 } from "@/animations/_shared";
 
-import { CAPABILITY_INTRO_PROOF_ANIMATION_SELECTORS as SELECTORS } from "./introAnimation.selectors";
+import type { CapabilityIntroProofAnimationElements } from "@/components/scenes/capability/dom";
 
 const CapabilityIntroProofAnimation = {
-  create(scope: HTMLElement | null): AnimationController {
-    if (!scope) {
-      console.warn("[CapabilityIntroProofAnimation] Missing scope");
-
-      return createNoopController();
-    }
-
-    const character = scope.querySelector<HTMLElement>(SELECTORS.character);
-    const leftPoints = scope.querySelectorAll<HTMLElement>(
-      SELECTORS.leftPoints
-    );
-    const rightPoints = scope.querySelectorAll<HTMLElement>(
-      SELECTORS.rightPoints
-    );
-    const quote = scope.querySelector<HTMLElement>(SELECTORS.quote);
+  create(elements: CapabilityIntroProofAnimationElements): AnimationController {
+    const { character, leftPoints, rightPoints, quote } = elements;
 
     if (!character || !leftPoints.length || !rightPoints.length || !quote) {
-      console.warn("[CapabilityIntroProofAnimation] Missing elements", {
-        character,
-        leftPoints,
-        rightPoints,
-        quote,
-      });
+      console.warn(
+        "[CapabilityIntroProofAnimation] Missing elements",
+        elements
+      );
 
       return createNoopController();
     }
