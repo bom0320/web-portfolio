@@ -39,8 +39,8 @@ const getLifeCanvasInitialState = () => {
 
   if (isViewport("(max-width: 1024px)")) {
     return {
-      y: clampValue(220, viewportHeight * 0.28, 340),
-      scale: 0.8,
+      y: clampValue(360, viewportHeight * 0.42, 520),
+      scale: 0.78,
       opacity: 0.57,
       filter: "brightness(0.62)",
     };
