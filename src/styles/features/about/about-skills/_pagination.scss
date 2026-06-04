@@ -1,29 +1,48 @@
 .skill-pagination {
-  margin-top: 72px;
-  padding: 13px 18px;
+  --skill-pagination-dot-size: 8px;
+  --skill-pagination-cursor-width: 48px;
+  --skill-pagination-cursor-height: 7px;
+  --skill-pagination-gap: 18px;
+  --skill-pagination-padding-x: 24px;
+
+  position: relative;
+
+  margin-top: 44px;
+  padding: 18px var(--skill-pagination-padding-x);
 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: var(--skill-pagination-gap);
 
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.14);
 }
 
-.skill-pagination__item {
-  width: 6px;
-  height: 6px;
+.skill-pagination__dot {
+  width: var(--skill-pagination-dot-size);
+  height: var(--skill-pagination-dot-size);
 
   display: block;
+  flex: 0 0 auto;
 
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.72);
-
-  transition: width 0.28s ease, background 0.28s ease, opacity 0.28s ease;
 }
 
-.skill-pagination__item--active {
-  width: 42px;
-  background: rgba(255, 255, 255, 0.92);
+.skill-pagination__cursor {
+  position: absolute;
+  top: 50%;
+  left: var(--skill-pagination-padding-x);
+  z-index: 2;
+
+  width: var(--skill-pagination-cursor-width);
+  height: var(--skill-pagination-cursor-height);
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+
+  transform: translateY(-50%);
+  will-change: transform;
+  pointer-events: none;
 }

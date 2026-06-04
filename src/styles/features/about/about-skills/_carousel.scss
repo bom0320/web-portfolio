@@ -8,7 +8,8 @@
 }
 
 .skill-carousel__viewport {
-  width: 100%;
+  width: calc((190px * 4) + (56px * 3));
+  max-width: 100%;
 
   overflow-x: auto;
   overflow-y: hidden;
@@ -27,13 +28,17 @@
 .skill-carousel__track {
   display: flex;
   align-items: flex-start;
-  gap: 48px;
+  gap: 56px;
 
   width: max-content;
-  min-width: 100%;
 }
 
-.skill-carousel__slide {
-  flex: 0 0 clamp(150px, 13vw, 190px);
+.skill-carousel__item {
+  flex: 0 0 190px;
+  width: 190px;
+
+  display: flex;
+  justify-content: center;
+
   scroll-snap-align: start;
 }

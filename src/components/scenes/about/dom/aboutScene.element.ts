@@ -14,6 +14,13 @@ export type AboutSkillsAnimationElements = {
   root: HTMLElement | null;
   inner: HTMLElement | null;
   titleFill: SVGGElement | null;
+
+  carousel: HTMLElement | null;
+  carouselViewport: HTMLElement | null;
+  carouselTrack: HTMLElement | null;
+  pagination: HTMLElement | null;
+  paginationCursor: HTMLElement | null;
+
   gauges: HTMLElement[];
   pacmans: HTMLElement[];
 };
@@ -77,6 +84,19 @@ export const getAboutSceneAnimationElements = (
       root: skillsRoot,
       inner: queryElement(skillsRoot, skillsSelectors.inner),
       titleFill: querySvgElement(skillsRoot, skillsSelectors.titleFill),
+
+      carousel: queryElement(skillsRoot, skillsSelectors.carousel),
+      carouselViewport: queryElement(
+        skillsRoot,
+        skillsSelectors.carouselViewport
+      ),
+      carouselTrack: queryElement(skillsRoot, skillsSelectors.carouselTrack),
+      pagination: queryElement(skillsRoot, skillsSelectors.pagination),
+      paginationCursor: queryElement(
+        skillsRoot,
+        skillsSelectors.paginationCursor
+      ),
+
       gauges: queryElements(skillsRoot, skillsSelectors.gauges),
       pacmans: queryElements(skillsRoot, skillsSelectors.pacmans),
     },

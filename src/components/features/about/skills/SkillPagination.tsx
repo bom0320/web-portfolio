@@ -1,23 +1,14 @@
 type SkillPaginationProps = {
   total: number;
-  activeIndex: number;
 };
 
-export default function SkillPagination({
-  total,
-  activeIndex,
-}: SkillPaginationProps) {
+export default function SkillPagination({ total }: SkillPaginationProps) {
   return (
-    <div className="skill-pagination" aria-hidden="true">
+    <div className="skill-pagination js-skill-pagination" aria-hidden="true">
+      <span className="skill-pagination__cursor js-skill-pagination-cursor" />
+
       {Array.from({ length: total }).map((_, index) => (
-        <span
-          key={index}
-          className={
-            index === activeIndex
-              ? "skill-pagination__item skill-pagination__item--active"
-              : "skill-pagination__item"
-          }
-        />
+        <span key={index} className="skill-pagination__dot" />
       ))}
     </div>
   );

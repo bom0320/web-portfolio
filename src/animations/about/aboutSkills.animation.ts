@@ -2,6 +2,17 @@ import gsap from "gsap";
 
 import type { AboutSkillsAnimationElements } from "@/components/scenes/about/dom";
 
+type SkillPaginationCursorController = {
+  updateTarget: () => void;
+  tick: () => void;
+  destroy: () => void;
+};
+
+const lerp = (start: number, end: number, amount: number) =>
+  start + (end - start) * amount;
+
+const parsePixelValue = (value: string) => Number(value.replace("px", ""));
+
 const AboutSkillsAnimation = {
   createSkillTitleFill(fillGroup: SVGGElement | null) {
     if (!fillGroup) return null;
@@ -16,6 +27,80 @@ const AboutSkillsAnimation = {
         paused: true,
       }
     );
+  },
+
+  createPaginationCursor(
+    elements: AboutSkillsAnimationElements
+  ): SkillPaginationCursorController {
+    const { carouselViewport, pagination, paginationCursor, pacmans } =
+      elements;
+
+    if (!carouselViewport || !paginationCursor || !pagination) {
+      return {
+        updateTarget: () => {},
+        tick: () => {},
+        destroy: () => {},
+      };
+    }
+
+    let targetX = 0;
+    let currentX = 0;
+
+    carouselViewport.scrollLeft = 0;
+
+    gsap.set(paginationCursor, {
+      x: 0,
+    });
+
+    const getCursorStep = () => {
+      const styles = getComputedStyle(pagination);
+
+      const dotSize = parsePixelValue(
+        styles.getPropertyValue("--skill-pagination-dot-size")
+      );
+
+      const gap = parsePixelValue(
+        styles.getPropertyValue("--skill-pagination-gap")
+      );
+
+      return dotSize + gap;
+    };
+
+    const updateTarget = () => {
+      const maxScrollLeft =
+        carouselViewport.scrollWidth - carouselViewport.clientWidth;
+
+      const maxIndex = Math.max(pacmans.length - 1, 0);
+
+      if (maxScrollLeft <= 0 || maxIndex <= 0) {
+        targetX = 0;
+        return;
+      }
+
+      const scrollRatio = carouselViewport.scrollLeft / maxScrollLeft;
+
+      targetX = scrollRatio * maxIndex * getCursorStep();
+    };
+
+    const tick = () => {
+      currentX = lerp(currentX, targetX, 0.16);
+
+      gsap.set(paginationCursor, {
+        x: currentX,
+      });
+    };
+
+    const destroy = () => {
+      gsap.set(paginationCursor, {
+        clearProps: "transform",
+      });
+    };
+
+    return {
+      updateTarget,
+      tick,
+      destroy,
+    };
   },
 
   intro(elements: AboutSkillsAnimationElements) {
