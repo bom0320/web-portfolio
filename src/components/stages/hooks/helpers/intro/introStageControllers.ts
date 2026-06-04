@@ -1,6 +1,6 @@
 import { AboutSceneAnimation } from "@/animations/about";
-import HeroToLifeAnimation from "@/animations/transitions/heroToLife";
-import LifeToAboutAnimation from "@/animations/transitions/lifeToAbout";
+import HeroToLifeAnimation from "@/animations/transitions/heroToLife.animation";
+import LifeToAboutAnimation from "@/animations/transitions/lifeToAbout.animation";
 
 import type { IntroStageElements } from "./getIntroStageElements";
 

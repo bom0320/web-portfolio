@@ -1,6 +1,6 @@
 import gsap from "gsap";
-import AboutHeroAnimation from "./aboutHero";
-import AboutSkillsAnimation from "./aboutSkills";
+import AboutHeroAnimation from "./aboutHero.animation";
+import AboutSkillsAnimation from "./aboutSkills.animation";
 
 type AboutSceneController = {
   setProgress: (progress: number) => void;
