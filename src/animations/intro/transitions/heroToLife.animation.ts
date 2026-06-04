@@ -21,7 +21,7 @@ const getLifeCanvasInitialState = () => {
 
   if (isViewport("(max-width: 430px)")) {
     return {
-      y: clampValue(220, viewportHeight * 0.27, 240),
+      y: clampValue(210, viewportHeight * 0.3, 260),
       scale: 0.78,
       opacity: 0.54,
       filter: "brightness(0.62)",
@@ -30,7 +30,7 @@ const getLifeCanvasInitialState = () => {
 
   if (isViewport("(max-width: 640px)")) {
     return {
-      y: clampValue(220, viewportHeight * 0.31, 280),
+      y: clampValue(240, viewportHeight * 0.34, 320),
       scale: 0.78,
       opacity: 0.55,
       filter: "brightness(0.62)",
@@ -48,18 +48,56 @@ const getLifeCanvasInitialState = () => {
 
   if (isViewport("(max-width: 1180px)")) {
     return {
-      y: clampValue(300, viewportHeight * 0.38, 460),
-      scale: 0.78,
+      y: clampValue(420, viewportHeight * 0.48, 580),
+      scale: 0.76,
       opacity: 0.58,
       filter: "brightness(0.62)",
     };
   }
 
   return {
-    y: clampValue(560, viewportHeight * 0.68, 760),
+    y: clampValue(620, viewportHeight * 0.74, 820),
     scale: 0.74,
     opacity: 0.58,
     filter: "brightness(0.62)",
+  };
+};
+
+const getLifeCanvasPinnedState = () => {
+  const viewportHeight =
+    typeof window === "undefined" ? 900 : window.innerHeight;
+
+  if (isViewport("(max-width: 430px)")) {
+    return {
+      y: clampValue(24, viewportHeight * 0.04, 44),
+      scale: 1,
+    };
+  }
+
+  if (isViewport("(max-width: 640px)")) {
+    return {
+      y: clampValue(28, viewportHeight * 0.045, 56),
+      scale: 1,
+    };
+  }
+
+  if (isViewport("(max-width: 1024px)")) {
+    return {
+      y: clampValue(120, viewportHeight * 0.1, 160),
+      scale: 1,
+    };
+  }
+
+  if (isViewport("(max-width: 1180px)")) {
+    return {
+      y: clampValue(72, viewportHeight * 0.07, 116),
+      scale: 1,
+    };
+  }
+
+  return {
+    y: clampValue(36, viewportHeight * 0.04, 72),
+    scale: 1,
   };
 };
 
@@ -117,8 +155,7 @@ const HeroToLifeAnimation = {
     timeline.to(
       lifeCanvas,
       {
-        y: 0,
-        scale: 1,
+        ...getLifeCanvasPinnedState(),
         opacity: 1,
         filter: "brightness(1)",
       },
