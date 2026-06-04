@@ -20,6 +20,7 @@ import {
 } from "@/components/scenes/capability/dom/experience";
 
 import { getCapabilityNavigatorIntroAnimationElements } from "@/components/scenes/capability/dom/navigator";
+import { getCapabilityClosingAnimationElements } from "@/components/scenes/capability/dom/closing";
 
 import type { CapabilityStageElements } from "./capabilityStageElements";
 
@@ -51,7 +52,9 @@ export function createCapabilityStageControllers(
       getCapabilityNavigatorIntroAnimationElements(elements.navigatorIntro)
     ),
 
-    closing: CapabilityClosingAnimation.create(elements.closing),
+    closing: CapabilityClosingAnimation.create(
+      getCapabilityClosingAnimationElements(elements.closing)
+    ),
   };
 }
 
