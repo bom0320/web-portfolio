@@ -6,12 +6,7 @@ import {
   type AnimationController,
 } from "@/animations/_shared";
 
-const SELECTORS = {
-  character: ".js-capability-intro-proof-character",
-  leftPoints: ".js-capability-intro-proof-point-left",
-  rightPoints: ".js-capability-intro-proof-point-right",
-  quote: ".js-capability-intro-proof-quote",
-} as const;
+import { CAPABILITY_INTRO_PROOF_ANIMATION_SELECTORS as SELECTORS } from "./introAnimation.selectors";
 
 const CapabilityIntroProofAnimation = {
   create(scope: HTMLElement | null): AnimationController {

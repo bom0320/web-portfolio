@@ -6,17 +6,7 @@ import {
   type AnimationController,
 } from "@/animations/_shared";
 
-const SELECTORS = {
-  visualField: ".js-capability-intro-visual-field",
-
-  titleLayer: ".js-capability-intro-title-layer",
-  eyebrow: ".js-capability-intro-eyebrow",
-  title: ".js-capability-intro-title",
-  subtitle: ".js-capability-intro-subtitle",
-
-  phase01: ".js-capability-intro-phase-01",
-  phase02: ".js-capability-intro-phase-02",
-} as const;
+import { CAPABILITY_INTRO_ANIMATION_SELECTORS as SELECTORS } from "./introAnimation.selectors";
 
 const TITLE_INITIAL_SCALE = 3.8;
 
