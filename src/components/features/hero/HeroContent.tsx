@@ -5,17 +5,17 @@ export default function HeroContent() {
     <div className="hero__content">
       <p className="hero__description js-hero-exit-item">
         <span className="hero__desc--desktop">
-          {HERO_DESCRIPTION.desktop.split("\n").map((line) => (
-            <span key={line}>
+          {HERO_DESCRIPTION.desktop.split("\n").map((line, index) => (
+            <span key={`desktop-${line}-${index}`}>
               {line}
               <br />
             </span>
           ))}
         </span>
 
-        <span className="hero__desc--mobile" aria-hidden="true">
-          {HERO_DESCRIPTION.mobile.split("\n").map((line) => (
-            <span key={line}>
+        <span className="hero__desc--mobile">
+          {HERO_DESCRIPTION.mobile.split("\n").map((line, index) => (
+            <span key={`mobile-${line}-${index}`}>
               {line}
               <br />
             </span>

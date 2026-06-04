@@ -118,7 +118,7 @@
 
 @include mobile {
   .hero__inner {
-    width: min(100% - 48px, var(--container));
+    width: min(100% - 58px, var(--container));
     height: 100%;
   }
 
@@ -178,6 +178,10 @@
     color: rgba(255, 255, 255, 0.62);
   }
 
+  .hero__desc--desktop {
+    display: none;
+  }
+
   .hero__desc--mobile {
     display: block;
   }
@@ -185,8 +189,7 @@
   .hero__meta {
     position: static;
 
-    margin-top: clamp(42px, 6vh, 64px);
-
+    margin-top: clamp(64px, 9vh, 84px);
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: start;
@@ -204,7 +207,7 @@
 
 @include small-mobile {
   .hero__inner {
-    width: calc(100% - 40px);
+    width: calc(100% - 50px);
   }
 
   .hero__body {
@@ -230,7 +233,7 @@
   }
 
   .hero__meta {
-    margin-top: clamp(36px, 5vh, 52px);
+    margin-top: clamp(110px, 12vh, 130px);
     gap: 8px;
     font-size: 10px;
   }
