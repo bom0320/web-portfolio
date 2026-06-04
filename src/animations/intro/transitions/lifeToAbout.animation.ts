@@ -1,19 +1,18 @@
 import gsap from "gsap";
 
-type LifeToAboutController = {
-  setProgress: (progress: number) => void;
-  destroy: () => void;
-};
-
-const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
+import {
+  clampProgress,
+  createNoopController,
+  type AnimationController,
+} from "@/animations/_shared";
+import type { LifeToAboutAnimationElements } from "@/components/scenes/intro/dom";
 
 const LifeToAboutAnimation = {
-  create(aboutScenes: HTMLElement | null): LifeToAboutController {
+  create(elements: LifeToAboutAnimationElements): AnimationController {
+    const { aboutScenes } = elements;
+
     if (!aboutScenes) {
-      return {
-        setProgress: () => {},
-        destroy: () => {},
-      };
+      return createNoopController();
     }
 
     gsap.set(aboutScenes, {
@@ -39,18 +38,21 @@ const LifeToAboutAnimation = {
       0
     );
 
+    const setProgress = (progress: number) => {
+      timeline.progress(clampProgress(progress));
+    };
+
+    const destroy = () => {
+      timeline.kill();
+
+      gsap.set(aboutScenes, {
+        clearProps: "transform,borderRadius,opacity,visibility",
+      });
+    };
+
     return {
-      setProgress(progress: number) {
-        timeline.progress(clampProgress(progress));
-      },
-
-      destroy() {
-        timeline.kill();
-
-        gsap.set(aboutScenes, {
-          clearProps: "transform,borderRadius,opacity,visibility",
-        });
-      },
+      setProgress,
+      destroy,
     };
   },
 };

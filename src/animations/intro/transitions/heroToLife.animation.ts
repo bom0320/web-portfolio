@@ -1,39 +1,18 @@
 import gsap from "gsap";
 
-type HeroToLifeController = {
-  setProgress: (progress: number) => void;
-  destroy: () => void;
-};
-
-const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
+import {
+  clampProgress,
+  createNoopController,
+  type AnimationController,
+} from "@/animations/_shared";
+import type { HeroToLifeAnimationElements } from "@/components/scenes/intro/dom";
 
 const HeroToLifeAnimation = {
-  create(): HeroToLifeController {
-    const heroItems = document.querySelectorAll<HTMLElement>(
-      ".hero .js-hero-exit-item"
-    );
-
-    const lifeStage = document.querySelector<HTMLElement>(
-      ".js-life-motion-stage"
-    );
-
-    const lifeTrack = document.querySelector<HTMLElement>(
-      ".js-life-motion-track"
-    );
-
-    const topRow = document.querySelector<HTMLElement>(
-      ".js-life-motion-top .life-motion__row"
-    );
-
-    const bottomRow = document.querySelector<HTMLElement>(
-      ".js-life-motion-bottom .life-motion__row"
-    );
+  create(elements: HeroToLifeAnimationElements): AnimationController {
+    const { heroItems, lifeStage, lifeTrack, topRow, bottomRow } = elements;
 
     if (!lifeStage || !lifeTrack) {
-      return {
-        setProgress: () => {},
-        destroy: () => {},
-      };
+      return createNoopController();
     }
 
     gsap.set(lifeStage, {
@@ -126,19 +105,26 @@ const HeroToLifeAnimation = {
       );
     }
 
+    const setProgress = (progress: number) => {
+      timeline.progress(clampProgress(progress));
+    };
+
+    const destroy = () => {
+      timeline.kill();
+
+      gsap.set(heroItems, {
+        clearProps: "transform,opacity,visibility",
+      });
+
+      gsap.set([lifeStage, lifeTrack, topRow, bottomRow].filter(Boolean), {
+        clearProps:
+          "transform,opacity,visibility,filter,--life-edge-start,--life-edge-soft,--life-edge-strong",
+      });
+    };
+
     return {
-      setProgress(progress: number) {
-        timeline.progress(clampProgress(progress));
-      },
-
-      destroy() {
-        timeline.kill();
-
-        gsap.set([heroItems, lifeStage, lifeTrack, topRow, bottomRow], {
-          clearProps:
-            "transform,opacity,visibility,filter,--life-edge-start,--life-edge-soft,--life-edge-strong",
-        });
-      },
+      setProgress,
+      destroy,
     };
   },
 };
