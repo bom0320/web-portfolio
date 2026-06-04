@@ -1,6 +1,8 @@
 import { AboutSceneAnimation } from "@/animations/about";
 import { HeroToLifeAnimation, LifeToAboutAnimation } from "@/animations/intro";
 
+import { getAboutSceneAnimationElements } from "@/components/scenes/about/dom";
+
 import {
   getHeroToLifeAnimationElements,
   getLifeToAboutAnimationElements,
@@ -18,7 +20,9 @@ export function createIntroStageControllers(elements: IntroStageElements) {
       getLifeToAboutAnimationElements(elements)
     ),
 
-    aboutScene: AboutSceneAnimation.create(),
+    aboutScene: AboutSceneAnimation.create(
+      getAboutSceneAnimationElements(elements.about)
+    ),
   };
 }
 

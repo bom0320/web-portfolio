@@ -1,58 +1,38 @@
 import gsap from "gsap";
+
+import {
+  clampProgress,
+  createNoopController,
+  type AnimationController,
+} from "@/animations/_shared";
+import type { AboutSceneAnimationElements } from "@/components/scenes/about/dom";
+
 import AboutHeroAnimation from "./aboutHero.animation";
 import AboutSkillsAnimation from "./aboutSkills.animation";
-
-type AboutSceneController = {
-  setProgress: (progress: number) => void;
-  destroy: () => void;
-};
-
-const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
 
 const mapRange = (progress: number, start: number, end: number) => {
   return clampProgress((progress - start) / (end - start));
 };
 
 const AboutSceneAnimation = {
-  create(): AboutSceneController {
-    const aboutHero = document.querySelector<HTMLElement>(".js-about-hero");
-    const skills = document.querySelector<HTMLElement>(".js-about-skills");
+  create(elements: AboutSceneAnimationElements): AnimationController {
+    const { root, hero, skills } = elements;
 
-    const heroInner = document.querySelector<HTMLElement>(
-      ".js-about-hero-inner"
-    );
-    const skillsInner = document.querySelector<HTMLElement>(
-      ".js-about-skills-inner"
-    );
-
-    const heroEyebrow = document.querySelector<HTMLElement>(
-      ".js-about-hero-eyebrow"
-    );
-    const heroHeading = document.querySelector<HTMLElement>(
-      ".js-about-hero-title"
-    );
-    const heroDesc = document.querySelector<HTMLElement>(".js-about-hero-desc");
-    const heroVisual = document.querySelector<HTMLElement>(
-      ".js-about-hero-visual"
-    );
-    const heroCta = document.querySelector<HTMLElement>(".js-about-hero-cta");
-
-    const skillTitleFillElement = document.querySelector<SVGGElement>(
-      ".js-about-skills-title-fill"
-    );
+    const aboutHero = hero.root;
+    const skillsRoot = skills.root;
+    const heroInner = hero.inner;
+    const skillsInner = skills.inner;
 
     if (
+      !root ||
       !aboutHero ||
-      !skills ||
+      !skillsRoot ||
       !heroInner ||
       !skillsInner ||
-      !heroHeading ||
-      !heroDesc
+      !hero.heading ||
+      !hero.desc
     ) {
-      return {
-        setProgress: () => {},
-        destroy: () => {},
-      };
+      return createNoopController();
     }
 
     gsap.set(aboutHero, {
@@ -60,7 +40,7 @@ const AboutSceneAnimation = {
       pointerEvents: "auto",
     });
 
-    gsap.set(skills, {
+    gsap.set(skillsRoot, {
       autoAlpha: 0,
       pointerEvents: "none",
     });
@@ -75,19 +55,13 @@ const AboutSceneAnimation = {
       autoAlpha: 0,
     });
 
-    const heroAnimation = AboutHeroAnimation.create({
-      eyebrow: heroEyebrow,
-      heading: heroHeading,
-      desc: heroDesc,
-      visual: heroVisual,
-      cta: heroCta,
-    });
+    const heroAnimation = AboutHeroAnimation.create(hero);
 
     const skillsIntroTimeline = AboutSkillsAnimation.intro(skills);
 
-    const skillsTitleFillTimeline = skillTitleFillElement
-      ? AboutSkillsAnimation.createSkillTitleFill(skillTitleFillElement)
-      : null;
+    const skillsTitleFillTimeline = AboutSkillsAnimation.createSkillTitleFill(
+      skills.titleFill
+    );
 
     const sceneTimeline = gsap.timeline({ paused: true });
 
@@ -103,7 +77,7 @@ const AboutSceneAnimation = {
         0.5
       )
       .to(
-        skills,
+        skillsRoot,
         {
           autoAlpha: 1,
           pointerEvents: "auto",
@@ -155,7 +129,7 @@ const AboutSceneAnimation = {
       skillsIntroTimeline.kill();
       skillsTitleFillTimeline?.kill();
 
-      gsap.set([aboutHero, skills, heroInner, skillsInner], {
+      gsap.set([aboutHero, skillsRoot, heroInner, skillsInner], {
         clearProps: "all",
       });
     };

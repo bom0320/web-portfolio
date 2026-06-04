@@ -1,7 +1,11 @@
 import gsap from "gsap";
 
+import type { AboutSkillsAnimationElements } from "@/components/scenes/about/dom";
+
 const AboutSkillsAnimation = {
-  createSkillTitleFill(fillGroup: SVGGElement) {
+  createSkillTitleFill(fillGroup: SVGGElement | null) {
+    if (!fillGroup) return null;
+
     return gsap.fromTo(
       fillGroup,
       { opacity: 0 },
@@ -14,16 +18,12 @@ const AboutSkillsAnimation = {
     );
   },
 
-  intro(section: HTMLElement) {
-    const gauges = gsap.utils.toArray<HTMLElement>(
-      ".skill-card__gauge",
-      section
-    );
+  intro(elements: AboutSkillsAnimationElements) {
+    const { root, gauges, pacmans } = elements;
 
-    const pacmans = gsap.utils.toArray<HTMLElement>(
-      ".skill-card__circle",
-      section
-    );
+    if (!root) {
+      return gsap.timeline({ paused: true });
+    }
 
     const reset = () => {
       gsap.set(pacmans, {
@@ -32,19 +32,19 @@ const AboutSkillsAnimation = {
         filter: "blur(6px)",
       });
 
-      gauges.forEach((g) => {
-        gsap.set(g, { "--deg": "0deg" });
+      gauges.forEach((gauge) => {
+        gsap.set(gauge, { "--deg": "0deg" });
       });
     };
 
     reset();
 
-    const tl = gsap.timeline({
+    const timeline = gsap.timeline({
       paused: true,
       onStart: reset,
     });
 
-    tl.to(pacmans, {
+    timeline.to(pacmans, {
       opacity: 1,
       scale: 1,
       filter: "blur(0px)",
@@ -53,20 +53,20 @@ const AboutSkillsAnimation = {
       stagger: 0.12,
     });
 
-    tl.add(() => {
-      gauges.forEach((g, i) => {
-        const target = Number(g.dataset.deg ?? 0);
+    timeline.add(() => {
+      gauges.forEach((gauge, index) => {
+        const target = Number(gauge.dataset.deg ?? 0);
 
-        gsap.to(g, {
+        gsap.to(gauge, {
           "--deg": `${target}deg`,
           duration: 1,
           ease: "power2.out",
-          delay: i * 0.08,
+          delay: index * 0.08,
         });
       });
     }, "<0.05");
 
-    return tl;
+    return timeline;
   },
 };
 
