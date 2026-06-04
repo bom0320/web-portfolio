@@ -11,7 +11,7 @@ import {
 import {
   getCapabilityIntroAnimationElements,
   getCapabilityIntroProofAnimationElements,
-} from "@/components/scenes/capability/dom";
+} from "@/components/scenes/capability/dom/intro";
 
 import type { CapabilityStageElements } from "./capabilityStageElements";
 
