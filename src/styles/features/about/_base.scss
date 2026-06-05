@@ -16,3 +16,15 @@
   will-change: transform;
   backface-visibility: hidden;
 }
+
+.about {
+  --about-mobile-content-width: min(100% - 48px, 520px);
+  --about-mobile-content-top: clamp(96px, 12vh, 132px);
+}
+
+@media (max-width: 480px) {
+  .about {
+    --about-mobile-content-width: calc(100% - 40px);
+    --about-mobile-content-top: clamp(108px, 13vh, 136px);
+  }
+}
