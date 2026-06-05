@@ -1,4 +1,59 @@
-@media (max-width: 768px) {
+@import "../../../abstracts/mixins";
+
+@include tablet {
+  .capability-intro-pinned {
+    height: 340vh;
+  }
+
+  .capability-intro-fixed {
+    padding: 0 32px 22vh;
+  }
+
+  .capability-intro-fixed__title {
+    font-size: clamp(48px, 9vw, 76px);
+  }
+
+  .capability-intro-fixed__subtitle {
+    font-size: clamp(36px, 7vw, 56px);
+  }
+
+  .capability-intro-phase-layer {
+    top: 58%;
+    width: min(600px, calc(100% - 64px));
+  }
+
+  .capability-intro-phase p {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .capability-intro-proof {
+    padding: 120px 0 150px;
+  }
+
+  .capability-intro-proof__inner {
+    width: min(680px, calc(100% - 72px));
+
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+  }
+
+  .capability-intro-proof__point {
+    max-width: none;
+    width: 100%;
+  }
+
+  .capability-intro-proof__visual {
+    order: -1;
+  }
+
+  .capability-intro-proof__character {
+    width: min(320px, 48vw);
+  }
+}
+
+@include mobile {
   .capability-intro-pinned {
     height: 320vh;
   }
@@ -48,5 +103,60 @@
 
   .capability-intro-proof__character {
     width: min(280px, 72vw);
+  }
+}
+
+@include small-mobile {
+  .capability-intro-pinned {
+    height: 320vh;
+  }
+
+  .capability-intro-fixed {
+    padding: 0 20px 24vh;
+  }
+
+  .capability-intro-fixed__title {
+    font-size: clamp(32px, 12vw, 46px);
+    line-height: 0.95;
+  }
+
+  .capability-intro-fixed__subtitle {
+    font-size: clamp(24px, 9vw, 36px);
+    line-height: 1;
+  }
+
+  .capability-intro-phase-layer {
+    top: 59%;
+    width: calc(100% - 32px);
+  }
+
+  .capability-intro-phase p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .capability-intro-proof {
+    padding: 88px 0 120px;
+  }
+
+  .capability-intro-proof__inner {
+    width: calc(100% - 32px);
+
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .capability-intro-proof__point {
+    max-width: none;
+    width: 100%;
+  }
+
+  .capability-intro-proof__visual {
+    order: -1;
+  }
+
+  .capability-intro-proof__character {
+    width: min(240px, 76vw);
   }
 }
