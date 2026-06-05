@@ -12,7 +12,7 @@ type SkillCarouselProps = {
   skills: SkillCarouselItem[];
 };
 
-const PAGINATION_COUNT = 4;
+const PAGINATION_COUNT = 5;
 
 export default function SkillCarousel({ skills }: SkillCarouselProps) {
   return (

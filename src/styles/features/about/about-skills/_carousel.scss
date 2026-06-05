@@ -1,10 +1,10 @@
 .skill-carousel {
   --skill-carousel-item-size: 190px;
-  --skill-carousel-gap: 56px;
-  --skill-carousel-visible-count: 4;
+  --skill-carousel-gap: 52px;
+  --skill-carousel-visible-count: 5;
 
   width: 100%;
-  margin-top: 56px;
+  margin-top: 60px;
 
   display: flex;
   flex-direction: column;
@@ -17,6 +17,8 @@
       (var(--skill-carousel-gap) * (var(--skill-carousel-visible-count) - 1))
   );
   max-width: 100%;
+
+  padding: 12px 0 18px;
 
   overflow-x: auto;
   overflow-y: hidden;
