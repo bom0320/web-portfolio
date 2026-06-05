@@ -459,8 +459,69 @@
 
 @include laptop {
   @media (min-width: 1024px) {
-    .about-skills__inner {
-      width: min(820px, calc(100% - 112px));
+    .about-hero__layout {
+      width: min(840px, calc(100% - 56px));
+      height: 100%;
+
+      display: grid;
+      grid-template-columns: 320px 430px;
+      column-gap: 68px;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto;
+
+      padding-top: clamp(72px, 8vh, 108px);
+      padding-bottom: clamp(56px, 7vh, 88px);
+
+      transform: none;
+    }
+
+    .about-hero__visual {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      transform: none;
+    }
+
+    .about-hero__character {
+      width: min(320px, 32vw);
+    }
+
+    .about-hero__content {
+      width: 100%;
+      max-width: 430px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      margin-top: 0;
+
+      text-align: left;
+      transform: none;
+    }
+
+    .about-hero__title {
+      max-width: 430px;
+
+      font-size: clamp(30px, 3.2vw, 36px);
+      line-height: 1.14;
+      letter-spacing: -0.055em;
+
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
+
+    .about-hero__desc {
+      width: min(390px, 100%);
+    }
+
+    .about-hero__cta--swap {
+      align-self: flex-start;
     }
   }
 }
