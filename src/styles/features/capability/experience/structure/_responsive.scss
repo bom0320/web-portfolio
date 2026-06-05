@@ -53,7 +53,28 @@
   }
 
   .experience-capability-structure-map__node::before {
-    display: none;
+    display: block;
+
+    position: absolute;
+    top: 50%;
+    bottom: auto;
+    left: auto;
+
+    width: 48px;
+    height: 2px;
+
+    transform: translateY(-50%);
+    opacity: 1;
+
+    border-radius: 999px;
+
+    background: linear-gradient(
+      90deg,
+      rgba(118, 245, 225, 0.88),
+      rgba(118, 245, 225, 0.08)
+    );
+
+    filter: drop-shadow(0 0 8px rgba(86, 233, 210, 0.5));
   }
 
   .experience-capability-structure-map__node--1 {
@@ -104,6 +125,24 @@
     transform: translateX(-50%);
   }
 
+  .experience-capability-structure-map__node--1::before,
+  .experience-capability-structure-map__node--3::before,
+  .experience-capability-structure-map__node--5::before {
+    left: 100%;
+  }
+
+  .experience-capability-structure-map__node--2::before,
+  .experience-capability-structure-map__node--4::before,
+  .experience-capability-structure-map__node--6::before {
+    right: 100%;
+
+    background: linear-gradient(
+      270deg,
+      rgba(118, 245, 225, 0.88),
+      rgba(118, 245, 225, 0.08)
+    );
+  }
+
   .experience-capability-grid--structure {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -139,6 +178,79 @@
     letter-spacing: -0.03em;
     word-break: keep-all;
   }
+
+  .experience-capability-visual--structure {
+    margin-top: 56px;
+    margin-bottom: 58px;
+  }
+
+  .experience-capability-structure-map {
+    --node-size: 66px;
+
+    width: min(420px, 100%);
+    height: 560px;
+  }
+
+  .experience-capability-structure-map__core {
+    width: 76px;
+    height: 76px;
+
+    font-size: 23px;
+  }
+
+  .experience-capability-structure-map__stem {
+    top: 90px;
+    height: 56px;
+  }
+
+  .experience-capability-structure-map__branch {
+    top: 146px;
+
+    width: 3px;
+    height: 370px;
+  }
+
+  .experience-capability-structure-map__node {
+    width: var(--node-size);
+    height: var(--node-size);
+
+    font-size: 20px;
+  }
+
+  .experience-capability-structure-map__node::before {
+    width: 48px;
+    height: 2px;
+  }
+
+  .experience-capability-structure-map__node--1 {
+    top: 164px;
+    margin-left: -82px;
+  }
+
+  .experience-capability-structure-map__node--2 {
+    top: 224px;
+    margin-left: 82px;
+  }
+
+  .experience-capability-structure-map__node--3 {
+    top: 284px;
+    margin-left: -82px;
+  }
+
+  .experience-capability-structure-map__node--4 {
+    top: 344px;
+    margin-left: 82px;
+  }
+
+  .experience-capability-structure-map__node--5 {
+    top: 404px;
+    margin-left: -82px;
+  }
+
+  .experience-capability-structure-map__node--6 {
+    top: 464px;
+    margin-left: 82px;
+  }
 }
 
 @include small-mobile {
@@ -166,5 +278,90 @@
     font-size: 12px;
     line-height: 1.72;
     letter-spacing: -0.02em;
+  }
+
+  .experience-capability-visual--structure {
+    margin-top: 48px;
+    margin-bottom: 52px;
+  }
+
+  .experience-capability-structure-map {
+    --node-size: 58px;
+
+    width: min(300px, 100%);
+    height: 500px;
+  }
+
+  .experience-capability-structure-map__core {
+    width: 68px;
+    height: 68px;
+
+    border-width: 1.5px;
+
+    font-size: 20px;
+  }
+
+  .experience-capability-structure-map__stem {
+    top: 82px;
+    height: 48px;
+  }
+
+  .experience-capability-structure-map__branch {
+    top: 130px;
+
+    width: 2px;
+    height: 330px;
+  }
+
+  .experience-capability-structure-map__node {
+    width: var(--node-size);
+    height: var(--node-size);
+
+    border-width: 1px;
+
+    font-size: 17px;
+  }
+
+  .experience-capability-structure-map__node::before {
+    width: 38px;
+    height: 2px;
+  }
+
+  .experience-capability-structure-map__node--1 {
+    top: 148px;
+    margin-left: -68px;
+  }
+
+  .experience-capability-structure-map__node--2 {
+    top: 202px;
+    margin-left: 68px;
+  }
+
+  .experience-capability-structure-map__node--3 {
+    top: 256px;
+    margin-left: -68px;
+  }
+
+  .experience-capability-structure-map__node--4 {
+    top: 310px;
+    margin-left: 68px;
+  }
+
+  .experience-capability-structure-map__node--5 {
+    top: 364px;
+    margin-left: -68px;
+  }
+
+  .experience-capability-structure-map__node--6 {
+    top: 418px;
+    margin-left: 68px;
+  }
+
+  .experience-capability-grid--structure {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-capability-card {
+    min-height: auto;
   }
 }
