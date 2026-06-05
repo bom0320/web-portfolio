@@ -4,7 +4,7 @@ import { HeroContent, HeroVisual } from "@/components/features/hero";
 
 export default function HeroScene() {
   return (
-    <section className="hero js-intro-hero" id="home">
+    <section className="hero js-intro-hero" id="hero">
       <div className="hero__inner">
         <div className="hero__body">
           <HeroContent />

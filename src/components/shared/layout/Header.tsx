@@ -2,14 +2,15 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
-import MarqueeComponents from "../common/MarqueeComponents";
-import HeaderAnimation from "../../../animations/header.animation";
 import gsap from "gsap";
+
+import HeaderAnimation from "../../../animations/header.animation";
+import MarqueeComponents from "../common/MarqueeComponents";
 
 const NAV_ITEMS = [
   { href: "#hero", label: "HERO" },
   { href: "#about", label: "ABOUT" },
-  { href: "#projects", label: "PROJECTS" },
+  { href: "#capability", label: "CAPABILITY" },
   { href: "#contact", label: "CONTACT" },
 ];
 
@@ -21,6 +22,7 @@ export default function Header() {
     const ctx = gsap.context(() => {
       HeaderAnimation.marqueeLoop();
     }, headerRef);
+
     return () => ctx.revert();
   }, []);
 
@@ -46,7 +48,7 @@ export default function Header() {
 
         <nav className="menu menu--desktop" aria-label="Desktop navigation">
           {NAV_ITEMS.map((item) => (
-            <a key={item.href} href={item.href}>
+            <a key={item.href} href={item.href} onClick={closeMenu}>
               {item.label}
             </a>
           ))}

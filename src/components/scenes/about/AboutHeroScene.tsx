@@ -23,7 +23,7 @@ export default function AboutHeroScene() {
     };
 
   return (
-    <section className="about-hero js-about-hero">
+    <section id="about" className="about-hero js-about-hero">
       <div className="about-hero__layout js-about-hero-inner">
         <div
           className="about-hero__visual js-about-hero-visual"
