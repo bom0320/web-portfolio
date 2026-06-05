@@ -1,0 +1,139 @@
+@import "../../abstracts/mixins";
+
+@include tablet {
+  .header {
+    padding: 0 32px;
+  }
+
+  .header-inner {
+    max-width: 100%;
+  }
+
+  .logo > a {
+    font-size: 17px;
+  }
+
+  .menu--desktop {
+    display: none;
+  }
+
+  .menu-toggle {
+    position: relative;
+
+    width: 22px;
+    height: 24px;
+
+    display: inline-flex;
+
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .menu-mobile {
+    width: 100%;
+    margin-top: 0.75rem;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+  }
+
+  .marquee .content {
+    gap: 28px;
+  }
+
+  .marquee .content > h5 {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+  }
+}
+
+@include mobile {
+  .header {
+    padding: 0 28px;
+  }
+
+  .logo > a {
+    font-size: 16px;
+  }
+
+  .menu-toggle {
+    width: 22px;
+    height: 24px;
+  }
+
+  .marquee .content {
+    gap: 26px;
+  }
+
+  .marquee .content > h5 {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+  }
+}
+
+@include mobile {
+  .header {
+    padding: 0 24px;
+  }
+
+  .logo > a {
+    gap: 4px;
+
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+
+  .logo > a img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .menu-toggle {
+    width: 22px;
+    height: 24px;
+  }
+
+  .marquee .content {
+    gap: 26px;
+  }
+
+  .marquee .content > h5 {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+  }
+}
+
+@include small-mobile {
+  .header {
+    padding: 0 18px;
+  }
+
+  .logo > a {
+    gap: 3px;
+
+    font-size: 13px;
+    letter-spacing: -0.02em;
+  }
+
+  .logo > a img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .menu-toggle {
+    width: 20px;
+    height: 24px;
+  }
+
+  .marquee .content {
+    gap: 24px;
+  }
+
+  .marquee .content > h5 {
+    font-size: 9px;
+    letter-spacing: 0.13em;
+  }
+}
