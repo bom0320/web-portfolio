@@ -1,37 +1,5 @@
 @import "../../abstracts/mixins";
 
-@include laptop {
-  .hero__body {
-    grid-template-columns: 280px minmax(0, 1fr);
-    column-gap: 40px;
-    padding-top: clamp(100px, 14vh, 124px);
-  }
-
-  .hero__content {
-    width: 280px;
-  }
-
-  .hero__description {
-    max-width: 220px;
-    font-size: 16px;
-  }
-
-  .hero__meta {
-    margin-top: clamp(96px, 16vh, 150px);
-    gap: 24px;
-    font-size: 13px;
-  }
-
-  .hero__eyebrow {
-    margin-right: -36px;
-    font-size: 21px;
-  }
-
-  .hero__headline {
-    font-size: clamp(56px, 6vw, 76px);
-  }
-}
-
 @include tablet {
   .hero {
     height: 100vh;
@@ -236,5 +204,37 @@
     margin-top: clamp(110px, 12vh, 130px);
     gap: 8px;
     font-size: 10px;
+  }
+}
+
+@include laptop {
+  .hero__body {
+    grid-template-columns: 280px minmax(0, 1fr);
+    column-gap: 40px;
+    padding-top: clamp(100px, 14vh, 124px);
+  }
+
+  .hero__content {
+    width: 280px;
+  }
+
+  .hero__description {
+    max-width: 220px;
+    font-size: 16px;
+  }
+
+  .hero__meta {
+    margin-top: clamp(96px, 16vh, 150px);
+    gap: 24px;
+    font-size: 13px;
+  }
+
+  .hero__eyebrow {
+    margin-right: -36px;
+    font-size: 21px;
+  }
+
+  .hero__headline {
+    font-size: clamp(56px, 6vw, 76px);
   }
 }

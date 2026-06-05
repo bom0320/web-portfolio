@@ -336,3 +336,9 @@
     transform: none;
   }
 }
+
+@include laptop {
+  .about-skills__inner {
+    width: min(820px, calc(100% - 100px));
+  }
+}

@@ -10,14 +10,16 @@
   }
 
   .about-hero__layout {
-    width: min(800px, calc(100% - 64px));
+    width: min(700px, calc(100% - 72px));
     height: 100%;
 
     display: grid;
-    grid-template-columns: 260px 440px;
-    column-gap: 48px;
+    grid-template-columns: 230px 390px;
+    column-gap: 66px;
     align-items: center;
     justify-content: center;
+
+    margin: 0 auto;
 
     padding-top: clamp(72px, 8vh, 104px);
     padding-bottom: clamp(56px, 7vh, 88px);
@@ -31,19 +33,19 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 
     transform: none;
   }
 
   .about-hero__character {
-    width: min(260px, 32vw);
+    width: min(240px, 31vw);
   }
 
   .about-hero__content {
     order: initial;
     width: 100%;
-    max-width: 440px;
+    max-width: 390px;
 
     flex: initial;
 
@@ -63,9 +65,9 @@
   }
 
   .about-hero__title {
-    max-width: 440px;
+    max-width: 390px;
 
-    font-size: clamp(30px, 3.8vw, 38px);
+    font-size: clamp(28px, 3.7vw, 34px);
     line-height: 1.14;
     letter-spacing: -0.055em;
 
@@ -74,10 +76,10 @@
   }
 
   .about-hero__desc {
-    width: min(410px, 100%);
-    margin: 20px 0 0;
+    width: min(370px, 100%);
+    margin: 18px 0 0;
 
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.75;
     text-align: left;
 
@@ -85,8 +87,8 @@
   }
 
   .about-hero__cta--swap {
-    width: min(320px, 100%);
-    margin: clamp(40px, 5vh, 56px) 0 0;
+    width: min(300px, 100%);
+    margin: clamp(38px, 5vh, 52px) 0 0;
 
     display: flex;
     gap: 14px;
@@ -452,5 +454,67 @@
   .cta-btn__iconImg {
     width: 22px;
     height: 22px;
+  }
+}
+
+@include laptop {
+  @media (min-width: 1025px) {
+    .about-hero__layout {
+      width: min(900px, calc(100% - 80px));
+      height: 100%;
+
+      display: grid;
+      grid-template-columns: 360px 420px;
+      column-gap: 36px;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto;
+
+      padding-top: clamp(72px, 8vh, 108px);
+      padding-bottom: clamp(56px, 7vh, 88px);
+
+      transform: none;
+    }
+
+    .about-hero__visual {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      transform: none;
+    }
+
+    .about-hero__character {
+      width: min(360px, 35vw);
+    }
+
+    .about-hero__content {
+      width: 100%;
+      max-width: 420px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      margin-top: 0;
+
+      text-align: left;
+      transform: none;
+    }
+
+    .about-hero__title {
+      max-width: 420px;
+    }
+
+    .about-hero__desc {
+      width: min(400px, 100%);
+    }
+
+    .about-hero__cta--swap {
+      align-self: flex-start;
+    }
   }
 }
