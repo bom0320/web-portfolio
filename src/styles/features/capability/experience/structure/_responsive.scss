@@ -110,161 +110,61 @@
 }
 
 @include mobile {
-  .experience-capability-visual--structure {
-    margin-top: 56px;
-    margin-bottom: 58px;
+  .experience-capability-block--structure .experience-capability-block__header {
+    width: min(100%, 340px);
+    margin: 0 auto;
   }
 
-  .experience-capability-structure-map {
-    --node-size: 66px;
-
-    width: min(420px, 100%);
-    height: 560px;
+  .experience-capability-block--structure
+    .experience-capability-block__eyebrow {
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: -0.02em;
   }
 
-  .experience-capability-structure-map__core {
-    width: 76px;
-    height: 76px;
+  .experience-capability-block--structure .experience-capability-block__title {
+    margin-top: 10px;
 
-    font-size: 23px;
+    font-size: clamp(30px, 8.2vw, 40px);
+    line-height: 1.08;
+    letter-spacing: -0.055em;
   }
 
-  .experience-capability-structure-map__stem {
-    top: 90px;
-    height: 56px;
-  }
+  .experience-capability-block--structure .experience-capability-block__desc {
+    max-width: 320px;
+    margin: 18px auto 0;
 
-  .experience-capability-structure-map__branch {
-    top: 146px;
-
-    width: 3px;
-    height: 370px;
-  }
-
-  .experience-capability-structure-map__node {
-    width: var(--node-size);
-    height: var(--node-size);
-
-    font-size: 20px;
-  }
-
-  .experience-capability-structure-map__node--1 {
-    top: 164px;
-    margin-left: -82px;
-  }
-
-  .experience-capability-structure-map__node--2 {
-    top: 224px;
-    margin-left: 82px;
-  }
-
-  .experience-capability-structure-map__node--3 {
-    top: 284px;
-    margin-left: -82px;
-  }
-
-  .experience-capability-structure-map__node--4 {
-    top: 344px;
-    margin-left: 82px;
-  }
-
-  .experience-capability-structure-map__node--5 {
-    top: 404px;
-    margin-left: -82px;
-  }
-
-  .experience-capability-structure-map__node--6 {
-    top: 464px;
-    margin-left: 82px;
-  }
-
-  .experience-capability-grid--structure {
-    grid-template-columns: 1fr;
-  }
-
-  .experience-capability-card {
-    min-height: auto;
+    font-size: 14px;
+    line-height: 1.78;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
   }
 }
 
 @include small-mobile {
-  .experience-capability-visual--structure {
-    margin-top: 48px;
-    margin-bottom: 52px;
+  .experience-capability-block--structure .experience-capability-block__header {
+    width: min(100%, 280px);
   }
 
-  .experience-capability-structure-map {
-    --node-size: 58px;
-
-    width: min(300px, 100%);
-    height: 500px;
+  .experience-capability-block--structure
+    .experience-capability-block__eyebrow {
+    font-size: 14px;
   }
 
-  .experience-capability-structure-map__core {
-    width: 68px;
-    height: 68px;
+  .experience-capability-block--structure .experience-capability-block__title {
+    margin-top: 8px;
 
-    border-width: 1.5px;
-
-    font-size: 20px;
+    font-size: clamp(24px, 7.4vw, 32px);
+    line-height: 1.12;
+    letter-spacing: -0.045em;
   }
 
-  .experience-capability-structure-map__stem {
-    top: 82px;
-    height: 48px;
-  }
+  .experience-capability-block--structure .experience-capability-block__desc {
+    max-width: 280px;
+    margin-top: 16px;
 
-  .experience-capability-structure-map__branch {
-    top: 130px;
-
-    width: 2px;
-    height: 330px;
-  }
-
-  .experience-capability-structure-map__node {
-    width: var(--node-size);
-    height: var(--node-size);
-
-    border-width: 1px;
-
-    font-size: 17px;
-  }
-
-  .experience-capability-structure-map__node--1 {
-    top: 148px;
-    margin-left: -68px;
-  }
-
-  .experience-capability-structure-map__node--2 {
-    top: 202px;
-    margin-left: 68px;
-  }
-
-  .experience-capability-structure-map__node--3 {
-    top: 256px;
-    margin-left: -68px;
-  }
-
-  .experience-capability-structure-map__node--4 {
-    top: 310px;
-    margin-left: 68px;
-  }
-
-  .experience-capability-structure-map__node--5 {
-    top: 364px;
-    margin-left: -68px;
-  }
-
-  .experience-capability-structure-map__node--6 {
-    top: 418px;
-    margin-left: 68px;
-  }
-
-  .experience-capability-grid--structure {
-    grid-template-columns: 1fr;
-  }
-
-  .experience-capability-card {
-    min-height: auto;
+    font-size: 12px;
+    line-height: 1.72;
+    letter-spacing: -0.02em;
   }
 }
