@@ -1,5 +1,11 @@
 @import "../../../abstracts/mixins";
 
+@include laptop {
+  .about-skills__inner {
+    width: min(820px, calc(100% - 100px));
+  }
+}
+
 @include tablet {
   .about-skills {
     position: relative;
@@ -240,7 +246,7 @@
   }
 
   .about-skills__inner {
-    width: calc(100% - 48px);
+    width: calc(100% - 38px);
     margin: 0 auto;
     padding-top: clamp(136px, 17vh, 164px);
   }
@@ -334,11 +340,5 @@
     padding: 24px var(--skill-pagination-padding-x);
 
     transform: none;
-  }
-}
-
-@include laptop {
-  .about-skills__inner {
-    width: min(820px, calc(100% - 100px));
   }
 }
