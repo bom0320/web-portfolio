@@ -129,7 +129,7 @@
   .about-skills__inner {
     width: min(100% - 48px, 520px);
     margin: 0 auto;
-    padding-top: clamp(96px, 12vh, 132px);
+    padding-top: clamp(124px, 15vh, 156px);
   }
 
   .skill-title {
@@ -240,9 +240,9 @@
   }
 
   .about-skills__inner {
-    width: calc(100% - 40px);
+    width: calc(100% - 48px);
     margin: 0 auto;
-    padding-top: clamp(108px, 13vh, 136px);
+    padding-top: clamp(136px, 17vh, 164px);
   }
 
   .skill-title {
@@ -250,7 +250,7 @@
   }
 
   .skill-title__heading {
-    max-width: 300px;
+    max-width: 260px;
 
     font-size: clamp(24px, 6vw, 28px);
     line-height: 1.18;
