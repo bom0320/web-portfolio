@@ -11,7 +11,13 @@ export default function IntroStage() {
   useIntroStageAnimation(stageRef);
 
   return (
-    <section ref={stageRef} className="intro-stage">
+    <section id="hero" ref={stageRef} className="intro-stage">
+      <div
+        id="about"
+        className="intro-stage__anchor intro-stage__anchor--about"
+        aria-hidden="true"
+      />
+
       <div className="intro-stage__sticky">
         <HeroScene />
         <LifeMotionScene />

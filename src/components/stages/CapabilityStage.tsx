@@ -20,6 +20,12 @@ export default function CapabilityStage() {
 
   return (
     <section ref={stageRef} className="capability-stage">
+      <div
+        id="capability"
+        className="capability-stage__anchor capability-stage__anchor--intro"
+        aria-hidden="true"
+      />
+
       <CapabilityIntroScene />
 
       <ExperienceCapabilityScene />

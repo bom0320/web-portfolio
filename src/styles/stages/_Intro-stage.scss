@@ -5,6 +5,21 @@
   isolation: isolate;
 }
 
+.intro-stage__anchor {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  width: 1px;
+  height: 1px;
+
+  pointer-events: none;
+}
+
+.intro-stage__anchor--about {
+  top: 46%;
+}
+
 .intro-stage__sticky {
   position: sticky;
   top: 0;

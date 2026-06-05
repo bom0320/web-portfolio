@@ -11,7 +11,7 @@ export default function ContactStage() {
   useContactStageAnimation(stageRef);
 
   return (
-    <section ref={stageRef} className="contact-stage">
+    <section id="contact" ref={stageRef} className="contact-stage">
       <ContactScene />
     </section>
   );

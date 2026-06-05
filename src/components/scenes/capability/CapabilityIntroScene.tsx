@@ -7,10 +7,7 @@ import {
 
 export default function CapabilityIntroScene() {
   return (
-    <section
-      id="capability"
-      className="capability-intro-scene js-capability-intro"
-    >
+    <section className="capability-intro-scene js-capability-intro">
       <IntroPinnedNarrative />
       <IntroVisualProof />
     </section>
