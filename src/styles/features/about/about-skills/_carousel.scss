@@ -1,4 +1,8 @@
 .skill-carousel {
+  --skill-carousel-item-size: 190px;
+  --skill-carousel-gap: 56px;
+  --skill-carousel-visible-count: 4;
+
   width: 100%;
   margin-top: 56px;
 
@@ -8,7 +12,10 @@
 }
 
 .skill-carousel__viewport {
-  width: calc((190px * 4) + (56px * 3));
+  width: calc(
+    (var(--skill-carousel-item-size) * var(--skill-carousel-visible-count)) +
+      (var(--skill-carousel-gap) * (var(--skill-carousel-visible-count) - 1))
+  );
   max-width: 100%;
 
   overflow-x: auto;
@@ -28,14 +35,14 @@
 .skill-carousel__track {
   display: flex;
   align-items: flex-start;
-  gap: 56px;
+  gap: var(--skill-carousel-gap);
 
   width: max-content;
 }
 
 .skill-carousel__item {
-  flex: 0 0 190px;
-  width: 190px;
+  flex: 0 0 var(--skill-carousel-item-size);
+  width: var(--skill-carousel-item-size);
 
   display: flex;
   justify-content: center;
