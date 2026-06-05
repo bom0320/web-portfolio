@@ -2,6 +2,8 @@
 
 @include tablet {
   .about-skills {
+    position: relative;
+
     height: 100vh;
     height: 100svh;
 
@@ -87,12 +89,15 @@
     margin-top: 16px;
     font-size: 18px;
     line-height: 1.1;
+    text-align: center;
   }
 
   .skill-card__sub {
+    display: block;
     margin-top: 6px;
     font-size: 12px;
     line-height: 1.15;
+    text-align: center;
   }
 
   .skill-pagination {
@@ -107,8 +112,13 @@
 }
 
 @include mobile {
+  .about-skills {
+    position: relative;
+  }
+
   .about-skills__inner {
     width: min(100% - 48px, 520px);
+    margin: 0 auto;
     padding-top: clamp(96px, 10vh, 116px);
   }
 
@@ -142,6 +152,7 @@
     --skill-carousel-gap: 24px;
     --skill-carousel-visible-count: 3;
 
+    position: static;
     margin-top: 0;
   }
 
@@ -199,14 +210,23 @@
     --skill-pagination-gap: 18px;
     --skill-pagination-padding-x: 32px;
 
-    margin-top: 90px;
+    position: static;
+
+    margin-top: 150px;
     padding: 24px var(--skill-pagination-padding-x);
+
+    transform: none;
   }
 }
 
 @include small-mobile {
+  .about-skills {
+    position: relative;
+  }
+
   .about-skills__inner {
     width: calc(100% - 56px);
+    margin: 0 auto;
     padding-top: clamp(110px, 14vh, 140px);
   }
 
@@ -230,6 +250,8 @@
     --skill-carousel-item-size: 102px;
     --skill-carousel-gap: 22px;
     --skill-carousel-visible-count: 3;
+
+    position: static;
   }
 
   .skill-carousel__viewport {
@@ -265,13 +287,18 @@
   }
 
   .skill-card__name {
-    margin-top: 0;
-    font-size: 0;
-    line-height: 0;
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.1;
+    text-align: center;
   }
 
   .skill-card__sub {
-    display: none;
+    display: block;
+    margin-top: 5px;
+    font-size: 10px;
+    line-height: 1.15;
+    text-align: center;
   }
 
   .skill-pagination {
@@ -280,7 +307,11 @@
     --skill-pagination-gap: 18px;
     --skill-pagination-padding-x: 32px;
 
-    margin-top: 180px;
+    position: static;
+
+    margin-top: 140px;
     padding: 24px var(--skill-pagination-padding-x);
+
+    transform: none;
   }
 }
