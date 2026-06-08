@@ -1,0 +1,149 @@
+@import "../../abstracts/mixins";
+
+@include tablet {
+  .contact-submit-modal {
+    padding: 22px;
+  }
+
+  .contact-submit-modal__card {
+    width: min(420px, calc(100vw - 44px));
+    max-height: calc(100svh - 44px);
+    min-height: 340px;
+    padding: 44px 36px 34px;
+
+    border-radius: 18px;
+  }
+
+  .contact-submit-modal__icon {
+    width: 64px;
+    height: 64px;
+
+    font-size: 36px;
+  }
+
+  .contact-submit-modal__title {
+    margin-top: 30px;
+
+    font-size: 23px;
+  }
+
+  .contact-submit-modal__description {
+    margin-top: 22px;
+
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .contact-submit-modal__button {
+    height: 46px;
+    margin-top: 36px;
+
+    font-size: 15px;
+  }
+}
+
+@include mobile {
+  .contact-submit-modal {
+    align-items: center;
+    padding: 20px;
+  }
+
+  .contact-submit-modal__card {
+    width: min(360px, calc(100vw - 40px));
+    max-height: calc(100svh - 40px);
+    min-height: auto;
+    padding: 42px 24px 30px;
+
+    border-radius: 18px;
+  }
+
+  .contact-submit-modal__close {
+    top: 16px;
+    right: 16px;
+
+    width: 34px;
+    height: 34px;
+  }
+
+  .contact-submit-modal__icon {
+    width: 58px;
+    height: 58px;
+
+    font-size: 32px;
+  }
+
+  .contact-submit-modal__title {
+    margin-top: 20px;
+
+    font-size: 15px;
+    line-height: 1.25;
+  }
+
+  .contact-submit-modal__description {
+    gap: 6px;
+    margin-top: 16px;
+
+    font-size: 13px;
+    line-height: -0.02em;
+  }
+
+  .contact-submit-modal__button {
+    min-width: 132px;
+    height: 44px;
+    margin-top: 28px;
+
+    font-size: 14px;
+  }
+}
+
+@include small-mobile {
+  .contact-submit-modal {
+    padding: 18px;
+  }
+
+  .contact-submit-modal__card {
+    width: calc(100vw - 36px);
+    max-height: calc(100svh - 36px);
+    padding: 38px 20px 26px;
+
+    border-radius: 16px;
+  }
+
+  .contact-submit-modal__close {
+    top: 14px;
+    right: 14px;
+
+    width: 32px;
+    height: 32px;
+  }
+
+  .contact-submit-modal__icon {
+    width: 52px;
+    height: 52px;
+
+    font-size: 30px;
+  }
+
+  .contact-submit-modal__title {
+    margin-top: 22px;
+
+    font-size: 19px;
+    line-height: 1.25;
+  }
+
+  .contact-submit-modal__description {
+    gap: 5px;
+    margin-top: 14px;
+
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .contact-submit-modal__button {
+    min-width: 124px;
+    height: 42px;
+    margin-top: 26px;
+
+    font-size: 13px;
+  }
+}

@@ -87,3 +87,13 @@ export const CONTACT_SUBMIT_MODAL = {
 } as const;
 
 export type ContactSubmitStatus = keyof typeof CONTACT_SUBMIT_MODAL;
+
+export type ContactPurpose = (typeof CONTACT_PURPOSE_OPTIONS)[number];
+
+export type ContactFormValues = {
+  name: string;
+  email: string;
+  role: string;
+  purpose: ContactPurpose | "";
+  message: string;
+};
