@@ -77,7 +77,25 @@ export function useCapabilityStageAnimation(
           registerTrigger,
         });
 
+        /**
+         * Structure는 scroll drawing 성격이 강함.
+         * maxProgress로 고정하면 한 번에 나타나는 느낌이 강해져서
+         * 스크롤 progress와 1:1로 연결한다.
+         */
+        registerProgressTrigger({
+          triggerElement: elements.structure,
+          config: scrollConfig.structure,
+          controller: controllers.structure,
+          registerTrigger,
+        });
+
+        /**
+         * 나머지 구간은 한 번 등장 후 유지되는 reveal 성격이므로
+         * maxProgress를 유지한다.
+         */
         CAPABILITY_STAGE_PROGRESS_KEYS.forEach((key) => {
+          if (key === "structure") return;
+
           registerMaxProgressTrigger({
             triggerElement: elements[key],
             config: scrollConfig[key],

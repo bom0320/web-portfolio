@@ -86,9 +86,9 @@ export const CAPABILITY_STAGE_MOBILE_SCROLL_CONFIG = {
   },
 
   structure: {
-    start: "top bottom",
-    end: "top 30%",
-    scrub: 0.45,
+    start: "top 82%",
+    end: "center 28%",
+    scrub: 1,
   },
 
   ai: {
