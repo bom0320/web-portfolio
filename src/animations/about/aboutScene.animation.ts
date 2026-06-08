@@ -74,23 +74,29 @@ const AboutSceneAnimation = {
       skillPaginationIndicator.updateTarget();
     };
 
-    skills.carouselViewport?.addEventListener(
-      "scroll",
-      handleSkillCarouselScroll,
-      { passive: true }
-    );
-
-    window.addEventListener("resize", handleResize);
-
     let paginationFrameId: number | null = null;
 
-    const tickPaginationIndicator = () => {
-      skillPaginationIndicator.tick();
-      paginationFrameId = requestAnimationFrame(tickPaginationIndicator);
-    };
+    const carouselViewport = skills.carouselViewport;
+    const pagination = skills.pagination;
 
-    skillPaginationIndicator.updateTarget();
-    tickPaginationIndicator();
+    const canUseSkillPagination =
+      carouselViewport !== null && pagination !== null;
+
+    if (canUseSkillPagination) {
+      carouselViewport.addEventListener("scroll", handleSkillCarouselScroll, {
+        passive: true,
+      });
+
+      const tickPaginationIndicator = () => {
+        skillPaginationIndicator.tick();
+        paginationFrameId = requestAnimationFrame(tickPaginationIndicator);
+      };
+
+      skillPaginationIndicator.updateTarget();
+      tickPaginationIndicator();
+    }
+
+    window.addEventListener("resize", handleResize);
 
     const sceneTimeline = gsap.timeline({ paused: true });
 
@@ -152,10 +158,12 @@ const AboutSceneAnimation = {
     };
 
     const destroy = () => {
-      skills.carouselViewport?.removeEventListener(
-        "scroll",
-        handleSkillCarouselScroll
-      );
+      if (carouselViewport) {
+        carouselViewport.removeEventListener(
+          "scroll",
+          handleSkillCarouselScroll
+        );
+      }
 
       window.removeEventListener("resize", handleResize);
 
