@@ -2,14 +2,17 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useState } from "react";
+
 import { CtaButton } from "@/components/features/about";
 import { GradientText } from "@/components/shared/ui";
 
+type ActiveCta = "portfolio" | "github";
+
 export default function AboutHeroScene() {
-  const [active, setActive] = useState<"resume" | "github">("resume");
+  const [active, setActive] = useState<ActiveCta>("portfolio");
 
   const handleMobileSwapClick =
-    (key: "resume" | "github") => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    (key: ActiveCta) => (e: React.MouseEvent<HTMLAnchorElement>) => {
       if (typeof window === "undefined") return;
 
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -46,7 +49,7 @@ export default function AboutHeroScene() {
             <br />
             고슴도치같이 예민하게
             <br />
-            <GradientText>디테일을 캐치해내는</GradientText> 개발자입니다.
+            <GradientText>디테일을 캐치해내는 개발자</GradientText>입니다.
           </h2>
 
           <p className="about-hero__desc js-about-hero-desc">
@@ -60,17 +63,17 @@ export default function AboutHeroScene() {
           >
             <CtaButton
               href="https://..."
-              label="Go Resume"
+              label="Go Portfolio"
               variant="primary"
-              className="about-hero__btn about-hero__btn--resume"
-              ariaLabel="Go Resume"
-              onClick={handleMobileSwapClick("resume")}
+              className="about-hero__btn about-hero__btn--portfolio"
+              ariaLabel="Go Portfolio"
+              onClick={handleMobileSwapClick("portfolio")}
             >
               <img src="/icons/user.svg" alt="" className="cta-btn__iconImg" />
             </CtaButton>
 
             <CtaButton
-              href="https://github.com/..."
+              href="https://github.com/bom0320"
               label="Go Github"
               variant="secondary"
               className="about-hero__btn about-hero__btn--github"

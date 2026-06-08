@@ -34,7 +34,7 @@ export const CONTACT_FOOTER_LINK_GROUPS = [
     title: "Explore",
     links: [
       { label: "Blog", href: "/" },
-      { label: "Resume", href: "/" },
+      { label: "Portfolio", href: "/" },
       { label: "GitHub", href: "https://github.com/bom0320" },
     ],
   },
