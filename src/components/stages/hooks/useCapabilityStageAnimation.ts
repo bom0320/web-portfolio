@@ -19,8 +19,11 @@ import {
 } from "@/lib/gsap";
 
 import {
-  CAPABILITY_STAGE_SCROLL_CONFIG,
+  CAPABILITY_STAGE_DESKTOP_SCROLL_CONFIG,
+  CAPABILITY_STAGE_MOBILE_SCROLL_CONFIG,
+  CAPABILITY_STAGE_PROGRESS_KEYS,
   CAPABILITY_STAGE_SELECTORS,
+  type CapabilityStageScrollConfig,
 } from "../constants";
 import {
   createCapabilityStageControllers,
@@ -34,14 +37,6 @@ type UseCapabilityStageAnimationReturn = {
   activeNavigatorIndex: number;
   setActiveNavigatorIndex: Dispatch<SetStateAction<number>>;
 };
-
-const MAX_PROGRESS_TARGET_KEYS = [
-  "introProof",
-  "structure",
-  "ai",
-  "visual",
-  "navigatorIntro",
-] as const;
 
 function getCapabilityNavigatorIndex(progress: number, total: number) {
   return Math.round(progress * (total - 1));
@@ -58,91 +53,110 @@ export function useCapabilityStageAnimation(
     if (!stage) return;
 
     const ctx = gsap.context(() => {
-      const elements = getCapabilityStageElements(stage);
-      const controllers = createCapabilityStageControllers(elements);
+      const setupCapabilityTriggers = (
+        scrollConfig: CapabilityStageScrollConfig
+      ) => {
+        const elements = getCapabilityStageElements(stage);
+        const controllers = createCapabilityStageControllers(elements);
 
-      resetCapabilityProgressControllers(controllers);
+        resetCapabilityProgressControllers(controllers);
 
-      const triggers: ScrollTriggerInstance[] = [];
+        previousNavigatorIndexRef.current = 0;
+        setActiveNavigatorIndex(0);
 
-      const registerTrigger = (trigger: ScrollTriggerInstance) => {
-        triggers.push(trigger);
-      };
+        const triggers: ScrollTriggerInstance[] = [];
 
-      registerProgressTrigger({
-        triggerElement: CAPABILITY_STAGE_SELECTORS.introPinned,
-        config: CAPABILITY_STAGE_SCROLL_CONFIG.intro,
-        controller: controllers.intro,
-        registerTrigger,
-      });
+        const registerTrigger = (trigger: ScrollTriggerInstance) => {
+          triggers.push(trigger);
+        };
 
-      MAX_PROGRESS_TARGET_KEYS.forEach((key) => {
-        registerMaxProgressTrigger({
-          triggerElement: elements[key],
-          config: CAPABILITY_STAGE_SCROLL_CONFIG[key],
-          controller: controllers[key],
+        registerProgressTrigger({
+          triggerElement: CAPABILITY_STAGE_SELECTORS.introPinned,
+          config: scrollConfig.intro,
+          controller: controllers.intro,
           registerTrigger,
         });
-      });
 
-      registerProgressTrigger({
-        triggerElement: elements.closing,
-        config: CAPABILITY_STAGE_SCROLL_CONFIG.closing,
-        controller: controllers.closing,
-        registerTrigger,
-      });
-
-      if (elements.navigatorPin) {
-        registerTrigger(
-          createScrollTrigger({
-            trigger: elements.navigatorPin,
-            start: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.start,
-            end: () =>
-              `+=${
-                window.innerHeight *
-                (CAPABILITY_NAVIGATOR_ITEMS.length - 1) *
-                CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin
-                  .itemScrollLengthMultiplier
-              }`,
-            pin: true,
-            pinSpacing: true,
-            pinType: "transform",
-            scrub: CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.scrub,
-            anticipatePin:
-              CAPABILITY_STAGE_SCROLL_CONFIG.navigatorPin.anticipatePin,
-            onUpdate: (self) => {
-              const nextIndex = getCapabilityNavigatorIndex(
-                self.progress,
-                CAPABILITY_NAVIGATOR_ITEMS.length
-              );
-
-              if (nextIndex === previousNavigatorIndexRef.current) return;
-
-              previousNavigatorIndexRef.current = nextIndex;
-              setActiveNavigatorIndex(nextIndex);
-
-              const nextLayer = stage.querySelector<HTMLElement>(
-                `${CAPABILITY_STAGE_SELECTORS.navigatorLayer}[data-index="${nextIndex}"]`
-              );
-
-              if (!nextLayer) return;
-
-              CapabilityNavigatorAnimation.createLayerTransition({
-                nextLayer,
-              });
-            },
-          })
-        );
-      }
-
-      refreshScrollTrigger();
-
-      return () => {
-        triggers.forEach((trigger) => {
-          trigger.kill();
+        CAPABILITY_STAGE_PROGRESS_KEYS.forEach((key) => {
+          registerMaxProgressTrigger({
+            triggerElement: elements[key],
+            config: scrollConfig[key],
+            controller: controllers[key],
+            registerTrigger,
+          });
         });
 
-        destroyCapabilityStageControllers(controllers);
+        registerProgressTrigger({
+          triggerElement: elements.closing,
+          config: scrollConfig.closing,
+          controller: controllers.closing,
+          registerTrigger,
+        });
+
+        if (elements.navigatorPin) {
+          registerTrigger(
+            createScrollTrigger({
+              trigger: elements.navigatorPin,
+              start: scrollConfig.navigatorPin.start,
+              end: () =>
+                `+=${
+                  window.innerHeight *
+                  (CAPABILITY_NAVIGATOR_ITEMS.length - 1) *
+                  scrollConfig.navigatorPin.itemScrollLengthMultiplier
+                }`,
+              pin: true,
+              pinSpacing: true,
+              pinType: "transform",
+              scrub: scrollConfig.navigatorPin.scrub,
+              anticipatePin: scrollConfig.navigatorPin.anticipatePin,
+              onUpdate: (self) => {
+                const nextIndex = getCapabilityNavigatorIndex(
+                  self.progress,
+                  CAPABILITY_NAVIGATOR_ITEMS.length
+                );
+
+                if (nextIndex === previousNavigatorIndexRef.current) return;
+
+                previousNavigatorIndexRef.current = nextIndex;
+                setActiveNavigatorIndex(nextIndex);
+
+                const nextLayer = stage.querySelector<HTMLElement>(
+                  `${CAPABILITY_STAGE_SELECTORS.navigatorLayer}[data-index="${nextIndex}"]`
+                );
+
+                if (!nextLayer) return;
+
+                CapabilityNavigatorAnimation.createLayerTransition({
+                  nextLayer,
+                });
+              },
+            })
+          );
+        }
+
+        refreshScrollTrigger();
+
+        return () => {
+          triggers.forEach((trigger) => {
+            trigger.kill();
+          });
+
+          destroyCapabilityStageControllers(controllers);
+        };
+      };
+
+      const media = gsap.matchMedia();
+
+      media.add("(min-width: 901px)", () => {
+        return setupCapabilityTriggers(CAPABILITY_STAGE_DESKTOP_SCROLL_CONFIG);
+      });
+
+      media.add("(max-width: 900px)", () => {
+        return setupCapabilityTriggers(CAPABILITY_STAGE_MOBILE_SCROLL_CONFIG);
+      });
+
+      return () => {
+        media.revert();
       };
     }, stage);
 

@@ -1,15 +1,12 @@
-import { CAPABILITY_STAGE_SELECTORS } from "../../../constants";
+import {
+  CAPABILITY_STAGE_SELECTORS,
+  type CapabilityStageKey,
+} from "../../../constants";
 
-export type CapabilityStageElements = {
-  intro: HTMLElement | null;
-  introProof: HTMLElement | null;
-  structure: HTMLElement | null;
-  ai: HTMLElement | null;
-  visual: HTMLElement | null;
-  navigatorIntro: HTMLElement | null;
-  navigatorPin: HTMLElement | null;
-  closing: HTMLElement | null;
-};
+export type CapabilityStageElements = Record<
+  CapabilityStageKey,
+  HTMLElement | null
+>;
 
 export function getCapabilityStageElements(
   stage: HTMLElement
