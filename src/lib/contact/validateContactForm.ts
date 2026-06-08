@@ -18,7 +18,7 @@ export function validateContactForm(
   if (!values.email.trim()) {
     errors.email = "이메일을 입력해주세요.";
   } else if (!EMAIL_REGEX.test(values.email)) {
-    errors.email = "올바른 이메일 형식이 아니에요.";
+    errors.email = "올바른 이메일 형식이 아니에요 다시 입력해주세요.";
   }
 
   if (!values.purpose.trim()) {

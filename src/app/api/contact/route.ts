@@ -1,3 +1,5 @@
+// src/app/api/contact/route.ts
+
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
@@ -10,18 +12,20 @@ import {
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const normalizeContactFormValues = (
+  body: Partial<ContactFormValues>
+): ContactFormValues => ({
+  name: body.name ?? "",
+  email: body.email ?? "",
+  role: body.role ?? "",
+  purpose: body.purpose ?? "",
+  message: body.message ?? "",
+});
+
 export async function POST(request: Request) {
   try {
     const body = (await request.json()) as Partial<ContactFormValues>;
-
-    const values: ContactFormValues = {
-      name: body.name ?? "",
-      email: body.email ?? "",
-      role: body.role ?? "",
-      purpose: body.purpose ?? "",
-      message: body.message ?? "",
-    };
-
+    const values = normalizeContactFormValues(body);
     const errors = validateContactForm(values);
 
     if (hasContactFormErrors(errors)) {

@@ -1,113 +1,23 @@
 "use client";
 
-import { type ChangeEvent, type FormEvent, useState } from "react";
 import { ArrowRight } from "lucide-react";
 
-import {
-  type ContactFormValues,
-  type ContactSubmitStatus,
-} from "@/data/contacts";
-import {
-  hasContactFormErrors,
-  validateContactForm,
-  type ContactFormErrors,
-} from "@/lib/contact/validateContactForm";
+import { useContactForm } from "@/hooks/useContactForm";
 
 import ContactPurposeOptions from "./ContactPurposeOptions";
 import { ContactSubmitModal } from "./modal";
 
-const INITIAL_CONTACT_FORM_VALUES: ContactFormValues = {
-  name: "",
-  email: "",
-  role: "",
-  purpose: "",
-  message: "",
-};
-
 export default function ContactForm() {
-  const [values, setValues] = useState<ContactFormValues>(
-    INITIAL_CONTACT_FORM_VALUES
-  );
-  const [errors, setErrors] = useState<ContactFormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<ContactSubmitStatus | null>(
-    null
-  );
-
-  const handleChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = event.target;
-
-    setValues((prevValues) => ({
-      ...prevValues,
-      [name]: value,
-    }));
-
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: undefined,
-    }));
-  };
-
-  const handlePurposeChange = (purpose: string) => {
-    setValues((prevValues) => ({
-      ...prevValues,
-      purpose,
-    }));
-
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      purpose: undefined,
-    }));
-  };
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (isSubmitting) return;
-
-    const nextErrors = validateContactForm(values);
-
-    if (hasContactFormErrors(nextErrors)) {
-      setErrors(nextErrors);
-      return;
-    }
-
-    try {
-      setIsSubmitting(true);
-
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: values.name.trim(),
-          email: values.email.trim(),
-          role: values.role.trim(),
-          purpose: values.purpose.trim(),
-          message: values.message.trim(),
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to submit contact form");
-      }
-
-      setValues(INITIAL_CONTACT_FORM_VALUES);
-      setErrors({});
-      setSubmitStatus("success");
-    } catch {
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleCloseModal = () => {
-    setSubmitStatus(null);
-  };
+  const {
+    values,
+    errors,
+    isSubmitting,
+    submitStatus,
+    handleChange,
+    handlePurposeChange,
+    handleSubmit,
+    handleCloseModal,
+  } = useContactForm();
 
   return (
     <>
@@ -164,7 +74,7 @@ export default function ContactForm() {
             id="contact-role"
             name="role"
             type="text"
-            placeholder="예: 채용 담당자, 개발자, 디자이너, 팀 리더"
+            placeholder="예: 채용 담당자, 개발자, 디자이너, 팀 리더 등"
             className="contact-form__input"
             value={values.role}
             onChange={handleChange}
