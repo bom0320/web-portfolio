@@ -109,6 +109,7 @@ export default function ContactForm() {
             aria-describedby={
               errors.message ? "contact-message-error" : undefined
             }
+            data-lenis-prevent
           />
           {errors.message && (
             <p id="contact-message-error" className="contact-form__error">
