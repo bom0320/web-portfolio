@@ -53,8 +53,8 @@ export default function AboutHeroScene() {
           </h2>
 
           <p className="about-hero__desc js-about-hero-desc">
-            FrontEnd 개발자 김봄입니다. 사용자가 즐길 수 있는 직관적이고 의미
-            있는 경험을 만드는 것을 목표로 합니다.
+            왜 이런 흐름이 필요한지 집요하게 파고들고, 발견한 디테일을 구조와
+            인터랙션으로 구현하는 프론트엔드 개발자 김봄입니다.
           </p>
 
           <div
