@@ -95,14 +95,7 @@ const StructureCapabilityAnimation = {
       paused: true,
     });
 
-    /*
-      전체 timeline을 10초짜리처럼 길게 잡는다.
-      실제 시간으로 재생되는 게 아니라 scroll progress에 매핑됨.
-      그래서 duration 숫자는 "스크롤 구간 비율"이라고 보면 됨.
-    */
-
     timeline
-      // 0.0 ~ 1.2 : header
       .to(
         header,
         {
@@ -115,7 +108,6 @@ const StructureCapabilityAnimation = {
         0
       )
 
-      // 1.0 ~ 2.0 : core
       .to(
         core,
         {
@@ -128,7 +120,6 @@ const StructureCapabilityAnimation = {
         1
       )
 
-      // 2.0 ~ 3.0 : stem
       .to(
         stem,
         {
@@ -139,7 +130,6 @@ const StructureCapabilityAnimation = {
         2
       )
 
-      // 3.0 ~ 4.4 : branch
       .to(
         branch,
         {
@@ -164,10 +154,6 @@ const StructureCapabilityAnimation = {
 
     const nodeRevealOrder = [0, 5, 1, 4, 2, 3];
 
-    /*
-      4.4 ~ 8.2 : nodes
-      각 노드가 스크롤에 따라 순서대로 연결선 -> 원 형태로 나타남
-    */
     nodeRevealOrder.forEach((nodeIndex, orderIndex) => {
       const node = nodes[nodeIndex];
 
@@ -201,10 +187,6 @@ const StructureCapabilityAnimation = {
         );
     });
 
-    /*
-      8.4 ~ 11.4 : cards
-      노드가 다 연결된 뒤 카드가 천천히 올라옴
-    */
     timeline
       .to(
         cards,
