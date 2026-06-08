@@ -1,6 +1,14 @@
 import { CONTACT_PURPOSE_OPTIONS } from "@/data/contacts";
 
-export default function ContactPurposeOptions() {
+type ContactPurposeOptionsProps = {
+  value: string;
+  onChange: (value: string) => void;
+};
+
+export default function ContactPurposeOptions({
+  value,
+  onChange,
+}: ContactPurposeOptionsProps) {
   return (
     <div className="contact-purpose">
       {CONTACT_PURPOSE_OPTIONS.map((option) => (
@@ -10,6 +18,8 @@ export default function ContactPurposeOptions() {
             type="radio"
             name="purpose"
             value={option}
+            checked={value === option}
+            onChange={() => onChange(option)}
           />
           <span className="contact-purpose__label">{option}</span>
         </label>
