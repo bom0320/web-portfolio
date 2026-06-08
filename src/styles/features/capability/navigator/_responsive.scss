@@ -157,6 +157,37 @@
 }
 
 @include mobile {
+  .capability-navigator-intro {
+    width: min(100% - 48px, 520px);
+    padding: 104px 0 40px;
+  }
+
+  .capability-navigator-intro__eyebrow {
+    margin-bottom: 14px;
+
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .capability-navigator-intro__title {
+    max-width: 260px;
+
+    font-size: clamp(31px, 9.2vw, 38px);
+    line-height: 1.08;
+    letter-spacing: -0.06em;
+  }
+
+  .capability-navigator-intro__description {
+    max-width: 272px;
+    margin-top: 26px;
+
+    font-size: 13px;
+    line-height: 1.72;
+    letter-spacing: -0.035em;
+    word-break: keep-all;
+  }
+
   .capability-navigator-showcase {
     width: min(100% - 48px, 520px);
     height: auto;
@@ -244,6 +275,36 @@
 }
 
 @include small-mobile {
+  .capability-navigator-intro {
+    width: calc(100% - 40px);
+    padding: 120px 0 36px;
+  }
+
+  .capability-navigator-intro__eyebrow {
+    margin-bottom: 12px;
+
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  .capability-navigator-intro__title {
+    max-width: 230px;
+
+    font-size: clamp(29px, 9vw, 34px);
+    line-height: 1.08;
+    letter-spacing: -0.055em;
+  }
+
+  .capability-navigator-intro__description {
+    max-width: 250px;
+    margin-top: 22px;
+
+    font-size: 12px;
+    line-height: 1.68;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
+  }
+
   .capability-navigator-showcase {
     width: calc(100% - 38px);
     gap: 42px;

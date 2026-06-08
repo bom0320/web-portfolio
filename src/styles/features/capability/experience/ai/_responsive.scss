@@ -81,21 +81,21 @@
   }
 
   .experience-capability-block--ai .experience-capability-block__title {
-    max-width: 330px;
+    max-width: 300px;
     margin-top: 8px;
 
-    font-size: clamp(28px, 7.2vw, 33px);
-    line-height: 1.18;
-    letter-spacing: -0.055em;
+    font-size: clamp(31px, 9.2vw, 38px);
+    line-height: 1.08;
+    letter-spacing: -0.06em;
   }
 
   .experience-capability-block--ai .experience-capability-block__desc {
-    max-width: 336px;
+    max-width: 300px;
     margin-top: 22px;
 
-    font-size: 12px;
-    line-height: 1.75;
-    letter-spacing: -0.03em;
+    font-size: 13px;
+    line-height: 1.72;
+    letter-spacing: -0.035em;
     word-break: keep-all;
   }
 
@@ -114,19 +114,20 @@
   }
 
   .experience-capability-grid--ai .experience-capability-card__icon {
-    margin-bottom: 52px;
+    margin-bottom: 48px;
 
     font-size: 24px;
   }
 
   .experience-capability-grid--ai .experience-capability-card__subtitle {
     font-size: 11px;
+    line-height: 1;
     letter-spacing: 0.06em;
   }
 
   .experience-capability-grid--ai .experience-capability-card__title {
-    font-size: 22px;
-    line-height: 1.06;
+    font-size: 23px;
+    line-height: 1.08;
     letter-spacing: -0.055em;
   }
 
@@ -134,46 +135,50 @@
     margin-top: 10px;
 
     font-size: 13px;
-    line-height: 1.42;
+    line-height: 1.46;
+    letter-spacing: -0.035em;
   }
 
   .experience-capability-grid--ai .experience-capability-card__desc {
     margin-top: 14px;
 
     font-size: 13px;
-    line-height: 1.65;
+    line-height: 1.68;
+    letter-spacing: -0.035em;
+    word-break: keep-all;
   }
 }
-
 @include small-mobile {
   .experience-capability-block--ai .experience-capability-block__header {
-    width: calc(100% - 38px);
+    width: calc(100% - 40px);
   }
 
   .experience-capability-block--ai .experience-capability-block__eyebrow {
     font-size: 13px;
+    line-height: 1;
   }
 
   .experience-capability-block--ai .experience-capability-block__title {
     max-width: 260px;
     margin-top: 7px;
 
-    font-size: clamp(24px, 6vw, 28px);
-    line-height: 1.18;
+    font-size: clamp(29px, 9vw, 34px);
+    line-height: 1.08;
     letter-spacing: -0.055em;
   }
 
   .experience-capability-block--ai .experience-capability-block__desc {
-    max-width: 280px;
-    margin-top: 14px;
+    max-width: 270px;
+    margin-top: 18px;
 
     font-size: 12px;
     line-height: 1.68;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
   }
 
   .experience-capability-grid--ai {
-    width: calc(100% - 38px);
+    width: calc(100% - 40px);
     margin-top: 42px;
 
     grid-template-columns: 1fr;
@@ -186,27 +191,36 @@
   }
 
   .experience-capability-grid--ai .experience-capability-card__icon {
-    margin-bottom: 46px;
+    margin-bottom: 42px;
 
     font-size: 22px;
   }
 
   .experience-capability-grid--ai .experience-capability-card__subtitle {
     font-size: 10px;
+    line-height: 1;
   }
 
   .experience-capability-grid--ai .experience-capability-card__title {
-    font-size: 20px;
-    line-height: 1.06;
+    font-size: 21px;
+    line-height: 1.08;
+    letter-spacing: -0.055em;
   }
 
   .experience-capability-grid--ai .experience-capability-card__message {
+    margin-top: 9px;
+
     font-size: 12px;
-    line-height: 1.42;
+    line-height: 1.46;
+    letter-spacing: -0.03em;
   }
 
   .experience-capability-grid--ai .experience-capability-card__desc {
+    margin-top: 12px;
+
     font-size: 12px;
-    line-height: 1.6;
+    line-height: 1.62;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
   }
 }
