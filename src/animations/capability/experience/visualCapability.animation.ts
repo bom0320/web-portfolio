@@ -1,24 +1,19 @@
 import gsap from "gsap";
 
-type VisualCapabilityAnimationController = {
-  setProgress: (progress: number) => void;
-  destroy: () => void;
-};
-
-const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
+import {
+  clampProgress,
+  createNoopController,
+  type AnimationController,
+} from "@/animations/_shared";
+import type { VisualCapabilityAnimationElements } from "@/components/scenes/capability/dom";
 
 const VisualCapabilityAnimation = {
-  create(root: HTMLElement | null): VisualCapabilityAnimationController {
-    if (!root) {
-      return {
-        setProgress: () => {},
-        destroy: () => {},
-      };
-    }
+  create(elements: VisualCapabilityAnimationElements): AnimationController {
+    const { root, header } = elements;
 
-    const header = root.querySelector<HTMLElement>(
-      ".js-visual-capability-header"
-    );
+    if (!root) {
+      return createNoopController();
+    }
 
     gsap.set(header, {
       autoAlpha: 0,

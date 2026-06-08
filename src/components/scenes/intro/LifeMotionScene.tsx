@@ -16,16 +16,20 @@ export default function LifeMotionScene() {
   }, []);
 
   return (
-    <section className="life-motion" id="life">
+    <section className="life-motion js-intro-life-motion" id="life">
       <div className="life-motion__enter js-life-motion-enter">
         <div className="life-motion__viewport js-life-motion-viewport">
-          <div className="life-motion__stage js-life-motion-stage">
+          <div className="life-motion__canvas js-life-motion-canvas">
             <div className="life-motion__track js-life-motion-track">
               <div className="life-motion__row-window life-motion__row-window--top js-life-motion-top">
                 <div className="life-motion__row">
                   <div className="life-motion__group">
                     {topGroupItems.map((item, index) => (
-                      <LifeMotionItem key={`${item.id}-${index}`} item={item} />
+                      <LifeMotionItem
+                        key={`${item.id}-${index}`}
+                        item={item}
+                        index={index}
+                      />
                     ))}
                   </div>
 
@@ -34,6 +38,7 @@ export default function LifeMotionScene() {
                       <LifeMotionItem
                         key={`clone-${item.id}-${index}`}
                         item={item}
+                        index={index + topGroupItems.length}
                       />
                     ))}
                   </div>
@@ -44,7 +49,11 @@ export default function LifeMotionScene() {
                 <div className="life-motion__row">
                   <div className="life-motion__group">
                     {bottomGroupItems.map((item, index) => (
-                      <LifeMotionItem key={`${item.id}-${index}`} item={item} />
+                      <LifeMotionItem
+                        key={`${item.id}-${index}`}
+                        item={item}
+                        index={index + topGroupItems.length * 2}
+                      />
                     ))}
                   </div>
 
@@ -53,6 +62,11 @@ export default function LifeMotionScene() {
                       <LifeMotionItem
                         key={`clone-${item.id}-${index}`}
                         item={item}
+                        index={
+                          index +
+                          topGroupItems.length * 2 +
+                          bottomGroupItems.length
+                        }
                       />
                     ))}
                   </div>

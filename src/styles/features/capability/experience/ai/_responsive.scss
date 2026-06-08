@@ -1,11 +1,226 @@
-@media (max-width: 900px) {
+@import "../../../../abstracts/mixins";
+
+@include laptop {
+  .experience-capability-block--ai .experience-capability-block__header {
+    width: min(960px, calc(100% - 100px));
+  }
+
   .experience-capability-grid--ai {
-    margin-top: 56px;
+    width: min(960px, calc(100% - 100px));
   }
 }
 
-@media (max-width: 560px) {
+@include tablet {
+  .experience-capability-block--ai .experience-capability-block__header {
+    width: min(820px, calc(100% - 64px));
+    margin: 0 auto;
+  }
+
+  .experience-capability-block--ai .experience-capability-block__title {
+    max-width: 460px;
+  }
+
+  .experience-capability-block--ai .experience-capability-block__desc {
+    max-width: 560px;
+  }
+
   .experience-capability-grid--ai {
+    width: min(820px, calc(100% - 64px));
+    margin-top: 64px;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card {
+    min-height: 360px;
+    padding: 30px 26px;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__icon {
+    margin-bottom: 64px;
+
+    font-size: 26px;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__subtitle {
+    font-size: 12px;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__title {
+    font-size: 24px;
+    line-height: 1.08;
+    letter-spacing: -0.055em;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__message {
+    margin-top: 12px;
+
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__desc {
+    margin-top: 16px;
+
+    font-size: 13px;
+    line-height: 1.65;
+  }
+}
+
+@include mobile {
+  .experience-capability-block--ai .experience-capability-block__header {
+    width: min(100% - 48px, 520px);
+    margin: 0 auto;
+  }
+
+  .experience-capability-block--ai .experience-capability-block__eyebrow {
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .experience-capability-block--ai .experience-capability-block__title {
+    max-width: 300px;
+    margin-top: 8px;
+
+    font-size: clamp(31px, 9.2vw, 38px);
+    line-height: 1.08;
+    letter-spacing: -0.06em;
+  }
+
+  .experience-capability-block--ai .experience-capability-block__desc {
+    max-width: 300px;
+    margin-top: 22px;
+
+    font-size: 13px;
+    line-height: 1.72;
+    letter-spacing: -0.035em;
+    word-break: keep-all;
+  }
+
+  .experience-capability-grid--ai {
+    width: min(100% - 48px, 520px);
     margin-top: 48px;
+
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card {
+    min-height: auto;
+    padding: 28px 24px;
+    border-radius: 24px;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__icon {
+    margin-bottom: 48px;
+
+    font-size: 24px;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__subtitle {
+    font-size: 11px;
+    line-height: 1;
+    letter-spacing: 0.06em;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__title {
+    font-size: 23px;
+    line-height: 1.08;
+    letter-spacing: -0.055em;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__message {
+    margin-top: 10px;
+
+    font-size: 13px;
+    line-height: 1.46;
+    letter-spacing: -0.035em;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__desc {
+    margin-top: 14px;
+
+    font-size: 13px;
+    line-height: 1.68;
+    letter-spacing: -0.035em;
+    word-break: keep-all;
+  }
+}
+@include small-mobile {
+  .experience-capability-block--ai .experience-capability-block__header {
+    width: calc(100% - 40px);
+  }
+
+  .experience-capability-block--ai .experience-capability-block__eyebrow {
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  .experience-capability-block--ai .experience-capability-block__title {
+    max-width: 260px;
+    margin-top: 7px;
+
+    font-size: clamp(29px, 9vw, 34px);
+    line-height: 1.08;
+    letter-spacing: -0.055em;
+  }
+
+  .experience-capability-block--ai .experience-capability-block__desc {
+    max-width: 270px;
+    margin-top: 18px;
+
+    font-size: 12px;
+    line-height: 1.68;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
+  }
+
+  .experience-capability-grid--ai {
+    width: calc(100% - 40px);
+    margin-top: 42px;
+
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card {
+    padding: 24px 22px;
+    border-radius: 22px;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__icon {
+    margin-bottom: 42px;
+
+    font-size: 22px;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__subtitle {
+    font-size: 10px;
+    line-height: 1;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__title {
+    font-size: 21px;
+    line-height: 1.08;
+    letter-spacing: -0.055em;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__message {
+    margin-top: 9px;
+
+    font-size: 12px;
+    line-height: 1.46;
+    letter-spacing: -0.03em;
+  }
+
+  .experience-capability-grid--ai .experience-capability-card__desc {
+    margin-top: 12px;
+
+    font-size: 12px;
+    line-height: 1.62;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
   }
 }

@@ -1,28 +1,20 @@
 import gsap from "gsap";
 
-type AboutHeroController = {
-  setProgress: (progress: number) => void;
-  destroy: () => void;
-};
-
-type AboutHeroParams = {
-  eyebrow: HTMLElement | null;
-  heading: HTMLElement;
-  desc: HTMLElement;
-  visual: HTMLElement | null;
-  cta: HTMLElement | null;
-};
-
-const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
+import {
+  clampProgress,
+  createNoopController,
+  type AnimationController,
+} from "@/animations/_shared";
+import type { AboutHeroAnimationElements } from "@/components/scenes/about/dom";
 
 const AboutHeroAnimation = {
-  create({
-    eyebrow,
-    heading,
-    desc,
-    visual,
-    cta,
-  }: AboutHeroParams): AboutHeroController {
+  create(elements: AboutHeroAnimationElements): AnimationController {
+    const { root, eyebrow, heading, desc, visual, cta } = elements;
+
+    if (!root || !heading || !desc) {
+      return createNoopController();
+    }
+
     const targets = [eyebrow, heading, desc, visual, cta].filter(
       (target): target is HTMLElement => Boolean(target)
     );
@@ -98,18 +90,21 @@ const AboutHeroAnimation = {
         0.42
       );
 
+    const setProgress = (progress: number) => {
+      timeline.progress(clampProgress(progress));
+    };
+
+    const destroy = () => {
+      timeline.kill();
+
+      gsap.set(targets, {
+        clearProps: "all",
+      });
+    };
+
     return {
-      setProgress(progress: number) {
-        timeline.progress(clampProgress(progress));
-      },
-
-      destroy() {
-        timeline.kill();
-
-        gsap.set(targets, {
-          clearProps: "all",
-        });
-      },
+      setProgress,
+      destroy,
     };
   },
 };

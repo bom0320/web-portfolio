@@ -1,23 +1,42 @@
-@media (max-width: 900px) {
+@import "../../../../abstracts/mixins";
+
+@include tablet {
   .experience-capability-visual--structure {
-    margin-top: 56px;
-    margin-bottom: 60px;
+    margin-top: 72px;
+    margin-bottom: 64px;
   }
 
   .experience-capability-structure-map {
-    height: 470px;
+    --node-size: 76px;
+
+    width: min(700px, 100%);
+    height: 520px;
+  }
+
+  .experience-capability-structure-map__core {
+    top: 12px;
+
+    width: 88px;
+    height: 88px;
+
+    font-size: 26px;
+  }
+
+  .experience-capability-structure-map__stem {
+    top: 104px;
+    height: 72px;
   }
 
   .experience-capability-structure-map__branch {
     top: 176px;
 
     width: 3px;
-    height: 240px;
+    height: 294px;
 
     background: linear-gradient(
       180deg,
-      rgba(150, 105, 255, 0.96),
-      rgba(150, 105, 255, 0.08)
+      rgba(118, 245, 225, 0.96),
+      rgba(118, 245, 225, 0.08)
     );
   }
 
@@ -27,142 +46,326 @@
   }
 
   .experience-capability-structure-map__node {
-    width: 72px;
-    height: 72px;
+    width: var(--node-size);
+    height: var(--node-size);
+
+    font-size: 22px;
   }
 
   .experience-capability-structure-map__node::before {
-    display: none;
+    display: block;
+
+    position: absolute;
+    top: 50%;
+    bottom: auto;
+    left: auto;
+
+    width: 70px;
+    height: 2px;
+
+    transform: translateY(-50%) scaleX(var(--node-line-scale, 1));
+    transform-origin: left center;
+
+    opacity: var(--node-line-opacity, 1);
+
+    border-radius: 999px;
+
+    background: linear-gradient(
+      90deg,
+      rgba(118, 245, 225, 0.88),
+      rgba(118, 245, 225, 0.08)
+    );
+
+    filter: drop-shadow(0 0 8px rgba(86, 233, 210, 0.5));
   }
 
   .experience-capability-structure-map__node--1 {
     left: 50%;
-    top: 170px;
+    top: 192px;
 
+    margin-left: -124px;
     transform: translateX(-50%);
-    margin-left: -120px;
   }
 
   .experience-capability-structure-map__node--2 {
     left: 50%;
-    top: 170px;
+    top: 192px;
 
+    margin-left: 124px;
     transform: translateX(-50%);
-    margin-left: 120px;
   }
 
   .experience-capability-structure-map__node--3 {
     left: 50%;
-    top: 250px;
+    top: 288px;
 
+    margin-left: -124px;
     transform: translateX(-50%);
-    margin-left: -120px;
   }
 
   .experience-capability-structure-map__node--4 {
     left: 50%;
-    top: 250px;
+    top: 288px;
 
+    margin-left: 124px;
     transform: translateX(-50%);
-    margin-left: 120px;
   }
 
   .experience-capability-structure-map__node--5 {
     left: 50%;
-    right: auto;
-    top: 330px;
+    top: 384px;
 
+    margin-left: -124px;
     transform: translateX(-50%);
-    margin-left: -120px;
   }
 
   .experience-capability-structure-map__node--6 {
     left: 50%;
-    right: auto;
-    top: 330px;
+    top: 384px;
 
+    margin-left: 124px;
     transform: translateX(-50%);
-    margin-left: 120px;
   }
 
-  .experience-capability-structure-grid {
+  .experience-capability-structure-map__node--1::before,
+  .experience-capability-structure-map__node--3::before,
+  .experience-capability-structure-map__node--5::before {
+    left: 100%;
+    transform-origin: left center;
+  }
+
+  .experience-capability-structure-map__node--2::before,
+  .experience-capability-structure-map__node--4::before,
+  .experience-capability-structure-map__node--6::before {
+    right: 100%;
+    transform-origin: right center;
+
+    background: linear-gradient(
+      270deg,
+      rgba(118, 245, 225, 0.88),
+      rgba(118, 245, 225, 0.08)
+    );
+  }
+
+  .experience-capability-grid--structure {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 560px) {
+@include mobile {
+  .experience-capability-block--structure .experience-capability-block__header {
+    width: min(100%, 312px);
+    margin: 0 auto;
+  }
+
+  .experience-capability-block--structure
+    .experience-capability-block__eyebrow {
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .experience-capability-block--structure .experience-capability-block__title {
+    margin-top: 8px;
+
+    font-size: clamp(27px, 7.4vw, 36px);
+    line-height: 1.08;
+    letter-spacing: -0.055em;
+  }
+
+  .experience-capability-block--structure .experience-capability-block__desc {
+    max-width: 292px;
+    margin: 14px auto 0;
+
+    font-size: 13px;
+    line-height: 1.72;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
+  }
+
   .experience-capability-visual--structure {
-    margin-top: 48px;
-    margin-bottom: 54px;
+    margin-top: 44px;
+    margin-bottom: 46px;
   }
 
   .experience-capability-structure-map {
-    height: 620px;
+    --node-size: 58px;
+
+    width: min(340px, 100%);
+    height: 466px;
   }
 
   .experience-capability-structure-map__core {
-    width: 88px;
-    height: 88px;
-  }
+    width: 68px;
+    height: 68px;
 
-  .experience-capability-structure-map__core strong {
-    font-size: 19px;
+    font-size: 20px;
   }
 
   .experience-capability-structure-map__stem {
-    top: 104px;
-    height: 52px;
+    top: 80px;
+    height: 46px;
   }
 
   .experience-capability-structure-map__branch {
-    top: 156px;
-    height: 420px;
+    top: 126px;
+
+    width: 2px;
+    height: 304px;
   }
 
   .experience-capability-structure-map__node {
-    width: 76px;
-    height: 76px;
+    width: var(--node-size);
+    height: var(--node-size);
+
+    font-size: 17px;
+  }
+
+  .experience-capability-structure-map__node::before {
+    width: 38px;
+    height: 2px;
   }
 
   .experience-capability-structure-map__node--1 {
-    top: 170px;
-    margin-left: -78px;
+    top: 142px;
+    margin-left: -70px;
   }
 
   .experience-capability-structure-map__node--2 {
-    top: 234px;
-    margin-left: 78px;
+    top: 190px;
+    margin-left: 70px;
   }
 
   .experience-capability-structure-map__node--3 {
-    top: 298px;
-    margin-left: -78px;
+    top: 238px;
+    margin-left: -70px;
   }
 
   .experience-capability-structure-map__node--4 {
-    top: 362px;
-    margin-left: 78px;
+    top: 286px;
+    margin-left: 70px;
   }
 
   .experience-capability-structure-map__node--5 {
-    top: 426px;
-    margin-left: -78px;
+    top: 334px;
+    margin-left: -70px;
   }
 
   .experience-capability-structure-map__node--6 {
-    top: 490px;
-    margin-left: 78px;
+    top: 382px;
+    margin-left: 70px;
+  }
+}
+
+@include small-mobile {
+  .experience-capability-block--structure .experience-capability-block__header {
+    width: min(100%, 268px);
   }
 
-  .experience-capability-structure-grid {
+  .experience-capability-block--structure
+    .experience-capability-block__eyebrow {
+    font-size: 13px;
+  }
+
+  .experience-capability-block--structure .experience-capability-block__title {
+    margin-top: 7px;
+
+    font-size: clamp(23px, 7vw, 30px);
+    line-height: 1.12;
+    letter-spacing: -0.045em;
+  }
+
+  .experience-capability-block--structure .experience-capability-block__desc {
+    max-width: 260px;
+    margin-top: 14px;
+
+    font-size: 12px;
+    line-height: 1.68;
+    letter-spacing: -0.02em;
+  }
+
+  .experience-capability-visual--structure {
+    margin-top: 40px;
+    margin-bottom: 42px;
+  }
+
+  .experience-capability-structure-map {
+    --node-size: 52px;
+
+    width: min(280px, 100%);
+    height: 424px;
+  }
+
+  .experience-capability-structure-map__core {
+    width: 62px;
+    height: 62px;
+
+    border-width: 1.5px;
+
+    font-size: 18px;
+  }
+
+  .experience-capability-structure-map__stem {
+    top: 74px;
+    height: 42px;
+  }
+
+  .experience-capability-structure-map__branch {
+    top: 116px;
+
+    width: 2px;
+    height: 270px;
+  }
+
+  .experience-capability-structure-map__node {
+    width: var(--node-size);
+    height: var(--node-size);
+
+    border-width: 1px;
+
+    font-size: 15px;
+  }
+
+  .experience-capability-structure-map__node::before {
+    width: 32px;
+    height: 2px;
+  }
+
+  .experience-capability-structure-map__node--1 {
+    top: 130px;
+    margin-left: -58px;
+  }
+
+  .experience-capability-structure-map__node--2 {
+    top: 174px;
+    margin-left: 58px;
+  }
+
+  .experience-capability-structure-map__node--3 {
+    top: 218px;
+    margin-left: -58px;
+  }
+
+  .experience-capability-structure-map__node--4 {
+    top: 262px;
+    margin-left: 58px;
+  }
+
+  .experience-capability-structure-map__node--5 {
+    top: 306px;
+    margin-left: -58px;
+  }
+
+  .experience-capability-structure-map__node--6 {
+    top: 350px;
+    margin-left: 58px;
+  }
+
+  .experience-capability-grid--structure {
     grid-template-columns: 1fr;
   }
 
-  .experience-capability-structure-card {
+  .experience-capability-card {
     min-height: auto;
-  }
-
-  .experience-capability-structure-card__top {
-    margin-bottom: 36px;
   }
 }

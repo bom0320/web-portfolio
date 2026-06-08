@@ -1,37 +1,26 @@
 import gsap from "gsap";
 
-type CapabilityIntroController = {
-  setProgress: (progress: number) => void;
-  destroy: () => void;
-};
+import {
+  clampProgress,
+  createNoopController,
+  type AnimationController,
+} from "@/animations/_shared";
 
-const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
-
-const SELECTOR = {
-  visualField: ".js-capability-intro-visual-field",
-
-  titleLayer: ".js-capability-intro-title-layer",
-  eyebrow: ".js-capability-intro-eyebrow",
-  title: ".js-capability-intro-title",
-  subtitle: ".js-capability-intro-subtitle",
-
-  phase01: ".js-capability-intro-phase-01",
-  phase02: ".js-capability-intro-phase-02",
-} as const;
+import type { CapabilityIntroAnimationElements } from "@/components/scenes/capability/dom/intro";
 
 const TITLE_INITIAL_SCALE = 3.8;
 
 const CapabilityIntroAnimation = {
-  create(scope: HTMLElement): CapabilityIntroController {
-    const visualField = scope.querySelector<HTMLElement>(SELECTOR.visualField);
-
-    const titleLayer = scope.querySelector<HTMLElement>(SELECTOR.titleLayer);
-    const eyebrow = scope.querySelector<HTMLElement>(SELECTOR.eyebrow);
-    const title = scope.querySelector<HTMLElement>(SELECTOR.title);
-    const subtitle = scope.querySelector<HTMLElement>(SELECTOR.subtitle);
-
-    const phase01 = scope.querySelector<HTMLElement>(SELECTOR.phase01);
-    const phase02 = scope.querySelector<HTMLElement>(SELECTOR.phase02);
+  create(elements: CapabilityIntroAnimationElements): AnimationController {
+    const {
+      visualField,
+      titleLayer,
+      eyebrow,
+      title,
+      subtitle,
+      phase01,
+      phase02,
+    } = elements;
 
     if (
       !visualField ||
@@ -42,20 +31,9 @@ const CapabilityIntroAnimation = {
       !phase01 ||
       !phase02
     ) {
-      console.warn("[CapabilityIntroAnimation] Missing elements", {
-        visualField,
-        titleLayer,
-        eyebrow,
-        title,
-        subtitle,
-        phase01,
-        phase02,
-      });
+      console.warn("[CapabilityIntroAnimation] Missing elements", elements);
 
-      return {
-        setProgress: () => {},
-        destroy: () => {},
-      };
+      return createNoopController();
     }
 
     const timeline = gsap.timeline({
@@ -65,9 +43,7 @@ const CapabilityIntroAnimation = {
       },
     });
 
-    /**
-     * Initial state
-     */
+    // Initial
     gsap.set(visualField, {
       autoAlpha: 1,
       scale: 1,
@@ -101,10 +77,7 @@ const CapabilityIntroAnimation = {
       y: 28,
     });
 
-    /**
-     * 01. Title appears
-     * FLOW. STRUCTURE. MOTION. 하나만 등장
-     */
+    // Title reveal
     timeline.to(
       title,
       {
@@ -114,10 +87,7 @@ const CapabilityIntroAnimation = {
       0.08
     );
 
-    /**
-     * 02. Title zooms out
-     * 타이틀 교체 없이 같은 h2가 scale만 줄어든다.
-     */
+    // Title scale
     timeline.to(
       title,
       {
@@ -128,10 +98,7 @@ const CapabilityIntroAnimation = {
       0.16
     );
 
-    /**
-     * 03. Statement elements reveal
-     * title은 고정, eyebrow/subtitle만 등장
-     */
+    // Header reveal
     timeline
       .to(
         eyebrow,
@@ -154,10 +121,7 @@ const CapabilityIntroAnimation = {
         0.62
       );
 
-    /**
-     * 04. Phase 01 reveal
-     * titleLayer는 절대 흐리게 만들지 않는다.
-     */
+    // Phase 01
     timeline.to(
       phase01,
       {
@@ -169,9 +133,7 @@ const CapabilityIntroAnimation = {
       0.74
     );
 
-    /**
-     * 05. Phase 01 -> Phase 02
-     */
+    // Phase transition
     timeline
       .to(
         phase01,

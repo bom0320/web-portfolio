@@ -36,7 +36,7 @@ export default function CapabilityNavigatorMonitor({
                 className={`capability-navigator-monitor__screen-image ${
                   index === activeIndex ? "is-active" : ""
                 }`}
-                sizes="(max-width: 1024px) 42vw, 520px"
+                sizes="(max-width: 640px) 220vw, (max-width: 900px) 124vw, 520px"
                 priority={index === 0}
               />
             ))}

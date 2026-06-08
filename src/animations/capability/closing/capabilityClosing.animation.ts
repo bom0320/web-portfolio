@@ -1,46 +1,27 @@
 import gsap from "gsap";
 
-type CapabilityClosingAnimationController = {
-  setProgress: (progress: number) => void;
-  destroy: () => void;
-};
-
-const clampProgress = (progress: number) => gsap.utils.clamp(0, 1, progress);
+import {
+  clampProgress,
+  createNoopController,
+  type AnimationController,
+} from "@/animations/_shared";
+import type { CapabilityClosingAnimationElements } from "@/components/scenes/capability/dom";
 
 const CapabilityClosingAnimation = {
-  create(root: HTMLElement | null): CapabilityClosingAnimationController {
+  create(elements: CapabilityClosingAnimationElements): AnimationController {
+    const { root, content, eyebrow, title, description, cta } = elements;
+
     if (!root) {
-      return {
-        setProgress: () => {},
-        destroy: () => {},
-      };
+      return createNoopController();
     }
 
-    const content = root.querySelector<HTMLElement>(
-      ".js-capability-closing-content"
-    );
-
-    const eyebrow = root.querySelector<HTMLElement>(
-      ".js-capability-closing-eyebrow"
-    );
-
-    const title = root.querySelector<HTMLElement>(
-      ".js-capability-closing-title"
-    );
-
-    const description = root.querySelector<HTMLElement>(
-      ".js-capability-closing-description"
-    );
-
-    const cta = root.querySelector<HTMLElement>(".js-capability-closing-cta");
-
-    const elements = [eyebrow, title, description, cta].filter(Boolean);
+    const revealElements = [eyebrow, title, description, cta].filter(Boolean);
 
     gsap.set(content, {
       autoAlpha: 1,
     });
 
-    gsap.set(elements, {
+    gsap.set(revealElements, {
       autoAlpha: 0,
       y: 36,
       filter: "blur(10px)",
@@ -105,7 +86,7 @@ const CapabilityClosingAnimation = {
     const destroy = () => {
       timeline.kill();
 
-      gsap.set([content, ...elements].filter(Boolean), {
+      gsap.set([content, ...revealElements].filter(Boolean), {
         clearProps: "all",
       });
     };

@@ -4,7 +4,7 @@ import { AI_ICON_MAP } from "./aiCapabilityIconMap";
 
 export default function AICapabilityBlock() {
   return (
-    <article className="experience-capability-block experience-capability-block--ai js-ai-capability-block">
+    <article className="experience-capability-block experience-capability-block--ai js-capability-ai">
       <div className="experience-capability-block__header js-ai-capability-header">
         <p className="experience-capability-block__eyebrow">AI</p>
 
@@ -20,30 +20,33 @@ export default function AICapabilityBlock() {
         </p>
       </div>
 
-      <div className="experience-capability-grid experience-capability-grid--ai">
+      <div className="experience-capability-grid experience-capability-grid--ai js-ai-capability-grid">
         {AI_CAPABILITY_ITEMS.map((item) => {
           const Icon = AI_ICON_MAP[item.icon];
 
           return (
-            <article key={item.id} className="experience-capability-card">
-              <div className="experience-capability-card__icon">
+            <article
+              key={item.id}
+              className="experience-capability-card js-ai-capability-card"
+            >
+              <div className="experience-capability-card__icon js-ai-capability-card-icon">
                 <Icon aria-hidden="true" />
               </div>
 
               <div className="experience-capability-card__content">
-                <span className="experience-capability-card__subtitle">
+                <span className="experience-capability-card__subtitle js-ai-capability-card-subtitle">
                   {item.subtitle}
                 </span>
 
-                <h3 className="experience-capability-card__title">
+                <h3 className="experience-capability-card__title js-ai-capability-card-title">
                   {item.title}
                 </h3>
 
-                <p className="experience-capability-card__message">
+                <p className="experience-capability-card__message js-ai-capability-card-message">
                   {item.message}
                 </p>
 
-                <p className="experience-capability-card__desc">
+                <p className="experience-capability-card__desc js-ai-capability-card-desc">
                   {item.description}
                 </p>
               </div>

@@ -1,0 +1,30 @@
+.skill-pagination {
+  --skill-pagination-dot-size: 8px;
+  --skill-pagination-bar-width: 48px;
+  --skill-pagination-gap: 18px;
+  --skill-pagination-padding-x: 24px;
+
+  margin-top: 44px;
+  padding: 18px var(--skill-pagination-padding-x);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--skill-pagination-gap);
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.skill-pagination__item {
+  width: var(--skill-pagination-dot-size);
+  height: var(--skill-pagination-dot-size);
+
+  display: block;
+  flex: 0 0 auto;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+
+  will-change: width, background-color;
+}

@@ -1,12 +1,19 @@
 import gsap from "gsap";
 
-interface CreateContactFooterAnimationParams {
-  footer: HTMLElement;
-}
+import {
+  clampProgress,
+  createNoopController,
+  type AnimationController,
+} from "@/animations/_shared";
+import type { ContactFooterAnimationElements } from "@/components/scenes/contact/dom";
 
 export function createContactFooterAnimation({
   footer,
-}: CreateContactFooterAnimationParams) {
+}: ContactFooterAnimationElements): AnimationController {
+  if (!footer) {
+    return createNoopController();
+  }
+
   gsap.set(footer, {
     y: 110,
     willChange: "transform",
@@ -22,5 +29,20 @@ export function createContactFooterAnimation({
     ease: "power2.out",
   });
 
-  return timeline;
+  const setProgress = (progress: number) => {
+    timeline.progress(clampProgress(progress));
+  };
+
+  const destroy = () => {
+    timeline.kill();
+
+    gsap.set(footer, {
+      clearProps: "transform,willChange",
+    });
+  };
+
+  return {
+    setProgress,
+    destroy,
+  };
 }

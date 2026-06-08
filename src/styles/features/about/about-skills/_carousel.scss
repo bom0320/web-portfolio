@@ -1,0 +1,53 @@
+.skill-carousel {
+  --skill-carousel-item-size: 190px;
+  --skill-carousel-gap: 52px;
+  --skill-carousel-visible-count: 5;
+
+  width: 100%;
+  margin-top: 60px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skill-carousel__viewport {
+  width: calc(
+    (var(--skill-carousel-item-size) * var(--skill-carousel-visible-count)) +
+      (var(--skill-carousel-gap) * (var(--skill-carousel-visible-count) - 1))
+  );
+  max-width: 100%;
+
+  padding: 12px 0 18px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 0;
+
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.skill-carousel__viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.skill-carousel__track {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--skill-carousel-gap);
+
+  width: max-content;
+}
+
+.skill-carousel__item {
+  flex: 0 0 var(--skill-carousel-item-size);
+  width: var(--skill-carousel-item-size);
+
+  display: flex;
+  justify-content: center;
+
+  scroll-snap-align: start;
+}

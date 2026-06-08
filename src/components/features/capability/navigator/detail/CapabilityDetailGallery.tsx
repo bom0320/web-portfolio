@@ -1,10 +1,12 @@
 import Image from "next/image";
 
 interface CapabilityDetailGalleryProps {
+  title: string;
   images: string[];
 }
 
 export default function CapabilityDetailGallery({
+  title,
   images,
 }: CapabilityDetailGalleryProps) {
   return (
@@ -16,10 +18,10 @@ export default function CapabilityDetailGallery({
         >
           <Image
             src={src}
-            alt={`capability detail ${index + 1}`}
+            alt={`${title} detail image ${index + 1}`}
             fill
             className="capability-detail-gallery__image"
-            sizes="(max-width: 1024px) 90vw, 720px"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 720px"
           />
         </div>
       ))}

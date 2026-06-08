@@ -1,17 +1,30 @@
 .about-scenes {
   position: absolute;
   inset: 0;
+
   width: 100%;
   height: 100vh;
+  height: 100svh;
 
   background: #000;
   color: #fff;
 
-  transform: translateY(100vh) scale(0.98);
   transform-origin: center bottom;
   border-radius: 36px 36px 0 0;
 
   overflow: hidden;
   will-change: transform;
   backface-visibility: hidden;
+}
+
+.about {
+  --about-mobile-content-width: min(100% - 48px, 520px);
+  --about-mobile-content-top: clamp(96px, 12vh, 132px);
+}
+
+@media (max-width: 480px) {
+  .about {
+    --about-mobile-content-width: calc(100% - 40px);
+    --about-mobile-content-top: clamp(108px, 13vh, 136px);
+  }
 }

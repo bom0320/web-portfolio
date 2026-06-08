@@ -1,60 +1,100 @@
-@media (max-width: 768px) {
+@import "../../../abstracts/mixins";
+
+@include tablet {
   .about-hero {
-    min-height: auto;
-    padding: 72px 0 120px;
+    height: 100vh;
+    height: 100svh;
+
+    align-items: center;
+    justify-content: center;
   }
 
   .about-hero__layout {
-    width: min(520px, calc(100% - 44px));
-    grid-template-columns: 1fr;
-    gap: 34px;
+    width: min(700px, calc(100% - 72px));
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 230px 390px;
+    column-gap: 66px;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
+
+    padding-top: clamp(72px, 8vh, 104px);
+    padding-bottom: clamp(56px, 7vh, 88px);
+
     transform: none;
   }
 
   .about-hero__visual {
-    order: 1;
-    justify-content: center;
+    order: initial;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
     transform: none;
   }
 
   .about-hero__character {
-    width: min(280px, 68vw);
+    width: min(240px, 31vw);
   }
 
   .about-hero__content {
-    order: 2;
-    max-width: none;
-    align-items: center;
-    text-align: center;
+    order: initial;
+    width: 100%;
+    max-width: 390px;
+
+    flex: initial;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-top: 0;
+
+    text-align: left;
     transform: none;
   }
 
   .about-hero__eyebrow {
-    margin-bottom: 18px;
-    font-size: 15px;
+    margin-bottom: 14px;
+    font-size: 14px;
   }
 
   .about-hero__title {
-    font-size: clamp(30px, 8.8vw, 42px);
-    line-height: 1.2;
+    max-width: 390px;
+
+    font-size: clamp(28px, 3.7vw, 34px);
+    line-height: 1.14;
     letter-spacing: -0.055em;
+
+    word-break: keep-all;
+    overflow-wrap: normal;
   }
 
   .about-hero__desc {
-    width: min(330px, 100%);
-    margin: 24px auto 0;
-    font-size: 14px;
-    line-height: 1.8;
-    text-align: center;
+    width: min(370px, 100%);
+    margin: 18px 0 0;
+
+    font-size: 12px;
+    line-height: 1.75;
+    text-align: left;
+
+    word-break: keep-all;
   }
 
   .about-hero__cta--swap {
-    width: min(260px, 86vw);
-    margin: 36px auto 0;
+    width: min(300px, 100%);
+    margin: clamp(38px, 5vh, 52px) 0 0;
 
     display: flex;
-    gap: 12px;
+    gap: 14px;
     align-items: center;
+
+    align-self: flex-start;
   }
 
   .about-hero__cta--swap .about-hero__btn {
@@ -80,22 +120,22 @@
   }
 
   .cta-btn__iconImg {
-    width: 26px;
-    height: 26px;
+    width: 25px;
+    height: 25px;
   }
 
   .about-hero__cta--swap[data-active="resume"] .about-hero__btn--resume {
     flex: 1 1 auto;
     width: auto;
     padding: 0 18px;
-    border-radius: 26px;
+    border-radius: 28px;
   }
 
   .about-hero__cta--swap[data-active="resume"] .about-hero__btn--github {
     flex: 0 0 auto;
     width: 56px;
     padding: 0;
-    border-radius: 26px;
+    border-radius: 28px;
     gap: 0;
   }
 
@@ -109,14 +149,14 @@
     flex: 1 1 auto;
     width: auto;
     padding: 0 18px;
-    border-radius: 26px;
+    border-radius: 28px;
   }
 
   .about-hero__cta--swap[data-active="github"] .about-hero__btn--resume {
     flex: 0 0 auto;
     width: 56px;
     padding: 0;
-    border-radius: 26px;
+    border-radius: 28px;
     gap: 0;
   }
 
@@ -127,28 +167,361 @@
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@include mobile {
+  .about-hero {
+    height: 100vh;
+    height: 100svh;
+
+    align-items: center;
+    justify-content: center;
+  }
+
   .about-hero__layout {
-    width: min(920px, calc(100% - 64px));
-    grid-template-columns: 360px 1fr;
-    column-gap: 48px;
+    position: relative;
+
+    width: min(100% - 48px, 540px);
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: clamp(72px, 8vh, 96px);
+    padding-bottom: clamp(52px, 7vh, 80px);
+
+    transform: none;
+  }
+
+  .about-hero__visual {
+    order: initial;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: none;
   }
 
   .about-hero__character {
-    width: 360px;
+    width: min(230px, 56vw);
+  }
+
+  .about-hero__content {
+    order: initial;
+    width: min(360px, 100%);
+
+    flex: initial;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-top: clamp(40px, 5.5vh, 56px);
+
+    text-align: left;
+    transform: none;
+  }
+
+  .about-hero__eyebrow {
+    margin-bottom: 12px;
+    font-size: 12px;
   }
 
   .about-hero__title {
-    font-size: clamp(34px, 4vw, 46px);
+    max-width: 360px;
+
+    font-size: clamp(24px, 6.6vw, 32px);
+    line-height: 1.14;
+    letter-spacing: -0.055em;
+
+    word-break: keep-all;
+    overflow-wrap: normal;
   }
 
   .about-hero__desc {
-    font-size: 16px;
+    width: min(350px, 100%);
+    margin: 16px 0 0;
+
+    font-size: 11px;
+    line-height: 1.7;
+    text-align: left;
+
+    word-break: keep-all;
   }
 
-  .about-hero__btn {
-    height: 52px;
-    min-width: 150px;
-    padding: 12px 20px;
+  .about-hero__cta--swap {
+    position: static;
+
+    width: min(300px, 100%);
+    margin: clamp(48px, 6vh, 68px) auto 0;
+
+    display: flex;
+    gap: 14px;
+    align-items: center;
+
+    align-self: center;
+  }
+
+  .about-hero__cta--swap .about-hero__btn {
+    height: 54px;
+    min-width: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    overflow: hidden;
+
+    transition: flex-grow 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      padding 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      border-radius 0.35s cubic-bezier(0.4, 0, 0.2, 1), background 0.25s ease;
+  }
+
+  .cta-btn__iconWrap {
+    width: 34px;
+    height: 34px;
+  }
+
+  .cta-btn__iconImg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .about-hero__cta--swap[data-active="resume"] .about-hero__btn--resume {
+    flex: 1 1 auto;
+    width: auto;
+    padding: 0 16px;
+    border-radius: 27px;
+  }
+
+  .about-hero__cta--swap[data-active="resume"] .about-hero__btn--github {
+    flex: 0 0 auto;
+    width: 54px;
+    padding: 0;
+    border-radius: 27px;
+    gap: 0;
+  }
+
+  .about-hero__cta--swap[data-active="resume"]
+    .about-hero__btn--github
+    .cta-btn__label {
+    display: none;
+  }
+
+  .about-hero__cta--swap[data-active="github"] .about-hero__btn--github {
+    flex: 1 1 auto;
+    width: auto;
+    padding: 0 16px;
+    border-radius: 27px;
+  }
+
+  .about-hero__cta--swap[data-active="github"] .about-hero__btn--resume {
+    flex: 0 0 auto;
+    width: 54px;
+    padding: 0;
+    border-radius: 27px;
+    gap: 0;
+  }
+
+  .about-hero__cta--swap[data-active="github"]
+    .about-hero__btn--resume
+    .cta-btn__label {
+    display: none;
+  }
+}
+
+@include small-mobile {
+  .about-hero {
+    height: 100vh;
+    height: 100svh;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-hero__layout {
+    position: relative;
+
+    width: calc(100% - 40px);
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: clamp(64px, 8vh, 88px);
+    padding-bottom: clamp(48px, 7vh, 72px);
+
+    transform: none;
+  }
+
+  .about-hero__visual {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-hero__character {
+    width: min(190px, 52vw);
+  }
+
+  .about-hero__content {
+    width: min(300px, 100%);
+
+    flex: initial;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-top: clamp(34px, 5vh, 44px);
+
+    text-align: left;
+  }
+
+  .about-hero__eyebrow {
+    margin-bottom: 10px;
+    font-size: 11px;
+  }
+
+  .about-hero__title {
+    max-width: 300px;
+
+    font-size: clamp(20px, 6.2vw, 24px);
+    line-height: 1.14;
+    letter-spacing: -0.055em;
+
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
+
+  .about-hero__desc {
+    width: min(300px, 100%);
+    margin: 12px 0 0;
+
+    font-size: 10px;
+    line-height: 1.7;
+    text-align: left;
+
+    word-break: keep-all;
+  }
+
+  .about-hero__cta--swap {
+    position: static;
+
+    width: min(260px, 100%);
+    margin: clamp(48px, 6vh, 68px) auto 0;
+
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    align-self: center;
+  }
+
+  .about-hero__cta--swap .about-hero__btn {
+    height: 50px;
+  }
+
+  .about-hero__cta--swap[data-active="resume"] .about-hero__btn--resume {
+    padding: 0 14px;
+  }
+
+  .about-hero__cta--swap[data-active="resume"] .about-hero__btn--github {
+    width: 50px;
+  }
+
+  .about-hero__cta--swap[data-active="github"] .about-hero__btn--github {
+    padding: 0 14px;
+  }
+
+  .about-hero__cta--swap[data-active="github"] .about-hero__btn--resume {
+    width: 50px;
+  }
+
+  .cta-btn__iconWrap {
+    width: 30px;
+    height: 30px;
+  }
+
+  .cta-btn__iconImg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@include laptop {
+  @media (min-width: 1024px) {
+    .about-hero__layout {
+      width: min(840px, calc(100% - 56px));
+      height: 100%;
+
+      display: grid;
+      grid-template-columns: 320px 430px;
+      column-gap: 68px;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto;
+
+      padding-top: clamp(72px, 8vh, 108px);
+      padding-bottom: clamp(56px, 7vh, 88px);
+
+      transform: none;
+    }
+
+    .about-hero__visual {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      transform: none;
+    }
+
+    .about-hero__character {
+      width: min(320px, 32vw);
+    }
+
+    .about-hero__content {
+      width: 100%;
+      max-width: 430px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      margin-top: 0;
+
+      text-align: left;
+      transform: none;
+    }
+
+    .about-hero__title {
+      max-width: 430px;
+
+      font-size: clamp(30px, 3.2vw, 36px);
+      line-height: 1.14;
+      letter-spacing: -0.055em;
+
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
+
+    .about-hero__desc {
+      width: min(390px, 100%);
+    }
+
+    .about-hero__cta--swap {
+      align-self: flex-start;
+    }
   }
 }

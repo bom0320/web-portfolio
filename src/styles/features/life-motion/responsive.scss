@@ -1,23 +1,97 @@
-@media (max-width: 768px) {
+@import "../../abstracts/mixins";
+
+@include tablet {
   .life-motion {
-    &__row {
-      grid-auto-columns: 28px;
-      gap: 8px;
-      height: clamp(180px, 46vw, 220px);
-    }
+    height: 100vh;
+    height: 100svh;
+  }
 
-    &__item {
-      grid-column: span var(--mobile-span);
-    }
+  .life-motion__enter {
+    height: 100vh;
+    height: 100svh;
+  }
 
-    &__title {
-      font-size: 11px;
-      margin-bottom: 3px;
-    }
+  .life-motion__viewport {
+    height: 100vh;
+    height: 100svh;
+  }
 
-    &__image-wrap {
-      height: calc(100% - 17px);
-      border-radius: 6px;
-    }
+  .life-motion__track {
+    width: 136vw;
+    gap: 12px;
+  }
+
+  .life-motion__group {
+    gap: 12px;
+    padding-right: 12px;
+  }
+
+  .life-motion__item {
+    flex: 0 0 clamp(180px, 32vw, 250px);
+    height: clamp(175px, 34vw, 240px);
+  }
+
+  .life-motion__title {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .life-motion__image-wrap {
+    height: calc(100% - 18px);
+    border-radius: 7px;
+  }
+}
+
+@include mobile {
+  .life-motion__track {
+    width: 150vw;
+    gap: 10px;
+  }
+
+  .life-motion__group {
+    gap: 10px;
+    padding-right: 10px;
+  }
+
+  .life-motion__item {
+    flex: 0 0 clamp(150px, 42vw, 190px);
+    height: clamp(145px, 42vw, 180px);
+  }
+
+  .life-motion__title {
+    font-size: 10px;
+    margin-bottom: 4px;
+  }
+
+  .life-motion__image-wrap {
+    height: calc(100% - 17px);
+    border-radius: 7px;
+  }
+}
+
+@include small-mobile {
+  .life-motion__track {
+    width: 158vw;
+    gap: 9px;
+  }
+
+  .life-motion__group {
+    gap: 9px;
+    padding-right: 9px;
+  }
+
+  .life-motion__item {
+    flex: 0 0 clamp(138px, 44vw, 165px);
+    height: clamp(132px, 42vw, 158px);
+  }
+
+  .life-motion__title {
+    font-size: 9px;
+    margin-bottom: 4px;
+  }
+
+  .life-motion__image-wrap {
+    height: calc(100% - 16px);
+    border-radius: 7px;
   }
 }

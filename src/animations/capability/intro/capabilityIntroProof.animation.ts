@@ -1,50 +1,24 @@
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+import {
+  clampProgress,
+  createNoopController,
+  type AnimationController,
+} from "@/animations/_shared";
 
-type IntroProofController = {
-  destroy: () => void;
-};
-
-const SELECTOR = {
-  section: ".js-capability-intro-proof",
-  character: ".js-capability-intro-proof-character",
-  leftPoints: ".js-capability-intro-proof-point-left",
-  rightPoints: ".js-capability-intro-proof-point-right",
-  quote: ".js-capability-intro-proof-quote",
-} as const;
+import type { CapabilityIntroProofAnimationElements } from "@/components/scenes/capability/dom/intro";
 
 const CapabilityIntroProofAnimation = {
-  create(scope: HTMLElement): IntroProofController {
-    const section = scope.querySelector<HTMLElement>(SELECTOR.section);
-
-    if (!section) {
-      return {
-        destroy: () => {},
-      };
-    }
-
-    const character = section.querySelector<HTMLElement>(SELECTOR.character);
-    const leftPoints = section.querySelectorAll<HTMLElement>(
-      SELECTOR.leftPoints
-    );
-    const rightPoints = section.querySelectorAll<HTMLElement>(
-      SELECTOR.rightPoints
-    );
-    const quote = section.querySelector<HTMLElement>(SELECTOR.quote);
+  create(elements: CapabilityIntroProofAnimationElements): AnimationController {
+    const { character, leftPoints, rightPoints, quote } = elements;
 
     if (!character || !leftPoints.length || !rightPoints.length || !quote) {
-      console.warn("[CapabilityIntroProofAnimation] Missing elements", {
-        character,
-        leftPoints,
-        rightPoints,
-        quote,
-      });
+      console.warn(
+        "[CapabilityIntroProofAnimation] Missing elements",
+        elements
+      );
 
-      return {
-        destroy: () => {},
-      };
+      return createNoopController();
     }
 
     const animatedElements = [
@@ -54,34 +28,32 @@ const CapabilityIntroProofAnimation = {
       quote,
     ];
 
-    const setInitialState = () => {
-      gsap.set(character, {
-        autoAlpha: 0,
-        y: 40,
-        scale: 0.92,
-        transformOrigin: "center bottom",
-      });
+    // Initial
+    gsap.set(character, {
+      autoAlpha: 0,
+      y: 40,
+      scale: 0.92,
+      transformOrigin: "center bottom",
+    });
 
-      gsap.set(leftPoints, {
-        autoAlpha: 0,
-        x: -72,
-        y: 12,
-      });
+    gsap.set(leftPoints, {
+      autoAlpha: 0,
+      x: -72,
+      y: 12,
+    });
 
-      gsap.set(rightPoints, {
-        autoAlpha: 0,
-        x: 72,
-        y: 12,
-      });
+    gsap.set(rightPoints, {
+      autoAlpha: 0,
+      x: 72,
+      y: 12,
+    });
 
-      gsap.set(quote, {
-        autoAlpha: 0,
-        y: 36,
-      });
-    };
+    gsap.set(quote, {
+      autoAlpha: 0,
+      y: 36,
+    });
 
-    setInitialState();
-
+    // Timeline
     const timeline = gsap.timeline({
       paused: true,
       defaults: {
@@ -128,24 +100,11 @@ const CapabilityIntroProofAnimation = {
         "-=0.24"
       );
 
-    const trigger = ScrollTrigger.create({
-      trigger: section,
-      start: "top 66%",
-      end: "bottom top",
-      invalidateOnRefresh: true,
-
-      onEnter: () => {
-        timeline.restart();
-      },
-
-      onLeaveBack: () => {
-        timeline.pause(0);
-        setInitialState();
-      },
-    });
+    const setProgress = (progress: number) => {
+      timeline.progress(clampProgress(progress));
+    };
 
     const destroy = () => {
-      trigger.kill();
       timeline.kill();
 
       gsap.set(animatedElements, {
@@ -154,6 +113,7 @@ const CapabilityIntroProofAnimation = {
     };
 
     return {
+      setProgress,
       destroy,
     };
   },
