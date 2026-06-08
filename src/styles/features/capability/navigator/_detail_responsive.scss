@@ -1,0 +1,47 @@
+@import "../../../abstracts/mixins";
+
+@include laptop {
+  .capability-detail-layout {
+    width: min(1040px, calc(100% - 80px));
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 64px;
+  }
+}
+
+@include tablet {
+  .capability-detail-page {
+    padding: 88px 0 104px;
+  }
+
+  .capability-detail-layout {
+    width: min(820px, calc(100% - 64px));
+
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .capability-detail-hero {
+    position: relative;
+    top: auto;
+
+    max-width: 620px;
+  }
+
+  .capability-detail-hero__title {
+    font-size: 30px;
+  }
+
+  .capability-detail-hero__overview {
+    max-width: 560px;
+  }
+
+  .capability-detail-gallery {
+    gap: 32px;
+  }
+}
+
+@include mobile {
+}
+
+@include small-mobile {
+}
