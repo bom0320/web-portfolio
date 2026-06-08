@@ -12,7 +12,13 @@ const lerp = (start: number, end: number, amount: number) =>
   start + (end - start) * amount;
 
 const parsePixelValue = (value: string, fallback: number) => {
-  const parsed = Number(value.replace("px", "").trim());
+  const trimmed = value.replace("px", "").trim();
+
+  if (!trimmed) {
+    return fallback;
+  }
+
+  const parsed = Number(trimmed);
 
   return Number.isNaN(parsed) ? fallback : parsed;
 };
