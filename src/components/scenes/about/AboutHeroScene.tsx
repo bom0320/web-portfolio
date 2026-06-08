@@ -62,7 +62,7 @@ export default function AboutHeroScene() {
             data-active={active}
           >
             <CtaButton
-              href="https://..."
+              href="https://app.notion.com/p/FrontEnd-Developer-2cdbf73cc5378049ad20db08f8ea554f?source=copy_link"
               label="Go Portfolio"
               variant="primary"
               className="about-hero__btn about-hero__btn--portfolio"
