@@ -1,7 +1,7 @@
 "use client";
 
 import Lenis from "lenis";
-import { type ReactNode, useEffect } from "react";
+import { type ReactNode, useLayoutEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -14,7 +14,11 @@ interface SmoothScrollProviderProps {
 export default function SmoothScrollProvider({
   children,
 }: SmoothScrollProviderProps) {
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const previousScrollRestoration = window.history.scrollRestoration;
+
+    window.history.scrollRestoration = "manual";
+
     const lenis = new Lenis({
       duration: 1.2,
       smoothWheel: true,
@@ -31,12 +35,40 @@ export default function SmoothScrollProvider({
 
     lenis.on("scroll", ScrollTrigger.update);
 
-    ScrollTrigger.refresh();
+    lenis.scrollTo(0, {
+      immediate: true,
+    });
+
+    window.scrollTo(0, 0);
+
+    let refreshFrameId = 0;
+    let secondRefreshFrameId = 0;
+
+    refreshFrameId = requestAnimationFrame(() => {
+      secondRefreshFrameId = requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+      });
+    });
+
+    const handleResize = () => {
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
 
     return () => {
+      cancelAnimationFrame(refreshFrameId);
+      cancelAnimationFrame(secondRefreshFrameId);
+
+      window.removeEventListener("resize", handleResize);
+
       lenis.off("scroll", ScrollTrigger.update);
       gsap.ticker.remove(update);
       lenis.destroy();
+
+      window.history.scrollRestoration = previousScrollRestoration;
     };
   }, []);
 
