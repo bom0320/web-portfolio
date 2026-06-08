@@ -196,45 +196,6 @@
     width: 30px;
     height: 30px;
   }
-
-  .contact-submit-modal {
-    padding: 22px;
-  }
-
-  .contact-submit-modal__card {
-    width: min(420px, 100%);
-    min-height: 340px;
-    padding: 44px 36px 34px;
-
-    border-radius: 18px;
-  }
-
-  .contact-submit-modal__icon {
-    width: 64px;
-    height: 64px;
-
-    font-size: 36px;
-  }
-
-  .contact-submit-modal__title {
-    margin-top: 30px;
-
-    font-size: 23px;
-  }
-
-  .contact-submit-modal__description {
-    margin-top: 22px;
-
-    font-size: 14px;
-    line-height: 1.45;
-  }
-
-  .contact-submit-modal__button {
-    height: 46px;
-    margin-top: 36px;
-
-    font-size: 15px;
-  }
 }
 
 @include mobile {
@@ -418,55 +379,6 @@
     width: 28px;
     height: 28px;
   }
-
-  .contact-submit-modal {
-    padding: 20px;
-  }
-
-  .contact-submit-modal__card {
-    width: min(360px, 100%);
-    min-height: 320px;
-    padding: 42px 26px 30px;
-
-    border-radius: 16px;
-  }
-
-  .contact-submit-modal__close {
-    top: 18px;
-    right: 18px;
-
-    width: 34px;
-    height: 34px;
-  }
-
-  .contact-submit-modal__icon {
-    width: 60px;
-    height: 60px;
-
-    font-size: 34px;
-  }
-
-  .contact-submit-modal__title {
-    margin-top: 28px;
-
-    font-size: 21px;
-  }
-
-  .contact-submit-modal__description {
-    gap: 5px;
-    margin-top: 20px;
-
-    font-size: 13px;
-    line-height: 1.5;
-  }
-
-  .contact-submit-modal__button {
-    min-width: 132px;
-    height: 44px;
-    margin-top: 32px;
-
-    font-size: 14px;
-  }
 }
 
 @include small-mobile {
@@ -586,41 +498,5 @@
   .contact-social__icon {
     width: 26px;
     height: 26px;
-  }
-
-  .contact-submit-modal {
-    padding: 18px;
-  }
-
-  .contact-submit-modal__card {
-    min-height: 300px;
-    padding: 40px 22px 28px;
-
-    border-radius: 15px;
-  }
-
-  .contact-submit-modal__icon {
-    width: 46px;
-    height: 46px;
-
-    font-size: 30px;
-  }
-
-  .contact-submit-modal__title {
-    margin-top: 20px;
-    font-size: 12px;
-  }
-
-  .contact-submit-modal__description {
-    margin-top: 2px;
-    font-size: 10px;
-  }
-
-  .contact-submit-modal__button {
-    min-width: 124px;
-    height: 42px;
-    margin-top: 30px;
-
-    font-size: 13px;
   }
 }
