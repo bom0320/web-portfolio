@@ -39,9 +39,9 @@ export const CAPABILITY_STAGE_DESKTOP_SCROLL_CONFIG = {
   },
 
   structure: {
-    start: "top 64%",
-    end: "center 18%",
-    scrub: 1,
+    start: "top 78%",
+    end: "bottom 62%",
+    scrub: 1.1,
   },
 
   ai: {
