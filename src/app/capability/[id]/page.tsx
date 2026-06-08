@@ -4,6 +4,7 @@ import { getCapabilityNavigatorItemById } from "@/data/capability";
 import {
   CapabilityDetailGallery,
   CapabilityDetailHero,
+  ScrollToTop,
 } from "@/components/features/capability/navigator";
 
 interface CapabilityDetailPageProps {
@@ -17,13 +18,25 @@ export default async function CapabilityDetailPage({
 }: CapabilityDetailPageProps) {
   const { id } = await params;
   const item = getCapabilityNavigatorItemById(id);
-  return (
-    <main className="capability-detail-page">
-      <div className="capability-detail-layout">
-        <CapabilityDetailHero item={item} />
 
-        <CapabilityDetailGallery images={item.detailImages} />
-      </div>
-    </main>
+  if (!item) {
+    notFound();
+  }
+
+  return (
+    <>
+      <ScrollToTop />
+
+      <main className="capability-detail-page">
+        <div className="capability-detail-layout">
+          <CapabilityDetailHero item={item} />
+
+          <CapabilityDetailGallery
+            title={item.title}
+            images={item.detailImages}
+          />
+        </div>
+      </main>
+    </>
   );
 }

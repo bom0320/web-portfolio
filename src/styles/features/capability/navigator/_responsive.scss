@@ -15,11 +15,14 @@
   }
 
   .capability-navigator-monitor {
-    transform: translate(24px, 96px);
+    transform: translate(24px, 150px);
   }
 
   .capability-navigator-monitor__stage {
     width: min(820px, 68vw);
+
+    transform: scale(1.14);
+    transform-origin: center center;
   }
 }
 
@@ -58,6 +61,7 @@
   .capability-navigator-pin {
     height: auto;
     min-height: 100vh;
+    min-height: 100svh;
 
     overflow: visible;
   }
@@ -68,55 +72,138 @@
 
   .capability-navigator-showcase {
     width: min(820px, calc(100% - 64px));
-    height: auto;
-    min-height: 100vh;
+    height: 100vh;
+    height: 100svh;
+    min-height: 760px;
 
+    display: grid;
     grid-template-columns: 1fr;
-    align-content: center;
-    gap: 56px;
+    grid-template-rows: minmax(420px, 1fr) 200px;
+    align-content: stretch;
+    gap: 12px;
 
-    padding-top: 92px;
-    padding-bottom: 120px;
+    padding-top: 88px;
+    padding-bottom: 40px;
+
+    overflow: hidden;
   }
 
   .capability-navigator-showcase__right {
     order: 1;
+
+    min-width: 0;
+    min-height: 0;
+
+    overflow: visible;
   }
 
   .capability-navigator-showcase__left {
     order: 2;
+
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    display: flex;
+    justify-content: center;
+
     transform: none;
-  }
-
-  .capability-navigator-list {
-    width: min(520px, 100%);
-    max-width: none;
-  }
-
-  .capability-navigator-list__item {
-    height: 68px;
-    padding: 0 22px;
-    border-radius: 22px;
-  }
-
-  .capability-navigator-list__title {
-    font-size: 18px;
-  }
-
-  .capability-navigator-list__icon {
-    font-size: 18px;
+    overflow: hidden;
   }
 
   .capability-navigator-monitor {
     width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
     transform: none;
+    overflow: visible;
   }
 
   .capability-navigator-monitor__stage {
-    width: min(124vw, 960px);
+    width: min(920px, 104vw);
     margin-left: 50%;
 
-    transform: translateX(-50%);
+    transform: translateX(-50%) scale(1.8);
+    transform-origin: top center;
+  }
+
+  .capability-navigator-list {
+    position: relative;
+    z-index: 5;
+
+    width: min(580px, 100%);
+    height: 100%;
+    max-width: none;
+    min-height: 0;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    pointer-events: auto;
+
+    padding-right: 4px;
+    padding-bottom: 50px;
+    scroll-padding-bottom: 28px;
+  }
+
+  .capability-navigator-list::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .capability-navigator-list::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  .capability-navigator-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .capability-navigator-list__row {
+    flex: 0 0 auto;
+  }
+
+  .capability-navigator-list__item {
+    flex: 0 0 auto;
+
+    height: 52px;
+    min-height: 52px;
+    padding: 0 18px;
+
+    border-radius: 18px;
+  }
+
+  .capability-navigator-list__text {
+    gap: 2px;
+  }
+
+  .capability-navigator-list__category {
+    font-size: 8px;
+    line-height: 1;
+  }
+
+  .capability-navigator-list__title {
+    font-size: 14px;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+  }
+
+  .capability-navigator-list__icon {
+    font-size: 14px;
   }
 }
 
@@ -156,12 +243,17 @@
     width: min(100% - 48px, 520px);
     height: auto;
     min-height: 100vh;
+    min-height: 100svh;
 
+    display: grid;
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
     gap: 44px;
 
     padding-top: 118px;
     padding-bottom: 112px;
+
+    overflow: visible;
   }
 
   .capability-navigator-showcase__right {
@@ -170,7 +262,11 @@
 
   .capability-navigator-showcase__left {
     order: 2;
+
+    width: 100%;
+
     transform: none;
+    overflow: visible;
   }
 
   .capability-navigator-monitor {
@@ -194,11 +290,23 @@
 
   .capability-navigator-list {
     width: 100%;
+    height: auto;
+    max-height: none;
+
+    display: flex;
+    flex-direction: column;
     gap: 13px;
+
+    overflow: visible;
+
+    padding-right: 0;
   }
 
   .capability-navigator-list__item {
+    flex: initial;
+
     height: 60px;
+    min-height: 0;
     padding: 0 18px;
 
     border-radius: 20px;

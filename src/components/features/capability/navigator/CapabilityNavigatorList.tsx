@@ -15,7 +15,7 @@ export default function CapabilityNavigatorList({
   onActiveIndexChange,
 }: CapabilityNavigatorListProps) {
   return (
-    <ul className="capability-navigator-list">
+    <ul className="capability-navigator-list" data-lenis-prevent>
       {items.map((item, index) => {
         const isActive = index === activeIndex;
 
@@ -26,6 +26,7 @@ export default function CapabilityNavigatorList({
               className={`capability-navigator-list__item ${
                 isActive ? "is-active" : ""
               }`}
+              aria-current={isActive ? "true" : undefined}
               onMouseEnter={() => onActiveIndexChange(index)}
               onFocus={() => onActiveIndexChange(index)}
             >
