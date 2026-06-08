@@ -69,34 +69,34 @@ const getLifeCanvasPinnedState = () => {
 
   if (isViewport("(max-width: 430px)")) {
     return {
-      y: clampValue(110, viewportHeight * 0.16, 150),
+      y: clampValue(130, viewportHeight * 0.18, 180),
       scale: 1,
     };
   }
 
   if (isViewport("(max-width: 640px)")) {
     return {
-      y: clampValue(120, viewportHeight * 0.15, 170),
+      y: clampValue(140, viewportHeight * 0.18, 200),
       scale: 1,
     };
   }
 
   if (isViewport("(max-width: 1024px)")) {
     return {
-      y: clampValue(160, viewportHeight * 0.13, 220),
+      y: clampValue(190, viewportHeight * 0.2, 270),
       scale: 1,
     };
   }
 
   if (isViewport("(max-width: 1180px)")) {
     return {
-      y: clampValue(120, viewportHeight * 0.1, 170),
+      y: clampValue(180, viewportHeight * 0.18, 240),
       scale: 1,
     };
   }
 
   return {
-    y: clampValue(90, viewportHeight * 0.1, 130),
+    y: clampValue(210, viewportHeight * 0.2, 270),
     scale: 1,
   };
 };
