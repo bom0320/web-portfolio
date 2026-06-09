@@ -70,7 +70,7 @@ export const CONTACT_SOCIAL_LINKS = [
   {
     label: "GitHub",
     href: "https://github.com/bom0320",
-    icon: "/icons/github.svg",
+    icon: "/icons/github-basic.svg",
   },
 ];
 
