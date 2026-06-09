@@ -20,14 +20,14 @@ export default function CapabilityNavigatorScene({
   onActiveIndexChange,
 }: CapabilityNavigatorSceneProps) {
   return (
-    <section
-      id="capability-navigator"
-      className="capability-navigator js-capability-navigator"
-    >
+    <section className="capability-navigator js-capability-navigator">
       <div className="capability-navigator__inner">
         <CapabilityNavigatorIntro />
 
-        <div className="capability-navigator-pin js-capability-navigator-pin">
+        <div
+          id="capability-navigator"
+          className="capability-navigator-pin js-capability-navigator-pin"
+        >
           <div className="capability-navigator-pin__inner">
             <div className="capability-navigator-showcase">
               <div className="capability-navigator-showcase__left">

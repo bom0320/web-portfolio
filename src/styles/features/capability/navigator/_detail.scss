@@ -8,6 +8,7 @@
 .capability-detail-layout {
   width: min(1180px, calc(100% - 64px));
   margin: 0 auto;
+
   display: grid;
   grid-template-columns: 360px minmax(0, 1fr);
   gap: 80px;
@@ -17,6 +18,7 @@
 .capability-detail-hero {
   position: sticky;
   top: 128px;
+
   display: flex;
   align-items: flex-start;
   gap: 24px;
@@ -24,16 +26,21 @@
 
 .capability-detail-hero__back {
   flex: 0 0 42px;
+
   width: 42px;
   height: 42px;
-  margin-top: 0;
+  margin-top: 2px;
+
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
-  display: flex;
+
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+
   text-decoration: none;
+  line-height: 0;
 }
 
 .capability-detail-hero__text {
@@ -44,13 +51,16 @@
 
 .capability-detail-hero__category {
   margin: 0 0 14px;
+
   font-size: 14px;
   font-weight: 600;
+
   color: rgba(255, 255, 255, 0.38);
 }
 
 .capability-detail-hero__title {
   margin: 0 0 18px;
+
   font-size: 32px;
   font-weight: 750;
   line-height: 1.08;
@@ -58,18 +68,125 @@
 }
 
 .capability-detail-hero__overview {
-  margin: 0 0 24px;
   max-width: 360px;
+  margin: 0 0 24px;
+
   font-size: 15px;
   line-height: 1.7;
+
   color: rgba(255, 255, 255, 0.58);
+}
+
+.capability-detail-hero__meta {
+  width: 100%;
+  max-width: 360px;
+  margin: 60px 0 0;
+  padding: 16px 0 0;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.capability-detail-hero__meta-row {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 8px;
+  align-items: baseline;
+
+  margin-bottom: 10px;
+}
+
+.capability-detail-hero__meta-row:last-child {
+  margin-bottom: 0;
+}
+
+.capability-detail-hero__meta-label {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 14px;
+  font-weight: 550;
+  line-height: 1.45;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.capability-detail-hero__meta-value {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.54);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.03em;
+  word-break: keep-all;
+}
+
+.capability-detail-hero__actions {
+  width: 100%;
+  max-width: 360px;
+  margin-top: 28px;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.capability-detail-hero__actions[data-count="2"] {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.capability-detail-hero__action {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  padding: 0 16px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  background: transparent;
+  color: rgba(255, 255, 255, 0.68);
+
+  font-size: 14px;
+  font-weight: 450;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+
+  box-sizing: border-box;
+
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.capability-detail-hero__action:hover {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.capability-detail-hero__action--secondary {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.capability-detail-hero__action--secondary:hover {
+  border-color: rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
 }
 
 .capability-detail-hero__link {
   width: fit-content;
+
   color: rgba(255, 255, 255, 0.62);
   text-decoration: none;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
 }
 
@@ -81,19 +198,96 @@
 
 .capability-detail-gallery__item {
   position: relative;
+
   width: 100%;
   aspect-ratio: 16 / 9;
+
   border-radius: 18px;
   overflow: hidden;
+
   background: #111111;
   border: 1px solid rgba(255, 255, 255, 0.12);
+
+  cursor: zoom-in;
+  padding: 0;
 }
 
 .capability-detail-gallery__image {
   object-fit: cover;
+
+  transition: transform 0.35s ease, filter 0.35s ease;
 }
 
-.capability-detail-hero__back-icon {
-  display: block;
+.capability-detail-gallery__item:hover .capability-detail-gallery__image {
+  transform: scale(1.025);
+  filter: brightness(1.04);
+}
+
+.capability-detail-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 48px;
+
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(12px);
+
+  cursor: zoom-out;
+}
+
+.capability-detail-lightbox__image-wrap {
+  position: relative;
+
+  width: min(1080px, 86vw);
+  height: min(660px, 76vh);
+
+  border-radius: 16px;
+  overflow: hidden;
+
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  cursor: default;
+}
+
+.capability-detail-lightbox__image {
+  object-fit: contain;
+}
+
+.capability-detail-lightbox__close {
+  position: fixed;
+  top: 28px;
+  right: 32px;
+  z-index: 1001;
+
+  width: 44px;
+  height: 44px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 28px;
+  font-weight: 300;
   line-height: 1;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.capability-detail-lightbox__close:hover {
+  border-color: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.16);
 }

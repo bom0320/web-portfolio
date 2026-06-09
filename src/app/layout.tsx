@@ -6,10 +6,33 @@ import Header from "@/components/shared/layout/Header";
 import SmoothScrollProvider from "@/components/shared/providers/SmoothScrollProvider";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://your-domain.com"),
   title: "2026 | 김봄 포트폴리오",
-  description: "Frontend Developer Portfolio",
-  icons: {
-    icon: "/images/logo/meta_logo.png",
+  description:
+    "흐름, 구조, 움직임을 통해 사용자가 자연스럽게 이해하는 화면을 만드는 프론트엔드 개발자 김봄의 포트폴리오입니다.",
+  openGraph: {
+    title: "2026 | 김봄 포트폴리오",
+    description:
+      "흐름, 구조, 움직임을 통해 사용자가 자연스럽게 이해하는 화면을 만드는 프론트엔드 개발자 김봄의 포트폴리오입니다.",
+    url: "https://your-domain.com",
+    siteName: "김봄 포트폴리오",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "김봄 프론트엔드 포트폴리오 미리보기 이미지",
+      },
+    ],
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "2026 | 김봄 포트폴리오",
+    description:
+      "흐름, 구조, 움직임을 통해 사용자가 자연스럽게 이해하는 화면을 만드는 프론트엔드 개발자 김봄의 포트폴리오입니다.",
+    images: ["/opengraph-image.png"],
   },
 };
 

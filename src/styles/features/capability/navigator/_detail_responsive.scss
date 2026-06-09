@@ -7,6 +7,15 @@
     grid-template-columns: 320px minmax(0, 1fr);
     gap: 64px;
   }
+
+  .capability-detail-hero__meta-row {
+    grid-template-columns: 68px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .capability-detail-hero__actions {
+    max-width: 320px;
+  }
 }
 
 @include tablet {
@@ -32,25 +41,24 @@
     max-width: none;
     min-width: 0;
 
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 48px;
-    column-gap: 24px;
-    align-items: start;
+    display: block;
 
+    overflow: visible;
     transform: none;
   }
 
   .capability-detail-hero__back {
-    order: 2;
+    position: absolute;
+    top: 10px;
+    right: 0;
 
-    width: 48px;
-    height: 48px;
-    margin: 44px 0 0;
+    width: 42px;
+    height: 42px;
+    margin: 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
-    justify-self: end;
 
     border-radius: 999px;
 
@@ -65,12 +73,11 @@
   }
 
   .capability-detail-hero__text {
-    order: 1;
-
-    min-width: 0;
+    width: 100%;
     max-width: 100%;
+    min-width: 0;
 
-    justify-self: start;
+    display: block;
   }
 
   .capability-detail-hero__category {
@@ -78,7 +85,7 @@
   }
 
   .capability-detail-hero__title {
-    max-width: 560px;
+    max-width: calc(100% - 72px);
 
     font-size: clamp(30px, 5vw, 38px);
     line-height: 1.05;
@@ -88,7 +95,23 @@
   }
 
   .capability-detail-hero__overview {
-    max-width: 560px;
+    max-width: 100%;
+  }
+
+  .capability-detail-hero__meta {
+    max-width: 100%;
+    margin-top: 42px;
+    padding-top: 14px;
+  }
+
+  .capability-detail-hero__meta-row {
+    grid-template-columns: 76px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .capability-detail-hero__actions {
+    max-width: 100%;
+    margin-top: 30px;
   }
 
   .capability-detail-gallery {
@@ -103,6 +126,15 @@
     width: 100%;
     max-width: 100%;
     min-width: 0;
+  }
+
+  .capability-detail-lightbox {
+    padding: 36px;
+  }
+
+  .capability-detail-lightbox__image-wrap {
+    width: min(920px, 88vw);
+    height: min(620px, 72vh);
   }
 }
 
@@ -121,30 +153,30 @@
   }
 
   .capability-detail-hero {
+    position: relative;
+
     width: 100%;
     max-width: none;
     min-width: 0;
 
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 46px;
-    column-gap: 16px;
-    align-items: start;
+    display: block;
 
     overflow: visible;
     transform: none;
   }
 
   .capability-detail-hero__back {
-    order: 2;
+    position: absolute;
+    top: 20px;
+    right: 0;
 
     width: 46px;
     height: 46px;
-    margin: 38px 0 0;
+    margin: 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
-    justify-self: end;
 
     border-radius: 999px;
 
@@ -159,12 +191,13 @@
   }
 
   .capability-detail-hero__text {
-    order: 1;
-
-    min-width: 0;
+    width: 100%;
     max-width: 100%;
+    min-width: 0;
 
-    justify-self: start;
+    padding-right: 0;
+
+    display: block;
   }
 
   .capability-detail-hero__category {
@@ -178,9 +211,9 @@
   }
 
   .capability-detail-hero__title {
-    max-width: 250px;
+    max-width: calc(100% - 64px);
 
-    font-size: clamp(22px, 7.2vw, 28px);
+    font-size: clamp(24px, 7.4vw, 32px);
     line-height: 1.06;
     letter-spacing: -0.065em;
 
@@ -188,7 +221,7 @@
   }
 
   .capability-detail-hero__overview {
-    max-width: 260px;
+    max-width: 100%;
     margin-top: 18px;
 
     font-size: 13px;
@@ -200,68 +233,45 @@
     word-break: keep-all;
   }
 
-  .capability-detail-content {
-    width: 100%;
+  .capability-detail-hero__meta {
     max-width: 100%;
-    min-width: 0;
-    gap: 36px;
+    margin-top: 30px;
+    padding-top: 12px;
   }
 
-  .capability-detail-content__block {
-    padding-bottom: 34px;
-
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .capability-detail-content__block h2 {
-    margin-bottom: 16px;
-
-    font-size: 16px;
-    line-height: 1;
-    letter-spacing: -0.04em;
-  }
-
-  .capability-detail-content__block p {
-    font-size: 13px;
-    line-height: 1.78;
-    letter-spacing: -0.035em;
-
-    color: rgba(255, 255, 255, 0.68);
-
-    word-break: keep-all;
-  }
-
-  .capability-detail-content__grid {
-    grid-template-columns: 1fr;
+  .capability-detail-hero__meta-row {
+    grid-template-columns: 58px minmax(0, 1fr);
     gap: 12px;
+
+    margin-bottom: 9px;
   }
 
-  .capability-detail-content__meta {
-    min-height: auto;
-    padding: 20px 20px 18px;
-
-    background: rgba(255, 255, 255, 0.045);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+  .capability-detail-hero__meta-label {
+    font-size: 11px;
+    font-weight: 550;
+    line-height: 1.45;
   }
 
-  .capability-detail-content__meta h3 {
-    margin-bottom: 10px;
-
-    font-size: 10px;
-    line-height: 1;
-    letter-spacing: 0.1em;
-
-    color: rgba(255, 255, 255, 0.36);
-  }
-
-  .capability-detail-content__meta p {
-    font-size: 13px;
-    line-height: 1.55;
+  .capability-detail-hero__meta-value {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.5;
     letter-spacing: -0.03em;
+  }
 
-    color: rgba(255, 255, 255, 0.74);
+  .capability-detail-hero__actions {
+    max-width: 100%;
+    margin-top: 24px;
+    gap: 8px;
+  }
 
-    word-break: keep-all;
+  .capability-detail-hero__action {
+    height: 38px;
+    padding: 0 13px;
+
+    border-radius: 16px;
+
+    font-size: 11px;
   }
 
   .capability-detail-gallery {
@@ -287,8 +297,28 @@
 
     object-fit: cover;
   }
-}
 
+  .capability-detail-lightbox {
+    padding: 24px;
+  }
+
+  .capability-detail-lightbox__image-wrap {
+    width: 100%;
+    height: 66vh;
+
+    border-radius: 12px;
+  }
+
+  .capability-detail-lightbox__close {
+    top: 18px;
+    right: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    font-size: 24px;
+  }
+}
 @include small-mobile {
   .capability-detail-page {
     padding: 38px 0 80px;
@@ -304,18 +334,19 @@
   }
 
   .capability-detail-hero {
-    grid-template-columns: minmax(0, 1fr) 38px;
-    column-gap: 14px;
+    position: relative;
+
+    display: block;
   }
 
   .capability-detail-hero__back {
-    order: 2;
+    position: absolute;
+    top: 2px;
+    right: 0;
 
-    width: 38px;
-    height: 38px;
-    margin: 34px 0 0;
-
-    justify-self: end;
+    width: 30px;
+    height: 30px;
+    margin: 0;
 
     font-size: 16px;
   }
@@ -328,12 +359,9 @@
   }
 
   .capability-detail-hero__text {
-    order: 1;
-
-    min-width: 0;
+    width: 100%;
     max-width: 100%;
-
-    justify-self: start;
+    min-width: 0;
   }
 
   .capability-detail-hero__category {
@@ -343,55 +371,58 @@
   }
 
   .capability-detail-hero__title {
-    max-width: 220px;
+    max-width: calc(100% - 52px);
 
-    font-size: clamp(18px, 7vw, 24px);
+    font-size: clamp(20px, 7.2vw, 26px);
     line-height: 1.07;
     letter-spacing: -0.06em;
   }
 
   .capability-detail-hero__overview {
-    max-width: 230px;
+    max-width: 100%;
     margin-top: 16px;
 
     font-size: 12px;
     line-height: 1.68;
   }
 
-  .capability-detail-content {
-    gap: 32px;
+  .capability-detail-hero__meta {
+    max-width: 100%;
+    margin-top: 28px;
+    padding-top: 32px;
   }
 
-  .capability-detail-content__block {
-    padding-bottom: 30px;
+  .capability-detail-hero__meta-row {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 10px;
+
+    margin-bottom: 8px;
   }
 
-  .capability-detail-content__block h2 {
-    margin-bottom: 14px;
-
-    font-size: 15px;
+  .capability-detail-hero__meta-label {
+    font-size: 10px;
+    font-weight: 550;
   }
 
-  .capability-detail-content__block p {
-    font-size: 12px;
-    line-height: 1.74;
+  .capability-detail-hero__meta-value {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.5;
   }
 
-  .capability-detail-content__meta {
-    padding: 18px;
-
-    border-radius: 20px;
+  .capability-detail-hero__actions {
+    max-width: 100%;
+    margin-top: 22px;
+    gap: 8px;
   }
 
-  .capability-detail-content__meta h3 {
-    margin-bottom: 9px;
+  .capability-detail-hero__action {
+    height: 36px;
+    padding: 0 12px;
 
-    font-size: 9px;
-  }
+    border-radius: 14px;
 
-  .capability-detail-content__meta p {
-    font-size: 12px;
-    line-height: 1.52;
+    font-size: 10px;
   }
 
   .capability-detail-gallery {
@@ -410,5 +441,23 @@
 
     border-radius: 12px;
     overflow: hidden;
+  }
+
+  .capability-detail-lightbox {
+    padding: 18px;
+  }
+
+  .capability-detail-lightbox__image-wrap {
+    height: 62vh;
+  }
+
+  .capability-detail-lightbox__close {
+    top: 14px;
+    right: 14px;
+
+    width: 34px;
+    height: 34px;
+
+    font-size: 22px;
   }
 }

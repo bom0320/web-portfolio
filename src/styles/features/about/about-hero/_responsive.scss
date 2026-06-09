@@ -124,14 +124,14 @@
     height: 25px;
   }
 
-  .about-hero__cta--swap[data-active="resume"] .about-hero__btn--resume {
+  .about-hero__cta--swap[data-active="portfolio"] .about-hero__btn--portfolio {
     flex: 1 1 auto;
     width: auto;
     padding: 0 18px;
     border-radius: 28px;
   }
 
-  .about-hero__cta--swap[data-active="resume"] .about-hero__btn--github {
+  .about-hero__cta--swap[data-active="portfolio"] .about-hero__btn--github {
     flex: 0 0 auto;
     width: 56px;
     padding: 0;
@@ -139,7 +139,7 @@
     gap: 0;
   }
 
-  .about-hero__cta--swap[data-active="resume"]
+  .about-hero__cta--swap[data-active="portfolio"]
     .about-hero__btn--github
     .cta-btn__label {
     display: none;
@@ -152,7 +152,7 @@
     border-radius: 28px;
   }
 
-  .about-hero__cta--swap[data-active="github"] .about-hero__btn--resume {
+  .about-hero__cta--swap[data-active="github"] .about-hero__btn--portfolio {
     flex: 0 0 auto;
     width: 56px;
     padding: 0;
@@ -161,7 +161,7 @@
   }
 
   .about-hero__cta--swap[data-active="github"]
-    .about-hero__btn--resume
+    .about-hero__btn--portfolio
     .cta-btn__label {
     display: none;
   }
@@ -291,14 +291,14 @@
     height: 24px;
   }
 
-  .about-hero__cta--swap[data-active="resume"] .about-hero__btn--resume {
+  .about-hero__cta--swap[data-active="portfolio"] .about-hero__btn--portfolio {
     flex: 1 1 auto;
     width: auto;
     padding: 0 16px;
     border-radius: 27px;
   }
 
-  .about-hero__cta--swap[data-active="resume"] .about-hero__btn--github {
+  .about-hero__cta--swap[data-active="portfolio"] .about-hero__btn--github {
     flex: 0 0 auto;
     width: 54px;
     padding: 0;
@@ -306,7 +306,7 @@
     gap: 0;
   }
 
-  .about-hero__cta--swap[data-active="resume"]
+  .about-hero__cta--swap[data-active="portfolio"]
     .about-hero__btn--github
     .cta-btn__label {
     display: none;
@@ -319,7 +319,7 @@
     border-radius: 27px;
   }
 
-  .about-hero__cta--swap[data-active="github"] .about-hero__btn--resume {
+  .about-hero__cta--swap[data-active="github"] .about-hero__btn--portfolio {
     flex: 0 0 auto;
     width: 54px;
     padding: 0;
@@ -328,7 +328,7 @@
   }
 
   .about-hero__cta--swap[data-active="github"]
-    .about-hero__btn--resume
+    .about-hero__btn--portfolio
     .cta-btn__label {
     display: none;
   }
@@ -430,11 +430,11 @@
     height: 50px;
   }
 
-  .about-hero__cta--swap[data-active="resume"] .about-hero__btn--resume {
+  .about-hero__cta--swap[data-active="portfolio"] .about-hero__btn--portfolio {
     padding: 0 14px;
   }
 
-  .about-hero__cta--swap[data-active="resume"] .about-hero__btn--github {
+  .about-hero__cta--swap[data-active="portfolio"] .about-hero__btn--github {
     width: 50px;
   }
 
@@ -442,7 +442,7 @@
     padding: 0 14px;
   }
 
-  .about-hero__cta--swap[data-active="github"] .about-hero__btn--resume {
+  .about-hero__cta--swap[data-active="github"] .about-hero__btn--portfolio {
     width: 50px;
   }
 
