@@ -101,6 +101,7 @@ export function useCapabilityStageAnimation(
         if (enableNavigatorPin && elements.navigatorPin) {
           registerTrigger(
             createScrollTrigger({
+              id: "capability-navigator-pin",
               trigger: elements.navigatorPin,
               start: scrollConfig.navigatorPin.start,
               end: () =>

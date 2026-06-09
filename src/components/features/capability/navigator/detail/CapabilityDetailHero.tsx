@@ -29,7 +29,8 @@ export default function CapabilityDetailHero({
   return (
     <aside className="capability-detail-hero">
       <Link
-        href="/#capability-navigator"
+        href="/#project-navigator"
+        scroll={false}
         className="capability-detail-hero__back"
         aria-label="프로젝트 목록으로 돌아가기"
       >

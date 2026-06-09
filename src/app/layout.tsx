@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import "@/styles/index.scss";
 import Header from "@/components/shared/layout/Header";
 import SmoothScrollProvider from "@/components/shared/providers/SmoothScrollProvider";
+import { ScrollToTop } from "@/components/features/capability/navigator";
 
 const SITE_URL = "https://kimbom.dev";
 
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="ko">
       <body>
         <SmoothScrollProvider>
+          <ScrollToTop />
           <Header />
           <main className="app">{children}</main>
         </SmoothScrollProvider>

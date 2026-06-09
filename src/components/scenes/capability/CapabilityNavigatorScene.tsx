@@ -31,7 +31,7 @@ export default function CapabilityNavigatorScene({
         <CapabilityNavigatorIntro />
 
         <div
-          id="capability-navigator"
+          id="project-navigator"
           className="capability-navigator__anchor"
           aria-hidden="true"
         />
