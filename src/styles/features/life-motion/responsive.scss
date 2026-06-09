@@ -28,6 +28,8 @@
   .life-motion__track {
     width: 136vw;
     gap: 12px;
+
+    margin-top: clamp(64px, 9vh, 96px);
   }
 
   .life-motion__group {
@@ -80,6 +82,8 @@
   .life-motion__track {
     width: 150vw;
     gap: 10px;
+
+    margin-top: clamp(64px, 9vh, 96px);
   }
 
   .life-motion__group {
@@ -132,6 +136,8 @@
   .life-motion__track {
     width: 158vw;
     gap: 9px;
+
+    margin-top: clamp(200px, 20vh, 280px);
   }
 
   .life-motion__group {
