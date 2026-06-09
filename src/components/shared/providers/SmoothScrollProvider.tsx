@@ -11,6 +11,10 @@ interface SmoothScrollProviderProps {
   children: ReactNode;
 }
 
+const isMobileViewport = () => {
+  return window.matchMedia("(max-width: 768px)").matches;
+};
+
 export default function SmoothScrollProvider({
   children,
 }: SmoothScrollProviderProps) {
@@ -18,6 +22,42 @@ export default function SmoothScrollProvider({
     const previousScrollRestoration = window.history.scrollRestoration;
 
     window.history.scrollRestoration = "manual";
+
+    const isMobile = isMobileViewport();
+
+    window.scrollTo(0, 0);
+
+    let refreshFrameId = 0;
+    let secondRefreshFrameId = 0;
+
+    const refreshScrollTrigger = () => {
+      refreshFrameId = requestAnimationFrame(() => {
+        secondRefreshFrameId = requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+        });
+      });
+    };
+
+    refreshScrollTrigger();
+
+    const handleResize = () => {
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    if (isMobile) {
+      return () => {
+        cancelAnimationFrame(refreshFrameId);
+        cancelAnimationFrame(secondRefreshFrameId);
+
+        window.removeEventListener("resize", handleResize);
+
+        window.history.scrollRestoration = previousScrollRestoration;
+      };
+    }
 
     const lenis = new Lenis({
       duration: 1.2,
@@ -38,25 +78,6 @@ export default function SmoothScrollProvider({
     lenis.scrollTo(0, {
       immediate: true,
     });
-
-    window.scrollTo(0, 0);
-
-    let refreshFrameId = 0;
-    let secondRefreshFrameId = 0;
-
-    refreshFrameId = requestAnimationFrame(() => {
-      secondRefreshFrameId = requestAnimationFrame(() => {
-        ScrollTrigger.refresh();
-      });
-    });
-
-    const handleResize = () => {
-      requestAnimationFrame(() => {
-        ScrollTrigger.refresh();
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
 
     return () => {
       cancelAnimationFrame(refreshFrameId);
