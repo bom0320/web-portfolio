@@ -39,6 +39,8 @@ export function useIntroStageAnimation(
     if (!stage) return;
 
     const ctx = gsap.context(() => {
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
       const elements = getIntroStageElements(stage);
       const controllers = createIntroStageControllers(elements);
 
@@ -59,7 +61,7 @@ export function useIntroStageAnimation(
               window.innerHeight *
               INTRO_STAGE_SCROLL_CONFIG.heroToLife.scrollLengthMultiplier
             }`,
-          scrub: INTRO_STAGE_SCROLL_CONFIG.heroToLife.scrub,
+          scrub: isMobile ? 0.25 : INTRO_STAGE_SCROLL_CONFIG.heroToLife.scrub,
           onUpdate: (self) => {
             controllers.heroToLife.setProgress(self.progress);
           },
@@ -79,7 +81,7 @@ export function useIntroStageAnimation(
               window.innerHeight *
               INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.scrollLengthMultiplier
             }`,
-          scrub: INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.scrub,
+          scrub: isMobile ? 0.3 : INTRO_STAGE_SCROLL_CONFIG.lifeToAbout.scrub,
           onUpdate: (self) => {
             const { enterProgress, sceneProgress } = getLifeToAboutProgress(
               self.progress

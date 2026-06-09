@@ -1,5 +1,14 @@
 @import "../../abstracts/mixins";
 
+.life-motion__canvas,
+.life-motion__track,
+.life-motion__row-window,
+.life-motion__row,
+.life-motion__group {
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
 @include tablet {
   .life-motion {
     height: 100vh;
@@ -43,6 +52,31 @@
 }
 
 @include mobile {
+  .life-motion {
+    overflow: clip;
+  }
+
+  .life-motion__enter {
+    overflow: clip;
+  }
+
+  .life-motion__viewport {
+    overflow: clip;
+  }
+
+  .life-motion__canvas {
+    overflow: clip;
+  }
+
+  .life-motion__canvas,
+  .life-motion__track,
+  .life-motion__row-window,
+  .life-motion__row,
+  .life-motion__group {
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
   .life-motion__track {
     width: 150vw;
     gap: 10px;
@@ -70,6 +104,31 @@
 }
 
 @include small-mobile {
+  .life-motion {
+    overflow: clip;
+  }
+
+  .life-motion__enter {
+    overflow: clip;
+  }
+
+  .life-motion__viewport {
+    overflow: clip;
+  }
+
+  .life-motion__canvas {
+    overflow: clip;
+  }
+
+  .life-motion__canvas,
+  .life-motion__track,
+  .life-motion__row-window,
+  .life-motion__row,
+  .life-motion__group {
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
   .life-motion__track {
     width: 158vw;
     gap: 9px;

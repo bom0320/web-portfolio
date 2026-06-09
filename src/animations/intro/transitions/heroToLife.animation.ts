@@ -15,34 +15,38 @@ const isViewport = (query: string) => {
   return typeof window !== "undefined" && window.matchMedia(query).matches;
 };
 
+const isMobileLifeMotion = () => {
+  return isViewport("(max-width: 640px)");
+};
+
 const getLifeCanvasInitialState = () => {
   const viewportHeight =
     typeof window === "undefined" ? 900 : window.innerHeight;
 
   if (isViewport("(max-width: 430px)")) {
     return {
-      y: clampValue(320, viewportHeight * 0.5, 390),
-      scale: 0.76,
-      opacity: 0.54,
-      filter: "brightness(0.62)",
+      y: clampValue(170, viewportHeight * 0.24, 220),
+      scale: 0.94,
+      opacity: 0.78,
+      filter: "none",
     };
   }
 
   if (isViewport("(max-width: 640px)")) {
     return {
-      y: clampValue(340, viewportHeight * 0.48, 430),
-      scale: 0.77,
-      opacity: 0.55,
-      filter: "brightness(0.62)",
+      y: clampValue(180, viewportHeight * 0.25, 240),
+      scale: 0.94,
+      opacity: 0.8,
+      filter: "none",
     };
   }
 
   if (isViewport("(max-width: 1024px)")) {
     return {
-      y: clampValue(420, viewportHeight * 0.48, 560),
-      scale: 0.78,
-      opacity: 0.57,
-      filter: "brightness(0.62)",
+      y: clampValue(320, viewportHeight * 0.38, 420),
+      scale: 0.84,
+      opacity: 0.66,
+      filter: "brightness(0.72)",
     };
   }
 
@@ -69,14 +73,14 @@ const getLifeCanvasPinnedState = () => {
 
   if (isViewport("(max-width: 430px)")) {
     return {
-      y: clampValue(130, viewportHeight * 0.18, 180),
+      y: clampValue(110, viewportHeight * 0.16, 150),
       scale: 1,
     };
   }
 
   if (isViewport("(max-width: 640px)")) {
     return {
-      y: clampValue(140, viewportHeight * 0.18, 200),
+      y: clampValue(120, viewportHeight * 0.16, 165),
       scale: 1,
     };
   }
@@ -110,11 +114,19 @@ const HeroToLifeAnimation = {
       return createNoopController();
     }
 
+    const isMobile = isMobileLifeMotion();
     const lifeCanvasInitialState = getLifeCanvasInitialState();
 
     gsap.set(lifeCanvas, {
       ...lifeCanvasInitialState,
       transformOrigin: "center center",
+      force3D: true,
+      backfaceVisibility: "hidden",
+    });
+
+    gsap.set([lifeTrack, topRow, bottomRow].filter(Boolean), {
+      force3D: true,
+      backfaceVisibility: "hidden",
     });
 
     gsap.set(lifeRoot, {
@@ -129,13 +141,13 @@ const HeroToLifeAnimation = {
 
     if (topRow) {
       gsap.set(topRow, {
-        xPercent: -3,
+        xPercent: isMobile ? -1 : -3,
       });
     }
 
     if (bottomRow) {
       gsap.set(bottomRow, {
-        xPercent: -12,
+        xPercent: isMobile ? -6 : -12,
       });
     }
 
@@ -149,10 +161,10 @@ const HeroToLifeAnimation = {
     timeline.to(
       heroItems,
       {
-        y: -90,
+        y: isMobile ? -56 : -90,
         autoAlpha: 0,
         stagger: {
-          each: 0.035,
+          each: isMobile ? 0.02 : 0.035,
           from: "end",
         },
       },
@@ -164,7 +176,7 @@ const HeroToLifeAnimation = {
       {
         ...getLifeCanvasPinnedState(),
         opacity: 1,
-        filter: "brightness(1)",
+        filter: isMobile ? "none" : "brightness(1)",
       },
       0
     );
@@ -193,7 +205,7 @@ const HeroToLifeAnimation = {
       timeline.to(
         bottomRow,
         {
-          xPercent: -15,
+          xPercent: isMobile ? -8 : -15,
         },
         0
       );
@@ -214,7 +226,7 @@ const HeroToLifeAnimation = {
         [lifeRoot, lifeCanvas, lifeTrack, topRow, bottomRow].filter(Boolean),
         {
           clearProps:
-            "transform,opacity,visibility,filter,--life-edge-start,--life-edge-soft,--life-edge-strong",
+            "transform,opacity,visibility,filter,backfaceVisibility,--life-edge-start,--life-edge-soft,--life-edge-strong",
         }
       );
     };
