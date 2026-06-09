@@ -42,14 +42,14 @@ export default function IntroVisualProof() {
             “
           </span>
           <br />
-          저는 인터페이스를 단순히 정보를 보여주는 화면보다,
+          저는 인터페이스를 단순한 화면 구성으로 보지 않고,
           <br />
           <strong>
             <GradientText>
-              사용자가 자연스럽게 흐름을 이어갈 수 있는 경험
+              하나의 흐름 안에서 자연스럽게 이어지는 경험
             </GradientText>
           </strong>
-          으로 만들고 싶었습니다.
+          을 만들고 싶었습니다.
         </p>
       </div>
     </section>

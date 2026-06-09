@@ -38,12 +38,13 @@
 .contact-footer__description {
   margin: 18px 0 0;
 
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 1.6;
   letter-spacing: -0.035em;
 
   color: rgba(0, 0, 0, 0.525);
+  white-space: pre-line;
 }
 
 .contact-footer-links {
