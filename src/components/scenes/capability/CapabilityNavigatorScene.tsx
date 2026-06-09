@@ -1,5 +1,7 @@
 "use client";
 
+import type { Dispatch, SetStateAction } from "react";
+
 import type { CapabilityNavigatorItem } from "@/data/capability";
 
 import {
@@ -11,13 +13,15 @@ import {
 interface CapabilityNavigatorSceneProps {
   items: CapabilityNavigatorItem[];
   activeIndex: number;
-  onActiveIndexChange: (index: number) => void;
+  visibleIndex: number;
+  onPreviewIndexChange: Dispatch<SetStateAction<number | null>>;
 }
 
 export default function CapabilityNavigatorScene({
   items,
   activeIndex,
-  onActiveIndexChange,
+  visibleIndex,
+  onPreviewIndexChange,
 }: CapabilityNavigatorSceneProps) {
   return (
     <section className="capability-navigator js-capability-navigator">
@@ -34,14 +38,15 @@ export default function CapabilityNavigatorScene({
                 <CapabilityNavigatorList
                   items={items}
                   activeIndex={activeIndex}
-                  onActiveIndexChange={onActiveIndexChange}
+                  visibleIndex={visibleIndex}
+                  onPreviewIndexChange={onPreviewIndexChange}
                 />
               </div>
 
               <div className="capability-navigator-showcase__right">
                 <CapabilityNavigatorMonitor
                   items={items}
-                  activeIndex={activeIndex}
+                  activeIndex={visibleIndex}
                 />
               </div>
             </div>

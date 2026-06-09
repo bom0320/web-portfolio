@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import {
   CapabilityClosingScene,
@@ -14,9 +14,13 @@ import { useCapabilityStageAnimation } from "./hooks/useCapabilityStageAnimation
 
 export default function CapabilityStage() {
   const stageRef = useRef<HTMLElement | null>(null);
+  const [previewNavigatorIndex, setPreviewNavigatorIndex] = useState<
+    number | null
+  >(null);
 
-  const { activeNavigatorIndex, setActiveNavigatorIndex } =
-    useCapabilityStageAnimation(stageRef);
+  const { activeNavigatorIndex } = useCapabilityStageAnimation(stageRef);
+
+  const visibleNavigatorIndex = previewNavigatorIndex ?? activeNavigatorIndex;
 
   return (
     <section ref={stageRef} className="capability-stage">
@@ -33,7 +37,8 @@ export default function CapabilityStage() {
       <CapabilityNavigatorScene
         items={CAPABILITY_NAVIGATOR_ITEMS}
         activeIndex={activeNavigatorIndex}
-        onActiveIndexChange={setActiveNavigatorIndex}
+        visibleIndex={visibleNavigatorIndex}
+        onPreviewIndexChange={setPreviewNavigatorIndex}
       />
 
       <CapabilityClosingScene />

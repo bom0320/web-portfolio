@@ -1,34 +1,48 @@
 "use client";
 
 import Link from "next/link";
+import type { Dispatch, SetStateAction } from "react";
+
 import type { CapabilityNavigatorItem } from "@/data/capability";
 
 interface CapabilityNavigatorListProps {
   items: CapabilityNavigatorItem[];
   activeIndex: number;
-  onActiveIndexChange: (index: number) => void;
+  visibleIndex: number;
+  onPreviewIndexChange: Dispatch<SetStateAction<number | null>>;
 }
 
 export default function CapabilityNavigatorList({
   items,
   activeIndex,
-  onActiveIndexChange,
+  visibleIndex,
+  onPreviewIndexChange,
 }: CapabilityNavigatorListProps) {
   return (
     <ul className="capability-navigator-list" data-lenis-prevent>
       {items.map((item, index) => {
         const isActive = index === activeIndex;
+        const isPreview =
+          index === visibleIndex && visibleIndex !== activeIndex;
+
+        const itemClassName = [
+          "capability-navigator-list__item",
+          isActive && "is-active",
+          isPreview && "is-preview",
+        ]
+          .filter(Boolean)
+          .join(" ");
 
         return (
           <li className="capability-navigator-list__row" key={item.id}>
             <Link
               href={item.link}
-              className={`capability-navigator-list__item ${
-                isActive ? "is-active" : ""
-              }`}
+              className={itemClassName}
               aria-current={isActive ? "true" : undefined}
-              onMouseEnter={() => onActiveIndexChange(index)}
-              onFocus={() => onActiveIndexChange(index)}
+              onMouseEnter={() => onPreviewIndexChange(index)}
+              onMouseLeave={() => onPreviewIndexChange(null)}
+              onFocus={() => onPreviewIndexChange(index)}
+              onBlur={() => onPreviewIndexChange(null)}
             >
               <span className="capability-navigator-list__text">
                 <span className="capability-navigator-list__category">
