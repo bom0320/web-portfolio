@@ -19,7 +19,7 @@ export default function CapabilityNavigatorList({
   onPreviewIndexChange,
 }: CapabilityNavigatorListProps) {
   return (
-    <ul className="capability-navigator-list" data-lenis-prevent>
+    <ul className="capability-navigator-list">
       {items.map((item, index) => {
         const isActive = index === activeIndex;
         const isPreview =

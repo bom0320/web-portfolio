@@ -7,6 +7,12 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+declare global {
+  interface Window {
+    __portfolioLenis?: Lenis;
+  }
+}
+
 interface SmoothScrollProviderProps {
   children: ReactNode;
 }
@@ -66,6 +72,8 @@ export default function SmoothScrollProvider({
       touchMultiplier: 1.2,
     });
 
+    window.__portfolioLenis = lenis;
+
     const update = (time: number) => {
       lenis.raf(time * 1000);
     };
@@ -88,6 +96,8 @@ export default function SmoothScrollProvider({
       lenis.off("scroll", ScrollTrigger.update);
       gsap.ticker.remove(update);
       lenis.destroy();
+
+      delete window.__portfolioLenis;
 
       window.history.scrollRestoration = previousScrollRestoration;
     };

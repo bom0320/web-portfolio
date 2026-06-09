@@ -30,8 +30,11 @@ export default function CapabilityNavigatorScene({
 
         <div
           id="capability-navigator"
-          className="capability-navigator-pin js-capability-navigator-pin"
-        >
+          className="capability-navigator__anchor"
+          aria-hidden="true"
+        />
+
+        <div className="capability-navigator-pin js-capability-navigator-pin">
           <div className="capability-navigator-pin__inner">
             <div className="capability-navigator-showcase">
               <div className="capability-navigator-showcase__left">
