@@ -30,6 +30,7 @@ export const CAPABILITY_NAVIGATOR_ITEMS: CapabilityNavigatorItem[] = [
     overview:
       "기기 상태, 예약 현황, 고장 신고를 한 화면에서 확인하고 관리할 수 있도록 설계한 관리자 대시보드입니다.",
     ...createCapabilityNavigatorImages("washer", 3),
+    liveUrl: "https://washer-admin.example.com",
     githubUrl: "https://github.com/bom0320",
     link: "/capability/washer",
   },
@@ -37,7 +38,7 @@ export const CAPABILITY_NAVIGATOR_ITEMS: CapabilityNavigatorItem[] = [
     id: "nova",
     title: "Nova",
     category: "Career Exploration App",
-    period: "2025.?? - 2025.??",
+    period: "2025.11",
     contribution: "Client · UI/UX · Team Lead",
     stack: ["React Native", "JavaScript", "Expo", "OpenAI API"],
     role: "클라이언트 개발 · UI/UX 설계 · 인터랙션 설계 · 팀 리딩",
@@ -76,7 +77,7 @@ export const CAPABILITY_NAVIGATOR_ITEMS: CapabilityNavigatorItem[] = [
     overview:
       "Hero, About, Projects, Contact를 하나의 흐름으로 연결하고 GSAP 기반 인터랙션을 적용한 포트폴리오 웹사이트입니다.",
     ...createCapabilityNavigatorImages("portfolio", 2),
-    liveUrl: "https://your-domain.com",
+    liveUrl: "https://portfolio.example.com",
     githubUrl: "https://github.com/bom0320/web-portfolio",
     link: "/capability/portfolio",
   },
