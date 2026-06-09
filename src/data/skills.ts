@@ -37,7 +37,7 @@ export const SKILLS: Skill[] = [
   },
   {
     name: "Zustand",
-    icon: "/icons/zustand.svg",
+    icon: "/icons/zustand_a.svg",
     value: 70,
     sub: "State Management",
     bg: "#ECB63F",
