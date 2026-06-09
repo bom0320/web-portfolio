@@ -2,6 +2,7 @@ html {
   scroll-behavior: auto;
   min-height: 100%;
   background-color: #000;
+  overflow-x: clip;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
   color: #fff;
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
     "Noto Sans KR", sans-serif;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 a {
@@ -33,5 +34,7 @@ a {
 }
 
 .app {
+  width: 100%;
+  max-width: 100%;
   padding-top: var(--header-height);
 }
