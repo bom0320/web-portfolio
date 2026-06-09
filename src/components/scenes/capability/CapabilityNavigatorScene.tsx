@@ -14,6 +14,7 @@ interface CapabilityNavigatorSceneProps {
   items: CapabilityNavigatorItem[];
   activeIndex: number;
   visibleIndex: number;
+  onActiveIndexChange: Dispatch<SetStateAction<number>>;
   onPreviewIndexChange: Dispatch<SetStateAction<number | null>>;
 }
 
@@ -21,6 +22,7 @@ export default function CapabilityNavigatorScene({
   items,
   activeIndex,
   visibleIndex,
+  onActiveIndexChange,
   onPreviewIndexChange,
 }: CapabilityNavigatorSceneProps) {
   return (
@@ -42,6 +44,7 @@ export default function CapabilityNavigatorScene({
                   items={items}
                   activeIndex={activeIndex}
                   visibleIndex={visibleIndex}
+                  onActiveIndexChange={onActiveIndexChange}
                   onPreviewIndexChange={onPreviewIndexChange}
                 />
               </div>

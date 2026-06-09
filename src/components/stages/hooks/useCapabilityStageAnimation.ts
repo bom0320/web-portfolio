@@ -54,8 +54,13 @@ export function useCapabilityStageAnimation(
 
     const ctx = gsap.context(() => {
       const setupCapabilityTriggers = (
-        scrollConfig: CapabilityStageScrollConfig
+        scrollConfig: CapabilityStageScrollConfig,
+        options?: {
+          enableNavigatorPin?: boolean;
+        }
       ) => {
+        const enableNavigatorPin = options?.enableNavigatorPin ?? true;
+
         const elements = getCapabilityStageElements(stage);
         const controllers = createCapabilityStageControllers(elements);
 
@@ -93,7 +98,7 @@ export function useCapabilityStageAnimation(
           registerTrigger,
         });
 
-        if (elements.navigatorPin) {
+        if (enableNavigatorPin && elements.navigatorPin) {
           registerTrigger(
             createScrollTrigger({
               trigger: elements.navigatorPin,
@@ -148,11 +153,15 @@ export function useCapabilityStageAnimation(
       const media = gsap.matchMedia();
 
       media.add("(min-width: 901px)", () => {
-        return setupCapabilityTriggers(CAPABILITY_STAGE_DESKTOP_SCROLL_CONFIG);
+        return setupCapabilityTriggers(CAPABILITY_STAGE_DESKTOP_SCROLL_CONFIG, {
+          enableNavigatorPin: true,
+        });
       });
 
       media.add("(max-width: 900px)", () => {
-        return setupCapabilityTriggers(CAPABILITY_STAGE_MOBILE_SCROLL_CONFIG);
+        return setupCapabilityTriggers(CAPABILITY_STAGE_MOBILE_SCROLL_CONFIG, {
+          enableNavigatorPin: false,
+        });
       });
 
       return () => {

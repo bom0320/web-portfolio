@@ -18,7 +18,8 @@ export default function CapabilityStage() {
     number | null
   >(null);
 
-  const { activeNavigatorIndex } = useCapabilityStageAnimation(stageRef);
+  const { activeNavigatorIndex, setActiveNavigatorIndex } =
+    useCapabilityStageAnimation(stageRef);
 
   const visibleNavigatorIndex = previewNavigatorIndex ?? activeNavigatorIndex;
 
@@ -38,6 +39,7 @@ export default function CapabilityStage() {
         items={CAPABILITY_NAVIGATOR_ITEMS}
         activeIndex={activeNavigatorIndex}
         visibleIndex={visibleNavigatorIndex}
+        onActiveIndexChange={setActiveNavigatorIndex}
         onPreviewIndexChange={setPreviewNavigatorIndex}
       />
 
