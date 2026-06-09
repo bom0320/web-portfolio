@@ -5,7 +5,7 @@ import "@/styles/index.scss";
 import Header from "@/components/shared/layout/Header";
 import SmoothScrollProvider from "@/components/shared/providers/SmoothScrollProvider";
 
-const SITE_URL = "https://web-portfolio-silk-xi.vercel.app";
+const SITE_URL = "https://kimbom.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

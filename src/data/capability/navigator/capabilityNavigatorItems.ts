@@ -92,7 +92,7 @@ export const CAPABILITY_NAVIGATOR_ITEMS: CapabilityNavigatorItem[] = [
     overview:
       "Hero, About, Capability, Contact를 하나의 스크롤 내러티브로 연결한 인터랙티브 포트폴리오입니다. Stage와 Scene 단위로 화면과 애니메이션 책임을 분리하고, GSAP 기반 전환과 반응형 인터랙션을 구현했습니다.",
     ...createCapabilityNavigatorImages("portfolio", 3),
-    liveUrl: "https://web-portfolio-hnb9lwi92-kimboms-projects.vercel.app/",
+    liveUrl: "https://kimbom.dev",
     githubUrl: "https://github.com/bom0320/web-portfolio",
     link: "/capability/portfolio",
   },
