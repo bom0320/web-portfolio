@@ -5,16 +5,21 @@ import "@/styles/index.scss";
 import Header from "@/components/shared/layout/Header";
 import SmoothScrollProvider from "@/components/shared/providers/SmoothScrollProvider";
 
+const SITE_URL = "https://web-portfolio-silk-xi.vercel.app";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://web-portfolio-silk-xi.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: "2026 | 김봄 포트폴리오",
   description:
     "흐름, 구조, 움직임을 통해 사용자가 자연스럽게 이해하는 화면을 만드는 프론트엔드 개발자 김봄의 포트폴리오입니다.",
+  icons: {
+    icon: "/icon.png",
+  },
   openGraph: {
     title: "2026 | 김봄 포트폴리오",
     description:
       "흐름, 구조, 움직임을 통해 사용자가 자연스럽게 이해하는 화면을 만드는 프론트엔드 개발자 김봄의 포트폴리오입니다.",
-    url: "https://your-domain.com",
+    url: SITE_URL,
     siteName: "김봄 포트폴리오",
     images: [
       {
