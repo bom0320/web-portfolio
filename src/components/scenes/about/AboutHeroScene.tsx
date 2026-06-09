@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useState } from "react";
+import { User } from "lucide-react";
 
 import { CtaButton } from "@/components/features/about";
 import { GradientText } from "@/components/shared/ui";
@@ -69,7 +70,12 @@ export default function AboutHeroScene() {
               ariaLabel="Go Portfolio"
               onClick={handleMobileSwapClick("portfolio")}
             >
-              <img src="/icons/user.svg" alt="" className="cta-btn__iconImg" />
+              <User
+                size={18}
+                strokeWidth={2.2}
+                aria-hidden="true"
+                className="cta-btn__iconImg"
+              />
             </CtaButton>
 
             <CtaButton
