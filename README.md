@@ -1,4 +1,4 @@
-# 김봄 포트폴리오
+# Interactive Frontend Portfolio
 
 스크롤 기반 인터랙션과 모션을 중심으로 제작한 개인 웹 포트폴리오입니다.
 
