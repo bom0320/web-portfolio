@@ -50,7 +50,7 @@ export default function AboutHeroScene() {
             <br />
             고슴도치같이 예민하게
             <br />
-            <GradientText>디테일을 캐치해내는 개발자</GradientText>입니다.
+            <GradientText>디테일을 캐치하는 개발자</GradientText>입니다.
           </h2>
 
           <p className="about-hero__desc js-about-hero-desc">
