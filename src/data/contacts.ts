@@ -46,7 +46,6 @@ export const CONTACT_FOOTER_LINK_GROUPS = [
     title: "Connect",
     links: [
       { label: "Email", href: "mailto:bom0320.dev@gmail.com" },
-      { label: "GitHub", href: "https://github.com/bom0320" },
       { label: "Instagram", href: "https://www.instagram.com/b0m_0320/" },
       {
         label: "LinkedIn",
