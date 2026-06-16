@@ -2,12 +2,12 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useState } from "react";
-import { User } from "lucide-react";
+import { Download, User } from "lucide-react";
 
 import { CtaButton } from "@/components/features/about";
 import { GradientText } from "@/components/shared/ui";
 
-type ActiveCta = "portfolio" | "github";
+type ActiveCta = "portfolio" | "resume";
 
 export default function AboutHeroScene() {
   const [active, setActive] = useState<ActiveCta>("portfolio");
@@ -79,16 +79,17 @@ export default function AboutHeroScene() {
             </CtaButton>
 
             <CtaButton
-              href="https://github.com/bom0320"
-              label="Go Github"
+              href="/files/kim-bom-resume.pdf"
+              download="김봄_이력서.pdf"
+              label="Go Resume"
               variant="secondary"
-              className="about-hero__btn about-hero__btn--github"
-              ariaLabel="Go Github"
-              onClick={handleMobileSwapClick("github")}
+              className="about-hero__btn about-hero__btn--resume"
+              ariaLabel="Go Resume PDF"
             >
-              <img
-                src="/icons/github-white.svg"
-                alt=""
+              <Download
+                size={18}
+                strokeWidth={2.2}
+                aria-hidden="true"
                 className="cta-btn__iconImg"
               />
             </CtaButton>

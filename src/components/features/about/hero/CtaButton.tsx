@@ -8,6 +8,7 @@ type CtaButtonProps = {
   variant: "primary" | "secondary";
   className?: string;
   ariaLabel?: string;
+  download?: string;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   children?: React.ReactNode;
 };
@@ -18,6 +19,7 @@ export default function CtaButton({
   variant,
   className = "",
   ariaLabel,
+  download,
   onClick,
   children,
 }: CtaButtonProps) {
@@ -34,6 +36,7 @@ export default function CtaButton({
       aria-label={ariaLabel ?? label}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noreferrer" : undefined}
+      download={download}
       onClick={onClick}
     >
       <span className="cta-btn__iconWrap">{children}</span>
