@@ -10,16 +10,23 @@ import {
 } from "@/components/scenes/capability";
 
 import { CAPABILITY_NAVIGATOR_ITEMS } from "@/data/capability";
+import { useSectionViewTracking } from "@/hooks/useSectionViewTracking";
 import { useCapabilityStageAnimation } from "./hooks/useCapabilityStageAnimation";
 
 export default function CapabilityStage() {
   const stageRef = useRef<HTMLElement | null>(null);
+
   const [previewNavigatorIndex, setPreviewNavigatorIndex] = useState<
     number | null
   >(null);
 
   const { activeNavigatorIndex, setActiveNavigatorIndex } =
     useCapabilityStageAnimation(stageRef);
+
+  useSectionViewTracking(stageRef, {
+    sectionName: "capability",
+    sectionOrder: 2,
+  });
 
   const visibleNavigatorIndex = previewNavigatorIndex ?? activeNavigatorIndex;
 

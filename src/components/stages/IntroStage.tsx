@@ -3,12 +3,18 @@
 import { useRef } from "react";
 
 import { AboutScenes, HeroScene, LifeMotionScene } from "@/components/scenes";
+import { useSectionViewTracking } from "@/hooks/useSectionViewTracking";
 import { useIntroStageAnimation } from "./hooks/useIntroStageAnimation";
 
 export default function IntroStage() {
   const stageRef = useRef<HTMLElement | null>(null);
 
   useIntroStageAnimation(stageRef);
+
+  useSectionViewTracking(stageRef, {
+    sectionName: "intro",
+    sectionOrder: 1,
+  });
 
   return (
     <section id="hero" ref={stageRef} className="intro-stage">
