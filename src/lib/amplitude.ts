@@ -4,6 +4,20 @@ const apiKey = process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY;
 
 let isInitialized = false;
 
+const getDeviceType = (): "mobile" | "tablet" | "desktop" => {
+  const viewportWidth = window.innerWidth;
+
+  if (viewportWidth < 640) {
+    return "mobile";
+  }
+
+  if (viewportWidth < 1024) {
+    return "tablet";
+  }
+
+  return "desktop";
+};
+
 export const initAmplitude = (): void => {
   if (typeof window === "undefined" || isInitialized) {
     return;
@@ -15,7 +29,14 @@ export const initAmplitude = (): void => {
   }
 
   amplitude.init(apiKey, undefined, {
-    autocapture: false,
+    autocapture: {
+      attribution: true,
+      pageViews: true,
+      sessions: true,
+      elementInteractions: false,
+      fileDownloads: true,
+      formInteractions: false,
+    },
   });
 
   isInitialized = true;
@@ -33,5 +54,6 @@ export const trackAmplitudeEvent = (
     ...properties,
     pathname: window.location.pathname,
     viewport_width: window.innerWidth,
+    device_type: getDeviceType(),
   });
 };
