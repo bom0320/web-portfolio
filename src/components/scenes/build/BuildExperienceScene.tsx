@@ -6,14 +6,12 @@ import {
   VisualCapabilityBlock,
 } from "@/components/features/capability";
 
-export default function ExperienceCapabilityScene() {
+export default function BuildExperienceScene() {
   return (
     <section className="experience-capability-scene js-capability-experience">
       <div className="experience-capability-scene__inner">
         <StructureCapabilityBlock />
-
         <AICapabilityBlock />
-
         <VisualCapabilityBlock />
       </div>
     </section>

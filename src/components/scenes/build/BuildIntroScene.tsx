@@ -5,7 +5,7 @@ import {
   IntroVisualProof,
 } from "@/components/features/capability";
 
-export default function CapabilityIntroScene() {
+export default function BuildIntroScene() {
   return (
     <section className="capability-intro-scene js-capability-intro">
       <IntroPinnedNarrative />

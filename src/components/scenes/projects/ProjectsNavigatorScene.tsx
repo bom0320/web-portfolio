@@ -10,7 +10,7 @@ import {
   CapabilityNavigatorMonitor,
 } from "@/components/features/capability/navigator";
 
-interface CapabilityNavigatorSceneProps {
+interface ProjectsNavigatorSceneProps {
   items: CapabilityNavigatorItem[];
   activeIndex: number;
   visibleIndex: number;
@@ -18,13 +18,13 @@ interface CapabilityNavigatorSceneProps {
   onPreviewIndexChange: Dispatch<SetStateAction<number | null>>;
 }
 
-export default function CapabilityNavigatorScene({
+export default function ProjectsNavigatorScene({
   items,
   activeIndex,
   visibleIndex,
   onActiveIndexChange,
   onPreviewIndexChange,
-}: CapabilityNavigatorSceneProps) {
+}: ProjectsNavigatorSceneProps) {
   return (
     <section className="capability-navigator js-capability-navigator">
       <div className="capability-navigator__inner">

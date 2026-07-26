@@ -3,11 +3,14 @@
 import { useRef, useState } from "react";
 
 import {
-  CapabilityClosingScene,
-  CapabilityIntroScene,
-  CapabilityNavigatorScene,
-  ExperienceCapabilityScene,
-} from "@/components/scenes/capability";
+  BuildExperienceScene,
+  BuildIntroScene,
+} from "@/components/scenes/build";
+
+import {
+  ProjectsClosingScene,
+  ProjectsNavigatorScene,
+} from "@/components/scenes/projects";
 
 import { CAPABILITY_NAVIGATOR_ITEMS } from "@/data/capability";
 import { useSectionViewTracking } from "@/hooks/useSectionViewTracking";
@@ -38,11 +41,10 @@ export default function CapabilityStage() {
         aria-hidden="true"
       />
 
-      <CapabilityIntroScene />
+      <BuildIntroScene />
+      <BuildExperienceScene />
 
-      <ExperienceCapabilityScene />
-
-      <CapabilityNavigatorScene
+      <ProjectsNavigatorScene
         items={CAPABILITY_NAVIGATOR_ITEMS}
         activeIndex={activeNavigatorIndex}
         visibleIndex={visibleNavigatorIndex}
@@ -50,7 +52,7 @@ export default function CapabilityStage() {
         onPreviewIndexChange={setPreviewNavigatorIndex}
       />
 
-      <CapabilityClosingScene />
+      <ProjectsClosingScene />
     </section>
   );
 }
