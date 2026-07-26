@@ -1,4 +1,4 @@
-export default function CapabilityClosingStatement() {
+export default function ProjectsClosingStatement() {
   return (
     <div className="capability-closing__content js-capability-closing-content">
       <p className="capability-closing__eyebrow js-capability-closing-eyebrow">

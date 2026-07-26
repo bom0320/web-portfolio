@@ -5,7 +5,7 @@ import "@/styles/index.scss";
 import Header from "@/components/shared/layout/Header";
 import SmoothScrollProvider from "@/components/shared/providers/SmoothScrollProvider";
 import AmplitudeProvider from "@/components/providers/AmplitudeProvider";
-import { ScrollToTop } from "@/components/features/capability/navigator";
+import { ScrollToTop } from "@/components/features/projects";
 
 const SITE_URL = "https://kimbom.dev";
 

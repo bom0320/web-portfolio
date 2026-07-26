@@ -1,16 +1,14 @@
 import Link from "next/link";
 
-import type { CapabilityNavigatorItem } from "@/data/capability";
+import type { ProjectItem } from "@/data/projects";
 
-import CapabilityDetailActions from "./CapabilityDetailActions";
+import ProjectDetailActions from "./ProjectDetailActions";
 
-interface CapabilityDetailHeroProps {
-  item: CapabilityNavigatorItem;
+interface ProjectDetailHeroProps {
+  item: ProjectItem;
 }
 
-export default function CapabilityDetailHero({
-  item,
-}: CapabilityDetailHeroProps) {
+export default function ProjectDetailHero({ item }: ProjectDetailHeroProps) {
   const projectMeta = [
     {
       label: "Period",
@@ -29,7 +27,7 @@ export default function CapabilityDetailHero({
   return (
     <aside className="capability-detail-hero">
       <Link
-        href="/#project-navigator"
+        href="/#projects"
         scroll={false}
         className="capability-detail-hero__back"
         aria-label="프로젝트 목록으로 돌아가기"
@@ -50,6 +48,7 @@ export default function CapabilityDetailHero({
               <dt className="capability-detail-hero__meta-label">
                 {meta.label}
               </dt>
+
               <dd className="capability-detail-hero__meta-value">
                 {meta.value}
               </dd>
@@ -57,7 +56,7 @@ export default function CapabilityDetailHero({
           ))}
         </dl>
 
-        <CapabilityDetailActions
+        <ProjectDetailActions
           liveUrl={item.liveUrl}
           githubUrl={item.githubUrl}
         />

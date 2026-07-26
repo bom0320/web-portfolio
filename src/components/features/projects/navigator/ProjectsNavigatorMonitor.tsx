@@ -1,18 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { CAPABILITY_NAVIGATOR_MONITOR_FRAME } from "@/assets/capabilityImages";
-import type { CapabilityNavigatorItem } from "@/data/capability";
 
-interface CapabilityNavigatorMonitorProps {
-  items: CapabilityNavigatorItem[];
+import { CAPABILITY_NAVIGATOR_MONITOR_FRAME } from "@/assets/capabilityImages";
+import type { ProjectItem } from "@/data/projects";
+
+interface ProjectsNavigatorMonitorProps {
+  items: ProjectItem[];
   activeIndex: number;
 }
 
-export default function CapabilityNavigatorMonitor({
+export default function ProjectsNavigatorMonitor({
   items,
   activeIndex,
-}: CapabilityNavigatorMonitorProps) {
+}: ProjectsNavigatorMonitorProps) {
   return (
     <div className="capability-navigator-monitor">
       <div className="capability-navigator-monitor__stage">

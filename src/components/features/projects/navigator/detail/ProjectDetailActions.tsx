@@ -1,12 +1,12 @@
-interface CapabilityDetailActionsProps {
+interface ProjectDetailActionsProps {
   liveUrl?: string;
   githubUrl?: string;
 }
 
-export default function CapabilityDetailActions({
+export default function ProjectDetailActions({
   liveUrl,
   githubUrl,
-}: CapabilityDetailActionsProps) {
+}: ProjectDetailActionsProps) {
   const actionCount = Number(Boolean(liveUrl)) + Number(Boolean(githubUrl));
 
   if (actionCount === 0) return null;

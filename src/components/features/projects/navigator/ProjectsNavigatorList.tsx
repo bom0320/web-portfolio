@@ -3,10 +3,9 @@
 import Link from "next/link";
 import type { Dispatch, MouseEvent, SetStateAction } from "react";
 
-import type { CapabilityNavigatorItem } from "@/data/capability";
-
+import type { ProjectItem } from "@/data/projects";
 interface CapabilityNavigatorListProps {
-  items: CapabilityNavigatorItem[];
+  items: ProjectItem[];
   activeIndex: number;
   visibleIndex: number;
   onActiveIndexChange: Dispatch<SetStateAction<number>>;

@@ -1,4 +1,4 @@
-export default function CapabilityClosingScrollCue() {
+export default function ProjectsClosingScrollCue() {
   return (
     <div className="capability-closing__scroll">
       <span className="capability-closing__scroll-line" />

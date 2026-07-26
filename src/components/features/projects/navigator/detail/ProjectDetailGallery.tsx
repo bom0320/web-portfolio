@@ -3,15 +3,15 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-interface CapabilityDetailGalleryProps {
+interface ProjectDetailGalleryProps {
   title: string;
   images: string[];
 }
 
-export default function CapabilityDetailGallery({
+export default function ProjectDetailGallery({
   title,
   images,
-}: CapabilityDetailGalleryProps) {
+}: ProjectDetailGalleryProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleClose = () => {

@@ -11,7 +11,7 @@ import {
 import gsap from "gsap";
 
 import { CapabilityNavigatorAnimation } from "@/animations/capability";
-import { CAPABILITY_NAVIGATOR_ITEMS } from "@/data/capability";
+import { PROJECT_ITEMS } from "@/data/projects";
 import {
   createScrollTrigger,
   refreshScrollTrigger,
@@ -107,7 +107,7 @@ export function useCapabilityStageAnimation(
               end: () =>
                 `+=${
                   window.innerHeight *
-                  (CAPABILITY_NAVIGATOR_ITEMS.length - 1) *
+                  (PROJECT_ITEMS.length - 1) *
                   scrollConfig.navigatorPin.itemScrollLengthMultiplier
                 }`,
               pin: true,
@@ -118,7 +118,7 @@ export function useCapabilityStageAnimation(
               onUpdate: (self) => {
                 const nextIndex = getCapabilityNavigatorIndex(
                   self.progress,
-                  CAPABILITY_NAVIGATOR_ITEMS.length
+                  PROJECT_ITEMS.length
                 );
 
                 if (nextIndex === previousNavigatorIndexRef.current) return;

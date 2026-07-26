@@ -2,16 +2,15 @@
 
 import type { Dispatch, SetStateAction } from "react";
 
-import type { CapabilityNavigatorItem } from "@/data/capability";
-
 import {
-  CapabilityNavigatorIntro,
-  CapabilityNavigatorList,
-  CapabilityNavigatorMonitor,
-} from "@/components/features/capability/navigator";
+  ProjectsNavigatorIntro,
+  ProjectsNavigatorList,
+  ProjectsNavigatorMonitor,
+} from "@/components/features/projects";
+import type { ProjectItem } from "@/data/projects";
 
 interface ProjectsNavigatorSceneProps {
-  items: CapabilityNavigatorItem[];
+  items: ProjectItem[];
   activeIndex: number;
   visibleIndex: number;
   onActiveIndexChange: Dispatch<SetStateAction<number>>;
@@ -28,10 +27,10 @@ export default function ProjectsNavigatorScene({
   return (
     <section className="capability-navigator js-capability-navigator">
       <div className="capability-navigator__inner">
-        <CapabilityNavigatorIntro />
+        <ProjectsNavigatorIntro />
 
         <div
-          id="project-navigator"
+          id="projects"
           className="capability-navigator__anchor"
           aria-hidden="true"
         />
@@ -40,7 +39,7 @@ export default function ProjectsNavigatorScene({
           <div className="capability-navigator-pin__inner">
             <div className="capability-navigator-showcase">
               <div className="capability-navigator-showcase__left">
-                <CapabilityNavigatorList
+                <ProjectsNavigatorList
                   items={items}
                   activeIndex={activeIndex}
                   visibleIndex={visibleIndex}
@@ -50,7 +49,7 @@ export default function ProjectsNavigatorScene({
               </div>
 
               <div className="capability-navigator-showcase__right">
-                <CapabilityNavigatorMonitor
+                <ProjectsNavigatorMonitor
                   items={items}
                   activeIndex={visibleIndex}
                 />

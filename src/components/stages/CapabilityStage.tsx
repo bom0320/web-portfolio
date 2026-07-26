@@ -12,7 +12,7 @@ import {
   ProjectsNavigatorScene,
 } from "@/components/scenes/projects";
 
-import { CAPABILITY_NAVIGATOR_ITEMS } from "@/data/capability";
+import { PROJECT_ITEMS } from "@/data/projects";
 import { useSectionViewTracking } from "@/hooks/useSectionViewTracking";
 import { useCapabilityStageAnimation } from "./hooks/useCapabilityStageAnimation";
 
@@ -45,7 +45,7 @@ export default function CapabilityStage() {
       <BuildExperienceScene />
 
       <ProjectsNavigatorScene
-        items={CAPABILITY_NAVIGATOR_ITEMS}
+        items={PROJECT_ITEMS}
         activeIndex={activeNavigatorIndex}
         visibleIndex={visibleNavigatorIndex}
         onActiveIndexChange={setActiveNavigatorIndex}

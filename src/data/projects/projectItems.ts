@@ -1,6 +1,6 @@
 import { createCapabilityNavigatorImages } from "@/assets/capabilityImages";
 
-export interface CapabilityNavigatorItem {
+export interface ProjectItem {
   id: string;
   title: string;
   category: string;
@@ -15,7 +15,7 @@ export interface CapabilityNavigatorItem {
   link: string;
 }
 
-export const CAPABILITY_NAVIGATOR_ITEMS: CapabilityNavigatorItem[] = [
+export const PROJECT_ITEMS: ProjectItem[] = [
   {
     id: "washer",
     title: "Washer Client v2",
@@ -37,7 +37,7 @@ export const CAPABILITY_NAVIGATOR_ITEMS: CapabilityNavigatorItem[] = [
     ...createCapabilityNavigatorImages("washer", 4),
     liveUrl: "https://www.washer-gsm.com/sign-in",
     githubUrl: "https://github.com/team-washer",
-    link: "/capability/washer",
+    link: "/projects/washer",
   },
   {
     id: "nova",
@@ -50,7 +50,7 @@ export const CAPABILITY_NAVIGATOR_ITEMS: CapabilityNavigatorItem[] = [
       "마이스터고 학생들이 겪는 빠른 전공 선택의 부담을 줄이기 위해, 진로 탐색 과정을 경험 중심으로 재구성한 앱입니다. 개발을 처음 시작하던 시기에 팀 리더로서 앱 기획, UI와 캐릭터 디자인, 클라이언트 구현을 함께 맡았습니다.",
     ...createCapabilityNavigatorImages("nova", 16),
     githubUrl: "https://github.com/FourLeaves4/Client",
-    link: "/capability/nova",
+    link: "/projects/nova",
   },
   {
     id: "hyoit",
@@ -72,7 +72,7 @@ export const CAPABILITY_NAVIGATOR_ITEMS: CapabilityNavigatorItem[] = [
       "고령층 부모와 자녀의 사용 목적을 분리하고, 빠른 응답과 알림 흐름을 통해 부담 없는 안부 소통 경험을 설계한 모바일 앱입니다.",
     ...createCapabilityNavigatorImages("hyoit", 2),
     githubUrl: "https://github.com/project-hyoit/hyoit-FE",
-    link: "/capability/hyoit",
+    link: "/projects/hyoit",
   },
   {
     id: "portfolio",
@@ -94,10 +94,10 @@ export const CAPABILITY_NAVIGATOR_ITEMS: CapabilityNavigatorItem[] = [
     ...createCapabilityNavigatorImages("portfolio", 3),
     liveUrl: "https://kimbom.dev",
     githubUrl: "https://github.com/bom0320/web-portfolio",
-    link: "/capability/portfolio",
+    link: "/projects/portfolio",
   },
 ];
 
-export function getCapabilityNavigatorItemById(id: string) {
-  return CAPABILITY_NAVIGATOR_ITEMS.find((item) => item.id === id);
+export function getProjectItemById(id: string) {
+  return PROJECT_ITEMS.find((item) => item.id === id);
 }
