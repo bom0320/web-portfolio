@@ -5,10 +5,10 @@ import {
   createNoopController,
   type AnimationController,
 } from "@/animations/_shared";
-import type { VisualCapabilityAnimationElements } from "@/components/scenes/build/dom";
+import type { BuildVisualAnimationElements } from "@/components/scenes/build/dom";
 
-const VisualCapabilityAnimation = {
-  create(elements: VisualCapabilityAnimationElements): AnimationController {
+const BuildVisualAnimation = {
+  create(elements: BuildVisualAnimationElements): AnimationController {
     const { root, header } = elements;
 
     if (!root) {
@@ -52,4 +52,4 @@ const VisualCapabilityAnimation = {
   },
 };
 
-export default VisualCapabilityAnimation;
+export default BuildVisualAnimation;

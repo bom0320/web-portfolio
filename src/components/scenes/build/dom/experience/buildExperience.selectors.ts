@@ -1,4 +1,4 @@
-export const CAPABILITY_EXPERIENCE_SELECTORS = {
+export const BUILD_EXPERIENCE_SELECTORS = {
   structure: {
     header: ".js-structure-capability-header",
     core: ".js-structure-capability-core",

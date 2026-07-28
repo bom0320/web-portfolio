@@ -1,8 +1,8 @@
 export {
-  getAICapabilityAnimationElements,
-  getStructureCapabilityAnimationElements,
-  getVisualCapabilityAnimationElements,
-  type AICapabilityAnimationElements,
-  type StructureCapabilityAnimationElements,
-  type VisualCapabilityAnimationElements,
-} from "./capabilityExperience.element";
+  getBuildAIAnimationElements,
+  getBuildStructureAnimationElements,
+  getBuildVisualAnimationElements,
+  type BuildAIAnimationElements,
+  type BuildStructureAnimationElements,
+  type BuildVisualAnimationElements,
+} from "./buildExperience.element";

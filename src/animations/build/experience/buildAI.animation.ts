@@ -5,10 +5,10 @@ import {
   createNoopController,
   type AnimationController,
 } from "@/animations/_shared";
-import type { AICapabilityAnimationElements } from "@/components/scenes/build/dom";
+import type { BuildAIAnimationElements } from "@/components/scenes/build/dom";
 
-const AICapabilityAnimation = {
-  create(elements: AICapabilityAnimationElements): AnimationController {
+const BuildAIAnimation = {
+  create(elements: BuildAIAnimationElements): AnimationController {
     const {
       root,
       header,
@@ -72,7 +72,6 @@ const AICapabilityAnimation = {
         duration: 0.18,
         ease: "none",
       })
-
       .to(
         grid,
         {
@@ -85,7 +84,6 @@ const AICapabilityAnimation = {
         },
         0.2
       )
-
       .to(
         cards,
         {
@@ -102,7 +100,6 @@ const AICapabilityAnimation = {
         },
         0.28
       )
-
       .to(
         cardIcons,
         {
@@ -114,7 +111,6 @@ const AICapabilityAnimation = {
         },
         0.4
       )
-
       .to(
         cardSubtitles,
         {
@@ -126,7 +122,6 @@ const AICapabilityAnimation = {
         },
         0.44
       )
-
       .to(
         cardTitles,
         {
@@ -138,7 +133,6 @@ const AICapabilityAnimation = {
         },
         0.48
       )
-
       .to(
         cardMessages,
         {
@@ -150,7 +144,6 @@ const AICapabilityAnimation = {
         },
         0.52
       )
-
       .to(
         cardDescs,
         {
@@ -182,4 +175,4 @@ const AICapabilityAnimation = {
   },
 };
 
-export default AICapabilityAnimation;
+export default BuildAIAnimation;

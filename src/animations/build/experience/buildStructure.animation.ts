@@ -5,12 +5,12 @@ import {
   createNoopController,
   type AnimationController,
 } from "@/animations/_shared";
-import type { StructureCapabilityAnimationElements } from "@/components/scenes/build/dom";
+import type { BuildStructureAnimationElements } from "@/components/scenes/build/dom";
 
 const STRUCTURE_MOBILE_QUERY = "(max-width: 900px)";
 
-const StructureCapabilityAnimation = {
-  create(elements: StructureCapabilityAnimationElements): AnimationController {
+const BuildStructureAnimation = {
+  create(elements: BuildStructureAnimationElements): AnimationController {
     const {
       root,
       header,
@@ -107,7 +107,6 @@ const StructureCapabilityAnimation = {
         },
         0
       )
-
       .to(
         core,
         {
@@ -119,7 +118,6 @@ const StructureCapabilityAnimation = {
         },
         1
       )
-
       .to(
         stem,
         {
@@ -129,7 +127,6 @@ const StructureCapabilityAnimation = {
         },
         2
       )
-
       .to(
         branch,
         {
@@ -172,7 +169,6 @@ const StructureCapabilityAnimation = {
           },
           startAt
         )
-
         .to(
           node,
           {
@@ -204,7 +200,6 @@ const StructureCapabilityAnimation = {
         },
         8.4
       )
-
       .to(
         cardIcons,
         {
@@ -216,7 +211,6 @@ const StructureCapabilityAnimation = {
         },
         9.1
       )
-
       .to(
         cardTitles,
         {
@@ -228,7 +222,6 @@ const StructureCapabilityAnimation = {
         },
         9.5
       )
-
       .to(
         cardMessages,
         {
@@ -240,7 +233,6 @@ const StructureCapabilityAnimation = {
         },
         9.9
       )
-
       .to(
         cardDescs,
         {
@@ -283,4 +275,4 @@ const StructureCapabilityAnimation = {
   },
 };
 
-export default StructureCapabilityAnimation;
+export default BuildStructureAnimation;

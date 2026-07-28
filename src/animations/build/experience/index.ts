@@ -1,3 +1,3 @@
-export { default as StructureCapabilityAnimation } from "./structureCapability.animation";
-export { default as AICapabilityAnimation } from "./aiCapability.animation";
-export { default as VisualCapabilityAnimation } from "./visualCapability.animation";
+export { default as BuildStructureAnimation } from "./buildStructure.animation";
+export { default as BuildAIAnimation } from "./buildAI.animation";
+export { default as BuildVisualAnimation } from "./buildVisual.animation";

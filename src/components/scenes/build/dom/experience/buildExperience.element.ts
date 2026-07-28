@@ -1,6 +1,6 @@
-import { CAPABILITY_EXPERIENCE_SELECTORS } from "./capabilityExperience.selectors";
+import { BUILD_EXPERIENCE_SELECTORS } from "./buildExperience.selectors";
 
-type CapabilityCardAnimationElements = {
+type BuildCardAnimationElements = {
   cards: HTMLElement[];
   cardIcons: HTMLElement[];
   cardTitles: HTMLElement[];
@@ -8,29 +8,27 @@ type CapabilityCardAnimationElements = {
   cardDescs: HTMLElement[];
 };
 
-type CapabilityCardWithSubtitleAnimationElements =
-  CapabilityCardAnimationElements & {
-    cardSubtitles: HTMLElement[];
-  };
+type BuildCardWithSubtitleAnimationElements = BuildCardAnimationElements & {
+  cardSubtitles: HTMLElement[];
+};
 
-export type StructureCapabilityAnimationElements =
-  CapabilityCardAnimationElements & {
-    root: HTMLElement | null;
-    header: HTMLElement | null;
-    core: HTMLElement | null;
-    stem: HTMLElement | null;
-    branch: HTMLElement | null;
-    nodes: HTMLElement[];
-  };
+export type BuildStructureAnimationElements = BuildCardAnimationElements & {
+  root: HTMLElement | null;
+  header: HTMLElement | null;
+  core: HTMLElement | null;
+  stem: HTMLElement | null;
+  branch: HTMLElement | null;
+  nodes: HTMLElement[];
+};
 
-export type AICapabilityAnimationElements =
-  CapabilityCardWithSubtitleAnimationElements & {
+export type BuildAIAnimationElements =
+  BuildCardWithSubtitleAnimationElements & {
     root: HTMLElement | null;
     header: HTMLElement | null;
     grid: HTMLElement | null;
   };
 
-export type VisualCapabilityAnimationElements = {
+export type BuildVisualAnimationElements = {
   root: HTMLElement | null;
   header: HTMLElement | null;
 };
@@ -53,10 +51,10 @@ const queryElements = <T extends HTMLElement>(
   return Array.from(root.querySelectorAll<T>(selector));
 };
 
-export const getStructureCapabilityAnimationElements = (
+export const getBuildStructureAnimationElements = (
   root: HTMLElement | null
-): StructureCapabilityAnimationElements => {
-  const selectors = CAPABILITY_EXPERIENCE_SELECTORS.structure;
+): BuildStructureAnimationElements => {
+  const selectors = BUILD_EXPERIENCE_SELECTORS.structure;
 
   return {
     root,
@@ -73,10 +71,10 @@ export const getStructureCapabilityAnimationElements = (
   };
 };
 
-export const getAICapabilityAnimationElements = (
+export const getBuildAIAnimationElements = (
   root: HTMLElement | null
-): AICapabilityAnimationElements => {
-  const selectors = CAPABILITY_EXPERIENCE_SELECTORS.ai;
+): BuildAIAnimationElements => {
+  const selectors = BUILD_EXPERIENCE_SELECTORS.ai;
 
   return {
     root,
@@ -91,10 +89,10 @@ export const getAICapabilityAnimationElements = (
   };
 };
 
-export const getVisualCapabilityAnimationElements = (
+export const getBuildVisualAnimationElements = (
   root: HTMLElement | null
-): VisualCapabilityAnimationElements => {
-  const selectors = CAPABILITY_EXPERIENCE_SELECTORS.visual;
+): BuildVisualAnimationElements => {
+  const selectors = BUILD_EXPERIENCE_SELECTORS.visual;
 
   return {
     root,
