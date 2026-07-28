@@ -10,12 +10,12 @@ export default function IntroProofPoint({ point }: IntroProofPointProps) {
   return (
     <article
       className={[
-        "capability-intro-proof__point",
-        `capability-intro-proof__point--${point.index}`,
-        `js-capability-intro-proof-point-${point.side}`,
+        "build-intro-proof__point",
+        `build-intro-proof__point--${point.index}`,
+        `js-build-intro-proof-point-${point.side}`,
       ].join(" ")}
     >
-      <div className="capability-intro-proof__label">
+      <div className="build-intro-proof__label">
         <span>
           <GradientText>{point.index}</GradientText>
         </span>

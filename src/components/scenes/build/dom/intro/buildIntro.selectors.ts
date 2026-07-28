@@ -1,18 +1,18 @@
 export const BUILD_INTRO_ANIMATION_SELECTORS = {
-  visualField: ".js-capability-intro-visual-field",
+  visualField: ".js-build-intro-visual-field",
 
-  titleLayer: ".js-capability-intro-title-layer",
-  eyebrow: ".js-capability-intro-eyebrow",
-  title: ".js-capability-intro-title",
-  subtitle: ".js-capability-intro-subtitle",
+  titleLayer: ".js-build-intro-title-layer",
+  eyebrow: ".js-build-intro-eyebrow",
+  title: ".js-build-intro-title",
+  subtitle: ".js-build-intro-subtitle",
 
-  phase01: ".js-capability-intro-phase-01",
-  phase02: ".js-capability-intro-phase-02",
+  phase01: ".js-build-intro-phase-01",
+  phase02: ".js-build-intro-phase-02",
 } as const;
 
 export const BUILD_INTRO_PROOF_ANIMATION_SELECTORS = {
-  character: ".js-capability-intro-proof-character",
-  leftPoints: ".js-capability-intro-proof-point-left",
-  rightPoints: ".js-capability-intro-proof-point-right",
-  quote: ".js-capability-intro-proof-quote",
+  character: ".js-build-intro-proof-character",
+  leftPoints: ".js-build-intro-proof-point-left",
+  rightPoints: ".js-build-intro-proof-point-right",
+  quote: ".js-build-intro-proof-quote",
 } as const;

@@ -10,18 +10,18 @@ export default function IntroVisualProof() {
   const afterVisualPoints = BUILD_INTRO_PROOF_POINTS.slice(2);
 
   return (
-    <section className="capability-intro-proof js-capability-intro-proof">
-      <div className="capability-intro-proof__inner">
+    <section className="build-intro-proof js-build-intro-proof">
+      <div className="build-intro-proof__inner">
         {beforeVisualPoints.map((point) => (
           <IntroProofPoint key={point.id} point={point} />
         ))}
 
         <div
-          className="capability-intro-proof__visual js-capability-intro-proof-visual"
+          className="build-intro-proof__visual js-build-intro-proof-visual"
           aria-hidden="true"
         >
           <Image
-            className="capability-intro-proof__character-image js-capability-intro-proof-character"
+            className="build-intro-proof__character-image js-build-intro-proof-character"
             src="/images/character_1.png"
             alt=""
             width={420}
@@ -34,9 +34,9 @@ export default function IntroVisualProof() {
           <IntroProofPoint key={point.id} point={point} />
         ))}
 
-        <p className="capability-intro-proof__quote js-capability-intro-proof-quote">
+        <p className="build-intro-proof__quote js-build-intro-proof-quote">
           <span
-            className="capability-intro-proof__quote-mark"
+            className="build-intro-proof__quote-mark"
             aria-hidden="true"
           >
             “

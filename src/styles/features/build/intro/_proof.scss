@@ -1,4 +1,4 @@
-.capability-intro-proof {
+.build-intro-proof {
   position: relative;
 
   min-height: 140vh;
@@ -10,7 +10,7 @@
   overflow: hidden;
 }
 
-.capability-intro-proof__inner {
+.build-intro-proof__inner {
   position: relative;
 
   width: min(1200px, calc(100% - 96px));
@@ -28,7 +28,7 @@
   align-items: center;
 }
 
-.capability-intro-proof__visual {
+.build-intro-proof__visual {
   grid-column: 2;
   grid-row: 1 / span 2;
 
@@ -37,7 +37,7 @@
   justify-content: center;
 }
 
-.capability-intro-proof__character-image {
+.build-intro-proof__character-image {
   width: min(360px, 100%);
   height: auto;
 
@@ -46,33 +46,33 @@
   filter: drop-shadow(0 42px 60px rgba(0, 0, 0, 0.72));
 }
 
-.capability-intro-proof__point {
+.build-intro-proof__point {
   position: relative;
 
   max-width: 380px;
 }
 
-.capability-intro-proof__point--01 {
+.build-intro-proof__point--01 {
   grid-column: 1;
   grid-row: 1;
 }
 
-.capability-intro-proof__point--02 {
+.build-intro-proof__point--02 {
   grid-column: 3;
   grid-row: 1;
 }
 
-.capability-intro-proof__point--03 {
+.build-intro-proof__point--03 {
   grid-column: 1;
   grid-row: 2;
 }
 
-.capability-intro-proof__point--04 {
+.build-intro-proof__point--04 {
   grid-column: 3;
   grid-row: 2;
 }
 
-.capability-intro-proof__label {
+.build-intro-proof__label {
   position: relative;
 
   margin-bottom: 18px;
@@ -82,7 +82,7 @@
   gap: 18px;
 }
 
-.capability-intro-proof__label::after {
+.build-intro-proof__label::after {
   content: "";
 
   display: block;
@@ -97,14 +97,14 @@
   );
 }
 
-.capability-intro-proof__label span {
+.build-intro-proof__label span {
   font-size: clamp(34px, 3vw, 48px);
   line-height: 1;
   font-weight: 750;
   letter-spacing: -0.05em;
 }
 
-.capability-intro-proof__point h3 {
+.build-intro-proof__point h3 {
   margin: 0 0 14px;
 
   font-size: clamp(21px, 1.7vw, 28px);
@@ -115,7 +115,7 @@
   color: rgba(255, 255, 255, 0.92);
 }
 
-.capability-intro-proof__point p {
+.build-intro-proof__point p {
   margin: 0;
 
   font-size: clamp(14px, 0.95vw, 16px);
@@ -126,7 +126,7 @@
   color: rgba(255, 255, 255, 0.52);
 }
 
-.capability-intro-proof__quote {
+.build-intro-proof__quote {
   grid-column: 1 / -1;
   grid-row: 3;
 
@@ -142,7 +142,7 @@
   color: rgba(255, 255, 255, 0.76);
 }
 
-.capability-intro-proof__quote span {
+.build-intro-proof__quote span {
   display: inline-block;
   margin-bottom: 8px;
 
@@ -152,12 +152,12 @@
   color: rgba(126, 178, 164, 0.9);
 }
 
-.capability-intro-proof__quote strong {
+.build-intro-proof__quote strong {
   font-weight: 750;
   color: rgba(126, 178, 164, 0.98);
 }
 
-.capability-intro-proof__character-image {
+.build-intro-proof__character-image {
   width: min(360px, 100%);
   height: auto;
 

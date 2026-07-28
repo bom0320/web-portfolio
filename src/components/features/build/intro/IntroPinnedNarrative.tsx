@@ -4,28 +4,28 @@ const PHILOSOPHY_TITLE_LINES = ["망설임은 적게", "흐름은 조금 더 자
 
 export default function IntroPinnedNarrative() {
   return (
-    <div className="capability-intro-pinned js-capability-intro-pinned">
-      <div className="capability-intro-pinned__sticky js-capability-intro-sticky">
-        <div className="capability-intro-visual js-capability-intro-visual">
-          <div className="capability-intro-visual__field js-capability-intro-visual-field" />
+    <div className="build-intro-pinned js-build-intro-pinned">
+      <div className="build-intro-pinned__sticky js-build-intro-sticky">
+        <div className="build-intro-visual js-build-intro-visual">
+          <div className="build-intro-visual__field js-build-intro-visual-field" />
         </div>
 
-        <div className="capability-intro-title-layer js-capability-intro-title-layer">
-          <p className="capability-intro-title-layer__eyebrow js-capability-intro-eyebrow">
-            CAPABILITY
+        <div className="build-intro-title-layer js-build-intro-title-layer">
+          <p className="build-intro-title-layer__eyebrow js-build-intro-eyebrow">
+            BUILD
           </p>
 
-          <h2 className="capability-intro-title-layer__title js-capability-intro-title">
+          <h2 className="build-intro-title-layer__title js-build-intro-title">
             <GradientText>Flow. Structure. Motion.</GradientText>
           </h2>
 
-          <p className="capability-intro-title-layer__subtitle js-capability-intro-subtitle">
+          <p className="build-intro-title-layer__subtitle js-build-intro-subtitle">
             <GradientText>경험을 설계하는 방식.</GradientText>
           </p>
         </div>
 
-        <div className="capability-intro-phase-layer">
-          <div className="capability-intro-phase capability-intro-phase--01 js-capability-intro-phase-01">
+        <div className="build-intro-phase-layer">
+          <div className="build-intro-phase build-intro-phase--01 js-build-intro-phase-01">
             <p>
               저는 단순히 화면을 구현하는 것보다, 사용자가 어떤 흐름으로
               이해하고 행동하는지를 더 중요하게 바라봅니다. 그래서 인터페이스,
@@ -34,7 +34,7 @@ export default function IntroPinnedNarrative() {
             </p>
           </div>
 
-          <div className="capability-intro-phase capability-intro-phase--02 js-capability-intro-phase-02">
+          <div className="build-intro-phase build-intro-phase--02 js-build-intro-phase-02">
             <h3>
               <GradientText>
                 {PHILOSOPHY_TITLE_LINES.map((line, index) => (

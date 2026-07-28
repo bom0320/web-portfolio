@@ -1,4 +1,4 @@
-.capability-intro-title-layer {
+.build-intro-title-layer {
   position: absolute;
   inset: 0;
   z-index: 3;
@@ -14,7 +14,7 @@
   pointer-events: none;
 }
 
-.capability-intro-title-layer__eyebrow {
+.build-intro-title-layer__eyebrow {
   margin: 0 0 18px;
 
   font-size: 20px;
@@ -30,7 +30,7 @@
   will-change: transform, opacity;
 }
 
-.capability-intro-title-layer__title {
+.build-intro-title-layer__title {
   margin: 0;
   width: max-content;
 
@@ -50,7 +50,7 @@
   will-change: transform, opacity;
 }
 
-.capability-intro-title-layer__subtitle {
+.build-intro-title-layer__subtitle {
   margin: 24px 0 0;
 
   font-size: clamp(34px, 3.2vw, 52px);

@@ -1,20 +1,20 @@
 @import "../../../abstracts/mixins";
 
 @include tablet {
-  .capability-intro-pinned {
+  .build-intro-pinned {
     height: 340vh;
   }
 
-  .capability-intro-title-layer {
+  .build-intro-title-layer {
     padding: 0 32px 22vh;
   }
 
-  .capability-intro-title-layer__eyebrow {
+  .build-intro-title-layer__eyebrow {
     margin-bottom: 12px;
     font-size: 18px;
   }
 
-  .capability-intro-title-layer__title {
+  .build-intro-title-layer__title {
     width: auto;
     max-width: calc(100% - 48px);
 
@@ -24,7 +24,7 @@
     white-space: normal;
   }
 
-  .capability-intro-title-layer__subtitle {
+  .build-intro-title-layer__subtitle {
     margin-top: 22px;
 
     font-size: clamp(28px, 5.6vw, 32px);
@@ -32,26 +32,26 @@
     letter-spacing: -0.065em;
   }
 
-  .capability-intro-phase-layer {
+  .build-intro-phase-layer {
     top: 55%;
     width: min(600px, calc(100% - 64px));
   }
 
-  .capability-intro-phase h3 {
+  .build-intro-phase h3 {
     font-size: clamp(26px, 5.2vw, 30px);
     line-height: 1.16;
   }
 
-  .capability-intro-phase p {
+  .build-intro-phase p {
     font-size: 17px;
     line-height: 1.65;
   }
 
-  .capability-intro-proof {
+  .build-intro-proof {
     padding: 120px 0 150px;
   }
 
-  .capability-intro-proof__inner {
+  .build-intro-proof__inner {
     width: min(680px, calc(100% - 72px));
 
     display: flex;
@@ -59,35 +59,35 @@
     gap: 64px;
   }
 
-  .capability-intro-proof__point {
+  .build-intro-proof__point {
     max-width: none;
     width: 100%;
   }
 
-  .capability-intro-proof__visual {
+  .build-intro-proof__visual {
     order: -1;
   }
 
-  .capability-intro-proof__character-image {
+  .build-intro-proof__character-image {
     width: min(320px, 48vw);
   }
 }
 
 @include mobile {
-  .capability-intro-pinned {
+  .build-intro-pinned {
     height: 320vh;
   }
 
-  .capability-intro-title-layer {
+  .build-intro-title-layer {
     padding: 0 24px 24vh;
   }
 
-  .capability-intro-title-layer__eyebrow {
+  .build-intro-title-layer__eyebrow {
     margin-bottom: 14px;
     font-size: 15px;
   }
 
-  .capability-intro-title-layer__title {
+  .build-intro-title-layer__title {
     width: auto;
     max-width: calc(100% - 24px);
 
@@ -97,7 +97,7 @@
     white-space: normal;
   }
 
-  .capability-intro-title-layer__subtitle {
+  .build-intro-title-layer__subtitle {
     margin-top: 18px;
 
     font-size: clamp(26px, 7.5vw, 36px);
@@ -107,29 +107,29 @@
     word-break: keep-all;
   }
 
-  .capability-intro-phase-layer {
+  .build-intro-phase-layer {
     top: 58%;
     width: min(520px, calc(100% - 40px));
   }
 
-  .capability-intro-phase h3 {
+  .build-intro-phase h3 {
     margin-bottom: 20px;
 
     font-size: clamp(24px, 7vw, 30px);
     line-height: 1.18;
   }
 
-  .capability-intro-phase p {
+  .build-intro-phase p {
     font-size: 15px;
     line-height: 1.68;
     word-break: keep-all;
   }
 
-  .capability-intro-proof {
+  .build-intro-proof {
     padding: 100px 0 140px;
   }
 
-  .capability-intro-proof__inner {
+  .build-intro-proof__inner {
     width: min(520px, calc(100% - 40px));
 
     display: flex;
@@ -137,35 +137,35 @@
     gap: 56px;
   }
 
-  .capability-intro-proof__point {
+  .build-intro-proof__point {
     max-width: none;
     width: 100%;
   }
 
-  .capability-intro-proof__visual {
+  .build-intro-proof__visual {
     order: -1;
   }
 
-  .capability-intro-proof__character-image {
+  .build-intro-proof__character-image {
     width: min(280px, 72vw);
   }
 }
 
 @include small-mobile {
-  .capability-intro-pinned {
+  .build-intro-pinned {
     height: 320vh;
   }
 
-  .capability-intro-title-layer {
+  .build-intro-title-layer {
     padding: 0 18px 24vh;
   }
 
-  .capability-intro-title-layer__eyebrow {
+  .build-intro-title-layer__eyebrow {
     margin-bottom: 6px;
     font-size: 12px;
   }
 
-  .capability-intro-title-layer__title {
+  .build-intro-title-layer__title {
     width: auto;
     max-width: calc(100% - 20px);
 
@@ -175,7 +175,7 @@
     white-space: normal;
   }
 
-  .capability-intro-title-layer__subtitle {
+  .build-intro-title-layer__subtitle {
     margin-top: 16px;
 
     font-size: clamp(22px, 6vw, 24px);
@@ -185,12 +185,12 @@
     word-break: keep-all;
   }
 
-  .capability-intro-phase-layer {
+  .build-intro-phase-layer {
     top: 55%;
     width: calc(100% - 36px);
   }
 
-  .capability-intro-phase h3 {
+  .build-intro-phase h3 {
     margin-bottom: 18px;
 
     font-size: clamp(20px, 6vw, 24px);
@@ -198,18 +198,18 @@
     letter-spacing: -0.03em;
   }
 
-  .capability-intro-phase p {
+  .build-intro-phase p {
     font-size: 13px;
     line-height: 1.7;
     letter-spacing: -0.015em;
     word-break: keep-all;
   }
 
-  .capability-intro-proof {
+  .build-intro-proof {
     padding: 88px 0 120px;
   }
 
-  .capability-intro-proof__inner {
+  .build-intro-proof__inner {
     width: calc(100% - 38px);
 
     display: flex;
@@ -217,30 +217,30 @@
     gap: 48px;
   }
 
-  .capability-intro-proof__point {
+  .build-intro-proof__point {
     max-width: none;
     width: 100%;
   }
 
-  .capability-intro-proof__visual {
+  .build-intro-proof__visual {
     order: -1;
   }
 
-  .capability-intro-proof__character-image {
+  .build-intro-proof__character-image {
     width: min(200px, 62vw);
   }
 
-  .capability-intro-proof__label {
+  .build-intro-proof__label {
     margin-bottom: 10px;
     gap: 10px;
   }
 
-  .capability-intro-proof__label span {
+  .build-intro-proof__label span {
     font-size: 28px;
     line-height: 1;
   }
 
-  .capability-intro-proof__point h3 {
+  .build-intro-proof__point h3 {
     margin-bottom: 10px;
 
     font-size: 17px;
@@ -248,13 +248,13 @@
     letter-spacing: -0.025em;
   }
 
-  .capability-intro-proof__point p {
+  .build-intro-proof__point p {
     font-size: 12px;
     line-height: 1.72;
     letter-spacing: -0.01em;
   }
 
-  .capability-intro-proof__quote {
+  .build-intro-proof__quote {
     margin-top: 0px;
 
     font-size: 16px;
@@ -262,14 +262,14 @@
     letter-spacing: -0.05em;
   }
 
-  .capability-intro-proof__quote span {
+  .build-intro-proof__quote span {
     margin-bottom: 6px;
 
     font-size: 20px;
     line-height: 1;
   }
 
-  .capability-intro-proof__quote strong {
+  .build-intro-proof__quote strong {
     display: inline;
     font-weight: 750;
     letter-spacing: -0.005em;

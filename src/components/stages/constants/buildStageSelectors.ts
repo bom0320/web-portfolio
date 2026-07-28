@@ -1,7 +1,7 @@
 export const BUILD_STAGE_SELECTORS = {
-  intro: ".js-capability-intro",
-  introPinned: ".js-capability-intro-pinned",
-  introProof: ".js-capability-intro-proof",
+  intro: ".js-build-intro",
+  introPinned: ".js-build-intro-pinned",
+  introProof: ".js-build-intro-proof",
 
   structure: ".js-capability-structure",
   ai: ".js-capability-ai",
