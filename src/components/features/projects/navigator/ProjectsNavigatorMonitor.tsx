@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { CAPABILITY_NAVIGATOR_MONITOR_FRAME } from "@/assets/capabilityImages";
+import { PROJECTS_NAVIGATOR_MONITOR_FRAME } from "@/assets/projectsImages";
 import type { ProjectItem } from "@/data/projects";
 
 interface ProjectsNavigatorMonitorProps {
@@ -18,7 +18,7 @@ export default function ProjectsNavigatorMonitor({
     <div className="projects-navigator-monitor">
       <div className="projects-navigator-monitor__stage">
         <Image
-          src={CAPABILITY_NAVIGATOR_MONITOR_FRAME}
+          src={PROJECTS_NAVIGATOR_MONITOR_FRAME}
           alt=""
           width={900}
           height={700}

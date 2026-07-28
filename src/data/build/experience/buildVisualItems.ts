@@ -1,4 +1,4 @@
-import { getCapabilityImagePath } from "@/assets/capabilityImages";
+import { getBuildImagePath } from "@/assets/buildImages";
 
 export type BuildVisualIcon = "sparkles" | "type" | "motion" | "workflow";
 
@@ -24,7 +24,7 @@ export const BUILD_VISUAL_ITEMS: BuildVisualItem[] = [
     icon: "sparkles",
     variant: "image",
     image: {
-      src: getCapabilityImagePath("visual", "character-sketch.jpg"),
+      src: getBuildImagePath("visual", "character-sketch.jpg"),
       alt: "직접 그린 캐릭터 스케치와 시각 실험 과정",
     },
   },
@@ -48,7 +48,7 @@ export const BUILD_VISUAL_ITEMS: BuildVisualItem[] = [
     icon: "motion",
     variant: "motion",
     image: {
-      src: getCapabilityImagePath("visual", "motion-curve.jpg"),
+      src: getBuildImagePath("visual", "motion-curve.jpg"),
       alt: "GSAP easing curves와 motion timing 조율 화면",
     },
   },
