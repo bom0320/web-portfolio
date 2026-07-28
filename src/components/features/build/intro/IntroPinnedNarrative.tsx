@@ -12,7 +12,7 @@ export default function IntroPinnedNarrative() {
 
         <div className="build-intro-title-layer js-build-intro-title-layer">
           <p className="build-intro-title-layer__eyebrow js-build-intro-eyebrow">
-            BUILD
+            HOW I BUILD
           </p>
 
           <h2 className="build-intro-title-layer__title js-build-intro-title">
