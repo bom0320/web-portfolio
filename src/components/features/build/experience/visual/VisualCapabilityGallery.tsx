@@ -1,4 +1,4 @@
-import type { VisualCapabilityItem } from "@/data/capability/experience";
+import { VisualCapabilityItem } from "@/data/build";
 
 import VisualCapabilityCard from "./VisualCapabilityCard";
 

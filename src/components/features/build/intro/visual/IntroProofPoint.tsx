@@ -1,4 +1,4 @@
-import type { CapabilityIntroProofPoint } from "@/data/capability";
+import type { CapabilityIntroProofPoint } from "@/data/build";
 import { GradientText } from "@/components/shared/ui";
 
 type IntroProofPointProps = {

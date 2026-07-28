@@ -9,7 +9,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import type { StructureCapabilityIcon } from "@/data/capability/experience";
+import type { StructureCapabilityIcon } from "@/data/build";
 
 export const STRUCTURE_CORE_ICON = Boxes;
 

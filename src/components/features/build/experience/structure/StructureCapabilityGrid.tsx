@@ -1,5 +1,4 @@
-import type { StructureCapabilityItem } from "@/data/capability/experience";
-
+import type { StructureCapabilityItem } from "@/data/build";
 import { STRUCTURE_ICON_MAP } from "./structureCapabilityIconMap";
 
 type StructureCapabilityGridProps = {

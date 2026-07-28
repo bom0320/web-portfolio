@@ -1,5 +1,4 @@
-import { AI_CAPABILITY_ITEMS } from "@/data/capability/experience";
-
+import { AI_CAPABILITY_ITEMS } from "@/data/build";
 import { AI_ICON_MAP } from "./aiCapabilityIconMap";
 
 export default function AICapabilityBlock() {

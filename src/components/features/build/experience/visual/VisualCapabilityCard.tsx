@@ -2,8 +2,7 @@ import Image from "next/image";
 import { useId } from "react";
 import type { CSSProperties } from "react";
 
-import type { VisualCapabilityItem } from "@/data/capability/experience";
-
+import type { VisualCapabilityItem } from "@/data/build";
 import { VISUAL_ICON_MAP } from "./visualCapabilityIconMap";
 
 type VisualCapabilityCardProps = {

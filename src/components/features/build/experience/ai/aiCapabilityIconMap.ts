@@ -5,7 +5,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import type { AICapabilityIcon } from "@/data/capability/experience";
+import type { AICapabilityIcon } from "@/data/build";
 
 export const AI_ICON_MAP: Record<AICapabilityIcon, LucideIcon> = {
   "git-compare": GitCompare,

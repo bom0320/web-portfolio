@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { CAPABILITY_INTRO_PROOF_POINTS } from "@/data/capability";
+import { CAPABILITY_INTRO_PROOF_POINTS } from "@/data/build";
 import { GradientText } from "@/components/shared/ui";
 
 import IntroProofPoint from "./visual/IntroProofPoint";

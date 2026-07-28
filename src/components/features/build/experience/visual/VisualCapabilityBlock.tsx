@@ -1,5 +1,4 @@
-import { VISUAL_CAPABILITY_ITEMS } from "@/data/capability/experience";
-
+import { VISUAL_CAPABILITY_ITEMS } from "@/data/build";
 import VisualCapabilityGallery from "./VisualCapabilityGallery";
 
 export default function VisualCapabilityBlock() {

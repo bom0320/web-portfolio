@@ -8,9 +8,9 @@ import HeaderAnimation from "../../../animations/header.animation";
 import MarqueeComponents from "../common/MarqueeComponents";
 
 const NAV_ITEMS = [
-  { href: "#hero", label: "HERO" },
   { href: "#about", label: "ABOUT" },
-  { href: "#capability", label: "CAPABILITY" },
+  { href: "#build", label: "BUILD" },
+  { href: "#projects", label: "PROJECTS" },
   { href: "#contact", label: "CONTACT" },
 ];
 

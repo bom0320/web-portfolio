@@ -6,7 +6,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import type { VisualCapabilityIcon } from "@/data/capability/experience";
+import type { VisualCapabilityIcon } from "@/data/build";
 
 export const VISUAL_ICON_MAP: Record<VisualCapabilityIcon, LucideIcon> = {
   sparkles: Sparkles,

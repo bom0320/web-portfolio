@@ -1,7 +1,6 @@
 "use client";
 
-import { STRUCTURE_CAPABILITY_ITEMS } from "@/data/capability/experience";
-
+import { STRUCTURE_CAPABILITY_ITEMS } from "@/data/build";
 import StructureCapabilityGrid from "./StructureCapabilityGrid";
 import StructureCapabilityMap from "./StructureCapabilityMap";
 
