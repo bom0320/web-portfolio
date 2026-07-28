@@ -1,4 +1,4 @@
-export const CAPABILITY_CLOSING_SELECTORS = {
+export const PROJECTS_CLOSING_SELECTORS = {
   content: ".js-capability-closing-content",
   eyebrow: ".js-capability-closing-eyebrow",
   title: ".js-capability-closing-title",

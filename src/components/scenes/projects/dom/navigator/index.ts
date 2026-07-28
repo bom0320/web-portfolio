@@ -1,4 +1,4 @@
 export {
-  getCapabilityNavigatorIntroAnimationElements,
-  type CapabilityNavigatorIntroAnimationElements,
-} from "./capabilityNavigator.element";
+  getProjectsNavigatorIntroAnimationElements,
+  type ProjectsNavigatorIntroAnimationElements,
+} from "./projectsNavigator.element";

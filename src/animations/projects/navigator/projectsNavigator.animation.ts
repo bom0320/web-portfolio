@@ -6,15 +6,16 @@ import {
   type AnimationController,
 } from "@/animations/_shared";
 
-import type { CapabilityNavigatorIntroAnimationElements } from "@/components/scenes/projects/dom";
-interface CapabilityNavigatorLayerTransitionParams {
+import type { ProjectsNavigatorIntroAnimationElements } from "@/components/scenes/projects/dom";
+
+interface ProjectsNavigatorLayerTransitionParams {
   nextLayer: HTMLElement;
   onComplete?: () => void;
 }
 
-const CapabilityNavigatorAnimation = {
+const ProjectsNavigatorAnimation = {
   createIntro(
-    elements: CapabilityNavigatorIntroAnimationElements
+    elements: ProjectsNavigatorIntroAnimationElements
   ): AnimationController {
     const { root, eyebrow, title, desc } = elements;
 
@@ -84,7 +85,7 @@ const CapabilityNavigatorAnimation = {
   createLayerTransition({
     nextLayer,
     onComplete,
-  }: CapabilityNavigatorLayerTransitionParams) {
+  }: ProjectsNavigatorLayerTransitionParams) {
     gsap.set(nextLayer, {
       opacity: 0,
       scale: 1.025,
@@ -109,4 +110,4 @@ const CapabilityNavigatorAnimation = {
   },
 };
 
-export default CapabilityNavigatorAnimation;
+export default ProjectsNavigatorAnimation;

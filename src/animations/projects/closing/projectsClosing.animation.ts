@@ -5,10 +5,10 @@ import {
   createNoopController,
   type AnimationController,
 } from "@/animations/_shared";
-import type { CapabilityClosingAnimationElements } from "@/components/scenes/projects/dom";
+import type { ProjectsClosingAnimationElements } from "@/components/scenes/projects/dom";
 
-const CapabilityClosingAnimation = {
-  create(elements: CapabilityClosingAnimationElements): AnimationController {
+const ProjectsClosingAnimation = {
+  create(elements: ProjectsClosingAnimationElements): AnimationController {
     const { root, content, eyebrow, title, description, cta } = elements;
 
     if (!root) {
@@ -98,4 +98,4 @@ const CapabilityClosingAnimation = {
   },
 };
 
-export default CapabilityClosingAnimation;
+export default ProjectsClosingAnimation;

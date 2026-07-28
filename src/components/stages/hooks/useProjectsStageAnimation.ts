@@ -10,7 +10,8 @@ import {
 } from "react";
 import gsap from "gsap";
 
-import { CapabilityNavigatorAnimation } from "@/animations/projects";
+import { ProjectsNavigatorAnimation } from "@/animations/projects";
+
 import { PROJECT_ITEMS } from "@/data/projects";
 import {
   createScrollTrigger,
@@ -127,7 +128,7 @@ export function useProjectsStageAnimation(
 
                 if (!nextLayer) return;
 
-                CapabilityNavigatorAnimation.createLayerTransition({
+                ProjectsNavigatorAnimation.createLayerTransition({
                   nextLayer,
                 });
               },

@@ -1,1 +1,1 @@
-export { default as CapabilityClosingAnimation } from "./capabilityClosing.animation";
+export { default as ProjectsClosingAnimation } from "./projectsClosing.animation";

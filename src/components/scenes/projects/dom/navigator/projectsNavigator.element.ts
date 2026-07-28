@@ -1,6 +1,6 @@
-import { CAPABILITY_NAVIGATOR_SELECTORS } from "./capabilityNavigator.selectors";
+import { PROJECTS_NAVIGATOR_SELECTORS } from "./projectsNavigator.selectors";
 
-export type CapabilityNavigatorIntroAnimationElements = {
+export type ProjectsNavigatorIntroAnimationElements = {
   root: HTMLElement | null;
   eyebrow: HTMLElement | null;
   title: HTMLElement | null;
@@ -16,10 +16,10 @@ const queryElement = <T extends HTMLElement>(
   return root.querySelector<T>(selector);
 };
 
-export const getCapabilityNavigatorIntroAnimationElements = (
+export const getProjectsNavigatorIntroAnimationElements = (
   root: HTMLElement | null
-): CapabilityNavigatorIntroAnimationElements => {
-  const selectors = CAPABILITY_NAVIGATOR_SELECTORS.intro;
+): ProjectsNavigatorIntroAnimationElements => {
+  const selectors = PROJECTS_NAVIGATOR_SELECTORS.intro;
 
   return {
     root,

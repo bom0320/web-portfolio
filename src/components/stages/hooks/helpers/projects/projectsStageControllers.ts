@@ -1,11 +1,11 @@
 import {
-  CapabilityClosingAnimation,
-  CapabilityNavigatorAnimation,
+  ProjectsClosingAnimation,
+  ProjectsNavigatorAnimation,
 } from "@/animations/projects";
 
 import {
-  getCapabilityClosingAnimationElements,
-  getCapabilityNavigatorIntroAnimationElements,
+  getProjectsClosingAnimationElements,
+  getProjectsNavigatorIntroAnimationElements,
 } from "@/components/scenes/projects/dom";
 
 import type { ProjectsStageElements } from "./projectsStageElements";
@@ -14,12 +14,12 @@ export function createProjectsStageControllers(
   elements: ProjectsStageElements
 ) {
   return {
-    navigatorIntro: CapabilityNavigatorAnimation.createIntro(
-      getCapabilityNavigatorIntroAnimationElements(elements.navigatorIntro)
+    navigatorIntro: ProjectsNavigatorAnimation.createIntro(
+      getProjectsNavigatorIntroAnimationElements(elements.navigatorIntro)
     ),
 
-    closing: CapabilityClosingAnimation.create(
-      getCapabilityClosingAnimationElements(elements.closing)
+    closing: ProjectsClosingAnimation.create(
+      getProjectsClosingAnimationElements(elements.closing)
     ),
   };
 }

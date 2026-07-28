@@ -1,1 +1,1 @@
-export { default as CapabilityNavigatorAnimation } from "./capabilityNavigator.animation";
+export { default as ProjectsNavigatorAnimation } from "./projectsNavigator.animation";

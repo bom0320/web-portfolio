@@ -1,4 +1,4 @@
 export {
-  getCapabilityClosingAnimationElements,
-  type CapabilityClosingAnimationElements,
-} from "./capabilityClosing.element";
+  getProjectsClosingAnimationElements,
+  type ProjectsClosingAnimationElements,
+} from "./projectsClosing.element";

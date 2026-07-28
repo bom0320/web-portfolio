@@ -1,4 +1,4 @@
-export const CAPABILITY_NAVIGATOR_SELECTORS = {
+export const PROJECTS_NAVIGATOR_SELECTORS = {
   intro: {
     eyebrow: ".js-capability-navigator-intro-eyebrow",
     title: ".js-capability-navigator-intro-title",
