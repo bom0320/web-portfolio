@@ -1,15 +1,15 @@
 import {
   AICapabilityAnimation,
-  CapabilityIntroAnimation,
-  CapabilityIntroProofAnimation,
+  BuildIntroAnimation,
+  BuildIntroProofAnimation,
   StructureCapabilityAnimation,
   VisualCapabilityAnimation,
 } from "@/animations/build";
 
 import {
   getAICapabilityAnimationElements,
-  getCapabilityIntroAnimationElements,
-  getCapabilityIntroProofAnimationElements,
+  getBuildIntroAnimationElements,
+  getBuildIntroProofAnimationElements,
   getStructureCapabilityAnimationElements,
   getVisualCapabilityAnimationElements,
 } from "@/components/scenes/build/dom";
@@ -18,12 +18,12 @@ import type { BuildStageElements } from "./buildStageElements";
 
 export function createBuildStageControllers(elements: BuildStageElements) {
   return {
-    intro: CapabilityIntroAnimation.create(
-      getCapabilityIntroAnimationElements(elements.intro)
+    intro: BuildIntroAnimation.create(
+      getBuildIntroAnimationElements(elements.intro)
     ),
 
-    introProof: CapabilityIntroProofAnimation.create(
-      getCapabilityIntroProofAnimationElements(elements.introProof)
+    introProof: BuildIntroProofAnimation.create(
+      getBuildIntroProofAnimationElements(elements.introProof)
     ),
 
     structure: StructureCapabilityAnimation.create(

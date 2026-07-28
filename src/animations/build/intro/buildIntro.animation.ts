@@ -6,12 +6,12 @@ import {
   type AnimationController,
 } from "@/animations/_shared";
 
-import type { CapabilityIntroAnimationElements } from "@/components/scenes/build/dom";
+import type { BuildIntroAnimationElements } from "@/components/scenes/build/dom";
 
 const TITLE_INITIAL_SCALE = 3.8;
 
-const CapabilityIntroAnimation = {
-  create(elements: CapabilityIntroAnimationElements): AnimationController {
+const BuildIntroAnimation = {
+  create(elements: BuildIntroAnimationElements): AnimationController {
     const {
       visualField,
       titleLayer,
@@ -31,7 +31,7 @@ const CapabilityIntroAnimation = {
       !phase01 ||
       !phase02
     ) {
-      console.warn("[CapabilityIntroAnimation] Missing elements", elements);
+      console.warn("[BuildIntroAnimation] Missing elements", elements);
 
       return createNoopController();
     }
@@ -43,7 +43,6 @@ const CapabilityIntroAnimation = {
       },
     });
 
-    // Initial
     gsap.set(visualField, {
       autoAlpha: 1,
       scale: 1,
@@ -77,7 +76,6 @@ const CapabilityIntroAnimation = {
       y: 28,
     });
 
-    // Title reveal
     timeline.to(
       title,
       {
@@ -87,7 +85,6 @@ const CapabilityIntroAnimation = {
       0.08
     );
 
-    // Title scale
     timeline.to(
       title,
       {
@@ -98,7 +95,6 @@ const CapabilityIntroAnimation = {
       0.16
     );
 
-    // Header reveal
     timeline
       .to(
         eyebrow,
@@ -121,7 +117,6 @@ const CapabilityIntroAnimation = {
         0.62
       );
 
-    // Phase 01
     timeline.to(
       phase01,
       {
@@ -133,7 +128,6 @@ const CapabilityIntroAnimation = {
       0.74
     );
 
-    // Phase transition
     timeline
       .to(
         phase01,
@@ -178,4 +172,4 @@ const CapabilityIntroAnimation = {
   },
 };
 
-export default CapabilityIntroAnimation;
+export default BuildIntroAnimation;

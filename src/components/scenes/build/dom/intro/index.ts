@@ -1,6 +1,6 @@
 export {
-  getCapabilityIntroAnimationElements,
-  getCapabilityIntroProofAnimationElements,
-  type CapabilityIntroAnimationElements,
-  type CapabilityIntroProofAnimationElements,
-} from "./capabilityIntro.element";
+  getBuildIntroAnimationElements,
+  getBuildIntroProofAnimationElements,
+  type BuildIntroAnimationElements,
+  type BuildIntroProofAnimationElements,
+} from "./buildIntro.element";

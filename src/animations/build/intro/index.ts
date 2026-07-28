@@ -1,2 +1,2 @@
-export { default as CapabilityIntroAnimation } from "./capabilityIntro.animation";
-export { default as CapabilityIntroProofAnimation } from "./capabilityIntroProof.animation";
+export { default as BuildIntroAnimation } from "./buildIntro.animation";
+export { default as BuildIntroProofAnimation } from "./buildIntroProof.animation";

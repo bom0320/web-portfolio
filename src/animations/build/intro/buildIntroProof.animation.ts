@@ -6,17 +6,14 @@ import {
   type AnimationController,
 } from "@/animations/_shared";
 
-import type { CapabilityIntroProofAnimationElements } from "@/components/scenes/build/dom";
+import type { BuildIntroProofAnimationElements } from "@/components/scenes/build/dom";
 
-const CapabilityIntroProofAnimation = {
-  create(elements: CapabilityIntroProofAnimationElements): AnimationController {
+const BuildIntroProofAnimation = {
+  create(elements: BuildIntroProofAnimationElements): AnimationController {
     const { character, leftPoints, rightPoints, quote } = elements;
 
     if (!character || !leftPoints.length || !rightPoints.length || !quote) {
-      console.warn(
-        "[CapabilityIntroProofAnimation] Missing elements",
-        elements
-      );
+      console.warn("[BuildIntroProofAnimation] Missing elements", elements);
 
       return createNoopController();
     }
@@ -28,7 +25,6 @@ const CapabilityIntroProofAnimation = {
       quote,
     ];
 
-    // Initial
     gsap.set(character, {
       autoAlpha: 0,
       y: 40,
@@ -53,7 +49,6 @@ const CapabilityIntroProofAnimation = {
       y: 36,
     });
 
-    // Timeline
     const timeline = gsap.timeline({
       paused: true,
       defaults: {
@@ -119,4 +114,4 @@ const CapabilityIntroProofAnimation = {
   },
 };
 
-export default CapabilityIntroProofAnimation;
+export default BuildIntroProofAnimation;
