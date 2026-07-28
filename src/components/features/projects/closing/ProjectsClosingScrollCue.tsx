@@ -1,8 +1,8 @@
 export default function ProjectsClosingScrollCue() {
   return (
-    <div className="capability-closing__scroll">
-      <span className="capability-closing__scroll-line" />
-      <span className="capability-closing__scroll-text">SCROLL TO CONNECT</span>
+    <div className="projects-closing__scroll">
+      <span className="projects-closing__scroll-line" />
+      <span className="projects-closing__scroll-text">SCROLL TO CONNECT</span>
     </div>
   );
 }

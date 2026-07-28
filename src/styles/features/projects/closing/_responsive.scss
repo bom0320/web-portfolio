@@ -1,31 +1,31 @@
 @import "../../../abstracts/mixins";
 
 @include laptop {
-  .capability-closing {
+  .projects-closing {
     min-height: 120vh;
   }
 
-  .capability-closing__inner {
+  .projects-closing__inner {
     width: min(1080px, calc(100% - 80px));
   }
 
-  .capability-closing__content {
+  .projects-closing__content {
     padding-top: 96px;
   }
 
-  .capability-closing__eyebrow {
+  .projects-closing__eyebrow {
     margin-bottom: 20px;
 
     font-size: 18px;
   }
 
-  .capability-closing__title {
+  .projects-closing__title {
     font-size: clamp(42px, 5.6vw, 64px);
     line-height: 1.1;
     letter-spacing: -0.075em;
   }
 
-  .capability-closing__description {
+  .projects-closing__description {
     max-width: 640px;
     margin-top: 42px;
 
@@ -33,42 +33,42 @@
     line-height: 1.9;
   }
 
-  .capability-closing__cta {
+  .projects-closing__cta {
     margin-top: 104px;
   }
 
-  .capability-closing__scroll {
+  .projects-closing__scroll {
     bottom: 72px;
   }
 
-  .capability-closing__scroll-line {
+  .projects-closing__scroll-line {
     height: 84px;
   }
 }
 
 @include tablet {
-  .capability-closing {
+  .projects-closing {
     min-height: 110vh;
     min-height: 110svh;
   }
 
-  .capability-closing__inner {
+  .projects-closing__inner {
     width: min(760px, calc(100% - 64px));
     min-height: 100vh;
     min-height: 100svh;
   }
 
-  .capability-closing__content {
+  .projects-closing__content {
     padding-top: 112px;
   }
 
-  .capability-closing__eyebrow {
+  .projects-closing__eyebrow {
     margin-bottom: 18px;
 
     font-size: 17px;
   }
 
-  .capability-closing__title {
+  .projects-closing__title {
     max-width: 680px;
 
     font-size: clamp(38px, 6.6vw, 56px);
@@ -78,7 +78,7 @@
     word-break: keep-all;
   }
 
-  .capability-closing__description {
+  .projects-closing__description {
     max-width: 620px;
     margin-top: 36px;
 
@@ -89,56 +89,56 @@
     word-break: keep-all;
   }
 
-  .capability-closing__cta {
+  .projects-closing__cta {
     gap: 16px;
     margin-top: 76px;
 
     font-size: 15px;
   }
 
-  .capability-closing__cta-icon {
+  .projects-closing__cta-icon {
     font-size: 20px;
   }
 
-  .capability-closing__scroll {
+  .projects-closing__scroll {
     bottom: 52px;
     gap: 16px;
   }
 
-  .capability-closing__scroll-line {
+  .projects-closing__scroll-line {
     height: 72px;
   }
 
-  .capability-closing__scroll-text {
+  .projects-closing__scroll-text {
     font-size: 10px;
     letter-spacing: 0.2em;
   }
 }
 
 @include mobile {
-  .capability-closing {
+  .projects-closing {
     min-height: 100vh;
     min-height: 100svh;
   }
 
-  .capability-closing__inner {
+  .projects-closing__inner {
     width: min(520px, calc(100% - 44px));
     min-height: 100vh;
     min-height: 100svh;
   }
 
-  .capability-closing__content {
+  .projects-closing__content {
     padding-top: 96px;
   }
 
-  .capability-closing__eyebrow {
+  .projects-closing__eyebrow {
     margin-bottom: 16px;
 
     font-size: 15px;
     letter-spacing: -0.035em;
   }
 
-  .capability-closing__title {
+  .projects-closing__title {
     max-width: 330px;
 
     font-size: clamp(32px, 9vw, 42px);
@@ -148,7 +148,7 @@
     word-break: keep-all;
   }
 
-  .capability-closing__description {
+  .projects-closing__description {
     max-width: 320px;
     margin-top: 30px;
 
@@ -159,7 +159,7 @@
     word-break: keep-all;
   }
 
-  .capability-closing__cta {
+  .projects-closing__cta {
     gap: 12px;
     margin-top: 52px;
 
@@ -167,41 +167,41 @@
     letter-spacing: -0.015em;
   }
 
-  .capability-closing__cta-icon {
+  .projects-closing__cta-icon {
     font-size: 18px;
   }
 
-  .capability-closing__scroll {
+  .projects-closing__scroll {
     bottom: 28px;
     gap: 12px;
   }
 
-  .capability-closing__scroll-line {
+  .projects-closing__scroll-line {
     height: 54px;
   }
 
-  .capability-closing__scroll-text {
+  .projects-closing__scroll-text {
     font-size: 9px;
     letter-spacing: 0.18em;
   }
 }
 
 @include small-mobile {
-  .capability-closing__inner {
+  .projects-closing__inner {
     width: calc(100% - 36px);
   }
 
-  .capability-closing__content {
+  .projects-closing__content {
     padding-top: 84px;
   }
 
-  .capability-closing__eyebrow {
+  .projects-closing__eyebrow {
     margin-bottom: 14px;
 
     font-size: 14px;
   }
 
-  .capability-closing__title {
+  .projects-closing__title {
     max-width: 290px;
 
     font-size: clamp(28px, 9vw, 36px);
@@ -209,7 +209,7 @@
     letter-spacing: -0.06em;
   }
 
-  .capability-closing__description {
+  .projects-closing__description {
     max-width: 286px;
     margin-top: 26px;
 
@@ -217,27 +217,27 @@
     line-height: 1.72;
   }
 
-  .capability-closing__cta {
+  .projects-closing__cta {
     gap: 10px;
     margin-top: 44px;
 
     font-size: 12px;
   }
 
-  .capability-closing__cta-icon {
+  .projects-closing__cta-icon {
     font-size: 16px;
   }
 
-  .capability-closing__scroll {
+  .projects-closing__scroll {
     bottom: 22px;
     gap: 10px;
   }
 
-  .capability-closing__scroll-line {
+  .projects-closing__scroll-line {
     height: 46px;
   }
 
-  .capability-closing__scroll-text {
+  .projects-closing__scroll-text {
     font-size: 8px;
     letter-spacing: 0.16em;
   }

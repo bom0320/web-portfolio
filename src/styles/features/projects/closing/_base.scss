@@ -1,4 +1,4 @@
-.capability-closing {
+.projects-closing {
   position: relative;
   width: 100vw;
   min-height: 130vh;
@@ -9,20 +9,20 @@
   overflow: hidden;
 }
 
-.capability-closing__inner {
+.projects-closing__inner {
   position: relative;
   width: min(1280px, calc(100% - 64px));
   min-height: 100vh;
   margin: 0 auto;
 }
 
-.capability-closing__content {
+.projects-closing__content {
   position: relative;
   z-index: 2;
   padding-top: 60px;
 }
 
-.capability-closing__eyebrow {
+.projects-closing__eyebrow {
   margin: 0 0 20px;
 
   font-size: 20px;
@@ -33,7 +33,7 @@
   color: rgba(255, 255, 255, 0.76);
 }
 
-.capability-closing__title {
+.projects-closing__title {
   margin: 0;
 
   font-size: clamp(36px, 5.2vw, 58px);
@@ -44,7 +44,7 @@
   color: #fff;
 }
 
-.capability-closing__description {
+.projects-closing__description {
   max-width: 680px;
   margin: 50px 0 0;
 
@@ -56,7 +56,7 @@
   color: rgba(255, 255, 255, 0.62);
 }
 
-.capability-closing__cta {
+.projects-closing__cta {
   display: inline-flex;
   align-items: center;
   gap: 18px;
@@ -72,12 +72,12 @@
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-.capability-closing__cta:hover {
+.projects-closing__cta:hover {
   opacity: 0.68;
   transform: translateY(2px);
 }
 
-.capability-closing__cta-icon {
+.projects-closing__cta-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -86,11 +86,11 @@
   line-height: 1;
 }
 
-.capability-closing__cta-text {
+.projects-closing__cta-text {
   line-height: 1;
 }
 
-.capability-closing__scroll {
+.projects-closing__scroll {
   position: absolute;
   left: 50%;
   bottom: 90px;
@@ -104,7 +104,7 @@
   color: rgba(255, 255, 255, 0.28);
 }
 
-.capability-closing__scroll-line {
+.projects-closing__scroll-line {
   width: 1px;
   height: 96px;
 
@@ -115,7 +115,7 @@
   );
 }
 
-.capability-closing__scroll-text {
+.projects-closing__scroll-text {
   font-size: 11px;
   font-weight: 700;
   line-height: 1;

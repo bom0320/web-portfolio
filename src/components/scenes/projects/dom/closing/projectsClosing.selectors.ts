@@ -1,7 +1,7 @@
 export const PROJECTS_CLOSING_SELECTORS = {
-  content: ".js-capability-closing-content",
-  eyebrow: ".js-capability-closing-eyebrow",
-  title: ".js-capability-closing-title",
-  description: ".js-capability-closing-description",
-  cta: ".js-capability-closing-cta",
+  content: ".js-projects-closing-content",
+  eyebrow: ".js-projects-closing-eyebrow",
+  title: ".js-projects-closing-title",
+  description: ".js-projects-closing-description",
+  cta: ".js-projects-closing-cta",
 } as const;

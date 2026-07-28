@@ -1,11 +1,11 @@
 export default function ProjectsClosingStatement() {
   return (
-    <div className="capability-closing__content js-capability-closing-content">
-      <p className="capability-closing__eyebrow js-capability-closing-eyebrow">
+    <div className="projects-closing__content js-projects-closing-content">
+      <p className="projects-closing__eyebrow js-projects-closing-eyebrow">
         CLOSING
       </p>
 
-      <h2 className="capability-closing__title js-capability-closing-title">
+      <h2 className="projects-closing__title js-projects-closing-title">
         함께,
         <br />
         더 좋은 경험을
@@ -13,7 +13,7 @@ export default function ProjectsClosingStatement() {
         만들고 싶습니다.
       </h2>
 
-      <p className="capability-closing__description js-capability-closing-description">
+      <p className="projects-closing__description js-projects-closing-description">
         흐름을 설계하고,
         <br />
         구조를 정리하고,
@@ -30,10 +30,10 @@ export default function ProjectsClosingStatement() {
 
       <a
         href="#contact"
-        className="capability-closing__cta js-capability-closing-cta"
+        className="projects-closing__cta js-projects-closing-cta"
       >
-        <span className="capability-closing__cta-icon">↓</span>
-        <span className="capability-closing__cta-text">GET IN TOUCH</span>
+        <span className="projects-closing__cta-icon">↓</span>
+        <span className="projects-closing__cta-text">GET IN TOUCH</span>
       </a>
     </div>
   );

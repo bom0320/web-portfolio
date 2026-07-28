@@ -5,8 +5,8 @@ import {
 
 export default function ProjectsClosingScene() {
   return (
-    <section className="capability-closing js-capability-closing">
-      <div className="capability-closing__inner">
+    <section className="projects-closing js-projects-closing">
+      <div className="projects-closing__inner">
         <ProjectsClosingStatement />
       </div>
 
