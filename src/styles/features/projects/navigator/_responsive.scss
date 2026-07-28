@@ -1,14 +1,14 @@
 @include mobile {
-  .capability-navigator {
+  .projects-navigator {
     overflow: clip;
   }
 
-  .capability-navigator-intro {
+  .projects-navigator-intro {
     width: min(100% - 48px, 520px);
     padding: 104px 0 40px;
   }
 
-  .capability-navigator-intro__eyebrow {
+  .projects-navigator-intro__eyebrow {
     margin-bottom: 14px;
 
     font-size: 14px;
@@ -16,7 +16,7 @@
     letter-spacing: -0.02em;
   }
 
-  .capability-navigator-intro__title {
+  .projects-navigator-intro__title {
     max-width: 260px;
 
     font-size: clamp(31px, 9.2vw, 38px);
@@ -24,7 +24,7 @@
     letter-spacing: -0.06em;
   }
 
-  .capability-navigator-intro__description {
+  .projects-navigator-intro__description {
     max-width: 272px;
     margin-top: 26px;
 
@@ -34,19 +34,19 @@
     word-break: keep-all;
   }
 
-  .capability-navigator-pin {
+  .projects-navigator-pin {
     height: auto;
     min-height: auto;
 
     overflow: visible;
   }
 
-  .capability-navigator-pin__inner {
+  .projects-navigator-pin__inner {
     height: auto;
     min-height: auto;
   }
 
-  .capability-navigator-showcase {
+  .projects-navigator-showcase {
     width: min(100% - 48px, 520px);
     height: auto;
     min-height: auto;
@@ -61,7 +61,7 @@
     overflow: visible;
   }
 
-  .capability-navigator-showcase__right {
+  .projects-navigator-showcase__right {
     order: 1;
 
     width: 100%;
@@ -70,7 +70,7 @@
     overflow: clip;
   }
 
-  .capability-navigator-showcase__left {
+  .projects-navigator-showcase__left {
     order: 2;
 
     width: 100%;
@@ -82,7 +82,7 @@
     overflow: visible;
   }
 
-  .capability-navigator-monitor {
+  .projects-navigator-monitor {
     width: 100%;
     min-height: auto;
 
@@ -93,7 +93,7 @@
     overflow: clip;
   }
 
-  .capability-navigator-monitor__stage {
+  .projects-navigator-monitor__stage {
     width: 100%;
     max-width: 420px;
     margin-left: 0;
@@ -102,7 +102,7 @@
     transform-origin: center center;
   }
 
-  .capability-navigator-list {
+  .projects-navigator-list {
     width: 100%;
     height: auto;
     max-height: none;
@@ -121,11 +121,11 @@
     scroll-padding-bottom: 0;
   }
 
-  .capability-navigator-list__row {
+  .projects-navigator-list__row {
     flex: initial;
   }
 
-  .capability-navigator-list__item {
+  .projects-navigator-list__item {
     flex: initial;
 
     height: 60px;
@@ -137,8 +137,8 @@
     color: rgba(255, 255, 255, 0.32);
   }
 
-  .capability-navigator-list__item.is-active,
-  .capability-navigator-list__item.is-preview {
+  .projects-navigator-list__item.is-active,
+  .projects-navigator-list__item.is-preview {
     background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 0.13),
@@ -151,43 +151,43 @@
       0 16px 36px rgba(0, 0, 0, 0.38);
   }
 
-  .capability-navigator-list__text {
+  .projects-navigator-list__text {
     gap: 4px;
   }
 
-  .capability-navigator-list__category {
+  .projects-navigator-list__category {
     font-size: 9px;
   }
 
-  .capability-navigator-list__title {
+  .projects-navigator-list__title {
     font-size: 16px;
     line-height: 1.1;
     letter-spacing: -0.035em;
   }
 
-  .capability-navigator-list__icon {
+  .projects-navigator-list__icon {
     font-size: 16px;
   }
 }
 
 @include small-mobile {
-  .capability-navigator {
+  .projects-navigator {
     overflow: clip;
   }
 
-  .capability-navigator-intro {
+  .projects-navigator-intro {
     width: calc(100% - 40px);
     padding: 120px 0 36px;
   }
 
-  .capability-navigator-intro__eyebrow {
+  .projects-navigator-intro__eyebrow {
     margin-bottom: 12px;
 
     font-size: 13px;
     line-height: 1;
   }
 
-  .capability-navigator-intro__title {
+  .projects-navigator-intro__title {
     max-width: 230px;
 
     font-size: clamp(29px, 9vw, 34px);
@@ -195,7 +195,7 @@
     letter-spacing: -0.055em;
   }
 
-  .capability-navigator-intro__description {
+  .projects-navigator-intro__description {
     max-width: 250px;
     margin-top: 22px;
 
@@ -205,19 +205,19 @@
     word-break: keep-all;
   }
 
-  .capability-navigator-pin {
+  .projects-navigator-pin {
     height: auto;
     min-height: auto;
 
     overflow: visible;
   }
 
-  .capability-navigator-pin__inner {
+  .projects-navigator-pin__inner {
     height: auto;
     min-height: auto;
   }
 
-  .capability-navigator-showcase {
+  .projects-navigator-showcase {
     width: calc(100% - 38px);
     height: auto;
     min-height: auto;
@@ -232,7 +232,7 @@
     overflow: visible;
   }
 
-  .capability-navigator-showcase__right {
+  .projects-navigator-showcase__right {
     order: 1;
 
     width: 100%;
@@ -241,7 +241,7 @@
     overflow: clip;
   }
 
-  .capability-navigator-showcase__left {
+  .projects-navigator-showcase__left {
     order: 2;
 
     width: 100%;
@@ -253,7 +253,7 @@
     overflow: visible;
   }
 
-  .capability-navigator-monitor {
+  .projects-navigator-monitor {
     width: 100%;
     min-height: auto;
 
@@ -264,7 +264,7 @@
     overflow: clip;
   }
 
-  .capability-navigator-monitor__stage {
+  .projects-navigator-monitor__stage {
     width: 100%;
     max-width: 380px;
     margin-left: 0;
@@ -273,7 +273,7 @@
     transform-origin: center center;
   }
 
-  .capability-navigator-list {
+  .projects-navigator-list {
     width: 100%;
     height: auto;
     max-height: none;
@@ -292,19 +292,19 @@
     scroll-padding-bottom: 0;
   }
 
-  .capability-navigator-list__row {
+  .projects-navigator-list__row {
     flex: initial;
   }
 
-  .capability-navigator-list__item {
+  .projects-navigator-list__item {
     height: 58px;
     padding: 0 16px;
 
     border-radius: 18px;
   }
 
-  .capability-navigator-list__item.is-active,
-  .capability-navigator-list__item.is-preview {
+  .projects-navigator-list__item.is-active,
+  .projects-navigator-list__item.is-preview {
     background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 0.13),
@@ -317,21 +317,21 @@
       0 16px 36px rgba(0, 0, 0, 0.38);
   }
 
-  .capability-navigator-list__text {
+  .projects-navigator-list__text {
     gap: 3px;
   }
 
-  .capability-navigator-list__category {
+  .projects-navigator-list__category {
     font-size: 8px;
   }
 
-  .capability-navigator-list__title {
+  .projects-navigator-list__title {
     font-size: 15px;
     line-height: 1.1;
     letter-spacing: -0.035em;
   }
 
-  .capability-navigator-list__icon {
+  .projects-navigator-list__icon {
     font-size: 15px;
   }
 }

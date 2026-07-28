@@ -15,26 +15,26 @@ export default function ProjectsNavigatorMonitor({
   activeIndex,
 }: ProjectsNavigatorMonitorProps) {
   return (
-    <div className="capability-navigator-monitor">
-      <div className="capability-navigator-monitor__stage">
+    <div className="projects-navigator-monitor">
+      <div className="projects-navigator-monitor__stage">
         <Image
           src={CAPABILITY_NAVIGATOR_MONITOR_FRAME}
           alt=""
           width={900}
           height={700}
-          className="capability-navigator-monitor__mockup"
+          className="projects-navigator-monitor__mockup"
           priority
         />
 
-        <div className="capability-navigator-monitor__screen">
-          <div className="capability-navigator-monitor__viewport">
+        <div className="projects-navigator-monitor__screen">
+          <div className="projects-navigator-monitor__viewport">
             {items.map((item, index) => (
               <Image
                 key={item.id}
                 src={item.heroImage}
                 alt={`${item.title} preview`}
                 fill
-                className={`capability-navigator-monitor__screen-image ${
+                className={`projects-navigator-monitor__screen-image ${
                   index === activeIndex ? "is-active" : ""
                 }`}
                 sizes="(max-width: 640px) 220vw, (max-width: 900px) 124vw, 520px"

@@ -1,10 +1,10 @@
-.capability-navigator-intro {
+.projects-navigator-intro {
   width: min(1180px, calc(100% - 64px));
   margin: 0 auto;
   padding: 180px 0 50px;
 }
 
-.capability-navigator-intro__eyebrow {
+.projects-navigator-intro__eyebrow {
   margin: 0 0 18px;
   font-size: 16px;
   font-weight: 700;
@@ -13,7 +13,7 @@
   color: rgba(255, 255, 255, 0.82);
 }
 
-.capability-navigator-intro__title {
+.projects-navigator-intro__title {
   margin: 0;
   max-width: 620px;
   font-size: clamp(42px, 5vw, 58px);
@@ -24,7 +24,7 @@
   word-break: keep-all;
 }
 
-.capability-navigator-intro__description {
+.projects-navigator-intro__description {
   margin: 26px 0 0;
   max-width: 620px;
   font-size: 17px;

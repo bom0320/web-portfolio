@@ -25,20 +25,20 @@ export default function ProjectsNavigatorScene({
   onPreviewIndexChange,
 }: ProjectsNavigatorSceneProps) {
   return (
-    <section className="capability-navigator js-capability-navigator">
-      <div className="capability-navigator__inner">
+    <section className="projects-navigator js-projects-navigator">
+      <div className="projects-navigator__inner">
         <ProjectsNavigatorIntro />
 
         <div
           id="projects"
-          className="capability-navigator__anchor"
+          className="projects-navigator__anchor"
           aria-hidden="true"
         />
 
-        <div className="capability-navigator-pin js-capability-navigator-pin">
-          <div className="capability-navigator-pin__inner">
-            <div className="capability-navigator-showcase">
-              <div className="capability-navigator-showcase__left">
+        <div className="projects-navigator-pin js-projects-navigator-pin">
+          <div className="projects-navigator-pin__inner">
+            <div className="projects-navigator-showcase">
+              <div className="projects-navigator-showcase__left">
                 <ProjectsNavigatorList
                   items={items}
                   activeIndex={activeIndex}
@@ -48,7 +48,7 @@ export default function ProjectsNavigatorScene({
                 />
               </div>
 
-              <div className="capability-navigator-showcase__right">
+              <div className="projects-navigator-showcase__right">
                 <ProjectsNavigatorMonitor
                   items={items}
                   activeIndex={visibleIndex}

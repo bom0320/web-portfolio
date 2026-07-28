@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { Dispatch, MouseEvent, SetStateAction } from "react";
 
 import type { ProjectItem } from "@/data/projects";
-interface CapabilityNavigatorListProps {
+interface ProjectsNavigatorListProps {
   items: ProjectItem[];
   activeIndex: number;
   visibleIndex: number;
@@ -24,13 +24,13 @@ const isMobileNavigator = () => {
   return window.matchMedia("(max-width: 900px)").matches;
 };
 
-export default function CapabilityNavigatorList({
+export default function ProjectsNavigatorList({
   items,
   activeIndex,
   visibleIndex,
   onActiveIndexChange,
   onPreviewIndexChange,
-}: CapabilityNavigatorListProps) {
+}: ProjectsNavigatorListProps) {
   const handleMouseEnter = (index: number) => {
     if (!canUseHoverPreview()) return;
 
@@ -58,14 +58,14 @@ export default function CapabilityNavigatorList({
   };
 
   return (
-    <ul className="capability-navigator-list">
+    <ul className="projects-navigator-list">
       {items.map((item, index) => {
         const isActive = index === activeIndex;
         const isVisible = index === visibleIndex;
         const isPreview = isVisible && visibleIndex !== activeIndex;
 
         const itemClassName = [
-          "capability-navigator-list__item",
+          "projects-navigator-list__item",
           isActive && "is-active",
           isPreview && "is-preview",
           isVisible && "is-visible",
@@ -74,7 +74,7 @@ export default function CapabilityNavigatorList({
           .join(" ");
 
         return (
-          <li className="capability-navigator-list__row" key={item.id}>
+          <li className="projects-navigator-list__row" key={item.id}>
             <Link
               href={item.link}
               className={itemClassName}
@@ -85,17 +85,17 @@ export default function CapabilityNavigatorList({
               onFocus={() => handleMouseEnter(index)}
               onBlur={handleMouseLeave}
             >
-              <span className="capability-navigator-list__text">
-                <span className="capability-navigator-list__category">
+              <span className="projects-navigator-list__text">
+                <span className="projects-navigator-list__category">
                   {item.category}
                 </span>
 
-                <span className="capability-navigator-list__title">
+                <span className="projects-navigator-list__title">
                   {item.title}
                 </span>
               </span>
 
-              <span className="capability-navigator-list__icon">↗</span>
+              <span className="projects-navigator-list__icon">↗</span>
             </Link>
           </li>
         );

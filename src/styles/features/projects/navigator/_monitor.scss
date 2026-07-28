@@ -1,16 +1,16 @@
-.capability-navigator-monitor {
+.projects-navigator-monitor {
   display: flex;
   align-items: center;
   justify-content: center;
   transform: translate(60px, 100px);
 }
 
-.capability-navigator-monitor__stage {
+.projects-navigator-monitor__stage {
   position: relative;
   width: min(960px, 72vw);
 }
 
-.capability-navigator-monitor__mockup {
+.projects-navigator-monitor__mockup {
   position: relative;
   z-index: 1;
 
@@ -22,7 +22,7 @@
   user-select: none;
 }
 
-.capability-navigator-monitor__screen {
+.projects-navigator-monitor__screen {
   position: absolute;
   z-index: 2;
 
@@ -53,7 +53,7 @@
     linear-gradient(135deg, #09142d 0%, #102a69 34%, #1d4ed8 68%, #2f6df2 100%);
 }
 
-.capability-navigator-monitor__screen::before {
+.projects-navigator-monitor__screen::before {
   content: "";
   position: absolute;
   inset: -28% -18%;
@@ -73,7 +73,7 @@
   pointer-events: none;
 }
 
-.capability-navigator-monitor__viewport {
+.projects-navigator-monitor__viewport {
   position: relative;
 
   width: 86%;
@@ -85,7 +85,7 @@
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
 }
 
-.capability-navigator-monitor__screen-image {
+.projects-navigator-monitor__screen-image {
   object-fit: cover;
   object-position: center top;
 
@@ -95,7 +95,7 @@
   transition: opacity 0.35s ease, transform 0.45s ease;
 }
 
-.capability-navigator-monitor__screen-image.is-active {
+.projects-navigator-monitor__screen-image.is-active {
   opacity: 1;
   transform: scale(1);
 }

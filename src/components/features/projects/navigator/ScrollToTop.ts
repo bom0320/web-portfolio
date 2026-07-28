@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { refreshScrollTrigger } from "@/lib/gsap";
 
-const NAVIGATOR_PIN_TRIGGER_ID = "capability-navigator-pin";
+const NAVIGATOR_PIN_TRIGGER_ID = "projects-navigator-pin";
 
 const MAX_RETRY_COUNT = 30;
 const RETRY_DELAY = 50;

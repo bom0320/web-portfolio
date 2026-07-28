@@ -12,13 +12,13 @@ export default function ProjectDetailActions({
   if (actionCount === 0) return null;
 
   return (
-    <div className="capability-detail-hero__actions" data-count={actionCount}>
+    <div className="project-detail-hero__actions" data-count={actionCount}>
       {liveUrl && (
         <a
           href={liveUrl}
           target="_blank"
           rel="noreferrer"
-          className="capability-detail-hero__action"
+          className="project-detail-hero__action"
         >
           View Site
         </a>
@@ -29,7 +29,7 @@ export default function ProjectDetailActions({
           href={githubUrl}
           target="_blank"
           rel="noreferrer"
-          className="capability-detail-hero__action capability-detail-hero__action--secondary"
+          className="project-detail-hero__action project-detail-hero__action--secondary"
         >
           GitHub
         </a>
