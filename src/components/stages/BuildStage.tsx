@@ -21,7 +21,7 @@ export default function BuildStage() {
   });
 
   return (
-    <section id="build" ref={stageRef} className="capability-stage">
+    <section id="build" ref={stageRef} className="content-stage">
       <BuildIntroScene />
       <BuildExperienceScene />
     </section>

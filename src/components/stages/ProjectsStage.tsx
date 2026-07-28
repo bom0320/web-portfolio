@@ -29,7 +29,7 @@ export default function ProjectsStage() {
   });
 
   return (
-    <section id="projects" ref={stageRef} className="capability-stage">
+    <section id="projects" ref={stageRef} className="content-stage">
       <ProjectsNavigatorScene
         items={PROJECT_ITEMS}
         activeIndex={activeProjectIndex}
