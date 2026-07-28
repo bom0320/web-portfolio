@@ -8,29 +8,29 @@ type BuildStructureGridProps = {
 
 export default function BuildStructureGrid({ items }: BuildStructureGridProps) {
   return (
-    <div className="experience-capability-grid experience-capability-grid--structure js-structure-capability-grid">
+    <div className="build-experience-grid build-experience-grid--structure js-build-structure-grid">
       {items.map((item) => {
         const Icon = BUILD_STRUCTURE_ICON_MAP[item.icon];
 
         return (
           <article
             key={item.id}
-            className="experience-capability-card js-structure-capability-card"
+            className="build-experience-card js-build-structure-card"
           >
-            <div className="experience-capability-card__icon js-structure-capability-card-icon">
+            <div className="build-experience-card__icon js-build-structure-card-icon">
               <Icon aria-hidden="true" />
             </div>
 
-            <div className="experience-capability-card__content">
-              <h3 className="experience-capability-card__title js-structure-capability-card-title">
+            <div className="build-experience-card__content">
+              <h3 className="build-experience-card__title js-build-structure-card-title">
                 {item.title}
               </h3>
 
-              <p className="experience-capability-card__message js-structure-capability-card-message">
+              <p className="build-experience-card__message js-build-structure-card-message">
                 {item.message}
               </p>
 
-              <p className="experience-capability-card__desc js-structure-capability-card-desc">
+              <p className="build-experience-card__desc js-build-structure-card-desc">
                 {item.description}
               </p>
             </div>

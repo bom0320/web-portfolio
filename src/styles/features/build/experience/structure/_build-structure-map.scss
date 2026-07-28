@@ -1,4 +1,4 @@
-.experience-capability-structure-map {
+.build-experience-structure-map {
   position: relative;
 
   --branch-top: 168px;
@@ -10,7 +10,7 @@
 }
 
 /* 중앙 코어 */
-.experience-capability-structure-map__core {
+.build-experience-structure-map__core {
   position: absolute;
   left: 50%;
   top: 12px;
@@ -38,7 +38,7 @@
 }
 
 /* 중앙 세로 줄 */
-.experience-capability-structure-map__stem {
+.build-experience-structure-map__stem {
   position: absolute;
   left: 50%;
   top: 96px;
@@ -61,7 +61,7 @@
 }
 
 /* 가로 브랜치 */
-.experience-capability-structure-map__branch {
+.build-experience-structure-map__branch {
   position: absolute;
   left: 50%;
   top: var(--branch-top);
@@ -87,8 +87,8 @@
 }
 
 /* 양 끝 꺾임 */
-.experience-capability-structure-map__branch::before,
-.experience-capability-structure-map__branch::after {
+.build-experience-structure-map__branch::before,
+.build-experience-structure-map__branch::after {
   content: "";
   position: absolute;
   top: 0;
@@ -103,14 +103,14 @@
   transform-origin: top center;
 }
 
-.experience-capability-structure-map__branch::before {
+.build-experience-structure-map__branch::before {
   left: 0;
 
   border-left: 3px solid rgba(118, 245, 225, 0.5);
   border-top-left-radius: 20px;
 }
 
-.experience-capability-structure-map__branch::after {
+.build-experience-structure-map__branch::after {
   right: 0;
 
   border-right: 3px solid rgba(118, 245, 225, 0.5);
@@ -118,13 +118,13 @@
 }
 
 /* 노드 컨테이너 */
-.experience-capability-structure-map__items {
+.build-experience-structure-map__items {
   position: absolute;
   inset: 0;
   z-index: 3;
 }
 
-.experience-capability-structure-map__node {
+.build-experience-structure-map__node {
   position: absolute;
 
   width: var(--node-size);
@@ -147,7 +147,7 @@
 }
 
 /* 브랜치 → 노드 수직 라인 */
-.experience-capability-structure-map__node::before {
+.build-experience-structure-map__node::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -172,7 +172,7 @@
   filter: drop-shadow(0 0 8px rgba(86, 233, 210, 0.58));
 }
 
-.experience-capability-structure-map__node-label {
+.build-experience-structure-map__node-label {
   max-width: 64px;
 
   font-size: 12px;
@@ -185,7 +185,7 @@
 }
 
 /* 높이 차를 더 크게 줘서 아래가 뾰족하게 모이게 */
-.experience-capability-structure-map__node--1 {
+.build-experience-structure-map__node--1 {
   left: 8.8%;
   top: 216px;
 
@@ -193,7 +193,7 @@
   --line-height: 48px;
 }
 
-.experience-capability-structure-map__node--2 {
+.build-experience-structure-map__node--2 {
   left: 25%;
   top: 268px;
 
@@ -201,7 +201,7 @@
   --line-height: 100px;
 }
 
-.experience-capability-structure-map__node--3 {
+.build-experience-structure-map__node--3 {
   left: 41%;
   top: 360px;
 
@@ -209,7 +209,7 @@
   --line-height: 180px;
 }
 
-.experience-capability-structure-map__node--4 {
+.build-experience-structure-map__node--4 {
   left: 59%;
   top: 360px;
 
@@ -217,7 +217,7 @@
   --line-height: 180px;
 }
 
-.experience-capability-structure-map__node--5 {
+.build-experience-structure-map__node--5 {
   left: 75%;
   top: 268px;
 
@@ -225,7 +225,7 @@
   --line-height: 100px;
 }
 
-.experience-capability-structure-map__node--6 {
+.build-experience-structure-map__node--6 {
   left: 91.2%;
   top: 222px;
 

@@ -3,7 +3,7 @@ export const BUILD_STAGE_SELECTORS = {
   introPinned: ".js-build-intro-pinned",
   introProof: ".js-build-intro-proof",
 
-  structure: ".js-capability-structure",
-  ai: ".js-capability-ai",
-  visual: ".js-capability-visual",
+  structure: ".js-build-structure",
+  ai: ".js-build-ai",
+  visual: ".js-build-visual",
 } as const;

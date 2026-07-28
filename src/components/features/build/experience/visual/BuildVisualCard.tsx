@@ -26,15 +26,15 @@ export default function BuildVisualCard({ item }: BuildVisualCardProps) {
   return (
     <article
       style={style}
-      className={`experience-capability-visual-card experience-capability-visual-card--${
+      className={`build-experience-visual-card build-experience-visual-card--${
         item.id
-      } experience-capability-visual-card--${item.variant} ${
-        item.accent ? "experience-capability-visual-card--accent" : ""
+      } build-experience-visual-card--${item.variant} ${
+        item.accent ? "build-experience-visual-card--accent" : ""
       }`}
     >
       {item.accent ? (
         <svg
-          className="experience-capability-visual-card__gradient-def"
+          className="build-experience-visual-card__gradient-def"
           width="0"
           height="0"
           aria-hidden="true"
@@ -51,29 +51,29 @@ export default function BuildVisualCard({ item }: BuildVisualCardProps) {
       ) : null}
 
       {hasImage && item.image ? (
-        <div className="experience-capability-visual-card__media">
+        <div className="build-experience-visual-card__media">
           <Image
             src={item.image.src}
             alt={item.image.alt}
             fill
-            className="experience-capability-visual-card__image"
+            className="build-experience-visual-card__image"
           />
         </div>
       ) : null}
 
-      <div className="experience-capability-visual-card__overlay" />
+      <div className="build-experience-visual-card__overlay" />
 
-      <div className="experience-capability-visual-card__content">
-        <div className="experience-capability-visual-card__icon">
+      <div className="build-experience-visual-card__content">
+        <div className="build-experience-visual-card__icon">
           <Icon aria-hidden="true" />
         </div>
 
-        <h3 className="experience-capability-visual-card__title">
+        <h3 className="build-experience-visual-card__title">
           {item.title}
         </h3>
 
         {item.description ? (
-          <p className="experience-capability-visual-card__desc">
+          <p className="build-experience-visual-card__desc">
             {item.description}
           </p>
         ) : null}

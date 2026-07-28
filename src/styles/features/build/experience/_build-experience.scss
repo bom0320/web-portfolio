@@ -1,4 +1,4 @@
-.experience-capability {
+.build-experience {
   position: relative;
   min-height: 100vh;
 
@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-.experience-capability::before {
+.build-experience::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -26,7 +26,7 @@
   pointer-events: none;
 }
 
-.experience-capability::after {
+.build-experience::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -42,7 +42,7 @@
   pointer-events: none;
 }
 
-.experience-capability__inner {
+.build-experience__inner {
   position: relative;
   z-index: 1;
 
@@ -51,24 +51,24 @@
   padding: 120px 0 160px;
 }
 
-.experience-capability-block {
+.build-experience-block {
   position: relative;
 }
 
-.experience-capability-block + .experience-capability-block {
+.build-experience-block + .build-experience-block {
   margin-top: 180px;
 }
 
-.experience-capability-block__header {
+.build-experience-block__header {
   max-width: 760px;
 }
 
-.experience-capability-block__header--center {
+.build-experience-block__header--center {
   margin: 0 auto;
   text-align: center;
 }
 
-.experience-capability-block__eyebrow {
+.build-experience-block__eyebrow {
   margin: 0 0 20px;
 
   font-size: 20px;
@@ -79,7 +79,7 @@
   color: rgba(255, 255, 255, 0.76);
 }
 
-.experience-capability-block__title {
+.build-experience-block__title {
   margin: 0;
 
   font-size: clamp(36px, 5.2vw, 58px);
@@ -90,7 +90,7 @@
   color: #fff;
 }
 
-.experience-capability-block__desc {
+.build-experience-block__desc {
   max-width: 680px;
   margin: 28px 0 0;
 
@@ -102,13 +102,13 @@
   color: rgba(255, 255, 255, 0.62);
 }
 
-.experience-capability-block__header--center
-  .experience-capability-block__desc {
+.build-experience-block__header--center
+  .build-experience-block__desc {
   margin-right: auto;
   margin-left: auto;
 }
 
-.experience-capability-visual {
+.build-experience-visual {
   position: relative;
   width: 100%;
 }

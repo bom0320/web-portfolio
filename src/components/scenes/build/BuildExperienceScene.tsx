@@ -8,8 +8,8 @@ import {
 
 export default function BuildExperienceScene() {
   return (
-    <section className="experience-capability-scene js-capability-experience">
-      <div className="experience-capability-scene__inner">
+    <section className="build-experience-scene js-build-experience">
+      <div className="build-experience-scene__inner">
         <BuildStructureBlock />
         <BuildAIBlock />
         <BuildVisualBlock />

@@ -13,14 +13,14 @@ export default function BuildVisualGallery({ items }: BuildVisualGalleryProps) {
   const motionItem = items.find((item) => item.id === "motion");
 
   return (
-    <div className="experience-capability-visual-gallery">
-      <div className="experience-capability-visual-gallery__column experience-capability-visual-gallery__column--left">
+    <div className="build-experience-visual-gallery">
+      <div className="build-experience-visual-gallery__column build-experience-visual-gallery__column--left">
         {characterItem ? <BuildVisualCard item={characterItem} /> : null}
 
         {storytellingItem ? <BuildVisualCard item={storytellingItem} /> : null}
       </div>
 
-      <div className="experience-capability-visual-gallery__column experience-capability-visual-gallery__column--right">
+      <div className="build-experience-visual-gallery__column build-experience-visual-gallery__column--right">
         {typographyItem ? <BuildVisualCard item={typographyItem} /> : null}
 
         {motionItem ? <BuildVisualCard item={motionItem} /> : null}
