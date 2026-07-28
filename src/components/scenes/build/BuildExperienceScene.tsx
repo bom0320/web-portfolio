@@ -4,7 +4,7 @@ import {
   AICapabilityBlock,
   StructureCapabilityBlock,
   VisualCapabilityBlock,
-} from "@/components/features/capability";
+} from "@/components/features/build";
 
 export default function BuildExperienceScene() {
   return (

@@ -3,7 +3,7 @@
 import {
   IntroPinnedNarrative,
   IntroVisualProof,
-} from "@/components/features/capability";
+} from "@/components/features/build";
 
 export default function BuildIntroScene() {
   return (
