@@ -1,7 +1,11 @@
 # Folder Structure
 
 이 프로젝트는 스크롤 기반 원페이지 포트폴리오이며,
-Stage → Scene → Feature Component → Animation Controller 구조를 기준으로 구성한다.
+Stage → Scene → Feature Component 구조를 기준으로 구성한다.
+
+애니메이션 구현은 Animation Controller에,
+DOM 탐색은 Scene DOM Helper에,
+ScrollTrigger orchestration은 Stage Hook에 분리한다.
 
 ---
 
@@ -29,7 +33,8 @@ Next.js App Router 엔트리 영역이다.
 ```txt
 app/
 ├─ api/
-├─ capability/
+├─ projects/
+│  └─ [id]/
 ├─ icon.png
 ├─ layout.tsx
 ├─ opengraph-image.png
@@ -43,6 +48,12 @@ app/
 - 메타 이미지 관리
 - API route 관리
 - 프로젝트 상세 페이지 라우트 관리
+
+프로젝트 상세 페이지는 다음 경로를 사용한다.
+
+```txt
+/projects/[id]
+```
 
 ---
 
@@ -62,59 +73,179 @@ components/
 
 ### stages/
 
-스크롤 흐름을 제어하는 큰 단위이다.
+스크롤 흐름을 구성하는 가장 큰 화면 단위이다.
+
+```txt
+stages/
+├─ IntroStage.tsx
+├─ BuildStage.tsx
+├─ ProjectsStage.tsx
+├─ ContactStage.tsx
+├─ constants/
+├─ hooks/
+└─ index.ts
+```
 
 Examples:
 
 ```txt
 IntroStage
-CapabilityStage
+BuildStage
+ProjectsStage
 ContactStage
 ```
 
-Stage는 여러 Scene을 묶고, 해당 구간의 스크롤 흐름을 연결한다.
+Stage는 여러 Scene을 묶고 해당 구간의 Hook을 연결한다.
+
+---
+
+### stages/hooks/
+
+Stage와 ScrollTrigger, Animation Controller를 연결한다.
+
+```txt
+hooks/
+├─ useIntroStageAnimation.ts
+├─ useBuildStageAnimation.ts
+├─ useProjectsStageAnimation.ts
+├─ useContactStageAnimation.ts
+└─ helpers/
+   ├─ build/
+   └─ projects/
+```
+
+Build helper:
+
+```txt
+helpers/build/
+├─ buildStageControllers.ts
+└─ buildStageElements.ts
+```
+
+Projects helper:
+
+```txt
+helpers/projects/
+├─ projectsStageControllers.ts
+└─ projectsStageElements.ts
+```
+
+Stage Hook은 긴 animation timeline을 직접 소유하지 않는다.
 
 ---
 
 ### scenes/
 
-Stage 안에서 하나의 시각적 구간을 구성하는 단위이다.
-
-Examples:
+Stage 안에서 하나의 시각적 구간을 구성한다.
 
 ```txt
-HeroScene
-LifeMotionScene
-CapabilityIntroScene
-ExperienceCapabilityScene
-CapabilityNavigatorScene
-ContactIntroScene
+scenes/
+├─ intro/
+├─ build/
+│  ├─ BuildIntroScene.tsx
+│  ├─ BuildExperienceScene.tsx
+│  └─ dom/
+│     ├─ intro/
+│     └─ experience/
+├─ projects/
+│  ├─ ProjectsNavigatorScene.tsx
+│  ├─ ProjectsClosingScene.tsx
+│  └─ dom/
+│     ├─ navigator/
+│     └─ closing/
+└─ contact/
 ```
 
-Scene은 화면 구조와 시각적 구성을 담당한다.
+Scene은 JSX 구조와 Feature Component 조합을 담당한다.
+
+---
+
+### scenes/build/dom/
+
+Build Scene의 애니메이션 대상 DOM 요소를 수집한다.
+
+```txt
+dom/
+├─ intro/
+│  ├─ buildIntro.element.ts
+│  ├─ buildIntro.selectors.ts
+│  └─ index.ts
+└─ experience/
+   ├─ buildExperience.element.ts
+   ├─ buildExperience.selectors.ts
+   └─ index.ts
+```
+
+---
+
+### scenes/projects/dom/
+
+Projects Scene의 애니메이션 대상 DOM 요소를 수집한다.
+
+```txt
+dom/
+├─ navigator/
+│  ├─ projectsNavigator.element.ts
+│  ├─ projectsNavigator.selectors.ts
+│  └─ index.ts
+└─ closing/
+   ├─ projectsClosing.element.ts
+   ├─ projectsClosing.selectors.ts
+   └─ index.ts
+```
 
 ---
 
 ### features/
 
-Scene 내부에서 사용되는 기능성 UI 단위이다.
-
-Examples:
+Scene 내부에서 사용되는 기능성 UI 단위를 관리한다.
 
 ```txt
-SkillCarousel
-ProjectMonitor
-ProjectList
-ContactForm
+features/
+├─ build/
+│  ├─ intro/
+│  └─ experience/
+│     ├─ structure/
+│     ├─ ai/
+│     └─ visual/
+├─ projects/
+│  ├─ navigator/
+│  └─ closing/
+├─ contact/
+└─ ...
 ```
 
-Feature Component는 재사용 가능한 UI와 단일 기능을 담당한다.
+Build feature examples:
+
+```txt
+BuildStructureBlock
+BuildStructureGrid
+BuildStructureMap
+BuildAIBlock
+BuildVisualBlock
+BuildVisualGallery
+BuildVisualCard
+IntroPinnedNarrative
+IntroVisualProof
+```
+
+Projects feature examples:
+
+```txt
+ProjectsNavigatorIntro
+ProjectsNavigatorList
+ProjectsNavigatorMonitor
+ProjectsClosingStatement
+ProjectsClosingScrollCue
+ProjectDetailHero
+ProjectDetailGallery
+```
 
 ---
 
 ### shared/
 
-여러 영역에서 공통으로 사용되는 UI 또는 시스템 컴포넌트를 관리한다.
+여러 영역에서 공통으로 사용하는 UI 또는 시스템 컴포넌트를 관리한다.
 
 Examples:
 
@@ -122,6 +253,7 @@ Examples:
 Header
 Button
 Modal
+GradientText
 SmoothScrollProvider
 ```
 
@@ -129,13 +261,29 @@ SmoothScrollProvider
 
 ## animations/
 
-GSAP, ScrollTrigger 기반 애니메이션 컨트롤러를 관리한다.
+GSAP 기반 Animation Controller를 관리한다.
 
 ```txt
 animations/
+├─ _shared/
 ├─ intro/
-├─ about/
-├─ capability/
+├─ build/
+│  ├─ intro/
+│  │  ├─ buildIntro.animation.ts
+│  │  ├─ buildIntroProof.animation.ts
+│  │  └─ index.ts
+│  └─ experience/
+│     ├─ buildStructure.animation.ts
+│     ├─ buildAI.animation.ts
+│     ├─ buildVisual.animation.ts
+│     └─ index.ts
+├─ projects/
+│  ├─ navigator/
+│  │  ├─ projectsNavigator.animation.ts
+│  │  └─ index.ts
+│  └─ closing/
+│     ├─ projectsClosing.animation.ts
+│     └─ index.ts
 ├─ contact/
 └─ transitions/
 ```
@@ -143,12 +291,43 @@ animations/
 ### Responsibilities
 
 - GSAP timeline 구성
-- ScrollTrigger progress에 따른 animation 제어
-- Scene transition 관리
-- 초기 상태 설정
+- 초기 animation state 설정
+- progress 기반 animation 제어
 - destroy cleanup 처리
 
-Animation 파일은 React 렌더링을 담당하지 않는다.
+Animation 파일은 다음을 담당하지 않는다.
+
+- React 렌더링
+- ScrollTrigger 등록
+- DOM selector 정의
+- 콘텐츠 데이터 관리
+
+---
+
+## assets/
+
+정적 asset 경로 helper를 관리한다.
+
+```txt
+assets/
+├─ buildImages.ts
+├─ projectsImages.ts
+└─ ...
+```
+
+`buildImages.ts`:
+
+```txt
+/images/build
+```
+
+`projectsImages.ts`:
+
+```txt
+/images/projects
+```
+
+Build와 Projects 이미지 경로 규칙을 서로 분리해 관리한다.
 
 ---
 
@@ -156,12 +335,26 @@ Animation 파일은 React 렌더링을 담당하지 않는다.
 
 화면에 표시되는 정적 콘텐츠 데이터를 관리한다.
 
+```txt
+data/
+├─ build/
+│  ├─ intro/
+│  └─ experience/
+├─ projects/
+│  └─ projectItems.ts
+├─ contacts.ts
+└─ ...
+```
+
 Examples:
 
 ```txt
-CAPABILITY_NAVIGATOR_ITEMS
-LIFE_MOTION_ITEMS
-CONTACT_INTRO_CONTENT
+BUILD_INTRO_PROOF_POINTS
+BUILD_STRUCTURE_ITEMS
+BUILD_AI_ITEMS
+BUILD_VISUAL_ITEMS
+PROJECT_ITEMS
+CONTACT_INTRO
 ```
 
 긴 텍스트, 프로젝트 목록, 반복 렌더링 데이터는 컴포넌트 내부에 직접 작성하지 않고 data 파일로 분리한다.
@@ -170,18 +363,20 @@ CONTACT_INTRO_CONTENT
 
 ## hooks/
 
-Stage 또는 Feature에서 사용하는 React hook을 관리한다.
+여러 영역에서 공통으로 사용하는 React Hook을 관리한다.
 
 Examples:
 
 ```txt
-useIntroStageAnimation
-useCapabilityStageAnimation
-useContactStageAnimation
+useSectionViewTracking
 useContactForm
 ```
 
-Hook은 React lifecycle과 animation controller 연결을 담당한다.
+Stage 전용 애니메이션 Hook은 다음 위치에서 관리한다.
+
+```txt
+components/stages/hooks
+```
 
 ---
 
@@ -217,9 +412,56 @@ Lenis, global scroll update, app-level provider를 이 영역에서 관리한다
 
 SCSS 스타일을 관리한다.
 
+```txt
+styles/
+├─ abstracts/
+├─ base/
+├─ features/
+│  ├─ build/
+│  │  ├─ intro/
+│  │  └─ experience/
+│  ├─ projects/
+│  │  ├─ navigator/
+│  │  └─ closing/
+│  └─ ...
+├─ layout/
+├─ shared/
+├─ stages/
+└─ index.scss
+```
+
 스타일 작성 기준은 다음과 같다.
 
 - BEM 기반 클래스명 사용
 - `@import` 기반 파일 연결
-- nesting 지양
-- `.js-*` 클래스는 스타일이 아닌 animation target 용도로만 사용
+- 과도한 nesting 지양
+- `.js-*` 클래스는 animation target 용도로만 사용
+- Build와 Projects style namespace 분리
+
+Examples:
+
+```txt
+build-intro-*
+build-experience-*
+projects-navigator-*
+project-detail-*
+projects-closing-*
+```
+
+---
+
+## public/images/
+
+정적 이미지는 도메인별로 분리한다.
+
+```txt
+public/images/
+├─ build/
+│  └─ visual/
+└─ projects/
+   ├─ washer/
+   ├─ nova/
+   ├─ hyoit/
+   ├─ portfolio/
+   └─ monitor-frame.png
+```
