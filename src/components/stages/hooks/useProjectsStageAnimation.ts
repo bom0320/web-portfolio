@@ -10,7 +10,7 @@ import {
 } from "react";
 import gsap from "gsap";
 
-import { CapabilityNavigatorAnimation } from "@/animations/capability";
+import { CapabilityNavigatorAnimation } from "@/animations/projects";
 import { PROJECT_ITEMS } from "@/data/projects";
 import {
   createScrollTrigger,
@@ -19,55 +19,56 @@ import {
 } from "@/lib/gsap";
 
 import {
-  CAPABILITY_STAGE_DESKTOP_SCROLL_CONFIG,
-  CAPABILITY_STAGE_MOBILE_SCROLL_CONFIG,
-  CAPABILITY_STAGE_PROGRESS_KEYS,
-  CAPABILITY_STAGE_SELECTORS,
-  type CapabilityStageScrollConfig,
+  PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG,
+  PROJECTS_STAGE_MOBILE_SCROLL_CONFIG,
+  PROJECTS_STAGE_SELECTORS,
+  type ProjectsStageScrollConfig,
 } from "../constants";
-import {
-  createCapabilityStageControllers,
-  destroyCapabilityStageControllers,
-  getCapabilityStageElements,
-  resetCapabilityProgressControllers,
-} from "./helpers/capability";
-import { registerMaxProgressTrigger, registerProgressTrigger } from "./helpers";
 
-type UseCapabilityStageAnimationReturn = {
-  activeNavigatorIndex: number;
-  setActiveNavigatorIndex: Dispatch<SetStateAction<number>>;
+import {
+  createProjectsStageControllers,
+  destroyProjectsStageControllers,
+  getProjectsStageElements,
+  registerProgressTrigger,
+  resetProjectsStageControllers,
+} from "./helpers";
+
+type UseProjectsStageAnimationReturn = {
+  activeProjectIndex: number;
+  setActiveProjectIndex: Dispatch<SetStateAction<number>>;
 };
 
-function getCapabilityNavigatorIndex(progress: number, total: number) {
+function getProjectIndex(progress: number, total: number) {
   return Math.round(progress * (total - 1));
 }
 
-export function useCapabilityStageAnimation(
+export function useProjectsStageAnimation(
   stageRef: RefObject<HTMLElement | null>
-): UseCapabilityStageAnimationReturn {
-  const previousNavigatorIndexRef = useRef(0);
-  const [activeNavigatorIndex, setActiveNavigatorIndex] = useState(0);
+): UseProjectsStageAnimationReturn {
+  const previousProjectIndexRef = useRef(0);
+  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
 
   useLayoutEffect(() => {
     const stage = stageRef.current;
+
     if (!stage) return;
 
-    const ctx = gsap.context(() => {
-      const setupCapabilityTriggers = (
-        scrollConfig: CapabilityStageScrollConfig,
+    const context = gsap.context(() => {
+      const setupProjectsTriggers = (
+        scrollConfig: ProjectsStageScrollConfig,
         options?: {
           enableNavigatorPin?: boolean;
         }
       ) => {
         const enableNavigatorPin = options?.enableNavigatorPin ?? true;
 
-        const elements = getCapabilityStageElements(stage);
-        const controllers = createCapabilityStageControllers(elements);
+        const elements = getProjectsStageElements(stage);
+        const controllers = createProjectsStageControllers(elements);
 
-        resetCapabilityProgressControllers(controllers);
+        resetProjectsStageControllers(controllers);
 
-        previousNavigatorIndexRef.current = 0;
-        setActiveNavigatorIndex(0);
+        previousProjectIndexRef.current = 0;
+        setActiveProjectIndex(0);
 
         const triggers: ScrollTriggerInstance[] = [];
 
@@ -76,19 +77,10 @@ export function useCapabilityStageAnimation(
         };
 
         registerProgressTrigger({
-          triggerElement: CAPABILITY_STAGE_SELECTORS.introPinned,
-          config: scrollConfig.intro,
-          controller: controllers.intro,
+          triggerElement: elements.navigatorIntro,
+          config: scrollConfig.navigatorIntro,
+          controller: controllers.navigatorIntro,
           registerTrigger,
-        });
-
-        CAPABILITY_STAGE_PROGRESS_KEYS.forEach((key) => {
-          registerMaxProgressTrigger({
-            triggerElement: elements[key],
-            config: scrollConfig[key],
-            controller: controllers[key],
-            registerTrigger,
-          });
         });
 
         registerProgressTrigger({
@@ -101,7 +93,7 @@ export function useCapabilityStageAnimation(
         if (enableNavigatorPin && elements.navigatorPin) {
           registerTrigger(
             createScrollTrigger({
-              id: "capability-navigator-pin",
+              id: "projects-navigator-pin",
               trigger: elements.navigatorPin,
               start: scrollConfig.navigatorPin.start,
               end: () =>
@@ -115,19 +107,22 @@ export function useCapabilityStageAnimation(
               pinType: "transform",
               scrub: scrollConfig.navigatorPin.scrub,
               anticipatePin: scrollConfig.navigatorPin.anticipatePin,
+
               onUpdate: (self) => {
-                const nextIndex = getCapabilityNavigatorIndex(
+                const nextIndex = getProjectIndex(
                   self.progress,
                   PROJECT_ITEMS.length
                 );
 
-                if (nextIndex === previousNavigatorIndexRef.current) return;
+                if (nextIndex === previousProjectIndexRef.current) {
+                  return;
+                }
 
-                previousNavigatorIndexRef.current = nextIndex;
-                setActiveNavigatorIndex(nextIndex);
+                previousProjectIndexRef.current = nextIndex;
+                setActiveProjectIndex(nextIndex);
 
                 const nextLayer = stage.querySelector<HTMLElement>(
-                  `${CAPABILITY_STAGE_SELECTORS.navigatorLayer}[data-index="${nextIndex}"]`
+                  `${PROJECTS_STAGE_SELECTORS.navigatorLayer}[data-index="${nextIndex}"]`
                 );
 
                 if (!nextLayer) return;
@@ -147,34 +142,36 @@ export function useCapabilityStageAnimation(
             trigger.kill();
           });
 
-          destroyCapabilityStageControllers(controllers);
+          destroyProjectsStageControllers(controllers);
         };
       };
 
       const media = gsap.matchMedia();
 
-      media.add("(min-width: 901px)", () => {
-        return setupCapabilityTriggers(CAPABILITY_STAGE_DESKTOP_SCROLL_CONFIG, {
+      media.add("(min-width: 901px)", () =>
+        setupProjectsTriggers(PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG, {
           enableNavigatorPin: true,
-        });
-      });
+        })
+      );
 
-      media.add("(max-width: 900px)", () => {
-        return setupCapabilityTriggers(CAPABILITY_STAGE_MOBILE_SCROLL_CONFIG, {
+      media.add("(max-width: 900px)", () =>
+        setupProjectsTriggers(PROJECTS_STAGE_MOBILE_SCROLL_CONFIG, {
           enableNavigatorPin: false,
-        });
-      });
+        })
+      );
 
       return () => {
         media.revert();
       };
     }, stage);
 
-    return () => ctx.revert();
+    return () => {
+      context.revert();
+    };
   }, [stageRef]);
 
   return {
-    activeNavigatorIndex,
-    setActiveNavigatorIndex,
+    activeProjectIndex,
+    setActiveProjectIndex,
   };
 }

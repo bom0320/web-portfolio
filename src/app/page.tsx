@@ -1,10 +1,16 @@
-import { CapabilityStage, ContactStage, IntroStage } from "@/components/stages";
+import {
+  BuildStage,
+  ContactStage,
+  IntroStage,
+  ProjectsStage,
+} from "@/components/stages";
 
 export default function HomePage() {
   return (
     <>
       <IntroStage />
-      <CapabilityStage />
+      <BuildStage />
+      <ProjectsStage />
       <ContactStage />
     </>
   );
