@@ -1,6 +1,6 @@
 "use client";
 
-import { STRUCTURE_CAPABILITY_ITEMS } from "@/data/build";
+import { BUILD_STRUCTURE_ITEMS } from "@/data/build";
 import StructureCapabilityGrid from "./StructureCapabilityGrid";
 import StructureCapabilityMap from "./StructureCapabilityMap";
 
@@ -25,10 +25,10 @@ export default function StructureCapabilityBlock() {
       </div>
 
       <div className="experience-capability-visual experience-capability-visual--structure">
-        <StructureCapabilityMap items={STRUCTURE_CAPABILITY_ITEMS} />
+        <StructureCapabilityMap items={BUILD_STRUCTURE_ITEMS} />
       </div>
 
-      <StructureCapabilityGrid items={STRUCTURE_CAPABILITY_ITEMS} />
+      <StructureCapabilityGrid items={BUILD_STRUCTURE_ITEMS} />
     </article>
   );
 }

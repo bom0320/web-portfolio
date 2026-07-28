@@ -1,15 +1,15 @@
 import { getCapabilityImagePath } from "@/assets/capabilityImages";
 
-export type VisualCapabilityIcon = "sparkles" | "type" | "motion" | "workflow";
+export type BuildVisualIcon = "sparkles" | "type" | "motion" | "workflow";
 
-export type VisualCapabilityVariant = "image" | "text" | "motion";
+export type BuildVisualVariant = "image" | "text" | "motion";
 
-export type VisualCapabilityItem = {
+export type BuildVisualItem = {
   id: "character" | "typography" | "storytelling" | "motion";
   title: string;
   description?: string;
-  icon: VisualCapabilityIcon;
-  variant: VisualCapabilityVariant;
+  icon: BuildVisualIcon;
+  variant: BuildVisualVariant;
   accent?: boolean;
   image?: {
     src: string;
@@ -17,7 +17,7 @@ export type VisualCapabilityItem = {
   };
 };
 
-export const VISUAL_CAPABILITY_ITEMS: VisualCapabilityItem[] = [
+export const BUILD_VISUAL_ITEMS: BuildVisualItem[] = [
   {
     id: "character",
     title: "서비스의 분위기에 맞는 캐릭터와 비주얼 톤까지 직접 설계합니다.",

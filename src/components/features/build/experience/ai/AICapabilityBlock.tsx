@@ -1,4 +1,4 @@
-import { AI_CAPABILITY_ITEMS } from "@/data/build";
+import { BUILD_AI_ITEMS } from "@/data/build";
 import { AI_ICON_MAP } from "./aiCapabilityIconMap";
 
 export default function AICapabilityBlock() {
@@ -20,7 +20,7 @@ export default function AICapabilityBlock() {
       </div>
 
       <div className="experience-capability-grid experience-capability-grid--ai js-ai-capability-grid">
-        {AI_CAPABILITY_ITEMS.map((item) => {
+        {BUILD_AI_ITEMS.map((item) => {
           const Icon = AI_ICON_MAP[item.icon];
 
           return (

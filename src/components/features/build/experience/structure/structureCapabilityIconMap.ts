@@ -9,11 +9,11 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import type { StructureCapabilityIcon } from "@/data/build";
+import type { BuildStructureIcon } from "@/data/build";
 
 export const STRUCTURE_CORE_ICON = Boxes;
 
-export const STRUCTURE_ICON_MAP: Record<StructureCapabilityIcon, LucideIcon> = {
+export const STRUCTURE_ICON_MAP: Record<BuildStructureIcon, LucideIcon> = {
   hierarchy: GitBranch,
   components: Component,
   "users-group": UsersRound,

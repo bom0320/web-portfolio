@@ -2,11 +2,11 @@ import Image from "next/image";
 import { useId } from "react";
 import type { CSSProperties } from "react";
 
-import type { VisualCapabilityItem } from "@/data/build";
+import type { BuildVisualItem } from "@/data/build";
 import { VISUAL_ICON_MAP } from "./visualCapabilityIconMap";
 
 type VisualCapabilityCardProps = {
-  item: VisualCapabilityItem;
+  item: BuildVisualItem;
 };
 
 export default function VisualCapabilityCard({

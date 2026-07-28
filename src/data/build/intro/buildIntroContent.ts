@@ -1,4 +1,4 @@
-export type CapabilityIntroProofPoint = {
+export type BuildIntroProofPoint = {
   id: string;
   index: string;
   title: string;
@@ -6,7 +6,7 @@ export type CapabilityIntroProofPoint = {
   side: "left" | "right";
 };
 
-export const CAPABILITY_INTRO_PROOF_POINTS: CapabilityIntroProofPoint[] = [
+export const BUILD_INTRO_PROOF_POINTS: BuildIntroProofPoint[] = [
   {
     id: "flow-first",
     index: "01",

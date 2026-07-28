@@ -1,9 +1,8 @@
-import { VisualCapabilityItem } from "@/data/build";
-
+import { BuildVisualItem } from "@/data/build";
 import VisualCapabilityCard from "./VisualCapabilityCard";
 
 type VisualCapabilityGalleryProps = {
-  items: VisualCapabilityItem[];
+  items: BuildVisualItem[];
 };
 
 export default function VisualCapabilityGallery({

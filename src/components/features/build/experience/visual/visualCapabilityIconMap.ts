@@ -6,9 +6,9 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-import type { VisualCapabilityIcon } from "@/data/build";
+import type { BuildVisualIcon } from "@/data/build";
 
-export const VISUAL_ICON_MAP: Record<VisualCapabilityIcon, LucideIcon> = {
+export const VISUAL_ICON_MAP: Record<BuildVisualIcon, LucideIcon> = {
   sparkles: Sparkles,
   type: PencilRuler,
   motion: AudioWaveform,

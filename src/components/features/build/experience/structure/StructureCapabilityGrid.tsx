@@ -1,8 +1,8 @@
-import type { StructureCapabilityItem } from "@/data/build";
+import type { BuildStructureItem } from "@/data/build";
 import { STRUCTURE_ICON_MAP } from "./structureCapabilityIconMap";
 
 type StructureCapabilityGridProps = {
-  items: StructureCapabilityItem[];
+  items: BuildStructureItem[];
 };
 
 export default function StructureCapabilityGrid({

@@ -1,16 +1,16 @@
-export type AICapabilityIcon = "git-compare" | "compass" | "brain-circuit";
+export type BuildAIIcon = "git-compare" | "compass" | "brain-circuit";
 
-export type AICapabilityItem = {
+export type BuildAIItem = {
   id: string;
   title: string;
   subtitle: string;
   message: string;
   description: string;
   details: string[];
-  icon: AICapabilityIcon;
+  icon: BuildAIIcon;
 };
 
-export const AI_CAPABILITY_ITEMS: AICapabilityItem[] = [
+export const BUILD_AI_ITEMS: BuildAIItem[] = [
   {
     id: "comparative-reasoning",
     title: "Comparative Reasoning",

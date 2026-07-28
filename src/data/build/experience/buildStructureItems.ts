@@ -1,4 +1,4 @@
-export type StructureCapabilityIcon =
+export type BuildStructureIcon =
   | "hierarchy"
   | "components"
   | "users-group"
@@ -6,16 +6,16 @@ export type StructureCapabilityIcon =
   | "ripple"
   | "palette";
 
-export type StructureCapabilityItem = {
+export type BuildStructureItem = {
   id: string;
   index: string;
   title: string;
   message: string;
   description: string;
-  icon: StructureCapabilityIcon;
+  icon: BuildStructureIcon;
 };
 
-export const STRUCTURE_CAPABILITY_ITEMS: StructureCapabilityItem[] = [
+export const BUILD_STRUCTURE_ITEMS: BuildStructureItem[] = [
   {
     id: "react-architecture",
     index: "01",

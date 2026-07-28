@@ -1,8 +1,9 @@
-import type { CapabilityIntroProofPoint } from "@/data/build";
+import type { BuildIntroProofPoint } from "@/data/build";
+
 import { GradientText } from "@/components/shared/ui";
 
 type IntroProofPointProps = {
-  point: CapabilityIntroProofPoint;
+  point: BuildIntroProofPoint;
 };
 
 export default function IntroProofPoint({ point }: IntroProofPointProps) {

@@ -1,11 +1,11 @@
-import type { StructureCapabilityItem } from "@/data/build";
+import type { BuildStructureItem } from "@/data/build";
 import {
   STRUCTURE_CORE_ICON,
   STRUCTURE_ICON_MAP,
 } from "./structureCapabilityIconMap";
 
 type StructureCapabilityMapProps = {
-  items: StructureCapabilityItem[];
+  items: BuildStructureItem[];
 };
 
 export default function StructureCapabilityMap({

@@ -1,4 +1,4 @@
-import { VISUAL_CAPABILITY_ITEMS } from "@/data/build";
+import { BUILD_VISUAL_ITEMS } from "@/data/build";
 import VisualCapabilityGallery from "./VisualCapabilityGallery";
 
 export default function VisualCapabilityBlock() {
@@ -20,7 +20,7 @@ export default function VisualCapabilityBlock() {
         </p>
       </div>
 
-      <VisualCapabilityGallery items={VISUAL_CAPABILITY_ITEMS} />
+      <VisualCapabilityGallery items={BUILD_VISUAL_ITEMS} />
     </article>
   );
 }

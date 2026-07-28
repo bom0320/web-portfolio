@@ -1,13 +1,13 @@
 import Image from "next/image";
 
-import { CAPABILITY_INTRO_PROOF_POINTS } from "@/data/build";
+import { BUILD_INTRO_PROOF_POINTS } from "@/data/build";
 import { GradientText } from "@/components/shared/ui";
 
 import IntroProofPoint from "./visual/IntroProofPoint";
 
 export default function IntroVisualProof() {
-  const beforeVisualPoints = CAPABILITY_INTRO_PROOF_POINTS.slice(0, 2);
-  const afterVisualPoints = CAPABILITY_INTRO_PROOF_POINTS.slice(2);
+  const beforeVisualPoints = BUILD_INTRO_PROOF_POINTS.slice(0, 2);
+  const afterVisualPoints = BUILD_INTRO_PROOF_POINTS.slice(2);
 
   return (
     <section className="capability-intro-proof js-capability-intro-proof">
