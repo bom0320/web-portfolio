@@ -6,7 +6,7 @@ import {
   type AnimationController,
 } from "@/animations/_shared";
 
-import type { CapabilityIntroProofAnimationElements } from "@/components/scenes/capability/dom/intro";
+import type { CapabilityIntroProofAnimationElements } from "@/components/scenes/build/dom";
 
 const CapabilityIntroProofAnimation = {
   create(elements: CapabilityIntroProofAnimationElements): AnimationController {

@@ -5,7 +5,7 @@ import {
   createNoopController,
   type AnimationController,
 } from "@/animations/_shared";
-import type { CapabilityClosingAnimationElements } from "@/components/scenes/capability/dom";
+import type { CapabilityClosingAnimationElements } from "@/components/scenes/projects/dom";
 
 const CapabilityClosingAnimation = {
   create(elements: CapabilityClosingAnimationElements): AnimationController {

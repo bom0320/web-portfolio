@@ -5,7 +5,7 @@ import {
   createNoopController,
   type AnimationController,
 } from "@/animations/_shared";
-import type { AICapabilityAnimationElements } from "@/components/scenes/capability/dom";
+import type { AICapabilityAnimationElements } from "@/components/scenes/build/dom";
 
 const AICapabilityAnimation = {
   create(elements: AICapabilityAnimationElements): AnimationController {

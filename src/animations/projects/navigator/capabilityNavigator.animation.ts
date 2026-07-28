@@ -5,8 +5,8 @@ import {
   createNoopController,
   type AnimationController,
 } from "@/animations/_shared";
-import type { CapabilityNavigatorIntroAnimationElements } from "@/components/scenes/capability/dom";
 
+import type { CapabilityNavigatorIntroAnimationElements } from "@/components/scenes/projects/dom";
 interface CapabilityNavigatorLayerTransitionParams {
   nextLayer: HTMLElement;
   onComplete?: () => void;

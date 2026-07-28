@@ -1,26 +1,28 @@
 import {
   AICapabilityAnimation,
-  CapabilityClosingAnimation,
   CapabilityIntroAnimation,
   CapabilityIntroProofAnimation,
-  CapabilityNavigatorAnimation,
   StructureCapabilityAnimation,
   VisualCapabilityAnimation,
-} from "@/animations/capability";
+} from "@/animations/build";
 
 import {
-  getCapabilityIntroAnimationElements,
-  getCapabilityIntroProofAnimationElements,
-} from "@/components/scenes/capability/dom/intro";
+  CapabilityClosingAnimation,
+  CapabilityNavigatorAnimation,
+} from "@/animations/projects";
 
 import {
   getAICapabilityAnimationElements,
+  getCapabilityIntroAnimationElements,
+  getCapabilityIntroProofAnimationElements,
   getStructureCapabilityAnimationElements,
   getVisualCapabilityAnimationElements,
-} from "@/components/scenes/capability/dom/experience";
+} from "@/components/scenes/build/dom";
 
-import { getCapabilityNavigatorIntroAnimationElements } from "@/components/scenes/capability/dom/navigator";
-import { getCapabilityClosingAnimationElements } from "@/components/scenes/capability/dom/closing";
+import {
+  getCapabilityClosingAnimationElements,
+  getCapabilityNavigatorIntroAnimationElements,
+} from "@/components/scenes/projects/dom";
 
 import type { CapabilityStageElements } from "./capabilityStageElements";
 

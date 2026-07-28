@@ -5,7 +5,7 @@ import {
   createNoopController,
   type AnimationController,
 } from "@/animations/_shared";
-import type { VisualCapabilityAnimationElements } from "@/components/scenes/capability/dom";
+import type { VisualCapabilityAnimationElements } from "@/components/scenes/build/dom";
 
 const VisualCapabilityAnimation = {
   create(elements: VisualCapabilityAnimationElements): AnimationController {

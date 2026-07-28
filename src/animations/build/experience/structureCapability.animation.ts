@@ -5,7 +5,7 @@ import {
   createNoopController,
   type AnimationController,
 } from "@/animations/_shared";
-import type { StructureCapabilityAnimationElements } from "@/components/scenes/capability/dom";
+import type { StructureCapabilityAnimationElements } from "@/components/scenes/build/dom";
 
 const STRUCTURE_MOBILE_QUERY = "(max-width: 900px)";
 

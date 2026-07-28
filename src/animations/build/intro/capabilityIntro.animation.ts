@@ -6,7 +6,7 @@ import {
   type AnimationController,
 } from "@/animations/_shared";
 
-import type { CapabilityIntroAnimationElements } from "@/components/scenes/capability/dom/intro";
+import type { CapabilityIntroAnimationElements } from "@/components/scenes/build/dom";
 
 const TITLE_INITIAL_SCALE = 3.8;
 
