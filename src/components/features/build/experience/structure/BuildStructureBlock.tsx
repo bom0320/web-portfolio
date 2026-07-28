@@ -1,10 +1,11 @@
 "use client";
 
 import { BUILD_STRUCTURE_ITEMS } from "@/data/build";
-import StructureCapabilityGrid from "./StructureCapabilityGrid";
-import StructureCapabilityMap from "./StructureCapabilityMap";
 
-export default function StructureCapabilityBlock() {
+import BuildStructureGrid from "./BuildStructureGrid";
+import BuildStructureMap from "./BuildStructureMap";
+
+export default function BuildStructureBlock() {
   return (
     <article className="experience-capability-block experience-capability-block--structure js-capability-structure">
       <div className="experience-capability-block__header experience-capability-block__header--center js-structure-capability-header">
@@ -25,10 +26,10 @@ export default function StructureCapabilityBlock() {
       </div>
 
       <div className="experience-capability-visual experience-capability-visual--structure">
-        <StructureCapabilityMap items={BUILD_STRUCTURE_ITEMS} />
+        <BuildStructureMap items={BUILD_STRUCTURE_ITEMS} />
       </div>
 
-      <StructureCapabilityGrid items={BUILD_STRUCTURE_ITEMS} />
+      <BuildStructureGrid items={BUILD_STRUCTURE_ITEMS} />
     </article>
   );
 }

@@ -1,13 +1,12 @@
-import { BuildVisualItem } from "@/data/build";
-import VisualCapabilityCard from "./VisualCapabilityCard";
+import type { BuildVisualItem } from "@/data/build";
 
-type VisualCapabilityGalleryProps = {
+import BuildVisualCard from "./BuildVisualCard";
+
+type BuildVisualGalleryProps = {
   items: BuildVisualItem[];
 };
 
-export default function VisualCapabilityGallery({
-  items,
-}: VisualCapabilityGalleryProps) {
+export default function BuildVisualGallery({ items }: BuildVisualGalleryProps) {
   const characterItem = items.find((item) => item.id === "character");
   const typographyItem = items.find((item) => item.id === "typography");
   const storytellingItem = items.find((item) => item.id === "storytelling");
@@ -16,15 +15,15 @@ export default function VisualCapabilityGallery({
   return (
     <div className="experience-capability-visual-gallery">
       <div className="experience-capability-visual-gallery__column experience-capability-visual-gallery__column--left">
-        {characterItem ? <VisualCapabilityCard item={characterItem} /> : null}
-        {storytellingItem ? (
-          <VisualCapabilityCard item={storytellingItem} />
-        ) : null}
+        {characterItem ? <BuildVisualCard item={characterItem} /> : null}
+
+        {storytellingItem ? <BuildVisualCard item={storytellingItem} /> : null}
       </div>
 
       <div className="experience-capability-visual-gallery__column experience-capability-visual-gallery__column--right">
-        {typographyItem ? <VisualCapabilityCard item={typographyItem} /> : null}
-        {motionItem ? <VisualCapabilityCard item={motionItem} /> : null}
+        {typographyItem ? <BuildVisualCard item={typographyItem} /> : null}
+
+        {motionItem ? <BuildVisualCard item={motionItem} /> : null}
       </div>
     </div>
   );

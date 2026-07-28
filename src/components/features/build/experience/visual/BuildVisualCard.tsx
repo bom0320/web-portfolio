@@ -3,19 +3,18 @@ import { useId } from "react";
 import type { CSSProperties } from "react";
 
 import type { BuildVisualItem } from "@/data/build";
-import { VISUAL_ICON_MAP } from "./visualCapabilityIconMap";
 
-type VisualCapabilityCardProps = {
+import { BUILD_VISUAL_ICON_MAP } from "./buildVisualIconMap";
+
+type BuildVisualCardProps = {
   item: BuildVisualItem;
 };
 
-export default function VisualCapabilityCard({
-  item,
-}: VisualCapabilityCardProps) {
+export default function BuildVisualCard({ item }: BuildVisualCardProps) {
   const rawId = useId();
   const gradientId = `visual-icon-gradient-${rawId.replace(/:/g, "")}`;
 
-  const Icon = VISUAL_ICON_MAP[item.icon];
+  const Icon = BUILD_VISUAL_ICON_MAP[item.icon];
   const hasImage = Boolean(item.image);
 
   const style = item.accent

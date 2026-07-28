@@ -1,17 +1,16 @@
 import type { BuildStructureItem } from "@/data/build";
-import { STRUCTURE_ICON_MAP } from "./structureCapabilityIconMap";
 
-type StructureCapabilityGridProps = {
+import { BUILD_STRUCTURE_ICON_MAP } from "./buildStructureIconMap";
+
+type BuildStructureGridProps = {
   items: BuildStructureItem[];
 };
 
-export default function StructureCapabilityGrid({
-  items,
-}: StructureCapabilityGridProps) {
+export default function BuildStructureGrid({ items }: BuildStructureGridProps) {
   return (
     <div className="experience-capability-grid experience-capability-grid--structure js-structure-capability-grid">
       {items.map((item) => {
-        const Icon = STRUCTURE_ICON_MAP[item.icon];
+        const Icon = BUILD_STRUCTURE_ICON_MAP[item.icon];
 
         return (
           <article

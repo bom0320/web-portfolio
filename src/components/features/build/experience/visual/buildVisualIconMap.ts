@@ -1,14 +1,14 @@
 import {
   AudioWaveform,
   GitBranch,
-  Sparkles,
   PencilRuler,
+  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 
 import type { BuildVisualIcon } from "@/data/build";
 
-export const VISUAL_ICON_MAP: Record<BuildVisualIcon, LucideIcon> = {
+export const BUILD_VISUAL_ICON_MAP: Record<BuildVisualIcon, LucideIcon> = {
   sparkles: Sparkles,
   type: PencilRuler,
   motion: AudioWaveform,

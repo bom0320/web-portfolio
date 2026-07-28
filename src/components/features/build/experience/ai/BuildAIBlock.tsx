@@ -1,7 +1,8 @@
 import { BUILD_AI_ITEMS } from "@/data/build";
-import { AI_ICON_MAP } from "./aiCapabilityIconMap";
 
-export default function AICapabilityBlock() {
+import { BUILD_AI_ICON_MAP } from "./buildAIIconMap";
+
+export default function BuildAIBlock() {
   return (
     <article className="experience-capability-block experience-capability-block--ai js-capability-ai">
       <div className="experience-capability-block__header js-ai-capability-header">
@@ -21,7 +22,7 @@ export default function AICapabilityBlock() {
 
       <div className="experience-capability-grid experience-capability-grid--ai js-ai-capability-grid">
         {BUILD_AI_ITEMS.map((item) => {
-          const Icon = AI_ICON_MAP[item.icon];
+          const Icon = BUILD_AI_ICON_MAP[item.icon];
 
           return (
             <article

@@ -1,17 +1,16 @@
 import type { BuildStructureItem } from "@/data/build";
-import {
-  STRUCTURE_CORE_ICON,
-  STRUCTURE_ICON_MAP,
-} from "./structureCapabilityIconMap";
 
-type StructureCapabilityMapProps = {
+import {
+  BUILD_STRUCTURE_CORE_ICON,
+  BUILD_STRUCTURE_ICON_MAP,
+} from "./buildStructureIconMap";
+
+type BuildStructureMapProps = {
   items: BuildStructureItem[];
 };
 
-export default function StructureCapabilityMap({
-  items,
-}: StructureCapabilityMapProps) {
-  const CoreIcon = STRUCTURE_CORE_ICON;
+export default function BuildStructureMap({ items }: BuildStructureMapProps) {
+  const CoreIcon = BUILD_STRUCTURE_CORE_ICON;
 
   return (
     <div className="experience-capability-structure-map js-structure-capability-map">
@@ -24,7 +23,7 @@ export default function StructureCapabilityMap({
 
       <div className="experience-capability-structure-map__items">
         {items.map((item, index) => {
-          const Icon = STRUCTURE_ICON_MAP[item.icon];
+          const Icon = BUILD_STRUCTURE_ICON_MAP[item.icon];
 
           return (
             <div

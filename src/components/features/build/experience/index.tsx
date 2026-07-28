@@ -1,3 +1,3 @@
-export { default as StructureCapabilityBlock } from "./structure/StructureCapabilityBlock";
-export { default as AICapabilityBlock } from "./ai/AICapabilityBlock";
-export { default as VisualCapabilityBlock } from "./visual/VisualCapabilityBlock";
+export { default as BuildStructureBlock } from "./structure/BuildStructureBlock";
+export { default as BuildAIBlock } from "./ai/BuildAIBlock";
+export { default as BuildVisualBlock } from "./visual/BuildVisualBlock";

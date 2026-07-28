@@ -1,7 +1,8 @@
 import { BUILD_VISUAL_ITEMS } from "@/data/build";
-import VisualCapabilityGallery from "./VisualCapabilityGallery";
 
-export default function VisualCapabilityBlock() {
+import BuildVisualGallery from "./BuildVisualGallery";
+
+export default function BuildVisualBlock() {
   return (
     <article className="experience-capability-block experience-capability-block--visual js-capability-visual">
       <div className="experience-capability-block__header experience-capability-block__header--center js-visual-capability-header">
@@ -20,7 +21,7 @@ export default function VisualCapabilityBlock() {
         </p>
       </div>
 
-      <VisualCapabilityGallery items={BUILD_VISUAL_ITEMS} />
+      <BuildVisualGallery items={BUILD_VISUAL_ITEMS} />
     </article>
   );
 }
