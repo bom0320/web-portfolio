@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 import "@/styles/index.scss";
-import Header from "@/components/shared/layout/Header";
+import Header from "@/components/shared/layout/header/Header";
 import SmoothScrollProvider from "@/components/shared/providers/SmoothScrollProvider";
 import AmplitudeProvider from "@/components/providers/AmplitudeProvider";
 import { ScrollToTop } from "@/components/features/projects";
