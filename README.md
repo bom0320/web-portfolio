@@ -1,5 +1,7 @@
 # Interactive Frontend Portfolio
 
+https://kimbom.dev/
+
 스크롤 기반 인터랙션과 모션을 중심으로 제작한 개인 웹 포트폴리오입니다.
 
 단순히 프로젝트와 기술 스택을 나열하는 방식이 아니라,
