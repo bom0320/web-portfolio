@@ -34,7 +34,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
     role: "서비스 클라이언트 v2 설계 · UI/UX 전면 재구성 · API 연동 · 운영 유지보수",
     overview:
       "기수 간 인수인계로 이어져 운영되는 세탁기 관리 시스템의 v2 클라이언트입니다. 예약, 기기 상태, 신고 관리 흐름을 다시 설계하고 실제 운영 환경에서 유지보수까지 이어가고 있습니다.",
-    ...createProjectImages("washer", 4),
+    ...createProjectImages("washer", 8),
     liveUrl: "https://www.washer-gsm.com/sign-in",
     githubUrl: "https://github.com/team-washer",
     link: "/projects/washer",

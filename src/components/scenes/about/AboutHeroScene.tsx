@@ -1,8 +1,8 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 
-import { useState } from "react";
-import { Download, User } from "lucide-react";
+import { useState, type MouseEvent } from "react";
+import { Download } from "lucide-react";
 
 import { CtaButton } from "@/components/features/about";
 import { GradientText } from "@/components/shared/ui";
@@ -11,9 +11,10 @@ type ActiveCta = "portfolio" | "resume";
 
 export default function AboutHeroScene() {
   const [active, setActive] = useState<ActiveCta>("portfolio");
+  const [isResumeNoticeVisible, setIsResumeNoticeVisible] = useState(false);
 
   const handleMobileSwapClick =
-    (key: ActiveCta) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    (key: ActiveCta) => (event: MouseEvent<HTMLAnchorElement>) => {
       if (typeof window === "undefined") return;
 
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -21,10 +22,27 @@ export default function AboutHeroScene() {
       if (!isMobile) return;
 
       if (active !== key) {
-        e.preventDefault();
+        event.preventDefault();
         setActive(key);
+        setIsResumeNoticeVisible(false);
       }
     };
+
+  const handleResumeClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+
+    if (typeof window === "undefined") return;
+
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    if (isMobile && active !== "resume") {
+      setActive("resume");
+      setIsResumeNoticeVisible(false);
+      return;
+    }
+
+    setIsResumeNoticeVisible(true);
+  };
 
   return (
     <section className="about-hero js-about-hero">
@@ -63,28 +81,28 @@ export default function AboutHeroScene() {
             data-active={active}
           >
             <CtaButton
-              href="https://app.notion.com/p/FrontEnd-Developer-2cdbf73cc5378049ad20db08f8ea554f?source=copy_link"
-              label="Go Portfolio"
+              href="https://github.com/bom0320"
+              label="Go GitHub"
               variant="primary"
               className="about-hero__btn about-hero__btn--portfolio"
-              ariaLabel="Go Portfolio"
+              ariaLabel="김봄 GitHub 새 탭에서 열기"
               onClick={handleMobileSwapClick("portfolio")}
             >
-              <User
-                size={18}
-                strokeWidth={2.2}
+              <img
+                src="/icons/github-white.svg"
+                alt=""
                 aria-hidden="true"
                 className="cta-btn__iconImg"
               />
             </CtaButton>
 
             <CtaButton
-              href="/files/kim-bom-resume.pdf"
-              download="김봄_이력서.pdf"
+              href="#resume"
               label="Go Resume"
               variant="secondary"
               className="about-hero__btn about-hero__btn--resume"
-              ariaLabel="Go Resume PDF"
+              ariaLabel="이력서 준비 상태 확인"
+              onClick={handleResumeClick}
             >
               <Download
                 size={18}
@@ -94,6 +112,12 @@ export default function AboutHeroScene() {
               />
             </CtaButton>
           </div>
+
+          {isResumeNoticeVisible && (
+            <p className="about-hero__resume-notice" role="status">
+              이력서는 현재 준비 중입니다.
+            </p>
+          )}
         </div>
       </div>
     </section>
