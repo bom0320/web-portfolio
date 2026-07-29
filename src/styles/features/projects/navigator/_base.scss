@@ -1,0 +1,21 @@
+.projects-navigator {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  background: #050505;
+  color: #ffffff;
+  overflow: visible;
+}
+
+.projects-navigator-pin {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.projects-navigator__anchor {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  pointer-events: none;
+}

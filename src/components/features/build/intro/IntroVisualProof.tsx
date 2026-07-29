@@ -1,0 +1,57 @@
+import Image from "next/image";
+
+import { BUILD_INTRO_PROOF_POINTS } from "@/data/build";
+import { GradientText } from "@/components/shared/ui";
+
+import IntroProofPoint from "./visual/IntroProofPoint";
+
+export default function IntroVisualProof() {
+  const beforeVisualPoints = BUILD_INTRO_PROOF_POINTS.slice(0, 2);
+  const afterVisualPoints = BUILD_INTRO_PROOF_POINTS.slice(2);
+
+  return (
+    <section className="build-intro-proof js-build-intro-proof">
+      <div className="build-intro-proof__inner">
+        {beforeVisualPoints.map((point) => (
+          <IntroProofPoint key={point.id} point={point} />
+        ))}
+
+        <div
+          className="build-intro-proof__visual js-build-intro-proof-visual"
+          aria-hidden="true"
+        >
+          <Image
+            className="build-intro-proof__character-image js-build-intro-proof-character"
+            src="/images/character_1.png"
+            alt=""
+            width={420}
+            height={470}
+            priority
+          />
+        </div>
+
+        {afterVisualPoints.map((point) => (
+          <IntroProofPoint key={point.id} point={point} />
+        ))}
+
+        <p className="build-intro-proof__quote js-build-intro-proof-quote">
+          <span
+            className="build-intro-proof__quote-mark"
+            aria-hidden="true"
+          >
+            “
+          </span>
+          <br />
+          저는 인터페이스를 단순한 화면 구성으로 보지 않고,
+          <br />
+          <strong>
+            <GradientText>
+              하나의 흐름 안에서 자연스럽게 이어지는 경험
+            </GradientText>
+          </strong>
+          을 만들고 싶었습니다.
+        </p>
+      </div>
+    </section>
+  );
+}

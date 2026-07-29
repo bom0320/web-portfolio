@@ -15,6 +15,24 @@ export {
 } from "./intro";
 
 export {
+  createBuildStageControllers,
+  destroyBuildStageControllers,
+  getBuildStageElements,
+  resetBuildStageControllers,
+  type BuildStageControllers,
+  type BuildStageElements,
+} from "./build";
+
+export {
+  createProjectsStageControllers,
+  destroyProjectsStageControllers,
+  getProjectsStageElements,
+  resetProjectsStageControllers,
+  type ProjectsStageControllers,
+  type ProjectsStageElements,
+} from "./projects";
+
+export {
   createContactStageControllers,
   destroyContactStageControllers,
   getContactStageElements,

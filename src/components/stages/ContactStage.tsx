@@ -13,7 +13,7 @@ export default function ContactStage() {
 
   useSectionViewTracking(stageRef, {
     sectionName: "contact",
-    sectionOrder: 3,
+    sectionOrder: 4,
   });
 
   return (

@@ -1,0 +1,25 @@
+@media (max-width: 900px) {
+  .build-experience__inner {
+    width: min(680px, calc(100% - 36px));
+    padding: 96px 0 128px;
+  }
+
+  .build-experience-block + .build-experience-block {
+    margin-top: 140px;
+  }
+}
+
+@media (max-width: 560px) {
+  .build-experience__inner {
+    width: min(100% - 28px, 520px);
+    padding: 80px 0 112px;
+  }
+
+  .build-experience-block__eyebrow {
+    font-size: 17px;
+  }
+
+  .build-experience-block__desc {
+    margin-top: 22px;
+  }
+}

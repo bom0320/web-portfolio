@@ -1,0 +1,22 @@
+.build-experience-block--ai {
+  position: relative;
+}
+
+.build-experience-block--ai .build-experience-block__header {
+  width: min(1140px, 100%);
+  max-width: none;
+  margin: 0 auto;
+}
+
+.build-experience-block--ai .build-experience-block__title {
+  max-width: 520px;
+}
+
+.build-experience-block--ai .build-experience-block__desc {
+  max-width: 550px;
+}
+
+.build-experience-grid--ai {
+  width: min(1140px, 100%);
+  margin-top: 72px;
+}

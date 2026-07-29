@@ -26,9 +26,9 @@ export const CONTACT_FOOTER_LINK_GROUPS = [
   {
     title: "Building with",
     links: [
-      { label: "Flow", href: "#capability" },
-      { label: "Structure", href: "#capability" },
-      { label: "Motion", href: "#capability" },
+      { label: "Flow", href: "#build" },
+      { label: "Structure", href: "#build" },
+      { label: "Motion", href: "#build" },
     ],
   },
   {

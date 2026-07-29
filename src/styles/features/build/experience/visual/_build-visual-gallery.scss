@@ -1,0 +1,14 @@
+.build-experience-visual-gallery {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+
+  width: min(1040px, 100%);
+  margin: 92px auto 0;
+}
+
+.build-experience-visual-gallery__column {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}

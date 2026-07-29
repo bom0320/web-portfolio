@@ -1,8 +1,11 @@
 html {
   scroll-behavior: auto;
+  scroll-padding-top: var(--header-height);
+
   min-height: 100%;
-  background-color: #000;
   overflow-x: clip;
+
+  background-color: #000;
 }
 
 body {
