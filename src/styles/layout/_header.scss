@@ -12,7 +12,8 @@
   min-height: var(--header-height);
   padding: 0 var(--between-space);
 
-  background: transparent;
+  background: rgba(0, 0, 0, 0.88);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
   transform: translateZ(0);
 
