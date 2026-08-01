@@ -45,18 +45,16 @@ export default function ProjectDetailHero({ item }: ProjectDetailHeroProps) {
         <dl className="project-detail-hero__meta">
           {projectMeta.map((meta) => (
             <div key={meta.label} className="project-detail-hero__meta-row">
-              <dt className="project-detail-hero__meta-label">
-                {meta.label}
-              </dt>
+              <dt className="project-detail-hero__meta-label">{meta.label}</dt>
 
-              <dd className="project-detail-hero__meta-value">
-                {meta.value}
-              </dd>
+              <dd className="project-detail-hero__meta-value">{meta.value}</dd>
             </div>
           ))}
         </dl>
 
         <ProjectDetailActions
+          projectId={item.id}
+          projectName={item.title}
           liveUrl={item.liveUrl}
           githubUrl={item.githubUrl}
         />
