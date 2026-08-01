@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type RefObject } from "react";
 
+import { ANALYTICS_EVENT } from "@/lib/analytics/events";
 import { trackAmplitudeEvent } from "@/lib/amplitude";
 
 interface UseSectionViewTrackingOptions {
@@ -30,7 +31,7 @@ export function useSectionViewTracking(
 
         hasTracked.current = true;
 
-        trackAmplitudeEvent("section_viewed", {
+        trackAmplitudeEvent(ANALYTICS_EVENT.SECTION_VIEWED, {
           section_name: sectionName,
           section_order: sectionOrder,
           visibility_ratio: entry.intersectionRatio,

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 
+import { ANALYTICS_EVENT } from "@/lib/analytics/events";
 import { initAmplitude, trackAmplitudeEvent } from "@/lib/amplitude";
 
 interface AmplitudeProviderProps {
@@ -22,7 +23,7 @@ export default function AmplitudeProvider({
 
     hasTrackedPortfolioView.current = true;
 
-    trackAmplitudeEvent("portfolio_viewed", {
+    trackAmplitudeEvent(ANALYTICS_EVENT.PORTFOLIO_VIEWED, {
       referrer: document.referrer || "direct",
     });
   }, []);

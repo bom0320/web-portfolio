@@ -6,6 +6,8 @@ import { Download } from "lucide-react";
 
 import { CtaButton } from "@/components/features/about";
 import { GradientText } from "@/components/shared/ui";
+import { ANALYTICS_EVENT } from "@/lib/analytics/events";
+import { trackAmplitudeEvent } from "@/lib/amplitude";
 
 type ActiveCta = "portfolio" | "resume";
 
@@ -19,13 +21,18 @@ export default function AboutHeroScene() {
 
       const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
-      if (!isMobile) return;
-
-      if (active !== key) {
+      if (isMobile && active !== key) {
         event.preventDefault();
         setActive(key);
         setIsResumeNoticeVisible(false);
+        return;
       }
+
+      trackAmplitudeEvent(ANALYTICS_EVENT.CTA_CLICKED, {
+        cta_name: "github_profile",
+        source_section: "about",
+        destination_type: "external_link",
+      });
     };
 
   const handleResumeClick = (event: MouseEvent<HTMLAnchorElement>) => {
@@ -40,6 +47,13 @@ export default function AboutHeroScene() {
       setIsResumeNoticeVisible(false);
       return;
     }
+
+    trackAmplitudeEvent(ANALYTICS_EVENT.CTA_CLICKED, {
+      cta_name: "resume",
+      source_section: "about",
+      destination_type: "notice",
+      availability_status: "preparing",
+    });
 
     setIsResumeNoticeVisible(true);
   };

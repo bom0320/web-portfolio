@@ -4,6 +4,9 @@ import Link from "next/link";
 import type { Dispatch, MouseEvent, SetStateAction } from "react";
 
 import type { ProjectItem } from "@/data/projects";
+import { ANALYTICS_EVENT } from "@/lib/analytics/events";
+import { trackAmplitudeEvent } from "@/lib/amplitude";
+
 interface ProjectsNavigatorListProps {
   items: ProjectItem[];
   activeIndex: number;
@@ -45,16 +48,23 @@ export default function ProjectsNavigatorList({
 
   const handleItemClick = (
     event: MouseEvent<HTMLAnchorElement>,
+    item: ProjectItem,
     index: number
   ) => {
-    if (!isMobileNavigator()) return;
-
-    if (visibleIndex !== index) {
+    if (isMobileNavigator() && visibleIndex !== index) {
       event.preventDefault();
 
       onPreviewIndexChange(null);
       onActiveIndexChange(index);
+      return;
     }
+
+    trackAmplitudeEvent(ANALYTICS_EVENT.PROJECT_CLICKED, {
+      project_id: item.id,
+      project_name: item.title,
+      project_category: item.category,
+      source: "projects_navigator",
+    });
   };
 
   return (
@@ -79,7 +89,7 @@ export default function ProjectsNavigatorList({
               href={item.link}
               className={itemClassName}
               aria-current={isActive ? "true" : undefined}
-              onClick={(event) => handleItemClick(event, index)}
+              onClick={(event) => handleItemClick(event, item, index)}
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
               onFocus={() => handleMouseEnter(index)}

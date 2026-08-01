@@ -1,4 +1,5 @@
 import * as amplitude from "@amplitude/analytics-browser";
+import type { AnalyticsEventName } from "@/lib/analytics/events";
 
 const apiKey = process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY;
 
@@ -43,7 +44,7 @@ export const initAmplitude = (): void => {
 };
 
 export const trackAmplitudeEvent = (
-  eventName: string,
+  eventName: AnalyticsEventName,
   properties?: Record<string, unknown>
 ): void => {
   if (typeof window === "undefined" || !isInitialized) {
