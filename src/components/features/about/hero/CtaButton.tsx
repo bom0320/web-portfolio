@@ -9,6 +9,7 @@ type CtaButtonProps = {
   className?: string;
   ariaLabel?: string;
   download?: string;
+  target?: "_blank" | "_self";
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
   children?: React.ReactNode;
 };
@@ -20,6 +21,7 @@ export default function CtaButton({
   className = "",
   ariaLabel,
   download,
+  target,
   onClick,
   children,
 }: CtaButtonProps) {
@@ -28,14 +30,15 @@ export default function CtaButton({
     .join(" ");
 
   const isExternal = href.startsWith("http");
+  const linkTarget = target ?? (isExternal ? "_blank" : undefined);
 
   return (
     <Link
       href={href}
       className={classes}
       aria-label={ariaLabel ?? label}
-      target={isExternal ? "_blank" : undefined}
-      rel={isExternal ? "noreferrer" : undefined}
+      target={linkTarget}
+      rel={linkTarget === "_blank" ? "noreferrer" : undefined}
       download={download}
       onClick={onClick}
     >

@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useState, type MouseEvent } from "react";
-import { Download } from "lucide-react";
+import { FileText } from "lucide-react";
 
 import { CtaButton } from "@/components/features/about";
 import { GradientText } from "@/components/shared/ui";
@@ -13,7 +13,6 @@ type ActiveCta = "portfolio" | "resume";
 
 export default function AboutHeroScene() {
   const [active, setActive] = useState<ActiveCta>("portfolio");
-  const [isResumeNoticeVisible, setIsResumeNoticeVisible] = useState(false);
 
   const handleMobileSwapClick =
     (key: ActiveCta) => (event: MouseEvent<HTMLAnchorElement>) => {
@@ -24,7 +23,6 @@ export default function AboutHeroScene() {
       if (isMobile && active !== key) {
         event.preventDefault();
         setActive(key);
-        setIsResumeNoticeVisible(false);
         return;
       }
 
@@ -36,26 +34,21 @@ export default function AboutHeroScene() {
     };
 
   const handleResumeClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-
     if (typeof window === "undefined") return;
 
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
     if (isMobile && active !== "resume") {
+      event.preventDefault();
       setActive("resume");
-      setIsResumeNoticeVisible(false);
       return;
     }
 
     trackAmplitudeEvent(ANALYTICS_EVENT.CTA_CLICKED, {
       cta_name: "resume",
       source_section: "about",
-      destination_type: "notice",
-      availability_status: "preparing",
+      destination_type: "document",
     });
-
-    setIsResumeNoticeVisible(true);
   };
 
   return (
@@ -111,14 +104,15 @@ export default function AboutHeroScene() {
             </CtaButton>
 
             <CtaButton
-              href="#resume"
+              href="/resume/kim-bom-resume.pdf"
+              target="_blank"
               label="Go Resume"
               variant="secondary"
               className="about-hero__btn about-hero__btn--resume"
-              ariaLabel="이력서 준비 상태 확인"
+              ariaLabel="김봄 이력서 새 탭에서 열기"
               onClick={handleResumeClick}
             >
-              <Download
+              <FileText
                 size={18}
                 strokeWidth={2.2}
                 aria-hidden="true"
@@ -126,12 +120,6 @@ export default function AboutHeroScene() {
               />
             </CtaButton>
           </div>
-
-          {isResumeNoticeVisible && (
-            <p className="about-hero__resume-notice" role="status">
-              이력서는 현재 준비 중입니다.
-            </p>
-          )}
         </div>
       </div>
     </section>
