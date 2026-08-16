@@ -1,17 +1,19 @@
 .skill-title {
-  margin-bottom: clamp(62px, 7vw, 80px);
   text-align: left;
 }
 
 .skill-title__eyebrow {
   margin-bottom: 18px;
+
   color: rgba(255, 255, 255, 0.74);
+
   font-size: 20px;
   font-weight: 500;
 }
 
 .skill-title__heading {
   margin: 0;
+
   font-size: clamp(38px, 4vw, 44px);
   font-weight: 800;
   line-height: 1.12;
@@ -25,6 +27,7 @@
   margin-top: 22px;
 
   color: rgba(255, 255, 255, 0.62);
+
   font-size: 15px;
   font-weight: 500;
   line-height: 1.8;

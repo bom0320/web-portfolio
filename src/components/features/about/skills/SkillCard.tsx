@@ -1,50 +1,66 @@
 import Image from "next/image";
 
+import type { Skill } from "@/data/skills";
+
 type Props = {
-  name: string;
-  icon: string;
-  value: number; // 0~100
-  sub?: string;
-  bg: string;
+  skill: Skill;
+  index: number;
+  isActive: boolean;
+  onActivate: () => void;
 };
 
-const clamp = (n: number, min: number, max: number) =>
-  Math.min(Math.max(n, min), max);
-
-export default function SkillCard({ name, icon, value, sub, bg }: Props) {
-  const v = clamp(value, 0, 100);
-  const deg = (v / 100) * 360;
-
-  const gaugeVars = {
-    ["--deg"]: `${deg}deg`,
-  } as React.CSSProperties;
+export default function SkillCard({
+  skill,
+  index,
+  isActive,
+  onActivate,
+}: Props) {
+  const number = String(index + 1).padStart(2, "0");
 
   return (
-    <article className="skill-card" aria-label={`${name} skill ${v}%`}>
-      <div className="skill-card__circle">
-        <div
-          className="skill-card__gauge"
-          style={gaugeVars}
-          data-deg={deg}
-          aria-hidden="true"
-        />
+    <button
+      type="button"
+      className={`skill-card ${isActive ? "is-active" : ""}`}
+      aria-expanded={isActive}
+      onMouseEnter={onActivate}
+      onFocus={onActivate}
+      onClick={onActivate}
+    >
+      <div className="skill-card__collapsed">
+        <span className="skill-card__number">{number}</span>
+        <span className="skill-card__vertical-name">{skill.name}</span>
+      </div>
 
-        <div className="skill-card__icon-wrap" style={{ backgroundColor: bg }}>
-          <Image
-            className="skill-card__icon"
-            src={icon}
-            alt={name}
-            width={34}
-            height={34}
-            priority={false}
-          />
+      <div className="skill-card__expanded">
+        <div className="skill-card__head">
+          <div
+            className="skill-card__icon-wrap"
+            style={{ backgroundColor: skill.bg }}
+          >
+            <Image
+              src={skill.icon}
+              alt=""
+              width={30}
+              height={30}
+              className="skill-card__icon"
+            />
+          </div>
+
+          <span className="skill-card__number">{number}</span>
+        </div>
+
+        <div className="skill-card__content">
+          <p className="skill-card__category">{skill.category}</p>
+          <h3 className="skill-card__name">{skill.name}</h3>
+
+          <p className="skill-card__description">{skill.description}</p>
+        </div>
+
+        <div className="skill-card__projects">
+          <span>USED IN</span>
+          <p>{skill.projects.join(" · ")}</p>
         </div>
       </div>
-
-      <div className="skill-card__meta">
-        <p className="skill-card__name">{name}</p>
-        {sub ? <p className="skill-card__sub">{sub}</p> : null}
-      </div>
-    </article>
+    </button>
   );
 }
