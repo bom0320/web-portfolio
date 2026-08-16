@@ -1,4 +1,3 @@
-import type { ComponentType } from "react";
 import {
   Boxes,
   Component,
@@ -7,6 +6,7 @@ import {
   Smartphone,
   Sparkles,
   Type,
+  type LucideIcon,
 } from "lucide-react";
 
 import type { Skill, SkillCategoryIcon } from "@/data/skills";
@@ -17,14 +17,7 @@ type Props = {
   onActivate: () => void;
 };
 
-type CategoryIconComponent = ComponentType<{
-  size?: number | string;
-  strokeWidth?: number | string;
-  className?: string;
-  "aria-hidden"?: boolean;
-}>;
-
-const CATEGORY_ICON_MAP: Record<SkillCategoryIcon, CategoryIconComponent> = {
+const CATEGORY_ICON_MAP: Record<SkillCategoryIcon, LucideIcon> = {
   framework: Boxes,
   ui: Component,
   typing: Type,
@@ -47,18 +40,14 @@ export default function SkillCard({ skill, isActive, onActivate }: Props) {
       onFocus={onActivate}
       onClick={onActivate}
     >
-      <span className="skill-card__collapsed-name">{skill.name}</span>
+      <span className="skill-card__name">{skill.name}</span>
 
       <span className="skill-card__collapsed-meta" aria-hidden="true">
         <CategoryIcon size={14} strokeWidth={1.7} />
       </span>
 
       <div className="skill-card__expanded">
-        <div className="skill-card__expanded-copy">
-          <h3 className="skill-card__expanded-title">{skill.name}</h3>
-
-          <p className="skill-card__expanded-desc">{skill.description}</p>
-        </div>
+        <p className="skill-card__description">{skill.description}</p>
 
         <div className="skill-card__expanded-footer">
           <span className="skill-card__category-meta">
