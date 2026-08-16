@@ -76,7 +76,7 @@
   }
 
   .about-hero__desc {
-    width: min(370px, 100%);
+    width: min(390px, 100%);
     margin: 18px 0 0;
 
     font-size: 12px;
@@ -458,7 +458,7 @@
 }
 
 @include laptop {
-  @media (min-width: 1024px) {
+  @media (min-width: 901px) {
     .about-hero__layout {
       width: min(840px, calc(100% - 56px));
       height: 100%;
@@ -517,7 +517,10 @@
     }
 
     .about-hero__desc {
-      width: min(390px, 100%);
+      width: min(430px, 100%);
+
+      font-size: 14px;
+      line-height: 1.75;
     }
 
     .about-hero__cta--swap {

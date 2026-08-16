@@ -76,11 +76,16 @@
 .about-hero__desc {
   width: min(610px, 100%);
   margin: 26px 0 0;
+
   font-size: 16px;
   line-height: 1.85;
   font-weight: 500;
   letter-spacing: -0.02em;
+
   color: rgba(255, 255, 255, 0.68);
+
   word-break: keep-all;
+  text-wrap: balance;
+
   will-change: clip-path;
 }

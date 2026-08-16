@@ -79,10 +79,10 @@ export default function AboutHeroScene() {
           </h2>
 
           <p className="about-hero__desc js-about-hero-desc">
-            왜 이런 흐름이 필요한지 집요하게 파고들고, 발견한 디테일을 구조와
-            인터랙션으로 구현하는 프론트엔드 개발자 김봄입니다.
+            왜 이렇게 보여야 하고, 왜 이렇게 동작해야 하는지 질문하며
+            <br className="about-hero__desc-break--desktop" />
+            디자인의 의도와 기술적인 구조가 자연스럽게 이어지도록 설계합니다.
           </p>
-
           <div
             className="about-hero__cta about-hero__cta--swap js-about-hero-cta"
             data-active={active}
