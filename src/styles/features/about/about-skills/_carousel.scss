@@ -1,18 +1,13 @@
 .skill-carousel {
-  --skill-card-active: 300px;
-  --skill-card-collapsed: 74px;
-  --skill-card-gap: 8px;
-
   width: 100%;
-  margin-top: 48px;
+  margin-top: 42px;
 }
 
 .skill-carousel__track {
   width: 100%;
-  height: 280px;
+  height: 390px;
 
   display: flex;
   align-items: stretch;
-  justify-content: center;
-  gap: var(--skill-card-gap);
+  gap: 9px;
 }

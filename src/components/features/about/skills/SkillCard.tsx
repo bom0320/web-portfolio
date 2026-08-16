@@ -43,7 +43,7 @@ export default function SkillCard({ skill, isActive, onActivate }: Props) {
       <span className="skill-card__name">{skill.name}</span>
 
       <span className="skill-card__collapsed-meta" aria-hidden="true">
-        <CategoryIcon size={14} strokeWidth={1.7} />
+        <CategoryIcon size={16} strokeWidth={1.7} />
       </span>
 
       <div className="skill-card__expanded">
@@ -51,7 +51,7 @@ export default function SkillCard({ skill, isActive, onActivate }: Props) {
 
         <div className="skill-card__expanded-footer">
           <span className="skill-card__category-meta">
-            <CategoryIcon size={14} strokeWidth={1.7} aria-hidden={true} />
+            <CategoryIcon size={16} strokeWidth={1.7} aria-hidden={true} />
             <span>{skill.category}</span>
           </span>
         </div>
