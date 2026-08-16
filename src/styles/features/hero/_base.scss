@@ -45,15 +45,15 @@
 }
 
 .hero__description {
-  max-width: 220px;
+  max-width: 310px;
   margin: 0;
 
-  color: rgba(255, 255, 255, 0.481);
+  color: rgba(255, 255, 255, 0.52);
 
   font-size: 17px;
   font-weight: 520;
-  line-height: 1.45;
-  letter-spacing: -0.045em;
+  line-height: 1.5;
+  letter-spacing: -0.04em;
 }
 
 .hero__desc--desktop {
@@ -78,6 +78,7 @@
   letter-spacing: -0.01em;
   white-space: nowrap;
 }
+
 .js-hero-exit-item {
   will-change: transform, opacity;
 }
