@@ -15,19 +15,14 @@ export default function SkillCarousel({ skills }: SkillCarouselProps) {
   return (
     <div className="skill-carousel">
       <div className="skill-carousel__track">
-        {skills.map((skill, index) => {
-          const isActive = activeIndex === index;
-
-          return (
-            <SkillCard
-              key={skill.name}
-              skill={skill}
-              index={index}
-              isActive={isActive}
-              onActivate={() => setActiveIndex(index)}
-            />
-          );
-        })}
+        {skills.map((skill, index) => (
+          <SkillCard
+            key={skill.name}
+            skill={skill}
+            isActive={activeIndex === index}
+            onActivate={() => setActiveIndex(index)}
+          />
+        ))}
       </div>
     </div>
   );

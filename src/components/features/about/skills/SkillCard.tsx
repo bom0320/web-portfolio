@@ -1,64 +1,70 @@
-import Image from "next/image";
+import type { ComponentType } from "react";
+import {
+  Boxes,
+  Component,
+  DatabaseZap,
+  SlidersHorizontal,
+  Smartphone,
+  Sparkles,
+  Type,
+} from "lucide-react";
 
-import type { Skill } from "@/data/skills";
+import type { Skill, SkillCategoryIcon } from "@/data/skills";
 
 type Props = {
   skill: Skill;
-  index: number;
   isActive: boolean;
   onActivate: () => void;
 };
 
-export default function SkillCard({
-  skill,
-  index,
-  isActive,
-  onActivate,
-}: Props) {
-  const number = String(index + 1).padStart(2, "0");
+type CategoryIconComponent = ComponentType<{
+  size?: number | string;
+  strokeWidth?: number | string;
+  className?: string;
+  "aria-hidden"?: boolean;
+}>;
+
+const CATEGORY_ICON_MAP: Record<SkillCategoryIcon, CategoryIconComponent> = {
+  framework: Boxes,
+  ui: Component,
+  typing: Type,
+  "server-state": DatabaseZap,
+  "client-state": SlidersHorizontal,
+  mobile: Smartphone,
+  interaction: Sparkles,
+};
+
+export default function SkillCard({ skill, isActive, onActivate }: Props) {
+  const CategoryIcon = CATEGORY_ICON_MAP[skill.categoryIcon];
 
   return (
     <button
       type="button"
-      className={`skill-card ${isActive ? "is-active" : ""}`}
+      className={`skill-card${isActive ? " is-active" : ""}`}
       aria-expanded={isActive}
+      aria-label={`${skill.name} 활용 범위 보기`}
       onMouseEnter={onActivate}
       onFocus={onActivate}
       onClick={onActivate}
     >
-      <div className="skill-card__collapsed">
-        <span className="skill-card__number">{number}</span>
-        <span className="skill-card__vertical-name">{skill.name}</span>
-      </div>
+      <span className="skill-card__collapsed-name">{skill.name}</span>
+
+      <span className="skill-card__collapsed-meta" aria-hidden="true">
+        <CategoryIcon size={14} strokeWidth={1.7} />
+      </span>
 
       <div className="skill-card__expanded">
-        <div className="skill-card__head">
-          <div
-            className="skill-card__icon-wrap"
-            style={{ backgroundColor: skill.bg }}
-          >
-            <Image
-              src={skill.icon}
-              alt=""
-              width={30}
-              height={30}
-              className="skill-card__icon"
-            />
-          </div>
+        <div className="skill-card__expanded-copy">
+          <h3 className="skill-card__expanded-title">{skill.name}</h3>
 
-          <span className="skill-card__number">{number}</span>
+          <p className="skill-card__expanded-desc">{skill.description}</p>
         </div>
 
-        <div className="skill-card__content">
-          <p className="skill-card__category">{skill.category}</p>
-          <h3 className="skill-card__name">{skill.name}</h3>
-
-          <p className="skill-card__description">{skill.description}</p>
-        </div>
-
-        <div className="skill-card__projects">
-          <span>USED IN</span>
-          <p>{skill.projects.join(" · ")}</p>
+        <div className="skill-card__expanded-footer">
+          <span className="skill-card__category-meta">
+            <CategoryIcon size={14} strokeWidth={1.7} aria-hidden={true} />
+            <span>{skill.category}</span>
+          </span>
         </div>
       </div>
     </button>
