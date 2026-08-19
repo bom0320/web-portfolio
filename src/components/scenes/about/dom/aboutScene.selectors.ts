@@ -8,6 +8,11 @@ export const ABOUT_SCENE_SELECTORS = {
     desc: ".js-about-hero-desc",
     visual: ".js-about-hero-visual",
     cta: ".js-about-hero-cta",
+
+    character: ".js-about-character",
+    characterPupils: ".js-about-character-pupil",
+    characterLids: ".js-about-character-lid",
+    characterMouth: ".js-about-character-mouth",
   },
 
   skills: {

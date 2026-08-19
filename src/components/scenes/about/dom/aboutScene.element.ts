@@ -9,6 +9,11 @@ export type AboutHeroAnimationElements = {
   desc: HTMLElement | null;
   visual: HTMLElement | null;
   cta: HTMLElement | null;
+
+  character: HTMLElement | null;
+  characterPupils: HTMLElement[];
+  characterLids: HTMLElement[];
+  characterMouth: HTMLElement | null;
 };
 
 export type AboutSkillsAnimationElements = {
@@ -80,6 +85,11 @@ export const getAboutSceneAnimationElements = (
       desc: queryElement(heroRoot, heroSelectors.desc),
       visual: queryElement(heroRoot, heroSelectors.visual),
       cta: queryElement(heroRoot, heroSelectors.cta),
+
+      character: queryElement(heroRoot, heroSelectors.character),
+      characterPupils: queryElements(heroRoot, heroSelectors.characterPupils),
+      characterLids: queryElements(heroRoot, heroSelectors.characterLids),
+      characterMouth: queryElement(heroRoot, heroSelectors.characterMouth),
     },
 
     skills: {

@@ -53,6 +53,89 @@
   height: auto;
 }
 
+.about-character__eye {
+  position: absolute;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+}
+
+.about-character__eye--left {
+  top: 38.13%;
+  left: 21.46%;
+
+  width: 20.05%;
+  height: 15.71%;
+}
+
+.about-character__eye--right {
+  top: 38.13%;
+  left: 46.27%;
+
+  width: 20.82%;
+  height: 15.71%;
+}
+
+.about-character__pupil-mover {
+  position: absolute;
+  inset: 0;
+
+  will-change: transform;
+}
+
+.about-character__pupil {
+  position: absolute;
+  top: 50%;
+  left: 46%;
+
+  width: 60%;
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+
+  background: #000;
+
+  transform: translate(-50%, -50%);
+}
+
+.about-character__lid {
+  position: absolute;
+  top: 0;
+  left: -5%;
+  z-index: 2;
+
+  width: 110%;
+  height: 100%;
+
+  background: #fff;
+
+  border-bottom: 3px solid #000;
+  border-radius: 0 0 50% 50%;
+
+  transform: translateY(-105%);
+
+  pointer-events: none;
+  will-change: transform;
+}
+
+.about-character__mouth {
+  position: absolute;
+  top: 57%;
+  left: 44%;
+
+  width: 18px;
+  height: 0;
+
+  border-bottom: 3px solid #000;
+  border-radius: 0;
+
+  transform: translateX(-50%);
+  transform-origin: center top;
+
+  will-change: width, height, border-radius;
+}
+
 .about-hero__content {
   width: 100%;
   max-width: 650px;
