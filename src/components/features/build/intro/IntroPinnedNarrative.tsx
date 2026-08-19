@@ -16,7 +16,7 @@ export default function IntroPinnedNarrative() {
           </p>
 
           <h2 className="build-intro-title-layer__title js-build-intro-title">
-            <GradientText>Flow. Structure. Motion.</GradientText>
+            <GradientText>Intent. Structure. Detail.</GradientText>
           </h2>
 
           <p className="build-intro-title-layer__subtitle js-build-intro-subtitle">
@@ -27,10 +27,10 @@ export default function IntroPinnedNarrative() {
         <div className="build-intro-phase-layer">
           <div className="build-intro-phase build-intro-phase--01 js-build-intro-phase-01">
             <p>
-              저는 단순히 화면을 구현하는 것보다, 사용자가 어떤 흐름으로
-              이해하고 행동하는지를 더 중요하게 바라봅니다. 그래서 인터페이스,
-              인터랙션, 상태 흐름, 그리고 구조까지도 하나의 연결된 경험처럼
-              설계하려고 합니다.
+              디자인의 의도와 사용자 흐름을 코드로 옮기고, 상태와 컴포넌트
+              구조까지 함께 설계합니다.
+              <br className="build-intro-phase__desktop-break" />
+              보이는 경험과 내부 구조가 따로 놀지 않도록 구현합니다.
             </p>
           </div>
 
@@ -47,10 +47,12 @@ export default function IntroPinnedNarrative() {
             </h3>
 
             <p>
-              좋은 경험은 흐름을 의식하지 않게 만듭니다. 사용자는 기능을 하나씩
-              읽기보다, 흐름 안에서 자연스럽게 이해하고 행동한다고 생각합니다.
-              설명을 늘리는 것보다, 망설임 없이 이어질 수 있는 구조를 더
-              중요하게 바라봅니다.
+              디테일은 많이 넣기보다 필요한 곳에 정확히 둡니다.
+              <br className="build-intro-phase__desktop-break" />
+              정보의 위계와 상태 변화를 명확히 하고, 필요한 피드백은 남기되
+              <br className="build-intro-phase__desktop-break" />
+              불필요한 선택은 덜어 다음 행동이 자연스럽게 이어지는 경험을
+              만듭니다.
             </p>
           </div>
         </div>
