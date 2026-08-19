@@ -9,86 +9,136 @@ import type { AboutHeroAnimationElements } from "@/components/scenes/about/dom";
 
 const AboutHeroAnimation = {
   create(elements: AboutHeroAnimationElements): AnimationController {
-    const { root, eyebrow, heading, desc, visual, cta } = elements;
+    const { root, eyebrow, heading, meta, desc, visual, cta } = elements;
 
     if (!root || !heading || !desc) {
       return createNoopController();
     }
 
-    const targets = [eyebrow, heading, desc, visual, cta].filter(
+    const targets = [eyebrow, heading, meta, desc, visual, cta].filter(
       (target): target is HTMLElement => Boolean(target)
     );
 
-    gsap.set([eyebrow, heading, desc, cta].filter(Boolean), {
-      y: 32,
-      autoAlpha: 0,
+    /*
+     * Text elements
+     */
+    gsap.set(
+      [eyebrow, heading, meta, desc, cta].filter(
+        (target): target is HTMLElement => Boolean(target)
+      ),
+      {
+        y: 28,
+        autoAlpha: 0,
+      }
+    );
+
+    /*
+     * Profile visual
+     *
+     * 세로형 사진이 아래에서 위로 열리는
+     * editorial reveal 방식.
+     */
+    if (visual) {
+      gsap.set(visual, {
+        y: 24,
+        autoAlpha: 0,
+        clipPath: "inset(100% 0% 0% 0%)",
+      });
+    }
+
+    const timeline = gsap.timeline({
+      paused: true,
+      defaults: {
+        ease: "power3.out",
+      },
     });
 
-    gsap.set(visual, {
-      y: 36,
-      scale: 0.96,
-      autoAlpha: 0,
-    });
-
-    gsap.set(desc, {
-      x: -16,
-    });
-
-    const timeline = gsap.timeline({ paused: true });
-
-    timeline
-      .to(
+    /*
+     * Image reveal
+     */
+    if (visual) {
+      timeline.to(
         visual,
         {
           y: 0,
-          scale: 1,
           autoAlpha: 1,
-          duration: 1,
-          ease: "power3.out",
+          clipPath: "inset(0% 0% 0% 0%)",
+          duration: 1.15,
         },
         0
-      )
-      .to(
+      );
+    }
+
+    /*
+     * ABOUT ME
+     */
+    if (eyebrow) {
+      timeline.to(
         eyebrow,
         {
           y: 0,
           autoAlpha: 1,
-          duration: 0.7,
-          ease: "power3.out",
+          duration: 0.55,
         },
         0.08
-      )
-      .to(
-        heading,
+      );
+    }
+
+    /*
+     * Main heading
+     */
+    timeline.to(
+      heading,
+      {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.82,
+      },
+      0.15
+    );
+
+    /*
+     * Role / Focus
+     */
+    if (meta) {
+      timeline.to(
+        meta,
         {
           y: 0,
           autoAlpha: 1,
-          duration: 0.9,
-          ease: "power3.out",
-        },
-        0.16
-      )
-      .to(
-        desc,
-        {
-          y: 0,
-          x: 0,
-          autoAlpha: 1,
-          duration: 0.9,
-          ease: "power3.out",
+          duration: 0.65,
         },
         0.28
-      )
-      .to(
+      );
+    }
+
+    /*
+     * Description
+     */
+    timeline.to(
+      desc,
+      {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.7,
+      },
+      0.36
+    );
+
+    /*
+     * CTA
+     */
+    if (cta) {
+      timeline.to(
         cta,
         {
           y: 0,
           autoAlpha: 1,
-          duration: 0.7,
-          ease: "power3.out",
+          duration: 0.65,
         },
-        0.42
+        0.46
       );
+    }
 
     const setProgress = (progress: number) => {
       timeline.progress(clampProgress(progress));

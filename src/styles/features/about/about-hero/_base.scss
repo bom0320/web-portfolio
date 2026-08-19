@@ -22,7 +22,7 @@
 
   display: grid;
   grid-template-columns: 450px 1fr;
-  column-gap: 72px;
+  column-gap: 50px;
 
   align-items: center;
 
@@ -31,58 +31,106 @@
 }
 
 .about-hero__visual {
+  width: 360px;
+  aspect-ratio: 4 / 5;
+
   display: flex;
   justify-content: flex-start;
-  align-items: flex-end;
+  align-items: stretch;
+
+  overflow: hidden;
+  background: #111;
 
   transform: translateY(-2px);
 }
 
 .about-hero__character {
-  width: 330px;
-  height: auto;
+  width: 100%;
+  height: 100%;
+
   display: block;
+
+  object-fit: cover;
+  object-position: center;
 }
 
 .about-hero__content {
   width: 100%;
   max-width: 650px;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   text-align: left;
+
   transform: translateY(-12px);
 }
 
 .about-hero__eyebrow {
   display: block;
-  margin-bottom: 20px;
-  font-size: 19px;
+
+  margin-bottom: 18px;
+
+  font-size: 14px;
   line-height: 1;
   font-weight: 500;
-  letter-spacing: -0.02em;
-  color: rgba(255, 255, 255, 0.74);
+  letter-spacing: 0.04em;
+
+  color: rgba(255, 255, 255, 0.58);
 }
 
 .about-hero__title {
   margin: 0;
-  font-size: clamp(32px, 3vw, 40px);
+
+  font-size: clamp(32px, 3vw, 36px);
   line-height: 1.18;
   font-weight: 800;
   letter-spacing: -0.04em;
+
   color: #fff;
+
+  word-break: keep-all;
+}
+
+.about-hero__meta {
+  width: min(520px, 100%);
+  margin-top: 20px;
+}
+
+.about-hero__meta-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+
+  font-size: 13px;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+.about-hero__meta-label {
+  font-style: italic;
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.about-hero__meta-value {
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.76);
 }
 
 .about-hero__desc {
   width: min(610px, 100%);
-  margin: 26px 0 0;
 
-  font-size: 16px;
-  line-height: 1.85;
+  margin: 70px 0 0;
+
+  font-size: 15px;
+  line-height: 1.8;
   font-weight: 500;
   letter-spacing: -0.02em;
 
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.62);
 
   word-break: keep-all;
   text-wrap: balance;

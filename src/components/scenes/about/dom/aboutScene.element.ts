@@ -5,6 +5,7 @@ export type AboutHeroAnimationElements = {
   inner: HTMLElement | null;
   eyebrow: HTMLElement | null;
   heading: HTMLElement | null;
+  meta: HTMLElement | null;
   desc: HTMLElement | null;
   visual: HTMLElement | null;
   cta: HTMLElement | null;
@@ -75,6 +76,7 @@ export const getAboutSceneAnimationElements = (
       inner: queryElement(heroRoot, heroSelectors.inner),
       eyebrow: queryElement(heroRoot, heroSelectors.eyebrow),
       heading: queryElement(heroRoot, heroSelectors.heading),
+      meta: queryElement(heroRoot, heroSelectors.meta),
       desc: queryElement(heroRoot, heroSelectors.desc),
       visual: queryElement(heroRoot, heroSelectors.visual),
       cta: queryElement(heroRoot, heroSelectors.cta),

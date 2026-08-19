@@ -60,7 +60,7 @@ export default function AboutHeroScene() {
         >
           <img
             className="about-hero__character"
-            src="/images/character_1.png"
+            src="/images/character_02.png"
             alt=""
           />
         </div>
@@ -73,16 +73,31 @@ export default function AboutHeroScene() {
           <h2 className="about-hero__title js-about-hero-title">
             안녕하세요.
             <br />
-            고슴도치같이 예민하게
+            보이는 화면 너머까지 고민하는
             <br />
-            <GradientText>디테일을 캐치하는 개발자</GradientText>입니다.
+            <GradientText>프론트엔드 개발자</GradientText>입니다.
           </h2>
+
+          <div className="about-hero__meta js-about-hero-meta">
+            <div className="about-hero__meta-row">
+              <span className="about-hero__meta-label">Role</span>
+              <span className="about-hero__meta-value">Frontend Engineer</span>
+            </div>
+
+            <div className="about-hero__meta-row">
+              <span className="about-hero__meta-label">Focus</span>
+              <span className="about-hero__meta-value">
+                UI · Interaction · Performance
+              </span>
+            </div>
+          </div>
 
           <p className="about-hero__desc js-about-hero-desc">
             왜 이렇게 보여야 하고, 왜 이렇게 동작해야 하는지 질문하며
             <br className="about-hero__desc-break--desktop" />
             디자인의 의도와 기술적인 구조가 자연스럽게 이어지도록 설계합니다.
           </p>
+
           <div
             className="about-hero__cta about-hero__cta--swap js-about-hero-cta"
             data-active={active}

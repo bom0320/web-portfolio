@@ -4,6 +4,7 @@ export const ABOUT_SCENE_SELECTORS = {
     inner: ".js-about-hero-inner",
     eyebrow: ".js-about-hero-eyebrow",
     heading: ".js-about-hero-title",
+    meta: ".js-about-hero-meta",
     desc: ".js-about-hero-desc",
     visual: ".js-about-hero-visual",
     cta: ".js-about-hero-cta",
