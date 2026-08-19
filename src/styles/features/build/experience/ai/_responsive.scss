@@ -1,5 +1,9 @@
 @import "../../../../abstracts/mixins";
 
+.build-experience-block--ai .build-experience-block__desktop-break {
+  display: initial;
+}
+
 @include laptop {
   .build-experience-block--ai .build-experience-block__header {
     width: min(960px, calc(100% - 100px));
@@ -69,6 +73,10 @@
 }
 
 @include mobile {
+  .build-experience-block--ai .build-experience-block__desktop-break {
+    display: none;
+  }
+
   .build-experience-block--ai .build-experience-block__header {
     width: min(100% - 48px, 520px);
     margin: 0 auto;
@@ -90,13 +98,16 @@
   }
 
   .build-experience-block--ai .build-experience-block__desc {
-    max-width: 300px;
+    width: 100%;
+    max-width: 340px;
     margin-top: 22px;
 
     font-size: 13px;
     line-height: 1.72;
     letter-spacing: -0.035em;
+
     word-break: keep-all;
+    text-wrap: pretty;
   }
 
   .build-experience-grid--ai {
@@ -145,9 +156,12 @@
     font-size: 13px;
     line-height: 1.68;
     letter-spacing: -0.035em;
+
     word-break: keep-all;
+    text-wrap: pretty;
   }
 }
+
 @include small-mobile {
   .build-experience-block--ai .build-experience-block__header {
     width: calc(100% - 40px);
@@ -168,13 +182,15 @@
   }
 
   .build-experience-block--ai .build-experience-block__desc {
-    max-width: 270px;
+    max-width: 300px;
     margin-top: 18px;
 
     font-size: 12px;
     line-height: 1.68;
     letter-spacing: -0.03em;
+
     word-break: keep-all;
+    text-wrap: pretty;
   }
 
   .build-experience-grid--ai {
@@ -221,6 +237,8 @@
     font-size: 12px;
     line-height: 1.62;
     letter-spacing: -0.03em;
+
     word-break: keep-all;
+    text-wrap: pretty;
   }
 }

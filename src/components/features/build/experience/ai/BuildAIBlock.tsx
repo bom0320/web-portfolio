@@ -14,9 +14,13 @@ export default function BuildAIBlock() {
         </h2>
 
         <p className="build-experience-block__desc">
-          저는 AI를 단순한 자동화 도구가 아니라, 더 깊게 탐구하고 빠르게
-          실험하기 위해 활용합니다. 구조를 비교하고, 흐름을 탐색하고, 더 나은
-          경험을 계속 고민합니다.
+          AI를 단순한 코드 생성 도구로 사용하기보다,
+          <br className="build-experience-block__desktop-break" />
+          필요한 맥락과 제약을 구성하고 작업을 탐색·구현·검증 단계로 나누어
+          활용합니다.
+          <br className="build-experience-block__desktop-break" />
+          생성된 결과는 실제 코드와 동작을 기준으로 검증하고, 그 과정에서
+          컨텍스트와 작업 흐름을 계속 개선합니다.
         </p>
       </div>
 
