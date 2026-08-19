@@ -35,21 +35,18 @@ export default function IntroVisualProof() {
         ))}
 
         <p className="build-intro-proof__quote js-build-intro-proof-quote">
-          <span
-            className="build-intro-proof__quote-mark"
-            aria-hidden="true"
-          >
+          <span className="build-intro-proof__quote-mark" aria-hidden="true">
             “
           </span>
           <br />
-          저는 인터페이스를 단순한 화면 구성으로 보지 않고,
+          디자인의 의도는 화면에서 끝나지 않고,
           <br />
           <strong>
             <GradientText>
-              하나의 흐름 안에서 자연스럽게 이어지는 경험
+              구조와 동작까지 같은 방향으로 이어져야 한다
             </GradientText>
           </strong>
-          을 만들고 싶었습니다.
+          고 생각합니다.
         </p>
       </div>
     </section>
