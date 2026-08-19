@@ -43,9 +43,9 @@
   );
 }
 
-.build-experience-visual-card--character
+.build-experience-visual-card--visual-direction
   .build-experience-visual-card__overlay,
-.build-experience-visual-card--motion
+.build-experience-visual-card--motion-direction
   .build-experience-visual-card__overlay {
   background: radial-gradient(
       circle at 50% 18%,
@@ -62,8 +62,8 @@
     );
 }
 
-.build-experience-visual-card--text
-  .build-experience-visual-card__overlay {
+/* variant: "text" 이므로 유지 */
+.build-experience-visual-card--text .build-experience-visual-card__overlay {
   background: radial-gradient(
       circle at 74% 12%,
       rgba(255, 255, 255, 0.055),
@@ -133,39 +133,41 @@
 
 /* 카드별 높이 / 정렬 */
 
-.build-experience-visual-card--character {
+/* character → visual-direction */
+.build-experience-visual-card--visual-direction {
   min-height: 440px;
 }
 
-.build-experience-visual-card--character
+.build-experience-visual-card--visual-direction
   .build-experience-visual-card__content {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.build-experience-visual-card--character
+.build-experience-visual-card--visual-direction
   .build-experience-visual-card__title {
   max-width: 88%;
 }
 
-.build-experience-visual-card--typography {
+/* typography → visual-balance */
+.build-experience-visual-card--visual-balance {
   min-height: 270px;
 }
 
-.build-experience-visual-card--typography
+.build-experience-visual-card--visual-balance
   .build-experience-visual-card__content {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.build-experience-visual-card--typography
+.build-experience-visual-card--visual-balance
   .build-experience-visual-card__icon {
   margin-bottom: 0;
 }
 
-.build-experience-visual-card--typography
+.build-experience-visual-card--visual-balance
   .build-experience-visual-card__title {
   max-width: 430px;
 
@@ -174,23 +176,23 @@
   letter-spacing: -0.07em;
 }
 
-.build-experience-visual-card--storytelling {
+/* storytelling → visual-flow */
+.build-experience-visual-card--visual-flow {
   min-height: 270px;
 }
 
-.build-experience-visual-card--storytelling
+.build-experience-visual-card--visual-flow
   .build-experience-visual-card__content {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.build-experience-visual-card--storytelling
-  .build-experience-visual-card__icon {
+.build-experience-visual-card--visual-flow .build-experience-visual-card__icon {
   margin-bottom: 0;
 }
 
-.build-experience-visual-card--storytelling
+.build-experience-visual-card--visual-flow
   .build-experience-visual-card__title {
   max-width: 430px;
 
@@ -199,18 +201,19 @@
   letter-spacing: -0.07em;
 }
 
-.build-experience-visual-card--motion {
+/* motion → motion-direction */
+.build-experience-visual-card--motion-direction {
   min-height: 450px;
 }
 
-.build-experience-visual-card--motion
+.build-experience-visual-card--motion-direction
   .build-experience-visual-card__content {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.build-experience-visual-card--motion
+.build-experience-visual-card--motion-direction
   .build-experience-visual-card__title {
   max-width: 88%;
 }

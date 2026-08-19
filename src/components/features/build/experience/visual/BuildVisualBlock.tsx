@@ -9,15 +9,16 @@ export default function BuildVisualBlock() {
         <p className="build-experience-block__eyebrow">BEYOND</p>
 
         <h2 className="build-experience-block__title">
-          인터페이스 너머의
+          엔지니어링을 넘어,
           <br />
           감각까지.
         </h2>
 
         <p className="build-experience-block__desc">
-          저는 단순히 기능을 배치하기보다, 사용자가 화면을 어떻게 느끼게
-          될지까지 함께 고민합니다. 구성과 움직임, 그리고 분위기까지 경험의 인상
-          역시 중요한 요소라고 생각합니다.
+          정답이 정해져 있지 않은 디테일에서 화면의 미묘한 어색함을 살피고,
+          디자인 의도와 서비스의 맥락을 기준으로 비율과 밀도, 움직임을
+          조율합니다. 구현 과정에서 발견한 차이는 함께 검토하고, 더 나은 방향이
+          보이면 근거와 대안을 제안합니다.
         </p>
       </div>
 

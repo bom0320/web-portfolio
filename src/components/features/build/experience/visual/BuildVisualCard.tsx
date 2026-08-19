@@ -16,6 +16,7 @@ export default function BuildVisualCard({ item }: BuildVisualCardProps) {
 
   const Icon = BUILD_VISUAL_ICON_MAP[item.icon];
   const hasImage = Boolean(item.image);
+  const isLargeCard = item.variant !== "text";
 
   const style = item.accent
     ? ({
@@ -68,9 +69,7 @@ export default function BuildVisualCard({ item }: BuildVisualCardProps) {
           <Icon aria-hidden="true" />
         </div>
 
-        <h3 className="build-experience-visual-card__title">
-          {item.title}
-        </h3>
+        <h3 className="build-experience-visual-card__title">{item.title}</h3>
 
         {item.description ? (
           <p className="build-experience-visual-card__desc">

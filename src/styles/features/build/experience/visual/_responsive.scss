@@ -10,16 +10,16 @@
     gap: 24px;
   }
 
-  .build-experience-visual-card--character {
+  .build-experience-visual-card--visual-direction {
     min-height: 420px;
   }
 
-  .build-experience-visual-card--motion {
+  .build-experience-visual-card--motion-direction {
     min-height: 430px;
   }
 
-  .build-experience-visual-card--typography,
-  .build-experience-visual-card--storytelling {
+  .build-experience-visual-card--visual-balance,
+  .build-experience-visual-card--visual-flow {
     min-height: 260px;
   }
 
@@ -79,13 +79,13 @@
     border-radius: 28px;
   }
 
-  .build-experience-visual-card--character,
-  .build-experience-visual-card--motion {
+  .build-experience-visual-card--visual-direction,
+  .build-experience-visual-card--motion-direction {
     min-height: 440px;
   }
 
-  .build-experience-visual-card--typography,
-  .build-experience-visual-card--storytelling {
+  .build-experience-visual-card--visual-balance,
+  .build-experience-visual-card--visual-flow {
     min-height: 260px;
   }
 
@@ -117,18 +117,18 @@
     line-height: 1.68;
   }
 
-  .build-experience-visual-card--typography
+  .build-experience-visual-card--visual-balance
     .build-experience-visual-card__content,
-  .build-experience-visual-card--storytelling
+  .build-experience-visual-card--visual-flow
     .build-experience-visual-card__content {
     justify-content: center;
     align-items: center;
     gap: 22px;
   }
 
-  .build-experience-visual-card--typography
+  .build-experience-visual-card--visual-balance
     .build-experience-visual-card__title,
-  .build-experience-visual-card--storytelling
+  .build-experience-visual-card--visual-flow
     .build-experience-visual-card__title {
     max-width: 520px;
 
@@ -183,13 +183,13 @@
     border-radius: 22px;
   }
 
-  .build-experience-visual-card--character,
-  .build-experience-visual-card--motion {
+  .build-experience-visual-card--visual-direction,
+  .build-experience-visual-card--motion-direction {
     min-height: 360px;
   }
 
-  .build-experience-visual-card--typography,
-  .build-experience-visual-card--storytelling {
+  .build-experience-visual-card--visual-balance,
+  .build-experience-visual-card--visual-flow {
     min-height: 210px;
   }
 
@@ -224,9 +224,9 @@
     letter-spacing: -0.035em;
   }
 
-  .build-experience-visual-card--typography
+  .build-experience-visual-card--visual-balance
     .build-experience-visual-card__content,
-  .build-experience-visual-card--storytelling
+  .build-experience-visual-card--visual-flow
     .build-experience-visual-card__content {
     justify-content: center;
     align-items: center;
@@ -235,16 +235,16 @@
     padding: 28px 26px;
   }
 
-  .build-experience-visual-card--typography
+  .build-experience-visual-card--visual-balance
     .build-experience-visual-card__icon,
-  .build-experience-visual-card--storytelling
+  .build-experience-visual-card--visual-flow
     .build-experience-visual-card__icon {
     margin-bottom: 0;
   }
 
-  .build-experience-visual-card--typography
+  .build-experience-visual-card--visual-balance
     .build-experience-visual-card__title,
-  .build-experience-visual-card--storytelling
+  .build-experience-visual-card--visual-flow
     .build-experience-visual-card__title {
     max-width: 260px;
 
@@ -294,13 +294,13 @@
     border-radius: 20px;
   }
 
-  .build-experience-visual-card--character,
-  .build-experience-visual-card--motion {
+  .build-experience-visual-card--visual-direction,
+  .build-experience-visual-card--motion-direction {
     min-height: 320px;
   }
 
-  .build-experience-visual-card--typography,
-  .build-experience-visual-card--storytelling {
+  .build-experience-visual-card--visual-balance,
+  .build-experience-visual-card--visual-flow {
     min-height: 190px;
   }
 
@@ -332,9 +332,9 @@
     line-height: 1.58;
   }
 
-  .build-experience-visual-card--typography
+  .build-experience-visual-card--visual-balance
     .build-experience-visual-card__content,
-  .build-experience-visual-card--storytelling
+  .build-experience-visual-card--visual-flow
     .build-experience-visual-card__content {
     justify-content: center;
     align-items: center;
@@ -343,16 +343,16 @@
     padding: 24px 22px;
   }
 
-  .build-experience-visual-card--typography
+  .build-experience-visual-card--visual-balance
     .build-experience-visual-card__icon,
-  .build-experience-visual-card--storytelling
+  .build-experience-visual-card--visual-flow
     .build-experience-visual-card__icon {
     margin-bottom: 0;
   }
 
-  .build-experience-visual-card--typography
+  .build-experience-visual-card--visual-balance
     .build-experience-visual-card__title,
-  .build-experience-visual-card--storytelling
+  .build-experience-visual-card--visual-flow
     .build-experience-visual-card__title {
     max-width: 230px;
 
