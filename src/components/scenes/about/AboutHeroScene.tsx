@@ -107,7 +107,7 @@ export default function AboutHeroScene() {
             <div className="about-hero__meta-row">
               <span className="about-hero__meta-label">Focus</span>
               <span className="about-hero__meta-value">
-                UI · Interaction · Performance
+                UI·UX · Interaction · Performance
               </span>
             </div>
           </div>
