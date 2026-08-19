@@ -58,11 +58,31 @@ export default function AboutHeroScene() {
           className="about-hero__visual js-about-hero-visual"
           aria-hidden="true"
         >
-          <img
-            className="about-hero__character"
-            src="/images/character_02.png"
-            alt=""
-          />
+          <div className="about-character js-about-character">
+            <img
+              className="about-hero__character about-character__body"
+              src="/images/about-character-base_01.svg"
+              alt=""
+            />
+
+            <div className="about-character__eye about-character__eye--left">
+              <div className="about-character__pupil-mover js-about-character-pupil">
+                <span className="about-character__pupil" />
+              </div>
+
+              <span className="about-character__lid js-about-character-lid" />
+            </div>
+
+            <div className="about-character__eye about-character__eye--right">
+              <div className="about-character__pupil-mover js-about-character-pupil">
+                <span className="about-character__pupil" />
+              </div>
+
+              <span className="about-character__lid js-about-character-lid" />
+            </div>
+
+            <span className="about-character__mouth js-about-character-mouth" />
+          </div>
         </div>
 
         <div className="about-hero__content">
