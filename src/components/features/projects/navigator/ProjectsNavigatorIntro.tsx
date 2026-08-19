@@ -12,9 +12,11 @@ export default function ProjectsNavigatorIntro() {
       </h2>
 
       <p className="projects-navigator-intro__description js-projects-navigator-intro-desc">
-        제가 중요하게 생각해온 구조, 흐름, 인터랙션의 기준은 프로젝트를 만드는
-        과정 속에서 더 분명해졌습니다. 각 프로젝트는 단순한 결과물이 아니라,
-        제가 어떤 방식으로 문제를 바라보고 구현해왔는지를 보여주는 기록입니다.
+        앞서 이야기한 기준들을 실제 프로젝트 안에서 검증하고 발전시켜왔습니다.
+        <br className="projects-navigator-intro__desktop-break" />
+        문제를 정의하고 구조를 설계한 과정부터 구현과 개선까지,
+        <br className="projects-navigator-intro__desktop-break" />각
+        프로젝트에서 내린 선택과 그 이유를 담았습니다.
       </p>
     </div>
   );
