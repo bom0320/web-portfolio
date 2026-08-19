@@ -107,15 +107,18 @@ export default function AboutHeroScene() {
             <div className="about-hero__meta-row">
               <span className="about-hero__meta-label">Focus</span>
               <span className="about-hero__meta-value">
-                UI·UX · Interaction · Performance
+                UX Engineering · Interaction · Performance
               </span>
             </div>
           </div>
 
           <p className="about-hero__desc js-about-hero-desc">
-            왜 이렇게 보여야 하고, 왜 이렇게 동작해야 하는지 질문하며
+            왜 이렇게 보여야 하고, 왜 이렇게 동작해야 하는지 질문합니다.
             <br className="about-hero__desc-break--desktop" />
-            디자인의 의도와 기술적인 구조가 자연스럽게 이어지도록 설계합니다.
+            디자인의 의도와 기술 구조가 자연스럽게 이어지도록 설계하고,
+            <br className="about-hero__desc-break--desktop" />
+            사용자 경험과 성능을 함께 고민하며 실제 사용 데이터를 바탕으로
+            개선을 반복합니다.
           </p>
 
           <div
