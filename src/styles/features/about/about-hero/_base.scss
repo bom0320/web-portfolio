@@ -105,18 +105,21 @@
   left: -5%;
   z-index: 2;
 
+  display: block;
+
   width: 110%;
   height: 100%;
 
   background: #fff;
 
   border-bottom: 3px solid #000;
-  border-radius: 0 0 50% 50%;
-
-  transform: translateY(-105%);
+  border-bottom-left-radius: 38%;
+  border-bottom-right-radius: 38%;
 
   pointer-events: none;
-  will-change: transform;
+
+  transform-origin: center top;
+  will-change: transform, border-radius;
 }
 
 .about-character__mouth {
