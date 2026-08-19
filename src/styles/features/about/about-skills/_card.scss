@@ -28,6 +28,25 @@
   transition: flex 0.55s cubic-bezier(0.22, 1, 0.36, 1), background 0.45s ease;
 }
 
+.skill-card::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  background: rgba(0, 0, 0, 0.14);
+
+  pointer-events: none;
+
+  transition: background 0.35s ease;
+}
+
+.skill-card.is-active::before {
+  background: rgba(0, 0, 0, 0.1);
+}
+
 .skill-card:focus-visible {
   outline: 1px solid rgba(255, 255, 255, 0.45);
   outline-offset: 3px;

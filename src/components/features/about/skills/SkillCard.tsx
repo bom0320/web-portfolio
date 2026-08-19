@@ -32,6 +32,7 @@ const CATEGORY_ICON_MAP: Record<SkillCategoryIcon, LucideIcon> = {
 type SkillCardStyle = CSSProperties & {
   "--skill-background": string;
   "--skill-active-background": string;
+  "--skill-accent": string;
 };
 
 export default function SkillCard({ skill, isActive, onActivate }: Props) {
@@ -40,6 +41,7 @@ export default function SkillCard({ skill, isActive, onActivate }: Props) {
   const themeStyle: SkillCardStyle = {
     "--skill-background": skill.theme.background,
     "--skill-active-background": skill.theme.activeBackground,
+    "--skill-accent": skill.theme.accent,
   };
 
   return (
@@ -65,7 +67,6 @@ export default function SkillCard({ skill, isActive, onActivate }: Props) {
         <div className="skill-card__expanded-footer">
           <span className="skill-card__category-meta">
             <CategoryIcon size={16} strokeWidth={1.7} aria-hidden="true" />
-
             <span>{skill.category}</span>
           </span>
         </div>

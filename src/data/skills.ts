@@ -10,6 +10,7 @@ export type SkillCategoryIcon =
 export type SkillTheme = {
   background: string;
   activeBackground: string;
+  accent: string;
 };
 
 export type Skill = {
@@ -28,7 +29,8 @@ export const SKILLS: Skill[] = [
     description:
       "App Router 기반으로 페이지와 라우팅 구조를 설계하고, 데이터 흐름과 이미지 로딩 등 실제 서비스의 성능까지 고려해 구현합니다.",
     theme: {
-      // Next.js — neutral / silver
+      accent: "#a5a5ab",
+
       background: `
         radial-gradient(
           140% 65% at 45% 112%,
@@ -71,7 +73,8 @@ export const SKILLS: Skill[] = [
     description:
       "상태 변화에 따라 동작하는 UI를 구현하고, 화면의 역할과 책임을 기준으로 컴포넌트를 분리해 재사용 가능한 구조로 설계합니다.",
     theme: {
-      // React — cyan
+      accent: "#5b9fae",
+
       background: `
         radial-gradient(
           120% 58% at 50% -8%,
@@ -114,7 +117,8 @@ export const SKILLS: Skill[] = [
     description:
       "API 응답과 도메인 타입을 정의하고, nullable·optional 등 데이터 경계의 불일치를 추적해 타입 안정성을 높입니다.",
     theme: {
-      // TypeScript — #3178C6 계열
+      accent: "#4a82bd",
+
       background: `
         radial-gradient(
           140% 62% at 18% 5%,
@@ -151,7 +155,8 @@ export const SKILLS: Skill[] = [
     description:
       "Query Key를 기준으로 서버 상태를 구조화하고, 데이터 변경 주기에 맞춰 캐싱·무효화·재요청 전략을 설계합니다.",
     theme: {
-      // TanStack Query — red / pink
+      accent: "#b95c74",
+
       background: `
         radial-gradient(
           160% 26% at 50% 59%,
@@ -189,7 +194,8 @@ export const SKILLS: Skill[] = [
     description:
       "인증 상태와 사용자 역할처럼 여러 화면에서 공유되는 상태를 모델링하고, 필요한 범위에 맞춰 전역 상태를 관리합니다.",
     theme: {
-      // Zustand — warm brown / beige
+      accent: "#967052",
+
       background: `
         radial-gradient(
           135% 58% at 48% 108%,
@@ -221,7 +227,8 @@ export const SKILLS: Skill[] = [
     description:
       "Expo 기반으로 모바일 화면과 역할별 사용자 흐름을 구현하고, 클라이언트 상태와 서버 데이터를 연결해 앱을 구성합니다.",
     theme: {
-      // React Native — React보다 더 steel / deep cyan
+      accent: "#548b9a",
+
       background: `
         radial-gradient(
           150% 34% at 48% 58%,
@@ -253,7 +260,8 @@ export const SKILLS: Skill[] = [
     description:
       "ScrollTrigger 기반의 pin·sticky·스크롤 인터랙션을 구현하고, 복합 애니메이션의 실행·초기화·정리 흐름까지 구조화합니다.",
     theme: {
-      // GSAP — signature green
+      accent: "#60974b",
+
       background: `
         radial-gradient(
           135% 60% at 64% 110%,
