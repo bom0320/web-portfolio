@@ -39,7 +39,7 @@ export default function IntroVisualProof() {
             “
           </span>
           <br />
-          디자인의 의도는 화면에서 끝나지 않고,
+          보이는 경험과 내부의 구현이 자연스럽게 맞물리고,
           <br />
           <strong>
             <GradientText>

@@ -158,8 +158,7 @@
     margin: 0 auto;
   }
 
-  .build-experience-block--structure
-    .build-experience-block__eyebrow {
+  .build-experience-block--structure .build-experience-block__eyebrow {
     font-size: 14px;
     line-height: 1;
     letter-spacing: -0.02em;
@@ -174,13 +173,16 @@
   }
 
   .build-experience-block--structure .build-experience-block__desc {
-    max-width: 292px;
-    margin: 14px auto 0;
+    width: 100%;
+    max-width: 340px;
+    margin: 18px auto 0;
 
     font-size: 13px;
     line-height: 1.72;
     letter-spacing: -0.03em;
+
     word-break: keep-all;
+    text-wrap: pretty;
   }
 
   .build-experience-visual--structure {
@@ -262,8 +264,7 @@
     width: min(100%, 268px);
   }
 
-  .build-experience-block--structure
-    .build-experience-block__eyebrow {
+  .build-experience-block--structure .build-experience-block__eyebrow {
     font-size: 13px;
   }
 
@@ -276,12 +277,10 @@
   }
 
   .build-experience-block--structure .build-experience-block__desc {
-    max-width: 260px;
-    margin-top: 14px;
+    max-width: 300px;
 
     font-size: 12px;
     line-height: 1.68;
-    letter-spacing: -0.02em;
   }
 
   .build-experience-visual--structure {
