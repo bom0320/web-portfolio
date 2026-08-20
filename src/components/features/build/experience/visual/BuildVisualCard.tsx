@@ -16,7 +16,6 @@ export default function BuildVisualCard({ item }: BuildVisualCardProps) {
 
   const Icon = BUILD_VISUAL_ICON_MAP[item.icon];
   const hasImage = Boolean(item.image);
-  const isLargeCard = item.variant !== "text";
 
   const style = item.accent
     ? ({
@@ -57,6 +56,12 @@ export default function BuildVisualCard({ item }: BuildVisualCardProps) {
             src={item.image.src}
             alt={item.image.alt}
             fill
+            sizes="
+              (max-width: 640px) calc(100vw - 48px),
+              (max-width: 900px) calc(100vw - 64px),
+              (max-width: 1180px) calc(50vw - 62px),
+              506px
+            "
             className="build-experience-visual-card__image"
           />
         </div>
