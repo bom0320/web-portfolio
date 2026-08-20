@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { BUILD_INTRO_PROOF_POINTS } from "@/data/build";
 import { GradientText } from "@/components/shared/ui";
+import { BUILD_INTRO_PROOF_POINTS } from "@/data/build";
 
 import IntroProofPoint from "./visual/IntroProofPoint";
 
@@ -20,14 +20,23 @@ export default function IntroVisualProof() {
           className="build-intro-proof__visual js-build-intro-proof-visual"
           aria-hidden="true"
         >
-          <Image
-            className="build-intro-proof__character-image js-build-intro-proof-character"
-            src="/images/about-character-base_01.svg"
-            alt=""
-            width={420}
-            height={470}
-            priority
-          />
+          <div className="build-intro-proof__face js-build-intro-proof-character">
+            <Image
+              className="build-intro-proof__face-image"
+              src="/images/build-character-face.svg"
+              alt=""
+              width={750}
+              height={636}
+            />
+
+            <span className="build-intro-proof__eye build-intro-proof__eye--left">
+              <span className="build-intro-proof__pupil js-build-intro-proof-pupil" />
+            </span>
+
+            <span className="build-intro-proof__eye build-intro-proof__eye--right">
+              <span className="build-intro-proof__pupil js-build-intro-proof-pupil" />
+            </span>
+          </div>
         </div>
 
         {afterVisualPoints.map((point) => (

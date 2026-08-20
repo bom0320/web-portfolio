@@ -1,50 +1,96 @@
 .build-intro-proof {
   position: relative;
 
-  min-height: 140vh;
-  padding: 140px 0 180px;
+  min-height: 125vh;
+  padding: 120px 0 150px;
+
+  overflow: hidden;
 
   background: #000;
   color: #fff;
-
-  overflow: hidden;
 }
 
 .build-intro-proof__inner {
   position: relative;
 
-  width: min(1200px, calc(100% - 96px));
-  min-height: 96vh;
+  width: min(1280px, calc(100% - 96px));
+  min-height: 88vh;
   margin: 0 auto;
 
   display: grid;
   grid-template-columns:
-    minmax(260px, 360px)
-    minmax(300px, 380px)
-    minmax(260px, 360px);
+    minmax(240px, 340px)
+    minmax(380px, 460px)
+    minmax(240px, 340px);
   grid-template-rows: auto auto auto;
-  gap: 68px 72px;
+  gap: 52px 56px;
 
   align-items: center;
 }
 
+/* center visual */
+
 .build-intro-proof__visual {
   grid-column: 2;
   grid-row: 1 / span 2;
+
+  min-width: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.build-intro-proof__character-image {
-  width: min(360px, 100%);
-  height: auto;
+.build-intro-proof__face {
+  position: relative;
 
+  width: min(430px, 100%);
+  margin: 0 auto;
+}
+
+.build-intro-proof__face-image {
   display: block;
 
-  filter: drop-shadow(0 42px 60px rgba(0, 0, 0, 0.72));
+  width: 100%;
+  height: auto;
 }
+
+/* eyes */
+
+.build-intro-proof__eye {
+  position: absolute;
+
+  width: 18%;
+  aspect-ratio: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+.build-intro-proof__eye--left {
+  top: 49%;
+  left: 25%;
+}
+
+.build-intro-proof__eye--right {
+  top: 49%;
+  left: 52%;
+}
+
+.build-intro-proof__pupil {
+  display: block;
+
+  width: 68%;
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+  background: #000;
+}
+
+/* proof points */
 
 .build-intro-proof__point {
   position: relative;
@@ -83,6 +129,8 @@
   grid-row: 2;
 }
 
+/* number */
+
 .build-intro-proof__label {
   position: relative;
 
@@ -110,18 +158,20 @@
 
 .build-intro-proof__label > span {
   font-size: clamp(34px, 3vw, 48px);
-  line-height: 1;
   font-weight: 750;
+  line-height: 1;
   letter-spacing: -0.05em;
 }
+
+/* text */
 
 .build-intro-proof__point h3 {
   max-width: 330px;
   margin: 0 0 14px;
 
   font-size: clamp(21px, 1.7vw, 28px);
-  line-height: 1.25;
   font-weight: 750;
+  line-height: 1.25;
   letter-spacing: -0.055em;
 
   color: rgba(255, 255, 255, 0.92);
@@ -135,8 +185,8 @@
   margin: 0;
 
   font-size: clamp(14px, 0.95vw, 16px);
-  line-height: 1.72;
   font-weight: 550;
+  line-height: 1.72;
   letter-spacing: -0.035em;
 
   color: rgba(255, 255, 255, 0.52);
@@ -145,18 +195,20 @@
   text-wrap: pretty;
 }
 
+/* quote */
+
 .build-intro-proof__quote {
   grid-column: 1 / -1;
   grid-row: 3;
 
   max-width: 900px;
-  margin: 20px auto 0;
+  margin: 8px auto 0;
 
   text-align: center;
 
   font-size: clamp(22px, 2.1vw, 34px);
-  line-height: 1.55;
   font-weight: 500;
+  line-height: 1.55;
   letter-spacing: -0.055em;
 
   color: rgba(255, 255, 255, 0.76);
@@ -167,11 +219,12 @@
 
 .build-intro-proof__quote-mark {
   display: inline-block;
+
   margin-bottom: 8px;
 
   font-size: clamp(30px, 2.5vw, 36px);
-  line-height: 0.8;
   font-weight: 850;
+  line-height: 0.8;
 
   color: rgba(126, 178, 164, 0.9);
 }
