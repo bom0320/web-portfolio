@@ -19,16 +19,6 @@ export type AboutHeroAnimationElements = {
 export type AboutSkillsAnimationElements = {
   root: HTMLElement | null;
   inner: HTMLElement | null;
-  titleFill: SVGGElement | null;
-
-  carousel: HTMLElement | null;
-  carouselViewport: HTMLElement | null;
-  carouselTrack: HTMLElement | null;
-  pagination: HTMLElement | null;
-  paginationItems: HTMLElement[];
-
-  gauges: HTMLElement[];
-  pacmans: HTMLElement[];
 };
 
 export type AboutSceneAnimationElements = {
@@ -38,15 +28,6 @@ export type AboutSceneAnimationElements = {
 };
 
 const queryElement = <T extends HTMLElement>(
-  root: HTMLElement | null,
-  selector: string
-): T | null => {
-  if (!root) return null;
-
-  return root.querySelector<T>(selector);
-};
-
-const querySvgElement = <T extends SVGElement>(
   root: HTMLElement | null,
   selector: string
 ): T | null => {
@@ -95,22 +76,6 @@ export const getAboutSceneAnimationElements = (
     skills: {
       root: skillsRoot,
       inner: queryElement(skillsRoot, skillsSelectors.inner),
-      titleFill: querySvgElement(skillsRoot, skillsSelectors.titleFill),
-
-      carousel: queryElement(skillsRoot, skillsSelectors.carousel),
-      carouselViewport: queryElement(
-        skillsRoot,
-        skillsSelectors.carouselViewport
-      ),
-      carouselTrack: queryElement(skillsRoot, skillsSelectors.carouselTrack),
-      pagination: queryElement(skillsRoot, skillsSelectors.pagination),
-      paginationItems: queryElements(
-        skillsRoot,
-        skillsSelectors.paginationItems
-      ),
-
-      gauges: queryElements(skillsRoot, skillsSelectors.gauges),
-      pacmans: queryElements(skillsRoot, skillsSelectors.pacmans),
     },
   };
 };

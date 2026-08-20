@@ -22,7 +22,7 @@ export default function IntroVisualProof() {
         >
           <Image
             className="build-intro-proof__character-image js-build-intro-proof-character"
-            src="/images/character_1.png"
+            src="/images/about-character-base_01.svg"
             alt=""
             width={420}
             height={470}

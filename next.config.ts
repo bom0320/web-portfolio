@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
     silenceDeprecations: ["import"],
   },
 
+  images: {
+    qualities: [60, 75],
+  },
+
   async redirects() {
     return [
       {
