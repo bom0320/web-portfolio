@@ -21,6 +21,8 @@ export const BUILD_INTRO_PROOF_ANIMATION_SELECTORS = {
 
   lids: ".js-build-intro-proof-lid",
 
+  mouth: ".js-build-intro-proof-mouth",
+
   leftPoints: ".js-build-intro-proof-point-left",
 
   rightPoints: ".js-build-intro-proof-point-right",
