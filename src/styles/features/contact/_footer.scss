@@ -132,18 +132,24 @@
 
 .contact-social {
   display: flex;
+
   align-items: center;
+
   gap: 20px;
 }
 
 .contact-social__link {
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
 
   width: 32px;
+
   height: 32px;
 
+  color: #050505;
   text-decoration: none;
 
   transition: opacity 0.2s ease, transform 0.2s ease;
@@ -151,12 +157,24 @@
 
 .contact-social__link:hover {
   opacity: 0.65;
+
   transform: translateY(-2px);
 }
 
 .contact-social__icon {
   display: block;
+
   width: 32px;
+
   height: 32px;
+
   object-fit: contain;
+}
+
+.contact-social__link svg {
+  width: 37px;
+
+  height: 37px;
+
+  fill: currentColor;
 }

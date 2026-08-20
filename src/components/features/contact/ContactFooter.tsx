@@ -1,4 +1,5 @@
 import { CONTACT_FOOTER } from "@/data/contacts";
+
 import ContactFooterLinks from "./ContactFooterLinks";
 import ContactSocialLinks from "./ContactSocialLinks";
 
@@ -9,8 +10,10 @@ export default function ContactFooter() {
         <div className="contact-footer__main">
           <div className="contact-footer__brand">
             <a
-              href={`mailto:${CONTACT_FOOTER.email}`}
+              href={CONTACT_FOOTER.emailHref}
               className="contact-footer__email"
+              target="_blank"
+              rel="noreferrer"
             >
               {CONTACT_FOOTER.email}
             </a>

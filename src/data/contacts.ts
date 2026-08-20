@@ -1,9 +1,14 @@
+const CONTACT_EMAIL = "bom0320.dev@gmail.com";
+
+const CONTACT_EMAIL_URL =
+  "https://mail.google.com/mail/?view=cm&fs=1&to=bom0320.dev@gmail.com";
+
 export const CONTACT_INTRO = {
   eyebrow: "CONNECT",
   title: "CONTACT ME",
   description: [
-    "좋은 경험을 함께 만들 준비가 되어 있습니다.",
-    "작은 제안이나 질문도 편하게 남겨주세요.",
+    "함께 만들고 싶은 제품이나 해결하고 싶은 문제가 있다면 이야기해주세요.",
+    "채용·협업 제안부터 가벼운 커피챗까지 편하게 남겨주세요.",
   ],
 };
 
@@ -16,37 +21,35 @@ export const CONTACT_PURPOSE_OPTIONS = [
 ];
 
 export const CONTACT_FOOTER = {
-  email: "bom0320.dev@gmail.com",
-  description:
-    "작은 제안이나 질문부터 가벼운 커피챗까지 편하게 남겨주세요.\n확인 후 최대한 신속하게 답변드리겠습니다.",
+  email: CONTACT_EMAIL,
+  emailHref: CONTACT_EMAIL_URL,
+  description: "채용·협업·프로젝트와 관련된 이야기는 언제든 환영합니다.",
   copyright: "© 2026 Kim Bom. All rights reserved.",
 };
 
 export const CONTACT_FOOTER_LINK_GROUPS = [
   {
-    title: "Building with",
+    title: "Navigate",
     links: [
-      { label: "Flow", href: "#build" },
-      { label: "Structure", href: "#build" },
-      { label: "Motion", href: "#build" },
+      { label: "About", href: "#about" },
+      { label: "Projects", href: "#projects" },
+      { label: "Contact", href: "#contact" },
     ],
   },
   {
     title: "Explore",
     links: [
       { label: "Blog", href: "https://velog.io/@bom_0320/posts" },
-      {
-        label: "Portfolio",
-        href: "https://app.notion.com/p/FrontEnd-Developer-2cdbf73cc5378049ad20db08f8ea554f?source=copy_link",
-      },
       { label: "GitHub", href: "https://github.com/bom0320" },
     ],
   },
   {
     title: "Connect",
     links: [
-      { label: "Email", href: "mailto:bom0320.dev@gmail.com" },
-      { label: "Instagram", href: "https://www.instagram.com/b0m_0320/" },
+      {
+        label: "Email",
+        href: CONTACT_EMAIL_URL,
+      },
       {
         label: "LinkedIn",
         href: "https://www.linkedin.com/in/%EB%B4%84-%EA%B9%80-971a1335a/",
@@ -57,9 +60,8 @@ export const CONTACT_FOOTER_LINK_GROUPS = [
 
 export const CONTACT_SOCIAL_LINKS = [
   {
-    label: "Instagram",
-    href: "https://www.instagram.com/b0m_0320/",
-    icon: "/icons/instagram.svg",
+    label: "Email",
+    href: CONTACT_EMAIL_URL,
   },
   {
     label: "LinkedIn",
@@ -77,8 +79,8 @@ export const CONTACT_SUBMIT_MODAL = {
   success: {
     title: "메시지가 전송되었습니다.",
     description: [
-      "보내주신 내용은 확인 후 답변드리겠습니다.",
-      "좋은 경험을 만드는 대화가 되길 기대합니다.",
+      "남겨주신 내용은 확인 후 답변드리겠습니다.",
+      "함께 이야기해볼 수 있기를 바랍니다.",
     ],
     buttonLabel: "확인",
   },
