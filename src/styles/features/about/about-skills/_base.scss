@@ -7,25 +7,21 @@
   height: 100vh;
   height: 100svh;
 
-  background: #000;
-  color: #fff;
-
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 
   overflow: hidden;
-}
-.about-skills__inner {
-  width: min(1100px, calc(100% - 24px));
-  margin: 0 auto;
-  padding-top: 80px;
-  will-change: transform;
+
+  background: #000;
+  color: #fff;
 }
 
-.about-skills__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 40px;
-  justify-items: center;
+.about-skills__inner {
+  width: min(1160px, calc(100% - 96px));
+  margin: 0 auto;
+
+  padding-top: clamp(135px, 15vh, 170px);
+
+  will-change: transform;
 }

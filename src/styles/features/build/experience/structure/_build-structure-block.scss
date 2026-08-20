@@ -1,8 +1,16 @@
-// Structure 블록의 바깥 간격만 담당
-// 맵 내부, 카드 내부는 여기에 넣지 x
-
 .build-experience-block--structure {
   position: relative;
+}
+
+.build-experience-block--structure .build-experience-block__header {
+  max-width: 820px;
+}
+
+.build-experience-block--structure .build-experience-block__desc {
+  max-width: 760px;
+
+  word-break: keep-all;
+  text-wrap: balance;
 }
 
 .build-experience-visual--structure {

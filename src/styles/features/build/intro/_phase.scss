@@ -28,7 +28,8 @@
 }
 
 .build-intro-phase h3 {
-  margin: 0 0 24px;
+  max-width: 680px;
+  margin: 0 auto 24px;
 
   font-size: clamp(28px, 3.2vw, 32px);
   line-height: 1.12;
@@ -36,20 +37,26 @@
   letter-spacing: -0.06em;
 
   color: rgba(255, 255, 255, 0.94);
+
+  word-break: keep-all;
+  text-wrap: balance;
 }
 
 .build-intro-phase p {
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto;
 
-  font-size: clamp(16px, 1.15vw, 20px);
+  font-size: clamp(16px, 1.15vw, 19px);
   line-height: 1.7;
   font-weight: 600;
   letter-spacing: -0.035em;
 
   color: rgba(255, 255, 255, 0.52);
+
+  word-break: keep-all;
+  text-wrap: pretty;
 }
 
-.build-intro-phase p + p {
-  margin-top: 18px;
+.build-intro-phase__desktop-break {
+  display: initial;
 }

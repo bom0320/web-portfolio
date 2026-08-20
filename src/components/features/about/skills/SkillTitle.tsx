@@ -8,9 +8,8 @@ export default function SkillTitle() {
       </h2>
 
       <p className="skill-title__desc">
-        React와 Next.js를 중심으로, TypeScript와 상태 관리, 인터랙션
-        라이브러리를 함께 활용해 구조적이고 매끄러운 프론트엔드 경험을
-        구현합니다.
+        문제에 맞는 기술을 선택하고, 복잡도를 구조적으로 다루며 성능 병목을
+        추적해 개선하는 프론트엔드를 구현합니다.
       </p>
     </div>
   );

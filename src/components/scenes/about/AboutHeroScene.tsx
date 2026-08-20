@@ -58,11 +58,31 @@ export default function AboutHeroScene() {
           className="about-hero__visual js-about-hero-visual"
           aria-hidden="true"
         >
-          <img
-            className="about-hero__character"
-            src="/images/character_1.png"
-            alt=""
-          />
+          <div className="about-character js-about-character">
+            <img
+              className="about-hero__character about-character__body"
+              src="/images/about-character-base_01.svg"
+              alt=""
+            />
+
+            <div className="about-character__eye about-character__eye--left">
+              <div className="about-character__pupil-mover js-about-character-pupil">
+                <span className="about-character__pupil" />
+              </div>
+
+              <span className="about-character__lid js-about-character-lid" />
+            </div>
+
+            <div className="about-character__eye about-character__eye--right">
+              <div className="about-character__pupil-mover js-about-character-pupil">
+                <span className="about-character__pupil" />
+              </div>
+
+              <span className="about-character__lid js-about-character-lid" />
+            </div>
+
+            <span className="about-character__mouth js-about-character-mouth" />
+          </div>
         </div>
 
         <div className="about-hero__content">
@@ -73,14 +93,32 @@ export default function AboutHeroScene() {
           <h2 className="about-hero__title js-about-hero-title">
             안녕하세요.
             <br />
-            고슴도치같이 예민하게
+            보이는 화면 너머까지 고민하는
             <br />
-            <GradientText>디테일을 캐치하는 개발자</GradientText>입니다.
+            <GradientText>프론트엔드 개발자</GradientText>입니다.
           </h2>
 
+          <div className="about-hero__meta js-about-hero-meta">
+            <div className="about-hero__meta-row">
+              <span className="about-hero__meta-label">Role</span>
+              <span className="about-hero__meta-value">Frontend Engineer</span>
+            </div>
+
+            <div className="about-hero__meta-row">
+              <span className="about-hero__meta-label">Focus</span>
+              <span className="about-hero__meta-value">
+                UX Engineering · Interaction · Performance
+              </span>
+            </div>
+          </div>
+
           <p className="about-hero__desc js-about-hero-desc">
-            왜 이런 흐름이 필요한지 집요하게 파고들고, 발견한 디테일을 구조와
-            인터랙션으로 구현하는 프론트엔드 개발자 김봄입니다.
+            왜 이렇게 보여야 하고, 왜 이렇게 동작해야 하는지 질문합니다.
+            <br className="about-hero__desc-break--desktop" />
+            디자인의 의도와 기술 구조가 자연스럽게 이어지도록 설계하고,
+            <br className="about-hero__desc-break--desktop" />
+            사용자 경험과 성능을 함께 고민하며 실제 사용 데이터를 바탕으로
+            개선을 반복합니다.
           </p>
 
           <div

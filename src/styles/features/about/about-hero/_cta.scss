@@ -2,50 +2,57 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 18px;
-  margin-top: 50px;
+
+  gap: 12px;
+  margin-top: 32px;
 }
 
 .about-hero__btn {
   position: relative;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
 
-  height: 60px;
-  min-width: 174px;
-  padding: 16px 26px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 30px;
+  gap: 9px;
+
+  height: 46px;
+  min-width: 136px;
+  padding: 0 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 23px;
 
   color: #e9f3f4;
+
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.191) 0%,
-    rgba(255, 255, 255, 0.08) 40%,
-    rgba(0, 0, 0, 0.25) 100%
+    rgba(255, 255, 255, 0.16) 0%,
+    rgba(255, 255, 255, 0.065) 40%,
+    rgba(0, 0, 0, 0.22) 100%
   );
 
   backdrop-filter: blur(6px);
 
-  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.45),
-    inset 0 2px 4px rgba(255, 255, 255, 0.202),
-    inset 0 -6px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.38),
+    inset 0 1px 3px rgba(255, 255, 255, 0.16),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.32);
 
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .glass-btn::before {
   content: "";
+
   position: absolute;
   inset: 0;
+
   border-radius: inherit;
 
   background: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.55),
-    rgba(255, 255, 255, 0.08) 35%,
+    rgba(255, 255, 255, 0.42),
+    rgba(255, 255, 255, 0.06) 35%,
     transparent 60%
   );
 
@@ -58,8 +65,9 @@
 }
 
 .cta-btn__iconWrap {
-  width: 26px;
-  height: 26px;
+  width: 20px;
+  height: 20px;
+
   border-radius: 999px;
 
   display: grid;
@@ -68,23 +76,26 @@
 
 .cta-btn__iconImg {
   display: block;
-  width: 26px;
-  height: 26px;
+
+  width: 20px;
+  height: 20px;
+
   object-fit: contain;
 }
 
 .cta-btn__label {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.01em;
 }
 
 .about-hero__resume-notice {
-  margin-top: 14px;
+  margin-top: 12px;
 
   color: rgba(255, 255, 255, 0.58);
-  font-size: 14px;
+
+  font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
   letter-spacing: -0.01em;

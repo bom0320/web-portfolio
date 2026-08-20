@@ -5,9 +5,13 @@ type LifeMotionItemData = (typeof LIFE_MOTION_ITEMS)[number];
 
 type LifeMotionItemProps = {
   item: LifeMotionItemData;
+  eager?: boolean;
 };
 
-export default function LifeMotionItem({ item }: LifeMotionItemProps) {
+export default function LifeMotionItem({
+  item,
+  eager = false,
+}: LifeMotionItemProps) {
   return (
     <figure className="life-motion__item">
       <p className="life-motion__title">{item.title}</p>
@@ -18,6 +22,7 @@ export default function LifeMotionItem({ item }: LifeMotionItemProps) {
           alt={item.title}
           fill
           quality={60}
+          loading={eager ? "eager" : "lazy"}
           sizes="(max-width: 640px) 45vw, (max-width: 900px) 32vw, 24vw"
           className="life-motion__image"
         />

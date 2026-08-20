@@ -5,24 +5,20 @@ export type AboutHeroAnimationElements = {
   inner: HTMLElement | null;
   eyebrow: HTMLElement | null;
   heading: HTMLElement | null;
+  meta: HTMLElement | null;
   desc: HTMLElement | null;
   visual: HTMLElement | null;
   cta: HTMLElement | null;
+
+  character: HTMLElement | null;
+  characterPupils: HTMLElement[];
+  characterLids: HTMLElement[];
+  characterMouth: HTMLElement | null;
 };
 
 export type AboutSkillsAnimationElements = {
   root: HTMLElement | null;
   inner: HTMLElement | null;
-  titleFill: SVGGElement | null;
-
-  carousel: HTMLElement | null;
-  carouselViewport: HTMLElement | null;
-  carouselTrack: HTMLElement | null;
-  pagination: HTMLElement | null;
-  paginationItems: HTMLElement[];
-
-  gauges: HTMLElement[];
-  pacmans: HTMLElement[];
 };
 
 export type AboutSceneAnimationElements = {
@@ -32,15 +28,6 @@ export type AboutSceneAnimationElements = {
 };
 
 const queryElement = <T extends HTMLElement>(
-  root: HTMLElement | null,
-  selector: string
-): T | null => {
-  if (!root) return null;
-
-  return root.querySelector<T>(selector);
-};
-
-const querySvgElement = <T extends SVGElement>(
   root: HTMLElement | null,
   selector: string
 ): T | null => {
@@ -75,30 +62,20 @@ export const getAboutSceneAnimationElements = (
       inner: queryElement(heroRoot, heroSelectors.inner),
       eyebrow: queryElement(heroRoot, heroSelectors.eyebrow),
       heading: queryElement(heroRoot, heroSelectors.heading),
+      meta: queryElement(heroRoot, heroSelectors.meta),
       desc: queryElement(heroRoot, heroSelectors.desc),
       visual: queryElement(heroRoot, heroSelectors.visual),
       cta: queryElement(heroRoot, heroSelectors.cta),
+
+      character: queryElement(heroRoot, heroSelectors.character),
+      characterPupils: queryElements(heroRoot, heroSelectors.characterPupils),
+      characterLids: queryElements(heroRoot, heroSelectors.characterLids),
+      characterMouth: queryElement(heroRoot, heroSelectors.characterMouth),
     },
 
     skills: {
       root: skillsRoot,
       inner: queryElement(skillsRoot, skillsSelectors.inner),
-      titleFill: querySvgElement(skillsRoot, skillsSelectors.titleFill),
-
-      carousel: queryElement(skillsRoot, skillsSelectors.carousel),
-      carouselViewport: queryElement(
-        skillsRoot,
-        skillsSelectors.carouselViewport
-      ),
-      carouselTrack: queryElement(skillsRoot, skillsSelectors.carouselTrack),
-      pagination: queryElement(skillsRoot, skillsSelectors.pagination),
-      paginationItems: queryElements(
-        skillsRoot,
-        skillsSelectors.paginationItems
-      ),
-
-      gauges: queryElements(skillsRoot, skillsSelectors.gauges),
-      pacmans: queryElements(skillsRoot, skillsSelectors.pacmans),
     },
   };
 };

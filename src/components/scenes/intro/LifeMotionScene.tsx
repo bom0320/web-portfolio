@@ -8,7 +8,7 @@ import {
   createLifeMotionGroups,
 } from "@/components/features/lifeMotion";
 
-const REPEAT_IN_GROUP = 8;
+const REPEAT_IN_GROUP = 2;
 
 export default function LifeMotionScene() {
   const { topGroupItems, bottomGroupItems } = useMemo(() => {

@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-import { BUILD_INTRO_PROOF_POINTS } from "@/data/build";
 import { GradientText } from "@/components/shared/ui";
+import { BUILD_INTRO_PROOF_POINTS } from "@/data/build";
 
 import IntroProofPoint from "./visual/IntroProofPoint";
 
@@ -20,14 +20,29 @@ export default function IntroVisualProof() {
           className="build-intro-proof__visual js-build-intro-proof-visual"
           aria-hidden="true"
         >
-          <Image
-            className="build-intro-proof__character-image js-build-intro-proof-character"
-            src="/images/character_1.png"
-            alt=""
-            width={420}
-            height={470}
-            priority
-          />
+          <div className="build-intro-proof__face js-build-intro-proof-character">
+            <Image
+              className="build-intro-proof__face-image"
+              src="/images/build-character-face.svg"
+              alt=""
+              width={750}
+              height={636}
+            />
+
+            <div className="build-intro-proof__eye build-intro-proof__eye--left">
+              <div className="build-intro-proof__pupil-mover js-build-intro-proof-pupil">
+                <span className="build-intro-proof__pupil" />
+              </div>
+            </div>
+
+            <div className="build-intro-proof__eye build-intro-proof__eye--right">
+              <div className="build-intro-proof__pupil-mover js-build-intro-proof-pupil">
+                <span className="build-intro-proof__pupil" />
+              </div>
+            </div>
+
+            <span className="build-intro-proof__mouth js-build-intro-proof-mouth" />
+          </div>
         </div>
 
         {afterVisualPoints.map((point) => (
@@ -35,21 +50,18 @@ export default function IntroVisualProof() {
         ))}
 
         <p className="build-intro-proof__quote js-build-intro-proof-quote">
-          <span
-            className="build-intro-proof__quote-mark"
-            aria-hidden="true"
-          >
+          <span className="build-intro-proof__quote-mark" aria-hidden="true">
             “
           </span>
           <br />
-          저는 인터페이스를 단순한 화면 구성으로 보지 않고,
+          보이는 경험과 내부의 구현이 자연스럽게 맞물리고,
           <br />
           <strong>
             <GradientText>
-              하나의 흐름 안에서 자연스럽게 이어지는 경험
+              구조와 동작까지 같은 방향으로 이어져야 한다
             </GradientText>
           </strong>
-          을 만들고 싶었습니다.
+          고 생각합니다.
         </p>
       </div>
     </section>

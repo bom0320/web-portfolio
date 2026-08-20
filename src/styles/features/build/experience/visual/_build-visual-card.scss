@@ -28,6 +28,18 @@
   filter: saturate(0.95) contrast(1.04);
 }
 
+.build-experience-visual-card--visual-direction
+  .build-experience-visual-card__media {
+  background: #111114;
+}
+
+.build-experience-visual-card--visual-direction
+  .build-experience-visual-card__image {
+  object-fit: contain;
+  object-position: center;
+  transform: translateY(-76px) scale(0.98);
+}
+
 .build-experience-visual-card__overlay {
   position: absolute;
   inset: 0;
@@ -43,9 +55,9 @@
   );
 }
 
-.build-experience-visual-card--character
+.build-experience-visual-card--visual-direction
   .build-experience-visual-card__overlay,
-.build-experience-visual-card--motion
+.build-experience-visual-card--motion-direction
   .build-experience-visual-card__overlay {
   background: radial-gradient(
       circle at 50% 18%,
@@ -62,8 +74,7 @@
     );
 }
 
-.build-experience-visual-card--text
-  .build-experience-visual-card__overlay {
+.build-experience-visual-card--text .build-experience-visual-card__overlay {
   background: radial-gradient(
       circle at 74% 12%,
       rgba(255, 255, 255, 0.055),
@@ -83,10 +94,8 @@
 }
 
 .build-experience-visual-card__icon {
-  flex: 0 0 auto;
-
-  width: 76px;
-  height: 76px;
+  width: 60px;
+  height: 60px;
   margin-bottom: 10px;
 
   display: grid;
@@ -96,10 +105,10 @@
 }
 
 .build-experience-visual-card__icon svg {
-  width: 58px;
-  height: 58px;
+  width: 44px;
+  height: 44px;
 
-  stroke-width: 2.45;
+  stroke-width: 2.2;
   overflow: visible;
 }
 
@@ -119,6 +128,9 @@
   letter-spacing: -0.078em;
 
   color: rgba(255, 255, 255, 0.98);
+
+  word-break: keep-all;
+  text-wrap: pretty;
 }
 
 .build-experience-visual-card__desc {
@@ -129,88 +141,100 @@
   letter-spacing: -0.04em;
 
   color: rgba(255, 255, 255, 0.58);
+
+  word-break: keep-all;
+  text-wrap: pretty;
 }
 
 /* 카드별 높이 / 정렬 */
 
-.build-experience-visual-card--character {
+.build-experience-visual-card--visual-direction {
   min-height: 440px;
 }
 
-.build-experience-visual-card--character
+.build-experience-visual-card--visual-direction
   .build-experience-visual-card__content {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.build-experience-visual-card--character
+.build-experience-visual-card--visual-direction
   .build-experience-visual-card__title {
-  max-width: 88%;
+  width: 100%;
+  max-width: 95%;
 }
 
-.build-experience-visual-card--typography {
+.build-experience-visual-card--visual-balance {
   min-height: 270px;
 }
 
-.build-experience-visual-card--typography
+.build-experience-visual-card--visual-balance
   .build-experience-visual-card__content {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.build-experience-visual-card--typography
+.build-experience-visual-card--visual-balance
   .build-experience-visual-card__icon {
   margin-bottom: 0;
 }
 
-.build-experience-visual-card--typography
+.build-experience-visual-card--visual-balance
   .build-experience-visual-card__title {
+  width: 100%;
   max-width: 430px;
 
   font-size: clamp(22px, 2vw, 28px);
   line-height: 1.24;
   letter-spacing: -0.07em;
+
+  word-break: keep-all;
+  text-wrap: pretty;
 }
 
-.build-experience-visual-card--storytelling {
+.build-experience-visual-card--visual-flow {
   min-height: 270px;
 }
 
-.build-experience-visual-card--storytelling
+.build-experience-visual-card--visual-flow
   .build-experience-visual-card__content {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.build-experience-visual-card--storytelling
-  .build-experience-visual-card__icon {
+.build-experience-visual-card--visual-flow .build-experience-visual-card__icon {
   margin-bottom: 0;
 }
 
-.build-experience-visual-card--storytelling
+.build-experience-visual-card--visual-flow
   .build-experience-visual-card__title {
+  width: 100%;
   max-width: 430px;
 
   font-size: clamp(22px, 2vw, 28px);
   line-height: 1.28;
   letter-spacing: -0.07em;
+
+  word-break: keep-all;
+  text-wrap: pretty;
 }
 
-.build-experience-visual-card--motion {
+.build-experience-visual-card--motion-direction {
   min-height: 450px;
 }
 
-.build-experience-visual-card--motion
+.build-experience-visual-card--motion-direction
   .build-experience-visual-card__content {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.build-experience-visual-card--motion
+.build-experience-visual-card--motion-direction
   .build-experience-visual-card__title {
-  max-width: 88%;
+  width: 100%;
+  max-width: 95%;
 }

@@ -7,19 +7,33 @@ import {
 } from "@/animations/_shared";
 import type { AboutHeroAnimationElements } from "@/components/scenes/about/dom";
 
+import AboutCharacterAnimation from "./aboutCharacter.animation";
+
 const AboutHeroAnimation = {
   create(elements: AboutHeroAnimationElements): AnimationController {
-    const { root, eyebrow, heading, desc, visual, cta } = elements;
+    const {
+      root,
+      eyebrow,
+      heading,
+      meta,
+      desc,
+      visual,
+      cta,
+      character,
+      characterPupils,
+      characterLids,
+      characterMouth,
+    } = elements;
 
     if (!root || !heading || !desc) {
       return createNoopController();
     }
 
-    const targets = [eyebrow, heading, desc, visual, cta].filter(
+    const targets = [eyebrow, heading, meta, desc, visual, cta].filter(
       (target): target is HTMLElement => Boolean(target)
     );
 
-    gsap.set([eyebrow, heading, desc, cta].filter(Boolean), {
+    gsap.set([eyebrow, heading, meta, desc, cta].filter(Boolean), {
       y: 32,
       autoAlpha: 0,
     });
@@ -32,6 +46,13 @@ const AboutHeroAnimation = {
 
     gsap.set(desc, {
       x: -16,
+    });
+
+    const characterAnimation = AboutCharacterAnimation.create({
+      root: character,
+      pupils: characterPupils,
+      lids: characterLids,
+      mouth: characterMouth,
     });
 
     const timeline = gsap.timeline({ paused: true });
@@ -69,6 +90,16 @@ const AboutHeroAnimation = {
         0.16
       )
       .to(
+        meta,
+        {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.8,
+          ease: "power3.out",
+        },
+        0.24
+      )
+      .to(
         desc,
         {
           y: 0,
@@ -77,7 +108,7 @@ const AboutHeroAnimation = {
           duration: 0.9,
           ease: "power3.out",
         },
-        0.28
+        0.32
       )
       .to(
         cta,
@@ -87,15 +118,19 @@ const AboutHeroAnimation = {
           duration: 0.7,
           ease: "power3.out",
         },
-        0.42
+        0.46
       );
 
     const setProgress = (progress: number) => {
-      timeline.progress(clampProgress(progress));
+      const nextProgress = clampProgress(progress);
+
+      timeline.progress(nextProgress);
+      characterAnimation.setProgress(nextProgress);
     };
 
     const destroy = () => {
       timeline.kill();
+      characterAnimation.destroy();
 
       gsap.set(targets, {
         clearProps: "all",

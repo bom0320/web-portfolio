@@ -1,50 +1,76 @@
-import Image from "next/image";
+import type { CSSProperties } from "react";
+
+import {
+  Boxes,
+  Component,
+  DatabaseZap,
+  SlidersHorizontal,
+  Smartphone,
+  Sparkles,
+  Type,
+  type LucideIcon,
+} from "lucide-react";
+
+import type { Skill, SkillCategoryIcon } from "@/data/skills";
 
 type Props = {
-  name: string;
-  icon: string;
-  value: number; // 0~100
-  sub?: string;
-  bg: string;
+  skill: Skill;
+  isActive: boolean;
+  onActivate: () => void;
 };
 
-const clamp = (n: number, min: number, max: number) =>
-  Math.min(Math.max(n, min), max);
+const CATEGORY_ICON_MAP: Record<SkillCategoryIcon, LucideIcon> = {
+  framework: Boxes,
+  ui: Component,
+  typing: Type,
+  "server-state": DatabaseZap,
+  "client-state": SlidersHorizontal,
+  mobile: Smartphone,
+  interaction: Sparkles,
+};
 
-export default function SkillCard({ name, icon, value, sub, bg }: Props) {
-  const v = clamp(value, 0, 100);
-  const deg = (v / 100) * 360;
+type SkillCardStyle = CSSProperties & {
+  "--skill-background": string;
+  "--skill-active-background": string;
+  "--skill-accent": string;
+};
 
-  const gaugeVars = {
-    ["--deg"]: `${deg}deg`,
-  } as React.CSSProperties;
+export default function SkillCard({ skill, isActive, onActivate }: Props) {
+  const CategoryIcon = CATEGORY_ICON_MAP[skill.categoryIcon];
+
+  const themeStyle: SkillCardStyle = {
+    "--skill-background": skill.theme.background,
+    "--skill-active-background": skill.theme.activeBackground,
+    "--skill-accent": skill.theme.accent,
+  };
 
   return (
-    <article className="skill-card" aria-label={`${name} skill ${v}%`}>
-      <div className="skill-card__circle">
-        <div
-          className="skill-card__gauge"
-          style={gaugeVars}
-          data-deg={deg}
-          aria-hidden="true"
-        />
+    <button
+      type="button"
+      className={`skill-card${isActive ? " is-active" : ""}`}
+      style={themeStyle}
+      aria-expanded={isActive}
+      aria-label={`${skill.name} 활용 범위 보기`}
+      onMouseEnter={onActivate}
+      onFocus={onActivate}
+      onClick={onActivate}
+    >
+      <span className="skill-card__name">{skill.name}</span>
 
-        <div className="skill-card__icon-wrap" style={{ backgroundColor: bg }}>
-          <Image
-            className="skill-card__icon"
-            src={icon}
-            alt={name}
-            width={34}
-            height={34}
-            priority={false}
-          />
+      <span className="skill-card__collapsed-meta" aria-hidden="true">
+        <CategoryIcon size={16} strokeWidth={1.7} />
+      </span>
+
+      <div className="skill-card__expanded">
+        <p className="skill-card__description">{skill.description}</p>
+
+        <div className="skill-card__expanded-footer">
+          <span className="skill-card__category-meta">
+            <CategoryIcon size={16} strokeWidth={1.7} aria-hidden="true" />
+            <span>{skill.category}</span>
+          </span>
         </div>
       </div>
-
-      <div className="skill-card__meta">
-        <p className="skill-card__name">{name}</p>
-        {sub ? <p className="skill-card__sub">{sub}</p> : null}
-      </div>
-    </article>
+    </button>
   );
 }

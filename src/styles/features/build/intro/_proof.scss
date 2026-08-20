@@ -1,55 +1,153 @@
 .build-intro-proof {
   position: relative;
 
-  min-height: 140vh;
-  padding: 140px 0 180px;
+  min-height: 120vh;
+  padding: 110px 0 140px;
+
+  overflow: hidden;
 
   background: #000;
   color: #fff;
-
-  overflow: hidden;
 }
 
 .build-intro-proof__inner {
   position: relative;
 
-  width: min(1200px, calc(100% - 96px));
-  min-height: 96vh;
+  width: min(1240px, calc(100% - 96px));
+  min-height: 84vh;
   margin: 0 auto;
 
   display: grid;
   grid-template-columns:
-    minmax(260px, 360px)
-    minmax(300px, 380px)
-    minmax(260px, 360px);
+    minmax(240px, 340px)
+    minmax(350px, 420px)
+    minmax(240px, 340px);
   grid-template-rows: auto auto auto;
-  gap: 68px 72px;
+  gap: 48px 52px;
 
   align-items: center;
 }
 
+/* center visual */
+
 .build-intro-proof__visual {
   grid-column: 2;
   grid-row: 1 / span 2;
+
+  min-width: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.build-intro-proof__character-image {
-  width: min(360px, 100%);
-  height: auto;
+.build-intro-proof__face {
+  position: relative;
 
+  width: min(390px, 100%);
+  margin: 0 auto;
+
+  will-change: transform;
+}
+
+.build-intro-proof__face-image {
   display: block;
 
-  filter: drop-shadow(0 42px 60px rgba(0, 0, 0, 0.72));
+  width: 100%;
+  height: auto;
 }
+
+/* eyes */
+
+.build-intro-proof__eye {
+  position: absolute;
+
+  overflow: hidden;
+
+  border-radius: 50%;
+}
+
+.build-intro-proof__eye--left {
+  top: 48.9%;
+  left: 19.5%;
+
+  width: 28%;
+  height: 22%;
+}
+
+.build-intro-proof__eye--right {
+  top: 48.9%;
+  left: 46.5%;
+
+  width: 28%;
+  height: 22%;
+}
+
+/* pupil mover */
+
+.build-intro-proof__pupil-mover {
+  position: absolute;
+
+  inset: 0;
+
+  will-change: transform;
+}
+
+/* pupil */
+
+.build-intro-proof__pupil {
+  position: absolute;
+
+  top: 60%;
+  left: 41%;
+
+  width: 48%;
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+
+  background: #000;
+
+  transform: translate(-50%, -50%);
+}
+
+/* mouth */
+
+.build-intro-proof__mouth {
+  position: absolute;
+
+  top: 76%;
+  left: 45%;
+
+  width: 18px;
+  height: 0;
+
+  border-bottom: 3px solid #000;
+  border-radius: 0;
+
+  transform: translateX(-50%);
+  transform-origin: center top;
+
+  will-change: width, height, border-radius;
+}
+
+/* proof points */
 
 .build-intro-proof__point {
   position: relative;
 
-  max-width: 380px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.build-intro-proof__point--01,
+.build-intro-proof__point--03 {
+  justify-self: start;
+}
+
+.build-intro-proof__point--02,
+.build-intro-proof__point--04 {
+  justify-self: end;
 }
 
 .build-intro-proof__point--01 {
@@ -71,6 +169,8 @@
   grid-column: 3;
   grid-row: 2;
 }
+
+/* number */
 
 .build-intro-proof__label {
   position: relative;
@@ -97,71 +197,79 @@
   );
 }
 
-.build-intro-proof__label span {
+.build-intro-proof__label > span {
   font-size: clamp(34px, 3vw, 48px);
-  line-height: 1;
   font-weight: 750;
+  line-height: 1;
   letter-spacing: -0.05em;
 }
 
+/* text */
+
 .build-intro-proof__point h3 {
+  max-width: 330px;
   margin: 0 0 14px;
 
   font-size: clamp(21px, 1.7vw, 28px);
-  line-height: 1.25;
   font-weight: 750;
+  line-height: 1.25;
   letter-spacing: -0.055em;
 
   color: rgba(255, 255, 255, 0.92);
+
+  word-break: keep-all;
+  text-wrap: balance;
 }
 
 .build-intro-proof__point p {
+  max-width: 330px;
   margin: 0;
 
   font-size: clamp(14px, 0.95vw, 16px);
-  line-height: 1.72;
   font-weight: 550;
+  line-height: 1.72;
   letter-spacing: -0.035em;
 
   color: rgba(255, 255, 255, 0.52);
+
+  word-break: keep-all;
+  text-wrap: pretty;
 }
+
+/* quote */
 
 .build-intro-proof__quote {
   grid-column: 1 / -1;
   grid-row: 3;
 
-  margin: 20px 0 0;
+  max-width: 860px;
+  margin: 4px auto 0;
 
   text-align: center;
 
-  font-size: clamp(22px, 2.1vw, 34px);
-  line-height: 1.55;
+  font-size: clamp(21px, 1.9vw, 31px);
   font-weight: 500;
+  line-height: 1.55;
   letter-spacing: -0.055em;
 
   color: rgba(255, 255, 255, 0.76);
+
+  word-break: keep-all;
+  text-wrap: balance;
 }
 
-.build-intro-proof__quote span {
+.build-intro-proof__quote-mark {
   display: inline-block;
+
   margin-bottom: 8px;
 
-  font-size: clamp(30px, 2.5vw, 36px);
-  line-height: 0.8;
+  font-size: clamp(28px, 2.3vw, 34px);
   font-weight: 850;
+  line-height: 0.8;
+
   color: rgba(126, 178, 164, 0.9);
 }
 
 .build-intro-proof__quote strong {
   font-weight: 750;
-  color: rgba(126, 178, 164, 0.98);
-}
-
-.build-intro-proof__character-image {
-  width: min(360px, 100%);
-  height: auto;
-
-  display: block;
-
-  filter: drop-shadow(0 42px 60px rgba(0, 0, 0, 0.72));
 }

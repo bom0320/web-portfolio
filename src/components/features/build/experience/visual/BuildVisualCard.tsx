@@ -56,6 +56,12 @@ export default function BuildVisualCard({ item }: BuildVisualCardProps) {
             src={item.image.src}
             alt={item.image.alt}
             fill
+            sizes="
+              (max-width: 640px) calc(100vw - 48px),
+              (max-width: 900px) calc(100vw - 64px),
+              (max-width: 1180px) calc(50vw - 62px),
+              506px
+            "
             className="build-experience-visual-card__image"
           />
         </div>
@@ -68,9 +74,7 @@ export default function BuildVisualCard({ item }: BuildVisualCardProps) {
           <Icon aria-hidden="true" />
         </div>
 
-        <h3 className="build-experience-visual-card__title">
-          {item.title}
-        </h3>
+        <h3 className="build-experience-visual-card__title">{item.title}</h3>
 
         {item.description ? (
           <p className="build-experience-visual-card__desc">

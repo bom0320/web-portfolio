@@ -8,7 +8,6 @@ import {
 import type { AboutSceneAnimationElements } from "@/components/scenes/about/dom";
 
 import AboutHeroAnimation from "./aboutHero.animation";
-import AboutSkillsAnimation from "./aboutSkills.animation";
 
 const mapRange = (progress: number, start: number, end: number) => {
   return clampProgress((progress - start) / (end - start));
@@ -56,47 +55,6 @@ const AboutSceneAnimation = {
     });
 
     const heroAnimation = AboutHeroAnimation.create(hero);
-
-    const skillsIntroTimeline = AboutSkillsAnimation.intro(skills);
-
-    const skillsTitleFillTimeline = AboutSkillsAnimation.createSkillTitleFill(
-      skills.titleFill
-    );
-
-    const skillPaginationIndicator =
-      AboutSkillsAnimation.createPaginationIndicator(skills);
-
-    const handleSkillCarouselScroll = () => {
-      skillPaginationIndicator.updateTarget();
-    };
-
-    const handleResize = () => {
-      skillPaginationIndicator.updateTarget();
-    };
-
-    let paginationFrameId: number | null = null;
-
-    const carouselViewport = skills.carouselViewport;
-    const pagination = skills.pagination;
-
-    const canUseSkillPagination =
-      carouselViewport !== null && pagination !== null;
-
-    if (canUseSkillPagination) {
-      carouselViewport.addEventListener("scroll", handleSkillCarouselScroll, {
-        passive: true,
-      });
-
-      const tickPaginationIndicator = () => {
-        skillPaginationIndicator.tick();
-        paginationFrameId = requestAnimationFrame(tickPaginationIndicator);
-      };
-
-      skillPaginationIndicator.updateTarget();
-      tickPaginationIndicator();
-    }
-
-    window.addEventListener("resize", handleResize);
 
     const sceneTimeline = gsap.timeline({ paused: true });
 
@@ -152,32 +110,11 @@ const AboutSceneAnimation = {
       sceneTimeline.progress(nextProgress);
 
       heroAnimation.setProgress(mapRange(nextProgress, 0.04, 0.34));
-
-      skillsTitleFillTimeline?.progress(mapRange(nextProgress, 0.62, 0.74));
-      skillsIntroTimeline.progress(mapRange(nextProgress, 0.64, 0.9));
     };
 
     const destroy = () => {
-      if (carouselViewport) {
-        carouselViewport.removeEventListener(
-          "scroll",
-          handleSkillCarouselScroll
-        );
-      }
-
-      window.removeEventListener("resize", handleResize);
-
-      if (paginationFrameId !== null) {
-        cancelAnimationFrame(paginationFrameId);
-      }
-
-      skillPaginationIndicator.destroy();
-
       sceneTimeline.kill();
-
       heroAnimation.destroy();
-      skillsIntroTimeline.kill();
-      skillsTitleFillTimeline?.kill();
 
       gsap.set([aboutHero, skillsRoot, heroInner, skillsInner], {
         clearProps: "all",
