@@ -33,16 +33,12 @@ export default function IntroVisualProof() {
               <div className="build-intro-proof__pupil-mover js-build-intro-proof-pupil">
                 <span className="build-intro-proof__pupil" />
               </div>
-
-              <span className="build-intro-proof__lid js-build-intro-proof-lid" />
             </div>
 
             <div className="build-intro-proof__eye build-intro-proof__eye--right">
               <div className="build-intro-proof__pupil-mover js-build-intro-proof-pupil">
                 <span className="build-intro-proof__pupil" />
               </div>
-
-              <span className="build-intro-proof__lid js-build-intro-proof-lid" />
             </div>
 
             <span className="build-intro-proof__mouth js-build-intro-proof-mouth" />

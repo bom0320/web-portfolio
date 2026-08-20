@@ -46,11 +46,6 @@ export function getBuildIntroProofAnimationElements(scope: HTMLElement | null) {
         BUILD_INTRO_PROOF_ANIMATION_SELECTORS.pupils
       ) ?? [],
 
-    lids:
-      scope?.querySelectorAll<HTMLElement>(
-        BUILD_INTRO_PROOF_ANIMATION_SELECTORS.lids
-      ) ?? [],
-
     mouth: scope?.querySelector<HTMLElement>(
       BUILD_INTRO_PROOF_ANIMATION_SELECTORS.mouth
     ),

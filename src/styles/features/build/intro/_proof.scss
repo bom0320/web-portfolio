@@ -65,27 +65,25 @@
   overflow: hidden;
 
   border-radius: 50%;
-
-  pointer-events: none;
 }
 
-/* 왼쪽 흰 눈 전체 영역 */
 .build-intro-proof__eye--left {
-  top: 50%;
-  left: 22.5%;
+  top: 48.9%;
+  left: 19.5%;
 
-  width: 22%;
-  height: 20%;
+  width: 28%;
+  height: 22%;
 }
 
-/* 오른쪽 흰 눈 전체 영역 */
 .build-intro-proof__eye--right {
-  top: 50%;
-  left: 49.5%;
+  top: 48.9%;
+  left: 46.5%;
 
-  width: 22%;
-  height: 20%;
+  width: 28%;
+  height: 22%;
 }
+
+/* pupil mover */
 
 .build-intro-proof__pupil-mover {
   position: absolute;
@@ -95,49 +93,22 @@
   will-change: transform;
 }
 
+/* pupil */
+
 .build-intro-proof__pupil {
   position: absolute;
 
-  top: 50%;
-  left: 50%;
+  top: 60%;
+  left: 41%;
 
-  width: 58%;
+  width: 48%;
   aspect-ratio: 1;
 
   border-radius: 50%;
+
   background: #000;
 
   transform: translate(-50%, -50%);
-}
-
-/* eyelids */
-
-.build-intro-proof__lid {
-  position: absolute;
-
-  top: 0;
-  left: 0;
-  z-index: 2;
-
-  display: block;
-
-  width: 100%;
-  height: 100%;
-
-  box-sizing: border-box;
-
-  background: #fff;
-
-  border-bottom: 3px solid #000;
-  border-bottom-left-radius: 45%;
-  border-bottom-right-radius: 45%;
-
-  pointer-events: none;
-
-  transform: translateY(-115%);
-  transform-origin: center top;
-
-  will-change: transform, border-radius;
 }
 
 /* mouth */
@@ -145,7 +116,7 @@
 .build-intro-proof__mouth {
   position: absolute;
 
-  top: 80%;
+  top: 76%;
   left: 45%;
 
   width: 18px;

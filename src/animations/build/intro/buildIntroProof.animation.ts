@@ -9,26 +9,18 @@ import {
 import type { BuildIntroProofAnimationElements } from "@/components/scenes/build/dom";
 
 const EYE_POSITION = {
-  left: -26,
-  front: 0,
-  right: 22,
-} as const;
-
-const HEAD_ROTATION = {
-  left: -4,
-  front: 0,
-  right: 4,
-} as const;
-
-const LID_POSITION = {
-  open: -115,
-  closed: 0,
-} as const;
-
-const BLINK_TIMING = {
-  close: 0.2,
-  hold: 0.12,
-  open: 0.24,
+  left: {
+    x: -12,
+    y: -10,
+  },
+  front: {
+    x: 0,
+    y: 0,
+  },
+  right: {
+    x: 11,
+    y: -10,
+  },
 } as const;
 
 const CHARACTER_PROGRESS = {
@@ -38,13 +30,12 @@ const CHARACTER_PROGRESS = {
 
 const BuildIntroProofAnimation = {
   create(elements: BuildIntroProofAnimationElements): AnimationController {
-    const { character, pupils, lids, mouth, leftPoints, rightPoints, quote } =
+    const { character, pupils, mouth, leftPoints, rightPoints, quote } =
       elements;
 
     if (
       !character ||
       pupils.length === 0 ||
-      lids.length === 0 ||
       !mouth ||
       leftPoints.length === 0 ||
       rightPoints.length === 0 ||
@@ -55,38 +46,32 @@ const BuildIntroProofAnimation = {
       return createNoopController();
     }
 
+    const pupilElements = Array.from(pupils);
+    const leftPointElements = Array.from(leftPoints);
+    const rightPointElements = Array.from(rightPoints);
+
     const animatedElements = [
       character,
-      ...Array.from(pupils),
-      ...Array.from(lids),
+      ...pupilElements,
       mouth,
-      ...Array.from(leftPoints),
-      ...Array.from(rightPoints),
+      ...leftPointElements,
+      ...rightPointElements,
       quote,
     ];
 
-    let isCharacterActive = false;
     let hasPlayedCharacterSequence = false;
 
-    /* initial state */
+    /* initial */
 
     gsap.set(character, {
       autoAlpha: 0,
       y: 40,
       scale: 0.92,
-      rotation: HEAD_ROTATION.front,
-      transformOrigin: "50% 60%",
     });
 
-    gsap.set(pupils, {
-      xPercent: EYE_POSITION.front,
-      yPercent: 0,
-    });
-
-    gsap.set(lids, {
-      yPercent: LID_POSITION.open,
-      borderBottomLeftRadius: "38%",
-      borderBottomRightRadius: "38%",
+    gsap.set(pupilElements, {
+      xPercent: EYE_POSITION.front.x,
+      yPercent: EYE_POSITION.front.y,
     });
 
     gsap.set(mouth, {
@@ -95,13 +80,13 @@ const BuildIntroProofAnimation = {
       borderRadius: 0,
     });
 
-    gsap.set(leftPoints, {
+    gsap.set(leftPointElements, {
       autoAlpha: 0,
       x: -72,
       y: 12,
     });
 
-    gsap.set(rightPoints, {
+    gsap.set(rightPointElements, {
       autoAlpha: 0,
       x: 72,
       y: 12,
@@ -129,7 +114,7 @@ const BuildIntroProofAnimation = {
         duration: 0.8,
       })
       .to(
-        leftPoints,
+        leftPointElements,
         {
           autoAlpha: 1,
           x: 0,
@@ -140,7 +125,7 @@ const BuildIntroProofAnimation = {
         "-=0.48"
       )
       .to(
-        rightPoints,
+        rightPointElements,
         {
           autoAlpha: 1,
           x: 0,
@@ -160,16 +145,14 @@ const BuildIntroProofAnimation = {
         "-=0.24"
       );
 
-    /*
-     * Character acting
-     *
-     * 테스트 중에는 무한 반복.
-     */
+    /* character acting */
 
     const characterTimeline = gsap.timeline({
       paused: true,
+
+      /* 테스트용 무한 반복 */
       repeat: -1,
-      repeatDelay: 1.2,
+      repeatDelay: 0.8,
     });
 
     characterTimeline
@@ -177,227 +160,68 @@ const BuildIntroProofAnimation = {
       .to({}, { duration: 0.6 })
 
       /* 왼쪽 보기 */
-      .to(lids, {
-        yPercent: LID_POSITION.closed,
-        borderBottomLeftRadius: "52%",
-        borderBottomRightRadius: "52%",
-        duration: BLINK_TIMING.close,
-        ease: "power2.inOut",
-      })
-      .to(
-        pupils,
-        {
-          xPercent: EYE_POSITION.left,
-          duration: 0.18,
-          ease: "power2.inOut",
-        },
-        "<"
-      )
-      .to({}, { duration: BLINK_TIMING.hold })
-      .to(lids, {
-        yPercent: LID_POSITION.open,
-        borderBottomLeftRadius: "38%",
-        borderBottomRightRadius: "38%",
-        duration: BLINK_TIMING.open,
-        ease: "power2.inOut",
+      .to(pupilElements, {
+        xPercent: EYE_POSITION.left.x,
+        yPercent: EYE_POSITION.left.y,
+        duration: 0.48,
+        ease: "power3.inOut",
       })
 
-      .to({}, { duration: 0.8 })
+      .to({}, { duration: 0.7 })
 
       /* 오른쪽 보기 */
-      .to(lids, {
-        yPercent: LID_POSITION.closed,
-        borderBottomLeftRadius: "52%",
-        borderBottomRightRadius: "52%",
-        duration: BLINK_TIMING.close,
-        ease: "power2.inOut",
-      })
-      .to(
-        pupils,
-        {
-          xPercent: EYE_POSITION.right,
-          duration: 0.2,
-          ease: "power2.inOut",
-        },
-        "<"
-      )
-      .to({}, { duration: BLINK_TIMING.hold })
-      .to(lids, {
-        yPercent: LID_POSITION.open,
-        borderBottomLeftRadius: "38%",
-        borderBottomRightRadius: "38%",
-        duration: BLINK_TIMING.open,
-        ease: "power2.inOut",
+      .to(pupilElements, {
+        xPercent: EYE_POSITION.right.x,
+        yPercent: EYE_POSITION.right.y,
+        duration: 0.48,
+        ease: "power3.inOut",
       })
 
-      .to({}, { duration: 0.8 })
+      .to({}, { duration: 0.7 })
 
       /* 정면 복귀 */
-      .to(lids, {
-        yPercent: LID_POSITION.closed,
-        borderBottomLeftRadius: "52%",
-        borderBottomRightRadius: "52%",
-        duration: BLINK_TIMING.close,
-        ease: "power2.inOut",
+      .to(pupilElements, {
+        xPercent: EYE_POSITION.front.x,
+        yPercent: EYE_POSITION.front.y,
+        duration: 0.48,
+        ease: "power3.inOut",
       })
-      .to(
-        pupils,
-        {
-          xPercent: EYE_POSITION.front,
-          duration: 0.18,
-          ease: "power2.inOut",
-        },
-        "<"
-      )
-      .to({}, { duration: BLINK_TIMING.hold })
 
-      /* 눈 뜨며 미소 */
-      .to(lids, {
-        yPercent: LID_POSITION.open,
-        borderBottomLeftRadius: "38%",
-        borderBottomRightRadius: "38%",
-        duration: BLINK_TIMING.open,
-        ease: "power2.inOut",
-      })
+      /* 미소 */
       .to(
         mouth,
         {
-          width: 24,
+          width: 23,
           height: 8,
           borderRadius: "0 0 50% 50%",
           duration: 0.35,
           ease: "power3.inOut",
         },
-        "<"
+        "-=0.18"
       )
 
-      .to({}, { duration: 0.5 })
+      /* 웃는 상태 유지 */
+      .to({}, { duration: 1 })
 
-      /* 왼쪽 갸웃 */
-      .to(lids, {
-        yPercent: LID_POSITION.closed,
-        borderBottomLeftRadius: "52%",
-        borderBottomRightRadius: "52%",
-        duration: BLINK_TIMING.close,
-        ease: "power2.inOut",
-      })
-      .to(
-        character,
-        {
-          rotation: HEAD_ROTATION.left,
-          duration: 0.32,
-          ease: "power2.inOut",
-        },
-        "<"
-      )
-      .to({}, { duration: BLINK_TIMING.hold })
-      .to(lids, {
-        yPercent: LID_POSITION.open,
-        borderBottomLeftRadius: "38%",
-        borderBottomRightRadius: "38%",
-        duration: BLINK_TIMING.open,
-        ease: "power2.inOut",
-      })
-
-      .to({}, { duration: 0.6 })
-
-      /* 오른쪽 갸웃 */
-      .to(lids, {
-        yPercent: LID_POSITION.closed,
-        borderBottomLeftRadius: "52%",
-        borderBottomRightRadius: "52%",
-        duration: BLINK_TIMING.close,
-        ease: "power2.inOut",
-      })
-      .to(
-        character,
-        {
-          rotation: HEAD_ROTATION.right,
-          duration: 0.4,
-          ease: "power2.inOut",
-        },
-        "<"
-      )
-      .to({}, { duration: BLINK_TIMING.hold })
-      .to(lids, {
-        yPercent: LID_POSITION.open,
-        borderBottomLeftRadius: "38%",
-        borderBottomRightRadius: "38%",
-        duration: BLINK_TIMING.open,
-        ease: "power2.inOut",
-      })
-
-      .to({}, { duration: 0.6 })
-
-      /* 마지막 정면 */
-      .to(lids, {
-        yPercent: LID_POSITION.closed,
-        borderBottomLeftRadius: "52%",
-        borderBottomRightRadius: "52%",
-        duration: BLINK_TIMING.close,
-        ease: "power2.inOut",
-      })
-      .to(
-        character,
-        {
-          rotation: HEAD_ROTATION.front,
-          duration: 0.32,
-          ease: "power2.inOut",
-        },
-        "<"
-      )
-      .to(
-        pupils,
-        {
-          xPercent: EYE_POSITION.front,
-          duration: 0.18,
-          ease: "power2.inOut",
-        },
-        "<"
-      )
-      .to({}, { duration: BLINK_TIMING.hold })
-      .to(lids, {
-        yPercent: LID_POSITION.open,
-        borderBottomLeftRadius: "38%",
-        borderBottomRightRadius: "38%",
-        duration: BLINK_TIMING.open,
-        ease: "power2.inOut",
-      })
-
-      /* 반복 테스트용 표정 초기화 */
-      .to(
-        mouth,
-        {
-          width: 18,
-          height: 0,
-          borderRadius: 0,
-          duration: 0.3,
-          ease: "power2.inOut",
-        },
-        "+=0.5"
-      );
+      /* 다음 반복 전에 입 원상복귀 */
+      .to(mouth, {
+        width: 18,
+        height: 0,
+        borderRadius: 0,
+        duration: 0.35,
+        ease: "power3.inOut",
+      });
 
     /* reset */
 
     const resetCharacter = () => {
-      isCharacterActive = false;
       hasPlayedCharacterSequence = false;
 
       characterTimeline.pause(0);
 
-      gsap.set(character, {
-        rotation: HEAD_ROTATION.front,
-      });
-
-      gsap.set(pupils, {
-        xPercent: EYE_POSITION.front,
-        yPercent: 0,
-      });
-
-      gsap.set(lids, {
-        yPercent: LID_POSITION.open,
-        borderBottomLeftRadius: "38%",
-        borderBottomRightRadius: "38%",
+      gsap.set(pupilElements, {
+        xPercent: EYE_POSITION.front.x,
+        yPercent: EYE_POSITION.front.y,
       });
 
       gsap.set(mouth, {
@@ -406,8 +230,6 @@ const BuildIntroProofAnimation = {
         borderRadius: 0,
       });
     };
-
-    /* scroll progress */
 
     const setProgress = (progress: number) => {
       const nextProgress = clampProgress(progress);
@@ -418,16 +240,11 @@ const BuildIntroProofAnimation = {
         nextProgress >= CHARACTER_PROGRESS.enter &&
         !hasPlayedCharacterSequence
       ) {
-        isCharacterActive = true;
         hasPlayedCharacterSequence = true;
 
         characterTimeline.restart();
 
         return;
-      }
-
-      if (hasPlayedCharacterSequence) {
-        isCharacterActive = true;
       }
 
       if (
@@ -439,7 +256,6 @@ const BuildIntroProofAnimation = {
     };
 
     const destroy = () => {
-      isCharacterActive = false;
       hasPlayedCharacterSequence = false;
 
       timeline.kill();
