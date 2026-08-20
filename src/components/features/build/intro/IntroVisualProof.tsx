@@ -31,10 +31,12 @@ export default function IntroVisualProof() {
 
             <span className="build-intro-proof__eye build-intro-proof__eye--left">
               <span className="build-intro-proof__pupil js-build-intro-proof-pupil" />
+              <span className="build-intro-proof__lid js-build-intro-proof-lid" />
             </span>
 
             <span className="build-intro-proof__eye build-intro-proof__eye--right">
               <span className="build-intro-proof__pupil js-build-intro-proof-pupil" />
+              <span className="build-intro-proof__lid js-build-intro-proof-lid" />
             </span>
           </div>
         </div>

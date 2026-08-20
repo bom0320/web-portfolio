@@ -10,9 +10,17 @@ import type { BuildIntroProofAnimationElements } from "@/components/scenes/build
 
 const BuildIntroProofAnimation = {
   create(elements: BuildIntroProofAnimationElements): AnimationController {
-    const { character, leftPoints, rightPoints, quote } = elements;
+    const { character, pupils, lids, leftPoints, rightPoints, quote } =
+      elements;
 
-    if (!character || !leftPoints.length || !rightPoints.length || !quote) {
+    if (
+      !character ||
+      !pupils.length ||
+      !lids.length ||
+      !leftPoints.length ||
+      !rightPoints.length ||
+      !quote
+    ) {
       console.warn("[BuildIntroProofAnimation] Missing elements", elements);
 
       return createNoopController();
@@ -20,16 +28,29 @@ const BuildIntroProofAnimation = {
 
     const animatedElements = [
       character,
+      ...Array.from(pupils),
+      ...Array.from(lids),
       ...Array.from(leftPoints),
       ...Array.from(rightPoints),
       quote,
     ];
 
+    /* initial state */
+
     gsap.set(character, {
       autoAlpha: 0,
       y: 40,
       scale: 0.92,
-      transformOrigin: "center bottom",
+      rotation: 0,
+      transformOrigin: "center center",
+    });
+
+    gsap.set(pupils, {
+      xPercent: 0,
+    });
+
+    gsap.set(lids, {
+      yPercent: -105,
     });
 
     gsap.set(leftPoints, {
@@ -48,6 +69,8 @@ const BuildIntroProofAnimation = {
       autoAlpha: 0,
       y: 36,
     });
+
+    /* scroll intro */
 
     const timeline = gsap.timeline({
       paused: true,
@@ -95,12 +118,190 @@ const BuildIntroProofAnimation = {
         "-=0.24"
       );
 
+    /* character acting */
+
+    const characterTimeline = gsap.timeline({
+      paused: true,
+      repeat: -1,
+      repeatDelay: 1.5,
+    });
+
+    characterTimeline
+      /* 정면 */
+      .to({}, { duration: 0.7 })
+
+      /* 깜빡이며 왼쪽 보기 */
+      .to(lids, {
+        yPercent: 0,
+        duration: 0.09,
+        ease: "power2.in",
+      })
+      .to(
+        pupils,
+        {
+          xPercent: -24,
+          duration: 0.14,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+      .to(lids, {
+        yPercent: -105,
+        duration: 0.13,
+        ease: "power2.out",
+      })
+
+      /* 왼쪽 응시 */
+      .to({}, { duration: 0.7 })
+
+      /* 깜빡이며 오른쪽 보기 */
+      .to(lids, {
+        yPercent: 0,
+        duration: 0.09,
+        ease: "power2.in",
+      })
+      .to(
+        pupils,
+        {
+          xPercent: 24,
+          duration: 0.16,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+      .to(lids, {
+        yPercent: -105,
+        duration: 0.13,
+        ease: "power2.out",
+      })
+
+      /* 오른쪽 응시 */
+      .to({}, { duration: 0.7 })
+
+      /* 깜빡이며 다시 정면 */
+      .to(lids, {
+        yPercent: 0,
+        duration: 0.09,
+        ease: "power2.in",
+      })
+      .to(
+        pupils,
+        {
+          xPercent: 0,
+          duration: 0.14,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+      .to(lids, {
+        yPercent: -105,
+        duration: 0.13,
+        ease: "power2.out",
+      })
+
+      .to({}, { duration: 0.4 })
+
+      /* 깜빡이며 왼쪽 갸웃 */
+      .to(lids, {
+        yPercent: 0,
+        duration: 0.09,
+        ease: "power2.in",
+      })
+      .to(
+        character,
+        {
+          rotation: -4,
+          duration: 0.3,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+      .to(lids, {
+        yPercent: -105,
+        duration: 0.13,
+        ease: "power2.out",
+      })
+
+      .to({}, { duration: 0.55 })
+
+      /* 깜빡이며 오른쪽 갸웃 */
+      .to(lids, {
+        yPercent: 0,
+        duration: 0.09,
+        ease: "power2.in",
+      })
+      .to(
+        character,
+        {
+          rotation: 4,
+          duration: 0.4,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+      .to(lids, {
+        yPercent: -105,
+        duration: 0.13,
+        ease: "power2.out",
+      })
+
+      .to({}, { duration: 0.55 })
+
+      /* 마지막 깜빡임 + 정면 */
+      .to(lids, {
+        yPercent: 0,
+        duration: 0.09,
+        ease: "power2.in",
+      })
+      .to(
+        character,
+        {
+          rotation: 0,
+          duration: 0.3,
+          ease: "power2.inOut",
+        },
+        "<"
+      )
+      .to(lids, {
+        yPercent: -105,
+        duration: 0.13,
+        ease: "power2.out",
+      });
+
+    let isCharacterAnimationPlaying = false;
+
     const setProgress = (progress: number) => {
-      timeline.progress(clampProgress(progress));
+      const nextProgress = clampProgress(progress);
+
+      timeline.progress(nextProgress);
+
+      if (nextProgress > 0.15 && !isCharacterAnimationPlaying) {
+        characterTimeline.play();
+        isCharacterAnimationPlaying = true;
+      }
+
+      if (nextProgress <= 0.15 && isCharacterAnimationPlaying) {
+        characterTimeline.pause(0);
+
+        gsap.set(character, {
+          rotation: 0,
+        });
+
+        gsap.set(pupils, {
+          xPercent: 0,
+        });
+
+        gsap.set(lids, {
+          yPercent: -105,
+        });
+
+        isCharacterAnimationPlaying = false;
+      }
     };
 
     const destroy = () => {
       timeline.kill();
+      characterTimeline.kill();
 
       gsap.set(animatedElements, {
         clearProps: "all",

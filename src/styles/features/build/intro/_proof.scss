@@ -67,6 +67,9 @@
   align-items: center;
   justify-content: center;
 
+  overflow: hidden;
+  border-radius: 50%;
+
   pointer-events: none;
 }
 
@@ -81,6 +84,9 @@
 }
 
 .build-intro-proof__pupil {
+  position: relative;
+  z-index: 1;
+
   display: block;
 
   width: 68%;
@@ -88,6 +94,29 @@
 
   border-radius: 50%;
   background: #000;
+
+  will-change: transform;
+}
+
+/* eyelids */
+
+.build-intro-proof__lid {
+  position: absolute;
+  z-index: 2;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+  background: #000;
+
+  transform: translateY(-105%);
+
+  pointer-events: none;
+  will-change: transform;
 }
 
 /* proof points */
