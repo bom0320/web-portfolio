@@ -8,11 +8,6 @@ import {
 
 import type { ProjectsNavigatorIntroAnimationElements } from "@/components/scenes/projects/dom";
 
-interface ProjectsNavigatorLayerTransitionParams {
-  nextLayer: HTMLElement;
-  onComplete?: () => void;
-}
-
 const ProjectsNavigatorAnimation = {
   createIntro(
     elements: ProjectsNavigatorIntroAnimationElements
@@ -80,33 +75,6 @@ const ProjectsNavigatorAnimation = {
       setProgress,
       destroy,
     };
-  },
-
-  createLayerTransition({
-    nextLayer,
-    onComplete,
-  }: ProjectsNavigatorLayerTransitionParams) {
-    gsap.set(nextLayer, {
-      opacity: 0,
-      scale: 1.025,
-    });
-
-    return gsap
-      .timeline({
-        defaults: {
-          duration: 0.5,
-          ease: "power2.out",
-        },
-        onComplete,
-      })
-      .to(
-        nextLayer,
-        {
-          opacity: 1,
-          scale: 1,
-        },
-        0
-      );
   },
 };
 

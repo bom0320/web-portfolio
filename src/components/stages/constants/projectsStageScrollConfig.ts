@@ -4,16 +4,8 @@ type ScrollTriggerConfig = {
   scrub: number;
 };
 
-type NavigatorPinScrollConfig = {
-  start: string;
-  scrub: number;
-  itemScrollLengthMultiplier: number;
-  anticipatePin: number;
-};
-
 export type ProjectsStageScrollConfig = {
   navigatorIntro: ScrollTriggerConfig;
-  navigatorPin: NavigatorPinScrollConfig;
   closing: ScrollTriggerConfig;
 };
 
@@ -22,13 +14,6 @@ export const PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG = {
     start: "top 78%",
     end: "top 36%",
     scrub: 1,
-  },
-
-  navigatorPin: {
-    start: "top top",
-    scrub: 1,
-    itemScrollLengthMultiplier: 1.45,
-    anticipatePin: 1,
   },
 
   closing: {

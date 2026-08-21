@@ -35,26 +35,22 @@ export default function ProjectsNavigatorScene({
           aria-hidden="true"
         />
 
-        <div className="projects-navigator-pin js-projects-navigator-pin">
-          <div className="projects-navigator-pin__inner">
-            <div className="projects-navigator-showcase">
-              <div className="projects-navigator-showcase__left">
-                <ProjectsNavigatorList
-                  items={items}
-                  activeIndex={activeIndex}
-                  visibleIndex={visibleIndex}
-                  onActiveIndexChange={onActiveIndexChange}
-                  onPreviewIndexChange={onPreviewIndexChange}
-                />
-              </div>
+        <div className="projects-navigator-showcase">
+          <div className="projects-navigator-showcase__left">
+            <ProjectsNavigatorList
+              items={items}
+              activeIndex={activeIndex}
+              visibleIndex={visibleIndex}
+              onActiveIndexChange={onActiveIndexChange}
+              onPreviewIndexChange={onPreviewIndexChange}
+            />
+          </div>
 
-              <div className="projects-navigator-showcase__right">
-                <ProjectsNavigatorMonitor
-                  items={items}
-                  activeIndex={visibleIndex}
-                />
-              </div>
-            </div>
+          <div className="projects-navigator-showcase__right">
+            <ProjectsNavigatorMonitor
+              items={items}
+              activeIndex={visibleIndex}
+            />
           </div>
         </div>
       </div>

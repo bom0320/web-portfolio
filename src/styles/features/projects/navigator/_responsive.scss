@@ -43,22 +43,8 @@
     display: none;
   }
 
-  .projects-navigator-pin {
-    height: auto;
-    min-height: auto;
-
-    overflow: visible;
-  }
-
-  .projects-navigator-pin__inner {
-    height: auto;
-    min-height: auto;
-  }
-
   .projects-navigator-showcase {
     width: min(100% - 48px, 520px);
-    height: auto;
-    min-height: auto;
 
     display: flex;
     flex-direction: column;
@@ -223,22 +209,8 @@
     display: none;
   }
 
-  .projects-navigator-pin {
-    height: auto;
-    min-height: auto;
-
-    overflow: visible;
-  }
-
-  .projects-navigator-pin__inner {
-    height: auto;
-    min-height: auto;
-  }
-
   .projects-navigator-showcase {
     width: calc(100% - 38px);
-    height: auto;
-    min-height: auto;
 
     display: flex;
     flex-direction: column;
