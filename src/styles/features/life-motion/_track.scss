@@ -44,24 +44,35 @@
 
 .life-motion__row {
   display: flex;
+  flex-wrap: nowrap;
+
   width: max-content;
+  min-width: max-content;
+
   will-change: transform;
 }
 
 .life-motion__group {
   display: flex;
-  flex: 0 0 auto;
+  flex: none;
+
+  width: max-content;
+  min-width: max-content;
+
   gap: 12px;
   padding-right: 12px;
 }
 
 .life-motion__item {
-  flex: 0 0 clamp(240px, 20vw, 360px);
+  flex: 0 0 auto;
+
+  width: clamp(240px, 20vw, 360px);
   height: clamp(220px, 28vw, 320px);
   margin: 0;
 
   display: flex;
   flex-direction: column;
+
   min-width: 0;
 }
 
@@ -81,10 +92,13 @@
 
 .life-motion__image-wrap {
   position: relative;
+
   width: 100%;
   height: calc(100% - 18px);
+
   border-radius: 8px;
   overflow: hidden;
+
   background: #111;
 }
 

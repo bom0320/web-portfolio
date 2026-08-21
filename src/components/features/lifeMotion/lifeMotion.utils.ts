@@ -7,31 +7,14 @@ export const fillToSameLength = <T>(items: T[], targetLength: number) => {
   );
 };
 
-export const repeatItems = <T>(items: T[], repeatCount: number) => {
-  return Array.from({ length: repeatCount }, () => items).flat();
-};
+export const createLifeMotionRows = <T>(items: T[]) => {
+  const topItems = items.filter((_, index) => index % 2 === 0);
+  const bottomItems = items.filter((_, index) => index % 2 === 1);
 
-export const createLifeMotionGroups = <T>(items: T[], repeatCount: number) => {
-  const topBaseItems = items.filter((_, index) => index % 2 === 0);
-  const bottomBaseItems = items.filter((_, index) => index % 2 === 1);
-
-  const targetBaseLength = Math.max(
-    topBaseItems.length,
-    bottomBaseItems.length
-  );
-
-  const normalizedTopBaseItems = fillToSameLength(
-    topBaseItems,
-    targetBaseLength
-  );
-
-  const normalizedBottomBaseItems = fillToSameLength(
-    bottomBaseItems,
-    targetBaseLength
-  );
+  const rowLength = Math.max(topItems.length, bottomItems.length);
 
   return {
-    topGroupItems: repeatItems(normalizedTopBaseItems, repeatCount),
-    bottomGroupItems: repeatItems(normalizedBottomBaseItems, repeatCount),
+    topItems: fillToSameLength(topItems, rowLength),
+    bottomItems: fillToSameLength(bottomItems, rowLength),
   };
 };
