@@ -1,2 +1,3 @@
 export * from "./closing";
-export * from "./navigator";
+export * from "./detail";
+export * from "./showcase";

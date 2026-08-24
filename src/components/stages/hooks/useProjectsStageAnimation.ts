@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  type Dispatch,
-  type RefObject,
-  type SetStateAction,
-  useLayoutEffect,
-  useState,
-} from "react";
+import { type RefObject, useLayoutEffect } from "react";
 import gsap from "gsap";
 
 import { refreshScrollTrigger, type ScrollTriggerInstance } from "@/lib/gsap";
@@ -25,16 +19,9 @@ import {
   resetProjectsStageControllers,
 } from "./helpers";
 
-type UseProjectsStageAnimationReturn = {
-  activeProjectIndex: number;
-  setActiveProjectIndex: Dispatch<SetStateAction<number>>;
-};
-
 export function useProjectsStageAnimation(
   stageRef: RefObject<HTMLElement | null>
-): UseProjectsStageAnimationReturn {
-  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
-
+) {
   useLayoutEffect(() => {
     const stage = stageRef.current;
 
@@ -99,9 +86,4 @@ export function useProjectsStageAnimation(
       context.revert();
     };
   }, [stageRef]);
-
-  return {
-    activeProjectIndex,
-    setActiveProjectIndex,
-  };
 }

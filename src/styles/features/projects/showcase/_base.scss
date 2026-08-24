@@ -1,0 +1,18 @@
+.projects-showcase {
+  position: relative;
+
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+
+  background: #050505;
+  color: #ffffff;
+
+  overflow: hidden;
+}
+
+.projects-showcase__inner {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto;
+
+  padding: 140px 0 160px;
+}

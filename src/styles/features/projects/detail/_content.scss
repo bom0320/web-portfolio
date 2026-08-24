@@ -1,0 +1,22 @@
+.project-detail-content {
+  width: min(1180px, calc(100% - 96px));
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(72px, 8vw, 140px);
+
+  padding-bottom: 180px;
+}
+
+.project-detail-content__sidebar {
+  position: sticky;
+  top: 38vh;
+
+  align-self: start;
+}
+
+.project-detail-content__sections {
+  min-width: 0;
+}

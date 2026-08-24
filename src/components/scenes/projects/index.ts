@@ -1,2 +1,2 @@
-export { default as ProjectsNavigatorScene } from "./ProjectsNavigatorScene";
 export { default as ProjectsClosingScene } from "./ProjectsClosingScene";
+export { default as ProjectsShowcaseScene } from "./ProjectsShowcaseScene";

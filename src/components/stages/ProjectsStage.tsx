@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 import {
   ProjectsClosingScene,
-  ProjectsNavigatorScene,
+  ProjectsShowcaseScene,
 } from "@/components/scenes/projects";
 import { PROJECT_ITEMS } from "@/data/projects";
 import { useSectionViewTracking } from "@/hooks/useSectionViewTracking";
@@ -14,14 +14,7 @@ import { useProjectsStageAnimation } from "./hooks/useProjectsStageAnimation";
 export default function ProjectsStage() {
   const stageRef = useRef<HTMLElement | null>(null);
 
-  const [previewProjectIndex, setPreviewProjectIndex] = useState<number | null>(
-    null
-  );
-
-  const { activeProjectIndex, setActiveProjectIndex } =
-    useProjectsStageAnimation(stageRef);
-
-  const visibleProjectIndex = previewProjectIndex ?? activeProjectIndex;
+  useProjectsStageAnimation(stageRef);
 
   useSectionViewTracking(stageRef, {
     sectionName: "projects",
@@ -30,13 +23,7 @@ export default function ProjectsStage() {
 
   return (
     <section id="projects" ref={stageRef} className="content-stage">
-      <ProjectsNavigatorScene
-        items={PROJECT_ITEMS}
-        activeIndex={activeProjectIndex}
-        visibleIndex={visibleProjectIndex}
-        onActiveIndexChange={setActiveProjectIndex}
-        onPreviewIndexChange={setPreviewProjectIndex}
-      />
+      <ProjectsShowcaseScene items={PROJECT_ITEMS} />
 
       <ProjectsClosingScene />
     </section>
