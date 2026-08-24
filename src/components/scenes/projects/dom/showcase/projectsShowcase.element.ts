@@ -1,6 +1,6 @@
-import { PROJECTS_NAVIGATOR_SELECTORS } from "./projectsNavigator.selectors";
+import { PROJECTS_SHOWCASE_SELECTORS } from "./projectsShowcase.selectors";
 
-export type ProjectsNavigatorIntroAnimationElements = {
+export type ProjectsShowcaseIntroAnimationElements = {
   root: HTMLElement | null;
   eyebrow: HTMLElement | null;
   title: HTMLElement | null;
@@ -16,10 +16,10 @@ const queryElement = <T extends HTMLElement>(
   return root.querySelector<T>(selector);
 };
 
-export const getProjectsNavigatorIntroAnimationElements = (
+export const getProjectsShowcaseIntroAnimationElements = (
   root: HTMLElement | null
-): ProjectsNavigatorIntroAnimationElements => {
-  const selectors = PROJECTS_NAVIGATOR_SELECTORS.intro;
+): ProjectsShowcaseIntroAnimationElements => {
+  const selectors = PROJECTS_SHOWCASE_SELECTORS.intro;
 
   return {
     root,

@@ -1,4 +1,4 @@
 export const PROJECTS_STAGE_SELECTORS = {
-  navigatorIntro: ".js-projects-navigator-intro",
+  showcaseIntro: ".js-projects-showcase-intro",
   closing: ".js-projects-closing",
 } as const;

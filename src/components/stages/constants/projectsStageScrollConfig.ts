@@ -5,12 +5,12 @@ type ScrollTriggerConfig = {
 };
 
 export type ProjectsStageScrollConfig = {
-  navigatorIntro: ScrollTriggerConfig;
+  showcaseIntro: ScrollTriggerConfig;
   closing: ScrollTriggerConfig;
 };
 
 export const PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG = {
-  navigatorIntro: {
+  showcaseIntro: {
     start: "top 78%",
     end: "top 36%",
     scrub: 1,
@@ -26,7 +26,7 @@ export const PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG = {
 export const PROJECTS_STAGE_MOBILE_SCROLL_CONFIG = {
   ...PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG,
 
-  navigatorIntro: {
+  showcaseIntro: {
     start: "top 86%",
     end: "top 34%",
     scrub: 0.65,

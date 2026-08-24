@@ -43,9 +43,9 @@ export function useProjectsStageAnimation(
         };
 
         registerProgressTrigger({
-          triggerElement: elements.navigatorIntro,
-          config: scrollConfig.navigatorIntro,
-          controller: controllers.navigatorIntro,
+          triggerElement: elements.showcaseIntro,
+          config: scrollConfig.showcaseIntro,
+          controller: controllers.showcaseIntro,
           registerTrigger,
         });
 

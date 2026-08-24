@@ -1,11 +1,11 @@
 import {
   ProjectsClosingAnimation,
-  ProjectsNavigatorAnimation,
+  ProjectsShowcaseAnimation,
 } from "@/animations/projects";
 
 import {
   getProjectsClosingAnimationElements,
-  getProjectsNavigatorIntroAnimationElements,
+  getProjectsShowcaseIntroAnimationElements,
 } from "@/components/scenes/projects/dom";
 
 import type { ProjectsStageElements } from "./projectsStageElements";
@@ -14,8 +14,8 @@ export function createProjectsStageControllers(
   elements: ProjectsStageElements
 ) {
   return {
-    navigatorIntro: ProjectsNavigatorAnimation.createIntro(
-      getProjectsNavigatorIntroAnimationElements(elements.navigatorIntro)
+    showcaseIntro: ProjectsShowcaseAnimation.createIntro(
+      getProjectsShowcaseIntroAnimationElements(elements.showcaseIntro)
     ),
 
     closing: ProjectsClosingAnimation.create(
@@ -31,13 +31,13 @@ export type ProjectsStageControllers = ReturnType<
 export function resetProjectsStageControllers(
   controllers: ProjectsStageControllers
 ) {
-  controllers.navigatorIntro.setProgress(0);
+  controllers.showcaseIntro.setProgress(0);
   controllers.closing.setProgress(0);
 }
 
 export function destroyProjectsStageControllers(
   controllers: ProjectsStageControllers
 ) {
-  controllers.navigatorIntro.destroy();
+  controllers.showcaseIntro.destroy();
   controllers.closing.destroy();
 }

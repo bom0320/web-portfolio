@@ -6,11 +6,11 @@ import {
   type AnimationController,
 } from "@/animations/_shared";
 
-import type { ProjectsNavigatorIntroAnimationElements } from "@/components/scenes/projects/dom";
+import type { ProjectsShowcaseIntroAnimationElements } from "@/components/scenes/projects/dom";
 
-const ProjectsNavigatorAnimation = {
+const ProjectsShowcaseAnimation = {
   createIntro(
-    elements: ProjectsNavigatorIntroAnimationElements
+    elements: ProjectsShowcaseIntroAnimationElements
   ): AnimationController {
     const { root, eyebrow, title, desc } = elements;
 
@@ -78,4 +78,4 @@ const ProjectsNavigatorAnimation = {
   },
 };
 
-export default ProjectsNavigatorAnimation;
+export default ProjectsShowcaseAnimation;
