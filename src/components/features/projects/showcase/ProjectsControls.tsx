@@ -22,7 +22,7 @@ export default function ProjectsControls({
         disabled={total <= 1}
         aria-label="이전 프로젝트"
       >
-        <ArrowLeft size={18} />
+        <ArrowLeft size={24} strokeWidth={1.5} />
       </button>
 
       <button
@@ -32,7 +32,7 @@ export default function ProjectsControls({
         disabled={total <= 1}
         aria-label="다음 프로젝트"
       >
-        <ArrowRight size={18} />
+        <ArrowRight size={24} strokeWidth={1.5} />
       </button>
     </div>
   );

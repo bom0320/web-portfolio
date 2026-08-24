@@ -1,4 +1,6 @@
 .projects-showcase {
+  --projects-content-width: 1180px;
+
   position: relative;
 
   width: 100vw;
@@ -14,7 +16,8 @@
 }
 
 .projects-showcase__inner {
-  width: min(1180px, calc(100% - 96px));
+  width: min(var(--projects-content-width), calc(100% - 96px));
+
   height: 100%;
   margin: 0 auto;
 
@@ -30,5 +33,5 @@
 .projects-showcase__explorer {
   width: 100%;
 
-  margin-top: 38px;
+  margin-top: 56px;
 }

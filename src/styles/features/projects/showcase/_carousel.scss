@@ -1,21 +1,111 @@
 .projects-showcase__carousel-area {
-  --project-slide-width: min(760px, 50vw);
-  --project-slide-height: clamp(390px, 26vw, 430px);
+  --project-slide-width: min(640px, 42vw);
+  --project-slide-height: clamp(320px, 20vw, 330px);
 
-  --project-side-gap: 22px;
+  --project-side-gap: 10px;
+
   --project-side-offset: calc(
     var(--project-slide-width) + var(--project-side-gap)
   );
+
   --project-hidden-offset: calc(var(--project-slide-width) * 2);
+
+  /*
+   * 좌우에 실제로 노출되는 카드 영역.
+   * 버튼 위치 계산에만 사용한다.
+   */
+  --project-side-visible-width: calc(
+    (100% - var(--project-slide-width) - (var(--project-side-gap) * 2)) / 2
+  );
 
   position: relative;
 
-  width: 100vw;
+  width: 100%;
   margin-top: 34px;
-  margin-left: calc(50% - 50vw);
 
   overflow: hidden;
 }
+
+/* --------------------------------------------------
+ * Edge blur
+ * 화면 가장자리만 아주 약하게 흐림
+ * -------------------------------------------------- */
+
+/* --------------------------------------------------
+ * Side blur
+ * -------------------------------------------------- */
+
+.projects-showcase__carousel-area::before,
+.projects-showcase__carousel-area::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  z-index: 6;
+
+  width: var(--project-side-visible-width);
+
+  pointer-events: none;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.projects-showcase__carousel-area::before {
+  left: 0;
+
+  background: linear-gradient(
+    90deg,
+    rgba(5, 5, 5, 0.72) 0%,
+    rgba(5, 5, 5, 0.42) 48%,
+    rgba(5, 5, 5, 0) 100%
+  );
+
+  mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    rgba(0, 0, 0, 0.86) 56%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    #000 0%,
+    rgba(0, 0, 0, 0.86) 56%,
+    transparent 100%
+  );
+}
+
+.projects-showcase__carousel-area::after {
+  right: 0;
+
+  background: linear-gradient(
+    270deg,
+    rgba(5, 5, 5, 0.72) 0%,
+    rgba(5, 5, 5, 0.42) 48%,
+    rgba(5, 5, 5, 0) 100%
+  );
+
+  mask-image: linear-gradient(
+    270deg,
+    #000 0%,
+    rgba(0, 0, 0, 0.86) 56%,
+    transparent 100%
+  );
+
+  -webkit-mask-image: linear-gradient(
+    270deg,
+    #000 0%,
+    rgba(0, 0, 0, 0.86) 56%,
+    transparent 100%
+  );
+}
+
+/* --------------------------------------------------
+ * Carousel
+ * -------------------------------------------------- */
 
 .projects-carousel {
   position: relative;
@@ -44,7 +134,9 @@
   line-height: 1.6;
 }
 
-/* Slide positioning */
+/* --------------------------------------------------
+ * Slide
+ * -------------------------------------------------- */
 
 .project-slide {
   position: absolute;
@@ -55,57 +147,56 @@
   width: var(--project-slide-width);
   height: var(--project-slide-height);
 
-  transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1), opacity 420ms ease,
-    filter 420ms ease;
+  transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1), opacity 420ms ease;
 
   will-change: transform, opacity;
 }
+
+/* Active */
 
 .project-slide.is-active {
   z-index: 4;
 
   opacity: 1;
-  filter: none;
 
   transform: translate(-50%, -50%);
 }
 
-.project-slide.is-previous {
+/* Previous / Next */
+
+.project-slide.is-previous,
+.project-slide.is-next {
   z-index: 2;
 
-  opacity: 0.3;
-  filter: brightness(0.68);
+  opacity: 1;
+  filter: none;
+}
 
+.project-slide.is-previous {
   transform: translate(calc(-50% - var(--project-side-offset)), -50%);
 }
 
 .project-slide.is-next {
-  z-index: 2;
-
-  opacity: 0.3;
-  filter: brightness(0.68);
-
   transform: translate(calc(-50% + var(--project-side-offset)), -50%);
 }
 
-.project-slide.is-hidden-left {
-  z-index: 0;
+/* Hidden */
 
-  opacity: 0;
-
-  pointer-events: none;
-
-  transform: translate(calc(-50% - var(--project-hidden-offset)), -50%)
-    scale(0.9);
-}
-
+.project-slide.is-hidden-left,
 .project-slide.is-hidden-right {
   z-index: 0;
 
   opacity: 0;
 
   pointer-events: none;
+}
 
+.project-slide.is-hidden-left {
+  transform: translate(calc(-50% - var(--project-hidden-offset)), -50%)
+    scale(0.9);
+}
+
+.project-slide.is-hidden-right {
   transform: translate(calc(-50% + var(--project-hidden-offset)), -50%)
     scale(0.9);
 }
