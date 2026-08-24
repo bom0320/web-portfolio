@@ -1,7 +1,6 @@
 import type { ProjectItem } from "@/data/projects";
 import type { ProjectDetailSection } from "@/data/projects/projectDetailItems";
 
-import ProjectDetailNav from "./ProjectDetailNav";
 import ProjectDetailSectionView from "./ProjectDetailSection";
 
 interface ProjectDetailContentProps {
@@ -15,10 +14,6 @@ export default function ProjectDetailContent({
 }: ProjectDetailContentProps) {
   return (
     <div className="project-detail-content">
-      <aside className="project-detail-content__sidebar">
-        <ProjectDetailNav sections={sections} />
-      </aside>
-
       <div className="project-detail-content__sections">
         {sections.map((section) => (
           <ProjectDetailSectionView

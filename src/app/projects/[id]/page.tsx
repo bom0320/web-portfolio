@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation";
 
 import {
-  ProjectDetailHero,
   ProjectDetailContent,
+  ProjectDetailHero,
+  ProjectDetailNav,
 } from "@/components/features/projects/detail";
 import { getProjectItemById } from "@/data/projects";
 import { getProjectDetailContent } from "@/data/projects/projectDetailItems";
+
 interface ProjectDetailPageProps {
   params: Promise<{
     id: string;
@@ -24,9 +26,17 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
+  const sections = detail?.sections ?? [];
+
   return (
     <main className="project-detail-page">
-      <ProjectDetailHero item={item} sections={detail?.sections ?? []} />
+      {sections.length > 0 && (
+        <aside className="project-detail-page__nav">
+          <ProjectDetailNav sections={sections} activeId="intro" />
+        </aside>
+      )}
+
+      <ProjectDetailHero item={item} />
 
       {detail && (
         <ProjectDetailContent item={item} sections={detail.sections} />

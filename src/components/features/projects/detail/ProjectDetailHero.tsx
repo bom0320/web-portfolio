@@ -5,20 +5,14 @@ import Image from "next/image";
 
 import { ArrowButton } from "@/components/shared/ui";
 import type { ProjectItem } from "@/data/projects";
-import type { ProjectDetailSection } from "@/data/projects/projectDetailItems";
 
 import ProjectDetailActions from "./ProjectDetailActions";
-import ProjectDetailNav from "./ProjectDetailNav";
 
 interface ProjectDetailHeroProps {
   item: ProjectItem;
-  sections: ProjectDetailSection[];
 }
 
-export default function ProjectDetailHero({
-  item,
-  sections,
-}: ProjectDetailHeroProps) {
+export default function ProjectDetailHero({ item }: ProjectDetailHeroProps) {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   const images = useMemo(
@@ -63,8 +57,6 @@ export default function ProjectDetailHero({
               githubUrl={item.githubUrl}
             />
           </div>
-
-          <ProjectDetailNav sections={sections} activeId="intro" />
         </div>
 
         <div className="project-detail-hero__visual">
@@ -75,7 +67,7 @@ export default function ProjectDetailHero({
               alt={`${item.title} 프로젝트 이미지 ${activeImageIndex + 1}`}
               fill
               priority={activeImageIndex === 0}
-              sizes="(max-width: 900px) 100vw, 60vw"
+              sizes="(max-width: 900px) 100vw, 680px"
             />
           </div>
 

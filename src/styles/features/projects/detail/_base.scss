@@ -2,8 +2,25 @@
   --project-detail-width: 1320px;
   --project-detail-gutter: 64px;
 
+  position: relative;
+
   min-height: 100vh;
 
   background: #000000;
   color: #ffffff;
+}
+
+.project-detail-page__nav {
+  position: fixed;
+
+  top: 58vh;
+
+  left: max(
+    var(--project-detail-gutter),
+    calc((100vw - var(--project-detail-width)) / 2)
+  );
+
+  z-index: 20;
+
+  width: 240px;
 }
