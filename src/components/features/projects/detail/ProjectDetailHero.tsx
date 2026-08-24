@@ -7,6 +7,7 @@ import { ArrowButton } from "@/components/shared/ui";
 import type { ProjectItem } from "@/data/projects";
 
 import ProjectDetailActions from "./ProjectDetailActions";
+import ProjectDetailMeta from "./ProjectDetailMeta";
 
 interface ProjectDetailHeroProps {
   item: ProjectItem;
@@ -49,6 +50,8 @@ export default function ProjectDetailHero({ item }: ProjectDetailHeroProps) {
             <h1 className="project-detail-hero__title">{item.title}</h1>
 
             <p className="project-detail-hero__overview">{item.overview}</p>
+
+            <ProjectDetailMeta item={item} />
 
             <ProjectDetailActions
               projectId={item.id}

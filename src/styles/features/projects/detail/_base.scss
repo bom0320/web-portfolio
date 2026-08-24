@@ -1,6 +1,7 @@
 .project-detail-page {
   --project-detail-width: 1320px;
   --project-detail-gutter: 64px;
+  --project-detail-nav-top: 70vh;
 
   position: relative;
 
@@ -16,7 +17,7 @@
 
 .project-detail-scene__nav {
   position: sticky;
-  top: 58vh;
+  top: var(--project-detail-nav-top);
   z-index: 20;
 
   width: min(
