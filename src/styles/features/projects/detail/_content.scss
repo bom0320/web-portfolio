@@ -7,27 +7,23 @@
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: minmax(0, 820px) 220px;
-  justify-content: space-between;
+  grid-template-columns: minmax(0, 980px) 220px;
   align-items: start;
-  gap: clamp(80px, 8vw, 120px);
+  gap: clamp(48px, 4vw, 64px);
 
   padding: 80px 0 180px;
 }
 
-/* 본문 */
 .project-detail-content__sections {
   grid-column: 1;
 
   width: 100%;
   min-width: 0;
-  max-width: 1000px;
+  max-width: 960px;
 }
 
-/* 오른쪽 목차 */
 .project-detail-content__sidebar {
   grid-column: 2;
-  justify-self: end;
   align-self: start;
 
   position: sticky;
