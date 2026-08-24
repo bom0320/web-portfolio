@@ -1,14 +1,12 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 interface ProjectsControlsProps {
-  activeIndex: number;
   total: number;
   onPrevious: () => void;
   onNext: () => void;
 }
 
 export default function ProjectsControls({
-  activeIndex,
   total,
   onPrevious,
   onNext,
@@ -24,16 +22,8 @@ export default function ProjectsControls({
         disabled={total <= 1}
         aria-label="이전 프로젝트"
       >
-        <ArrowLeft size={20} strokeWidth={1.4} />
+        <ArrowLeft size={18} />
       </button>
-
-      <p className="projects-controls__pagination" aria-live="polite">
-        <strong>{String(activeIndex + 1).padStart(2, "0")}</strong>
-
-        <span aria-hidden="true"> / </span>
-
-        {String(total).padStart(2, "0")}
-      </p>
 
       <button
         type="button"
@@ -42,7 +32,7 @@ export default function ProjectsControls({
         disabled={total <= 1}
         aria-label="다음 프로젝트"
       >
-        <ArrowRight size={20} strokeWidth={1.4} />
+        <ArrowRight size={18} />
       </button>
     </div>
   );

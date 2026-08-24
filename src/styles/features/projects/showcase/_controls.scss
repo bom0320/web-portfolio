@@ -1,0 +1,71 @@
+.projects-controls {
+  position: absolute;
+  inset: 0;
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+.projects-controls__button {
+  appearance: none;
+
+  position: absolute;
+  top: calc(var(--project-slide-height) / 2);
+
+  width: 50px;
+  height: 50px;
+  padding: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 50%;
+
+  background: rgba(5, 5, 5, 0.18);
+  color: rgba(255, 255, 255, 0.72);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  cursor: pointer;
+  pointer-events: auto;
+
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease,
+    transform 180ms ease;
+}
+
+.projects-controls__button--previous {
+  left: 9vw;
+
+  transform: translate(-50%, -50%);
+}
+
+.projects-controls__button--next {
+  right: 9vw;
+
+  transform: translate(50%, -50%);
+}
+
+.projects-controls__button:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.7);
+
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.projects-controls__button--previous:hover:not(:disabled) {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.projects-controls__button--next:hover:not(:disabled) {
+  transform: translate(50%, -50%) scale(1.06);
+}
+
+.projects-controls__button:disabled {
+  opacity: 0.2;
+
+  cursor: default;
+}

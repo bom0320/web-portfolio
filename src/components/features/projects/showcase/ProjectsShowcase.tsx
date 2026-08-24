@@ -25,25 +25,23 @@ export default function ProjectsShowcase({ items }: ProjectsShowcaseProps) {
     return items.filter((item) => item.stack.includes(activeFilter));
   }, [items, activeFilter]);
 
+  const total = filteredItems.length;
+
   const handleFilterChange = (filter: ProjectFilter) => {
     setActiveFilter(filter);
     setActiveIndex(0);
   };
 
   const handlePrevious = () => {
-    if (filteredItems.length <= 1) return;
+    if (total <= 1) return;
 
-    setActiveIndex((current) =>
-      current === 0 ? filteredItems.length - 1 : current - 1
-    );
+    setActiveIndex((current) => (current === 0 ? total - 1 : current - 1));
   };
 
   const handleNext = () => {
-    if (filteredItems.length <= 1) return;
+    if (total <= 1) return;
 
-    setActiveIndex((current) =>
-      current === filteredItems.length - 1 ? 0 : current + 1
-    );
+    setActiveIndex((current) => (current === total - 1 ? 0 : current + 1));
   };
 
   return (
@@ -65,8 +63,7 @@ export default function ProjectsShowcase({ items }: ProjectsShowcaseProps) {
             />
 
             <ProjectsControls
-              activeIndex={activeIndex}
-              total={filteredItems.length}
+              total={total}
               onPrevious={handlePrevious}
               onNext={handleNext}
             />
