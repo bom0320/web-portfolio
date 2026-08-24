@@ -4,8 +4,14 @@ type ScrollTriggerConfig = {
   scrub: number;
 };
 
+type ShowcaseHoldConfig = {
+  start: string;
+  holdLengthMultiplier: number;
+};
+
 export type ProjectsStageScrollConfig = {
   showcaseIntro: ScrollTriggerConfig;
+  showcaseHold: ShowcaseHoldConfig;
   closing: ScrollTriggerConfig;
 };
 
@@ -14,6 +20,11 @@ export const PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG = {
     start: "top 78%",
     end: "top 36%",
     scrub: 1,
+  },
+
+  showcaseHold: {
+    start: "top top",
+    holdLengthMultiplier: 0.85,
   },
 
   closing: {

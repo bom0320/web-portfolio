@@ -3,7 +3,11 @@
 import { type RefObject, useLayoutEffect } from "react";
 import gsap from "gsap";
 
-import { refreshScrollTrigger, type ScrollTriggerInstance } from "@/lib/gsap";
+import {
+  createScrollTrigger,
+  refreshScrollTrigger,
+  type ScrollTriggerInstance,
+} from "@/lib/gsap";
 
 import {
   PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG,
@@ -19,6 +23,10 @@ import {
   resetProjectsStageControllers,
 } from "./helpers";
 
+type SetupProjectsTriggerOptions = {
+  enableShowcasePin?: boolean;
+};
+
 export function useProjectsStageAnimation(
   stageRef: RefObject<HTMLElement | null>
 ) {
@@ -29,8 +37,11 @@ export function useProjectsStageAnimation(
 
     const context = gsap.context(() => {
       const setupProjectsTriggers = (
-        scrollConfig: ProjectsStageScrollConfig
+        scrollConfig: ProjectsStageScrollConfig,
+        options: SetupProjectsTriggerOptions = {}
       ) => {
+        const { enableShowcasePin = false } = options;
+
         const elements = getProjectsStageElements(stage);
         const controllers = createProjectsStageControllers(elements);
 
@@ -42,12 +53,47 @@ export function useProjectsStageAnimation(
           triggers.push(trigger);
         };
 
+        /* Intro */
+
         registerProgressTrigger({
           triggerElement: elements.showcaseIntro,
           config: scrollConfig.showcaseIntro,
           controller: controllers.showcaseIntro,
           registerTrigger,
         });
+
+        /* Showcase hold */
+
+        if (enableShowcasePin) {
+          const showcase =
+            stage.querySelector<HTMLElement>(".projects-showcase");
+
+          if (showcase) {
+            registerTrigger(
+              createScrollTrigger({
+                id: "projects-showcase-pin",
+
+                trigger: showcase,
+
+                start: scrollConfig.showcaseHold.start,
+
+                end: () =>
+                  `+=${
+                    window.innerHeight *
+                    scrollConfig.showcaseHold.holdLengthMultiplier
+                  }`,
+
+                pin: true,
+                pinSpacing: true,
+                pinType: "transform",
+
+                anticipatePin: 1,
+              })
+            );
+          }
+        }
+
+        /* Closing */
 
         registerProgressTrigger({
           triggerElement: elements.closing,
@@ -70,11 +116,15 @@ export function useProjectsStageAnimation(
       const media = gsap.matchMedia();
 
       media.add("(min-width: 901px)", () =>
-        setupProjectsTriggers(PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG)
+        setupProjectsTriggers(PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG, {
+          enableShowcasePin: true,
+        })
       );
 
       media.add("(max-width: 900px)", () =>
-        setupProjectsTriggers(PROJECTS_STAGE_MOBILE_SCROLL_CONFIG)
+        setupProjectsTriggers(PROJECTS_STAGE_MOBILE_SCROLL_CONFIG, {
+          enableShowcasePin: false,
+        })
       );
 
       return () => {
