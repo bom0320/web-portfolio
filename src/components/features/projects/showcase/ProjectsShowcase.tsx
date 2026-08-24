@@ -45,7 +45,7 @@ export default function ProjectsShowcase({ items }: ProjectsShowcaseProps) {
   };
 
   return (
-    <section className="projects-showcase">
+    <section className="projects-showcase js-projects-showcase">
       <div className="projects-showcase__inner">
         <ProjectsShowcaseIntro />
 

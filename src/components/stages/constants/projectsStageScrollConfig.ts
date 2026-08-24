@@ -24,7 +24,7 @@ export const PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG = {
 
   showcaseHold: {
     start: "top top",
-    holdLengthMultiplier: 0.85,
+    holdLengthMultiplier: 0.75,
   },
 
   closing: {

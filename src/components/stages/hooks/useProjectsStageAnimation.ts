@@ -64,33 +64,25 @@ export function useProjectsStageAnimation(
 
         /* Showcase hold */
 
-        if (enableShowcasePin) {
-          const showcase =
-            stage.querySelector<HTMLElement>(".projects-showcase");
+        if (enableShowcasePin && elements.showcase) {
+          registerTrigger(
+            createScrollTrigger({
+              id: "projects-showcase-pin",
 
-          if (showcase) {
-            registerTrigger(
-              createScrollTrigger({
-                id: "projects-showcase-pin",
+              trigger: elements.showcase,
 
-                trigger: showcase,
+              start: scrollConfig.showcaseHold.start,
 
-                start: scrollConfig.showcaseHold.start,
+              end: () =>
+                `+=${
+                  window.innerHeight *
+                  scrollConfig.showcaseHold.holdLengthMultiplier
+                }`,
 
-                end: () =>
-                  `+=${
-                    window.innerHeight *
-                    scrollConfig.showcaseHold.holdLengthMultiplier
-                  }`,
-
-                pin: true,
-                pinSpacing: true,
-                pinType: "transform",
-
-                anticipatePin: 1,
-              })
-            );
-          }
+              pin: true,
+              pinSpacing: true,
+            })
+          );
         }
 
         /* Closing */

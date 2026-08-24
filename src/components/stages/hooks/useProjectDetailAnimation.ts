@@ -37,7 +37,6 @@ export function useProjectDetailStageAnimation(
 
           pin: true,
           pinSpacing: true,
-          pinType: "transform",
 
           anticipatePin: 1,
         });
