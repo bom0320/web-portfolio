@@ -9,7 +9,7 @@ export default function ProjectsShowcaseScene({
   items,
 }: ProjectsShowcaseSceneProps) {
   return (
-    <section id="projects" className="projects-showcase-scene">
+    <section className="projects-showcase-scene">
       <ProjectsShowcase items={items} />
     </section>
   );

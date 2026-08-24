@@ -6,7 +6,7 @@ import { ProjectDetailScene } from "@/components/scenes/projects";
 import type { ProjectItem } from "@/data/projects";
 import type { ProjectDetailSection } from "@/data/projects/projectDetailItems";
 
-import { useProjectDetailStageAnimation } from "./hooks/useProjectDetailAnimation";
+import { useProjectDetailStageAnimation } from "./hooks/useProjectDetailStageAnimation";
 
 interface ProjectDetailStageProps {
   item: ProjectItem;
