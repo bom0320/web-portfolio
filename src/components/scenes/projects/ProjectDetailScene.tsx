@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 import {
   ProjectDetailContent,
   ProjectDetailHero,
-  ProjectDetailNav,
 } from "@/components/features/projects/detail";
 import type { ProjectDetailNavItem, ProjectItem } from "@/data/projects";
 
@@ -22,17 +21,15 @@ export default function ProjectDetailScene({
 
   return (
     <div className="project-detail-scene">
-      {hasContent && (
-        <aside className="project-detail-scene__nav">
-          <ProjectDetailNav items={navItems} />
-        </aside>
-      )}
-
       <div className="project-detail-scene__hero js-project-detail-hero">
         <ProjectDetailHero item={item} />
       </div>
 
-      {hasContent && <ProjectDetailContent>{children}</ProjectDetailContent>}
+      {hasContent && (
+        <ProjectDetailContent navItems={navItems}>
+          {children}
+        </ProjectDetailContent>
+      )}
     </div>
   );
 }

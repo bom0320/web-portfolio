@@ -14,6 +14,55 @@
   padding-bottom: 180px;
 }
 
+/* --------------------------------------------------
+ * Navigation
+ * -------------------------------------------------- */
+
+.project-detail-content__sidebar {
+  grid-column: 1;
+  align-self: start;
+
+  position: fixed;
+  top: var(--project-detail-nav-hero-top);
+  left: 50%;
+  z-index: 20;
+
+  width: min(
+    var(--project-detail-width),
+    calc(100% - (var(--project-detail-gutter) * 2))
+  );
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+}
+
+.project-detail-content__sidebar .project-detail-nav {
+  width: 240px;
+
+  pointer-events: auto;
+}
+
+/*
+ * Content의 시작점이 Hero Nav 위치까지 올라온 순간
+ * fixed → grid 내부 sticky로 전환
+ */
+.project-detail-content__sidebar.is-content {
+  position: sticky;
+  top: var(--project-detail-nav-content-top);
+  left: auto;
+
+  width: 240px;
+
+  transform: none;
+
+  pointer-events: auto;
+}
+
+/* --------------------------------------------------
+ * Sections
+ * -------------------------------------------------- */
+
 .project-detail-content__sections {
   grid-column: 2;
 

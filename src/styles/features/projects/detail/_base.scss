@@ -1,7 +1,9 @@
 .project-detail-page {
   --project-detail-width: 1320px;
   --project-detail-gutter: 64px;
-  --project-detail-nav-top: 70vh;
+
+  --project-detail-nav-hero-top: 72vh;
+  --project-detail-nav-content-top: calc(var(--header-height) + 20px);
 
   position: relative;
 
@@ -13,26 +15,4 @@
 
 .project-detail-scene {
   position: relative;
-}
-
-.project-detail-scene__nav {
-  position: sticky;
-  top: var(--project-detail-nav-top);
-  z-index: 20;
-
-  width: min(
-    var(--project-detail-width),
-    calc(100% - (var(--project-detail-gutter) * 2))
-  );
-
-  height: 0;
-  margin: 0 auto;
-
-  pointer-events: none;
-}
-
-.project-detail-scene__nav .project-detail-nav {
-  width: 240px;
-
-  pointer-events: auto;
 }
