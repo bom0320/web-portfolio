@@ -1,6 +1,9 @@
 .project-detail-page {
+  --project-detail-width: 1320px;
+  --project-detail-gutter: 64px;
+
   min-height: 100vh;
 
-  background: #050505;
+  background: #000000;
   color: #ffffff;
 }

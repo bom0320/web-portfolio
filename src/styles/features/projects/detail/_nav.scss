@@ -10,18 +10,19 @@
   width: fit-content;
 
   display: grid;
-  grid-template-columns: 26px 64px max-content;
+  grid-template-columns: 24px 68px max-content;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 
-  color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.26);
 
   font-size: 12px;
+  font-weight: 450;
   line-height: 1;
 
   text-decoration: none;
 
-  transition: color 200ms ease;
+  transition: color 180ms ease;
 }
 
 .project-detail-nav__number {
@@ -29,7 +30,7 @@
 }
 
 .project-detail-nav__line {
-  width: 34px;
+  width: 38px;
   height: 1px;
 
   background: currentColor;
@@ -42,13 +43,13 @@
 }
 
 .project-detail-nav__item:hover {
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(255, 255, 255, 0.58);
 }
 
 .project-detail-nav__item.is-active {
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.96);
 }
 
 .project-detail-nav__item.is-active .project-detail-nav__line {
-  width: 64px;
+  width: 68px;
 }
