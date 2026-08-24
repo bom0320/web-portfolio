@@ -7,24 +7,34 @@ export interface ProjectDetailNavItem {
 const PROJECT_DETAIL_NAV_ITEMS: Record<string, ProjectDetailNavItem[]> = {
   washer: [
     {
-      id: "intro",
+      id: "overview",
       number: "01",
-      label: "Intro",
+      label: "Overview",
     },
     {
-      id: "skills",
+      id: "problem",
       number: "02",
-      label: "Skills",
+      label: "Problem",
     },
     {
-      id: "trouble-shooting",
+      id: "experience",
       number: "03",
-      label: "Trouble Shooting",
+      label: "Experience",
     },
     {
-      id: "background",
+      id: "engineering",
       number: "04",
-      label: "Background",
+      label: "Engineering",
+    },
+    {
+      id: "impact",
+      number: "05",
+      label: "Impact",
+    },
+    {
+      id: "retrospective",
+      number: "06",
+      label: "Retrospective",
     },
   ],
 };

@@ -14,12 +14,12 @@ export default function ProjectDetailContent({
   children,
 }: ProjectDetailContentProps) {
   return (
-    <div className="project-detail-content js-project-detail-content">
-      <aside className="project-detail-content__sidebar js-project-detail-nav">
+    <div className="project-detail-content">
+      <article className="project-detail-content__sections">{children}</article>
+
+      <aside className="project-detail-content__sidebar">
         <ProjectDetailNav items={navItems} />
       </aside>
-
-      <div className="project-detail-content__sections">{children}</div>
     </div>
   );
 }

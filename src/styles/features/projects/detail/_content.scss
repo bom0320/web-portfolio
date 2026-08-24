@@ -7,65 +7,31 @@
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 820px) 220px;
+  justify-content: space-between;
   align-items: start;
-  gap: clamp(92px, 8vw, 120px);
+  gap: clamp(80px, 8vw, 120px);
 
-  padding-bottom: 180px;
+  padding: 80px 0 180px;
 }
 
-/* --------------------------------------------------
- * Navigation
- * -------------------------------------------------- */
-
-.project-detail-content__sidebar {
+/* 본문 */
+.project-detail-content__sections {
   grid-column: 1;
+
+  width: 100%;
+  min-width: 0;
+  max-width: 1000px;
+}
+
+/* 오른쪽 목차 */
+.project-detail-content__sidebar {
+  grid-column: 2;
+  justify-self: end;
   align-self: start;
 
-  position: fixed;
-  top: var(--project-detail-nav-hero-top);
-  left: 50%;
-  z-index: 20;
-
-  width: min(
-    var(--project-detail-width),
-    calc(100% - (var(--project-detail-gutter) * 2))
-  );
-
-  transform: translateX(-50%);
-
-  pointer-events: none;
-}
-
-.project-detail-content__sidebar .project-detail-nav {
-  width: 240px;
-
-  pointer-events: auto;
-}
-
-/*
- * Content의 시작점이 Hero Nav 위치까지 올라온 순간
- * fixed → grid 내부 sticky로 전환
- */
-.project-detail-content__sidebar.is-content {
   position: sticky;
-  top: var(--project-detail-nav-content-top);
-  left: auto;
+  top: calc(var(--header-height) + 56px);
 
-  width: 240px;
-
-  transform: none;
-
-  pointer-events: auto;
-}
-
-/* --------------------------------------------------
- * Sections
- * -------------------------------------------------- */
-
-.project-detail-content__sections {
-  grid-column: 2;
-
-  min-width: 0;
-  max-width: 820px;
+  width: 220px;
 }

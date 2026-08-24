@@ -1,77 +1,269 @@
 .project-detail-section {
-  min-height: 100svh;
+  --project-detail-text-width: 720px;
+  --project-detail-media-width: 760px;
 
-  padding: 120px 0 160px;
+  width: 100%;
 
-  scroll-margin-top: 80px;
+  padding: 96px 0;
+
+  scroll-margin-top: calc(var(--header-height) + 32px);
+}
+
+.project-detail-section:first-child {
+  padding-top: 0;
 }
 
 .project-detail-section + .project-detail-section {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+/* --------------------------------------------------
+ * Heading
+ * -------------------------------------------------- */
+
 .project-detail-section__heading {
-  max-width: 760px;
+  width: 100%;
+  max-width: var(--project-detail-text-width);
 }
 
 .project-detail-section__eyebrow {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
 
   color: rgba(255, 255, 255, 0.4);
 
   font-size: 11px;
   font-weight: 600;
   line-height: 1;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
+
   text-transform: uppercase;
 }
 
 .project-detail-section__title {
-  max-width: 760px;
   margin: 0;
 
-  font-size: clamp(34px, 4vw, 58px);
+  font-size: clamp(30px, 3vw, 42px);
   font-weight: 650;
-  line-height: 1.12;
-  letter-spacing: -0.055em;
+  line-height: 1.2;
+  letter-spacing: -0.05em;
 
   word-break: keep-all;
   text-wrap: balance;
 }
 
-.project-detail-section__body {
-  max-width: 720px;
-  margin-top: 42px;
+/* --------------------------------------------------
+ * Body
+ * -------------------------------------------------- */
 
-  display: grid;
-  gap: 22px;
+.project-detail-section__body {
+  width: 100%;
+  max-width: var(--project-detail-media-width);
+  margin-top: 32px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
+
+/* --------------------------------------------------
+ * Text
+ * -------------------------------------------------- */
+
+.project-detail-section__body p,
+.project-detail-section__body ul,
+.project-detail-section__body ol,
+.project-detail-section__body blockquote,
+.project-detail-section__body h3,
+.project-detail-section__body h4 {
+  width: 100%;
+  max-width: var(--project-detail-text-width);
 }
 
 .project-detail-section__body p {
   margin: 0;
 
-  color: rgba(255, 255, 255, 0.64);
+  color: rgba(255, 255, 255, 0.7);
 
-  font-size: 17px;
-  line-height: 1.8;
+  font-size: 16px;
+  line-height: 1.85;
   letter-spacing: -0.03em;
 
   word-break: keep-all;
   text-wrap: pretty;
 }
 
-.project-detail-section__media {
-  position: relative;
+/* --------------------------------------------------
+ * Sub heading
+ * -------------------------------------------------- */
 
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  margin-top: 64px;
+.project-detail-section__body h3 {
+  margin: 36px 0 0;
 
-  overflow: hidden;
+  color: rgba(255, 255, 255, 0.94);
 
-  background: #111111;
+  font-size: 22px;
+  font-weight: 650;
+  line-height: 1.4;
+  letter-spacing: -0.04em;
 }
 
-.project-detail-section__media img {
-  object-fit: cover;
+.project-detail-section__body h4 {
+  margin: 24px 0 0;
+
+  color: rgba(255, 255, 255, 0.9);
+
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.5;
+  letter-spacing: -0.035em;
+}
+
+/* --------------------------------------------------
+ * List
+ * -------------------------------------------------- */
+
+.project-detail-section__body ul,
+.project-detail-section__body ol {
+  margin: 0;
+  padding-left: 20px;
+
+  color: rgba(255, 255, 255, 0.68);
+
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.project-detail-section__body li + li {
+  margin-top: 6px;
+}
+
+/* --------------------------------------------------
+ * Inline code
+ * -------------------------------------------------- */
+
+.project-detail-section__body :not(pre) > code {
+  padding: 3px 6px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.9);
+
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+/* --------------------------------------------------
+ * Code block
+ * -------------------------------------------------- */
+
+.project-detail-section__body figure[data-rehype-pretty-code-figure] {
+  width: 100%;
+  max-width: var(--project-detail-media-width);
+  margin: 12px 0;
+}
+
+.project-detail-section__body pre {
+  width: 100%;
+  margin: 0;
+  padding: 22px 24px;
+
+  overflow-x: auto;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+
+  background: #121212;
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.project-detail-section__body pre code {
+  display: grid;
+
+  min-width: max-content;
+
+  font-family: monospace;
+}
+
+/* --------------------------------------------------
+ * Image
+ * -------------------------------------------------- */
+
+/*
+ * Markdown:
+ * ![alt](...)
+ *
+ * <p><img /></p> 형태로 렌더링되는 경우
+ */
+.project-detail-section__body p:has(> img) {
+  width: 100%;
+  max-width: var(--project-detail-media-width);
+  margin: 12px 0;
+}
+
+.project-detail-section__body img {
+  display: block;
+
+  width: 100%;
+  max-width: var(--project-detail-media-width);
+  height: auto;
+
+  border-radius: 6px;
+
+  object-fit: contain;
+}
+
+/* --------------------------------------------------
+ * Quote
+ * -------------------------------------------------- */
+
+.project-detail-section__body blockquote {
+  margin: 8px 0;
+  padding: 18px 22px;
+
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.project-detail-section__body blockquote p {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* --------------------------------------------------
+ * Table
+ * -------------------------------------------------- */
+
+.project-detail-section__body table {
+  width: 100%;
+  max-width: var(--project-detail-media-width);
+
+  border-collapse: collapse;
+
+  font-size: 14px;
+}
+
+.project-detail-section__body th,
+.project-detail-section__body td {
+  padding: 13px 14px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  text-align: left;
+}
+
+.project-detail-section__body th {
+  color: rgba(255, 255, 255, 0.9);
+
+  font-weight: 600;
+}
+
+.project-detail-section__body td {
+  color: rgba(255, 255, 255, 0.6);
 }

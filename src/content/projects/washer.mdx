@@ -1,11 +1,361 @@
-# Washer Client v2
+import ProjectDetailSection from "@/components/features/projects/detail/ProjectDetailSection";
 
-이건 **MDX 테스트 본문**입니다.
+<ProjectDetailSection
+  id="intro"
+  eyebrow="01 · INTRO"
+  title="운영 중인 서비스를 다시 설계했습니다."
+>
+Washer는 교내에서 실제로 사용되고 있는 세탁기 관리 서비스입니다.
 
-## Overview
+기수 간 인수인계로 운영되면서 기능이 지속적으로 추가됐고,
+사용자가 늘어날수록 기존 구조에서 관리하기 어려운 부분도 함께 드러나기 시작했습니다.
 
-운영 중인 세탁기 관리 서비스를 다시 설계했습니다.
+이번 v2에서는 단순히 화면을 새로 만드는 것보다
+**예약 · 기기 상태 · 신고 관리 흐름을 다시 정리하고,
+이후에도 유지보수할 수 있는 구조를 만드는 것**을 목표로 했습니다.
 
-- Next.js
-- TypeScript
-- TanStack Query
+> 사용자가 실제로 사용하는 서비스였기 때문에,
+> 기능 구현뿐 아니라 기존 데이터와 운영 흐름을 깨뜨리지 않는 것이 중요했습니다.
+
+### 프로젝트에서 맡은 역할
+
+- Frontend 개발
+- UI/UX 설계 및 개선
+- API 연동 구조 정리
+- 운영 중 발생한 문제 대응
+- 기존 코드 리팩터링 및 유지보수
+
+### 주요 기술
+
+`Next.js` · `React` · `TypeScript` · `TanStack Query` · `Zustand` · `Zod`
+
+![Washer Client 화면](/images/projects/washer/detail-01.png)
+
+프로젝트를 진행하면서 가장 중요하게 생각했던 부분은
+**"새로운 기능을 얼마나 빠르게 추가할 수 있는가"보다
+"변경이 생겼을 때 얼마나 안전하게 대응할 수 있는가"**였습니다.
+
+기존 서비스가 이미 운영되고 있었기 때문에 작은 타입 불일치나
+API 응답 변화도 실제 사용자 경험에 바로 영향을 줄 수 있었습니다.
+
+</ProjectDetailSection>
+
+<ProjectDetailSection
+  id="skills"
+  eyebrow="02 · ENGINEERING"
+  title="서버 상태와 UI 상태의 책임을 분리했습니다."
+>
+초기 코드에서는 API 요청과 화면 상태를 구분하지 않고 처리하는 부분이 존재했습니다.
+
+화면이 복잡해질수록 같은 데이터를 여러 곳에서 다시 요청하거나,
+서버에서 받아온 값을 컴포넌트 내부 상태로 복사하는 코드가 늘어났습니다.
+
+예를 들어 다음과 같은 형태입니다.
+
+```tsx
+const [machines, setMachines] = useState<Machine[]>([]);
+const [isLoading, setIsLoading] = useState(false);
+
+useEffect(() => {
+  const fetchMachines = async () => {
+    setIsLoading(true);
+
+    const response = await api.get("/machines");
+
+    setMachines(response.data);
+    setIsLoading(false);
+  };
+
+  fetchMachines();
+}, []);
+```
+
+작은 화면에서는 문제가 없지만 같은 데이터가 여러 화면에서 필요해지면서
+요청 시점과 캐시 상태를 각각 관리해야 했습니다.
+
+그래서 서버에서 가져오는 상태는 `TanStack Query`,
+클라이언트에서만 필요한 상태는 `Zustand`로 역할을 구분했습니다.
+
+```ts
+export const machineKeys = {
+  all: ["machines"] as const,
+
+  list: () => [...machineKeys.all, "list"] as const,
+
+  detail: (machineId: number) =>
+    [...machineKeys.all, "detail", machineId] as const,
+};
+```
+
+```ts
+export const useMachinesQuery = () =>
+  useQuery({
+    queryKey: machineKeys.list(),
+    queryFn: getMachines,
+    staleTime: 1000 * 60,
+  });
+```
+
+Mutation 이후에는 관련 Query만 무효화하도록 정리했습니다.
+
+```ts
+const updateMachineMutation = useMutation({
+  mutationFn: updateMachine,
+
+  onSuccess: (_, variables) => {
+    queryClient.invalidateQueries({
+      queryKey: machineKeys.detail(variables.machineId),
+    });
+
+    queryClient.invalidateQueries({
+      queryKey: machineKeys.list(),
+    });
+  },
+});
+```
+
+이렇게 변경하면서 컴포넌트는 데이터를 **어떻게 저장할지**보다
+**어떤 데이터를 보여줄지**에 집중할 수 있게 했습니다.
+
+![관리 화면 구조](/images/projects/washer/detail-02.png)
+
+### 상태의 책임
+
+| 상태        | 관리 방식             | 이유          |
+| ----------- | --------------------- | ------------- |
+| 세탁기 목록 | TanStack Query        | 서버 데이터   |
+| 예약 정보   | TanStack Query        | 서버 데이터   |
+| 사용자 정보 | TanStack Query        | 서버 데이터   |
+| 필터 상태   | Zustand / Local State | UI 상태       |
+| 모달 상태   | Local State           | 컴포넌트 상태 |
+
+이를 통해 동일한 사용자 시나리오에서 발생하던 API 요청을 줄이고,
+데이터 흐름을 한 곳에서 추적할 수 있도록 구조를 정리했습니다.
+
+</ProjectDetailSection>
+
+<ProjectDetailSection
+  id="trouble-shooting"
+  eyebrow="03 · TROUBLE SHOOTING"
+  title="API 응답을 그대로 신뢰하지 않도록 변경했습니다."
+>
+TypeScript를 사용하고 있었지만 실제 API 응답은 런타임에 들어옵니다.
+
+즉 아래 타입은 개발 단계에서는 안전해 보여도,
+
+```ts
+type User = {
+  id: number;
+  name: string;
+  penaltyCount: number;
+};
+```
+
+실제 서버가 다음 값을 보내는 상황을 막아주지는 못합니다.
+
+```json
+{
+  "id": 12,
+  "name": "Kim Bom",
+  "penaltyCount": null
+}
+```
+
+기존에는 API 타입과 화면에서 사용하는 타입이 동일하다고 가정했기 때문에
+예상하지 못한 `null` 값이 들어오면 UI 깊은 곳에서 문제가 발생했습니다.
+
+그래서 API 응답과 UI 모델 사이에 검증 단계를 추가했습니다.
+
+```ts
+import { z } from "zod";
+
+export const UserResponseSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  penaltyCount: z.number().nullable(),
+});
+```
+
+API에서 데이터를 받은 직후 검증합니다.
+
+```ts
+export const getUser = async (userId: number) => {
+  const response = await api.get(`/users/${userId}`);
+
+  return UserResponseSchema.parse(response.data);
+};
+```
+
+그리고 화면에서는 Mapper를 거쳐 필요한 형태로 변환합니다.
+
+```ts
+export const mapUserResponse = (response: UserResponse): User => ({
+  id: response.id,
+  name: response.name,
+  penaltyCount: response.penaltyCount ?? 0,
+});
+```
+
+전체 흐름은 다음과 같이 변경했습니다.
+
+```text
+API Response
+     ↓
+  unknown
+     ↓
+Zod Validation
+     ↓
+     DTO
+     ↓
+   Mapper
+     ↓
+ UI Model
+```
+
+> 타입 선언만으로 API 계약이 지켜진다고 가정하지 않고,
+> 외부 데이터가 애플리케이션 내부로 들어오는 경계에서 검증하도록 변경했습니다.
+
+![API 데이터 처리 구조](/images/projects/washer/detail-03.png)
+
+### 문제를 발견한 방식
+
+1. 특정 사용자 데이터에서만 화면 오류 발생
+2. Network Response와 TypeScript DTO 비교
+3. 일부 필드에서 `null` 응답 확인
+4. 다른 API Response까지 동일한 문제 조사
+5. 주요 API 응답에 Runtime Validation 적용
+
+이 과정에서 단순히 문제가 발생한 필드만 수정하는 대신,
+**같은 유형의 문제가 다시 발생할 수 있는 경계를 찾아 구조적으로 처리하는 것**에 집중했습니다.
+
+</ProjectDetailSection>
+
+<ProjectDetailSection
+  id="background"
+  eyebrow="04 · RESULT"
+  title="기능을 추가하는 코드에서 운영 가능한 구조로"
+>
+이번 작업에서 가장 큰 변화는 특정 기능 하나를 추가한 것이 아니었습니다.
+
+서비스 규모가 커져도 각 기능의 책임을 추적할 수 있도록
+기존 코드를 화면과 도메인 단위로 다시 나누었습니다.
+
+### Before
+
+```text
+Admin Page
+├── Machine
+├── Reservation
+├── User
+├── Report
+├── Dashboard
+├── API Request
+├── Modal State
+└── Error Handling
+```
+
+하나의 페이지에 서로 다른 책임이 계속 추가되는 구조였습니다.
+
+### After
+
+```text
+admin
+├── dashboard
+├── machines
+├── reservations
+├── users
+└── reports
+
+entities
+├── machine
+├── reservation
+├── user
+└── report
+```
+
+도메인의 책임과 화면의 책임을 분리하면서
+수정해야 하는 코드의 범위를 예측하기 쉬워졌습니다.
+
+![리팩터링 이후 화면](/images/projects/washer/detail-04.png)
+
+### 주요 변화
+
+| Before                      | After                  |
+| --------------------------- | ---------------------- |
+| 하나의 거대한 관리자 페이지 | 5개 화면으로 분리      |
+| API 요청 위치 분산          | Query 단위로 관리      |
+| API 응답 타입 신뢰          | Zod Runtime Validation |
+| 화면마다 다른 에러 처리     | 공통 에러 모델         |
+| 기능 중심 코드 추가         | 도메인 중심 구조       |
+
+특히 관리자 페이지는 기능이 추가될 때마다 코드가 커지고 있었기 때문에,
+단순히 컴포넌트 몇 개를 분리하는 것보다
+**어떤 변경 이유를 기준으로 코드를 나눌 것인지**를 먼저 결정했습니다.
+
+```ts
+type ApiError =
+  | "UNAUTHORIZED"
+  | "FORBIDDEN"
+  | "NOT_FOUND"
+  | "VALIDATION"
+  | "CONFLICT"
+  | "NETWORK"
+  | "SERVER"
+  | "UNKNOWN";
+```
+
+서로 다른 API 요청에서 발생하던 에러도
+UI가 처리할 수 있는 공통 형태로 변환했습니다.
+
+```ts
+export function normalizeApiError(error: unknown): ApiError {
+  if (isAxiosError(error)) {
+    if (!error.response) {
+      return "NETWORK";
+    }
+
+    switch (error.response.status) {
+      case 401:
+        return "UNAUTHORIZED";
+
+      case 403:
+        return "FORBIDDEN";
+
+      case 404:
+        return "NOT_FOUND";
+
+      case 409:
+        return "CONFLICT";
+
+      default:
+        return "SERVER";
+    }
+  }
+
+  return "UNKNOWN";
+}
+```
+
+![Washer Client 결과 화면](/images/projects/washer/detail-05.png)
+
+### 회고
+
+처음에는 좋은 구조를 만드는 것이
+파일을 더 잘게 나누는 것이라고 생각했습니다.
+
+하지만 운영 중인 서비스를 유지보수하면서
+구조의 목적은 코드의 모양을 예쁘게 만드는 것이 아니라,
+
+**문제가 발생했을 때 원인을 찾고,
+변경이 생겼을 때 영향을 예측할 수 있게 만드는 것**에 더 가깝다는 것을 배웠습니다.
+
+이번 프로젝트 이후에는 새로운 라이브러리나 패턴을 적용할 때도
+먼저 다음 질문을 확인하고 있습니다.
+
+- 지금 해결하려는 문제는 무엇인가?
+- 이 상태의 주인은 누구인가?
+- 이 데이터는 어디에서 들어오는가?
+- 실패했을 때 어느 계층에서 처리해야 하는가?
+- 이후 요구사항이 변경되면 어디를 수정하게 되는가?
+
+</ProjectDetailSection>
