@@ -1,13 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import type { ProjectItem } from "@/data/projects";
-
-const AUTO_REVEAL_DELAY = 1800;
 
 export type ProjectSlidePosition =
   | "previous"
@@ -28,33 +26,12 @@ export default function ProjectSlide({
   onSelect,
 }: ProjectSlideProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isAutoRevealed, setIsAutoRevealed] = useState(false);
 
   const isActive = position === "active";
 
   const isHidden = position === "hidden-left" || position === "hidden-right";
 
-  const isRevealed = isActive && (isHovered || isAutoRevealed);
-
-  useEffect(() => {
-    setIsHovered(false);
-    setIsAutoRevealed(false);
-
-    if (!isActive) return;
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setIsAutoRevealed(true);
-      return;
-    }
-
-    const timeoutId = window.setTimeout(() => {
-      setIsAutoRevealed(true);
-    }, AUTO_REVEAL_DELAY);
-
-    return () => {
-      window.clearTimeout(timeoutId);
-    };
-  }, [isActive, item.id]);
+  const isRevealed = isActive && isHovered;
 
   const inactiveContent = (
     <div className="project-slide__inactive-content">
@@ -115,7 +92,6 @@ export default function ProjectSlide({
             <div className="project-slide__detail-inner">
               <div className="project-slide__meta">
                 <span>{item.category}</span>
-
                 <span>{item.period}</span>
               </div>
 
