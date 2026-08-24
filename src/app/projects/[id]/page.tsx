@@ -1,10 +1,6 @@
 import { notFound } from "next/navigation";
 
-import {
-  ProjectDetailContent,
-  ProjectDetailHero,
-  ProjectDetailNav,
-} from "@/components/features/projects/detail";
+import { ProjectDetailStage } from "@/components/stages";
 import { getProjectItemById } from "@/data/projects";
 import { getProjectDetailContent } from "@/data/projects/projectDetailItems";
 
@@ -26,21 +22,9 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
-  const sections = detail?.sections ?? [];
-
   return (
     <main className="project-detail-page">
-      {sections.length > 0 && (
-        <aside className="project-detail-page__nav">
-          <ProjectDetailNav sections={sections} activeId="intro" />
-        </aside>
-      )}
-
-      <ProjectDetailHero item={item} />
-
-      {detail && (
-        <ProjectDetailContent item={item} sections={detail.sections} />
-      )}
+      <ProjectDetailStage item={item} sections={detail?.sections ?? []} />
     </main>
   );
 }

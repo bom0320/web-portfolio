@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
 import Image from "next/image";
+import { useMemo, useState } from "react";
 
 import { ArrowButton } from "@/components/shared/ui";
 import type { ProjectItem } from "@/data/projects";

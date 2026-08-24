@@ -33,6 +33,11 @@ export {
 } from "./projects";
 
 export {
+  getProjectDetailStageElements,
+  type ProjectDetailStageElements,
+} from "./projectDetail";
+
+export {
   createContactStageControllers,
   destroyContactStageControllers,
   getContactStageElements,
