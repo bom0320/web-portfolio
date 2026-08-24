@@ -23,8 +23,8 @@ export default async function ProjectDetailPage({
   }
 
   return (
-    <main className="project-detail-page">
+    <div className="project-detail-page">
       <ProjectDetailStage item={item} sections={detail?.sections ?? []} />
-    </main>
+    </div>
   );
 }

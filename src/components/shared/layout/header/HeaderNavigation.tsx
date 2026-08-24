@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import { usePathname, useRouter } from "next/navigation";
 
 import { HEADER_NAVIGATION_ITEMS } from "./headerNavigation.constants";
 
@@ -15,12 +18,21 @@ export default function HeaderNavigation({
   id,
   onNavigate,
 }: HeaderNavigationProps) {
+  const pathname = usePathname();
+  const router = useRouter();
+
   const handleNavigate = (
     event: React.MouseEvent<HTMLAnchorElement>,
     href: string,
     offset = 0
   ) => {
     event.preventDefault();
+
+    if (pathname !== "/") {
+      router.push(`/${href}`);
+      onNavigate?.();
+      return;
+    }
 
     const target = document.querySelector<HTMLElement>(href);
 
@@ -43,7 +55,7 @@ export default function HeaderNavigation({
       {HEADER_NAVIGATION_ITEMS.map((item) => (
         <a
           key={item.href}
-          href={item.href}
+          href={`/${item.href}`}
           onClick={(event) => handleNavigate(event, item.href, item.offset)}
         >
           {item.label}
