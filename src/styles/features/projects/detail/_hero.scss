@@ -10,12 +10,18 @@
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 380px minmax(0, 1fr);
+  grid-template-columns: 360px minmax(0, 1fr);
   align-items: center;
-  gap: clamp(64px, 7vw, 110px);
+  gap: clamp(72px, 7vw, 112px);
 
-  padding: 120px 0 80px;
+  padding: 110px 0 72px;
+
+  box-sizing: border-box;
 }
+
+/* --------------------------------------------------
+ * Profile
+ * -------------------------------------------------- */
 
 .project-detail-hero__profile {
   min-height: 540px;
@@ -23,6 +29,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.project-detail-hero__information {
+  width: 100%;
 }
 
 .project-detail-hero__category {
@@ -34,6 +44,7 @@
   font-weight: 500;
   line-height: 1;
   letter-spacing: 0.02em;
+
   text-transform: uppercase;
 }
 
@@ -49,18 +60,22 @@
 }
 
 .project-detail-hero__overview {
-  max-width: 390px;
+  max-width: 350px;
   margin: 26px 0 0;
 
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.62);
 
-  font-size: 15px;
-  line-height: 1.65;
-  letter-spacing: -0.035em;
+  font-size: 14px;
+  line-height: 1.72;
+  letter-spacing: -0.03em;
 
   word-break: keep-all;
   text-wrap: pretty;
 }
+
+/* --------------------------------------------------
+ * Visual
+ * -------------------------------------------------- */
 
 .project-detail-hero__visual {
   min-width: 0;
@@ -70,7 +85,7 @@
   position: relative;
 
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 10;
 
   overflow: hidden;
 
@@ -79,4 +94,40 @@
 
 .project-detail-hero__image img {
   object-fit: cover;
+}
+
+/* --------------------------------------------------
+ * Visual footer
+ * -------------------------------------------------- */
+
+.project-detail-hero__visual-footer {
+  margin-top: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-detail-hero__image-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  color: rgba(255, 255, 255, 0.38);
+
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1;
+
+  font-variant-numeric: tabular-nums;
+}
+
+.project-detail-hero__image-count > span {
+  color: rgba(255, 255, 255, 0.18);
+}
+
+.project-detail-hero__controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
