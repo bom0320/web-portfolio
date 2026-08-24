@@ -1,28 +1,15 @@
-import type { ProjectItem } from "@/data/projects";
-import type { ProjectDetailSection } from "@/data/projects/projectDetailItems";
-
-import ProjectDetailSectionView from "./ProjectDetailSection";
+import type { ReactNode } from "react";
 
 interface ProjectDetailContentProps {
-  item: ProjectItem;
-  sections: ProjectDetailSection[];
+  children: ReactNode;
 }
 
 export default function ProjectDetailContent({
-  item,
-  sections,
+  children,
 }: ProjectDetailContentProps) {
   return (
     <div className="project-detail-content">
-      <div className="project-detail-content__sections">
-        {sections.map((section) => (
-          <ProjectDetailSectionView
-            key={section.id}
-            item={item}
-            section={section}
-          />
-        ))}
-      </div>
+      <div className="project-detail-content__sections">{children}</div>
     </div>
   );
 }

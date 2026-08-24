@@ -4,3 +4,7 @@ export {
   type ProjectItem,
 } from "./projectItems";
 
+export {
+  getProjectDetailNavItems,
+  type ProjectDetailNavItem,
+} from "./projectDetailNavigation";

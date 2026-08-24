@@ -1,27 +1,30 @@
+import type { ReactNode } from "react";
+
 import {
   ProjectDetailContent,
   ProjectDetailHero,
   ProjectDetailNav,
 } from "@/components/features/projects/detail";
-import type { ProjectItem } from "@/data/projects";
-import type { ProjectDetailSection } from "@/data/projects/projectDetailItems";
+import type { ProjectDetailNavItem, ProjectItem } from "@/data/projects";
 
 interface ProjectDetailSceneProps {
   item: ProjectItem;
-  sections: ProjectDetailSection[];
+  navItems: ProjectDetailNavItem[];
+  children: ReactNode;
 }
 
 export default function ProjectDetailScene({
   item,
-  sections,
+  navItems,
+  children,
 }: ProjectDetailSceneProps) {
-  const hasSections = sections.length > 0;
+  const hasContent = navItems.length > 0;
 
   return (
     <div className="project-detail-scene">
-      {hasSections && (
+      {hasContent && (
         <aside className="project-detail-scene__nav">
-          <ProjectDetailNav sections={sections} />
+          <ProjectDetailNav items={navItems} />
         </aside>
       )}
 
@@ -29,7 +32,7 @@ export default function ProjectDetailScene({
         <ProjectDetailHero item={item} />
       </div>
 
-      {hasSections && <ProjectDetailContent item={item} sections={sections} />}
+      {hasContent && <ProjectDetailContent>{children}</ProjectDetailContent>}
     </div>
   );
 }

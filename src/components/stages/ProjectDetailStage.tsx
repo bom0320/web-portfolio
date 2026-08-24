@@ -1,21 +1,22 @@
 "use client";
 
-import { useRef } from "react";
+import { type ReactNode, useRef } from "react";
 
 import { ProjectDetailScene } from "@/components/scenes/projects";
-import type { ProjectItem } from "@/data/projects";
-import type { ProjectDetailSection } from "@/data/projects/projectDetailItems";
+import type { ProjectDetailNavItem, ProjectItem } from "@/data/projects";
 
 import { useProjectDetailStageAnimation } from "./hooks/useProjectDetailStageAnimation";
 
 interface ProjectDetailStageProps {
   item: ProjectItem;
-  sections: ProjectDetailSection[];
+  navItems: ProjectDetailNavItem[];
+  children: ReactNode;
 }
 
 export default function ProjectDetailStage({
   item,
-  sections,
+  navItems,
+  children,
 }: ProjectDetailStageProps) {
   const stageRef = useRef<HTMLElement | null>(null);
 
@@ -23,7 +24,9 @@ export default function ProjectDetailStage({
 
   return (
     <section ref={stageRef} className="project-detail-stage">
-      <ProjectDetailScene item={item} sections={sections} />
+      <ProjectDetailScene item={item} navItems={navItems}>
+        {children}
+      </ProjectDetailScene>
     </section>
   );
 }

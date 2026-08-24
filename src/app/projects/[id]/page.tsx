@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 
 import { ProjectDetailStage } from "@/components/stages";
-import { getProjectItemById } from "@/data/projects";
-import { getProjectDetailContent } from "@/data/projects/projectDetailItems";
+import { getProjectDetailContent } from "@/content/projects";
+import { getProjectDetailNavItems, getProjectItemById } from "@/data/projects";
 
 interface ProjectDetailPageProps {
   params: Promise<{
@@ -16,15 +16,19 @@ export default async function ProjectDetailPage({
   const { id } = await params;
 
   const item = getProjectItemById(id);
-  const detail = getProjectDetailContent(id);
 
   if (!item) {
     notFound();
   }
 
+  const Content = getProjectDetailContent(id);
+  const navItems = getProjectDetailNavItems(id);
+
   return (
     <div className="project-detail-page">
-      <ProjectDetailStage item={item} sections={detail?.sections ?? []} />
+      <ProjectDetailStage item={item} navItems={navItems}>
+        {Content && <Content />}
+      </ProjectDetailStage>
     </div>
   );
 }
