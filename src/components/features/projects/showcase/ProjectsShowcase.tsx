@@ -51,23 +51,27 @@ export default function ProjectsShowcase({ items }: ProjectsShowcaseProps) {
       <div className="projects-showcase__inner">
         <ProjectsShowcaseIntro />
 
-        <ProjectsFilter
-          activeFilter={activeFilter}
-          onFilterChange={handleFilterChange}
-        />
+        <div className="projects-showcase__explorer">
+          <ProjectsFilter
+            activeFilter={activeFilter}
+            onFilterChange={handleFilterChange}
+          />
 
-        <ProjectsCarousel
-          items={filteredItems}
-          activeIndex={activeIndex}
-          onActiveIndexChange={setActiveIndex}
-        />
+          <div className="projects-showcase__carousel-area">
+            <ProjectsCarousel
+              items={filteredItems}
+              activeIndex={activeIndex}
+              onActiveIndexChange={setActiveIndex}
+            />
 
-        <ProjectsControls
-          activeIndex={activeIndex}
-          total={filteredItems.length}
-          onPrevious={handlePrevious}
-          onNext={handleNext}
-        />
+            <ProjectsControls
+              activeIndex={activeIndex}
+              total={filteredItems.length}
+              onPrevious={handlePrevious}
+              onNext={handleNext}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
-import { forwardRef, type ReactNode } from "react";
+import { forwardRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import type { ProjectItem } from "@/data/projects";
 
@@ -13,62 +13,68 @@ interface ProjectSlideProps {
 
 const ProjectSlide = forwardRef<HTMLDivElement, ProjectSlideProps>(
   function ProjectSlide({ item, isActive, onSelect }, ref) {
-    const cardContent: ReactNode = (
+    const content = (
       <div className="project-slide__card">
         <div className="project-slide__media">
           <Image
             src={item.heroImage}
-            alt={`${item.title} 프로젝트 미리보기`}
+            alt={isActive ? `${item.title} 프로젝트 미리보기` : ""}
             fill
-            sizes="(max-width: 640px) 82vw, (max-width: 1024px) 72vw, 760px"
+            sizes="(max-width: 640px) 86vw, (max-width: 1024px) 72vw, 760px"
+            className="project-slide__image"
           />
+
+          <div className="project-slide__overlay" />
         </div>
 
-        <div className="project-slide__content">
-          <div className="project-slide__meta">
-            <span>{item.category}</span>
-            <span>{item.period}</span>
+        <div className="project-slide__detail">
+          <div className="project-slide__detail-inner">
+            <div className="project-slide__meta">
+              <span>{item.category}</span>
+              <span>{item.period}</span>
+            </div>
+
+            <div className="project-slide__body">
+              <h3 className="project-slide__title">{item.title}</h3>
+
+              <p className="project-slide__description">{item.overview}</p>
+            </div>
+
+            {isActive && (
+              <div className="project-slide__footer">
+                <Link href={item.link} className="project-slide__cta">
+                  <span>View project</span>
+
+                  <span className="project-slide__cta-icon">
+                    <ArrowRight size={16} strokeWidth={1.6} />
+                  </span>
+                </Link>
+              </div>
+            )}
           </div>
-
-          <h3 className="project-slide__title">{item.title}</h3>
-
-          <p className="project-slide__description">{item.overview}</p>
-
-          <ul className="project-slide__stack">
-            {item.stack.slice(0, 4).map((stack) => (
-              <li key={stack}>{stack}</li>
-            ))}
-          </ul>
-
-          {isActive && (
-            <Link href={item.link} className="project-slide__cta">
-              <span>VIEW PROJECT</span>
-              <ArrowUpRight size={16} />
-            </Link>
-          )}
         </div>
       </div>
     );
 
     return (
-      <div
+      <article
         ref={ref}
         className={`project-slide ${isActive ? "is-active" : ""}`}
         aria-current={isActive ? "true" : undefined}
       >
         {isActive ? (
-          cardContent
+          content
         ) : (
           <button
             type="button"
             className="project-slide__select"
             onClick={onSelect}
-            aria-label={`${item.title} 프로젝트 보기`}
+            aria-label={`${item.title} 프로젝트 선택`}
           >
-            {cardContent}
+            {content}
           </button>
         )}
-      </div>
+      </article>
     );
   }
 );

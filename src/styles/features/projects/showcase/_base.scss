@@ -2,17 +2,27 @@
   position: relative;
 
   width: 100vw;
+  min-height: 100svh;
   margin-left: calc(50% - 50vw);
 
   background: #050505;
   color: #ffffff;
 
-  overflow: hidden;
+  overflow: clip;
 }
 
 .projects-showcase__inner {
   width: min(1180px, calc(100% - 96px));
+  min-height: 100svh;
   margin: 0 auto;
 
-  padding: 140px 0 160px;
+  display: flex;
+  flex-direction: column;
+
+  padding: 108px 0 120px;
+}
+
+.projects-showcase__explorer {
+  width: 100%;
+  margin-top: 54px;
 }
