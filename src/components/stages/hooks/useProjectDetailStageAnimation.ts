@@ -8,6 +8,16 @@ import { createScrollTrigger, refreshScrollTrigger } from "@/lib/gsap";
 import { PROJECT_DETAIL_STAGE_DESKTOP_SCROLL_CONFIG } from "../constants";
 import { getProjectDetailStageElements } from "./helpers";
 
+const getHeaderHeight = () => {
+  const value = getComputedStyle(document.documentElement)
+    .getPropertyValue("--header-height")
+    .trim();
+
+  const parsed = Number.parseFloat(value);
+
+  return Number.isNaN(parsed) ? 0 : parsed;
+};
+
 export function useProjectDetailStageAnimation(
   stageRef: RefObject<HTMLElement | null>
 ) {
@@ -31,7 +41,7 @@ export function useProjectDetailStageAnimation(
 
           trigger: elements.hero,
 
-          start: heroHold.start,
+          start: () => `top top+=${getHeaderHeight()}`,
 
           end: () => `+=${window.innerHeight * heroHold.holdLengthMultiplier}`,
 
