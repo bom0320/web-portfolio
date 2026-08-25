@@ -14,7 +14,11 @@ export default function ProjectDetailSection({
   children,
 }: ProjectDetailSectionProps) {
   return (
-    <section id={id} className="project-detail-section">
+    <section
+      id={id}
+      className="project-detail-section"
+      data-project-detail-section
+    >
       <div className="project-detail-section__heading">
         {eyebrow && (
           <p className="project-detail-section__eyebrow">{eyebrow}</p>

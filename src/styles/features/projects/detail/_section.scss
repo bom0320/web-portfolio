@@ -9,8 +9,12 @@
   scroll-margin-top: calc(var(--header-height) + 32px);
 }
 
+/* --------------------------------------------------
+ * First section
+ * -------------------------------------------------- */
+
 .project-detail-section:first-child {
-  padding-top: 0;
+  padding-top: 72px;
 }
 
 .project-detail-section + .project-detail-section {
@@ -193,12 +197,6 @@
  * Image
  * -------------------------------------------------- */
 
-/*
- * Markdown:
- * ![alt](...)
- *
- * <p><img /></p> 형태로 렌더링되는 경우
- */
 .project-detail-section__body p:has(> img) {
   width: 100%;
   max-width: var(--project-detail-media-width);

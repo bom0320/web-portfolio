@@ -36,6 +36,7 @@ export function useProjectDetailStageAnimation(
       media.add("(min-width: 901px)", () => {
         const { heroHold } = PROJECT_DETAIL_STAGE_DESKTOP_SCROLL_CONFIG;
 
+        /* Hero */
         const heroPin = createScrollTrigger({
           id: "project-detail-hero-pin",
 
@@ -51,9 +52,37 @@ export function useProjectDetailStageAnimation(
           anticipatePin: 1,
         });
 
+        /* First content */
+        const contentIntroAnimation = elements.firstSection
+          ? gsap.fromTo(
+              elements.firstSection,
+              {
+                y: 56,
+                opacity: 0.45,
+              },
+              {
+                y: 0,
+                opacity: 1,
+                ease: "none",
+
+                scrollTrigger: {
+                  trigger: elements.firstSection,
+
+                  start: "top 85%",
+                  end: "top 45%",
+
+                  scrub: 0.7,
+                },
+              }
+            )
+          : null;
+
         refreshScrollTrigger();
 
         return () => {
+          contentIntroAnimation?.scrollTrigger?.kill();
+          contentIntroAnimation?.kill();
+
           heroPin.kill();
         };
       });
