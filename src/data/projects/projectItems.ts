@@ -86,10 +86,10 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 
   {
     id: "portfolio",
-    title: "BOM Portfolio",
-    category: "Interactive Website",
-    period: "2025.08 - 2026.06 · 유지보수 중",
-    role: "Design · Frontend",
+    title: "kimbom.dev",
+    category: "Personal Website",
+    period: "2025.08 - 진행 중",
+    role: "Design · Interaction · Engineering",
     team: "Personal Project",
     stack: [
       "Next.js",
@@ -102,7 +102,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
       "Amplitude",
     ],
     overview:
-      "스크롤 인터랙션을 활용해 개발자로서의 관점과 프로젝트 경험을 단계적으로 전달하는 개인 웹 포트폴리오입니다. 사용자 행동 데이터와 성능 지표를 기반으로 콘텐츠와 웹 경험을 지속적으로 개선하고 있습니다.",
+      "저라는 사람을 웹이라는 매체에서 어떻게 경험하게 할지 고민하며, 정보 구조부터 디자인, 인터랙션, 기술적 구현까지 직접 설계한 개인 웹사이트입니다. 사용자 행동 데이터와 피드백을 바탕으로 경험을 지속적으로 개선하고 있습니다.",
     ...createProjectImages("portfolio", 3),
     liveUrl: "https://kimbom.dev",
     githubUrl: "https://github.com/bom0320/web-portfolio",

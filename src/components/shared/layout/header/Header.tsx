@@ -36,17 +36,15 @@ export default function Header() {
       <div className="header-inner">
         <div className="logo">
           <a href="#hero" onClick={closeMenu} aria-label="홈으로 이동">
-            <span>프론트-엔드</span>
-
             <Image
               src="/images/logo/portfolio_logo.png"
               alt=""
-              width={22}
-              height={22}
+              width={21}
+              height={21}
               priority
             />
 
-            <span className="target">김봄</span>
+            <span>kimbom.dev</span>
           </a>
         </div>
 
@@ -79,7 +77,7 @@ export default function Header() {
         />
       )}
 
-      <MarqueeComponents title="THIS PAGE MADE BY REACT, NEXT.JS FRONTEND PORTFOLIO" />
+      <MarqueeComponents title="I TURN DESIGN INTENT INTO INTERACTIVE EXPERIENCES THROUGH TECHNOLOGY" />
     </header>
   );
 }

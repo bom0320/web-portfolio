@@ -9,36 +9,39 @@ import ScrollToTop from "@/components/shared/navigation/ScrollToTop";
 
 const SITE_URL = "https://kimbom.dev";
 
+const SITE_DESCRIPTION =
+  "디자인과 기술 사이에서 사용자 경험을 설계하고, 인터랙션과 엔지니어링으로 구현하며 지속적으로 개선하는 김봄의 개인 웹사이트입니다.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "2026 | 김봄 포트폴리오",
-  description:
-    "흐름, 구조, 움직임을 통해 사용자가 자연스럽게 이해하는 화면을 만드는 프론트엔드 개발자 김봄의 포트폴리오입니다.",
+  title: "kimbom.dev | 김봄",
+  description: SITE_DESCRIPTION,
+
   icons: {
     icon: "/icon.png",
   },
+
   openGraph: {
-    title: "2026 | 김봄 포트폴리오",
-    description:
-      "흐름, 구조, 움직임을 통해 사용자가 자연스럽게 이해하는 화면을 만드는 프론트엔드 개발자 김봄의 포트폴리오입니다.",
+    title: "kimbom.dev | 김봄",
+    description: SITE_DESCRIPTION,
     url: SITE_URL,
-    siteName: "김봄 포트폴리오",
+    siteName: "kimbom.dev",
     images: [
       {
         url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "김봄 프론트엔드 포트폴리오 미리보기 이미지",
+        alt: "kimbom.dev 김봄 개인 웹사이트 미리보기 이미지",
       },
     ],
     locale: "ko_KR",
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "2026 | 김봄 포트폴리오",
-    description:
-      "흐름, 구조, 움직임을 통해 사용자가 자연스럽게 이해하는 화면을 만드는 프론트엔드 개발자 김봄의 포트폴리오입니다.",
+    title: "kimbom.dev | 김봄",
+    description: SITE_DESCRIPTION,
     images: ["/opengraph-image.png"],
   },
 };
