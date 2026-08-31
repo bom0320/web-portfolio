@@ -17,6 +17,19 @@
 }
 
 /* --------------------------------------------------
+ * Anchor
+ * -------------------------------------------------- */
+
+.project-detail-section__anchor {
+  display: block;
+
+  width: 100%;
+  height: 0;
+
+  scroll-margin-top: calc(var(--header-height) + 32px);
+}
+
+/* --------------------------------------------------
  * Heading
  * -------------------------------------------------- */
 
@@ -69,6 +82,13 @@
 
   width: 100%;
   max-width: var(--project-detail-media-width);
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: -0.025em;
 }
 
 /* --------------------------------------------------
@@ -88,12 +108,12 @@
 .project-detail-section__body p {
   margin: 0;
 
-  color: rgba(255, 255, 255, 0.82);
+  color: inherit;
 
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.8;
-  letter-spacing: -0.025em;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
 
   word-break: keep-all;
   text-wrap: pretty;
@@ -101,6 +121,7 @@
 
 .project-detail-section__body strong {
   color: rgba(255, 255, 255, 0.96);
+
   font-weight: 650;
 }
 
@@ -124,7 +145,7 @@
   scroll-margin-top: calc(var(--header-height) + 48px);
 }
 
-/* 문제 정의 / 결과 / 판단 기준 등 */
+/* 문제 정의 / 결과 / 판단 기준 */
 .project-detail-section__body h4 {
   margin: 32px 0 8px;
 
@@ -149,10 +170,12 @@
   margin: 2px 0;
   padding-left: 20px;
 
-  color: rgba(255, 255, 255, 0.82);
+  color: inherit;
 
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
 }
 
 /* --------------------------------------------------
@@ -169,7 +192,8 @@
   color: rgba(255, 255, 255, 0.92);
 
   font-family: monospace;
-  font-size: 0.9em;
+  font-size: 1em;
+  line-height: inherit;
 }
 
 /* --------------------------------------------------
@@ -197,7 +221,7 @@
 
   background: #121212;
 
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
@@ -213,7 +237,7 @@
  * Image
  * -------------------------------------------------- */
 
-/* 일반 markdown 이미지 */
+/* 일반 Markdown 이미지 */
 .project-detail-section__body p:has(> img) {
   width: auto;
   max-width: 100%;
@@ -240,7 +264,7 @@
   object-position: left center;
 }
 
-/* 개별 크기 제어가 필요한 이미지 */
+/* 개별 이미지 wrapper */
 .project-detail-section__media {
   width: 100%;
   max-width: 100%;
@@ -266,7 +290,7 @@
   object-position: left center;
 }
 
-/* API Response → Zod → DTO 이미지 */
+/* API Response → Zod → DTO */
 .project-detail-section__media--validation {
   max-width: 480px;
 }
@@ -282,6 +306,13 @@
   border-left: 3px solid rgba(255, 255, 255, 0.78);
 
   background: transparent;
+
+  color: inherit;
+
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
 }
 
 .project-detail-section__body blockquote p {
@@ -300,7 +331,11 @@
 
   border-collapse: collapse;
 
-  font-size: 14px;
+  color: inherit;
+
+  font-size: inherit;
+  line-height: 1.65;
+  letter-spacing: inherit;
 }
 
 .project-detail-section__body th,
@@ -314,11 +349,14 @@
 
 .project-detail-section__body th {
   color: rgba(255, 255, 255, 0.92);
+
   font-weight: 650;
 }
 
 .project-detail-section__body td {
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.72);
+
+  font-weight: 400;
 }
 
 /* --------------------------------------------------
@@ -330,14 +368,15 @@
   align-self: flex-start;
 
   width: fit-content;
+
   margin: 10px 0 18px;
 
   color: rgba(255, 255, 255, 0.58);
 
-  font-size: 18px;
+  font-size: inherit;
   font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.025em;
+  line-height: inherit;
+  letter-spacing: inherit;
 
   text-decoration-line: underline;
   text-decoration-color: rgba(255, 255, 255, 0.35);
@@ -349,5 +388,6 @@
 
 .project-detail-section__body a[href*="github.com"][href*="/pull/"]:hover {
   color: rgba(255, 255, 255, 0.9);
+
   text-decoration-color: rgba(255, 255, 255, 0.72);
 }

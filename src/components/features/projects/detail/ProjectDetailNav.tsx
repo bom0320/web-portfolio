@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { type MouseEvent, useEffect, useMemo, useRef, useState } from "react";
 
 import type { ProjectDetailNavItem } from "@/data/projects";
 
@@ -20,6 +20,7 @@ interface RailHeading {
 
 const ACTIVATION_RATIO = 0.28;
 const MAX_ACTIVATION_Y = 260;
+const NAV_OFFSET = 32;
 
 export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
   const [activeId, setActiveId] = useState(items[0]?.id ?? "");
@@ -28,15 +29,6 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
 
   const frameRef = useRef<number | null>(null);
 
-  /*
-   * Expanded Panel에서 추적할 navigation target.
-   *
-   * 1depth:
-   * Overview / Problem / Experience / Engineering ...
-   *
-   * 2depth:
-   * Experience / Engineering 내부 주요 case
-   */
   const targets = useMemo<NavTarget[]>(
     () =>
       items.flatMap((item) => [
@@ -52,10 +44,6 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
     [items]
   );
 
-  /*
-   * child가 active인 경우에도
-   * 어느 parent chapter에 속하는지 계산.
-   */
   const activeParentId = useMemo(() => {
     return (
       targets.find((target) => target.id === activeId)?.parentId ??
@@ -65,14 +53,57 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
   }, [activeId, items, targets]);
 
   /*
-   * 실제 MDX 문서 구조를 읽어 Rail 생성.
-   *
-   * ProjectDetailSection → H2 depth
-   * body h3              → H3 depth
-   * body h4              → H4 depth
-   *
-   * Panel navigation과 달리 h4까지 포함해서
-   * 문서 전체 hierarchy를 축약해서 보여준다.
+   * Sidebar click navigation
+   */
+  const handleNavigate = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
+    event.preventDefault();
+
+    const target = document.getElementById(id);
+
+    if (!target) {
+      console.warn(`[ProjectDetailNav] target not found: #${id}`);
+      return;
+    }
+
+    const rootStyles = getComputedStyle(document.documentElement);
+
+    const headerHeight =
+      Number.parseFloat(rootStyles.getPropertyValue("--header-height")) || 96;
+
+    const offset = -(headerHeight + NAV_OFFSET);
+
+    setActiveId(id);
+    setActiveRailId(id);
+
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}${window.location.search}#${id}`
+    );
+
+    if (window.__portfolioLenis) {
+      window.__portfolioLenis.scrollTo(target, {
+        offset,
+        duration: 0.9,
+      });
+
+      return;
+    }
+
+    const top =
+      window.scrollY +
+      target.getBoundingClientRect().top -
+      headerHeight -
+      NAV_OFFSET;
+
+    window.scrollTo({
+      top,
+      behavior: "smooth",
+    });
+  };
+
+  /*
+   * 실제 document hierarchy를 rail로 변환
    */
   useEffect(() => {
     const content = document.querySelector(".project-detail-content__sections");
@@ -86,16 +117,10 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
     const headings: RailHeading[] = [];
 
     sections.forEach((section) => {
-      const sectionId = section.id;
+      if (!section.id) return;
 
-      if (!sectionId) return;
-
-      /*
-       * ProjectDetailSection 자체를 H2로 취급.
-       * 현재 id는 heading이 아니라 section에 붙어 있음.
-       */
       headings.push({
-        id: sectionId,
+        id: section.id,
         level: 2,
       });
 
@@ -106,19 +131,11 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
       );
 
       nestedHeadings.forEach((heading, index) => {
-        /*
-         * navigation child처럼 직접 id를 지정한 heading은 유지.
-         *
-         * 일반 Markdown heading처럼 id가 없다면
-         * Rail tracking용 id를 생성.
-         */
         if (!heading.id) {
-          heading.id = `${sectionId}-heading-${index + 1}`;
+          heading.id = `${section.id}-heading-${index + 1}`;
         }
 
-        const level = Number(heading.tagName.slice(1));
-
-        if (level !== 3 && level !== 4) return;
+        const level = Number(heading.tagName.slice(1)) as 3 | 4;
 
         headings.push({
           id: heading.id,
@@ -131,12 +148,7 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
   }, [items]);
 
   /*
-   * Scroll 위치에 따라
-   *
-   * 1. Expanded Panel active
-   * 2. Rail active
-   *
-   * 를 각각 계산한다.
+   * 현재 읽고 있는 위치 추적
    */
   useEffect(() => {
     const updateActiveSection = () => {
@@ -145,9 +157,6 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
         MAX_ACTIVATION_Y
       );
 
-      /*
-       * Panel active 계산
-       */
       const availableTargets = targets.flatMap((target) => {
         const element = document.getElementById(target.id);
 
@@ -176,11 +185,6 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
         setActiveId(currentTarget.id);
       }
 
-      /*
-       * Rail active 계산
-       *
-       * H2뿐 아니라 H3 / H4까지 모두 추적.
-       */
       const availableRailHeadings = railHeadings.flatMap((heading) => {
         const element = document.getElementById(heading.id);
 
@@ -229,6 +233,7 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
 
     return () => {
       window.removeEventListener("scroll", handleViewportChange);
+
       window.removeEventListener("resize", handleViewportChange);
 
       if (frameRef.current !== null) {
@@ -239,9 +244,6 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
 
   return (
     <nav className="project-detail-nav" aria-label="프로젝트 상세 목차">
-      {/* ------------------------------------------------
-       * Collapsed Rail
-       * ------------------------------------------------ */}
       <div className="project-detail-nav__rail" aria-hidden="true">
         {railHeadings.map((heading) => (
           <span
@@ -257,9 +259,6 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
         ))}
       </div>
 
-      {/* ------------------------------------------------
-       * Expanded Navigation
-       * ------------------------------------------------ */}
       <div className="project-detail-nav__panel">
         <div className="project-detail-nav__list">
           {items.map((item) => {
@@ -278,7 +277,7 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
                 <a
                   href={`#${item.id}`}
                   className="project-detail-nav__parent"
-                  onClick={() => setActiveId(item.id)}
+                  onClick={(event) => handleNavigate(event, item.id)}
                 >
                   <span className="project-detail-nav__parent-number">
                     {item.number}
@@ -304,7 +303,7 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
                           ]
                             .filter(Boolean)
                             .join(" ")}
-                          onClick={() => setActiveId(child.id)}
+                          onClick={(event) => handleNavigate(event, child.id)}
                         >
                           <span className="project-detail-nav__child-number">
                             {child.number}
