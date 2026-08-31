@@ -2,14 +2,14 @@ import type { ReactNode } from "react";
 
 interface ProjectDetailSectionProps {
   id: string;
-  eyebrow?: string;
+  label: string;
   title: string;
   children: ReactNode;
 }
 
 export default function ProjectDetailSection({
   id,
-  eyebrow,
+  label,
   title,
   children,
 }: ProjectDetailSectionProps) {
@@ -20,11 +20,8 @@ export default function ProjectDetailSection({
       data-project-detail-section
     >
       <div className="project-detail-section__heading">
-        {eyebrow && (
-          <p className="project-detail-section__eyebrow">{eyebrow}</p>
-        )}
-
-        <h2 className="project-detail-section__title">{title}</h2>
+        <h2 className="project-detail-section__label">{label}</h2>
+        <h3 className="project-detail-section__title">{title}</h3>
       </div>
 
       <div className="project-detail-section__body">{children}</div>
