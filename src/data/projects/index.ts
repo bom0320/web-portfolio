@@ -6,5 +6,6 @@ export {
 
 export {
   getProjectDetailNavItems,
+  type ProjectDetailNavChild,
   type ProjectDetailNavItem,
 } from "./projectDetailNavigation";

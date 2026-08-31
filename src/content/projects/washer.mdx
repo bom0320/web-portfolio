@@ -68,7 +68,7 @@ v1의 관리자 기능을 다시 살펴보면서, 단순히 관리 정보를 한
 
 사용자 관리 화면에서는 이름·학번·층을 기준으로 대상을 찾을 수 있도록 필터를 구성했습니다. 관리자가 특정 학생이나 층을 빠르게 찾고, 목록에서 상태를 확인한 뒤 필요한 경우 **같은 화면에서 바로 세탁 정지와 같은 조치까지 이어갈 수 있도록 했습니다.**
 
-{/* TODO: IMAGE — 사용자 관리 / 검색·필터·조치 화면 */}
+![사용자 관리 화면의 탐색과 조치 흐름](/images/projects/washer/detail/user-management-flow.png)
 
 고장 신고 화면에서는 관리자가 특정 층에서 발생한 문제를 확인하는 상황을 고려했습니다. 신고 데이터에는 층 정보가 직접 포함되어 있지 않았기 때문에, 단순한 필터만으로는 특정 층의 신고를 바로 찾기 어려웠습니다.
 
@@ -82,7 +82,7 @@ v1의 관리자 기능을 다시 살펴보면서, 단순히 관리 정보를 한
 
 그래서 **현재 예약 화면을 유지한 채 History 버튼을 통해 해당 기기의 예약 이력을 패널에서 바로 확인할 수 있도록 연결했습니다.**
 
-{/* TODO: IMAGE — Reservations / History 패널 */}
+![현재 예약에서 기기별 예약 이력을 확인하는 흐름](/images/projects/washer/detail/reservation-history-flow.png)
 
 결과적으로 관리자가 전체 데이터를 반복해서 훑는 대신, **문제가 발생한 범위를 좁히고 → 관련 정보를 확인하고 → 필요한 조치로 이어질 수 있도록 탐색 단계를 정리했습니다.**
 
@@ -259,7 +259,12 @@ nullable 필드뿐 아니라 필드 누락이나 예상하지 않은 상태값�
 
 그래서 API 응답을 `unknown`으로 받은 뒤 Zod Schema를 통과한 데이터만 이후 로직에서 사용할 수 있도록 변경했습니다.
 
-{/* TODO: IMAGE — API Response → Zod Validation → DTO 데이터 흐름 */}
+<div className="project-detail-section__media project-detail-section__media--validation">
+  <img
+    src="/images/projects/washer/detail/api-validation-flow.png"
+    alt="API 응답을 애플리케이션 경계에서 검증하는 데이터 흐름"
+  />
+</div>
 
 Reservation·Machine·User·Report·Dashboard의 주요 조회 응답에 Schema를 적용하고, TypeScript 타입도 Schema에서 추론하도록 구성해 **타입 선언과 런타임 검증 규칙을 하나의 기준으로 관리했습니다.**
 
@@ -414,7 +419,7 @@ Access Token이 만료된 경우에는 Refresh Token을 이용해 **토큰 재�
 
 ### v1에서 v2로, 이렇게 달라졌습니다.
 
-{/* TODO: IMAGE — Washer v1 → v2 Before / After */}
+![Washer v1과 v2의 운영 및 프론트엔드 구조 변화](/images/projects/washer/detail/v1-v2-comparison.png)
 
 </ProjectDetailSection>
 
