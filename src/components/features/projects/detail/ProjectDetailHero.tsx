@@ -1,6 +1,8 @@
 "use client";
 
+import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { ArrowButton } from "@/components/shared/ui";
@@ -45,6 +47,11 @@ export default function ProjectDetailHero({ item }: ProjectDetailHeroProps) {
       <div className="project-detail-hero__inner">
         <div className="project-detail-hero__profile">
           <div className="project-detail-hero__information">
+            <Link href="/#projects" className="project-detail-hero__back">
+              <ArrowLeft size={14} strokeWidth={1.5} />
+              <span>Back to Projects</span>
+            </Link>
+
             <p className="project-detail-hero__category">{item.category}</p>
 
             <h1 className="project-detail-hero__title">{item.title}</h1>

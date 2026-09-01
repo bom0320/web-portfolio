@@ -43,7 +43,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 
   {
     id: "nova",
-    title: "Nova",
+    title: "NOVA",
     category: "App",
     period: "2024.03 - 2024.12",
     role: "Team Lead · Frontend · UI/UX Design",
@@ -64,7 +64,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 
   {
     id: "hyoit",
-    title: "Hyoit",
+    title: "효잇",
     category: "App",
     period: "2025.09 - 진행 중",
     role: "Team Lead · Frontend · UX/UI",
