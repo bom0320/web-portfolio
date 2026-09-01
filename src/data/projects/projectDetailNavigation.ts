@@ -294,6 +294,67 @@ const PROJECT_DETAIL_NAV_ITEMS: Record<string, ProjectDetailNavItem[]> = {
       label: "Current Status",
     },
   ],
+  nova: [
+    {
+      id: "overview",
+      number: "01",
+      label: "Overview",
+    },
+    {
+      id: "problem",
+      number: "02",
+      label: "Problem",
+    },
+    {
+      id: "experience",
+      number: "03",
+      label: "Experience",
+      children: [
+        {
+          id: "experience-discovery",
+          number: "01",
+          label: "막연한 관심사를 하나의 전공으로 좁혔습니다.",
+        },
+        {
+          id: "experience-character",
+          number: "02",
+          label: "전공을 캐릭터라는 시각 언어로 만들었습니다.",
+        },
+        {
+          id: "experience-growth",
+          number: "03",
+          label: "선택한 캐릭터를 이후의 성장 경험까지 이어갔습니다.",
+        },
+      ],
+    },
+    {
+      id: "engineering",
+      number: "04",
+      label: "Engineering",
+      children: [
+        {
+          id: "engineering-onboarding",
+          number: "01",
+          label: "사용자의 선택을 하나의 온보딩 경험으로 연결",
+        },
+        {
+          id: "engineering-ai-state",
+          number: "02",
+          label: "AI의 응답 시간을 모바일 인터랙션의 상태로 처리",
+        },
+        {
+          id: "engineering-growth",
+          number: "03",
+          label: "학습 행동을 시각적인 성장으로 연결",
+        },
+      ],
+    },
+    {
+      id: "retrospective",
+      number: "05",
+      label: "Retrospective",
+    },
+  ],
 };
 
 export function getProjectDetailNavItems(
