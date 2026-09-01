@@ -1,36 +1,52 @@
 @include tablet {
+  .projects-showcase {
+    height: auto;
+    min-height: 100svh;
+  }
+
   .projects-showcase__inner {
-    width: min(900px, calc(100% - 72px));
+    width: min(760px, calc(100% - 48px));
 
-    padding-top: 120px;
-    padding-bottom: 140px;
+    height: auto;
+    min-height: 100svh;
+
+    padding: 120px 0;
   }
 
-  .projects-carousel__track {
-    padding-right: calc((100vw - min(680px, 72vw)) / 2);
-    padding-left: calc((100vw - min(680px, 72vw)) / 2);
+  .projects-showcase__explorer {
+    margin-top: 42px;
   }
 
-  .project-slide {
-    flex-basis: min(680px, 72vw);
+  .projects-showcase__carousel-area {
+    --project-slide-width: min(560px, 68vw);
+    --project-slide-height: clamp(280px, 38vw, 315px);
+    --project-side-gap: 8px;
+
+    margin-top: 32px;
   }
 
   .projects-controls {
-    width: min(680px, 72vw);
+    display: none;
+  }
+
+  .projects-carousel {
+    touch-action: pan-y;
   }
 }
 
 @include mobile {
   .projects-showcase__inner {
-    width: min(520px, calc(100% - 48px));
+    width: calc(100% - 32px);
 
-    padding: 104px 0 112px;
+    padding: 96px 0 104px;
   }
 
-  .projects-showcase-intro__eyebrow {
-    margin-bottom: 14px;
+  /* Intro */
 
-    font-size: 13px;
+  .projects-showcase-intro__eyebrow {
+    margin-bottom: 12px;
+
+    font-size: 12px;
   }
 
   .projects-showcase-intro__title {
@@ -42,98 +58,160 @@
 
   .projects-showcase-intro__description {
     max-width: 340px;
-    margin-top: 24px;
+    margin-top: 20px;
 
     font-size: 13px;
-    line-height: 1.72;
+    line-height: 1.7;
   }
 
-  .projects-filter {
-    margin-top: 42px;
+  /* Explorer */
 
+  .projects-showcase__explorer {
+    margin-top: 36px;
+  }
+
+  /* Filter */
+
+  .projects-filter {
     gap: 8px;
   }
 
   .projects-filter__button {
-    min-height: 36px;
-    padding: 0 15px;
+    min-width: 0;
+    height: 38px;
+    padding: 0 14px;
+
+    font-size: 9px;
+  }
+
+  /* Carousel */
+
+  .projects-showcase__carousel-area {
+    --project-slide-width: calc(100vw - 48px);
+    --project-slide-height: 500px;
+
+    margin-top: 28px;
+  }
+
+  /* 모바일에서는 좌우 preview 제거 */
+
+  .projects-showcase__carousel-area::before,
+  .projects-showcase__carousel-area::after {
+    display: none;
+  }
+
+  .project-slide.is-previous,
+  .project-slide.is-next {
+    opacity: 0;
+
+    pointer-events: none;
+  }
+
+  /* Active card */
+
+  .project-slide__card {
+    border-radius: 22px;
+  }
+
+  /* 이미지 위 / 정보 아래 */
+
+  .project-slide__media {
+    top: 0;
+    bottom: auto;
+
+    height: 56%;
+  }
+
+  .project-slide__detail {
+    top: auto;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 44%;
+
+    background: #000000;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    transform: none;
+  }
+
+  .project-slide__detail::before {
+    display: none;
+  }
+
+  .project-slide__detail-inner {
+    padding: 22px 22px 20px;
+  }
+
+  .project-slide__meta {
+    font-size: 8px;
+  }
+
+  .project-slide__body {
+    margin: auto 0;
+  }
+
+  .project-slide.is-active .project-slide__title {
+    font-size: 23px;
+  }
+
+  .project-slide.is-active .project-slide__description {
+    margin-top: 10px;
+
+    font-size: 11px;
+    line-height: 1.55;
+
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+  }
+
+  .project-slide.is-active.is-revealed .project-slide__image {
+    transform: none;
+  }
+
+  /* CTA */
+
+  .project-slide__cta {
+    gap: 8px;
 
     font-size: 10px;
   }
 
-  .projects-carousel {
-    margin-top: 40px;
+  .project-slide__cta > span:first-child {
+    min-width: 104px;
+    height: 36px;
+    padding: 0 18px;
   }
 
-  .projects-carousel__track {
-    gap: 14px;
-
-    padding-right: 9vw;
-    padding-left: 9vw;
-  }
-
-  .project-slide {
-    flex-basis: 82vw;
-  }
-
-  .project-slide__media {
-    border-radius: 20px;
-  }
-
-  .project-slide__content {
-    margin-top: 20px;
-  }
-
-  .project-slide__meta {
-    font-size: 9px;
-  }
-
-  .project-slide__title {
-    margin-top: 10px;
-
-    font-size: 28px;
-  }
-
-  .project-slide__description {
-    margin-top: 14px;
-
-    font-size: 13px;
-  }
-
-  .project-slide__stack {
-    margin-top: 18px;
-  }
-
-  .project-slide__cta {
-    margin-top: 24px;
-  }
-
-  .projects-controls {
-    width: 82vw;
-    margin-top: 22px;
-  }
-
-  .projects-controls__button {
-    width: 42px;
-    height: 42px;
+  .project-slide__cta-icon {
+    width: 34px;
+    height: 34px;
   }
 }
 
 @include small-mobile {
   .projects-showcase__inner {
-    width: calc(100% - 40px);
+    width: calc(100% - 24px);
   }
 
-  .projects-carousel__track {
-    padding-right: 7vw;
-    padding-left: 7vw;
+  .projects-showcase__carousel-area {
+    --project-slide-width: calc(100vw - 32px);
+    --project-slide-height: 470px;
   }
 
-  .project-slide {
-    flex-basis: 86vw;
+  .projects-filter__button {
+    flex: 1 1 calc(50% - 4px);
   }
 
-  .projects-controls {
-    width: 86vw;
+  .project-slide__detail-inner {
+    padding: 20px 18px 18px;
+  }
+
+  .project-slide.is-active .project-slide__description {
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
   }
 }
