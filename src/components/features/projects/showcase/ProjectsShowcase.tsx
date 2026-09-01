@@ -22,6 +22,10 @@ export default function ProjectsShowcase({ items }: ProjectsShowcaseProps) {
       return items;
     }
 
+    if (activeFilter === "featured") {
+      return items.filter((item) => item.featured);
+    }
+
     return items.filter((item) => item.stack.includes(activeFilter));
   }, [items, activeFilter]);
 

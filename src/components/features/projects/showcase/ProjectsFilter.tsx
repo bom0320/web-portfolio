@@ -1,4 +1,4 @@
-export type ProjectFilter = "all" | "Next.js" | "React Native";
+export type ProjectFilter = "all" | "featured" | "Next.js" | "React Native";
 
 interface ProjectsFilterProps {
   activeFilter: ProjectFilter;
@@ -12,6 +12,10 @@ const FILTERS: {
   {
     label: "ALL",
     value: "all",
+  },
+  {
+    label: "FEATURED",
+    value: "featured",
   },
   {
     label: "NEXT.JS",
@@ -28,11 +32,7 @@ export default function ProjectsFilter({
   onFilterChange,
 }: ProjectsFilterProps) {
   return (
-    <div
-      className="projects-filter"
-      role="group"
-      aria-label="프로젝트 기술 필터"
-    >
+    <div className="projects-filter" role="group" aria-label="프로젝트 필터">
       {FILTERS.map((filter) => {
         const isActive = activeFilter === filter.value;
 

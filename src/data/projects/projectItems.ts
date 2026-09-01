@@ -14,11 +14,14 @@ export interface ProjectItem {
   liveUrl?: string;
   githubUrl?: string;
   link: string;
+
+  featured?: boolean;
 }
 
 export const PROJECT_ITEMS: ProjectItem[] = [
   {
     id: "washer",
+    featured: true,
     title: "Washer Client v2",
     category: "Website",
     period: "2025.10 - 2026.04 · 유지보수 중",
@@ -86,6 +89,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 
   {
     id: "portfolio",
+    featured: true,
     title: "kimbom.dev",
     category: "Personal Website",
     period: "2025.08 - 진행 중",
