@@ -1,0 +1,55 @@
+.projects-filter {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  flex-wrap: wrap;
+}
+
+.projects-filter__button {
+  appearance: none;
+
+  min-width: 116px;
+  height: 42px;
+  padding: 0 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.015);
+  color: rgba(255, 255, 255, 0.38);
+
+  font: inherit;
+  font-size: 10px;
+  font-weight: 550;
+  line-height: 1;
+  letter-spacing: 0.015em;
+
+  cursor: pointer;
+
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.projects-filter__button:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+
+  color: rgba(255, 255, 255, 0.78);
+
+  transform: translateY(-1px);
+}
+
+.projects-filter__button.is-active {
+  border-color: rgba(255, 255, 255, 0.38);
+
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.projects-filter__button:focus-visible {
+  outline: 1px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 3px;
+}

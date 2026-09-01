@@ -1,0 +1,36 @@
+.project-detail-content {
+  width: min(
+    var(--project-detail-width),
+    calc(100% - (var(--project-detail-gutter) * 2))
+  );
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 40px;
+  align-items: start;
+  gap: 32px;
+
+  padding: 80px 0 180px;
+}
+
+.project-detail-content__sections {
+  grid-column: 1;
+
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
+
+.project-detail-content__sidebar {
+  grid-column: 2;
+  align-self: start;
+
+  position: sticky;
+  top: calc(var(--header-height) + 56px);
+
+  width: 40px;
+  max-height: calc(100vh - var(--header-height) - 88px);
+
+  z-index: 20;
+}

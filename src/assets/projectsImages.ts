@@ -1,8 +1,5 @@
 const PROJECTS_IMAGE_BASE_PATH = "/images/projects";
 
-export const getProjectsAssetPath = (fileName: string) =>
-  `${PROJECTS_IMAGE_BASE_PATH}/${fileName}`;
-
 export const getProjectImagePath = (projectId: string, fileName: string) =>
   `${PROJECTS_IMAGE_BASE_PATH}/${projectId}/${fileName}`;
 
@@ -18,9 +15,6 @@ export const createProjectImages = (
   projectId: string,
   detailCount: number
 ) => ({
-  heroImage: getProjectImagePath(projectId, "hero.png"),
+  heroImage: getProjectImagePath(projectId, "detail-01.png"),
   detailImages: getProjectDetailImages(projectId, detailCount),
 });
-
-export const PROJECTS_NAVIGATOR_MONITOR_FRAME =
-  getProjectsAssetPath("monitor-frame.png");

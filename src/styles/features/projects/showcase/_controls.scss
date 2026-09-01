@@ -1,0 +1,41 @@
+.projects-controls {
+  --project-control-outset: 94px;
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 10;
+
+  pointer-events: none;
+}
+
+.projects-controls__button {
+  position: absolute;
+  top: 50%;
+
+  pointer-events: auto;
+}
+
+.projects-controls__button--previous {
+  left: calc(
+    (var(--project-side-visible-width) / 2) - var(--project-control-outset)
+  );
+
+  transform: translate(-50%, -50%);
+}
+
+.projects-controls__button--next {
+  right: calc(
+    (var(--project-side-visible-width) / 2) - var(--project-control-outset)
+  );
+
+  transform: translate(50%, -50%);
+}
+
+.projects-controls__button--previous:hover:not(:disabled) {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.projects-controls__button--next:hover:not(:disabled) {
+  transform: translate(50%, -50%) scale(1.05);
+}

@@ -25,10 +25,10 @@ export default function HeroContent() {
 
       <div
         className="hero__meta js-hero-exit-item"
-        aria-label="포트폴리오 정보"
+        aria-label="kimbom.dev 정보"
       >
         <span>01</span>
-        <span>FRONTEND PORTFOLIO</span>
+        <span>PERSONAL WEBSITE</span>
         <span>2026</span>
         <span>
           KIM BOM

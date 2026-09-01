@@ -26,3 +26,10 @@ export {
 
 export { CONTACT_STAGE_SELECTORS } from "./contactStageSelectors";
 export { CONTACT_STAGE_SCROLL_CONFIG } from "./contactStageScrollConfig";
+
+export { PROJECT_DETAIL_STAGE_SELECTORS } from "./projectDetailStageSelectors";
+
+export {
+  PROJECT_DETAIL_STAGE_DESKTOP_SCROLL_CONFIG,
+  type ProjectDetailStageScrollConfig,
+} from "./projectDetailStageScrollConfig";

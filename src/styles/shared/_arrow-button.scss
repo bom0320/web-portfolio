@@ -1,0 +1,44 @@
+.arrow-button {
+  appearance: none;
+
+  padding: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 50%;
+
+  background: rgba(5, 5, 5, 0.14);
+  color: rgba(255, 255, 255, 0.88);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  cursor: pointer;
+
+  transition: background 180ms ease, border-color 180ms ease, color 180ms ease,
+    transform 180ms ease;
+}
+
+.arrow-button--small {
+  width: 42px;
+  height: 42px;
+}
+
+.arrow-button--medium {
+  width: 68px;
+  height: 68px;
+}
+
+.arrow-button:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+}
+
+.arrow-button:disabled {
+  opacity: 0.2;
+  cursor: default;
+}

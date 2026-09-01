@@ -1,0 +1,15 @@
+.project-detail-page {
+  --project-detail-width: 1320px;
+  --project-detail-gutter: 64px;
+
+  position: relative;
+
+  min-height: 100vh;
+
+  background: #000000;
+  color: #ffffff;
+}
+
+.project-detail-scene {
+  position: relative;
+}

@@ -4,31 +4,27 @@ type ScrollTriggerConfig = {
   scrub: number;
 };
 
-type NavigatorPinScrollConfig = {
+type ShowcaseHoldConfig = {
   start: string;
-  scrub: number;
-  itemScrollLengthMultiplier: number;
-  anticipatePin: number;
+  holdLengthMultiplier: number;
 };
 
 export type ProjectsStageScrollConfig = {
-  navigatorIntro: ScrollTriggerConfig;
-  navigatorPin: NavigatorPinScrollConfig;
+  showcaseIntro: ScrollTriggerConfig;
+  showcaseHold: ShowcaseHoldConfig;
   closing: ScrollTriggerConfig;
 };
 
 export const PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG = {
-  navigatorIntro: {
+  showcaseIntro: {
     start: "top 78%",
     end: "top 36%",
     scrub: 1,
   },
 
-  navigatorPin: {
+  showcaseHold: {
     start: "top top",
-    scrub: 1,
-    itemScrollLengthMultiplier: 1.45,
-    anticipatePin: 1,
+    holdLengthMultiplier: 0.75,
   },
 
   closing: {
@@ -41,7 +37,7 @@ export const PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG = {
 export const PROJECTS_STAGE_MOBILE_SCROLL_CONFIG = {
   ...PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG,
 
-  navigatorIntro: {
+  showcaseIntro: {
     start: "top 86%",
     end: "top 34%",
     scrub: 0.65,

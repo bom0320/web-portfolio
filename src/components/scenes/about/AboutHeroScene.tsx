@@ -89,25 +89,24 @@ export default function AboutHeroScene() {
           <span className="about-hero__eyebrow js-about-hero-eyebrow">
             ABOUT ME
           </span>
-
           <h2 className="about-hero__title js-about-hero-title">
             안녕하세요.
             <br />
-            보이는 화면 너머까지 고민하는
+            <GradientText>디자인과 기술 사이에서</GradientText>
             <br />
-            <GradientText>프론트엔드 개발자</GradientText>입니다.
+            사용자 경험을 만드는 개발자입니다.
           </h2>
 
           <div className="about-hero__meta js-about-hero-meta">
             <div className="about-hero__meta-row">
               <span className="about-hero__meta-label">Role</span>
-              <span className="about-hero__meta-value">Frontend Engineer</span>
+              <span className="about-hero__meta-value">Software Engineer</span>
             </div>
 
             <div className="about-hero__meta-row">
               <span className="about-hero__meta-label">Focus</span>
               <span className="about-hero__meta-value">
-                UX Engineering · Interaction · Performance
+                Interaction · UX · Design & Engineering
               </span>
             </div>
           </div>

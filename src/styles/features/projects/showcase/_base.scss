@@ -1,0 +1,37 @@
+.projects-showcase {
+  --projects-content-width: 1180px;
+
+  position: relative;
+
+  width: 100vw;
+  height: 100svh;
+  min-height: 100svh;
+
+  margin-left: calc(50% - 50vw);
+
+  background: #050505;
+  color: #ffffff;
+
+  overflow: clip;
+}
+
+.projects-showcase__inner {
+  width: min(var(--projects-content-width), calc(100% - 96px));
+
+  height: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 82px 0 42px;
+
+  box-sizing: border-box;
+}
+
+.projects-showcase__explorer {
+  width: 100%;
+
+  margin-top: 50px;
+}

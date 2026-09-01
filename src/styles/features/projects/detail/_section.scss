@@ -1,0 +1,393 @@
+.project-detail-section {
+  --project-detail-text-width: 100%;
+  --project-detail-media-width: 100%;
+
+  width: 100%;
+  padding: 0 0 88px;
+
+  scroll-margin-top: calc(var(--header-height) + 32px);
+}
+
+.project-detail-section:first-child {
+  padding-top: 32px;
+}
+
+.project-detail-section:last-child {
+  padding-bottom: 0;
+}
+
+/* --------------------------------------------------
+ * Anchor
+ * -------------------------------------------------- */
+
+.project-detail-section__anchor {
+  display: block;
+
+  width: 100%;
+  height: 0;
+
+  scroll-margin-top: calc(var(--header-height) + 32px);
+}
+
+/* --------------------------------------------------
+ * Heading
+ * -------------------------------------------------- */
+
+.project-detail-section__heading {
+  width: 100%;
+  max-width: var(--project-detail-text-width);
+
+  margin-bottom: 28px;
+}
+
+/* Overview / Problem / Experience ... */
+.project-detail-section__label {
+  margin: 0 0 14px;
+
+  color: rgba(255, 255, 255, 0.42);
+
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+
+  word-break: keep-all;
+}
+
+/* Section 핵심 문장 */
+.project-detail-section__title {
+  max-width: 900px;
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.96);
+
+  font-size: clamp(25px, 2vw, 30px);
+  font-weight: 650;
+  line-height: 1.4;
+  letter-spacing: -0.04em;
+
+  word-break: keep-all;
+  text-wrap: balance;
+}
+
+/* --------------------------------------------------
+ * Body
+ * -------------------------------------------------- */
+
+.project-detail-section__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+
+  width: 100%;
+  max-width: var(--project-detail-media-width);
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: -0.025em;
+}
+
+/* --------------------------------------------------
+ * Text
+ * -------------------------------------------------- */
+
+.project-detail-section__body p,
+.project-detail-section__body ul,
+.project-detail-section__body ol,
+.project-detail-section__body blockquote,
+.project-detail-section__body h3,
+.project-detail-section__body h4 {
+  width: 100%;
+  max-width: var(--project-detail-text-width);
+}
+
+.project-detail-section__body p {
+  margin: 0;
+
+  color: inherit;
+
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+
+  word-break: keep-all;
+  text-wrap: pretty;
+}
+
+.project-detail-section__body strong {
+  color: rgba(255, 255, 255, 0.96);
+
+  font-weight: 650;
+}
+
+/* --------------------------------------------------
+ * Sub heading
+ * -------------------------------------------------- */
+
+/* 주요 사례 제목 */
+.project-detail-section__body h3 {
+  margin: 52px 0 12px;
+
+  color: rgba(255, 255, 255, 0.96);
+
+  font-size: clamp(24px, 1.8vw, 28px);
+  font-weight: 650;
+  line-height: 1.4;
+  letter-spacing: -0.04em;
+
+  word-break: keep-all;
+
+  scroll-margin-top: calc(var(--header-height) + 48px);
+}
+
+/* 문제 정의 / 결과 / 판단 기준 */
+.project-detail-section__body h4 {
+  margin: 32px 0 8px;
+
+  color: rgba(255, 255, 255, 0.92);
+
+  font-size: 20px;
+  font-weight: 650;
+  line-height: 1.45;
+  letter-spacing: -0.035em;
+
+  word-break: keep-all;
+
+  scroll-margin-top: calc(var(--header-height) + 48px);
+}
+
+/* --------------------------------------------------
+ * List
+ * -------------------------------------------------- */
+
+.project-detail-section__body ul,
+.project-detail-section__body ol {
+  margin: 2px 0;
+  padding-left: 20px;
+
+  color: inherit;
+
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+/* --------------------------------------------------
+ * Inline code
+ * -------------------------------------------------- */
+
+.project-detail-section__body :not(pre) > code {
+  padding: 2px 5px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.92);
+
+  font-family: monospace;
+  font-size: 1em;
+  line-height: inherit;
+}
+
+/* --------------------------------------------------
+ * Code block
+ * -------------------------------------------------- */
+
+.project-detail-section__body figure[data-rehype-pretty-code-figure] {
+  width: 100%;
+  max-width: var(--project-detail-media-width);
+
+  margin: 16px 0;
+}
+
+.project-detail-section__body pre {
+  width: 100%;
+  max-width: var(--project-detail-media-width);
+
+  margin: 0;
+  padding: 22px 24px;
+
+  overflow-x: auto;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+
+  background: #121212;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.project-detail-section__body pre code {
+  display: grid;
+
+  min-width: max-content;
+
+  font-family: monospace;
+}
+
+/* --------------------------------------------------
+ * Image
+ * -------------------------------------------------- */
+
+/* 일반 Markdown 이미지 */
+.project-detail-section__body p:has(> img) {
+  width: auto;
+  max-width: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+  align-self: flex-start;
+
+  margin: 24px 0;
+}
+
+.project-detail-section__body img {
+  display: block;
+
+  width: auto;
+  max-width: 100%;
+  height: auto;
+
+  margin: 0;
+
+  border-radius: 6px;
+
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* 개별 이미지 wrapper */
+.project-detail-section__media {
+  width: 100%;
+  max-width: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+  align-self: flex-start;
+
+  margin: 24px 0;
+}
+
+.project-detail-section__media img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  margin: 0;
+
+  border-radius: 6px;
+
+  object-fit: contain;
+  object-position: left center;
+}
+
+/* API Response → Zod → DTO */
+.project-detail-section__media--validation {
+  max-width: 480px;
+}
+
+/* --------------------------------------------------
+ * Quote
+ * -------------------------------------------------- */
+
+.project-detail-section__body blockquote {
+  margin: 10px 0;
+  padding: 4px 0 4px 20px;
+
+  border-left: 3px solid rgba(255, 255, 255, 0.78);
+
+  background: transparent;
+
+  color: inherit;
+
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+.project-detail-section__body blockquote p {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+/* --------------------------------------------------
+ * Table
+ * -------------------------------------------------- */
+
+.project-detail-section__body table {
+  width: 100%;
+  max-width: var(--project-detail-media-width);
+
+  margin: 12px 0;
+
+  border-collapse: collapse;
+
+  color: inherit;
+
+  font-size: inherit;
+  line-height: 1.65;
+  letter-spacing: inherit;
+}
+
+.project-detail-section__body th,
+.project-detail-section__body td {
+  padding: 13px 14px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  text-align: left;
+}
+
+.project-detail-section__body th {
+  color: rgba(255, 255, 255, 0.92);
+
+  font-weight: 650;
+}
+
+.project-detail-section__body td {
+  color: rgba(255, 255, 255, 0.72);
+
+  font-weight: 400;
+}
+
+/* --------------------------------------------------
+ * PR Link
+ * -------------------------------------------------- */
+
+.project-detail-section__body a[href*="github.com"][href*="/pull/"] {
+  display: inline-block;
+  align-self: flex-start;
+
+  width: fit-content;
+
+  margin: 10px 0 18px;
+
+  color: rgba(255, 255, 255, 0.58);
+
+  font-size: inherit;
+  font-weight: 500;
+  line-height: inherit;
+  letter-spacing: inherit;
+
+  text-decoration-line: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.35);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+
+.project-detail-section__body a[href*="github.com"][href*="/pull/"]:hover {
+  color: rgba(255, 255, 255, 0.9);
+
+  text-decoration-color: rgba(255, 255, 255, 0.72);
+}

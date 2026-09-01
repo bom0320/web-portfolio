@@ -1,18 +1,8 @@
 "use client";
 
-import {
-  type Dispatch,
-  type RefObject,
-  type SetStateAction,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { type RefObject, useLayoutEffect } from "react";
 import gsap from "gsap";
 
-import { ProjectsNavigatorAnimation } from "@/animations/projects";
-
-import { PROJECT_ITEMS } from "@/data/projects";
 import {
   createScrollTrigger,
   refreshScrollTrigger,
@@ -22,7 +12,6 @@ import {
 import {
   PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG,
   PROJECTS_STAGE_MOBILE_SCROLL_CONFIG,
-  PROJECTS_STAGE_SELECTORS,
   type ProjectsStageScrollConfig,
 } from "../constants";
 
@@ -34,21 +23,13 @@ import {
   resetProjectsStageControllers,
 } from "./helpers";
 
-type UseProjectsStageAnimationReturn = {
-  activeProjectIndex: number;
-  setActiveProjectIndex: Dispatch<SetStateAction<number>>;
+type SetupProjectsTriggerOptions = {
+  enableShowcasePin?: boolean;
 };
-
-function getProjectIndex(progress: number, total: number) {
-  return Math.round(progress * (total - 1));
-}
 
 export function useProjectsStageAnimation(
   stageRef: RefObject<HTMLElement | null>
-): UseProjectsStageAnimationReturn {
-  const previousProjectIndexRef = useRef(0);
-  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
-
+) {
   useLayoutEffect(() => {
     const stage = stageRef.current;
 
@@ -57,19 +38,14 @@ export function useProjectsStageAnimation(
     const context = gsap.context(() => {
       const setupProjectsTriggers = (
         scrollConfig: ProjectsStageScrollConfig,
-        options?: {
-          enableNavigatorPin?: boolean;
-        }
+        options: SetupProjectsTriggerOptions = {}
       ) => {
-        const enableNavigatorPin = options?.enableNavigatorPin ?? true;
+        const { enableShowcasePin = false } = options;
 
         const elements = getProjectsStageElements(stage);
         const controllers = createProjectsStageControllers(elements);
 
         resetProjectsStageControllers(controllers);
-
-        previousProjectIndexRef.current = 0;
-        setActiveProjectIndex(0);
 
         const triggers: ScrollTriggerInstance[] = [];
 
@@ -77,12 +53,39 @@ export function useProjectsStageAnimation(
           triggers.push(trigger);
         };
 
+        /* Intro */
+
         registerProgressTrigger({
-          triggerElement: elements.navigatorIntro,
-          config: scrollConfig.navigatorIntro,
-          controller: controllers.navigatorIntro,
+          triggerElement: elements.showcaseIntro,
+          config: scrollConfig.showcaseIntro,
+          controller: controllers.showcaseIntro,
           registerTrigger,
         });
+
+        /* Showcase hold */
+
+        if (enableShowcasePin && elements.showcase) {
+          registerTrigger(
+            createScrollTrigger({
+              id: "projects-showcase-pin",
+
+              trigger: elements.showcase,
+
+              start: scrollConfig.showcaseHold.start,
+
+              end: () =>
+                `+=${
+                  window.innerHeight *
+                  scrollConfig.showcaseHold.holdLengthMultiplier
+                }`,
+
+              pin: true,
+              pinSpacing: true,
+            })
+          );
+        }
+
+        /* Closing */
 
         registerProgressTrigger({
           triggerElement: elements.closing,
@@ -90,51 +93,6 @@ export function useProjectsStageAnimation(
           controller: controllers.closing,
           registerTrigger,
         });
-
-        if (enableNavigatorPin && elements.navigatorPin) {
-          registerTrigger(
-            createScrollTrigger({
-              id: "projects-navigator-pin",
-              trigger: elements.navigatorPin,
-              start: scrollConfig.navigatorPin.start,
-              end: () =>
-                `+=${
-                  window.innerHeight *
-                  (PROJECT_ITEMS.length - 1) *
-                  scrollConfig.navigatorPin.itemScrollLengthMultiplier
-                }`,
-              pin: true,
-              pinSpacing: true,
-              pinType: "transform",
-              scrub: scrollConfig.navigatorPin.scrub,
-              anticipatePin: scrollConfig.navigatorPin.anticipatePin,
-
-              onUpdate: (self) => {
-                const nextIndex = getProjectIndex(
-                  self.progress,
-                  PROJECT_ITEMS.length
-                );
-
-                if (nextIndex === previousProjectIndexRef.current) {
-                  return;
-                }
-
-                previousProjectIndexRef.current = nextIndex;
-                setActiveProjectIndex(nextIndex);
-
-                const nextLayer = stage.querySelector<HTMLElement>(
-                  `${PROJECTS_STAGE_SELECTORS.navigatorLayer}[data-index="${nextIndex}"]`
-                );
-
-                if (!nextLayer) return;
-
-                ProjectsNavigatorAnimation.createLayerTransition({
-                  nextLayer,
-                });
-              },
-            })
-          );
-        }
 
         refreshScrollTrigger();
 
@@ -151,13 +109,13 @@ export function useProjectsStageAnimation(
 
       media.add("(min-width: 901px)", () =>
         setupProjectsTriggers(PROJECTS_STAGE_DESKTOP_SCROLL_CONFIG, {
-          enableNavigatorPin: true,
+          enableShowcasePin: true,
         })
       );
 
       media.add("(max-width: 900px)", () =>
         setupProjectsTriggers(PROJECTS_STAGE_MOBILE_SCROLL_CONFIG, {
-          enableNavigatorPin: false,
+          enableShowcasePin: false,
         })
       );
 
@@ -170,9 +128,4 @@ export function useProjectsStageAnimation(
       context.revert();
     };
   }, [stageRef]);
-
-  return {
-    activeProjectIndex,
-    setActiveProjectIndex,
-  };
 }
