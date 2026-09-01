@@ -141,7 +141,7 @@ export default function AboutHeroScene() {
             </CtaButton>
 
             <CtaButton
-              href="/resume/kim-bom-resume_v3.pdf"
+              href="/resume/kim-bom-frontend-developer.pdf"
               target="_blank"
               label="Go Resume"
               variant="secondary"
