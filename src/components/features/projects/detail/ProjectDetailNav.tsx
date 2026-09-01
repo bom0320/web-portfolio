@@ -24,7 +24,9 @@ const NAV_OFFSET = 32;
 
 export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
   const [activeId, setActiveId] = useState(items[0]?.id ?? "");
+
   const [activeRailId, setActiveRailId] = useState(items[0]?.id ?? "");
+
   const [railHeadings, setRailHeadings] = useState<RailHeading[]>([]);
 
   const frameRef = useRef<number | null>(null);
@@ -36,6 +38,7 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
           id: item.id,
           parentId: item.id,
         },
+
         ...(item.children?.map((child) => ({
           id: child.id,
           parentId: item.id,
@@ -52,9 +55,10 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
     );
   }, [activeId, items, targets]);
 
-  /*
-   * Sidebar click navigation
-   */
+  /* --------------------------------------------------
+   * Navigation
+   * -------------------------------------------------- */
+
   const handleNavigate = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
     event.preventDefault();
 
@@ -102,9 +106,10 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
     });
   };
 
-  /*
-   * 실제 document hierarchy를 rail로 변환
-   */
+  /* --------------------------------------------------
+   * Rail hierarchy
+   * -------------------------------------------------- */
+
   useEffect(() => {
     const content = document.querySelector(".project-detail-content__sections");
 
@@ -147,9 +152,10 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
     setRailHeadings(headings);
   }, [items]);
 
-  /*
-   * 현재 읽고 있는 위치 추적
-   */
+  /* --------------------------------------------------
+   * Active section tracking
+   * -------------------------------------------------- */
+
   useEffect(() => {
     const updateActiveSection = () => {
       const activationY = Math.min(
@@ -219,6 +225,7 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
 
       frameRef.current = window.requestAnimationFrame(() => {
         updateActiveSection();
+
         frameRef.current = null;
       });
     };
@@ -244,6 +251,7 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
 
   return (
     <nav className="project-detail-nav" aria-label="프로젝트 상세 목차">
+      {/* Rail */}
       <div className="project-detail-nav__rail" aria-hidden="true">
         {railHeadings.map((heading) => (
           <span
@@ -259,7 +267,8 @@ export default function ProjectDetailNav({ items }: ProjectDetailNavProps) {
         ))}
       </div>
 
-      <div className="project-detail-nav__panel">
+      {/* Expanded panel */}
+      <div className="project-detail-nav__panel" data-lenis-prevent>
         <div className="project-detail-nav__list">
           {items.map((item) => {
             const isParentActive = activeParentId === item.id;
