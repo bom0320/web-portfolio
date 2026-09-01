@@ -206,6 +206,94 @@ const PROJECT_DETAIL_NAV_ITEMS: Record<string, ProjectDetailNavItem[]> = {
       label: "Retrospective",
     },
   ],
+  hyoit: [
+    {
+      id: "overview",
+      number: "01",
+      label: "Overview",
+    },
+    {
+      id: "problem",
+      number: "02",
+      label: "Problem",
+      children: [
+        {
+          id: "problem-connection",
+          number: "01",
+          label: "관계의 단절은 돌봄의 공백으로 이어지고 있었습니다.",
+        },
+        {
+          id: "problem-care-service",
+          number: "02",
+          label: "기존 돌봄 서비스는 관계 유지까지 해결하지 못했습니다.",
+        },
+        {
+          id: "problem-family-burden",
+          number: "03",
+          label: "돌봄의 공백은 가족의 부담으로도 이어지고 있었습니다.",
+        },
+        {
+          id: "problem-continuous-connection",
+          number: "04",
+          label: "지속적인 연결 경험에 집중했습니다.",
+        },
+      ],
+    },
+    {
+      id: "experience",
+      number: "03",
+      label: "Experience",
+      children: [
+        {
+          id: "experience-status-home",
+          number: "01",
+          label: "상태를 먼저 이해할 수 있는 홈을 설계했습니다.",
+        },
+        {
+          id: "experience-quick-response",
+          number: "02",
+          label: "짧은 반응만으로 안부를 주고받도록 설계했습니다.",
+        },
+        {
+          id: "experience-role-based",
+          number: "03",
+          label: "부모와 자녀의 경험을 역할별로 분리했습니다.",
+        },
+        {
+          id: "experience-senior-ux",
+          number: "04",
+          label: "고령층의 조작 부담을 줄이는 UX를 적용했습니다.",
+        },
+      ],
+    },
+    {
+      id: "engineering",
+      number: "04",
+      label: "Engineering",
+      children: [
+        {
+          id: "engineering-boundary",
+          number: "01",
+          label: "역할별 경험이 독립적으로 변경될 수 있도록 경계를 설계",
+        },
+        {
+          id: "engineering-entry",
+          number: "02",
+          label: "사용자 상태로 진입 경로를 결정",
+        },
+        {
+          id: "engineering-routing",
+          number: "03",
+          label: "라우팅과 화면 구현의 책임을 분리",
+        },
+      ],
+    },
+    {
+      id: "current-status",
+      number: "05",
+      label: "Current Status",
+    },
+  ],
 };
 
 export function getProjectDetailNavItems(

@@ -1,9 +1,11 @@
+import HyoitContent from "./hyoit.mdx";
 import PortfolioContent from "./portfolio.mdx";
 import WasherContent from "./washer.mdx";
 
 const PROJECT_DETAIL_CONTENTS = {
   washer: WasherContent,
   portfolio: PortfolioContent,
+  hyoit: HyoitContent,
 } as const;
 
 export function getProjectDetailContent(projectId: string) {
