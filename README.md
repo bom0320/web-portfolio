@@ -34,8 +34,10 @@ GSAP과 ScrollTrigger를 활용해 Scene 단위의 전환이 자연스럽게 이
 ```txt
 HeroScene
 → LifeMotionScene
-→ AboutSection
+→ AboutScenes
 ```
+
+AboutScenes는 AboutHeroScene과 SkillsScene으로 구성됩니다.
 
 ### BuildStage
 
@@ -59,11 +61,11 @@ BuildStructureBlock
 구현한 프로젝트를 탐색하고 상세 페이지로 연결하는 구간입니다.
 
 ```txt
-ProjectsNavigatorScene
+ProjectsShowcaseScene
 → ProjectsClosingScene
 ```
 
-ProjectsNavigatorScene에서는 프로젝트 목록과 미리보기 화면을 연결하고,
+ProjectsShowcaseScene에서는 프로젝트 필터와 캐러셀로 프로젝트를 탐색하고,
 ProjectsClosingScene에서는 Contact 구간으로 이어지는 흐름을 구성합니다.
 
 ### ContactStage
@@ -71,8 +73,10 @@ ProjectsClosingScene에서는 Contact 구간으로 이어지는 흐름을 구성
 포트폴리오의 마지막 연락 유도 구간입니다.
 
 ```txt
-ContactIntro
-→ ContactFooter
+ContactScene
+├─ ContactIntro
+├─ ContactForm
+└─ ContactFooter
 ```
 
 ---
@@ -86,9 +90,10 @@ ContactIntro
 - GSAP
 - ScrollTrigger
 - Lenis
-- TanStack Query
-- Axios
-- Biome
+- MDX
+- Amplitude
+- Resend
+- ESLint
 
 ---
 
@@ -108,14 +113,16 @@ src/
 │  ├─ stages/
 │  ├─ scenes/
 │  ├─ features/
-│  └─ shared/
+│  ├─ shared/
+│  └─ providers/
+├─ content/
+│  └─ projects/
 ├─ data/
 │  ├─ build/
 │  ├─ projects/
 │  └─ ...
 ├─ hooks/
 ├─ lib/
-├─ providers/
 └─ styles/
    ├─ features/
    │  ├─ build/
