@@ -16,7 +16,7 @@
 ## Architecture
 
 - `src/app`: 페이지, 레이아웃, API route. 홈 페이지는 Stage를 조합한다.
-- `src/components/stages`: 큰 스크롤 구간과 Scene 배치. `hooks/`에서 ScrollTrigger를 연결하고 진행률을 전달한다.
+- `src/components/stages`: 큰 스크롤 구간과 Scene 배치. 대부분 `hooks/`에서 ScrollTrigger 진행률을 controller에 전달한다. ProjectDetail처럼 hook에서 애니메이션을 직접 관리하는 예외도 있다.
 - `src/components/scenes`: 화면 구조와 애니메이션 대상 DOM. `dom/` helper는 대상 요소를 찾는다.
 - `src/components/features`: 화면 UI와 상호작용. `src/animations`: GSAP 애니메이션과 controller. `src/data`: 표시 데이터. `src/content/projects`: 상세 MDX 콘텐츠.
 - 위 역할은 현재 코드의 일반적인 구조다. 예외를 변경할 때는 해당 구현을 먼저 확인한다.
@@ -24,7 +24,7 @@
 ## Context Navigation
 
 - 홈 화면 흐름: `src/app/page.tsx` → `src/components/stages/` → `src/components/scenes/` → `src/components/features/`.
-- 스크롤 변경: 해당 Stage의 `hooks/`와 `constants/`, Scene의 `dom/`, 해당 `src/animations/`를 함께 확인한다. 자세한 설계 배경은 `docs/component-boundaries.md`, `docs/scroll-architecture.md`, `docs/motion-principles.md`를 참고한다.
+- 스크롤 변경: 해당 Stage의 `hooks/`, `hooks/helpers/`, `constants/`, Scene의 `dom/`, 해당 `src/animations/`를 함께 확인한다. 전역 스크롤/Lenis/GSAP 변경 시 `src/components/shared/providers/SmoothScrollProvider.tsx`도 확인한다. 자세한 설계 배경은 `docs/component-boundaries.md`, `docs/scroll-architecture.md`, `docs/motion-principles.md`를 참고한다.
 - 프로젝트 상세: `src/app/projects/[id]/page.tsx`, `src/data/projects/`, `src/content/projects/`. Contact: `src/app/api/contact/route.ts`, `src/hooks/useContactForm.ts`, `src/lib/contact/`.
 
 ## Working Rules
